@@ -46,8 +46,8 @@ a:visited { color: #205caa; }
   background-color: white;
 }
 
-.site-header .wrap{ position:relative; left: 50%; width:880px; margin-left:-440px;  }
-
+/*.site-header .wrap{ position:relative; left: 50%; width:880px; margin-left:-440px;  }
+*/
 .site-title,
 .site-title:hover,
 .site-title:visited {
@@ -184,7 +184,7 @@ a:visited { color: #205caa; }
 /* Post styles */
 /* ----------------------------------------------------------*/
 
-.post { position:relative; left: 47%; width:880px; margin-left:-440px; }
+.post { width:880px; margin:auto; }
 
 .post-header { margin: 10px 0 30px; }
 
