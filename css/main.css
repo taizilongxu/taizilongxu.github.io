@@ -10,7 +10,7 @@ html, body { height: 100%; }
 
 body {
   font-family: Verdana,Consolas, "Liberation Mono", Courier, monospace;
-  line-height: 1.5;
+  line-height: 1.1;
   font-weight: 300;
   background-color: #fdfdfd;
 
@@ -141,11 +141,11 @@ a:visited { color: #205caa; }
 /* ----------------------------------------------------------*/
 
 .page-content {
-  padding-top: 50px;
+  padding-top: 35px;
   background-color: #fff;
   padding-bottom: 30px;
 }
-.page-content .wrap{padding-bottom: 30px;}
+.page-content .wrap{padding-bottom: 35px;}
 
 
 /* Home styles */
@@ -184,7 +184,7 @@ a:visited { color: #205caa; }
 /* Post styles */
 /* ----------------------------------------------------------*/
 
-.post { width:880px; margin:auto; }
+.post { width:880px; margin:auto;margin-left:  }
 
 .post-header { margin: 10px 0 30px; }
 
@@ -472,3 +472,40 @@ text-align: -webkit-match-parent;
     margin: 0 0 15px; }
 
 }
+/* ----------------------------------------------------------*/
+
+/* Category */
+/* ----------------------------------------------------------*/
+.category {
+  line-height: 1.4;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.category p {
+  font-size: 28px;
+  margin-top: 23px;
+}
+.category ul{
+  margin:23px 23px;
+}
+.category li{
+  margin: 0 0 0 35px;
+  line-height: 1.5;
+  font-size: 22px;
+}
+.category .category-date {
+  display: inline-block;
+  font-size: 15px;
+  color: #818181;
+  float: right;
+}
+.category a{
+  color:#000000;
+}
+
+.category li a{
+  color:#525252;
+}
+
+/* ----------------------------------------------------------*/

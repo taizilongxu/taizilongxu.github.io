@@ -4,21 +4,14 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Jekyll使用MathJax来显示数学式</title>
+    <title>Welcome to Jekyll!</title>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Python,HTML,CSS,Machine Leaning">
-    <link rel="canonical" href="http://taizilongxu.github.io/jekyll/update/2014/06/01/jekyll-latex/">
+    <link rel="canonical" href="http://taizilongxu.github.io/jekyll%20update/2014/01/01/welcome-to-jekyll/">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/main.css">
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-});
-</script>
-<script type="text/javascript"
- src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+
 
 </head>
 
@@ -51,13 +44,17 @@ MathJax.Hub.Config({
           
         
         
-        
-        
-          <a class="page-link" href="/lib/">Lib</a>
+          <a class="page-link" href="/archive/">Archive</a>
           
         
         
-          <a class="page-link" href="/tags/">Tags</a>
+          <a class="page-link" href="/categories/">Categories</a>
+          
+        
+        
+        
+        
+          <a class="page-link" href="/lib/">Lib</a>
           
         
       </div>
@@ -73,35 +70,27 @@ MathJax.Hub.Config({
       <div class="post">
 
   <header class="post-header">
-    <h1>Jekyll使用MathJax来显示数学式</h1>
-    <p class="meta">Jun 1, 2014</p>
+    <h1>Welcome to Jekyll!</h1>
+    <p class="meta">Jan 1, 2014
+    test 
+    jekyll update 
+    </p>
+    </p>
   </header>
 
   <article class="post-content">
-  <p>用Jekyll来显示数学公式：</p>
+  <p>You’ll find this post in your <code>_posts</code> directory - edit this post and re-build (or run with the <code>-w</code> switch) to see your changes!<br />
+To add new posts, simply add a file in the <code>_posts</code> directory that follows the convention: YYYY-MM-DD-name-of-post.ext.</p>
 
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>
-<span class="line-numbers"><a href="#n2" name="n2">2</a></span><span style="color:#070;font-weight:bold">&lt;script</span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">text/javascript</span><span style="color:#710">&quot;</span></span><span style="color:#b48">src</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
-<span class="line-numbers"><a href="#n3" name="n3">3</a></span><span style="color:#070;font-weight:bold">&lt;/script&gt;</span>
-<span class="line-numbers"><a href="#n4" name="n4">4</a></span>
-</pre></div>
-</div>
-</div>
+<p>Jekyll also offers powerful support for code snippets:</p>
 
-<p>如果要加 <code>$</code> <code>\\</code>匹配：</p>
+<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="s2">&quot;Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="k">end</span>
+<span class="n">print_hi</span><span class="p">(</span><span class="s1">&#39;Tom&#39;</span><span class="p">)</span>
+<span class="c1">#=&gt; prints &#39;Hi, Tom&#39; to STDOUT.</span></code></pre></div>
 
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>
-<span class="line-numbers"><a href="#n2" name="n2">2</a></span><span style="color:#070;font-weight:bold">&lt;script</span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">text/x-mathjax-config</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
-<span class="line-numbers"><a href="#n3" name="n3">3</a></span><span style="background-color:hsla(0,0%,0%,0.07);color:black">MathJax.Hub.Config({</span>
-<span class="line-numbers"><a href="#n4" name="n4">4</a></span><span style="background-color:hsla(0,0%,0%,0.07);color:black">  <span style="color:#606">tex2jax</span>: {<span style="color:#606">inlineMath</span>: [[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">$</span><span style="color:#710">'</span></span>,<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">$</span><span style="color:#710">'</span></span>], [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#b0b">\\</span><span style="color:#D20">(</span><span style="color:#710">'</span></span>,<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#b0b">\\</span><span style="color:#D20">)</span><span style="color:#710">'</span></span>]]}</span>
-<span class="line-numbers"><a href="#n5" name="n5">5</a></span><span style="background-color:hsla(0,0%,0%,0.07);color:black">});</span>
-<span class="line-numbers"><a href="#n6" name="n6">6</a></span><span style="color:#070;font-weight:bold">&lt;/script&gt;</span>
-<span class="line-numbers"><a href="#n7" name="n7">7</a></span>
-</pre></div>
-</div>
-</div>
+<p>Check out the <a href="http://jekyllrb.com">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>.</p>
 
 
   </article>
@@ -157,5 +146,13 @@ MathJax.Hub.Config({
 </footer>
 
 </div>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
     </body>
 </html>

@@ -4,21 +4,14 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>CSS 1</title>
+    <title>CSS basic</title>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Python,HTML,CSS,Machine Leaning">
-    <link rel="canonical" href="http://taizilongxu.github.io/2014/04/06/CSS1/">
+    <link rel="canonical" href="http://taizilongxu.github.io/css/2014/04/06/CSS/">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/main.css">
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-});
-</script>
-<script type="text/javascript"
- src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+
 
 </head>
 
@@ -51,13 +44,17 @@ MathJax.Hub.Config({
           
         
         
-        
-        
-          <a class="page-link" href="/lib/">Lib</a>
+          <a class="page-link" href="/archive/">Archive</a>
           
         
         
-          <a class="page-link" href="/tags/">Tags</a>
+          <a class="page-link" href="/categories/">Categories</a>
+          
+        
+        
+        
+        
+          <a class="page-link" href="/lib/">Lib</a>
           
         
       </div>
@@ -73,8 +70,12 @@ MathJax.Hub.Config({
       <div class="post">
 
   <header class="post-header">
-    <h1>CSS 1</h1>
-    <p class="meta">Apr 6, 2014</p>
+    <h1>CSS basic</h1>
+    <p class="meta">Apr 6, 2014
+    css 
+    css 
+    </p>
+    </p>
   </header>
 
   <article class="post-content">
@@ -317,7 +318,7 @@ border:5px solid blue;<br />
 
 <h3 id="section-12">外部样式表</h3>
 
-<p>当样式需要应用于很多页面时，外部样式表将是理想的选择。在使用外部样式表的情况下，你可以通过改变一个文件来改变整个站点的外观。每个页面使用 <link /> 标签链接到样式表。<link /> 标签在（文档的）头部：</p>
+<p>当样式需要应用于很多页面时，外部样式表将是理想的选择。在使用外部样式表的情况下，你可以通过改变一个文件来改变整个站点的外观。每个页面使用<code>&lt;link&gt;</code>标签链接到样式表。<code>&lt;link&gt;</code> 标签在（文档的）头部：</p>
 
 <pre><code>&lt;head&gt;
 &lt;link rel="stylesheet" type="text/css" href="mystyle.css" /&gt;
@@ -337,28 +338,28 @@ body {background-image: url("images/back40.gif");}
 
 <p>当单个文档需要特殊的样式时，就应该使用内部样式表。你可以使用 <code>&lt;style&gt;</code>标签在文档头部定义内部样式表，就像这样:</p>
 
-<pre><code>&lt;head&gt;
-&lt;style type="text/css"&gt;
-hr {color: sienna;}
-p {margin-left: 20px;}
-body {background-image: url("images/back40.gif");}
-&lt;/style&gt;
-&lt;/head&gt;
-​```
+<head>
+  <style type="text/css">
+  hr {color: sienna;}
+  p {margin-left: 20px;}
+  body {background-image: url("images/back40.gif");}
+  </style>
+  </head>
 
-###内联样式
+<p>​</p>
 
-由于要将表现和内容混杂在一起，内联样式会损失掉样式表的许多优势。请慎用这种方法，例如当样式仅需要在一个元素上应用一次时。
+<h3 id="section-14">内联样式</h3>
 
-要使用内联样式，你需要在相关的标签内使用样式（style）属性。Style 属性可以包含任何 CSS 属性。本例展示如何改变段落的颜色和左外边距：
+<p>由于要将表现和内容混杂在一起，内联样式会损失掉样式表的许多优势。请慎用这种方法，例如当样式仅需要在一个元素上应用一次时。</p>
 
-</code></pre>
+<p>要使用内联样式，你需要在相关的标签内使用样式（style）属性。Style 属性可以包含任何 CSS 属性。本例展示如何改变段落的颜色和左外边距：</p>
+
 <p style="color: sienna; margin-left: 20px">
-This is a paragraph
-</p>
-<p>​```</p>
+  This is a paragraph
+  </p>
+<p>​</p>
 
-<h2 id="section-14">多重样式</h2>
+<h2 id="section-15">多重样式</h2>
 
 <p>如果某些属性在不同的样式表中被同样的选择器定义，那么属性值将从更具体的样式表中被继承过来。</p>
 
@@ -381,12 +382,12 @@ This is a paragraph
 
 <p>假如拥有内部样式表的这个页面同时与外部样式表链接，那么 h3 得到的样式是：</p>
 
-<p><code>
-color: red; 
-text-align: right; 
-font-size: 20pt;
-​</code><br />
-即颜色属性将被继承于外部样式表，而文字排列（text-alignment）和字体尺寸（font-size）会被内部样式表中的规则取代。</p>
+<p>color: red; <br />
+  text-align: right; <br />
+  font-size: 20pt;<br />
+​</p>
+
+<p>即颜色属性将被继承于外部样式表，而文字排列（text-alignment）和字体尺寸（font-size）会被内部样式表中的规则取代。</p>
 
 <p><strong>和继承非常相似！！</strong>​</p>
 
@@ -444,5 +445,13 @@ font-size: 20pt;
 </footer>
 
 </div>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
     </body>
 </html>
