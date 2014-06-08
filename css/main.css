@@ -557,11 +557,28 @@ height:1px;border:none;border-top:1px solid #F0E8E8;
  padding-top: 50px;
 }
 
-/*slider*/
+/*lib*/
 /* ----------------------------------------------------------*/
-.banner { position: relative; overflow: auto; }
-    .banner li { list-style: none; }
-        .banner ul li { float: left; }
+.banner { 
+  position: relative; 
+  overflow: hidden; 
+}
+.banner li { list-style: none; }
+.banner ul li { 
+  float: left;
+}
+.test {
+  width: 400px;
+  height: 300px;
+  text-align: center;
+}
+
+.test img {
+  width:100%; 
+  height:100%;
+  text-align: center;
+}
+
 /* ----------------------------------------------------------*/
 /* ----------------------------------------------------------*/
 /* ----------------------------------------------------------*/
