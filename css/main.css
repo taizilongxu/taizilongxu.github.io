@@ -567,16 +567,17 @@ height:1px;border:none;border-top:1px solid #F0E8E8;
 .banner ul li { 
   float: left;
 }
+
 .test {
-  width: 400px;
-  height: 300px;
-  text-align: center;
+  width: 600px;
+  margin: auto;
+  margin-bottom: 100px;
 }
 
 .test img {
   width:100%; 
   height:100%;
-  text-align: center;
+
 }
 
 /* ----------------------------------------------------------*/
