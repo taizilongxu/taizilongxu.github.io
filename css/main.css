@@ -568,13 +568,13 @@ height:1px;border:none;border-top:1px solid #F0E8E8;
   float: left;
 }
 
-.test {
+.page-content .test {
   width: 600px;
   margin: auto;
   margin-bottom: 100px;
 }
 
-.test img {
+.page-content .test img {
   width:100%; 
   height:100%;
 

@@ -327,9 +327,8 @@ position指明了文件从何处开始读写
 </ul>
 
 <h4 id="section-3">（2）26在实现客户机-服务器协议时，需要哪些基本类型的包，说明每种包的源、目的地以及作用，并说明下图的含义。</h4>
-<center>
-![enter image description here](http://taizilongxu.github.io/img/dist1.png) P63
-</center>
+
+<p><img src="http://taizilongxu.github.io/img/dist1.png" alt="enter image description here" /> P63</p>
 
 <ul>
   <li>客户机　服务器协议：</li>
@@ -568,9 +567,7 @@ AU | 地址未知 | 服务器 | 客户 | 没有进程在使用此地址<br />
   <li>有限状态机，当请求到来后有唯一的一个线程检查它，如果缓冲区能满足，进行运行，但是如果不能，就必须向磁盘发送一条消息。然而这时文件服务器并不阻塞，而是将当前请求的状态记录在一张表中，然后去获得吓一跳消息，下条消息可能时请求一个新工作或者时磁盘关于上次操作的应答。如果时请求一个新工作，就激活它。如果时从磁盘发来的应答，那么从表中取出相关信息并处理这个应答。由于这里不允许发送消息并且阻塞以等带应答，因此不能使用远程过程调用，原语应是非阻塞调用的ｓｅｎｄ和ｒｅｃｅｉｖｅ。</li>
 </ul>
 
-<center>
-![enter image description here](http://taizilongxu.github.io/img/dist8.png)
-</center>
+<p><img src="http://taizilongxu.github.io/img/dist8.png" alt="enter image description here" /></p>
 
 <h4 id="p208">（5）3在分布式系统，为了获得文件读写的效率，需要使用高速缓存，说明设置缓存的各种方法及用途。并说明解决一致性问题的四种算法及各种算法存在的问题。P208</h4>
 
@@ -626,16 +623,36 @@ c 当关闭文件时，必须报告，以便服务器更新。</li>
   <li>有状态服务器：服务器保存两个请求之间的客户的状态信息。 </li>
 </ul>
 
-<center>
-
-无状态服务器的优点 | 有状态服务器的优点
-:-- | :--
-容错 | 请求消息比较短
-不需要OPEN/CLOSE调用 | 更好的性能
-没有服务器表空间的浪费 | 可以预读
-没有打开文件数目的限制 | 易于幂等性
-客户崩溃时不会造成服务器错误 | 可以对文件加锁
-</center>
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">无状态服务器的优点</th>
+      <th style="text-align: left">有状态服务器的优点</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">容错</td>
+      <td style="text-align: left">请求消息比较短</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">不需要OPEN/CLOSE调用</td>
+      <td style="text-align: left">更好的性能</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">没有服务器表空间的浪费</td>
+      <td style="text-align: left">可以预读</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">没有打开文件数目的限制</td>
+      <td style="text-align: left">易于幂等性</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">客户崩溃时不会造成服务器错误</td>
+      <td style="text-align: left">可以对文件加锁</td>
+    </tr>
+  </tbody>
+</table>
 
 <h4 id="p195">（5）6 在分布式系统中，可支持上载/下载文件模式或远程访问模式，说明这两种模式并进行比较。P195</h4>
 
@@ -654,6 +671,7 @@ c 当关闭文件时，必须报告，以便服务器更新。</li>
 </ul>
 
 <h4 id="dashdashcpucpup237">（6）1在交换式Dash多处理机系统中，为了保持缓存一致性，采用了Dash协议，某一簇中的一CPU写一未缓存的数据块，之后另外一簇的另外一CPU读该数据块。试详细说明写操作和读操作是如何进行的。P237</h4>
+
 <p><img src="http://taizilongxu.github.io/img/dist9.png" alt="enter image description here" />
 <img src="http://taizilongxu.github.io/img/dist10.png" alt="enter image description here" /></p>
 
