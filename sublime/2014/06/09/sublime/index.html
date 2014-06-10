@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Set Sublime 2/3</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Python,HTML,CSS,Machine Leaning">
+    <link rel="canonical" href="http://taizilongxu.github.io/sublime/2014/06/09/sublime/">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+
+
+</head>
+
+
+    <body>
+
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/"><h1><strong> <font style="color:#39B3D7" >L</font><font style="color:#ED9C28">i</font><font style="color:#47A447">m</font><font style="color:#D9534F">b</font><font style="color:#3276B1">o</font>
+    </strong>
+    </h1></a>
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+        <a class="page-link" href="/about/">About</a>
+        <a class="page-link" href="/archive/">Archive</a>
+        <a class="page-link" href="/categories/">Categories</a>
+        <a  class="page-link" href='javascript:(function() {
+  function c() {
+    var e = document.createElement("link");
+    e.setAttribute("type", "text/css");
+    e.setAttribute("rel", "stylesheet");
+    e.setAttribute("href", f);
+    e.setAttribute("class", l);
+    document.body.appendChild(e)
+  }
+ 
+  function h() {
+    var e = document.getElementsByClassName(l);
+    for (var t = 0; t < e.length; t++) {
+      document.body.removeChild(e[t])
+    }
+  }
+ 
+  function p() {
+    var e = document.createElement("div");
+    e.setAttribute("class", a);
+    document.body.appendChild(e);
+    setTimeout(function() {
+      document.body.removeChild(e)
+    }, 100)
+  }
+ 
+  function d(e) {
+    return {
+      height : e.offsetHeight,
+      width : e.offsetWidth
+    }
+  }
+ 
+  function v(i) {
+    var s = d(i);
+    return s.height > e && s.height < n && s.width > t && s.width < r
+  }
+ 
+  function m(e) {
+    var t = e;
+    var n = 0;
+    while (!!t) {
+      n += t.offsetTop;
+      t = t.offsetParent
+    }
+    return n
+  }
+ 
+  function g() {
+    var e = document.documentElement;
+    if (!!window.innerWidth) {
+      return window.innerHeight
+    } else if (e && !isNaN(e.clientHeight)) {
+      return e.clientHeight
+    }
+    return 0
+  }
+ 
+  function y() {
+    if (window.pageYOffset) {
+      return window.pageYOffset
+    }
+    return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+  }
+ 
+  function E(e) {
+    var t = m(e);
+    return t >= w && t <= b + w
+  }
+ 
+  function S() {
+    var e = document.createElement("audio");
+    e.setAttribute("class", l);
+    e.src = i;
+    e.loop = false;
+    e.addEventListener("canplay", function() {
+      setTimeout(function() {
+        x(k)
+      }, 500);
+      setTimeout(function() {
+        N();
+        p();
+        for (var e = 0; e < O.length; e++) {
+          T(O[e])
+        }
+      }, 15500)
+    }, true);
+    e.addEventListener("ended", function() {
+      N();
+      h()
+    }, true);
+    e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+    document.body.appendChild(e);
+    e.play()
+  }
+ 
+  function x(e) {
+    e.className += " " + s + " " + o
+  }
+ 
+  function T(e) {
+    e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+  }
+ 
+  function N() {
+    var e = document.getElementsByClassName(s);
+    var t = new RegExp("\\b" + s + "\\b");
+    for (var n = 0; n < e.length; ) {
+      e[n].className = e[n].className.replace(t, "")
+    }
+  }
+ 
+  var e = 30;
+  var t = 30;
+  var n = 350;
+  var r = 350;
+  var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+  var s = "mw-harlem_shake_me";
+  var o = "im_first";
+  var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+  var a = "mw-strobe_light";
+  var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+  var l = "mw_added_css";
+  var b = g();
+  var w = y();
+  var C = document.getElementsByTagName("*");
+  var k = null;
+  for (var L = 0; L < C.length; L++) {
+    var A = C[L];
+    if (v(A)) {
+      if (E(A)) {
+        k = A;
+        break
+      }
+    }
+  }
+  if (A === null) {
+    console.warn("Could not find a node of the right size. Please try a different page.");
+    return
+  }
+  c();
+  S();
+  var O = [];
+  for (var L = 0; L < C.length; L++) {
+    var A = C[L];
+    if (v(A)) {
+      O.push(A)
+    }
+  }
+})()'>High</a>
+        
+        <a class="page-link" href="/lib/">Lib</a>
+      </div>
+    </nav>
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <h1>Set Sublime 2/3</h1>
+    <p class="meta"><span class="pre">date:</span>Jun 9, 2014
+    <span class="pre">categories:</span>sublime <span class="pre">tags:</span>sublime 
+    </p>
+    
+  </header>
+
+  <article class="post-content">
+  <h4 id="section">插件安装:</h4>
+<ul>
+  <li>ConvertToUTF8</li>
+  <li>Bracket Highlighter 括号增强</li>
+  <li>SublimeLinter</li>
+  <li>function name play</li>
+</ul>
+
+<h4 id="section-1">配置：</h4>
+<ul>
+  <li>光标外形:default-setting:caret_style:phase（像在呼吸）</li>
+  <li>关闭括号的自动完成:”auto_match_enabled”: false</li>
+</ul>
+
+<h4 id="preferences-key-bindings--user">快捷键配置的建议（菜单栏Preferences-&gt;key bindings -User）：</h4>
+
+<pre><code>[
+{ "keys": ["f1"], "command": "goto_documentation" },
+{ "keys": ["alt+shift+`"], "command": "clone_file" }
+]
+</code></pre>
+
+<p>F1快速打开文档， 这个快捷键的设置前面已经说了。<br />
+alt+shift+` 快捷键又有什么用呢？ 我们需要同一个文件在左右两栏同时打开。<br />
+先按快捷键： alt+shift+2 。 此时会出现左右两栏的布局。<br />
+再按alt+shift+` （ `键是tab键上面个键）, 此时会复制一份当前文件， 再把新复制的那份文件拖动到右栏。 这样就实现了同一文件左右两栏同时打开了。<br />
+切换回一栏布局，按 alt+shift+1</p>
+
+<h4 id="section-2">全部配置:</h4>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers">  <a href="#n1" name="n1">1</a></span><span style="color:#777">// While you can edit this file, it's best to put your changes in</span>
+<span class="line-numbers">  <a href="#n2" name="n2">2</a></span><span style="color:#777">// &quot;User/Preferences.sublime-settings&quot;, which overrides the settings in here.</span>
+<span class="line-numbers">  <a href="#n3" name="n3">3</a></span><span style="color:#777">//</span>
+<span class="line-numbers">  <a href="#n4" name="n4">4</a></span><span style="color:#777">// Settings may also be placed in file type specific options files, for</span>
+<span class="line-numbers">  <a href="#n5" name="n5">5</a></span><span style="color:#777">// example, in Packages/Python/Python.sublime-settings for python files.</span>
+<span class="line-numbers">  <a href="#n6" name="n6">6</a></span>{
+<span class="line-numbers">  <a href="#n7" name="n7">7</a></span><span style="color:#777">// Sets the colors used within the text area</span>
+<span class="line-numbers">  <a href="#n8" name="n8">8</a></span><span style="color:#777">// 主题文件的路径</span>
+<span class="line-numbers">  <a href="#n9" name="n9">9</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">color_scheme</span><span style="color:#710">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Packages/Color Scheme - Default/Monokai.tmTheme</span><span style="color:#710">&quot;</span></span>,
+<span class="line-numbers"> <strong><a href="#n10" name="n10">10</a></strong></span>
+<span class="line-numbers"> <a href="#n11" name="n11">11</a></span><span style="color:#777">// Note that the font_face and font_size are overriden in the platform</span>
+<span class="line-numbers"> <a href="#n12" name="n12">12</a></span><span style="color:#777">// specific settings file, for example, &quot;Preferences (Linux).sublime-settings&quot;.</span>
+<span class="line-numbers"> <a href="#n13" name="n13">13</a></span><span style="color:#777">// Because of this, setting them here will have no effect: you must set them</span>
+<span class="line-numbers"> <a href="#n14" name="n14">14</a></span><span style="color:#777">// in your User File Preferences.</span>
+<span class="line-numbers"> <a href="#n15" name="n15">15</a></span><span style="color:#777">// 设置字体和大小，必须在Settings-User里重写，这里设置没有任何效果</span>
+<span class="line-numbers"> <a href="#n16" name="n16">16</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">font_face</span><span style="color:#710">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Consolas</span><span style="color:#710">&quot;</span></span>,
+<span class="line-numbers"> <a href="#n17" name="n17">17</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">font_size</span><span style="color:#710">&quot;</span></span>: <span style="color:#00D">12</span>,
+<span class="line-numbers"> <a href="#n18" name="n18">18</a></span>
+<span class="line-numbers"> <a href="#n19" name="n19">19</a></span><span style="color:#777">// Valid options are &quot;no_bold&quot;, &quot;no_italic&quot;, &quot;no_antialias&quot;, &quot;gray_antialias&quot;,</span>
+<span class="line-numbers"> <strong><a href="#n20" name="n20">20</a></strong></span><span style="color:#777">// &quot;subpixel_antialias&quot; and &quot;no_round&quot; (OS X only)</span>
+<span class="line-numbers"> <a href="#n21" name="n21">21</a></span><span style="color:#777">// 字体选项：no_bold不显示粗体字，no_italic不显示斜体字，no_antialias和no_antialias关闭反锯齿</span>
+<span class="line-numbers"> <a href="#n22" name="n22">22</a></span><span style="color:#777">// subpixel_antialias和no_round是OS X系统独有的</span>
+<span class="line-numbers"> <a href="#n23" name="n23">23</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">font_options</span><span style="color:#710">&quot;</span></span>: [],
+<span class="line-numbers"> <a href="#n24" name="n24">24</a></span>
+<span class="line-numbers"> <a href="#n25" name="n25">25</a></span><span style="color:#777">// Characters that are considered to separate words</span>
+<span class="line-numbers"> <a href="#n26" name="n26">26</a></span><span style="color:#777">// 在文字上双击会全选当前的内容，如果里面出现以下字符，就会被截断</span>
+<span class="line-numbers"> <a href="#n27" name="n27">27</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">word_separators”: “./()”‘-:,.;~!@#$%^&amp;*|+=[]{}`~?</span><span style="color:#710">&quot;</span></span>,
+<span class="line-numbers"> <a href="#n28" name="n28">28</a></span>
+<span class="line-numbers"> <a href="#n29" name="n29">29</a></span><span style="color:#777">// Set to false to prevent line numbers being drawn in the gutter</span>
+<span class="line-numbers"> <strong><a href="#n30" name="n30">30</a></strong></span><span style="color:#777">// 是否显示行号</span>
+<span class="line-numbers"> <a href="#n31" name="n31">31</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">line_numbers</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">true</span>,
+<span class="line-numbers"> <a href="#n32" name="n32">32</a></span>
+<span class="line-numbers"> <a href="#n33" name="n33">33</a></span><span style="color:#777">// Set to false to hide the gutter altogether</span>
+<span class="line-numbers"> <a href="#n34" name="n34">34</a></span><span style="color:#777">// 是否显示行号边栏</span>
+<span class="line-numbers"> <a href="#n35" name="n35">35</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">gutter</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">true</span>,
+<span class="line-numbers"> <a href="#n36" name="n36">36</a></span>
+<span class="line-numbers"> <a href="#n37" name="n37">37</a></span><span style="color:#777">// Spacing between the gutter and the text</span>
+<span class="line-numbers"> <a href="#n38" name="n38">38</a></span><span style="color:#777">// 行号边栏和文字的间距</span>
+<span class="line-numbers"> <a href="#n39" name="n39">39</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">margin</span><span style="color:#710">&quot;</span></span>: <span style="color:#00D">4</span>,
+<span class="line-numbers"> <strong><a href="#n40" name="n40">40</a></strong></span>
+<span class="line-numbers"> <a href="#n41" name="n41">41</a></span><span style="color:#777">// Fold buttons are the triangles shown in the gutter to fold regions of text</span>
+<span class="line-numbers"> <a href="#n42" name="n42">42</a></span><span style="color:#777">// 是否显示代码折叠按钮</span>
+<span class="line-numbers"> <a href="#n43" name="n43">43</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">fold_buttons</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">true</span>,
+<span class="line-numbers"> <a href="#n44" name="n44">44</a></span>
+<span class="line-numbers"> <a href="#n45" name="n45">45</a></span><span style="color:#777">// Hides the fold buttons unless the mouse is over the gutter</span>
+<span class="line-numbers"> <a href="#n46" name="n46">46</a></span><span style="color:#777">// 不管鼠标在不在行号边栏，代码折叠按钮一直显示</span>
+<span class="line-numbers"> <a href="#n47" name="n47">47</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">fade_fold_buttons</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">true</span>,
+<span class="line-numbers"> <a href="#n48" name="n48">48</a></span>
+<span class="line-numbers"> <a href="#n49" name="n49">49</a></span><span style="color:#777">// Columns in which to display vertical rulers</span>
+<span class="line-numbers"> <strong><a href="#n50" name="n50">50</a></strong></span><span style="color:#777">//列显示垂直标尺，在中括号里填入数字，宽度按字符计算</span>
+<span class="line-numbers"> <a href="#n51" name="n51">51</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">rulers</span><span style="color:#710">&quot;</span></span>: [],
+<span class="line-numbers"> <a href="#n52" name="n52">52</a></span>
+<span class="line-numbers"> <a href="#n53" name="n53">53</a></span><span style="color:#777">// Set to true to turn spell checking on by default</span>
+<span class="line-numbers"> <a href="#n54" name="n54">54</a></span><span style="color:#777">// 是否打开拼写检查</span>
+<span class="line-numbers"> <a href="#n55" name="n55">55</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">spell_check</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">false</span>,
+<span class="line-numbers"> <a href="#n56" name="n56">56</a></span>
+<span class="line-numbers"> <a href="#n57" name="n57">57</a></span><span style="color:#777">// The number of spaces a tab is considered equal to</span>
+<span class="line-numbers"> <a href="#n58" name="n58">58</a></span><span style="color:#777">// Tab键制表符宽度</span>
+<span class="line-numbers"> <a href="#n59" name="n59">59</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">tab_size</span><span style="color:#710">&quot;</span></span>: <span style="color:#00D">4</span>,
+<span class="line-numbers"> <strong><a href="#n60" name="n60">60</a></strong></span>
+<span class="line-numbers"> <a href="#n61" name="n61">61</a></span><span style="color:#777">// Set to true to insert spaces when tab is pressed</span>
+<span class="line-numbers"> <a href="#n62" name="n62">62</a></span><span style="color:#777">// 设为true时，缩进和遇到Tab键时使用空格替代</span>
+<span class="line-numbers"> <a href="#n63" name="n63">63</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">translate_tabs_to_spaces</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">false</span>,
+<span class="line-numbers"> <a href="#n64" name="n64">64</a></span>
+<span class="line-numbers"> <a href="#n65" name="n65">65</a></span><span style="color:#777">// If translate_tabs_to_spaces is true, use_tab_stops will make tab and</span>
+<span class="line-numbers"> <a href="#n66" name="n66">66</a></span><span style="color:#777">// backspace insert/delete up to the next tabstop</span>
+<span class="line-numbers"> <a href="#n67" name="n67">67</a></span><span style="color:#777">// translate_tabs_to_spaces设置为true，Tab和Backspace的删除/插入作用于制表符宽度</span>
+<span class="line-numbers"> <a href="#n68" name="n68">68</a></span><span style="color:#777">// 否则作用于单个空格</span>
+<span class="line-numbers"> <a href="#n69" name="n69">69</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">use_tab_stops</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">true</span>,
+<span class="line-numbers"> <strong><a href="#n70" name="n70">70</a></strong></span>
+<span class="line-numbers"> <a href="#n71" name="n71">71</a></span><span style="color:#777">// Set to false to disable detection of tabs vs. spaces on load</span>
+<span class="line-numbers"> <a href="#n72" name="n72">72</a></span><span style="color:#777">// false时禁止在载入的时候检测制表符和空格</span>
+<span class="line-numbers"> <a href="#n73" name="n73">73</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">detect_indentation</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">true</span>,
+<span class="line-numbers"> <a href="#n74" name="n74">74</a></span>
+<span class="line-numbers"> <a href="#n75" name="n75">75</a></span><span style="color:#777">// Calculates indentation automatically when pressing enter</span>
+<span class="line-numbers"> <a href="#n76" name="n76">76</a></span><span style="color:#777">// 按回车时，自动与制表位对齐</span>
+<span class="line-numbers"> <a href="#n77" name="n77">77</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">auto_indent</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">true</span>,
+<span class="line-numbers"> <a href="#n78" name="n78">78</a></span>
+<span class="line-numbers"> <a href="#n79" name="n79">79</a></span><span style="color:#777">// Makes auto indent a little smarter, e.g., by indenting the next line</span>
+<span class="line-numbers"> <strong><a href="#n80" name="n80">80</a></strong></span><span style="color:#777">// after an if statement in C. Requires auto_indent to be enabled.</span>
+<span class="line-numbers"> <a href="#n81" name="n81">81</a></span><span style="color:#777">//针对C语言的</span>
+<span class="line-numbers"> <a href="#n82" name="n82">82</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">smart_indent</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">false</span>,
+<span class="line-numbers"> <a href="#n83" name="n83">83</a></span>
+<span class="line-numbers"> <a href="#n84" name="n84">84</a></span><span style="color:#777">// Adds whitespace up to the first open bracket when indenting. Requires</span>
+<span class="line-numbers"> <a href="#n85" name="n85">85</a></span><span style="color:#777">// auto_indent to be enabled.</span>
+<span class="line-numbers"> <a href="#n86" name="n86">86</a></span><span style="color:#777">// 需要启用auto_indent，第一次打开括号缩进时插入空格？（没测试出来效果...）</span>
+<span class="line-numbers"> <a href="#n87" name="n87">87</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">indent_to_bracket</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">true</span>,
+<span class="line-numbers"> <a href="#n88" name="n88">88</a></span>
+<span class="line-numbers"> <a href="#n89" name="n89">89</a></span><span style="color:#777">// Trims white space added by auto_indent when moving the caret off the</span>
+<span class="line-numbers"> <strong><a href="#n90" name="n90">90</a></strong></span><span style="color:#777">// line.</span>
+<span class="line-numbers"> <a href="#n91" name="n91">91</a></span><span style="color:#777">// 显示对齐的白线是否根据回车、tab等操作自动填补</span>
+<span class="line-numbers"> <a href="#n92" name="n92">92</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">trim_automatic_white_space</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">true</span>,
+<span class="line-numbers"> <a href="#n93" name="n93">93</a></span>
+<span class="line-numbers"> <a href="#n94" name="n94">94</a></span><span style="color:#777">// Disables horizontal scrolling if enabled.</span>
+<span class="line-numbers"> <a href="#n95" name="n95">95</a></span><span style="color:#777">// May be set to true, false, or &quot;auto&quot;, where it will be disabled for</span>
+<span class="line-numbers"> <a href="#n96" name="n96">96</a></span><span style="color:#777">// source code, and otherwise enabled.</span>
+<span class="line-numbers"> <a href="#n97" name="n97">97</a></span><span style="color:#777">// 是否自动换行，如果选auto，需要加双引号</span>
+<span class="line-numbers"> <a href="#n98" name="n98">98</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">word_wrap</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">false</span>,
+<span class="line-numbers"> <a href="#n99" name="n99">99</a></span>
+<span class="line-numbers"><strong><a href="#n100" name="n100">100</a></strong></span><span style="color:#777">// Set to a value other than 0 to force wrapping at that column rather than the</span>
+<span class="line-numbers"><a href="#n101" name="n101">101</a></span><span style="color:#777">// window width</span>
+<span class="line-numbers"><a href="#n102" name="n102">102</a></span><span style="color:#777">// 设置窗口内文字区域的宽度</span>
+<span class="line-numbers"><a href="#n103" name="n103">103</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">wrap_width</span><span style="color:#710">&quot;</span></span>: <span style="color:#00D">0</span>,
+<span class="line-numbers"><a href="#n104" name="n104">104</a></span>
+<span class="line-numbers"><a href="#n105" name="n105">105</a></span><span style="color:#777">// Set to false to prevent word wrapped lines from being indented to the same</span>
+<span class="line-numbers"><a href="#n106" name="n106">106</a></span><span style="color:#777">// level</span>
+<span class="line-numbers"><a href="#n107" name="n107">107</a></span><span style="color:#777">// 防止被缩进到同一级的字换行</span>
+<span class="line-numbers"><a href="#n108" name="n108">108</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">indent_subsequent_lines</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">true</span>,
+<span class="line-numbers"><a href="#n109" name="n109">109</a></span>
+<span class="line-numbers"><strong><a href="#n110" name="n110">110</a></strong></span><span style="color:#777">// Draws text centered in the window rather than left aligned</span>
+<span class="line-numbers"><a href="#n111" name="n111">111</a></span><span style="color:#777">// 如果没有定义过，则文件居中显示（比如新建的文件）</span>
+<span class="line-numbers"><a href="#n112" name="n112">112</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">draw_centered</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">false</span>,
+<span class="line-numbers"><a href="#n113" name="n113">113</a></span>
+<span class="line-numbers"><a href="#n114" name="n114">114</a></span><span style="color:#777">// Controls auto pairing of quotes, brackets etc</span>
+<span class="line-numbers"><a href="#n115" name="n115">115</a></span><span style="color:#777">// 自动匹配引号，括号等</span>
+<span class="line-numbers"><a href="#n116" name="n116">116</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">auto_match_enabled</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">true</span>,
+<span class="line-numbers"><a href="#n117" name="n117">117</a></span>
+<span class="line-numbers"><a href="#n118" name="n118">118</a></span><span style="color:#777">// Word list to use for spell checking</span>
+<span class="line-numbers"><a href="#n119" name="n119">119</a></span><span style="color:#777">// 拼写检查的单词列表路径</span>
+<span class="line-numbers"><strong><a href="#n120" name="n120">120</a></strong></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">dictionary</span><span style="color:#710">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Packages/Language - English/en_US.dic</span><span style="color:#710">&quot;</span></span>,
+<span class="line-numbers"><a href="#n121" name="n121">121</a></span>
+<span class="line-numbers"><a href="#n122" name="n122">122</a></span><span style="color:#777">// Set to true to draw a border around the visible rectangle on the minimap.</span>
+<span class="line-numbers"><a href="#n123" name="n123">123</a></span><span style="color:#777">// The color of the border will be determined by the &quot;minimapBorder&quot; key in</span>
+<span class="line-numbers"><a href="#n124" name="n124">124</a></span><span style="color:#777">// the color scheme</span>
+<span class="line-numbers"><a href="#n125" name="n125">125</a></span><span style="color:#777">// 代码地图的可视区域部分是否加上边框，边框的颜色可在配色方案上加入minimapBorder键</span>
+<span class="line-numbers"><a href="#n126" name="n126">126</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">draw_minimap_border</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">false</span>,
+<span class="line-numbers"><a href="#n127" name="n127">127</a></span>
+<span class="line-numbers"><a href="#n128" name="n128">128</a></span><span style="color:#777">// If enabled, will highlight any line with a caret</span>
+<span class="line-numbers"><a href="#n129" name="n129">129</a></span><span style="color:#777">// 突出显示当前光标所在的行</span>
+<span class="line-numbers"><strong><a href="#n130" name="n130">130</a></strong></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">highlight_line</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">false</span>,
+<span class="line-numbers"><a href="#n131" name="n131">131</a></span>
+<span class="line-numbers"><a href="#n132" name="n132">132</a></span><span style="color:#777">// Valid values are &quot;smooth&quot;, &quot;phase&quot;, &quot;blink&quot;, &quot;wide&quot; and &quot;solid&quot;.</span>
+<span class="line-numbers"><a href="#n133" name="n133">133</a></span><span style="color:#777">// 设置光标闪动方式</span>
+<span class="line-numbers"><a href="#n134" name="n134">134</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">caret_style</span><span style="color:#710">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">smooth</span><span style="color:#710">&quot;</span></span>,
+<span class="line-numbers"><a href="#n135" name="n135">135</a></span>
+<span class="line-numbers"><a href="#n136" name="n136">136</a></span><span style="color:#777">// Set to false to disable underlining the brackets surrounding the caret</span>
+<span class="line-numbers"><a href="#n137" name="n137">137</a></span><span style="color:#777">// 是否特殊显示当前光标所在的括号、代码头尾闭合标记</span>
+<span class="line-numbers"><a href="#n138" name="n138">138</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">match_brackets</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">true</span>,
+<span class="line-numbers"><a href="#n139" name="n139">139</a></span>
+<span class="line-numbers"><strong><a href="#n140" name="n140">140</a></strong></span><span style="color:#777">// Set to false if you'd rather only highlight the brackets when the caret is</span>
+<span class="line-numbers"><a href="#n141" name="n141">141</a></span><span style="color:#777">// next to one</span>
+<span class="line-numbers"><a href="#n142" name="n142">142</a></span><span style="color:#777">// 设为false时，只有光标在括号或头尾闭合标记的两端时，match_brackets才生效</span>
+<span class="line-numbers"><a href="#n143" name="n143">143</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">match_brackets_content</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">true</span>,
+<span class="line-numbers"><a href="#n144" name="n144">144</a></span>
+<span class="line-numbers"><a href="#n145" name="n145">145</a></span><span style="color:#777">// Set to false to not highlight square brackets. This only takes effect if</span>
+<span class="line-numbers"><a href="#n146" name="n146">146</a></span><span style="color:#777">// match_brackets is true</span>
+<span class="line-numbers"><a href="#n147" name="n147">147</a></span><span style="color:#777">// 是否突出显示圆括号，match_brackets为true生效</span>
+<span class="line-numbers"><a href="#n148" name="n148">148</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">match_brackets_square</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">false</span>,
+<span class="line-numbers"><a href="#n149" name="n149">149</a></span>
+<span class="line-numbers"><strong><a href="#n150" name="n150">150</a></strong></span><span style="color:#777">// Set to false to not highlight curly brackets. This only takes effect if</span>
+<span class="line-numbers"><a href="#n151" name="n151">151</a></span><span style="color:#777">// match_brackets is true</span>
+<span class="line-numbers"><a href="#n152" name="n152">152</a></span><span style="color:#777">// 是否突出显示大括号，match_brackets为true生效</span>
+<span class="line-numbers"><a href="#n153" name="n153">153</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">match_brackets_braces</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">false</span>,
+<span class="line-numbers"><a href="#n154" name="n154">154</a></span>
+<span class="line-numbers"><a href="#n155" name="n155">155</a></span><span style="color:#777">// Set to false to not highlight angle brackets. This only takes effect if</span>
+<span class="line-numbers"><a href="#n156" name="n156">156</a></span><span style="color:#777">// match_brackets is true</span>
+<span class="line-numbers"><a href="#n157" name="n157">157</a></span><span style="color:#777">// 是否突出显示尖括号，match_brackets为true生效</span>
+<span class="line-numbers"><a href="#n158" name="n158">158</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">match_brackets_angle</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">false</span>,
+<span class="line-numbers"><a href="#n159" name="n159">159</a></span>
+<span class="line-numbers"><strong><a href="#n160" name="n160">160</a></strong></span><span style="color:#777">// Enable visualization of the matching tag in HTML and XML</span>
+<span class="line-numbers"><a href="#n161" name="n161">161</a></span><span style="color:#777">// html和xml下突出显示光标所在标签的两端，影响HTML、XML、CSS等</span>
+<span class="line-numbers"><a href="#n162" name="n162">162</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">match_tags</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">true</span>,
+<span class="line-numbers"><a href="#n163" name="n163">163</a></span>
+<span class="line-numbers"><a href="#n164" name="n164">164</a></span><span style="color:#777">// Highlights other occurrences of the currently selected text</span>
+<span class="line-numbers"><a href="#n165" name="n165">165</a></span><span style="color:#777">// 全文突出显示和当前选中字符相同的字符</span>
+<span class="line-numbers"><a href="#n166" name="n166">166</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">match_selection</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">true</span>,
+<span class="line-numbers"><a href="#n167" name="n167">167</a></span>
+<span class="line-numbers"><a href="#n168" name="n168">168</a></span><span style="color:#777">// Additional spacing at the top of each line, in pixels</span>
+<span class="line-numbers"><a href="#n169" name="n169">169</a></span><span style="color:#777">// 设置每一行到顶部，以像素为单位的间距，效果相当于行距</span>
+<span class="line-numbers"><strong><a href="#n170" name="n170">170</a></strong></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">line_padding_top</span><span style="color:#710">&quot;</span></span>: <span style="color:#00D">1</span>,
+<span class="line-numbers"><a href="#n171" name="n171">171</a></span>
+<span class="line-numbers"><a href="#n172" name="n172">172</a></span><span style="color:#777">// Additional spacing at the bottom of each line, in pixels</span>
+<span class="line-numbers"><a href="#n173" name="n173">173</a></span><span style="color:#777">// 设置每一行到底部，以像素为单位的间距，效果相当于行距</span>
+<span class="line-numbers"><a href="#n174" name="n174">174</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">line_padding_bottom</span><span style="color:#710">&quot;</span></span>: <span style="color:#00D">1</span>,
+<span class="line-numbers"><a href="#n175" name="n175">175</a></span>
+<span class="line-numbers"><a href="#n176" name="n176">176</a></span><span style="color:#777">// Set to false to disable scrolling past the end of the buffer.</span>
+<span class="line-numbers"><a href="#n177" name="n177">177</a></span><span style="color:#777">// On OS X, this value is overridden in the platform specific settings, so</span>
+<span class="line-numbers"><a href="#n178" name="n178">178</a></span><span style="color:#777">// you'll need to place this line in your user settings to override it.</span>
+<span class="line-numbers"><a href="#n179" name="n179">179</a></span><span style="color:#777">// 设置为false时，滚动到文本的最下方时，没有缓冲区</span>
+<span class="line-numbers"><strong><a href="#n180" name="n180">180</a></strong></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">scroll_past_end</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">true</span>,
+<span class="line-numbers"><a href="#n181" name="n181">181</a></span>
+<span class="line-numbers"><a href="#n182" name="n182">182</a></span><span style="color:#777">// This controls what happens when pressing up or down when on the first</span>
+<span class="line-numbers"><a href="#n183" name="n183">183</a></span><span style="color:#777">// or last line.</span>
+<span class="line-numbers"><a href="#n184" name="n184">184</a></span><span style="color:#777">// On OS X, this value is overridden in the platform specific settings, so</span>
+<span class="line-numbers"><a href="#n185" name="n185">185</a></span><span style="color:#777">// you'll need to place this line in your user settings to override it.</span>
+<span class="line-numbers"><a href="#n186" name="n186">186</a></span><span style="color:#777">// 设置成true，当光标已经在第一行时，再Up则到行首，如果光标已经在最后一行，再Down则跳到行尾</span>
+<span class="line-numbers"><a href="#n187" name="n187">187</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">move_to_limit_on_up_down</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">false</span>,
+<span class="line-numbers"><a href="#n188" name="n188">188</a></span>
+<span class="line-numbers"><a href="#n189" name="n189">189</a></span><span style="color:#777">// Set to &quot;none&quot; to turn off drawing white space, &quot;selection&quot; to draw only the</span>
+<span class="line-numbers"><strong><a href="#n190" name="n190">190</a></strong></span><span style="color:#777">// white space within the selection, and &quot;all&quot; to draw all white space</span>
+<span class="line-numbers"><a href="#n191" name="n191">191</a></span><span style="color:#777">// 按space或tab时，实际会产生白色的点（一个空格一个点）或白色的横线（tab_size设置的制表符的宽度），选中状态下才能看到</span>
+<span class="line-numbers"><a href="#n192" name="n192">192</a></span><span style="color:#777">// 设置为none时，什么情况下都不显示这些点和线</span>
+<span class="line-numbers"><a href="#n193" name="n193">193</a></span><span style="color:#777">// 设置为selection时，只显示选中状态下的点和线</span>
+<span class="line-numbers"><a href="#n194" name="n194">194</a></span><span style="color:#777">// 设置为all时，则一直显示</span>
+<span class="line-numbers"><a href="#n195" name="n195">195</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">draw_white_space</span><span style="color:#710">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">selection</span><span style="color:#710">&quot;</span></span>,
+<span class="line-numbers"><a href="#n196" name="n196">196</a></span>
+<span class="line-numbers"><a href="#n197" name="n197">197</a></span><span style="color:#777">// Set to false to turn off the indentation guides.</span>
+<span class="line-numbers"><a href="#n198" name="n198">198</a></span><span style="color:#777">// The color and width of the indent guides may be customized by editing</span>
+<span class="line-numbers"><a href="#n199" name="n199">199</a></span><span style="color:#777">// the corresponding .tmTheme file, and specifying the colors &quot;guide&quot;,</span>
+<span class="line-numbers"><strong><a href="#n200" name="n200">200</a></strong></span><span style="color:#777">// &quot;activeGuide&quot; and &quot;stackGuide&quot;</span>
+<span class="line-numbers"><a href="#n201" name="n201">201</a></span><span style="color:#777">// 制表位的对齐白线是否显示，颜色可在主题文件里设置（guide，activeGuide，stackGuide）</span>
+<span class="line-numbers"><a href="#n202" name="n202">202</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">draw_indent_guides</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">true</span>,
+<span class="line-numbers"><a href="#n203" name="n203">203</a></span>
+<span class="line-numbers"><a href="#n204" name="n204">204</a></span><span style="color:#777">// Controls how the indent guides are drawn, valid options are</span>
+<span class="line-numbers"><a href="#n205" name="n205">205</a></span><span style="color:#777">// &quot;draw_normal&quot; and &quot;draw_active&quot;. draw_active will draw the indent</span>
+<span class="line-numbers"><a href="#n206" name="n206">206</a></span><span style="color:#777">// guides containing the caret in a different color.</span>
+<span class="line-numbers"><a href="#n207" name="n207">207</a></span><span style="color:#777">// 制表位的对齐白线，draw_normal为一直显示，draw_active为只显示当前光标所在的代码控制域</span>
+<span class="line-numbers"><a href="#n208" name="n208">208</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">indent_guide_options</span><span style="color:#710">&quot;</span></span>: [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">draw_normal</span><span style="color:#710">&quot;</span></span>],
+<span class="line-numbers"><a href="#n209" name="n209">209</a></span>
+<span class="line-numbers"><strong><a href="#n210" name="n210">210</a></strong></span><span style="color:#777">// Set to true to removing trailing white space on save</span>
+<span class="line-numbers"><a href="#n211" name="n211">211</a></span><span style="color:#777">// 为true时，保存文件时会删除每行结束后多余的空格</span>
+<span class="line-numbers"><a href="#n212" name="n212">212</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">trim_trailing_white_space_on_save</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">false</span>,
+<span class="line-numbers"><a href="#n213" name="n213">213</a></span>
+<span class="line-numbers"><a href="#n214" name="n214">214</a></span><span style="color:#777">// Set to true to ensure the last line of the file ends in a newline</span>
+<span class="line-numbers"><a href="#n215" name="n215">215</a></span><span style="color:#777">// character when saving</span>
+<span class="line-numbers"><a href="#n216" name="n216">216</a></span><span style="color:#777">// 为true时，保存文件时光标会在文件的最后向下换一行</span>
+<span class="line-numbers"><a href="#n217" name="n217">217</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ensure_newline_at_eof_on_save</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">false</span>,
+<span class="line-numbers"><a href="#n218" name="n218">218</a></span>
+<span class="line-numbers"><a href="#n219" name="n219">219</a></span><span style="color:#777">// Set to true to automatically save files when switching to a different file</span>
+<span class="line-numbers"><strong><a href="#n220" name="n220">220</a></strong></span><span style="color:#777">// or application</span>
+<span class="line-numbers"><a href="#n221" name="n221">221</a></span><span style="color:#777">// 切换到其它文件标签或点击其它非本软件区域，文件自动保存</span>
+<span class="line-numbers"><a href="#n222" name="n222">222</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">save_on_focus_lost</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">false</span>,
+<span class="line-numbers"><a href="#n223" name="n223">223</a></span>
+<span class="line-numbers"><a href="#n224" name="n224">224</a></span><span style="color:#777">// The encoding to use when the encoding can't be determined automatically.</span>
+<span class="line-numbers"><a href="#n225" name="n225">225</a></span><span style="color:#777">// ASCII, UTF-8 and UTF-16 encodings will be automatically detected.</span>
+<span class="line-numbers"><a href="#n226" name="n226">226</a></span><span style="color:#777">// 编码时不能自动检测编码时，将自动检测ASCII, UTF-8 和 UTF-16</span>
+<span class="line-numbers"><a href="#n227" name="n227">227</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">fallback_encoding</span><span style="color:#710">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Western (Windows 1252)</span><span style="color:#710">&quot;</span></span>,
+<span class="line-numbers"><a href="#n228" name="n228">228</a></span>
+<span class="line-numbers"><a href="#n229" name="n229">229</a></span><span style="color:#777">// Encoding used when saving new files, and files opened with an undefined</span>
+<span class="line-numbers"><strong><a href="#n230" name="n230">230</a></strong></span><span style="color:#777">// encoding (e.g., plain ascii files). If a file is opened with a specific</span>
+<span class="line-numbers"><a href="#n231" name="n231">231</a></span><span style="color:#777">// encoding (either detected or given explicitly), this setting will be</span>
+<span class="line-numbers"><a href="#n232" name="n232">232</a></span><span style="color:#777">// ignored, and the file will be saved with the encoding it was opened</span>
+<span class="line-numbers"><a href="#n233" name="n233">233</a></span><span style="color:#777">// with.</span>
+<span class="line-numbers"><a href="#n234" name="n234">234</a></span><span style="color:#777">// 默认编码格式</span>
+<span class="line-numbers"><a href="#n235" name="n235">235</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">default_encoding</span><span style="color:#710">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">UTF-8</span><span style="color:#710">&quot;</span></span>,
+<span class="line-numbers"><a href="#n236" name="n236">236</a></span>
+<span class="line-numbers"><a href="#n237" name="n237">237</a></span><span style="color:#777">// Files containing null bytes are opened as hexadecimal by default</span>
+<span class="line-numbers"><a href="#n238" name="n238">238</a></span><span style="color:#777">// 包含空字节的文件被打开默认为十六进制</span>
+<span class="line-numbers"><a href="#n239" name="n239">239</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">enable_hexadecimal_encoding</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">true</span>,
+<span class="line-numbers"><strong><a href="#n240" name="n240">240</a></strong></span>
+<span class="line-numbers"><a href="#n241" name="n241">241</a></span><span style="color:#777">// Determines what character(s) are used to terminate each line in new files.</span>
+<span class="line-numbers"><a href="#n242" name="n242">242</a></span><span style="color:#777">// Valid values are 'system' (whatever the OS uses), 'windows' (CRLF) and</span>
+<span class="line-numbers"><a href="#n243" name="n243">243</a></span><span style="color:#777">// 'unix' (LF only).</span>
+<span class="line-numbers"><a href="#n244" name="n244">244</a></span><span style="color:#777">// 每一行结束的时候用什么字符做终止符</span>
+<span class="line-numbers"><a href="#n245" name="n245">245</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">default_line_ending</span><span style="color:#710">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">system</span><span style="color:#710">&quot;</span></span>,
+<span class="line-numbers"><a href="#n246" name="n246">246</a></span>
+<span class="line-numbers"><a href="#n247" name="n247">247</a></span><span style="color:#777">// When enabled, pressing tab will insert the best matching completion.</span>
+<span class="line-numbers"><a href="#n248" name="n248">248</a></span><span style="color:#777">// When disabled, tab will only trigger snippets or insert a tab.</span>
+<span class="line-numbers"><a href="#n249" name="n249">249</a></span><span style="color:#777">// Shift+tab can be used to insert an explicit tab when tab_completion is</span>
+<span class="line-numbers"><strong><a href="#n250" name="n250">250</a></strong></span><span style="color:#777">// enabled.</span>
+<span class="line-numbers"><a href="#n251" name="n251">251</a></span><span style="color:#777">// 设置为enabled时，在一个字符串间按Tab将插入一个制表符</span>
+<span class="line-numbers"><a href="#n252" name="n252">252</a></span><span style="color:#777">// 设置为true时，按Tab会根据前后环境进行代码自动匹配填补</span>
+<span class="line-numbers"><a href="#n253" name="n253">253</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">tab_completion</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">true</span>,
+<span class="line-numbers"><a href="#n254" name="n254">254</a></span>
+<span class="line-numbers"><a href="#n255" name="n255">255</a></span><span style="color:#777">// Enable auto complete to be triggered automatically when typing.</span>
+<span class="line-numbers"><a href="#n256" name="n256">256</a></span><span style="color:#777">// 代码提示</span>
+<span class="line-numbers"><a href="#n257" name="n257">257</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">auto_complete</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">true</span>,
+<span class="line-numbers"><a href="#n258" name="n258">258</a></span>
+<span class="line-numbers"><a href="#n259" name="n259">259</a></span><span style="color:#777">// The maximum file size where auto complete will be automatically triggered.</span>
+<span class="line-numbers"><strong><a href="#n260" name="n260">260</a></strong></span><span style="color:#777">// 代码提示的大小限制</span>
+<span class="line-numbers"><a href="#n261" name="n261">261</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">auto_complete_size_limit</span><span style="color:#710">&quot;</span></span>: <span style="color:#00D">4194304</span>,
+<span class="line-numbers"><a href="#n262" name="n262">262</a></span>
+<span class="line-numbers"><a href="#n263" name="n263">263</a></span><span style="color:#777">// The delay, in ms, before the auto complete window is shown after typing</span>
+<span class="line-numbers"><a href="#n264" name="n264">264</a></span><span style="color:#777">// 代码提示延迟显示</span>
+<span class="line-numbers"><a href="#n265" name="n265">265</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">auto_complete_delay</span><span style="color:#710">&quot;</span></span>: <span style="color:#00D">50</span>,
+<span class="line-numbers"><a href="#n266" name="n266">266</a></span>
+<span class="line-numbers"><a href="#n267" name="n267">267</a></span><span style="color:#777">// Controls what scopes auto complete will be triggered in</span>
+<span class="line-numbers"><a href="#n268" name="n268">268</a></span><span style="color:#777">// 代码提示的控制范围</span>
+<span class="line-numbers"><a href="#n269" name="n269">269</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">auto_complete_selector</span><span style="color:#710">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">source - comment</span><span style="color:#710">&quot;</span></span>,
+<span class="line-numbers"><strong><a href="#n270" name="n270">270</a></strong></span>
+<span class="line-numbers"><a href="#n271" name="n271">271</a></span><span style="color:#777">// Additional situations to trigger auto complete</span>
+<span class="line-numbers"><a href="#n272" name="n272">272</a></span><span style="color:#777">// 触发代码提示的其他情况</span>
+<span class="line-numbers"><a href="#n273" name="n273">273</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">auto_complete_triggers</span><span style="color:#710">&quot;</span></span>: [ {<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">selector</span><span style="color:#710">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">text.html</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">characters</span><span style="color:#710">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&lt;</span><span style="color:#710">&quot;</span></span>} ],
+<span class="line-numbers"><a href="#n274" name="n274">274</a></span>
+<span class="line-numbers"><a href="#n275" name="n275">275</a></span><span style="color:#777">// By default, auto complete will commit the current completion on enter.</span>
+<span class="line-numbers"><a href="#n276" name="n276">276</a></span><span style="color:#777">// This setting can be used to make it complete on tab instead.</span>
+<span class="line-numbers"><a href="#n277" name="n277">277</a></span><span style="color:#777">// Completing on tab is generally a superior option, as it removes</span>
+<span class="line-numbers"><a href="#n278" name="n278">278</a></span><span style="color:#777">// ambiguity between committing the completion and inserting a newline.</span>
+<span class="line-numbers"><a href="#n279" name="n279">279</a></span><span style="color:#777">// 设为false时，选择提示的代码按回车或点击可以输出出来，但选择true时不会输出而是直接换行</span>
+<span class="line-numbers"><strong><a href="#n280" name="n280">280</a></strong></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">auto_complete_commit_on_tab</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">false</span>,
+<span class="line-numbers"><a href="#n281" name="n281">281</a></span>
+<span class="line-numbers"><a href="#n282" name="n282">282</a></span><span style="color:#777">// Controls if auto complete is shown when snippet fields are active.</span>
+<span class="line-numbers"><a href="#n283" name="n283">283</a></span><span style="color:#777">// Only relevant if auto_complete_commit_on_tab is true.</span>
+<span class="line-numbers"><a href="#n284" name="n284">284</a></span><span style="color:#777">// auto_complete_commit_on_tab必须为true，控制代码提示的活跃度（没明白...）</span>
+<span class="line-numbers"><a href="#n285" name="n285">285</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">auto_complete_with_fields</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">false</span>,
+<span class="line-numbers"><a href="#n286" name="n286">286</a></span>
+<span class="line-numbers"><a href="#n287" name="n287">287</a></span><span style="color:#777">// By default, shift+tab will only unindent if the selection spans</span>
+<span class="line-numbers"><a href="#n288" name="n288">288</a></span><span style="color:#777">// multiple lines. When pressing shift+tab at other times, it'll insert a</span>
+<span class="line-numbers"><a href="#n289" name="n289">289</a></span><span style="color:#777">// tab character - this allows tabs to be inserted when tab_completion is</span>
+<span class="line-numbers"><strong><a href="#n290" name="n290">290</a></strong></span><span style="color:#777">// enabled. Set this to true to make shift+tab always unindent, instead of</span>
+<span class="line-numbers"><a href="#n291" name="n291">291</a></span><span style="color:#777">// inserting tabs.</span>
+<span class="line-numbers"><a href="#n292" name="n292">292</a></span><span style="color:#777">// 设置为false，使用Shift + tab总是插入制表符</span>
+<span class="line-numbers"><a href="#n293" name="n293">293</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">shift_tab_unindent</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">true</span>,
+<span class="line-numbers"><a href="#n294" name="n294">294</a></span>
+<span class="line-numbers"><a href="#n295" name="n295">295</a></span><span style="color:#777">// If true, the selected text will be copied into the find panel when it's</span>
+<span class="line-numbers"><a href="#n296" name="n296">296</a></span><span style="color:#777">// shown.</span>
+<span class="line-numbers"><a href="#n297" name="n297">297</a></span><span style="color:#777">// On OS X, this value is overridden in the platform specific settings, so</span>
+<span class="line-numbers"><a href="#n298" name="n298">298</a></span><span style="color:#777">// you'll need to place this line in your user settings to override it.</span>
+<span class="line-numbers"><a href="#n299" name="n299">299</a></span><span style="color:#777">// 选中的文本按Ctrl + f时，自动复制到查找面板的文本框里</span>
+<span class="line-numbers"><strong><a href="#n300" name="n300">300</a></strong></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">find_selected_text</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">true</span>,
+<span class="line-numbers"><a href="#n301" name="n301">301</a></span>
+<span class="line-numbers"><a href="#n302" name="n302">302</a></span><span style="color:#777">//</span>
+<span class="line-numbers"><a href="#n303" name="n303">303</a></span><span style="color:#777">// User Interface Settings</span>
+<span class="line-numbers"><a href="#n304" name="n304">304</a></span><span style="color:#777">//</span>
+<span class="line-numbers"><a href="#n305" name="n305">305</a></span>
+<span class="line-numbers"><a href="#n306" name="n306">306</a></span><span style="color:#777">// The theme controls the look of Sublime Text's UI (buttons, tabs, scroll bars, etc)</span>
+<span class="line-numbers"><a href="#n307" name="n307">307</a></span><span style="color:#777">// DataPackagesTheme - DefaultDefault.sublime-theme控制软件的主题</span>
+<span class="line-numbers"><a href="#n308" name="n308">308</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">theme</span><span style="color:#710">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Default.sublime-theme</span><span style="color:#710">&quot;</span></span>,
+<span class="line-numbers"><a href="#n309" name="n309">309</a></span>
+<span class="line-numbers"><strong><a href="#n310" name="n310">310</a></strong></span><span style="color:#777">// Set to 0 to disable smooth scrolling. Set to a value between 0 and 1 to</span>
+<span class="line-numbers"><a href="#n311" name="n311">311</a></span><span style="color:#777">// scroll slower, or set to larger than 1 to scroll faster</span>
+<span class="line-numbers"><a href="#n312" name="n312">312</a></span><span style="color:#777">// 滚动的速度</span>
+<span class="line-numbers"><a href="#n313" name="n313">313</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">scroll_speed</span><span style="color:#710">&quot;</span></span>: <span style="color:#60E">1</span><span style="color:#60E">.0</span>,
+<span class="line-numbers"><a href="#n314" name="n314">314</a></span>
+<span class="line-numbers"><a href="#n315" name="n315">315</a></span><span style="color:#777">// Controls side bar animation when expanding or collapsing folders</span>
+<span class="line-numbers"><a href="#n316" name="n316">316</a></span><span style="color:#777">// 左边边栏文件夹动画</span>
+<span class="line-numbers"><a href="#n317" name="n317">317</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">tree_animation_enabled</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">true</span>,
+<span class="line-numbers"><a href="#n318" name="n318">318</a></span><span style="color:#777">// 标签页的关闭按钮</span>
+<span class="line-numbers"><a href="#n319" name="n319">319</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">show_tab_close_buttons</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">true</span>,
+<span class="line-numbers"><strong><a href="#n320" name="n320">320</a></strong></span>
+<span class="line-numbers"><a href="#n321" name="n321">321</a></span><span style="color:#777">// OS X 10.7 only: Set to true to disable Lion style full screen support.</span>
+<span class="line-numbers"><a href="#n322" name="n322">322</a></span><span style="color:#777">// Sublime Text must be restarted for this to take effect.</span>
+<span class="line-numbers"><a href="#n323" name="n323">323</a></span><span style="color:#777">// 针对OS X</span>
+<span class="line-numbers"><a href="#n324" name="n324">324</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">use_simple_full_screen</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">false</span>,
+<span class="line-numbers"><a href="#n325" name="n325">325</a></span>
+<span class="line-numbers"><a href="#n326" name="n326">326</a></span><span style="color:#777">// Valid values are &quot;system&quot;, &quot;enabled&quot; and &quot;disabled&quot;</span>
+<span class="line-numbers"><a href="#n327" name="n327">327</a></span><span style="color:#777">// 水平垂直滚动条：system和disabled为默认显示方式，enabled为自动隐藏显示</span>
+<span class="line-numbers"><a href="#n328" name="n328">328</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">overlay_scroll_bars</span><span style="color:#710">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">system</span><span style="color:#710">&quot;</span></span>,
+<span class="line-numbers"><a href="#n329" name="n329">329</a></span>
+<span class="line-numbers"><strong><a href="#n330" name="n330">330</a></strong></span><span style="color:#777">//</span>
+<span class="line-numbers"><a href="#n331" name="n331">331</a></span><span style="color:#777">// Application Behavior Settings</span>
+<span class="line-numbers"><a href="#n332" name="n332">332</a></span><span style="color:#777">//</span>
+<span class="line-numbers"><a href="#n333" name="n333">333</a></span>
+<span class="line-numbers"><a href="#n334" name="n334">334</a></span><span style="color:#777">// Exiting the application with hot_exit enabled will cause it to close</span>
+<span class="line-numbers"><a href="#n335" name="n335">335</a></span><span style="color:#777">// immediately without prompting. Unsaved modifications and open files will</span>
+<span class="line-numbers"><a href="#n336" name="n336">336</a></span><span style="color:#777">// be preserved and restored when next starting.</span>
+<span class="line-numbers"><a href="#n337" name="n337">337</a></span><span style="color:#777">//</span>
+<span class="line-numbers"><a href="#n338" name="n338">338</a></span><span style="color:#777">// Closing a window with an associated project will also close the window</span>
+<span class="line-numbers"><a href="#n339" name="n339">339</a></span><span style="color:#777">// without prompting, preserving unsaved changes in the workspace file</span>
+<span class="line-numbers"><strong><a href="#n340" name="n340">340</a></strong></span><span style="color:#777">// alongside the project.</span>
+<span class="line-numbers"><a href="#n341" name="n341">341</a></span><span style="color:#777">// 热推出功能！退出时不会提示是否保存文件，而是直接退出</span>
+<span class="line-numbers"><a href="#n342" name="n342">342</a></span><span style="color:#777">// 下次打开软件时，文件保持退出前的状态，没来得及保存的内容都在，但并没有真实的写在原文件里</span>
+<span class="line-numbers"><a href="#n343" name="n343">343</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hot_exit</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">true</span>,
+<span class="line-numbers"><a href="#n344" name="n344">344</a></span>
+<span class="line-numbers"><a href="#n345" name="n345">345</a></span><span style="color:#777">// remember_open_files makes the application start up with the last set of</span>
+<span class="line-numbers"><a href="#n346" name="n346">346</a></span><span style="color:#777">// open files. Changing this to false will have no effect if hot_exit is</span>
+<span class="line-numbers"><a href="#n347" name="n347">347</a></span><span style="color:#777">// true</span>
+<span class="line-numbers"><a href="#n348" name="n348">348</a></span><span style="color:#777">// 软件使用最后的设定打开文件，hot_exit为true时没有效果</span>
+<span class="line-numbers"><a href="#n349" name="n349">349</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">remember_open_files</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">true</span>,
+<span class="line-numbers"><strong><a href="#n350" name="n350">350</a></strong></span>
+<span class="line-numbers"><a href="#n351" name="n351">351</a></span><span style="color:#777">// OS X only: When files are opened from finder, or by dragging onto the</span>
+<span class="line-numbers"><a href="#n352" name="n352">352</a></span><span style="color:#777">// dock icon, this controls if a new window is created or not.</span>
+<span class="line-numbers"><a href="#n353" name="n353">353</a></span><span style="color:#777">// 针对OS X</span>
+<span class="line-numbers"><a href="#n354" name="n354">354</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">open_files_in_new_window</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">true</span>,
+<span class="line-numbers"><a href="#n355" name="n355">355</a></span>
+<span class="line-numbers"><a href="#n356" name="n356">356</a></span><span style="color:#777">// Set to true to close windows as soon as the last file is closed, unless</span>
+<span class="line-numbers"><a href="#n357" name="n357">357</a></span><span style="color:#777">// there's a folder open within the window. This is always enabled on OS X,</span>
+<span class="line-numbers"><a href="#n358" name="n358">358</a></span><span style="color:#777">// changing it here won't modify the behavior.</span>
+<span class="line-numbers"><a href="#n359" name="n359">359</a></span><span style="color:#777">// 针对OS X</span>
+<span class="line-numbers"><strong><a href="#n360" name="n360">360</a></strong></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">close_windows_when_empty</span><span style="color:#710">&quot;</span></span>: <span style="color:#069">true</span>,
+<span class="line-numbers"><a href="#n361" name="n361">361</a></span><span style="color:#777">// 哪些文件会被显示到边栏上</span>
+<span class="line-numbers"><a href="#n362" name="n362">362</a></span><span style="color:#777">// folder_exclude_patterns and file_exclude_patterns control which files</span>
+<span class="line-numbers"><a href="#n363" name="n363">363</a></span><span style="color:#777">// are listed in folders on the side bar. These can also be set on a per-</span>
+<span class="line-numbers"><a href="#n364" name="n364">364</a></span><span style="color:#777">// project basis.</span>
+<span class="line-numbers"><a href="#n365" name="n365">365</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">folder_exclude_patterns</span><span style="color:#710">&quot;</span></span>: [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">.svn</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">.git</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">.hg</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">CVS</span><span style="color:#710">&quot;</span></span>],
+<span class="line-numbers"><a href="#n366" name="n366">366</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">file_exclude_patterns</span><span style="color:#710">&quot;</span></span>: [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">*.pyc</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">*.pyo</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">*.exe</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">*.dll</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">*.obj</span><span style="color:#710">&quot;</span></span>,<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">*.o</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">*.a</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">*.lib</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">*.so</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">*.dylib</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">*.ncb</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">*.sdf</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">*.suo</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">*.pdb</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">*.idb</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">.DS_Store</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">*.class</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">*.psd</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">*.db</span><span style="color:#710">&quot;</span></span>],
+<span class="line-numbers"><a href="#n367" name="n367">367</a></span><span style="color:#777">// These files will still show up in the side bar, but won't be included in</span>
+<span class="line-numbers"><a href="#n368" name="n368">368</a></span><span style="color:#777">// Goto Anything or Find in Files</span>
+<span class="line-numbers"><a href="#n369" name="n369">369</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">binary_file_patterns</span><span style="color:#710">&quot;</span></span>: [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">*.jpg</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">*.jpeg</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">*.png</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">*.gif</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">*.ttf</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">*.tga</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">*.dds</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">*.ico</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">*.eot</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">*.pdf</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">*.swf</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">*.jar</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">*.zip</span><span style="color:#710">&quot;</span></span>],
+<span class="line-numbers"><strong><a href="#n370" name="n370">370</a></strong></span>
+<span class="line-numbers"><a href="#n371" name="n371">371</a></span><span style="color:#777">// List any packages to ignore here. When removing entries from this list,</span>
+<span class="line-numbers"><a href="#n372" name="n372">372</a></span><span style="color:#777">// a restart may be required if the package contains plugins.</span>
+<span class="line-numbers"><a href="#n373" name="n373">373</a></span><span style="color:#777">// 删除你想要忽略的插件，需要重启</span>
+<span class="line-numbers"><a href="#n374" name="n374">374</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ignored_packages</span><span style="color:#710">&quot;</span></span>: [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Vintage</span><span style="color:#710">&quot;</span></span>]
+<span class="line-numbers"><a href="#n375" name="n375">375</a></span>}
+</pre></div>
+</div>
+</div>
+
+  </article>
+
+<!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/sublime/2014/06/09/sublime"  data-title="Set Sublime 2/3 - Limbo's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
+
+</div>
+      </div>
+    
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <h2 class="footer-heading">Limbo's Blog</h2>
+
+    <div class="footer-col-1 column">
+      <ul>
+        
+        <li><a href="mailto:468137306@qq.com">468137306@qq.com</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col-2 column">
+      <ul>
+        <li>
+          <a href="https://github.com/">
+            <span class="icon github">
+              <svg version="1.1" class="github-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="#C2C2C2" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761
+                c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32
+                c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472
+                c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037
+                C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65
+                c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261
+                c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082
+                c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129
+                c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <span class="username"></span>
+          </a>
+        </li>
+        
+      </ul>
+    </div>
+
+    <div class="footer-col-3 column">
+      <p class="text">Python,HTML,CSS,Machine Leaning</p>
+    </div>
+
+  </div>
+
+</footer>
+
+</div>
+<!-- mathjax -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- duoshuo -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"taizilongxu"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    </body>
+</html>

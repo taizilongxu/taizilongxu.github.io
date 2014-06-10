@@ -326,9 +326,9 @@ position指明了文件从何处开始读写
   </li>
 </ul>
 
-<h4 id="section-3">（2）26在实现客户机-服务器协议时，需要哪些基本类型的包，说明每种包的源、目的地以及作用，并说明下图的含义。</h4>
+<h4 id="p63">（2）26在实现客户机-服务器协议时，需要哪些基本类型的包，说明每种包的源、目的地以及作用，并说明下图的含义。P63</h4>
 
-<p><img src="http://taizilongxu.github.io/img/dist1.png" alt="enter image description here" /> P63</p>
+<p><img src="http://taizilongxu.github.io/img/dist1.png" alt="enter image description here" /> </p>
 
 <ul>
   <li>客户机　服务器协议：</li>
@@ -349,9 +349,8 @@ AU | 地址未知 | 服务器 | 客户 | 没有进程在使用此地址<br />
 3. 客户端发送确认消息ACK。</p>
 
 <h4 id="chandy-misra-hassp134">（3）13 在机器0上进程0在等待机器0上进程1所拥有的资源，进程1在等待机器1上进程2所拥有的资源，进程2在等待进程机器1上3，4所拥有的资源，进程3在等待机器2上进程5所拥有的资源，机器2上的进程5在等待机器0上进程0所拥有的资源，画出简化的资源图并说明用Chandy-Misra-Hass提出的分布式死锁检测算法如何检测死锁，并打破死锁。P134</h4>
-<center>
-![enter image description here](http://taizilongxu.github.io/img/dist2.png)
-</center>
+
+<p><img src="http://taizilongxu.github.io/img/dist2.png" alt="enter image description here" /></p>
 
 <ul>
   <li>因为消息转了一圈又回到最初的发送者，检测到死锁。</li>
@@ -363,11 +362,9 @@ AU | 地址未知 | 服务器 | 客户 | 没有进程在使用此地址<br />
   </li>
 </ul>
 
-<h4 id="section-4">（3）14在分布式系统事务提交操作可能需要不同机器上的多个进程的协作，举一个实际例子，并说明实现原子性提交的两阶段提交协议的基本思想ｐ128</h4>
+<h4 id="section-3">（3）14在分布式系统事务提交操作可能需要不同机器上的多个进程的协作，举一个实际例子，并说明实现原子性提交的两阶段提交协议的基本思想ｐ128</h4>
 
-<center>
-![enter image description here](http://taizilongxu.github.io/img/dist3.png)
-</center>
+<p><img src="http://taizilongxu.github.io/img/dist3.png" alt="enter image description here" /></p>
 
 <ul>
   <li>
@@ -381,9 +378,7 @@ AU | 地址未知 | 服务器 | 客户 | 没有进程在使用此地址<br />
 
 <h4 id="p130">（3）15说明基于时间戳的乐观并发控制算法的基本原理，并举例说明。 P130</h4>
 
-<center>
-![enter image description here](http://taizilongxu.github.io/img/dist4.png)
-</center>
+<p><img src="http://taizilongxu.github.io/img/dist4.png" alt="enter image description here" /></p>
 
 <ul>
   <li>基本原理：<br />
@@ -446,9 +441,7 @@ AU | 地址未知 | 服务器 | 客户 | 没有进程在使用此地址<br />
   <li>Lamport的解决方案是直接使用先发生关系，因为C在60时刻离开，只能在61时刻或更晚时刻到达，所以每条消息都携带发送者的时钟以指出其发送的时刻，当消息到达时，接收者时钟惹比消息发送时钟小，就立即将自己的时钟调到比发送时间大1或更多的值。在右图中，我们看到C现在到达的时间是61，同样D到达的时间是70。</li>
 </ul>
 
-<center>
-![enter image description here](http://taizilongxu.github.io/img/dist5.png)
-</center>
+<p><img src="http://taizilongxu.github.io/img/dist5.png" alt="enter image description here" /></p>
 
 <h4 id="cristian-berkeley">（3）20在很多分布式系统应用中，需要物理时钟同步，举一个例子，并说明物理时钟同步的三种算法，Cristian 算法、Berkeley算法及平均值算法。</h4>
 
@@ -500,9 +493,7 @@ AU | 地址未知 | 服务器 | 客户 | 没有进程在使用此地址<br />
 
 <h4 id="p173">（4）9主动复制容错的典型例子是三模冗余容错，说明某组成部件出错和某表决器出错时，是如何容错的。如果在某一级上同时有两个表决器出错，其它所有部件和表决器均正常，能否屏蔽错误，为什么？如果服务器采用主动复制的方法会存在什么问题，如何解决？P173</h4>
 
-<center>
-![enter image description here](http://taizilongxu.github.io/img/dist6.png)
-</center>
+<p><img src="http://taizilongxu.github.io/img/dist6.png" alt="enter image description here" /></p>
 
 <ul>
   <li>
@@ -521,9 +512,7 @@ AU | 地址未知 | 服务器 | 客户 | 没有进程在使用此地址<br />
 
 <h4 id="p174">（4）10使用主机后备容错方法容错的主要思想是：在任何一个时刻都有一台服务器是主机，若主机失效了，后备的服务器将承担其任务。试说明主机后备方法的工作原理及存在的问题，及解决办法。P174</h4>
 
-<center>
-![enter image description here](http://taizilongxu.github.io/img/dist7.png)
-</center>
+<p><img src="http://taizilongxu.github.io/img/dist7.png" alt="enter image description here" /></p>
 
 <ul>
   <li>
@@ -616,7 +605,7 @@ c 当关闭文件时，必须报告，以便服务器更新。</li>
   <li>解决办法：虚像表决通过为每个已经崩溃的服务器建立一个没有存储器的虚拟服务器。虚设者不允许出现在读法定数中，可以加入写法定数。</li>
 </ul>
 
-<h4 id="section-5">（5）5 试说明举例什么是有状态服务器，什么是无状态服务器，并对有状态和无状态服务器进行详细的比较。</h4>
+<h4 id="section-4">（5）5 试说明举例什么是有状态服务器，什么是无状态服务器，并对有状态和无状态服务器进行详细的比较。</h4>
 
 <ul>
   <li>无状态服务器：当客户发送一个请求到给服务器，服务器完成请求，发送一个应答，然后从内部表中移出关于该请求的所有信息。在请求之间，服务器不保存具体客户的信息。</li>
@@ -713,7 +702,7 @@ c 当关闭文件时，必须报告，以便服务器更新。</li>
   </li>
 </ul>
 
-<h4 id="section-6">29在分布式操作系统中，说明单内核的含义，并说明为什么采用微内核技术，通常微内核提供应提供哪些服务？</h4>
+<h4 id="section-5">29在分布式操作系统中，说明单内核的含义，并说明为什么采用微内核技术，通常微内核提供应提供哪些服务？</h4>
 
 <ul>
   <li>单内核：每台机器都运行一个传统的内核，内核自身提供了大多数的服务，此外它还增加了网络功能和远程服务集合，大部分的系统调用都是通过内核陷阱到达内核，在内核中完成相应的工作，然后将结果返回给用户进程。</li>
@@ -721,7 +710,7 @@ c 当关闭文件时，必须报告，以便服务器更新。</li>
   <li>服务：进程间通信机制；某些内存管理功能；少量的低层进程的管理和调度；低层输入/输出服务。</li>
 </ul>
 
-<h4 id="section-7">30解决可伸缩性的技术包括隐藏通信延迟、分布和复制，试举例说明分布和复制技术是如何解决可伸缩性的。</h4>
+<h4 id="section-6">30解决可伸缩性的技术包括隐藏通信延迟、分布和复制，试举例说明分布和复制技术是如何解决可伸缩性的。</h4>
 
 <ul>
   <li>同28</li>
@@ -752,9 +741,7 @@ c 当关闭文件时，必须报告，以便服务器更新。</li>
   </li>
 </ul>
 
-<center>
-![enter image description here](http://taizilongxu.github.io/img/dist11.png)
-</center>
+<p><img src="http://taizilongxu.github.io/img/dist11.png" alt="enter image description here" /></p>
 
 <ul>
   <li>搜索引擎的用户接口：用户输入关键字字符串，然后显示出Web网页列表。后端是由一个巨大的Web网页数据库组成，这些Web网页时预取的，且已加索引。搜索引擎的核心时把用户的关键字字符串转换成一个或多个数句库查询程序。它可以把结果排名成一个列表，并把该列表转换成HTML页面列表。在客户－服务器模型中，这种信息检索部分往往放在处理层。</li>
@@ -842,9 +829,13 @@ c 当关闭文件时，必须报告，以便服务器更新。</li>
 <ul>
   <li>工作原理：每个Chord结点不是现行的进行键值查找，而是维护一个最多有m个实体的指状表。如果用FTp表示结点p的指状表，那么有：</li>
 </ul>
-<center>FTp[i] = succ(p + 2^(i - 1))</center>
+
+<script type="math/tex; mode=display">FT_p[i] = succ(p + 2^{(i - 1)})</script>
+
 <p>即第i个实体指向p后2^(i - 1)的第一个结点。要查找键值k，结点p立即把该请求转发给在p指状表中索引为i的结点q，其中：</p>
-<center>q = FTp[j] &lt;= k &lt; FTp[j + 1]</center>
+
+<script type="math/tex; mode=display">% <![CDATA[
+q = FT_p[j] <= k < FT_p[j + 1] %]]></script>
 
 <ul>
   <li>例：从结点１解析k=26。首先，结点１在其指状表中查找k=26，发现该值大于FT1[ 5 ]，表示该请求将转发给结点18，而结点18将选择结点20，因为FT18[ 2 ] &lt; k &lt;= FT18[ 3 ]。最后，该请求从结点20转发给结点21，从结点21 又转发给28，该结点负责k=26。此时，结点28的地址返回给结点1,于是就完成了该键值的解析。</li>
