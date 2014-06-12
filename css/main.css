@@ -9,7 +9,7 @@
 html, body { height: 100%; }
 
 body {
-  font-family: Verdana,Consolas, "Liberation Mono", Courier, monospace;
+  font-family: 'Open Sans',"Trebuchet MS",Helvetica,sans-serif;
   line-height: 1.1;
   font-weight: 300;
   background-color: #fdfdfd;
@@ -237,30 +237,35 @@ a:visited { color: #205caa; }
 
 
 .post-content h1 {
-  font-size: 2.5em;
+  font-size: 36px;
   border-bottom: 1px solid #DDD;
+  margin:60px 0 40px;
 }
 
 .post-content h2 {
-  font-size: 2em;
+  font-size: 30px;
   border-bottom: 1px solid #EEE;
+  margin:50px 0 30px;
 }
 
 .post-content h3 {
-  font-size: 1.5em;
+  font-size: 24px;
+  margin:35px 0 20px
 }
 
+.post-content h4,h5,h6{margin:25px 0 15px}
+
 .post-content h4 {
-  font-size: 1.2em;
+  font-size: 18px;
 }
 
 .post-content h5 {
-  font-size: 1em;
+  font-size: 14px;
 }
 
 .post-content h6 {
   color: #777;
-  font-size: 1em;
+  font-size: 10px;
 }
 
 .post-content table th, 
@@ -278,6 +283,7 @@ display: list-item;
 text-align: -webkit-match-parent;
 }
 
+.post-content p,pre,pre.prettyprint,blockquote{margin:0 0 15px}
 
 
 /* ----------------------------------------------------------*/
@@ -306,17 +312,18 @@ text-align: -webkit-match-parent;
   font-weight: bold;
   font: 20px Helvetica, arial, freesans, clean, sans-serif;
   line-height: 1.5;
-  width: 100%;
+/*  width: 100%;*/
   letter-spacing: 1px;
   overflow:scroll;
 }
 
-.post code { padding: 1px 5px; }
+/*.post code { padding: 1px 5px;}*/
 
 .post ul,
 .post ol { margin-left: 1.35em; }
 
 .post pre code { border: none; }
+
 
 /* terminal */
 .post pre.terminal {
