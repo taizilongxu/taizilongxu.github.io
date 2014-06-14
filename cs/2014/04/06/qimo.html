@@ -314,19 +314,72 @@ position指明了文件从何处开始读写</p>
 <li>客户机　服务器协议：</li>
 </ul>
 
-<p>代码 | 包类型 | 来源 | 目的 | 作用
-:--- | :--- | :--- | :--- | :---
-REQ | 请求 | 客户 | 服务器 | 客户要求服务
-REP | 应答 | 服务器 | 客户 | 服务器对客户的应答
-ACK | 确认 | 服务器，客户 | 其他 | 前面的包已经到达
-AYA | 你在这里吗? | 客户 | 服务器 | 查看服务器是否崩溃
-IAA | 我在这里 | 服务器 | 客户 | 服务器没有崩溃
-TA | 再试一次？ | 服务器 | 客户 | 服务器没有空间
-AU | 地址未知 | 服务器 | 客户 | 没有进程在使用此地址
-* 含义：
-1. 客户机发送REQ请求，要求服务，服务器发ACK送确认。
-2. 客户机发送AYA查看服务器是否崩溃，服务器IAA确认没有崩溃，对客户进行应答REP。
-3. 客户端发送确认消息ACK。</p>
+<table><thead>
+<tr>
+<th style="text-align: left">代码</th>
+<th style="text-align: left">包类型</th>
+<th style="text-align: left">来源</th>
+<th style="text-align: left">目的</th>
+<th style="text-align: left">作用</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">REQ</td>
+<td style="text-align: left">请求</td>
+<td style="text-align: left">客户</td>
+<td style="text-align: left">服务器</td>
+<td style="text-align: left">客户要求服务</td>
+</tr>
+<tr>
+<td style="text-align: left">REP</td>
+<td style="text-align: left">应答</td>
+<td style="text-align: left">服务器</td>
+<td style="text-align: left">客户</td>
+<td style="text-align: left">服务器对客户的应答</td>
+</tr>
+<tr>
+<td style="text-align: left">ACK</td>
+<td style="text-align: left">确认</td>
+<td style="text-align: left">服务器，客户</td>
+<td style="text-align: left">其他</td>
+<td style="text-align: left">前面的包已经到达</td>
+</tr>
+<tr>
+<td style="text-align: left">AYA</td>
+<td style="text-align: left">你在这里吗?</td>
+<td style="text-align: left">客户</td>
+<td style="text-align: left">服务器</td>
+<td style="text-align: left">查看服务器是否崩溃</td>
+</tr>
+<tr>
+<td style="text-align: left">IAA</td>
+<td style="text-align: left">我在这里</td>
+<td style="text-align: left">服务器</td>
+<td style="text-align: left">客户</td>
+<td style="text-align: left">服务器没有崩溃</td>
+</tr>
+<tr>
+<td style="text-align: left">TA</td>
+<td style="text-align: left">再试一次？</td>
+<td style="text-align: left">服务器</td>
+<td style="text-align: left">客户</td>
+<td style="text-align: left">服务器没有空间</td>
+</tr>
+<tr>
+<td style="text-align: left">AU</td>
+<td style="text-align: left">地址未知</td>
+<td style="text-align: left">服务器</td>
+<td style="text-align: left">客户</td>
+<td style="text-align: left">没有进程在使用此地址</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>含义：</li>
+<li>客户机发送REQ请求，要求服务，服务器发ACK送确认。</li>
+<li>客户机发送AYA查看服务器是否崩溃，服务器IAA确认没有崩溃，对客户进行应答REP。</li>
+<li>客户端发送确认消息ACK。</li>
+</ul>
 
 <h4>（3）13 在机器0上进程0在等待机器0上进程1所拥有的资源，进程1在等待机器1上进程2所拥有的资源，进程2在等待进程机器1上3，4所拥有的资源，进程3在等待机器2上进程5所拥有的资源，机器2上的进程5在等待机器0上进程0所拥有的资源，画出简化的资源图并说明用Chandy-Misra-Hass提出的分布式死锁检测算法如何检测死锁，并打破死锁。P134</h4>
 
@@ -535,13 +588,33 @@ c 当关闭文件时，必须报告，以便服务器更新。</p></li>
 <li>有状态服务器：服务器保存两个请求之间的客户的状态信息。 </li>
 </ul>
 
-<p>无状态服务器的优点 | 有状态服务器的优点
-:-- | :--
-容错 | 请求消息比较短
-不需要OPEN/CLOSE调用 | 更好的性能
-没有服务器表空间的浪费 | 可以预读
-没有打开文件数目的限制 | 易于幂等性
-客户崩溃时不会造成服务器错误 | 可以对文件加锁</p>
+<table><thead>
+<tr>
+<th style="text-align: left">无状态服务器的优点</th>
+<th style="text-align: left">有状态服务器的优点</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">容错</td>
+<td style="text-align: left">请求消息比较短</td>
+</tr>
+<tr>
+<td style="text-align: left">不需要OPEN/CLOSE调用</td>
+<td style="text-align: left">更好的性能</td>
+</tr>
+<tr>
+<td style="text-align: left">没有服务器表空间的浪费</td>
+<td style="text-align: left">可以预读</td>
+</tr>
+<tr>
+<td style="text-align: left">没有打开文件数目的限制</td>
+<td style="text-align: left">易于幂等性</td>
+</tr>
+<tr>
+<td style="text-align: left">客户崩溃时不会造成服务器错误</td>
+<td style="text-align: left">可以对文件加锁</td>
+</tr>
+</tbody></table>
 
 <h4>（5）6 在分布式系统中，可支持上载/下载文件模式或远程访问模式，说明这两种模式并进行比较。P195</h4>
 

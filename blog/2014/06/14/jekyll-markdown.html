@@ -4,10 +4,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Limbo's Blog</title>
+    <title>jekyll的markdown设置</title>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Python,HTML,CSS,Machine Leaning">
-    <link rel="canonical" href="http://taizilongxu.github.io/">
+    <link rel="canonical" href="http://taizilongxu.github.io/blog/2014/06/14/jekyll-markdown.html">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/main.css">
@@ -206,94 +206,58 @@
 
     <div class="page-content">
       <div class="wrap">
-      <div class="home">
+      <div class="post">
 
- 
-  <ul class="posts">
-
+  <header class="post-header">
+    <h1>jekyll的markdown设置</h1>
+    <p class="meta"><span class="pre">date:</span>Jun 14, 2014
+    <span class="pre">categories:</span>blog <span class="pre">tags:</span>blog 
+    </p>
     
+  </header>
 
-      <li>
-        <a class="post-link" href="/blog/2014/06/14/jekyll-markdown.html">jekyll的markdown设置 </a>
-       <span class="post-date">June 14, 2014</span>
-      </li>
+  <article class="post-content">
+  <p>jekyll可以有多种markdown的解析器，目前找到的支持GFM的解析器有两个，一个是kramdown，另一个是redcarpet。</p>
 
-    
+<h3>kramdown</h3>
 
-      <li>
-        <a class="post-link" href="/core%20python%20programming/2014/06/13/core-python.html">Core Python programming（1） </a>
-       <span class="post-date">June 13, 2014</span>
-      </li>
+<p>最开始用的是kramdown，配置都很简单。</p>
 
-    
+<p>_config.yml配置：</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="ss">markdown</span><span class="p">:</span> <span class="n">kramdowm</span>
+<span class="ss">kramdown</span><span class="p">:</span>
+  <span class="ss">input</span><span class="p">:</span> <span class="no">GFM</span>
+</code></pre></div>
+<h3>redcarpet</h3>
 
-      <li>
-        <a class="post-link" href="/github/2014/06/10/github.html">Set Github </a>
-       <span class="post-date">June 10, 2014</span>
-      </li>
+<p>redcarpet用起来还是比较方便的。</p>
 
-    
+<p>_config.yml配置：</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="ss">markdown</span><span class="p">:</span> <span class="n">redcarpet</span>
+<span class="ss">redcarpet</span><span class="p">:</span>
+  <span class="ss">extensions</span><span class="p">:</span> <span class="o">[]</span>
+</code></pre></div>
+<p>[]中可以添加的常用扩展选项有如下：</p>
 
-      <li>
-        <a class="post-link" href="/sublime/2014/06/09/sublime.html">Set Sublime 2/3 </a>
-       <span class="post-date">June  9, 2014</span>
-      </li>
+<ul>
+<li>no_intra_emphasis：不解析单词中的下划线，如foo_em_body</li>
+<li>fenced_code_blocks :这个比较实用，就是用GFM的方式标记代码段，即三个<strong>`</strong></li>
+<li>autolink：自动解析链接</li>
+<li>strikethrough：删除线，this is <del>good</del> bad</li>
+<li>space_after_headers：后边必须接空格，否则不会被解析为标题</li>
+</ul>
 
-    
+<p>用redcarpet的一个好处是，可以和<a href="http://highlightjs.org/">highlights.js</a>配合，可以选的css样式也很多，方便布局和修改，这个博客的样式就是GFM的样式。</p>
 
-      <li>
-        <a class="post-link" href="/test/2014/06/02/test-markdown.html">GFM markdown style </a>
-       <span class="post-date">June  2, 2014</span>
-      </li>
+  </article>
 
-    
-
-      <li>
-        <a class="post-link" href="/blog/2014/06/01/jekyll-latex.html">Jekyll使用MathJax来显示数学式 </a>
-       <span class="post-date">June  1, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/cs/2014/06/01/LNU-network.html">2014辽大计算机网络复习题 </a>
-       <span class="post-date">June  1, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/test/2014/05/29/test.html">TEST </a>
-       <span class="post-date">May 29, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/cs/2014/04/06/qimo.html">2014辽大分布式操作系统复习题 </a>
-       <span class="post-date">April  6, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/css/2014/04/06/CSS.html">CSS基础教程 </a>
-       <span class="post-date">April  6, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/blog/2014/01/01/welcome-to-jekyll.html">Welcome to Jekyll! </a>
-       <span class="post-date">January  1, 2014</span>
-      </li>
-
-    
-  </ul>
-
+<!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/blog/2014/06/14/jekyll-markdown"  data-title="jekyll的markdown设置 - Limbo's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
 
 </div>
-
       </div>
     
 

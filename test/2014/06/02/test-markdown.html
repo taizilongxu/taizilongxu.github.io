@@ -229,7 +229,7 @@
 
 <ul>
 <li><strong>strong emphasis</strong></li>
-<li>~~strikethrough~~</li>
+<li><del>strikethrough</del></li>
 </ul></li>
 <li><code>inline code</code></li>
 </ul>
@@ -261,11 +261,29 @@ $-b \pm \sqrt{b^2 - 4ac} \over 2a$</p>
 
 <h6>Header 6</h6>
 
-<p>| Tables | Are | Cool |
-| ------------- |:-------------:| -----:|
-| column 3 is | right-aligned | $1600 |
-| column 2 is | centered | $12 |
-| zebra stripes | are neat | $1 |</p>
+<table><thead>
+<tr>
+<th>Tables</th>
+<th style="text-align: center">Are</th>
+<th style="text-align: right">Cool</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>column 3 is</td>
+<td style="text-align: center">right-aligned</td>
+<td style="text-align: right">$1600</td>
+</tr>
+<tr>
+<td>column 2 is</td>
+<td style="text-align: center">centered</td>
+<td style="text-align: right">$12</td>
+</tr>
+<tr>
+<td>zebra stripes</td>
+<td style="text-align: center">are neat</td>
+<td style="text-align: right">$1</td>
+</tr>
+</tbody></table>
 
 <p>Here&#39;s a horizontal rule:</p>
 
