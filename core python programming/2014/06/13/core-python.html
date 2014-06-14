@@ -7,11 +7,14 @@
     <title>Core Python programming（1）</title>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Python,HTML,CSS,Machine Leaning">
-    <link rel="canonical" href="http://taizilongxu.github.io/core%20python%20programming/2014/06/13/core-python/">
+    <link rel="canonical" href="http://taizilongxu.github.io/core%20python%20programming/2014/06/13/core-python.html">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/main.css">
 
+<link rel="stylesheet" href="/css/github.css">
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 
 </head>
 
@@ -217,169 +220,134 @@
   <p>1~3 chapter</p>
 
 <blockquote>
-  <p>开坑～<br />
+<p>开坑～
 Python基础教程看了两遍了，发现有些知识还是比较模糊，讲的相对简单，完全深入不下去了，看网上介绍核心编程比较靠谱，大致看了两章，这本书比基础教程更严谨，结构更完整，许多细枝末节都补充的很好，所以准备开坑写一写笔记，以后也可以帮助回忆。</p>
 </blockquote>
 
-<h3 id="section">第一章</h3>
+<h3>第一章</h3>
 
-<p>本章大部分就是介绍python多牛逼，多厉害，然后怎么安装。<br />
-比较有用的如下：<br />
+<p>本章大部分就是介绍python多牛逼，多厉害，然后怎么安装。
+比较有用的如下：
 需要在命令行通过解析器执行，则可以这样：</p>
-
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#F00;background-color:#FAA">$</span>python script.py
-</pre></div>
-</div>
-</div>
-
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="err">$</span><span class="n">python</span> <span class="n">script</span><span class="o">.</span><span class="n">py</span>
+</code></pre></div>
 <p>有时候经常看到py文件的开头这样写：</p>
-
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#777">#!/usr/local/bin/python</span>
-</pre></div>
-</div>
-</div>
-
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/local/bin/python</span>
+</code></pre></div>
 <p>因为，系统有时后不明确python的解析器。#!后面接的是Python解析器的完整路径，不过还有一个更好的方案，许多linux里有一个命令叫env，它可以帮助你找到解析器的路径，于是通常写成：</p>
-
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#777">#!/usr/local/env python</span>
-</pre></div>
-</div>
-</div>
-
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/local/env python</span>
+</code></pre></div>
 <p>这样写的好处是不用显式的调用python解析器，而是直接输入脚本名（有可执行权限）：</p>
-
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#F00;background-color:#FAA">$</span>script.py
-</pre></div>
-</div>
-</div>
-
-<h3 id="section-1">第二章 快速入门</h3>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="err">$</span><span class="n">script</span><span class="o">.</span><span class="n">py</span>
+</code></pre></div>
+<h3>第二章 快速入门</h3>
 
 <p>本章快速讲解了python的概要，算是一个通读提纲。</p>
 
-<h3 id="python">第三章 Python基础</h3>
+<h3>第三章 Python基础</h3>
 
-<h4 id="section-2">3.1语句和语法</h4>
-
-<ul>
-  <li>#：python的注释符号</li>
-  <li>如果要跨行写（包括python解释器中）有以下几种办法：
-    <ul>
-      <li>换行分割（\）</li>
-      <li>小括号，中括号，花括号(),{},[] (推荐)</li>
-      <li>三引号（` ` `）</li>
-    </ul>
-  </li>
-  <li>墙裂建议不要使用制表符，即Tab键</li>
-  <li>分号和多数语言一样可以在同一行书写多个语句（墙裂不建议）</li>
-</ul>
-
-<h4 id="section-3">3.2变量赋值</h4>
+<h4>3.1语句和语法</h4>
 
 <ul>
-  <li>python没有自增自减运算（如++x,x++）</li>
-  <li>多重赋值：即<code>x = y = z = 1</code>是可以的</li>
-  <li>多元赋值：即<code>x,y,z = 1,2,'astring'</code></li>
-  <li>无须中间变量交换两个变量的值：即<code>x,y = y,x</code></li>
+<li>#：python的注释符号</li>
+<li>如果要跨行写（包括python解释器中）有以下几种办法：
+
+<ul>
+<li>换行分割（\）</li>
+<li>小括号，中括号，花括号(),{},<a href="%E6%8E%A8%E8%8D%90"></a></li>
+<li>三引号（` ` `）</li>
+</ul></li>
+<li>墙裂建议不要使用制表符，即Tab键</li>
+<li>分号和多数语言一样可以在同一行书写多个语句（墙裂不建议）</li>
 </ul>
 
-<h4 id="section-4">3.3标识符</h4>
+<h4>3.2变量赋值</h4>
+
+<ul>
+<li>python没有自增自减运算（如++x,x++）</li>
+<li>多重赋值：即<code>x = y = z = 1</code>是可以的</li>
+<li>多元赋值：即<code>x,y,z = 1,2,&#39;astring&#39;</code></li>
+<li>无须中间变量交换两个变量的值：即<code>x,y = y,x</code></li>
+</ul>
+
+<h4>3.3标识符</h4>
 
 <p>3.3.1合法的标识符：</p>
 
 <ul>
-  <li>第一个字符必须是字母或下划线</li>
-  <li>大小写敏感</li>
+<li>第一个字符必须是字母或下划线</li>
+<li>大小写敏感</li>
 </ul>
 
 <p>3.3.2专用下划线标识符：（重点）</p>
 
 <p>一共有四种情况：</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="mf">1.</span><span class="n">object</span> <span class="c">#public</span>
 
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#60E">1.</span><span style="color:#369;font-weight:bold">object</span> <span style="color:#777">#public</span>
-<span class="line-numbers"><a href="#n2" name="n2">2</a></span>
-<span class="line-numbers"><a href="#n3" name="n3">3</a></span><span style="color:#60E">2.</span>__object__ <span style="color:#777">#python系统内应用，比如__init__</span>
-<span class="line-numbers"><a href="#n4" name="n4">4</a></span>
-<span class="line-numbers"><a href="#n5" name="n5">5</a></span><span style="color:#60E">3.</span>__object <span style="color:#777">#private，但是会在编译过程中name mangling。</span>
-<span class="line-numbers"><a href="#n6" name="n6">6</a></span>
-<span class="line-numbers"><a href="#n7" name="n7">7</a></span><span style="color:#60E">4.</span>_object <span style="color:#777">#python编码风格上标记为私有，注意，仅仅是人为标记，不会被 from module import *导入。</span>
-</pre></div>
-</div>
-</div>
+<span class="mf">2.</span><span class="n">__object__</span> <span class="c">#python系统内应用，比如__init__</span>
 
+<span class="mf">3.</span><span class="n">__object</span> <span class="c">#private，但是会在编译过程中name mangling。</span>
+
+<span class="mf">4.</span><span class="n">_object</span> <span class="c">#python编码风格上标记为私有，注意，仅仅是人为标记，不会被 from module import *导入。</span>
+</code></pre></div>
 <p>python中只有private和public，不像java，但是python的private不是严格意义上的private，还有方法可以在类外访问（name mangling）</p>
 
-<p>name mangling：其实就是python编译器更改了__object的名字变为_class__object，所以在类外可以用_class__object调用。</p>
+<p>name mangling：其实就是python编译器更改了<strong>object的名字变为_class</strong>object，所以在类外可以用<em>class</em>_object调用。</p>
 
 <p>总结：要用私有变量双下划线和但下划线均可，都可人为是私有的，但风格要保持一致！</p>
 
-<h4 id="section-5">3.4基本风格指南</h4>
+<h4>3.4基本风格指南</h4>
 
 <p>通用模板：</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#(1)起始行</span>
+<span class="c">#!/usr/bin/env python </span>
+<span class="c">#----------------------------------doc-------------------------------------</span>
 
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#777">#(1)起始行</span>
-<span class="line-numbers"> <a href="#n2" name="n2">2</a></span><span style="color:#777">#!/usr/bin/env python </span>
-<span class="line-numbers"> <a href="#n3" name="n3">3</a></span><span style="color:#777">#----------------------------------doc-------------------------------------</span>
-<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>
-<span class="line-numbers"> <a href="#n5" name="n5">5</a></span><span style="color:#777">#(2)模块文档</span>
-<span class="line-numbers"> <a href="#n6" name="n6">6</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">this is a test module</span><span style="color:#710">&quot;</span></span> 
-<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>
-<span class="line-numbers"> <a href="#n8" name="n8">8</a></span><span style="color:#777">#---------------------------------import-----------------------------------</span>
-<span class="line-numbers"> <a href="#n9" name="n9">9</a></span><span style="color:#777">#(3)模块导入</span>
-<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span><span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">sys</span> 
-<span class="line-numbers"><a href="#n11" name="n11">11</a></span><span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">os</span>
-<span class="line-numbers"><a href="#n12" name="n12">12</a></span><span style="color:#777">#-------------------------------------------------------------------------</span>
-<span class="line-numbers"><a href="#n13" name="n13">13</a></span>
-<span class="line-numbers"><a href="#n14" name="n14">14</a></span><span style="color:#777">#(4)全局变量定义</span>
-<span class="line-numbers"><a href="#n15" name="n15">15</a></span>debug = <span style="color:#069">True</span> 
-<span class="line-numbers"><a href="#n16" name="n16">16</a></span>
-<span class="line-numbers"><a href="#n17" name="n17">17</a></span><span style="color:#777">#(5)类定义</span>
-<span class="line-numbers"><a href="#n18" name="n18">18</a></span><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">FooClass</span>(<span style="color:#369;font-weight:bold">object</span>): 
-<span class="line-numbers"><a href="#n19" name="n19">19</a></span>    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Fooclass</span><span style="color:#710">&quot;</span></span>
-<span class="line-numbers"><strong><a href="#n20" name="n20">20</a></strong></span>    <span style="color:#080;font-weight:bold">pass</span>
-<span class="line-numbers"><a href="#n21" name="n21">21</a></span>
-<span class="line-numbers"><a href="#n22" name="n22">22</a></span><span style="color:#777">#(6)函数定义</span>
-<span class="line-numbers"><a href="#n23" name="n23">23</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">test</span>():
-<span class="line-numbers"><a href="#n24" name="n24">24</a></span>    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">test function</span><span style="color:#710">&quot;</span></span>
-<span class="line-numbers"><a href="#n25" name="n25">25</a></span>    <span style="color:#080;font-weight:bold">for</span> = FooCalss()
-<span class="line-numbers"><a href="#n26" name="n26">26</a></span>    <span style="color:#080;font-weight:bold">if</span> debug:
-<span class="line-numbers"><a href="#n27" name="n27">27</a></span>        <span style="color:#080;font-weight:bold">print</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ran test()</span><span style="color:#710">'</span></span>
-<span class="line-numbers"><a href="#n28" name="n28">28</a></span>
-<span class="line-numbers"><a href="#n29" name="n29">29</a></span><span style="color:#777">#(7)主程序</span>
-<span class="line-numbers"><strong><a href="#n30" name="n30">30</a></strong></span><span style="color:#080;font-weight:bold">if</span> __name__ == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">__main__</span><span style="color:#710">'</span></span>:
-<span class="line-numbers"><a href="#n31" name="n31">31</a></span>    test()
-</pre></div>
-</div>
-</div>
+<span class="c">#(2)模块文档</span>
+<span class="s">&quot;this is a test module&quot;</span> 
 
+<span class="c">#---------------------------------import-----------------------------------</span>
+<span class="c">#(3)模块导入</span>
+<span class="kn">import</span> <span class="nn">sys</span> 
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="c">#-------------------------------------------------------------------------</span>
+
+<span class="c">#(4)全局变量定义</span>
+<span class="n">debug</span> <span class="o">=</span> <span class="bp">True</span> 
+
+<span class="c">#(5)类定义</span>
+<span class="k">class</span> <span class="nc">FooClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span> 
+    <span class="s">&quot;Fooclass&quot;</span>
+    <span class="k">pass</span>
+
+<span class="c">#(6)函数定义</span>
+<span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+    <span class="s">&quot;test function&quot;</span>
+    <span class="k">for</span> <span class="o">=</span> <span class="n">FooCalss</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&#39;ran test()&#39;</span>
+
+<span class="c">#(7)主程序</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">test</span><span class="p">()</span>
+</code></pre></div>
 <ul>
-  <li>绝大部分的模块创建的目的是为了别人调用而不是自己独立的脚本。</li>
-  <li>通常只有主程序才有大量的顶级可执行代码，所有其他被导入的模块只应该有很少的顶级执行代码，所有的功能代码都应该封装在函数或类当中。</li>
+<li>绝大部分的模块创建的目的是为了别人调用而不是自己独立的脚本。</li>
+<li>通常只有主程序才有大量的顶级可执行代码，所有其他被导入的模块只应该有很少的顶级执行代码，所有的功能代码都应该封装在函数或类当中。</li>
 </ul>
 
 <p>说明一下<code>__name__</code>，刚开始最常遇到的但是搞不明白，这里主要是为了区分别的模块调用和直接执行的情况。</p>
 
 <ul>
-  <li>如果模块是被导入的，则 <code>__name__</code>的名字是模块名</li>
-  <li>如果模块时直接执行的，<code>__name__</code>的名字就是<code>__main__</code></li>
+<li>如果模块是被导入的，则 <code>__name__</code>的名字是模块名</li>
+<li>如果模块时直接执行的，<code>__name__</code>的名字就是<code>__main__</code></li>
 </ul>
 
-<h4 id="section-6">3.5内存管理</h4>
+<h4>3.5内存管理</h4>
 
 <p>3.5.1python优点之一就是不像其他语言一样要优先声明变量，而可以直接赋值。</p>
-
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>&gt;&gt;&gt;x = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">haha</span><span style="color:#710">'</span></span>
-</pre></div>
-</div>
-</div>
-
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#39;haha&#39;</span>
+</code></pre></div>
 <p>3.5.2引用计数</p>
 
 <p>这个很好理解了，python每建立一个变量，空间中就生成一个变量地址来存储这个变量，而赋值等操作会增加这个变量的引用，而对象被销毁时引用就会减少，当引用变为0的时候，解析器就知道这个变量成了垃圾，进行回收！</p>
@@ -389,9 +357,8 @@ Python基础教程看了两遍了，发现有些知识还是比较模糊，讲�
 <p>还有一句比较有用</p>
 
 <blockquote>
-  <p>核心提示：如果在一个函数中频繁使用一个属性，建议为该属性取一个本地变量的别名，增快速度！</p>
+<p>核心提示：如果在一个函数中频繁使用一个属性，建议为该属性取一个本地变量的别名，增快速度！</p>
 </blockquote>
-
 
   </article>
 

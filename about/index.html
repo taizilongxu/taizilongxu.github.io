@@ -12,6 +12,9 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/main.css">
 
+<link rel="stylesheet" href="/css/github.css">
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 
 </head>
 
@@ -210,37 +213,33 @@
   </header>
 
   <article class="post-content">
-  <div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#777">#!/usr/bin/env python</span>
-<span class="line-numbers"> <a href="#n2" name="n2">2</a></span> 
-<span class="line-numbers"> <a href="#n3" name="n3">3</a></span><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Me</span>(Developer) : 
-<span class="line-numbers"> <a href="#n4" name="n4">4</a></span> 
-<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>    <span style="color:#B0B">@property</span>
-<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">education</span>(<span style="color:#069">self</span>):
-<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>        <span style="color:#080;font-weight:bold">return</span> {
-<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>            <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Undergraduate</span><span style="color:#710">&quot;</span></span> : [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Saftey Engineering</span><span style="color:#710">&quot;</span></span>,<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Shenyang Aerospace University</span><span style="color:#710">&quot;</span></span>],
-<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>            <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Graduate</span><span style="color:#710">&quot;</span></span>              : [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Soft Engineering</span><span style="color:#710">&quot;</span></span>,<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Liaoning University</span><span style="color:#710">&quot;</span></span>]}
-<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span> 
-<span class="line-numbers"><a href="#n11" name="n11">11</a></span>    <span style="color:#B0B">@property</span>
-<span class="line-numbers"><a href="#n12" name="n12">12</a></span>    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">characteristics</span>(<span style="color:#069">self</span>):
-<span class="line-numbers"><a href="#n13" name="n13">13</a></span>        <span style="color:#080;font-weight:bold">return</span> <span style="color:#369;font-weight:bold">set</span>([<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Teamwork</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Devoted</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Creative</span><span style="color:#710">&quot;</span></span>])
-<span class="line-numbers"><a href="#n14" name="n14">14</a></span> 
-<span class="line-numbers"><a href="#n15" name="n15">15</a></span>    <span style="color:#B0B">@property</span>
-<span class="line-numbers"><a href="#n16" name="n16">16</a></span>    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">skills</span>(<span style="color:#069">self</span>) :
-<span class="line-numbers"><a href="#n17" name="n17">17</a></span>        <span style="color:#080;font-weight:bold">return</span> {
-<span class="line-numbers"><a href="#n18" name="n18">18</a></span>            <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Language</span><span style="color:#710">&quot;</span></span>    : [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Python</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Java</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">HTML/CSS</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">C/C++</span><span style="color:#710">&quot;</span></span>],
-<span class="line-numbers"><a href="#n19" name="n19">19</a></span>            <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">OS</span><span style="color:#710">&quot;</span></span>                   : [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Linux</span><span style="color:#710">&quot;</span></span>] , 
-<span class="line-numbers"><strong><a href="#n20" name="n20">20</a></strong></span>            <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Tool</span><span style="color:#710">&quot;</span></span>               : [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Vim</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Sublime</span><span style="color:#710">&quot;</span></span>], 
-<span class="line-numbers"><a href="#n21" name="n21">21</a></span>            <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Framework</span><span style="color:#710">&quot;</span></span> : [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Django</span><span style="color:#710">&quot;</span></span>], 
-<span class="line-numbers"><a href="#n22" name="n22">22</a></span>            <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Network</span><span style="color:#710">&quot;</span></span>       : [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">TCP/IP</span><span style="color:#710">&quot;</span></span>]}
-<span class="line-numbers"><a href="#n23" name="n23">23</a></span>    
-<span class="line-numbers"><a href="#n24" name="n24">24</a></span>    <span style="color:#B0B">@property</span>
-<span class="line-numbers"><a href="#n25" name="n25">25</a></span>    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">is_geek</span>(<span style="color:#069">self</span>): 
-<span class="line-numbers"><a href="#n26" name="n26">26</a></span>        <span style="color:#080;font-weight:bold">return</span> <span style="color:#069">True</span>
-</pre></div>
-</div>
-</div>
+  <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/bin/env python</span>
 
+<span class="k">class</span> <span class="nc">Me</span><span class="p">(</span><span class="n">Developer</span><span class="p">)</span> <span class="p">:</span> 
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">education</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s">&quot;Undergraduate&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s">&quot;Saftey Engineering&quot;</span><span class="p">,</span><span class="s">&quot;Shenyang Aerospace University&quot;</span><span class="p">],</span>
+            <span class="s">&quot;Graduate&quot;</span>              <span class="p">:</span> <span class="p">[</span><span class="s">&quot;Soft Engineering&quot;</span><span class="p">,</span><span class="s">&quot;Liaoning University&quot;</span><span class="p">]}</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">characteristics</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">set</span><span class="p">([</span><span class="s">&quot;Teamwork&quot;</span><span class="p">,</span> <span class="s">&quot;Devoted&quot;</span><span class="p">,</span> <span class="s">&quot;Creative&quot;</span><span class="p">])</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">skills</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s">&quot;Language&quot;</span>    <span class="p">:</span> <span class="p">[</span><span class="s">&quot;Python&quot;</span><span class="p">,</span> <span class="s">&quot;Java&quot;</span><span class="p">,</span> <span class="s">&quot;HTML/CSS&quot;</span><span class="p">,</span> <span class="s">&quot;C/C++&quot;</span><span class="p">],</span>
+            <span class="s">&quot;OS&quot;</span>                   <span class="p">:</span> <span class="p">[</span><span class="s">&quot;Linux&quot;</span><span class="p">]</span> <span class="p">,</span> 
+            <span class="s">&quot;Tool&quot;</span>               <span class="p">:</span> <span class="p">[</span><span class="s">&quot;Vim&quot;</span><span class="p">,</span> <span class="s">&quot;Sublime&quot;</span><span class="p">],</span> 
+            <span class="s">&quot;Framework&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s">&quot;Django&quot;</span><span class="p">],</span> 
+            <span class="s">&quot;Network&quot;</span>       <span class="p">:</span> <span class="p">[</span><span class="s">&quot;TCP/IP&quot;</span><span class="p">]}</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_geek</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
+        <span class="k">return</span> <span class="bp">True</span>
+</code></pre></div>
   </article>
 
 </div>
