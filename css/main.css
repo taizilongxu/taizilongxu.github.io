@@ -284,9 +284,14 @@ text-align: -webkit-match-parent;
 }
 
 .post pre,
-.post code {
-  font-family:Menlo,Consolas,"Courier New",monospace;font-size:14px !important;
+.post  code {
+  font-family:Menlo,Consolas,"Courier New",monospace;
   background-color: #F0F0F0;
+}
+
+
+.post .highlight code{
+  font-size:14px !important;
 }
 
 .post pre {

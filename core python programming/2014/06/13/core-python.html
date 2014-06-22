@@ -292,7 +292,7 @@ Python基础教程看了两遍了，发现有些知识还是比较模糊，讲�
 </code></pre></div>
 <p>python中只有private和public，不像java，但是python的private不是严格意义上的private，还有方法可以在类外访问（name mangling）</p>
 
-<p>name mangling：其实就是python编译器更改了<strong>object的名字变为_class</strong>object，所以在类外可以用<em>class</em>_object调用。</p>
+<p>name mangling：其实就是python编译器更改了<code>__object</code>的名字变为<code>_class__object</code>，所以在类外可以用<code>_class__object</code>调用。</p>
 
 <p>总结：要用私有变量双下划线和但下划线均可，都可人为是私有的，但风格要保持一致！</p>
 
