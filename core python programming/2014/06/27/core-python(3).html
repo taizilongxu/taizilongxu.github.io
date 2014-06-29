@@ -493,6 +493,24 @@ sorted(data, cmp=None, key=None, reverse=False)
     <span class="p">:</span>
     <span class="k">return</span> <span class="n">obj1</span><span class="p">,</span><span class="n">obj2</span><span class="p">,</span><span class="n">obj3</span>
 </code></pre></div>
+<h4>6.20浅拷贝和深拷贝</h4>
+
+<p>序列类型的对象的浅拷贝是默认拷贝类型,有以下几种方法:</p>
+
+<ol>
+<li>完全切片[:]</li>
+<li>利用工厂函数,如list(),dict()等</li>
+<li>使用copy模块的copy函数</li>
+</ol>
+
+<p>如果使用深拷贝则要用copy.deepcopy()函数.</p>
+
+<blockquote>
+<p>注意:
+1. 非容器类型(数字,字符串)没有被拷贝一说,浅拷贝是用完全切片操作来完成的.
+2. 如果元组变量只包含原子类型对象,对它的深拷贝将不会进行.</p>
+</blockquote>
+
   </article>
 
 <!-- Duoshuo Comment BEGIN -->
