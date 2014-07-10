@@ -228,29 +228,21 @@
 </code></pre></div>
 <h2>1.2字符和字符值之间的转换</h2>
 
-<p>将一个字符转化为相应的ASC或Unicode
-```python</p>
+<p>将一个字符转化为相应的ASC或Unicode</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span><span class="k">print</span> <span class="nb">ord</span><span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">)</span> <span class="mi">97</span> <span class="o">&gt;&gt;&gt;</span><span class="k">print</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">91</span><span class="p">)</span>
+<span class="n">a</span>
 
-<blockquote>
-<blockquote>
-<blockquote>
-<p>print ord(&#39;a&#39;) 97 &gt;&gt;&gt;print chr(91)
-a</p>
+<span class="o">&gt;&gt;&gt;</span><span class="k">print</span> <span class="nb">ord</span><span class="p">(</span><span class="s">u&#39;</span><span class="se">\u2020</span><span class="s">&#39;</span><span class="p">)</span>
+<span class="mi">8224</span> 
+<span class="o">&gt;&gt;&gt;</span><span class="k">print</span> <span class="nb">repr</span><span class="p">(</span><span class="nb">unichr</span><span class="p">(</span><span class="mi">8224</span><span class="p">))</span>
+<span class="s">u&#39;</span><span class="se">\u2020</span><span class="s">&#39;</span>
+</code></pre></div>
+<h2>1.3测试一个对象是否是类字符串</h2>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="nb">isinstance</span> <span class="err">和</span> <span class="nb">basestring</span>
+<span class="nb">basestring</span><span class="err">是</span><span class="nb">str</span> <span class="err">和</span><span class="nb">unicode</span><span class="err">的共同基类</span>
 
-<p>print ord(u&#39;\u2020&#39;)
-8224 
-print repr(unichr(8224))
-u&#39;\u2020&#39;</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<div class="highlight"><pre><code class="language-text" data-lang="text">##1.3测试一个对象是否是类字符串
-```python
-isinstance 和 basestring
-basestring是str 和unicode的共同基类
-
-def isAString(anobj):
-    return isinstance(anobj,basestring)
+<span class="k">def</span> <span class="nf">isAString</span><span class="p">(</span><span class="n">anobj</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">anobj</span><span class="p">,</span><span class="nb">basestring</span><span class="p">)</span>
 </code></pre></div>
 <h2>1.4字符串对齐</h2>
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span><span class="k">print</span> <span class="s">&#39;|&#39;</span><span class="p">,</span><span class="s">&#39;hej&#39;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span><span class="s">&#39;|&#39;</span><span class="p">,</span><span class="s">&#39;hej&#39;</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span><span class="s">&#39;|&#39;</span><span class="p">,</span><span class="s">&#39;hej&#39;</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span><span class="s">&#39;|&#39;</span>
