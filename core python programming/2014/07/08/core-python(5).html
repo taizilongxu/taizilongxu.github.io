@@ -4,10 +4,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Limbo's Blog</title>
+    <title>Core Python programming（5）</title>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Python,HTML,CSS,Machine Leaning">
-    <link rel="canonical" href="http://taizilongxu.github.io/">
+    <link rel="canonical" href="http://taizilongxu.github.io/core%20python%20programming/2014/07/08/core-python(5).html">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/main.css">
@@ -206,136 +206,48 @@
 
     <div class="page-content">
       <div class="wrap">
-      <div class="home">
+      <div class="post">
 
- 
-  <ul class="posts">
-
+  <header class="post-header">
+    <h1>Core Python programming（5）</h1>
+    <p class="meta"><span class="pre">date:</span>Jul 8, 2014
+    <span class="pre">categories:</span>Core Python programming <span class="pre">tags:</span>python 
+    </p>
     
+  </header>
 
-      <li>
-        <a class="post-link" href="/core%20python%20programming/2014/07/08/core-python(5).html">Core Python programming（5） </a>
-       <span class="post-date">July  8, 2014</span>
-      </li>
+  <article class="post-content">
+  <h3>第九章 文件和输入输出</h3>
 
-    
+<p>这章比较基础,主要讲一下比较容易弄混的地方,在<code>pythoncookbook</code>这本书中第二章已经详细的介绍过了,不再重复了.</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">file_object</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span><span class="n">access_mode</span> <span class="o">=</span> <span class="s">&#39;r&#39;</span><span class="p">,</span><span class="n">buffering</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<p>access_mode是一个字符串:</p>
 
-      <li>
-        <a class="post-link" href="/core%20python%20programming/2014/06/28/core-python(4).html">Core Python programming（4） </a>
-       <span class="post-date">June 28, 2014</span>
-      </li>
+<ul>
+<li>r:读取</li>
+<li>w:写入</li>
+<li>a:追加</li>
+<li>U:通用换行符支持</li>
+</ul>
 
-    
+<p>其中要注意的几点:</p>
 
-      <li>
-        <a class="post-link" href="/simulink/2014/06/28/PID.html">PID控制器 </a>
-       <span class="post-date">June 28, 2014</span>
-      </li>
+<ul>
+<li>使用r或U模式打开的文件必须是已经存在的.</li>
+<li>使用w模式打开的文件若存在则首先清空,然后创建.</li>
+<li>以a模式打开的文件是为追加数据作准备的,所有写入的数据都将追加到文件的末尾</li>
+</ul>
 
-    
+  </article>
 
-      <li>
-        <a class="post-link" href="/core%20python%20programming/2014/06/27/core-python(3).html">Core Python programming（3） </a>
-       <span class="post-date">June 27, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/core%20python%20programming/2014/06/21/core-python(2).html">Core Python programming（2） </a>
-       <span class="post-date">June 21, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/blog/2014/06/14/jekyll-markdown.html">jekyll的markdown设置 </a>
-       <span class="post-date">June 14, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/core%20python%20programming/2014/06/13/core-python.html">Core Python programming（1） </a>
-       <span class="post-date">June 13, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/github/2014/06/10/github.html">Set Github </a>
-       <span class="post-date">June 10, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/sublime/2014/06/09/sublime.html">Set Sublime 2/3 </a>
-       <span class="post-date">June  9, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/test/2014/06/02/test-markdown.html">GFM markdown style </a>
-       <span class="post-date">June  2, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/blog/2014/06/01/jekyll-latex.html">Jekyll使用MathJax来显示数学式 </a>
-       <span class="post-date">June  1, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/cs/2014/06/01/LNU-network.html">2014辽大计算机网络复习题 </a>
-       <span class="post-date">June  1, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/test/2014/05/29/test.html">TEST </a>
-       <span class="post-date">May 29, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/cs/2014/04/06/qimo.html">2014辽大分布式操作系统复习题 </a>
-       <span class="post-date">April  6, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/css/2014/04/06/CSS.html">CSS基础教程 </a>
-       <span class="post-date">April  6, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/python-cookbook/2014/04/04/pythoncookbook.html">python-cookbook </a>
-       <span class="post-date">April  4, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/blog/2014/01/01/welcome-to-jekyll.html">Welcome to Jekyll! </a>
-       <span class="post-date">January  1, 2014</span>
-      </li>
-
-    
-  </ul>
-
+<!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/core%20python%20programming/2014/07/08/core-python(5)"  data-title="Core Python programming（5） - Limbo's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
 
 </div>
-
       </div>
     
 

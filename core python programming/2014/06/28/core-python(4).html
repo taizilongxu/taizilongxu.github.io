@@ -234,106 +234,92 @@
 dic={key1:value1, key2:value2...}
 </code></p>
 
-<ol>
-<li>字典的创建</li>
-</ol>
+<p>1.字典的创建</p>
 
 <ul>
 <li>直接型。</li>
 </ul>
-<div class="highlight"><pre><code class="language-python" data-lang="python"> <span class="n">dict1</span><span class="o">=</span><span class="p">{}</span>  
- <span class="n">dict2</span><span class="o">=</span><span class="p">{</span><span class="err">‘</span><span class="n">name</span><span class="err">’</span><span class="p">:</span><span class="s">&#39;earth&#39;</span><span class="p">,</span><span class="s">&#39;port&#39;</span><span class="p">:</span><span class="s">&#39;80&#39;</span><span class="p">}</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">dict1</span><span class="o">=</span><span class="p">{}</span>  
+<span class="n">dict2</span><span class="o">=</span><span class="p">{</span><span class="err">‘</span><span class="n">name</span><span class="err">’</span><span class="p">:</span><span class="s">&#39;earth&#39;</span><span class="p">,</span><span class="s">&#39;port&#39;</span><span class="p">:</span><span class="s">&#39;80&#39;</span><span class="p">}</span>
 </code></pre></div>
 <ul>
 <li>使用工厂方法dict，通过其他映射（例如字典）或者（键，值）这样的序列对建立</li>
 </ul>
-<div class="highlight"><pre><code class="language-python" data-lang="python"> <span class="n">items</span><span class="o">=</span><span class="p">[(</span><span class="s">&#39;name&#39;</span><span class="p">,</span><span class="s">&#39;earth&#39;</span><span class="p">),(</span><span class="s">&#39;port&#39;</span><span class="p">,</span><span class="s">&#39;80&#39;</span><span class="p">)]</span>
- <span class="n">dict2</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
- <span class="n">dict1</span><span class="o">=</span><span class="nb">dict</span><span class="p">(([</span><span class="s">&#39;name&#39;</span><span class="p">,</span><span class="s">&#39;earth&#39;</span><span class="p">],[</span><span class="s">&#39;port&#39;</span><span class="p">,</span><span class="s">&#39;80&#39;</span><span class="p">]))</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">items</span><span class="o">=</span><span class="p">[(</span><span class="s">&#39;name&#39;</span><span class="p">,</span><span class="s">&#39;earth&#39;</span><span class="p">),(</span><span class="s">&#39;port&#39;</span><span class="p">,</span><span class="s">&#39;80&#39;</span><span class="p">)]</span>
+<span class="n">dict2</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+<span class="n">dict1</span><span class="o">=</span><span class="nb">dict</span><span class="p">(([</span><span class="s">&#39;name&#39;</span><span class="p">,</span><span class="s">&#39;earth&#39;</span><span class="p">],[</span><span class="s">&#39;port&#39;</span><span class="p">,</span><span class="s">&#39;80&#39;</span><span class="p">]))</span>
 </code></pre></div>
 <ul>
 <li>使用内建方法fromkeys()创建’默认‘字典，字典中元素具有相同的value（如果没有给出，默认为none）</li>
 </ul>
-<div class="highlight"><pre><code class="language-python" data-lang="python"> <span class="n">dict1</span><span class="o">=</span><span class="p">{}</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">((</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="s">&#39;y&#39;</span><span class="p">),</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c"># dict={&#39;x&#39;:-1,&#39;y&#39;:-1}</span>
- <span class="n">dict2</span><span class="o">=</span><span class="p">{}</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">((</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="s">&#39;y&#39;</span><span class="p">))</span> <span class="c"># dict2={&#39;x&#39;:None, &#39;y&#39;:None}</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">dict1</span><span class="o">=</span><span class="p">{}</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">((</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="s">&#39;y&#39;</span><span class="p">),</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c"># dict={&#39;x&#39;:-1,&#39;y&#39;:-1}</span>
+<span class="n">dict2</span><span class="o">=</span><span class="p">{}</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">((</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="s">&#39;y&#39;</span><span class="p">))</span> <span class="c"># dict2={&#39;x&#39;:None, &#39;y&#39;:None}</span>
 </code></pre></div>
-<ol>
-<li>访问字典中的值
-最常用和基本的莫过于利用key访问value了</li>
-</ol>
+<p>2.访问字典中的值
+最常用和基本的莫过于利用key访问value了</p>
 
 <ul>
 <li>通过key访问value之get方法</li>
 </ul>
-<div class="highlight"><pre><code class="language-python" data-lang="python"> <span class="n">dict1</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;name&#39;</span><span class="p">)</span><span class="c">#也可以直接是dictionary[&#39;key1&#39;],但是当key1不存在其中时，会报错 ；此时用get则返回None </span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">dict1</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;name&#39;</span><span class="p">)</span><span class="c">#也可以直接是dictionary[&#39;key1&#39;],但是当key1不存在其中时，会报错 ；此时用get则返回None </span>
 </code></pre></div>
 <ul>
 <li><p>随机访问其中键值对
 字典中是无序的，利用popitem方法是随机弹出一个键值对</p></li>
 <li><p>返回字典所有值的列表</p></li>
 </ul>
-<div class="highlight"><pre><code class="language-python" data-lang="python"> <span class="nb">dict</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="nb">dict</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
 </code></pre></div>
-<ol>
-<li>访问字典中的key</li>
-</ol>
+<p>3.访问字典中的key</p>
 
 <ul>
 <li>检查是否含有key1</li>
 </ul>
-<div class="highlight"><pre><code class="language-python" data-lang="python"> <span class="n">dictionary</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="n">key1</span><span class="p">)</span> 
- <span class="n">key1</span> <span class="ow">in</span> <span class="n">dictionarty</span> <span class="c"># 最好用这种方法</span>
- <span class="n">key1</span> <span class="ow">not</span> <span class="n">dictionary</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">dictionary</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="n">key1</span><span class="p">)</span> 
+<span class="n">key1</span> <span class="ow">in</span> <span class="n">dictionarty</span> <span class="c"># 最好用这种方法</span>
+<span class="n">key1</span> <span class="ow">not</span> <span class="n">dictionary</span>
 </code></pre></div>
 <ul>
 <li>返回字典中键的列表</li>
 </ul>
-<div class="highlight"><pre><code class="language-python" data-lang="python"> <span class="n">dictionary</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">dictionary</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
 </code></pre></div>
-<ol>
-<li>访问键值对</li>
-</ol>
+<p>4.访问键值对</p>
 
 <ul>
 <li>遍历方式</li>
 </ul>
-<div class="highlight"><pre><code class="language-python" data-lang="python"> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">dicitonary</span>  <span class="c">#r是dictionary中的键值对</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">dicitonary</span>  <span class="c">#r是dictionary中的键值对</span>
 </code></pre></div>
 <ul>
 <li>修改(更新)或添加</li>
 </ul>
-<div class="highlight"><pre><code class="language-python" data-lang="python"> <span class="n">dictionary</span><span class="p">[</span><span class="n">key1</span><span class="p">]</span><span class="o">=</span><span class="n">value1</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">dictionary</span><span class="p">[</span><span class="n">key1</span><span class="p">]</span><span class="o">=</span><span class="n">value1</span>
 </code></pre></div>
-<ol>
-<li>删除</li>
-</ol>
+<p>5.删除</p>
 
 <ul>
 <li>按key删除</li>
 </ul>
-<div class="highlight"><pre><code class="language-python" data-lang="python"> <span class="k">del</span> <span class="n">dictionary</span><span class="p">[</span><span class="n">key1</span><span class="p">]</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">del</span> <span class="n">dictionary</span><span class="p">[</span><span class="n">key1</span><span class="p">]</span>
 </code></pre></div>
 <ul>
 <li>删除并返回</li>
 </ul>
-<div class="highlight"><pre><code class="language-python" data-lang="python"> <span class="n">dictionary</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key1</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">dictionary</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key1</span><span class="p">)</span>
 </code></pre></div>
 <ul>
 <li>删除所有项</li>
 </ul>
-<div class="highlight"><pre><code class="language-python" data-lang="python"> <span class="n">dictionary</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
- <span class="k">del</span> <span class="n">dictionary</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">dictionary</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="k">del</span> <span class="n">dictionary</span>
 </code></pre></div>
-<ol>
-<li>排序</li>
-</ol>
+<p>6.排序</p>
 <div class="highlight"><pre><code class="language-python" data-lang="python"> <span class="nb">sorted</span><span class="p">(</span><span class="n">dic</span><span class="o">.</span><span class="n">iteritems</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span><span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 </code></pre></div>
 <p>说明：对字典dic中的元素按照d<a href="d%5B1%5D%E6%98%AFvalue%EF%BC%8Cd%5B0%5D%E6%98%AFkey%EF%BC%8C%E5%92%8Cd%E6%B2%A1%E5%85%B3%E7%B3%BB%EF%BC%8C%E5%8F%AF%E4%BB%A5%E6%94%B9%E4%B8%BAa%E4%BB%80%E4%B9%88%E7%9A%84">1</a>进行升序排序，通过设置reverse的True或False可以进行逆序，并返回排序后的字典（该排序后的字典由元组组成，其形式为[(key1,value1),(key2,value2),...]，且原字典保持不变）</p>
 
-<ol>
-<li>其他</li>
-</ol>
+<p>7.其他</p>
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="nb">len</span><span class="p">(</span><span class="n">dictionary</span><span class="p">)</span> <span class="c">#返回字典项个数</span>
 <span class="nb">dict</span><span class="o">.</span><span class="n">update</span><span class="p">()</span> <span class="c"># 将整个字典的内容添加到另一个字典</span>
 <span class="n">dictionary</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="c"># 返回字典中键值对的元组</span>
@@ -497,11 +483,9 @@ python没有switch语句!</p>
 </code></pre></div>
 <p>这里还需要了解的是map(),filter(),lambda()这三个函数，他们是Python早期的函数式编程，但是都可以被列表解析替代．</p>
 
-<ol>
-<li>map():根据提供的函数对指定序列做映射。
-map函数的定义：</li>
-</ol>
-<div class="highlight"><pre><code class="language-python" data-lang="python"> <span class="nb">map</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">sequence</span><span class="p">[,</span> <span class="n">sequence</span><span class="p">,</span> <span class="o">...</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span>
+<p>1.map():根据提供的函数对指定序列做映射。
+map函数的定义：</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="nb">map</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">sequence</span><span class="p">[,</span> <span class="n">sequence</span><span class="p">,</span> <span class="o">...</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span>
 </code></pre></div>
 <ul>
 <li><p>通过定义可以看到，这个函数的第一个参数是一个函数，剩下的参数是一个或多个序列，返回值是一个集合。</p></li>
@@ -509,34 +493,32 @@ map函数的定义：</li>
 </ul>
 
 <p>比如要对一个序列中的每个元素进行平方运算：</p>
-<div class="highlight"><pre><code class="language-python" data-lang="python"> <span class="o">&gt;&gt;&gt;</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 
- <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span> <span class="c">#返回结果</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span> <span class="c">#返回结果</span>
 </code></pre></div>
 <p>在参数存在多个序列时，会依次以每个序列中相同位置的元素做参数调用function函数。</p>
 
 <p>比如要对两个序列中的元素依次求和。</p>
-<div class="highlight"><pre><code class="language-python" data-lang="python"> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
 </code></pre></div>
 <p>map返回的list中第一个元素为，参数序列1的第一个元素加参数序列2中的第一个元素(1 + 2)，list中的第二个元素为，参数序列1中的第二个元素加参数序列2中的第二个元素(3 + 4)，依次类推，最后的返回结果为：</p>
-<div class="highlight"><pre><code class="language-python" data-lang="python"> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">19</span><span class="p">]</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">19</span><span class="p">]</span>
 </code></pre></div>
 <p>要注意function函数的参数数量，要和map中提供的集合数量相匹配。</p>
 
 <p>如果集合长度不相等，会以最小长度对所有集合进行截取。</p>
 
 <p>当函数为None时，操作和zip相似：</p>
-<div class="highlight"><pre><code class="language-python" data-lang="python"> <span class="o">&gt;&gt;&gt;</span><span class="nb">map</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span><span class="nb">map</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
 
- <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">)]</span> <span class="c">#返回结果</span>
+<span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">)]</span> <span class="c">#返回结果</span>
 </code></pre></div>
-<ol>
-<li>filter():filter函数会对指定序列执行过滤操作。</li>
-</ol>
+<p>2.filter():filter函数会对指定序列执行过滤操作。</p>
 
 <p>filter函数的定义：
- <code>python
- filter(function or None, sequence) -&gt; list, tuple, or string
+<code>python
+filter(function or None, sequence) -&gt; list, tuple, or string
 </code></p>
 
 <ul>
@@ -545,46 +527,41 @@ map函数的定义：</li>
 <li><p>返回值的类型和参数sequence的类型相同
 比如返回序列中的所有偶数：</p></li>
 </ul>
-<div class="highlight"><pre><code class="language-python" data-lang="python"> <span class="k">def</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">x</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">!=</span> <span class="mi">0</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+       <span class="k">return</span> <span class="n">x</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">!=</span> <span class="mi">0</span>
 
- <span class="nb">filter</span><span class="p">(</span><span class="n">is_even</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<span class="nb">filter</span><span class="p">(</span><span class="n">is_even</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
 
- <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span> <span class="c">#返回结果</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span> <span class="c">#返回结果</span>
 </code></pre></div>
 <p>如果function参数为None，返回结果和sequence参数相同。</p>
 
-<ol>
-<li>reduce():对参数序列中元素进行累积。</li>
-</ol>
+<p>3.reduce():对参数序列中元素进行累积。</p>
 
 <p>reduce函数的定义：</p>
-<div class="highlight"><pre><code class="language-python" data-lang="python"> <span class="nb">reduce</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">sequence</span><span class="p">[,</span> <span class="n">initial</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">value</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="nb">reduce</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">sequence</span><span class="p">[,</span> <span class="n">initial</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">value</span>
 </code></pre></div>
 <ul>
 <li><p>function参数是一个有两个参数的函数，reduce依次从sequence中取一个元素，和上一次调用function的结果做参数再次调用function。</p></li>
 <li><p>第一次调用function时，如果提供initial参数，会以sequence中的第一个元素和initial作为参数调用function，否则会以序列sequence中的前两个元素做参数调用function。</p></li>
 </ul>
-<div class="highlight"><pre><code class="language-python" data-lang="python"> <span class="nb">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
- <span class="err">结果为</span><span class="mi">21</span> <span class="c">#(  (((((1+2)+3)+4)+5)+6)  )</span>
- <span class="nb">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
- <span class="err">结果为</span><span class="mi">20</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="nb">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+<span class="err">结果为</span><span class="mi">21</span> <span class="c">#(  (((((1+2)+3)+4)+5)+6)  )</span>
+<span class="nb">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="err">结果为</span><span class="mi">20</span>
 </code></pre></div>
 <p>注意function函数不能为None。</p>
 
-<ol>
-<li>lambda():lambda函数也叫匿名函数，即，函数没有具体的名称</li>
-</ol>
+<p>4.lambda():lambda函数也叫匿名函数，即，函数没有具体的名称</p>
 
 <p>比如正常情况下：</p>
-<div class="highlight"><pre><code class="language-python" data-lang="python"> <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-       <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
-
- <span class="k">print</span> <span class="n">f</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+      <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+<span class="k">print</span> <span class="n">f</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 </code></pre></div>
 <p>用lambda():</p>
-<div class="highlight"><pre><code class="language-python" data-lang="python"> <span class="n">g</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
- <span class="k">print</span> <span class="n">g</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">g</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+<span class="k">print</span> <span class="n">g</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 </code></pre></div>
 <p>那么，lambda表达式有什么用处呢？很多人提出了质疑，lambda和普通的函数相比，就是省去了函数名称而已，同时这样的匿名函数，又不能共享在别的地方调用。其实说的没错，lambda在Python这种动态的语言中确实没有起到什么惊天动地的作用，因为有很多别的方法能够代替lambda。同时，使用lambda的写法有时显得并没有那么pythonic。甚至有人提出之后的Python版本要取消lambda。</p>
 
