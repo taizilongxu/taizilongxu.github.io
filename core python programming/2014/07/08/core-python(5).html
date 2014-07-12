@@ -217,9 +217,11 @@
   </header>
 
   <article class="post-content">
-  <h3>第九章 文件和输入输出</h3>
+  <p>chapter 9</p>
 
-<p>这章比较基础,主要讲一下比较容易弄混的地方,在<code>pythoncookbook</code>这本书中第二章已经详细的介绍过了,不再重复了.</p>
+<h3>第九章 文件和输入输出</h3>
+
+<p>这章比较基础,主要讲一下比较容易弄混的地方,在pythoncookbook这本书中第二章已经详细的介绍过了,不再重复了.</p>
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">file_object</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span><span class="n">access_mode</span> <span class="o">=</span> <span class="s">&#39;r&#39;</span><span class="p">,</span><span class="n">buffering</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 <p>access_mode是一个字符串:</p>
@@ -238,6 +240,264 @@
 <li>使用w模式打开的文件若存在则首先清空,然后创建.</li>
 <li>以a模式打开的文件是为追加数据作准备的,所有写入的数据都将追加到文件的末尾</li>
 </ul>
+
+<p>print语句默认在输入内容末尾加一个换行符,而在语句后加一个逗号就可以避免这种行为.</p>
+
+<p>read(),readline(),readlines()之间的差异:</p>
+
+<ul>
+<li>read() 每次读取整个文件，它通常用于将文件内容放到一个字符串变量中.</li>
+<li>readlines()自动将文件内容分析成一个行的列表，该列表可以由 Python 的 for... in ... 结构进行处理,它也是一次性的将所有文件全部读入,对于很大的文件不太适合这种方法.</li>
+<li>readline()每次只读取一行，通常比readlines()慢得多。仅当没有足够内存可以一次读取整个文件时，才应该使用readline().</li>
+</ul>
+
+<p>writelines()行结束符并不会自动加入,所以调用前给每个结尾加上行结束符.</p>
+
+<h4>文件对象的方法:</h4>
+
+<table><thead>
+<tr>
+<th style="text-align: left">文件对象方法</th>
+<th style="text-align: left">操作</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">file.close()</td>
+<td style="text-align: left">关闭文件</td>
+</tr>
+<tr>
+<td style="text-align: left">file.read(size=-1)</td>
+<td style="text-align: left">从文件读取size个字节,当未给定size或给定负值的时候,读取剩余的所有字节,然后作为字符串返回</td>
+</tr>
+<tr>
+<td style="text-align: left">file.readline(size=-1)</td>
+<td style="text-align: left">从文件中读取并返回一行(包括行结束符),或返回最大size个字符</td>
+</tr>
+<tr>
+<td style="text-align: left">file.readlines(sizhint=0)</td>
+<td style="text-align: left">读取文件的所有行作为一个列表返回(包括所有的行结束符);如果给定的sizhint大于0,那么将返回总和大约为sizhint字节的行(以最小缓冲器大小为主)</td>
+</tr>
+<tr>
+<td style="text-align: left">file.seek(off,whence=0)</td>
+<td style="text-align: left">在文件中移动文件指针,从whence(0代表文件启示,1代表当前闻之,2代表文件末尾)便宜off字节</td>
+</tr>
+<tr>
+<td style="text-align: left">file.write(str)</td>
+<td style="text-align: left">向文件写入字符串</td>
+</tr>
+<tr>
+<td style="text-align: left">file.writelines(seq)</td>
+<td style="text-align: left">向文件写入字符串序列seq;seq应该是一个返回字符串的可迭代对象</td>
+</tr>
+<tr>
+<td style="text-align: left">file.fileno()</td>
+<td style="text-align: left">返回文件的描述符</td>
+</tr>
+<tr>
+<td style="text-align: left">file.tell()</td>
+<td style="text-align: left">返回当前在文件中的位置</td>
+</tr>
+<tr>
+<td style="text-align: left">file.truncate(n)</td>
+<td style="text-align: left">从文件的首行首字符开始截断，截断文件为n个字符；无n表示从当前位置起截断；截断之后n后面的所有字符被删除。其中win下的换行代表2个字符大小。</td>
+</tr>
+</tbody></table>
+
+<h4>文件内建属性:</h4>
+
+<table><thead>
+<tr>
+<th style="text-align: left">文件对象属性</th>
+<th style="text-align: left">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">file.closed</td>
+<td style="text-align: left">表示文件已经被关闭,否则为False</td>
+</tr>
+<tr>
+<td style="text-align: left">file.encoding</td>
+<td style="text-align: left">文件所使用的编码--当Unicode字符串被写入数据时,他们将自动使用file.encoding转换为字符串;若file.encoding为None时使用系统默认编码.尽量将编码保持一直,建议UTF-8编码</td>
+</tr>
+<tr>
+<td style="text-align: left">file.mode</td>
+<td style="text-align: left">文件打开时使用的访问模式</td>
+</tr>
+<tr>
+<td style="text-align: left">file.name</td>
+<td style="text-align: left">文件名</td>
+</tr>
+<tr>
+<td style="text-align: left">file.newlines</td>
+<td style="text-align: left">如果文件刚被打开, 程序还没有遇到行结束符, 那么文件的newlines 为 None .在第一行被读  取后, 它被设置为第一行的结束符. 如果遇到其它类型的行结束符, 文件的newlines 会成为一个  包含每种格式的元组.</td>
+</tr>
+<tr>
+<td style="text-align: left">file.softspace</td>
+<td style="text-align: left">为0表示在输出一数据后,要加上一个空格符,为1表示不加.这个属性一般不用</td>
+</tr>
+</tbody></table>
+
+<h4>OS模块总结</h4>
+
+<p>有助于跨平台开发的 os 模块属性:</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">os 模块属性</th>
+<th style="text-align: left">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">linesep</td>
+<td style="text-align: left">用于在文件中分隔行的字符串 例如，Windows使用’\r\n’，Linux使用’\n’而Mac使用’\r’</td>
+</tr>
+<tr>
+<td style="text-align: left">sep</td>
+<td style="text-align: left">用来分隔文件路径名的字符串</td>
+</tr>
+<tr>
+<td style="text-align: left">pathsep</td>
+<td style="text-align: left">用于分隔文件路径的字符串</td>
+</tr>
+<tr>
+<td style="text-align: left">curdir</td>
+<td style="text-align: left">当前工作目录的字符串名称</td>
+</tr>
+<tr>
+<td style="text-align: left">pardir</td>
+<td style="text-align: left">(当前工作目录的)父目录字符串名称</td>
+</tr>
+</tbody></table>
+
+<p>不管你使用的是什么平台, 只要你导入了 os 模块, 这些变量自动会被设置为正确的值, 减少了你的麻烦.  </p>
+
+<p>os模块常用函数:</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">函数</th>
+<th style="text-align: left">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">文件处理</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">remove()/unlink()</td>
+<td style="text-align: left">删除文件</td>
+</tr>
+<tr>
+<td style="text-align: left">rename()/renames()</td>
+<td style="text-align: left">重命名文件</td>
+</tr>
+<tr>
+<td style="text-align: left">stat()</td>
+<td style="text-align: left">返回文件信息</td>
+</tr>
+<tr>
+<td style="text-align: left">walk()</td>
+<td style="text-align: left">生成一个目录下的所有文件</td>
+</tr>
+<tr>
+<td style="text-align: left">目录/文件夹</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">chdir()/fchdir()</td>
+<td style="text-align: left">改变当前工作目录/通过一个文件描述符改变当前工作目录</td>
+</tr>
+<tr>
+<td style="text-align: left">chroot()</td>
+<td style="text-align: left">改变当前进程的根目录</td>
+</tr>
+<tr>
+<td style="text-align: left">listdir()</td>
+<td style="text-align: left">列出制定目录文件</td>
+</tr>
+<tr>
+<td style="text-align: left">getcwd()/getcwdu()</td>
+<td style="text-align: left">返回当前工作目录/功能相同,但返回一个Unicode对象</td>
+</tr>
+<tr>
+<td style="text-align: left">rmdir()/removedirs()</td>
+<td style="text-align: left">删除目录/删除多层目录</td>
+</tr>
+<tr>
+<td style="text-align: left">getenv()/putenv()</td>
+<td style="text-align: left">分别用来读取和设置环境变量</td>
+</tr>
+<tr>
+<td style="text-align: left">makedirs(path)</td>
+<td style="text-align: left">多层创建目录</td>
+</tr>
+<tr>
+<td style="text-align: left">mkdir(path)</td>
+<td style="text-align: left">创建目录</td>
+</tr>
+<tr>
+<td style="text-align: left">执行系统命令</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">system()</td>
+<td style="text-align: left">用来运行shell命令。</td>
+</tr>
+</tbody></table>
+
+<p>os.path模块:</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">函数</th>
+<th style="text-align: left">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">os.path.isdir(name)</td>
+<td style="text-align: left">判断name是不是一个目录，name不是目录就返回false</td>
+</tr>
+<tr>
+<td style="text-align: left">os.path.isfile(name)</td>
+<td style="text-align: left">判断name是不是一个文件，不存在name也返回false</td>
+</tr>
+<tr>
+<td style="text-align: left">os.path.exists(name)</td>
+<td style="text-align: left">判断是否存在文件或目录name</td>
+</tr>
+<tr>
+<td style="text-align: left">os.path.getsize(name)</td>
+<td style="text-align: left">获得文件大小，如果name是目录返回0L</td>
+</tr>
+<tr>
+<td style="text-align: left">os.path.abspath(name)</td>
+<td style="text-align: left">获得绝对路径</td>
+</tr>
+<tr>
+<td style="text-align: left">os.path.normpath(path)</td>
+<td style="text-align: left">规范path字符串形式</td>
+</tr>
+<tr>
+<td style="text-align: left">os.path.split(name)</td>
+<td style="text-align: left">分割文件名与目录（事实上，如果你完全使用目录，它也会将最后一个目录作为文件名而分离，同时它不会判断文件或目录是否存在）</td>
+</tr>
+<tr>
+<td style="text-align: left">os.path.splitext()</td>
+<td style="text-align: left">分离文件名与扩展名</td>
+</tr>
+<tr>
+<td style="text-align: left">os.path.join(path,name)</td>
+<td style="text-align: left">连接目录与文件名或目录</td>
+</tr>
+<tr>
+<td style="text-align: left">os.path.basename(path)</td>
+<td style="text-align: left">返回文件名</td>
+</tr>
+<tr>
+<td style="text-align: left">os.path.dirname(path)</td>
+<td style="text-align: left">返回文件路径</td>
+</tr>
+</tbody></table>
 
   </article>
 
