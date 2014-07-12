@@ -492,10 +492,10 @@ os.walk
 </code></pre></div>
 <h2>2.18从指定搜索路径搜索文件</h2>
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span> 
-<span class="k">def</span> <span class="nf">search_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="n">search_path</span><span class="p">,</span><span class="n">pathsep</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">)</span> 
-    <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">search_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">pathsep</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">search_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="n">search_path</span><span class="p">,</span><span class="n">pathsep</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">search_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">pathsep</span><span class="p">):</span>
         <span class="n">candiate</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">filename</span><span class="p">)</span>
-        <span class="k">if</span>  <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">candiate</span><span class="p">)</span>
+        <span class="k">if</span>  <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">candiate</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">None</span>
 
@@ -509,9 +509,13 @@ os.walk
 </code></pre></div>
 <h2>2.19根据指定的搜索路径和模式寻找文件</h2>
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">glob</span><span class="o">,</span><span class="nn">os</span> 
+
 <span class="k">def</span> <span class="nf">all_file</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span><span class="n">search_path</span><span class="p">,</span><span class="n">pathsep</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">):</span> 
+
     <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">search_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">pathsep</span><span class="p">):</span>
+
         <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">pattern</span><span class="p">)):</span>
+
             <span class="k">yield</span> <span class="n">match</span> <span class="c">#生成迭代器 </span>
 </code></pre></div>
   </article>
