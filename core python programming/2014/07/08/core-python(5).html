@@ -499,6 +499,39 @@
 </tr>
 </tbody></table>
 
+<h4>Python创建目录文件夹</h4>
+
+<p>主要涉及到三个函数:</p>
+
+<ol>
+<li>os.path.exists(path) 判断一个目录是否存在</li>
+<li>os.makedirs(path) 多层创建目录</li>
+<li>os.mkdir(path) 创建目录</li>
+</ol>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># 引入模块</span>
+<span class="n">importos</span>
+<span class="n">defmkdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="c"># 去除首位空格</span>
+    <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\\</span><span class="s">&quot;</span><span class="p">)</span><span class="c"># 去除尾部 \ 符号</span>
+    <span class="n">isExists</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="c"># 判断路径是否存在</span>
+
+    <span class="n">ifnotisExists</span><span class="p">:</span><span class="c"># 存在     True</span>
+        <span class="n">printpath</span><span class="o">+</span><span class="s">&#39; 创建成功&#39;</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="c"># 创建目录操作函数</span>
+        <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">else</span><span class="p">:</span><span class="c"># 如果不存在则创建目录</span>
+        <span class="n">printpath</span><span class="o">+</span><span class="s">&#39; 目录已存在&#39;</span>
+        <span class="n">returnFalse</span>
+
+<span class="n">mkpath</span><span class="o">=</span><span class="s">&quot;d:</span><span class="se">\\</span><span class="s">qttc</span><span class="se">\\</span><span class="s">web</span><span class="se">\\</span><span class="s">&quot;</span><span class="c"># 定义要创建的目录</span>
+<span class="n">mkdir</span><span class="p">(</span><span class="n">mkpath</span><span class="p">)</span><span class="c"># 调用函数</span>
+</code></pre></div>
+<p>说明</p>
+
+<p>在以上DEMO的函数里，我并没有使用os.mkdir(path)函数，而是使用了多层创建目录函数os.makedirs(path)<strong>。这两个函数之间最大的区别是当父目录不存在的时候os.mkdir(path)不会创建，os.makedirs(path)则会创建父目录</strong></p>
+
+<p>比如：例子中我要创建的目录web位于D盘的qttc目录下，然而我D盘下没有qttc父目录，如果使用os.mkdir(path)函数就会提示我目标路径不存在，但使用os.makedirs(path)会自动帮我创建父目录qttc，请在qttc目录下创建子目录web。</p>
+
   </article>
 
 <!-- Duoshuo Comment BEGIN -->
