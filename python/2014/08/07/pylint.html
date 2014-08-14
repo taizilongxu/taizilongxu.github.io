@@ -4,12 +4,12 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Limbo's Blog</title>
+    <title>Pythonic检测工具--Pylint</title>
     <link rel="shortcut icon" href=" /img/github.ico"/>
     <link rel="bookmark" href="/img/github.ico"/>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Python,HTML,CSS,Machine Leaning">
-    <link rel="canonical" href="http://taizilongxu.github.io/">
+    <link rel="canonical" href="http://taizilongxu.github.io/python/2014/08/07/pylint.html">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/main.css">
@@ -208,199 +208,164 @@
 
     <div class="page-content">
       <div class="wrap">
-      <div class="home">
+      <div class="post">
 
- 
-  <ul class="posts">
-
+  <header class="post-header">
+    <h1>Pythonic检测工具--Pylint</h1>
+    <p class="meta"><span class="pre">date:</span>Aug 7, 2014
+    <span class="pre">categories:</span>python <span class="pre">tags:</span>python 
+    </p>
     
+  </header>
 
-      <li>
-        <a class="post-link" href="/python/2014/08/14/weibo-robot.html">Python实现微博终端机器人 </a>
-       <span class="post-date">August 14, 2014</span>
-      </li>
+  <article class="post-content">
+  <h2>简介</h2>
 
-    
+<p>Pylint是一个代码检测工具,对于追求Pyhonic的人来说,再适合不过了,他也可以定制一些规范,有利于更好的协同开发.<a href="http://docs.pylint.org/">Pylint doc</a></p>
 
-      <li>
-        <a class="post-link" href="/python/2014/08/07/pylint.html">Pythonic检测工具--Pylint </a>
-       <span class="post-date">August  7, 2014</span>
-      </li>
+<h2>linux下安装</h2>
 
-    
+<p>命令行下直接安装</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get install pylint
+</code></pre></div>
+<h2>使用</h2>
 
-      <li>
-        <a class="post-link" href="/python/2014/08/05/zhihu-interviw.html">知乎面试题 </a>
-       <span class="post-date">August  5, 2014</span>
-      </li>
+<p>直接输入</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">pylint test.py
+</code></pre></div>
+<p>pylint会直接提示代码变量,注释,类,方法的一些不标准的错误,方便修改</p>
 
-    
+<p>输出结果:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">No config file found, using default configuration
+************* Module zhihu2
+C: 85, 0: Missing function docstring (missing-docstring)
 
-      <li>
-        <a class="post-link" href="/software/2014/07/29/Byzanz-linux.html">Byzanz-linux下的gif制作软件 </a>
-       <span class="post-date">July 29, 2014</span>
-      </li>
 
-    
+Report
+======
+68 statements analysed.
 
-      <li>
-        <a class="post-link" href="/vim/2014/07/28/vim-setting.html">我的vim设置 </a>
-       <span class="post-date">July 28, 2014</span>
-      </li>
+Raw metrics
+-----------
 
-    
++----------+-------+------+---------+-----------+
+|type      |number |%     |previous |difference |
++==========+=======+======+=========+===========+
+|code      |70     |77.78 |70       |=          |
++----------+-------+------+---------+-----------+
+|docstring |12     |13.33 |12       |=          |
++----------+-------+------+---------+-----------+
+|comment   |2      |2.22  |2        |=          |
++----------+-------+------+---------+-----------+
+|empty     |6      |6.67  |6        |=          |
++----------+-------+------+---------+-----------+
 
-      <li>
-        <a class="post-link" href="/github/2014/07/25/git-skill.html">git使用总结 </a>
-       <span class="post-date">July 25, 2014</span>
-      </li>
 
-    
 
-      <li>
-        <a class="post-link" href="/core%20python%20programming/2014/07/10/core-python(6).html">Core Python programming（6） </a>
-       <span class="post-date">July 10, 2014</span>
-      </li>
+Statistics by type
+------------------
 
-    
++---------+-------+-----------+-----------+------------+---------+
+|type     |number |old number |difference |%documented |%badname |
++=========+=======+===========+===========+============+=========+
+|module   |1      |1          |=          |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|class    |1      |1          |=          |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|method   |6      |6          |=          |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|function |1      |1          |=          |0.00        |0.00     |
++---------+-------+-----------+-----------+------------+---------+
 
-      <li>
-        <a class="post-link" href="/python/2014/07/09/file-contrl.html">Python文件遍历方法 </a>
-       <span class="post-date">July  9, 2014</span>
-      </li>
 
-    
 
-      <li>
-        <a class="post-link" href="/core%20python%20programming/2014/07/08/core-python(5).html">Core Python programming（5） </a>
-       <span class="post-date">July  8, 2014</span>
-      </li>
+Messages by category
+--------------------
 
-    
++-----------+-------+---------+-----------+
+|type       |number |previous |difference |
++===========+=======+=========+===========+
+|convention |1      |1        |=          |
++-----------+-------+---------+-----------+
+|refactor   |0      |0        |=          |
++-----------+-------+---------+-----------+
+|warning    |0      |1        |-1.00      |
++-----------+-------+---------+-----------+
+|error      |0      |0        |=          |
++-----------+-------+---------+-----------+
 
-      <li>
-        <a class="post-link" href="/core%20python%20programming/2014/06/28/core-python(4).html">Core Python programming（4） </a>
-       <span class="post-date">June 28, 2014</span>
-      </li>
 
-    
 
-      <li>
-        <a class="post-link" href="/simulink/2014/06/28/PID.html">PID控制器 </a>
-       <span class="post-date">June 28, 2014</span>
-      </li>
+Messages
+--------
 
-    
++------------------+------------+
+|message id        |occurrences |
++==================+============+
+|missing-docstring |1           |
++------------------+------------+
 
-      <li>
-        <a class="post-link" href="/core%20python%20programming/2014/06/27/core-python(3).html">Core Python programming（3） </a>
-       <span class="post-date">June 27, 2014</span>
-      </li>
 
-    
 
-      <li>
-        <a class="post-link" href="/core%20python%20programming/2014/06/21/core-python(2).html">Core Python programming（2） </a>
-       <span class="post-date">June 21, 2014</span>
-      </li>
+Global evaluation
+-----------------
+Your code has been rated at 9.85/10 (previous run: 9.71/10, +0.15)
 
-    
+Duplication
+-----------
 
-      <li>
-        <a class="post-link" href="/blog/2014/06/14/jekyll-markdown.html">jekyll的markdown设置 </a>
-       <span class="post-date">June 14, 2014</span>
-      </li>
++-------------------------+------+---------+-----------+
+|                         |now   |previous |difference |
++=========================+======+=========+===========+
+|nb duplicated lines      |0     |0        |=          |
++-------------------------+------+---------+-----------+
+|percent duplicated lines |0.000 |0.000    |=          |
++-------------------------+------+---------+-----------+
+</code></pre></div>
+<h2>常用参数</h2>
 
-    
+<ul>
+<li><p>-h,--help
+显示所有帮助信息。</p></li>
+<li><p>--generate-rcfile
+可以使用 pylint --generate-rcfile 来生成一个配置文件示例。可以使用重定向把这个配置文件保存下来用做以后使用。也可以在前面加上其它选项，使这些选项的值被包含在这个产生的配置文件里。如：pylint --persistent=n --generate-rcfile &gt; pylint.conf，查看 pylint.conf，可以看到 persistent=no，而不再是其默认值 yes。</p></li>
+<li><p>--rcfile=<file>
+指定一个配置文件。把使用的配置放在配置文件中，这样不仅规范了自己代码，也可以方便地和别人共享这些规范。</p></li>
+<li><p>-i <y_or_n>, --include-ids=<y_or_n>
+在输出中包含 message 的 id, 然后通过 pylint --help-msg=<msg-id>来查看这个错误的详细信息，这样可以具体地定位错误。</p></li>
+<li><p>-r <y_or_n>, --reports=<y_or_n>
+默认是 y, 表示 Pylint 的输出中除了包含源代码分析部分，也包含报告部分。</p></li>
+<li><p>--files-output=<y_or_n>
+将每个 module /package 的 message 输出到一个以 pylint_module/package. [txt|html] 命名的文件中，如果有 report 的话，输出到名为 pylint_global.[txt|html] 的文件中。默认是输出到屏幕上不输出到文件里。</p></li>
+<li><p>-f <format>, --output-format=<format>
+设置输出格式。可以选择的格式有 text, parseable, colorized, msvs (visual studio) 和 html, 默认的输出格式是 text。</p></li>
+<li><p>--disable-msg=<msg ids>
+禁止指定 id 的 message. 比如说输出中包含了 W0402 这个 warning 的 message, 如果不希望它在输出中出现，可以使用 --disable-msg= W0402</p></li>
+</ul>
 
-      <li>
-        <a class="post-link" href="/core%20python%20programming/2014/06/13/core-python.html">Core Python programming（1） </a>
-       <span class="post-date">June 13, 2014</span>
-      </li>
+<h2>常见错误</h2>
 
-    
+<p>以下是我常出现的错误</p>
 
-      <li>
-        <a class="post-link" href="/github/2014/06/10/github.html">Set Github </a>
-       <span class="post-date">June 10, 2014</span>
-      </li>
+<ol>
+<li>忘记加docstring</li>
+<li>沿用old class style(new class = class Foo(object))</li>
+<li>变量名有时候会在<code>__builtin__</code>里</li>
+<li>不支持的变量名(i,j,k)</li>
+<li>没有用到的import和变量</li>
+</ol>
 
-    
+<p>差不多就这些吧,不过对于评分系统大可不必在意,标准是因人而定的,得多少就看缘分了~~~</p>
 
-      <li>
-        <a class="post-link" href="/sublime/2014/06/09/sublime.html">Set Sublime 2/3 </a>
-       <span class="post-date">June  9, 2014</span>
-      </li>
+  </article>
 
-    
-
-      <li>
-        <a class="post-link" href="/test/2014/06/02/test-markdown.html">GFM markdown style </a>
-       <span class="post-date">June  2, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/blog/2014/06/01/jekyll-latex.html">Jekyll使用MathJax来显示数学式 </a>
-       <span class="post-date">June  1, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/cs/2014/06/01/LNU-network.html">2014辽大计算机网络复习题 </a>
-       <span class="post-date">June  1, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/test/2014/05/29/test.html">TEST </a>
-       <span class="post-date">May 29, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/python/2014/05/02/pip.html">python包管理工具-pip </a>
-       <span class="post-date">May  2, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/python-cookbook/2014/04/20/pythoncookbook.html">python-cookbook </a>
-       <span class="post-date">April 20, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/cs/2014/04/06/qimo.html">2014辽大分布式操作系统复习题 </a>
-       <span class="post-date">April  6, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/css/2014/04/06/CSS.html">CSS基础教程 </a>
-       <span class="post-date">April  6, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/blog/2014/01/01/welcome-to-jekyll.html">Welcome to Jekyll! </a>
-       <span class="post-date">January  1, 2014</span>
-      </li>
-
-    
-  </ul>
-
+<!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/python/2014/08/07/pylint"  data-title="Pythonic检测工具--Pylint - Limbo's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
 
 </div>
-
       </div>
 
 

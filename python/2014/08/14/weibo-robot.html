@@ -4,12 +4,12 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Limbo's Blog</title>
+    <title>Python实现微博终端机器人</title>
     <link rel="shortcut icon" href=" /img/github.ico"/>
     <link rel="bookmark" href="/img/github.ico"/>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Python,HTML,CSS,Machine Leaning">
-    <link rel="canonical" href="http://taizilongxu.github.io/">
+    <link rel="canonical" href="http://taizilongxu.github.io/python/2014/08/14/weibo-robot.html">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/main.css">
@@ -208,199 +208,65 @@
 
     <div class="page-content">
       <div class="wrap">
-      <div class="home">
+      <div class="post">
 
- 
-  <ul class="posts">
-
+  <header class="post-header">
+    <h1>Python实现微博终端机器人</h1>
+    <p class="meta"><span class="pre">date:</span>Aug 14, 2014
+    <span class="pre">categories:</span>python <span class="pre">tags:</span>python 
+    </p>
     
+  </header>
 
-      <li>
-        <a class="post-link" href="/python/2014/08/14/weibo-robot.html">Python实现微博终端机器人 </a>
-       <span class="post-date">August 14, 2014</span>
-      </li>
+  <article class="post-content">
+  <p>为了满足需要,做了这个程序~~没事玩玩的(最主要的是可以远程关机),手机或其他终端发送一个微博,主机就可以接受到命令,运行命令.项目地址<a href="https://github.com/taizilongxu/weibo_robot">https://github.com/taizilongxu/weibo_robot</a></p>
 
-    
+<p>利用这个代码,可以实现自动化发送,评论,还可以收集微博的各种信息,也可以无限扩展啊</p>
 
-      <li>
-        <a class="post-link" href="/python/2014/08/07/pylint.html">Pythonic检测工具--Pylint </a>
-       <span class="post-date">August  7, 2014</span>
-      </li>
+<p><img src="https://github.com/taizilongxu/weibo_robot/raw/master/pic/1.png" alt=""></p>
 
-    
+<p><img src="https://github.com/taizilongxu/weibo_robot/raw/master/pic/2.png" alt=""></p>
 
-      <li>
-        <a class="post-link" href="/python/2014/08/05/zhihu-interviw.html">知乎面试题 </a>
-       <span class="post-date">August  5, 2014</span>
-      </li>
+<h2>需要写入的参数</h2>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">APP_KEY</span> <span class="o">=</span> <span class="s">&#39;&#39;</span> <span class="c"># app key</span>
+<span class="n">APP_SECRET</span> <span class="o">=</span> <span class="s">&#39;&#39;</span> <span class="c"># app secret</span>
+<span class="n">CALLBACK_URL</span> <span class="o">=</span> <span class="s">&#39;&#39;</span> <span class="c"># callback url</span>
+<span class="n">AUTH_URL</span> <span class="o">=</span> <span class="s">&#39;https://api.weibo.com/oauth2/authorize&#39;</span>
+<span class="n">USERID</span> <span class="o">=</span> <span class="s">&#39;&#39;</span> <span class="c"># userid</span>
+<span class="n">PASSWD</span> <span class="o">=</span> <span class="s">&#39;&#39;</span> <span class="c">#password</span>
+</code></pre></div>
+<p>其中前3项需要自己注册新浪的API然后填入进程序,注意要和USERID是一个账号,否则后面的认证就会失败.</p>
 
-    
+<p>后两项就是账号和密码了.</p>
 
-      <li>
-        <a class="post-link" href="/software/2014/07/29/Byzanz-linux.html">Byzanz-linux下的gif制作软件 </a>
-       <span class="post-date">July 29, 2014</span>
-      </li>
+<h2>运行</h2>
 
-    
+<p>在开机启动时自动启动脚本,然后~~~就可以了</p>
 
-      <li>
-        <a class="post-link" href="/vim/2014/07/28/vim-setting.html">我的vim设置 </a>
-       <span class="post-date">July 28, 2014</span>
-      </li>
+<h2>过程难点</h2>
 
-    
+<p>新浪的API需要返回一个code,网上大多数程序都是手动打开网页再获取code填入程序(这样一点也不科学!!)</p>
 
-      <li>
-        <a class="post-link" href="/github/2014/07/25/git-skill.html">git使用总结 </a>
-       <span class="post-date">July 25, 2014</span>
-      </li>
+<p>参考了<a href="http://blog.segmentfault.com/hongfei/1190000000343851">Python：模拟登录以获取新浪微博OAuth的code参数值</a>这篇文章,可以自动输入code了(哦也)</p>
 
-    
+<h2>运行依赖</h2>
 
-      <li>
-        <a class="post-link" href="/core%20python%20programming/2014/07/10/core-python(6).html">Core Python programming（6） </a>
-       <span class="post-date">July 10, 2014</span>
-      </li>
+<p>Python 2.7
+weibo
+urllib2
+urllib
+time
+subprocess</p>
 
-    
+  </article>
 
-      <li>
-        <a class="post-link" href="/python/2014/07/09/file-contrl.html">Python文件遍历方法 </a>
-       <span class="post-date">July  9, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/core%20python%20programming/2014/07/08/core-python(5).html">Core Python programming（5） </a>
-       <span class="post-date">July  8, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/core%20python%20programming/2014/06/28/core-python(4).html">Core Python programming（4） </a>
-       <span class="post-date">June 28, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/simulink/2014/06/28/PID.html">PID控制器 </a>
-       <span class="post-date">June 28, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/core%20python%20programming/2014/06/27/core-python(3).html">Core Python programming（3） </a>
-       <span class="post-date">June 27, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/core%20python%20programming/2014/06/21/core-python(2).html">Core Python programming（2） </a>
-       <span class="post-date">June 21, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/blog/2014/06/14/jekyll-markdown.html">jekyll的markdown设置 </a>
-       <span class="post-date">June 14, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/core%20python%20programming/2014/06/13/core-python.html">Core Python programming（1） </a>
-       <span class="post-date">June 13, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/github/2014/06/10/github.html">Set Github </a>
-       <span class="post-date">June 10, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/sublime/2014/06/09/sublime.html">Set Sublime 2/3 </a>
-       <span class="post-date">June  9, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/test/2014/06/02/test-markdown.html">GFM markdown style </a>
-       <span class="post-date">June  2, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/blog/2014/06/01/jekyll-latex.html">Jekyll使用MathJax来显示数学式 </a>
-       <span class="post-date">June  1, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/cs/2014/06/01/LNU-network.html">2014辽大计算机网络复习题 </a>
-       <span class="post-date">June  1, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/test/2014/05/29/test.html">TEST </a>
-       <span class="post-date">May 29, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/python/2014/05/02/pip.html">python包管理工具-pip </a>
-       <span class="post-date">May  2, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/python-cookbook/2014/04/20/pythoncookbook.html">python-cookbook </a>
-       <span class="post-date">April 20, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/cs/2014/04/06/qimo.html">2014辽大分布式操作系统复习题 </a>
-       <span class="post-date">April  6, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/css/2014/04/06/CSS.html">CSS基础教程 </a>
-       <span class="post-date">April  6, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a class="post-link" href="/blog/2014/01/01/welcome-to-jekyll.html">Welcome to Jekyll! </a>
-       <span class="post-date">January  1, 2014</span>
-      </li>
-
-    
-  </ul>
-
+<!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/python/2014/08/14/weibo-robot"  data-title="Python实现微博终端机器人 - Limbo's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
 
 </div>
-
       </div>
 
 
