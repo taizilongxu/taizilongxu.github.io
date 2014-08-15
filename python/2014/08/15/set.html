@@ -4,12 +4,12 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Categories</title>
+    <title>Python集合的使用</title>
     <link rel="shortcut icon" href=" /img/github.ico"/>
     <link rel="bookmark" href="/img/github.ico"/>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Python,HTML,CSS,Machine Leaning">
-    <link rel="canonical" href="http://taizilongxu.github.io/categories/">
+    <link rel="canonical" href="http://taizilongxu.github.io/python/2014/08/15/set.html">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/main.css">
@@ -211,249 +211,87 @@
       <div class="post">
 
   <header class="post-header">
-    <h1>Categories</h1>
+    <h1>Python集合的使用</h1>
+    <p class="meta"><span class="pre">date:</span>Aug 15, 2014
+    <span class="pre">categories:</span>python <span class="pre">tags:</span>python 
+    </p>
+    
   </header>
 
-  <article class="category">
-  <div class="title">
-<p>
+  <article class="post-content">
+  <p>Python中除了字典,列表,元组还有一个非常好用的数据结构,那就是set了,灵活的运用set可以减去不少的操作(虽然set可以用列表代替)</p>
 
-<a href="#blog">blog</a><span  class="category-number">3</span>
+<h3>小例子</h3>
 
-<a href="#css">css</a><span  class="category-number">1</span>
+<ol>
+<li><p>如果我要在许多列表中找出相同的项,那么用集合是最好不过的了,用集合只用一行就可以解决</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">x</span> <span class="o">&amp;</span> <span class="n">y</span> <span class="o">&amp;</span> <span class="n">z</span> <span class="c"># 交集</span>
+</code></pre></div></li>
+<li><p>去重
+```python</p>
 
-<a href="#cs">cs</a><span  class="category-number">2</span>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>lst = [1,2,3,4,1]
+print list(set(lst))
+[1, 2, 3, 4]
+```</p>
+</blockquote>
+</blockquote>
+</blockquote></li>
+</ol>
 
-<a href="#python-cookbook">python-cookbook</a><span  class="category-number">1</span>
+<h2>用法</h2>
 
-<a href="#python">python</a><span  class="category-number">7</span>
+<p>注意set因为没有位置的概念所以list方法切片什么的都没有用,需要的时候再转化为list</p>
 
-<a href="#test">test</a><span  class="category-number">2</span>
+<h4>内建函数创建set</h4>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+</code></pre></div>
+<h4>基本操作</h4>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">t</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">)</span>            <span class="c"># 添加一项</span>
+<span class="n">s</span><span class="o">.</span><span class="n">update</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">37</span><span class="p">,</span><span class="mi">42</span><span class="p">])</span>  <span class="c"># 在s中添加多项</span>
 
-<a href="#sublime">sublime</a><span  class="category-number">1</span>
+<span class="n">t</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s">&#39;H&#39;</span><span class="p">)</span> <span class="c"># 删除一项</span>
 
-<a href="#github">github</a><span  class="category-number">2</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>  <span class="c"># set 的长度</span>
 
-<a href="#core python programming">core python programming</a><span  class="category-number">6</span>
+<span class="n">x</span> <span class="ow">in</span> <span class="n">s</span> <span class="c"># 测试 x 是否是 s 的成员  </span>
 
-<a href="#simulink">simulink</a><span  class="category-number">1</span>
+<span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">s</span>   <span class="c"># 测试 x 是否不是 s 的成员  </span>
 
-<a href="#vim">vim</a><span  class="category-number">1</span>
+<span class="n">s</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>  
+<span class="n">s</span> <span class="o">&lt;=</span> <span class="n">t</span>  <span class="c"># 测试是否 s 中的每一个元素都在 t 中  </span>
 
-<a href="#software">software</a><span  class="category-number">1</span>
-  
-</p>
-</div>
+<span class="n">s</span><span class="o">.</span><span class="n">issuperset</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>  
+<span class="n">s</span> <span class="o">&gt;=</span> <span class="n">t</span>  <span class="c"># 测试是否 t 中的每一个元素都在 s 中  </span>
 
-<hr>
-<p><a name="blog" href="#blog">blog</a><span  class="category-number">3</span></p>
+<span class="n">s</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>  
+<span class="n">s</span> <span class="o">|</span> <span class="n">t</span>  <span class="c"># 返回一个新的 set 包含 s 和 t 中的每一个元素  </span>
 
-<ul class="arc-list">
-    
-        <li><span class="category-date">2014-06-14</span>         
-        <a href="/blog/2014/06/14/jekyll-markdown.html">jekyll的markdown设置</a>  
-                </li>
-    
-        <li><span class="category-date">2014-06-01</span>         
-        <a href="/blog/2014/06/01/jekyll-latex.html">Jekyll使用MathJax来显示数学式</a>  
-                </li>
-    
-        <li><span class="category-date">2014-01-01</span>         
-        <a href="/blog/2014/01/01/welcome-to-jekyll.html">Welcome to Jekyll!</a>  
-                </li>
-    
-</ul>
+<span class="n">s</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>  
+<span class="n">s</span> <span class="o">&amp;</span> <span class="n">t</span>  <span class="c"># 返回一个新的 set 包含 s 和 t 中的公共元素  </span>
 
+<span class="n">s</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>  
+<span class="n">s</span> <span class="o">-</span> <span class="n">t</span>  <span class="c"># 返回一个新的 set 包含 s 中有但是 t 中没有的元素  </span>
 
-<hr>
-<p><a name="css" href="#css">css</a><span  class="category-number">1</span></p>
+<span class="n">s</span><span class="o">.</span><span class="n">symmetric_difference</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>  
+<span class="n">s</span> <span class="o">^</span> <span class="n">t</span>  <span class="c"># 返回一个新的 set 包含 s 和 t 中不重复的元素  </span>
 
-<ul class="arc-list">
-    
-        <li><span class="category-date">2014-04-06</span>         
-        <a href="/css/2014/04/06/CSS.html">CSS基础教程</a>  
-                </li>
-    
-</ul>
+<span class="n">s</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>  <span class="c"># 返回 set “s”的一个浅复制  </span>
+</code></pre></div>
+<h3>参考资料</h3>
 
-
-<hr>
-<p><a name="cs" href="#cs">cs</a><span  class="category-number">2</span></p>
-
-<ul class="arc-list">
-    
-        <li><span class="category-date">2014-06-01</span>         
-        <a href="/cs/2014/06/01/LNU-network.html">2014辽大计算机网络复习题</a>  
-                </li>
-    
-        <li><span class="category-date">2014-04-06</span>         
-        <a href="/cs/2014/04/06/qimo.html">2014辽大分布式操作系统复习题</a>  
-                </li>
-    
-</ul>
-
-
-<hr>
-<p><a name="python-cookbook" href="#python-cookbook">python-cookbook</a><span  class="category-number">1</span></p>
-
-<ul class="arc-list">
-    
-        <li><span class="category-date">2014-04-20</span>         
-        <a href="/python-cookbook/2014/04/20/pythoncookbook.html">python-cookbook</a>  
-                </li>
-    
-</ul>
-
-
-<hr>
-<p><a name="python" href="#python">python</a><span  class="category-number">7</span></p>
-
-<ul class="arc-list">
-    
-        <li><span class="category-date">2014-08-15</span>         
-        <a href="/python/2014/08/15/set.html">Python集合的使用</a>  
-                </li>
-    
-        <li><span class="category-date">2014-08-15</span>         
-        <a href="/python/2014/08/15/getopt.html">Python命令行参数-getopt</a>  
-                </li>
-    
-        <li><span class="category-date">2014-08-14</span>         
-        <a href="/python/2014/08/14/weibo-robot.html">Python实现微博终端机器人</a>  
-                </li>
-    
-        <li><span class="category-date">2014-08-07</span>         
-        <a href="/python/2014/08/07/pylint.html">Pythonic检测工具--Pylint</a>  
-                </li>
-    
-        <li><span class="category-date">2014-08-05</span>         
-        <a href="/python/2014/08/05/zhihu-interviw.html">知乎面试题</a>  
-                </li>
-    
-        <li><span class="category-date">2014-07-09</span>         
-        <a href="/python/2014/07/09/file-contrl.html">Python文件遍历方法</a>  
-                </li>
-    
-        <li><span class="category-date">2014-05-02</span>         
-        <a href="/python/2014/05/02/pip.html">python包管理工具-pip</a>  
-                </li>
-    
-</ul>
-
-
-<hr>
-<p><a name="test" href="#test">test</a><span  class="category-number">2</span></p>
-
-<ul class="arc-list">
-    
-        <li><span class="category-date">2014-06-02</span>         
-        <a href="/test/2014/06/02/test-markdown.html">GFM markdown style</a>  
-                </li>
-    
-        <li><span class="category-date">2014-05-29</span>         
-        <a href="/test/2014/05/29/test.html">TEST</a>  
-                </li>
-    
-</ul>
-
-
-<hr>
-<p><a name="sublime" href="#sublime">sublime</a><span  class="category-number">1</span></p>
-
-<ul class="arc-list">
-    
-        <li><span class="category-date">2014-06-09</span>         
-        <a href="/sublime/2014/06/09/sublime.html">Set Sublime 2/3</a>  
-                </li>
-    
-</ul>
-
-
-<hr>
-<p><a name="github" href="#github">github</a><span  class="category-number">2</span></p>
-
-<ul class="arc-list">
-    
-        <li><span class="category-date">2014-07-25</span>         
-        <a href="/github/2014/07/25/git-skill.html">git使用总结</a>  
-                </li>
-    
-        <li><span class="category-date">2014-06-10</span>         
-        <a href="/github/2014/06/10/github.html">Set Github</a>  
-                </li>
-    
-</ul>
-
-
-<hr>
-<p><a name="core python programming" href="#core python programming">core python programming</a><span  class="category-number">6</span></p>
-
-<ul class="arc-list">
-    
-        <li><span class="category-date">2014-07-10</span>         
-        <a href="/core%20python%20programming/2014/07/10/core-python(6).html">Core Python programming（6）</a>  
-                </li>
-    
-        <li><span class="category-date">2014-07-08</span>         
-        <a href="/core%20python%20programming/2014/07/08/core-python(5).html">Core Python programming（5）</a>  
-                </li>
-    
-        <li><span class="category-date">2014-06-28</span>         
-        <a href="/core%20python%20programming/2014/06/28/core-python(4).html">Core Python programming（4）</a>  
-                </li>
-    
-        <li><span class="category-date">2014-06-27</span>         
-        <a href="/core%20python%20programming/2014/06/27/core-python(3).html">Core Python programming（3）</a>  
-                </li>
-    
-        <li><span class="category-date">2014-06-21</span>         
-        <a href="/core%20python%20programming/2014/06/21/core-python(2).html">Core Python programming（2）</a>  
-                </li>
-    
-        <li><span class="category-date">2014-06-13</span>         
-        <a href="/core%20python%20programming/2014/06/13/core-python.html">Core Python programming（1）</a>  
-                </li>
-    
-</ul>
-
-
-<hr>
-<p><a name="simulink" href="#simulink">simulink</a><span  class="category-number">1</span></p>
-
-<ul class="arc-list">
-    
-        <li><span class="category-date">2014-06-28</span>         
-        <a href="/simulink/2014/06/28/PID.html">PID控制器</a>  
-                </li>
-    
-</ul>
-
-
-<hr>
-<p><a name="vim" href="#vim">vim</a><span  class="category-number">1</span></p>
-
-<ul class="arc-list">
-    
-        <li><span class="category-date">2014-07-28</span>         
-        <a href="/vim/2014/07/28/vim-setting.html">我的vim设置</a>  
-                </li>
-    
-</ul>
-
-
-<hr>
-<p><a name="software" href="#software">software</a><span  class="category-number">1</span></p>
-
-<ul class="arc-list">
-    
-        <li><span class="category-date">2014-07-29</span>         
-        <a href="/software/2014/07/29/Byzanz-linux.html">Byzanz-linux下的gif制作软件</a>  
-                </li>
-    
-</ul>
-
+<p><a href="http://blog.csdn.net/business122/article/details/7541486">Python集合（set）类型的操作</a></p>
 
   </article>
+
+<!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/python/2014/08/15/set"  data-title="Python集合的使用 - Limbo's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
 
 </div>
       </div>
