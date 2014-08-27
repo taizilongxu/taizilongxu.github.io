@@ -4,12 +4,12 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Archive</title>
+    <title>Github不再需要密码,ssh连接模式</title>
     <link rel="shortcut icon" href=" /img/github.ico"/>
     <link rel="bookmark" href="/img/github.ico"/>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Python,HTML,CSS,Machine Leaning">
-    <link rel="canonical" href="http://taizilongxu.github.io/archive/">
+    <link rel="canonical" href="http://taizilongxu.github.io/github/2014/08/27/github-ssh.html">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/main.css">
@@ -211,230 +211,57 @@
       <div class="post">
 
   <header class="post-header">
-    <h1>Archive</h1>
+    <h1>Github不再需要密码,ssh连接模式</h1>
+    <p class="meta"><span class="pre">date:</span>Aug 27, 2014
+    <span class="pre">categories:</span>github <span class="pre">tags:</span>github 
+    </p>
+    
   </header>
 
-  <article class="category">
-      
+  <article class="post-content">
+  <p>只介绍主要方法</p>
 
-      <li>
-        <a href="/github/2014/08/27/github-ssh.html">Github不再需要密码,ssh连接模式 </a>
-       <span class="category-date">August 27, 2014</span>
-      </li>
+<p>总共分3部:</p>
 
-    
+<ol>
+<li>本地生成ssh密钥</li>
+<li>github上生成公钥</li>
+<li>修改git的remote url为ssh协议</li>
+</ol>
 
-      <li>
-        <a href="/linux/2014/08/21/ubuntu-reset.html">Ubuntu迁移系统,SSD与HDD混盘分区 </a>
-       <span class="category-date">August 21, 2014</span>
-      </li>
+<h3>1 生成密钥对</h3>
 
-    
+<p>再linux主机下</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text"> ssh-keygen -t rsa -C “468137306@qq.com”
+</code></pre></div>
+<p>在~/.ssh下会产生id_rsa和id_rsa.pub两个文件</p>
 
-      <li>
-        <a href="/core%20python%20programming/2014/08/19/core-python(7).html">Core Python programming（7） </a>
-       <span class="category-date">August 19, 2014</span>
-      </li>
+<h3>2 添加密钥到github</h3>
 
-    
+<p>进入github的settings里左侧有个SSHkeys,看到那个add一个就行</p>
 
-      <li>
-        <a href="/python/2014/08/15/set.html">Python集合的使用 </a>
-       <span class="category-date">August 15, 2014</span>
-      </li>
+<p>把id_rsa.pub里的密钥放入这里就可以了(注意不要多加空格)</p>
 
-    
+<p>用下面的命令测试</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text"> ssh -T git@github.com
+</code></pre></div>
+<p>输出</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">PTY allocation request failed on channel 0
+Hi taizilongxu! You&#39;ve successfully authenticated, but GitHub does not provide shell access.
+Connection to github.com closed.
+</code></pre></div>
+<h3>3 修改git的remote url</h3>
 
-      <li>
-        <a href="/python/2014/08/15/getopt.html">Python命令行参数-getopt </a>
-       <span class="category-date">August 15, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a href="/python/2014/08/14/weibo-robot.html">Python实现微博终端机器人 </a>
-       <span class="category-date">August 14, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a href="/python/2014/08/07/pylint.html">Pythonic检测工具--Pylint </a>
-       <span class="category-date">August  7, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a href="/python/2014/08/05/zhihu-interviw.html">知乎面试题 </a>
-       <span class="category-date">August  5, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a href="/software/2014/07/29/Byzanz-linux.html">Byzanz-linux下的gif制作软件 </a>
-       <span class="category-date">July 29, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a href="/vim/2014/07/28/vim-setting.html">我的vim设置 </a>
-       <span class="category-date">July 28, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a href="/github/2014/07/25/git-skill.html">git使用总结 </a>
-       <span class="category-date">July 25, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a href="/core%20python%20programming/2014/07/10/core-python(6).html">Core Python programming（6） </a>
-       <span class="category-date">July 10, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a href="/python/2014/07/09/file-contrl.html">Python文件遍历方法 </a>
-       <span class="category-date">July  9, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a href="/core%20python%20programming/2014/07/08/core-python(5).html">Core Python programming（5） </a>
-       <span class="category-date">July  8, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a href="/core%20python%20programming/2014/06/28/core-python(4).html">Core Python programming（4） </a>
-       <span class="category-date">June 28, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a href="/simulink/2014/06/28/PID.html">PID控制器 </a>
-       <span class="category-date">June 28, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a href="/core%20python%20programming/2014/06/27/core-python(3).html">Core Python programming（3） </a>
-       <span class="category-date">June 27, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a href="/core%20python%20programming/2014/06/21/core-python(2).html">Core Python programming（2） </a>
-       <span class="category-date">June 21, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a href="/blog/2014/06/14/jekyll-markdown.html">jekyll的markdown设置 </a>
-       <span class="category-date">June 14, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a href="/core%20python%20programming/2014/06/13/core-python.html">Core Python programming（1） </a>
-       <span class="category-date">June 13, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a href="/github/2014/06/10/github.html">Set Github </a>
-       <span class="category-date">June 10, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a href="/sublime/2014/06/09/sublime.html">Set Sublime 2/3 </a>
-       <span class="category-date">June  9, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a href="/test/2014/06/02/test-markdown.html">GFM markdown style </a>
-       <span class="category-date">June  2, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a href="/blog/2014/06/01/jekyll-latex.html">Jekyll使用MathJax来显示数学式 </a>
-       <span class="category-date">June  1, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a href="/cs/2014/06/01/LNU-network.html">2014辽大计算机网络复习题 </a>
-       <span class="category-date">June  1, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a href="/test/2014/05/29/test.html">TEST </a>
-       <span class="category-date">May 29, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a href="/python/2014/05/02/pip.html">python包管理工具-pip </a>
-       <span class="category-date">May  2, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a href="/python-cookbook/2014/04/20/pythoncookbook.html">python-cookbook </a>
-       <span class="category-date">April 20, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a href="/cs/2014/04/06/qimo.html">2014辽大分布式操作系统复习题 </a>
-       <span class="category-date">April  6, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a href="/css/2014/04/06/CSS.html">CSS基础教程 </a>
-       <span class="category-date">April  6, 2014</span>
-      </li>
-
-    
-
-      <li>
-        <a href="/blog/2014/01/01/welcome-to-jekyll.html">Welcome to Jekyll! </a>
-       <span class="category-date">January  1, 2014</span>
-      </li>
-
-    
+<p>一般在./.git/config中修改url = ssh地址就可以了
+以后就可以和密码说88了</p>
 
   </article>
+
+<!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/github/2014/08/27/github-ssh"  data-title="Github不再需要密码,ssh连接模式 - Limbo's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
 
 </div>
       </div>
