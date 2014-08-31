@@ -31,6 +31,7 @@ a:visited { color: #205caa; }
   max-width: 830px;
   margin: 0 auto;
   zoom: 1;
+  text-align: left;
 }
 
 
@@ -84,8 +85,9 @@ a:visited { color: #205caa; }
 .site-footer {
   border-top: 1px solid #e8e8e8;
   padding-top:20px;
+  padding-bottom:30px;
   position: relative;
-	margin-top: -50px; /* footeré«åº¦çè´å¼ */
+	margin-top: -50px;
 	height: 50px;
 	clear:both;
 }
@@ -105,23 +107,22 @@ a:visited { color: #205caa; }
   width: -moz-calc(35% - 10px);
   width: -o-calc(35% - 10px);
   width: calc(35% - 10px);
-  margin-right: 10px
+  margin-top: 27px;
 }
-.footer-col-2 {
-  width: 175px; /*fallback*/
-  width: -webkit-calc(23.125% - 10px);
-  width: -moz-calc(23.125% - 10px);
-  width: -o-calc(23.125% - 10px);
-  width: calc(23.125% - 10px);
-  margin-right: 10px
+
+.footer-col-1 a{
+  color:#A8A8A8;
+  transition:padding 0.6s;
+  padding-left:60px;
+  font-weight:bold;
 }
-.footer-col-3 {
-  width: 335px; /*fallback*/
-  width: -webkit-calc(41.875%);
-  width: -moz-calc(41.875%);
-  width: -o-calc(41.875%);
-  width: calc(41.875%);
+
+.footer-col-1 a:hover {
+  color: #00a9a9;
+  text-decoration: none;
+  padding-left: 80px;
 }
+
 
 .site-footer ul { list-style: none; }
 
@@ -132,15 +133,21 @@ a:visited { color: #205caa; }
   color: #828282;
 }
 
-.github-icon-svg,
-.twitter-icon-svg {
+.github-icon-svg {
   display: inline-block;
-  width: 20px;
-  height: 20px;
-  position: relative;
-  top: 3px;
+  width: 40px;
+  height: 40px;
 }
 
+.github {
+  position: absolute;
+  transition: transform 0.5s ease-out;
+  top:33px;
+}
+
+.github:hover{
+  transform:rotateZ(360deg);
+}
 
 /* Page Content styles */
 /* ----------------------------------------------------------*/
@@ -176,6 +183,7 @@ a:visited { color: #205caa; }
   line-height: 1;
   font-weight: bold;
   color: #525252;
+  text-align: left;
 }
 
 .post-link :hover{ color:#000000; }
@@ -325,7 +333,7 @@ text-align: -webkit-match-parent;
   border-top-right-radius:5px;
   border-bottom-right-radius:5px;
   padding:10px 15px;
-  overflow:overlay;
+  overflow:auto;
 }
 .post pre code {
   background-color:transparent !important
@@ -369,7 +377,7 @@ text-align: -webkit-match-parent;
   .footer-col-1 { width: 50%; }
 
   .footer-col-2 {
-    width: 45%; /*fallback*/
+    width: 45%;
     width: -webkit-calc(50% - 10px);
     width: -moz-calc(50% - 10px);
     width: -o-calc(50% - 10px);
@@ -558,19 +566,30 @@ img {
 /*分页器*/
 /* ----------------------------------------------------------*/
 .pagination{
-  padding-left:41px;
   padding-top:25px;
   padding-bottom:35px;
-  margin-bottom: 25px;
+  overflow:hidden;
   }
-ul{border:0; margin:0; padding:0;margin:0 auto;}
+#pagination-flickr {
+  border:0;
+  padding:4px 0;
+  margin:0;
+  float:left;
+  position:relative;
+  left:50%;
+  }
 
 #pagination-flickr li{
 border:0; margin:0; padding:0;
 font-size:20px;
 list-style:none;
 text-align:center;
+display:inline;
+float:left;
+position:relative;
+right:50%;
 }
+
 #pagination-flickr a{
 border:solid 1px #DDDDDD;
 margin-right:2px;
