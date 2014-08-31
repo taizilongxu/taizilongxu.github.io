@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/github.css">
 <script src="/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
+  <!-- 返回顶部 -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.js"></script>
 
 </head>
 
@@ -41,11 +44,26 @@
       </a>
       <div class="trigger">
         
-        <a class="page-link" href="/about/">About</a>
-        <a class="page-link" href="/archive/">Archive</a>
-        <a class="page-link" href="/categories/">Categories</a>
         
-        <a class="page-link" href="/lib/">Lib</a>
+          <a class="page-link" href="/about/">About</a>
+        
+        
+        
+          <a class="page-link" href="/archive/">Archive</a>
+        
+        
+        
+          <a class="page-link" href="/categories/">Categories</a>
+        
+        
+        
+        
+        
+          <a class="page-link" href="/lib/">Lib</a>
+        
+        
+        
+        
         
         
       </div>
@@ -93,7 +111,8 @@ https://github.com/taizilongxu/wangdaoOJ.git
 <span class="n">username</span> <span class="o">=</span> <span class="s">&#39;taizilongxu&#39;</span>
 
 <span class="k">def</span> <span class="nf">git_ssh</span><span class="p">(</span><span class="n">rootdir</span><span class="p">,</span><span class="n">username</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">parent</span><span class="p">,</span><span class="n">dirnames</span><span class="p">,</span><span class="n">filenames</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">rootdir</span><span class="p">):</span>    <span class="c">#三个参数：分别返回1.父目录 2.所有文件夹名字（不含路径） 3.所有文件名字</span>
+    <span class="k">for</span> <span class="n">parent</span><span class="p">,</span><span class="n">dirnames</span><span class="p">,</span><span class="n">filenames</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">rootdir</span><span class="p">):</span>   
+    <span class="c">#三个参数：分别返回1.父目录 2.所有文件夹名字（不含路径） 3.所有文件名字</span>
         <span class="k">if</span> <span class="n">parent</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:]</span> <span class="o">==</span> <span class="s">&#39;.git&#39;</span><span class="p">:</span>
             <span class="k">if</span> <span class="s">&#39;config&#39;</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
                 <span class="n">path</span> <span class="o">=</span> <span class="n">parent</span> <span class="o">+</span> <span class="s">&#39;/&#39;</span> <span class="o">+</span> <span class="s">&#39;config&#39;</span>
@@ -157,6 +176,7 @@ https://github.com/taizilongxu/wangdaoOJ.git
       <p class="text">Python,HTML,CSS,Machine Leaning</p>
     </div>
   </div>
+  <div class="scroll-top"><i class="fa fa-arrow-circle-up"></i></div>
 </footer>
 
 
@@ -181,5 +201,23 @@ var duoshuoQuery = {short_name:"taizilongxu"};
          || document.getElementsByTagName('body')[0]).appendChild(ds);
     })();
     </script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.js"></script>
+    <script type="text/javascript">
+
+$(window).scroll(function() {
+
+    if($(this).scrollTop() > 100) {
+        $('.scroll-top').fadeIn(200);
+    } else {
+        $('.scroll-top').fadeOut(200);
+    }
+});
+
+$('.scroll-top').bind('click', function(e) {
+    e.preventDefault();
+    $('body,html').animate({scrollTop:0},200);
+});
+</script>
     </body>
 </html>

@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ubuntu迁移系统,SSD与HDD混盘分区</title>
+    <title>github中ssh替换https脚本</title>
     <link rel="shortcut icon" href=" /img/github.ico"/>
     <link rel="bookmark" href="/img/github.ico"/>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Python,HTML,CSS,Machine Leaning">
-    <link rel="canonical" href="http://taizilongxu.github.io/linux/2014/08/21/ubuntu-reset.html">
+    <link rel="canonical" href="http://taizilongxu.github.io/python/2014/08/30/githubssh-sh.html">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/main.css">
@@ -77,147 +77,62 @@
       <div class="post">
 
   <header class="post-header">
-    <h1>Ubuntu迁移系统,SSD与HDD混盘分区</h1>
-    <p class="meta"><span class="pre">date:</span>Aug 21, 2014
-    <span class="pre">categories:</span>linux <span class="pre">tags:</span>linux 
+    <h1>github中ssh替换https脚本</h1>
+    <p class="meta"><span class="pre">date:</span>Aug 30, 2014
+    <span class="pre">categories:</span>python <span class="pre">tags:</span>python 
     </p>
     
   </header>
 
   <article class="post-content">
-  <p>最近忍受不了打开matlab的速度,果断换了一个ssd,速度果然飞快.不过又得迁移一次系统,这重新安装一下软件,记录一下.</p>
+  <p>为了进一步提高程序效率(懒惰),把所有github项目的链接改成ssh,方便不用再打密码,哈哈</p>
 
-<p>最开始安装的是硬盘里的i386 32位的ubuntu,一开始没仔细看,等安完系统,下完sougou一看不满足依赖,这才检查了下系统,32位,真坑啊,于是又做了一下系统盘重新来了一遍.</p>
+<p>看了几个项目的共同点</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">git@github.com:taizilongxu/ici.git
+https://github.com/taizilongxu/ici.git
 
-<h4>分区策略</h4>
+git@github.com:taizilongxu/jekyll_blog_source.git
+https://github.com/taizilongxu/jekyll_blog_source.git
 
-<p>一共两张硬盘,一张500GHDD,一张128GSSD</p>
+git@github.com:taizilongxu/report.git
+https://github.com/taizilongxu/report.git
 
-<p>需求:因为想着放假回家要带着SSD,给我的老笔记本用着,平常的时候就放在实验室的台式里(毕竟天天你要用台式),所以SSD必须可单独拆卸,完整的安装系统,同时还要挂着那个台式机的HDD.</p>
-
-<p>ssd:</p>
-
-<ol>
-<li>/boot 200M</li>
-<li>swap 1000M</li>
-<li>/ 50000M</li>
-<li>/home 余下的空间</li>
-</ol>
-
-<p>hdd:</p>
-
-<ol>
-<li>/home/limbo/database 500G</li>
-</ol>
-
-<p>这样我就可以再台式机上用ssd做系统,hhd做仓库,把大容量的文件放进/home/limbo/database,方便存储,最后再装完系统后,改变一下database的权限就可以了</p>
-
-<p><strong>注意要建一个limbo的用户</strong></p>
-
-<h4>搜狗拼音</h4>
-
-<p>这货也挺坑的,按照<a href="http://pinyin.sogou.com/linux/">官网的地址</a>直接下载deb包,用软件中心直接傻瓜安装就可以了,这时候千万要注意了,许多网上教程要<strong>卸载ibus,fcitx</strong>什么的<strong>千万不要卸载</strong>,否则就要重装了,只在设置-&gt;语言里把默认的ibus输入方式改成fcitx就OK了(重装了3遍,泪崩~~)</p>
-
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-08-27%2018:48:25%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
-
-<h4>安装基本软件</h4>
-
-<p>几个常用的软件和支持</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get install openjdk-7-jre
-sudo apt-get install tree
-sudo apt-get install vim
-sudo apt-get install zsh
-sudo apt-get install tmux
-sudo apt-get install guake
-sudo apt-get install git
-sudo apt-get install tig
-sudo apt-get install ipython
-sudo apt-get install autojump
+git@github.com:taizilongxu/wangdaoOJ.git
+https://github.com/taizilongxu/wangdaoOJ.git
 </code></pre></div>
-<p>python的<a href="https://bootstrap.pypa.io/get-pip.py">pip</a></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">https://bootstrap.pypa.io/get-pip.py
+<p>只需要把<code>https://github.com/</code>替换成<code>git@github.com:</code>就可以了,脚本如下:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#-*- encoding: UTF-8 -*-</span>
+<span class="c">#---------------------------------import------------------------------------</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="c">#---------------------------------------------------------------------------</span>
+<span class="n">rootdir</span> <span class="o">=</span> <span class="s">&quot;/home/limbo/&quot;</span>                                   <span class="c"># 指明被遍历的文件夹</span>
+<span class="n">username</span> <span class="o">=</span> <span class="s">&#39;taizilongxu&#39;</span>
+
+<span class="k">def</span> <span class="nf">git_ssh</span><span class="p">(</span><span class="n">rootdir</span><span class="p">,</span><span class="n">username</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">parent</span><span class="p">,</span><span class="n">dirnames</span><span class="p">,</span><span class="n">filenames</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">rootdir</span><span class="p">):</span>    <span class="c">#三个参数：分别返回1.父目录 2.所有文件夹名字（不含路径） 3.所有文件名字</span>
+        <span class="k">if</span> <span class="n">parent</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:]</span> <span class="o">==</span> <span class="s">&#39;.git&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s">&#39;config&#39;</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+                <span class="n">path</span> <span class="o">=</span> <span class="n">parent</span> <span class="o">+</span> <span class="s">&#39;/&#39;</span> <span class="o">+</span> <span class="s">&#39;config&#39;</span>
+                <span class="k">print</span> <span class="n">path</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="s">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">F</span><span class="p">:</span>
+                    <span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">r&#39;https://github.com/&#39;</span><span class="p">,</span><span class="s">&#39;git@github.com:&#39;</span><span class="p">,</span><span class="n">F</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+                    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">git_ssh</span><span class="p">(</span><span class="n">rootdir</span><span class="p">,</span><span class="n">username</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+<span class="c">############################################################################</span>
 </code></pre></div>
-<p>几个有用的改变guake终端颜色的脚本</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">git clone https://github.com/erroneousboat/guake-colors-monokai.git
-git clone https://github.com/sigurdga/gnome-terminal-colors-solarized
-</code></pre></div>
-<p>vim支持,首先下载事先保存的dotfile</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">git clone git@github.com:taizilongxu/dotfiles.git
-cd dotfiles
-chmod +x install.sh
-./install.sh
-</code></pre></div>
-<p>再下载vim需要的依赖</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">git clone https://github.com/terryma/vim-expand-region.git
-git clone https://github.com/terryma/vim-multiple-cursors.git
-git clone https://github.com/Yggdroot/indentLine.git
-sudo apt-get install ctags
-sudo apt-get install curl
-</code></pre></div>
-<p>非常奇怪,上面3个插件vundle里竟然没有,所以要单独git clone下,再把3个插件覆盖到~/.vim下即可</p>
-
-<p>几个zsh的theme放在<a href="https://gist.github.com/taizilongxu/f8881c4ff61fbf702641">gist</a>上了,以后有功夫再做脚本吧</p>
-
-<h4>安装jekyll</h4>
-
-<p>jekyll是ruby支持,所以要下载ruby和gem</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get install ruby
-sudo apt-get install gem
-sudo apt-get install ruby ruby-dev
-sudo gem install jekyll
-sudo apt-get install nodejs
-</code></pre></div>
-<h4>github</h4>
-
-<p>~/.gitconfig</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">[user]
-    name = taizilongxu
-    email = 468137306@qq.com
-[core]
-    editor = vim
-[alias]
-    ci = commit -a -v
-    co = checkout
-    st = status
-    br = branch
-    throw = reset --hard HEAD
-    throwh = reset --hard HEAD^
-[color]
-    ui = true
-[push]
-    default = current
-[merge]
-    tool = meld
-</code></pre></div>
-<h4>其他有用的软件</h4>
-
-<ol>
-<li><a href="http://pad.haroopress.com/">haroopad</a>:感觉是linux下markdown支持最好,用的最舒服的编辑器.</li>
-<li>smplayer:各个格式的音频都支持,满分</li>
-<li>virtualbox:虚拟机必备,轻量,快捷</li>
-<li>chrome:这个不必多说了</li>
-<li>unity-tweak-tool:ubuntu的unity桌面定制</li>
-<li>System Load Indicator:系统监视器,放在状态栏里,比起什么conky的简单些,也实用些.</li>
-<li>sublime text:这个可装可不装,作为vimer其实vim一个编辑器就够了,哈哈</li>
-</ol>
-
-<h4>SSD优化</h4>
-
-<p>ext4文件系统自动4k对齐,BIOS要开achi</p>
-
-<p>其实SSD也不必担心,优不优化的平常使用,它的寿命完全够用了,最起码有3年的质保呢,3年就该换了.网上说的什么trim的平常执行以下命令就可以了:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo fstrim -v \
-sudo fstrim -v \home
-</code></pre></div>
-<h4>感触</h4>
-
-<p>SSD真的挺快的,浏览器 文本 ppt什么的都是秒开,最可歌可泣的是ubuntu的启动速度,目测10秒以内,快的我BIOS都来不及开就进去了,体验了SSD真的不想再等慢腾腾的HDD了.</p>
-
   </article>
 
 <!-- Duoshuo Comment BEGIN -->
     <div id="comments">
-        <div class="ds-thread" data-thread-key="/linux/2014/08/21/ubuntu-reset"  data-title="Ubuntu迁移系统,SSD与HDD混盘分区 - Limbo's Blog"></div>
+        <div class="ds-thread" data-thread-key="/python/2014/08/30/githubssh-sh"  data-title="github中ssh替换https脚本 - Limbo's Blog"></div>
     </div>
 <!-- Duoshuo Comment END -->
 

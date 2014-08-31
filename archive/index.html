@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/github.css">
 <script src="/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
+  <!-- 返回顶部 -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.js"></script>
 
 </head>
 
@@ -41,11 +44,26 @@
       </a>
       <div class="trigger">
         
-        <a class="page-link" href="/about/">About</a>
-        <a class="page-link" href="/archive/">Archive</a>
-        <a class="page-link" href="/categories/">Categories</a>
         
-        <a class="page-link" href="/lib/">Lib</a>
+          <a class="page-link" href="/about/">About</a>
+        
+        
+        
+          <a class="page-link" href="/archive/">Archive</a>
+        
+        
+        
+          <a class="page-link" href="/categories/">Categories</a>
+        
+        
+        
+        
+        
+          <a class="page-link" href="/lib/">Lib</a>
+        
+        
+        
+        
         
         
       </div>
@@ -64,6 +82,11 @@
 
   <article class="category">
       
+      <li>
+        <a href="/python/2014/08/30/githubssh-sh.html">github中ssh替换https脚本 </a>
+       <span class="category-date">2014-08-30</span>
+      </li>
+    
       <li>
         <a href="/github/2014/08/27/github-ssh.html">Github不再需要密码,ssh连接模式 </a>
        <span class="category-date">2014-08-27</span>
@@ -266,6 +289,7 @@
       <p class="text">Python,HTML,CSS,Machine Leaning</p>
     </div>
   </div>
+  <div class="scroll-top"><i class="fa fa-arrow-circle-up"></i></div>
 </footer>
 
 
@@ -290,5 +314,23 @@ var duoshuoQuery = {short_name:"taizilongxu"};
          || document.getElementsByTagName('body')[0]).appendChild(ds);
     })();
     </script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.js"></script>
+    <script type="text/javascript">
+
+$(window).scroll(function() {
+
+    if($(this).scrollTop() > 100) {
+        $('.scroll-top').fadeIn(200);
+    } else {
+        $('.scroll-top').fadeOut(200);
+    }
+});
+
+$('.scroll-top').bind('click', function(e) {
+    e.preventDefault();
+    $('body,html').animate({scrollTop:0},200);
+});
+</script>
     </body>
 </html>
