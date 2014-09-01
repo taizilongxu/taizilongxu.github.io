@@ -430,7 +430,12 @@ text-align: -webkit-match-parent;
     margin: 0;
   }
 
-  .post-header h1 { font-size: 36px; }
+  .post-header h1 {
+    font-size: 36px;
+  }
+  .post-header {
+    text-align:center;
+}
   .post-content h2 { font-size: 28px; }
   .post-content h3 { font-size: 22px; }
   .post-content h4 { font-size: 18px; }
