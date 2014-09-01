@@ -384,6 +384,9 @@ text-align: -webkit-match-parent;
   .wrap {
     padding: 0;
   }
+  .post {
+    width:auto;
+}
   .home {
     padding:0;
   }
@@ -426,8 +429,6 @@ text-align: -webkit-match-parent;
     padding: 5px 10px;
     margin: 0;
   }
-
-
 
   .post-header h1 { font-size: 36px; }
   .post-content h2 { font-size: 28px; }
