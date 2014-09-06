@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Limbo's Blog</title>
+    <title>使用tmux</title>
     <link rel="shortcut icon" href=" /img/github.ico"/>
     <link rel="bookmark" href="/img/github.ico"/>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Python,HTML,CSS,Machine Leaning">
-    <link rel="canonical" href="http://taizilongxu.github.io/">
+    <link rel="canonical" href="http://taizilongxu.github.io/linux/2014/09/01/tmux.html">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/main.css">
@@ -76,124 +76,34 @@
 
     <div class="page-content">
       <div class="wrap">
-      <div class="home">
-  <ul class="posts">
-    
-      <li>
-        <a class="post-link" href="/linu/2014/09/06/shell-4.html">Shell脚本语言笔记(4)
-       <span class="post-date">2014-09-06</span>
-       </a>
-      </li>
-    
-      <li>
-        <a class="post-link" href="/linu/2014/09/06/shell-3.html">Shell脚本语言笔记(3)
-       <span class="post-date">2014-09-06</span>
-       </a>
-      </li>
-    
-      <li>
-        <a class="post-link" href="/linu/2014/09/06/shell-2.html">Shell脚本语言笔记(2)
-       <span class="post-date">2014-09-06</span>
-       </a>
-      </li>
-    
-      <li>
-        <a class="post-link" href="/linu/2014/09/05/shell.html">Shell脚本语言笔记(1)
-       <span class="post-date">2014-09-05</span>
-       </a>
-      </li>
-    
-      <li>
-        <a class="post-link" href="/linux/2014/09/01/tmux.html">使用tmux
-       <span class="post-date">2014-09-01</span>
-       </a>
-      </li>
-    
-      <li>
-        <a class="post-link" href="/python/2014/08/30/githubssh-sh.html">github中ssh替换https脚本
-       <span class="post-date">2014-08-30</span>
-       </a>
-      </li>
-    
-      <li>
-        <a class="post-link" href="/github/2014/08/27/github-ssh.html">Github不再需要密码,ssh连接模式
-       <span class="post-date">2014-08-27</span>
-       </a>
-      </li>
-    
-      <li>
-        <a class="post-link" href="/linux/2014/08/21/ubuntu-reset.html">Ubuntu迁移系统,SSD与HDD混盘分区
-       <span class="post-date">2014-08-21</span>
-       </a>
-      </li>
-    
-      <li>
-        <a class="post-link" href="/python/2014/08/21/githubssh-sh.html">github中ssh替换https脚本
-       <span class="post-date">2014-08-21</span>
-       </a>
-      </li>
-    
-      <li>
-        <a class="post-link" href="/core%20python%20programming/2014/08/19/core-python(7).html">Core Python programming（7）
-       <span class="post-date">2014-08-19</span>
-       </a>
-      </li>
-    
-      <li>
-        <a class="post-link" href="/python/2014/08/15/set.html">Python集合的使用
-       <span class="post-date">2014-08-15</span>
-       </a>
-      </li>
-    
-      <li>
-        <a class="post-link" href="/python/2014/08/15/getopt.html">Python命令行参数-getopt
-       <span class="post-date">2014-08-15</span>
-       </a>
-      </li>
-    
-      <li>
-        <a class="post-link" href="/python/2014/08/14/weibo-robot.html">Python实现微博终端机器人
-       <span class="post-date">2014-08-14</span>
-       </a>
-      </li>
-    
-      <li>
-        <a class="post-link" href="/python/2014/08/07/pylint.html">Pythonic检测工具--Pylint
-       <span class="post-date">2014-08-07</span>
-       </a>
-      </li>
-    
-      <li>
-        <a class="post-link" href="/python/2014/08/05/zhihu-interviw.html">知乎面试题
-       <span class="post-date">2014-08-05</span>
-       </a>
-      </li>
-    
-  </ul>
-</div>
-<div class="pagination">
-<ul id="pagination-flickr">
-  
-    <li class="previous-off"><i class="fa fa-arrow-left"></i></i></li>
-  
-      
-      <li class="active">1</li>
-      
-    
-      
-      <li><a href="/page2">2</a></li>
-      
-    
-      
-      <li><a href="/page3">3</a></li>
-      
-    
-  
-    <li class="next"><a href="/page2"><i class="fa fa-arrow-right"></i></a></li>
-  
-</ul>
-</div>
+      <div class="post">
 
+  <header class="post-header">
+    <h1>使用tmux</h1>
+    <p class="meta"><span class="pre">date:</span>Sep 1, 2014
+    <span class="pre">categories:</span>linux <span class="pre">tags:</span>linux 
+    </p>
+    
+  </header>
+
+  <article class="post-content">
+  <p>这两天在修改blog,以前没怎么长时间写过css+html,后来发现很蛋疼的一件事就是每次调试的时候得看着终端生成blog页,代码得在终端下另一个标签里更改.切换起来很费劲,终于想起了大名鼎鼎的tmux.</p>
+
+<p>这个插件使用就不用说了,网上一大堆了.我就说说我配置的难点把</p>
+
+<h3>tmux-powerline</h3>
+
+<p>我就是有点蛋疼啊,一有好看的插件就像鼓捣鼓捣,非得鼓捣明白了</p>
+
+  </article>
+
+<!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/linux/2014/09/01/tmux"  data-title="使用tmux - Limbo's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
+
+</div>
       </div>
     </div>
     <footer class="site-footer">
