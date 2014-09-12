@@ -91,50 +91,36 @@
 
 <p>这是配置的最终效果:</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img2014-09-12%2010:29:35%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">
-</code></pre></div>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-09-12%2010:29:35%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
+
 <h3>配置tmux</h3>
 
-<p>如果你用zsh,那么请选择zsh作为默认的shell解析器</p>
+<h5>1 如果你用zsh,设置zsh作为默认的shell解析器</h5>
 <div class="highlight"><pre><code class="language-text" data-lang="text"> set-option -g default-shell /bin/zsh 
 </code></pre></div>
-<p>配置前缀键,我一般是用<code>&lt;C-q&gt;</code>来调用终端,<code>&lt;C-a&gt;</code>来绑定tmux的prefix
-```</p>
-
-<h1>设置前缀为Ctrl + a</h1>
-
-<p>set -g prefix C-a</p>
-
-<h1>解除Ctrl+b 与前缀的对应关系</h1>
-
-<p>unbind C-b
-```</p>
-
-<p>用vim的hjkl键来选择面板</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">#up
-bind-key k select-pane -U
-#down
+<h5>2 配置前缀键,我一般是用<code>&lt;C-q&gt;</code>来调用终端,<code>&lt;C-a&gt;</code>来绑定tmux的prefix</h5>
+<div class="highlight"><pre><code class="language-text" data-lang="text">set -g prefix C-a
+unbind C-b
+</code></pre></div>
+<h5>3 用vim的hjkl键来选择面板</h5>
+<div class="highlight"><pre><code class="language-text" data-lang="text">bind-key k select-pane -U
 bind-key j select-pane -D
-#left
 bind-key h select-pane -L
-#right
 bind-key l select-pane -R
 </code></pre></div>
-<p>调整面板大小,也是vim的四个方向键,很舒服</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"># resize pane
-bind -r ^k resizep -U 10 # upward (prefix Ctrl+k)
+<h5>4 调整面板大小,也是vim的四个方向键,很舒服</h5>
+<div class="highlight"><pre><code class="language-text" data-lang="text">bind -r ^k resizep -U 10 # upward (prefix Ctrl+k)
 bind -r ^j resizep -D 10 # downward (prefix Ctrl+j)
 bind -r ^h resizep -L 10 # to the left (prefix Ctrl+h)
 bind -r ^l resizep -R 10 # to the right (prefix Ctrl+l)
 </code></pre></div>
-<p>鼠标操作</p>
+<h5>5 鼠标操作</h5>
 <div class="highlight"><pre><code class="language-text" data-lang="text">#鼠标滚轮可以使用
 set-window-option -g mode-mouse on
 # 鼠标可以选中窗口
 set-option -g mouse-select-pane on
 </code></pre></div>
-<p>复制模式copy-mode</p>
+<h5>6 复制模式copy-mode</h5>
 
 <ol>
 <li>前缀 [ 进入复制模式</li>
@@ -144,19 +130,18 @@ set-option -g mouse-select-pane on
 </ol>
 
 <p>如果把tmux比作vim的话，那么我们大部分时间都是处于编辑模式，我们复制的时候可不可以像vim一样移动呢？只需要在配置文件(~/.tmux.conf)中加入如下行即可。</p>
-
-<p><strong>ps:如果想要返回终端鼠标复制的的话,按住<code>shift</code>就可以了</strong></p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">#copy-mode 将快捷键设置为vi 模式
 setw -g mode-keys vi
 </code></pre></div>
-<p>分屏操作</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"># split window
-unbind &#39;&quot;&#39;
+<p><strong>ps:如果想要返回终端鼠标复制的的话,按住<code>shift</code>就可以了</strong></p>
+
+<h5>7 分屏操作</h5>
+<div class="highlight"><pre><code class="language-text" data-lang="text">unbind &#39;&quot;&#39;
 bind - splitw -v # vertical split (prefix -)
 unbind %
 bind | splitw -h # horizontal split (prefix |)
 </code></pre></div>
-<p>使当前pane 最大化,需要一个脚本, <a href="http://mingxinglai.com/cn/2012/09/tmux/">http://mingxinglai.com/cn/2012/09/tmux/</a> 贴的脚本地址发现失效了,把原来的贴出来</p>
+<h5>8 使当前pane 最大化,需要一个脚本,脚本地址发现失效了,把代码的贴出来</h5>
 <div class="highlight"><pre><code class="language-text" data-lang="text">#!/bin/bash
 
 # Copyright (c) 2012 Juan Ignacio Pumarino, jipumarino@gmail.com
@@ -215,9 +200,9 @@ else
   tmux new-window -d -n $new_zoom_window \; swap-pane -s $new_zoom_window.1 \; select-window -t $new_zoom_window
 fi
 </code></pre></div>
-<p>自动创建脚本</p>
+<h5>9 终端启动初始化</h5>
 
-<p>这也是再网上找到的,如果是zsh的话就写在~/.zshrc里,他会在每次打开终端的时候开启三个panel并启动一个htop.</p>
+<p>这也是再网上找到的,如果是zsh的话就写在~/.zshrc里,他会在每次打开终端的时候开启两个窗口并在第二个窗口开启三个panel并启动一个htop.</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">tmux_init()
 {
     tmux new-session -s &quot;vim&quot; -d -n &quot;local&quot;    # 开启一个会话
@@ -234,7 +219,7 @@ fi
 </code></pre></div>
 <h3>powerline</h3>
 
-<p>伟大的poweline也兼容在tmux上了,为了更加美化点界面可以选择安装,项目地址在 <a href="https://github.com/erikw/tmux-powerline">https://github.com/erikw/tmux-powerline</a> </p>
+<p>伟大的poweline也兼容在tmux上了,项目地址在 <a href="https://github.com/erikw/tmux-powerline">https://github.com/erikw/tmux-powerline</a> </p>
 
 <p>详细配置都有介绍,最主要的是还可以自己定制插件(shell),左右插件位置都可以设置,很方便.</p>
 
