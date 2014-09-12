@@ -10,7 +10,7 @@
     <link rel="bookmark" href="/img/github.ico"/>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Python,HTML,CSS,Machine Leaning">
-    <link rel="canonical" href="http://taizilongxu.github.io/cs/2014/04/06/qimo.html">
+    <link rel="canonical" href="http://hackerxu.com/cs/2014/04/06/qimo.html">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/main.css">
@@ -178,7 +178,7 @@ position指明了文件从何处开始读写</p>
 
 <h4>（2）26在实现客户机-服务器协议时，需要哪些基本类型的包，说明每种包的源、目的地以及作用，并说明下图的含义。P63</h4>
 
-<p><img src="http://taizilongxu.github.io/img/dist1.png" alt="enter image description here"> </p>
+<p><img src="http://hackerxu.com/img/dist1.png" alt="enter image description here"> </p>
 
 <ul>
 <li>客户机　服务器协议：</li>
@@ -253,7 +253,7 @@ position指明了文件从何处开始读写</p>
 
 <h4>（3）13 在机器0上进程0在等待机器0上进程1所拥有的资源，进程1在等待机器1上进程2所拥有的资源，进程2在等待进程机器1上3，4所拥有的资源，进程3在等待机器2上进程5所拥有的资源，机器2上的进程5在等待机器0上进程0所拥有的资源，画出简化的资源图并说明用Chandy-Misra-Hass提出的分布式死锁检测算法如何检测死锁，并打破死锁。P134</h4>
 
-<p><img src="http://taizilongxu.github.io/img/dist2.png" alt="enter image description here"></p>
+<p><img src="http://hackerxu.com/img/dist2.png" alt="enter image description here"></p>
 
 <ul>
 <li>因为消息转了一圈又回到最初的发送者，检测到死锁。</li>
@@ -264,7 +264,7 @@ position指明了文件从何处开始读写</p>
 
 <h4>（3）14在分布式系统事务提交操作可能需要不同机器上的多个进程的协作，举一个实际例子，并说明实现原子性提交的两阶段提交协议的基本思想ｐ128</h4>
 
-<p><img src="http://taizilongxu.github.io/img/dist3.png" alt="enter image description here"></p>
+<p><img src="http://hackerxu.com/img/dist3.png" alt="enter image description here"></p>
 
 <ul>
 <li><p>例子：并行计算，需要各机器协同操作。</p></li>
@@ -274,7 +274,7 @@ position指明了文件从何处开始读写</p>
 
 <h4>（3）15说明基于时间戳的乐观并发控制算法的基本原理，并举例说明。 P130</h4>
 
-<p><img src="http://taizilongxu.github.io/img/dist4.png" alt="enter image description here"></p>
+<p><img src="http://hackerxu.com/img/dist4.png" alt="enter image description here"></p>
 
 <ul>
 <li>基本原理：
@@ -322,7 +322,7 @@ position指明了文件从何处开始读写</p>
 <li><p>Lamport的解决方案是直接使用先发生关系，因为C在60时刻离开，只能在61时刻或更晚时刻到达，所以每条消息都携带发送者的时钟以指出其发送的时刻，当消息到达时，接收者时钟惹比消息发送时钟小，就立即将自己的时钟调到比发送时间大1或更多的值。在右图中，我们看到C现在到达的时间是61，同样D到达的时间是70。</p></li>
 </ul>
 
-<p><img src="http://taizilongxu.github.io/img/dist5.png" alt="enter image description here"></p>
+<p><img src="http://hackerxu.com/img/dist5.png" alt="enter image description here"></p>
 
 <h4>（3）20在很多分布式系统应用中，需要物理时钟同步，举一个例子，并说明物理时钟同步的三种算法，Cristian 算法、Berkeley算法及平均值算法。</h4>
 
@@ -368,7 +368,7 @@ position指明了文件从何处开始读写</p>
 
 <h4>（4）9主动复制容错的典型例子是三模冗余容错，说明某组成部件出错和某表决器出错时，是如何容错的。如果在某一级上同时有两个表决器出错，其它所有部件和表决器均正常，能否屏蔽错误，为什么？如果服务器采用主动复制的方法会存在什么问题，如何解决？P173</h4>
 
-<p><img src="http://taizilongxu.github.io/img/dist6.png" alt="enter image description here"></p>
+<p><img src="http://hackerxu.com/img/dist6.png" alt="enter image description here"></p>
 
 <ul>
 <li><p>主要思想：主动复制是使用物理冗余来提供容错的一种著名的技术。这种方法多年来也应用于电子电路的容错。
@@ -381,7 +381,7 @@ position指明了文件从何处开始读写</p>
 
 <h4>（4）10使用主机后备容错方法容错的主要思想是：在任何一个时刻都有一台服务器是主机，若主机失效了，后备的服务器将承担其任务。试说明主机后备方法的工作原理及存在的问题，及解决办法。P174</h4>
 
-<p><img src="http://taizilongxu.github.io/img/dist7.png" alt="enter image description here"></p>
+<p><img src="http://hackerxu.com/img/dist7.png" alt="enter image description here"></p>
 
 <ul>
 <li><p>基本思想：在任一时刻都有一台服务器是主机，它完成所有的工作。若这个主服务器失效了，后备的服务器将承担其任务。</p></li>
@@ -413,7 +413,7 @@ position指明了文件从何处开始读写</p>
 <li><p>有限状态机，当请求到来后有唯一的一个线程检查它，如果缓冲区能满足，进行运行，但是如果不能，就必须向磁盘发送一条消息。然而这时文件服务器并不阻塞，而是将当前请求的状态记录在一张表中，然后去获得吓一跳消息，下条消息可能时请求一个新工作或者时磁盘关于上次操作的应答。如果时请求一个新工作，就激活它。如果时从磁盘发来的应答，那么从表中取出相关信息并处理这个应答。由于这里不允许发送消息并且阻塞以等带应答，因此不能使用远程过程调用，原语应是非阻塞调用的ｓｅｎｄ和ｒｅｃｅｉｖｅ。</p></li>
 </ul>
 
-<p><img src="http://taizilongxu.github.io/img/dist8.png" alt="enter image description here"></p>
+<p><img src="http://hackerxu.com/img/dist8.png" alt="enter image description here"></p>
 
 <h4>（5）3在分布式系统，为了获得文件读写的效率，需要使用高速缓存，说明设置缓存的各种方法及用途。并说明解决一致性问题的四种算法及各种算法存在的问题。P208</h4>
 
@@ -500,8 +500,8 @@ c 当关闭文件时，必须报告，以便服务器更新。</p></li>
 
 <h4>（6）1在交换式Dash多处理机系统中，为了保持缓存一致性，采用了Dash协议，某一簇中的一CPU写一未缓存的数据块，之后另外一簇的另外一CPU读该数据块。试详细说明写操作和读操作是如何进行的。P237</h4>
 
-<p><img src="http://taizilongxu.github.io/img/dist9.png" alt="enter image description here">
-<img src="http://taizilongxu.github.io/img/dist10.png" alt="enter image description here"></p>
+<p><img src="http://hackerxu.com/img/dist9.png" alt="enter image description here">
+<img src="http://hackerxu.com/img/dist10.png" alt="enter image description here"></p>
 
 <ul>
 <li>写操作和读操作：
@@ -577,7 +577,7 @@ c 当关闭文件时，必须报告，以便服务器更新。</p></li>
 </ul></li>
 </ul>
 
-<p><img src="http://taizilongxu.github.io/img/dist11.png" alt="enter image description here"></p>
+<p><img src="http://hackerxu.com/img/dist11.png" alt="enter image description here"></p>
 
 <ul>
 <li>搜索引擎的用户接口：用户输入关键字字符串，然后显示出Web网页列表。后端是由一个巨大的Web网页数据库组成，这些Web网页时预取的，且已加索引。搜索引擎的核心时把用户的关键字字符串转换成一个或多个数句库查询程序。它可以把结果排名成一个列表，并把该列表转换成HTML页面列表。在客户－服务器模型中，这种信息检索部分往往放在处理层。</li>
