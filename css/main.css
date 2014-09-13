@@ -43,7 +43,7 @@ a:visited { color: #205caa; }
 .site-header {
   border-bottom: 1px solid #e8e8e8;
   min-height: 56px;
-  background-color: white;
+  background-color: #FBFBFB;
 }
 
 /*.site-header .wrap{ position:relative; left: 50%; width:880px; margin-left:-440px;  }
@@ -160,7 +160,7 @@ a:visited { color: #205caa; }
 
 .page-content {
   padding-top: 35px;
-  background-color: #fff;
+  background-color: #FBFBFB;
   padding-bottom: 0px;
   height: auto;
   min-height: 100%;
@@ -480,8 +480,7 @@ text-align: -webkit-match-parent;
 }
 
 .category .title a{
-  font-size: 22px;
-  background-color: #E9F3FA;
+  font-size: 16px;
   text-align: center;
   border-radius: 2px;
   color: #37A;
@@ -490,17 +489,19 @@ text-align: -webkit-match-parent;
 .category-number {
   font-size: 15px;
   margin-bottom: 15px;
-  vertical-align:text-top;
+  vertical-align: text-top;
+  color: rgba(170, 165, 165, 0.96)
 }
 
 .category p {
   font-size: 28px;
-  margin-top: 23px;
+  margin-top: 10px;
 }
 .category ul{
   margin:23px 23px;
 }
 .category li{
+  list-style-type: none;
   margin: 0 0 0 35px;
   line-height: 1.5;
   font-size: 22px;
@@ -512,8 +513,8 @@ text-align: -webkit-match-parent;
   float: right;
 }
 .category a{
-  color:#000000;
-  font-weight: bold;
+  color:#37A;
+  font-size: 19px;
 }
 .category li a{
   color:#525252;
@@ -710,6 +711,7 @@ margin-top: 20px;
 margin-bottom: 20px;
 font-size: 17px;
 color: #4C4B4B;
+padding-bottom: 20px;
 }
 
 li.listing-seperator:before {
@@ -731,4 +733,8 @@ content: "\f07c";
 
 .fa-tags:before {
 content: "\f02c";
+}
+
+.category li.listing-seperator{
+  padding-bottom: 0px;
 }
