@@ -176,7 +176,7 @@ a:visited { color: #205caa; }
   padding-bottom: 50px;
 }
 
-.home h1 { margin-bottom: 25px; }
+.home h1 { margin-bottom: 1px; }
 
 .posts { list-style-type: none; }
 
@@ -224,7 +224,6 @@ a:visited { color: #205caa; }
   }
 
 .post-header {
-  margin: 10px 0 30px;
   line-height: 3;
 }
 
@@ -237,9 +236,8 @@ a:visited { color: #205caa; }
 }
 
 .post-header .meta {
-  font-size: 15px;
+  font-size: 13px;
   color: #818181;
-  margin-top: 5px;
 }
 
 .post-header .meta .pre{
@@ -717,4 +715,20 @@ color: #4C4B4B;
 li.listing-seperator:before {
 content: "⭠  ";
 color: #ccc;
+}
+
+.home .posts li{
+  margin-bottom:1px;
+}
+/*标签*/
+.fa-calendar:before {
+content: "\f073";
+}
+
+.fa-folder-open:before {
+content: "\f07c";
+}
+
+.fa-tags:before {
+content: "\f02c";
 }
