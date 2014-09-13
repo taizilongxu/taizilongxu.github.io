@@ -18,9 +18,9 @@ body {
 
 h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: 400; }
 
-a         { color: #bb2222; text-decoration: none; }
+a         { color: #7C7C7C; text-decoration: none; }
 a:hover   { color: #000; }
-a:visited { color: #205caa; }
+a:visited { color: #7C7C7C; }
 
 /* Utility */
 
@@ -245,6 +245,8 @@ a:visited { color: #205caa; }
   color: #333;
 }
 
+.post-header .meta a{}
+
 .post-content {
   font-size: 1.1em;
   font-weight: 600;
@@ -321,6 +323,7 @@ font-weight: bold;
 .post-content li {
 display: list-item;
 text-align: -webkit-match-parent;
+list-style-type: none;
 }
 
 .post pre,
@@ -483,23 +486,24 @@ text-align: -webkit-match-parent;
   font-size: 16px;
   text-align: center;
   border-radius: 2px;
-  color: #37A;
+  color: #bb2222;
 }
 
 .category-number {
   font-size: 15px;
   margin-bottom: 15px;
   vertical-align: text-top;
-  color: rgba(170, 165, 165, 0.96)
+  color: rgba(170, 165, 165, 0.96);
+  padding-left: 4px;
 }
 
 .category p {
   font-size: 28px;
   margin-top: 10px;
 }
-.category ul{
+/*.category ul{
   margin:23px 23px;
-}
+}*/
 .category li{
   list-style-type: none;
   margin: 0 0 0 35px;
@@ -510,16 +514,15 @@ text-align: -webkit-match-parent;
   display: inline-block;
   font-size: 15px;
   color: #818181;
-  float: right;
 }
 .category a{
-  color:#37A;
+  color:#bb2222;
   font-size: 19px;
 }
 .category li a{
   color:#525252;
-  font-weight: bold;
-
+  padding-left: 30px;
+  font-size: 17px;
 }
 
 /*.category .category-number {
