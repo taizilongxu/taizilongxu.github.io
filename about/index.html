@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="/css/github.css">
   <!-- 返回顶部 -->
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.js"></script>
-
+  <script src="/js/jquery.js"></script>
+  <script src="/js/function_about.js"></script>
 </head>
 
     <body>
@@ -60,8 +60,6 @@
           <a class="page-link" href="/tags/">Tags</a>
         
         
-        
-        
       </div>
     </nav>
   </div>
@@ -70,43 +68,43 @@
 
     <div class="page-content">
       <div class="wrap">
-      <div class="post">
+      <div id="code">
+				<span class="keyword">def</span> <span class="value">main</span>():</span><br />
+				<span class="placeholder"/><span class="comments">'''</span><br />
+				<span class="placeholder"/><span class="comments">Today is our 1st anniversary,but I  lack the skills of js,</span><br />
+				<span class="placeholder"/><span class="comments">so I copy the site to write some code for our love story.</span><br />
+				<span class="placeholder"/><span class="comments">'''</span><br />
+				<span class="placeholder"/>I = boy(<span class="string">'Xiao'</span>)<br />
+				<span class="placeholder"/><span class="u">u</span> = girl(<span class="string">'Li'</span>)<br />
+				<span class="placeholder"/><span class="comments"># Summer of 2003,I know about you.</span><br />
+				<span class="placeholder"/>I.know(<span class="u">u</span>)<br />
+				<span class="placeholder"/><span class="comments"># Sep 14, 2012,I meet you again in my college.</span><br />
+				<span class="placeholder"/>I.meet(<span class="u">u</span>)<br />
+				<span class="placeholder"/><span class="comments"># The half of the year we conquer the hardships together.</span><br />
+				<span class="placeholder"/>I.together(<span class="u">u</span>)<br />
+				<span class="placeholder"/><span class="comments"># I really feel bad when you leave me.</span><br />
+				<span class="placeholder"/>I.mood = shit<br />
+				<span class="placeholder"/><span class="comments"># I  make sure that you are the right one.</span><br />
+				<span class="placeholder"/>I.Lover = <span class="u">u</span><br />
+				<span class="placeholder"/><span class="comments"># Aug 13,2013,I date you,we have a dinner.</span><br />
+				<span class="placeholder"/>I.date(u)<br />
+				<span class="placeholder"/><span class="comments"># Sep 19,2013,the mid-autumn festival,</span><br />
+				<span class="placeholder"/><span class="comments"># I clearly remember the night and the moon.</span><br />
+				<span class="placeholder"/><span class="comments"># What a wonderful night.</span><br />
+				<span class="placeholder"/>I.kiss(<span class="u">u</span>)<br />
+				<span class="placeholder"/><span class="comments"># I think you are the right one without doubt.</span><br />
+				<span class="placeholder"/><span class="u">u</span>.Lover = I<br />
+				 <span class="placeholder"/><span class="comments"># I love you.</span><br />
+				 <span class="placeholder"/><span class="keyword">while</span> <span class="value">True</span>:<br />
+				 <span class="placeholder"/><span class="placeholder"/>I.Love += <span class="number"/>1</span><br />
+				 <br />
+				 <span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:<br />
+				 <span class="placeholder"/>main()
+			</div>
+<script>
+$("#code").typewriter();
+</script>
 
-  <header class="post-header">
-    <h1>About</h1>
-  </header>
-
-  <article class="post-content">
-  <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/bin/env python</span>
-
-<span class="k">class</span> <span class="nc">Me</span><span class="p">(</span><span class="n">Developer</span><span class="p">)</span> <span class="p">:</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">education</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">{</span>
-            <span class="s">&quot;Undergraduate&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s">&quot;Saftey Engineering&quot;</span><span class="p">,</span><span class="s">&quot;Shenyang Aerospace University&quot;</span><span class="p">],</span>
-            <span class="s">&quot;Graduate&quot;</span>      <span class="p">:</span> <span class="p">[</span><span class="s">&quot;Soft Engineering&quot;</span><span class="p">,</span><span class="s">&quot;Liaoning University&quot;</span><span class="p">]}</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">characteristics</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">set</span><span class="p">([</span><span class="s">&quot;Teamwork&quot;</span><span class="p">,</span> <span class="s">&quot;Devoted&quot;</span><span class="p">,</span> <span class="s">&quot;Creative&quot;</span><span class="p">])</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">skills</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
-        <span class="k">return</span> <span class="p">{</span>
-            <span class="s">&quot;Language&quot;</span>  <span class="p">:</span> <span class="p">[</span><span class="s">&quot;Python&quot;</span><span class="p">,</span> <span class="s">&quot;Java&quot;</span><span class="p">,</span> <span class="s">&quot;HTML/CSS&quot;</span><span class="p">,</span> <span class="s">&quot;C/C++&quot;</span><span class="p">],</span>
-            <span class="s">&quot;OS&quot;</span>        <span class="p">:</span> <span class="p">[</span><span class="s">&quot;Linux&quot;</span><span class="p">]</span> <span class="p">,</span>
-            <span class="s">&quot;Tool&quot;</span>      <span class="p">:</span> <span class="p">[</span><span class="s">&quot;Vim&quot;</span><span class="p">,</span> <span class="s">&quot;Sublime&quot;</span><span class="p">],</span>
-            <span class="s">&quot;Framework&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s">&quot;Django&quot;</span><span class="p">],</span>
-            <span class="s">&quot;Network&quot;</span>   <span class="p">:</span> <span class="p">[</span><span class="s">&quot;TCP/IP&quot;</span><span class="p">]}</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">is_geek</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">True</span>
-</code></pre></div>
-  </article>
-
-</div>
       </div>
     </div>
     <footer class="site-footer">
@@ -134,7 +132,7 @@
           </a>
     </div>
       <div class="footer-col-2">
-           <p align="left" style="font-size:18px;color:#A8A8A8">安,要记得你心里的梦想</p>
+           <p>© 2014 - 2014 by <a href="http://github.com/taizilongxu">Hackerxu</a></p>
       </div>
     <!-- <div class="footer-col-3 column">
       <p class="text">Python,HTML,CSS,Machine Leaning</p>

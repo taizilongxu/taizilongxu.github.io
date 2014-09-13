@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- 手机端页面 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Shell脚本语言笔记(2)</title>
+    <link rel="shortcut icon" href=" /img/github.ico"/>
+    <link rel="bookmark" href="/img/github.ico"/>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Python,HTML,CSS,Machine Leaning">
+    <link rel="canonical" href="http://hackerxu.com/2014/09/06/shell-2.html">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/github.css">
+  <!-- 返回顶部 -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="/js/jquery.js"></script>
+  <script src="/js/function_about.js"></script>
+</head>
+
+    <body>
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/"><h1><strong> <font style="color:#39B3D7" >L</font><font style="color:#ED9C28">i</font><font style="color:#47A447">m</font><font style="color:#D9534F">b</font><font style="color:#3276B1">o</font>
+    </strong>
+    </h1></a>
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+        
+          <a class="page-link" href="/about/">About</a>
+        
+        
+        
+          <a class="page-link" href="/archive/">Archive</a>
+        
+        
+        
+          <a class="page-link" href="/categories/">Categories</a>
+        
+        
+        
+        
+        
+          <a class="page-link" href="/tags/">Tags</a>
+        
+        
+      </div>
+    </nav>
+  </div>
+
+</header>
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+  <header class="post-header">
+    <h1><a href="/2014/09/06/shell-2.html">Shell脚本语言笔记(2)</a></h1>
+      <p class="meta"><i class="fa fa-calendar"></i> 2014-09-06&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#linux">linux</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#linux">linux</a>&nbsp<a href="/tags/#shell">shell</a></p>
+  </header>
+  <article class="post-content">
+  <p>运算符,字符串,数组</p>
+
+<p>Shell的运算符很特殊,需要记忆一下,此文留作查表之用</p>
+
+<h2>Shell运算符</h2>
+
+<p>Bash 支持很多运算符，包括算数运算符、关系运算符、布尔运算符、字符串运算符和文件测试运算符。</p>
+
+<p>原生bash不支持简单的数学运算，但是可以通过其他命令来实现，例如 awk 和 expr，expr 最常用。</p>
+
+<p>expr 是一款表达式计算工具，使用它能完成表达式的求值操作。</p>
+
+<p>例如，两个数相加：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">#!/bin/bash
+val=`expr 2 + 2`
+echo &quot;Total value : $val&quot;
+</code></pre></div>
+<p>运行脚本输出：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Total value : 4
+</code></pre></div>
+<p>两点注意：</p>
+
+<ol>
+<li>表达式和运算符之间要有空格，例如<code>2+2</code>是不对的，必须写成<code>2 + 2</code>，这与我们熟悉的大多数编程语言不一样。</li>
+<li>完整的表达式要被<code>` `</code>包含，注意这个字符不是常用的单引号，在 Esc 键下边。</li>
+</ol>
+
+<h5>算术运算符列表</h5>
+
+<table><thead>
+<tr>
+<th style="text-align: left">运算符</th>
+<th style="text-align: left">说明</th>
+<th style="text-align: left">举例</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">+</td>
+<td style="text-align: left">加法</td>
+<td style="text-align: left"><code>`expr $a + $b`</code> 结果为 30。</td>
+</tr>
+<tr>
+<td style="text-align: left">-</td>
+<td style="text-align: left">减法</td>
+<td style="text-align: left"><code>`expr $a - $b`</code>结果为 10。</td>
+</tr>
+<tr>
+<td style="text-align: left">*</td>
+<td style="text-align: left">乘法</td>
+<td style="text-align: left"><code>`expr $a \* $b`</code> 结果为  200。</td>
+</tr>
+<tr>
+<td style="text-align: left">/</td>
+<td style="text-align: left">除法</td>
+<td style="text-align: left"><code>`expr $b / $a`</code>结果为 2。</td>
+</tr>
+<tr>
+<td style="text-align: left">%</td>
+<td style="text-align: left">取余</td>
+<td style="text-align: left"><code>`expr $b % $a`</code>结果为 0。</td>
+</tr>
+<tr>
+<td style="text-align: left">=</td>
+<td style="text-align: left">赋值</td>
+<td style="text-align: left">a=$b 将把变量 b 的值赋给 a。</td>
+</tr>
+<tr>
+<td style="text-align: left">==</td>
+<td style="text-align: left">相等。</td>
+<td style="text-align: left">用于比较两个数字，相同则返回 true。   <code>[ $a == $b ]</code> 返回 false。</td>
+</tr>
+<tr>
+<td style="text-align: left">!=</td>
+<td style="text-align: left">不相等。</td>
+<td style="text-align: left">用于比较两个数字，不相同则返回 true。 <code>[ $a != $b ]</code>返回 true。</td>
+</tr>
+</tbody></table>
+
+<h5>关系运算符列表</h5>
+
+<table><thead>
+<tr>
+<th style="text-align: left">运算符</th>
+<th style="text-align: left">说明</th>
+<th style="text-align: left">举例</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">-eq</td>
+<td style="text-align: left">检测两个数是否相等，相等返回 true。</td>
+<td style="text-align: left"><code>[ $a -eq $b ]</code>返回 true。</td>
+</tr>
+<tr>
+<td style="text-align: left">-ne</td>
+<td style="text-align: left">检测两个数是否相等，不相等返回 true。</td>
+<td style="text-align: left"><code>[ $a -ne $b ]</code> 返回 true。</td>
+</tr>
+<tr>
+<td style="text-align: left">-gt</td>
+<td style="text-align: left">检测左边的数是否大于右边的，如果是，则返回 true。</td>
+<td style="text-align: left"><code>[ $a -gt $b ]</code>返回 false。</td>
+</tr>
+<tr>
+<td style="text-align: left">-lt</td>
+<td style="text-align: left">检测左边的数是否小于右边的，如果是，则返回 true。</td>
+<td style="text-align: left"><code>[ $a -lt $b ]</code>返回 true。</td>
+</tr>
+<tr>
+<td style="text-align: left">-ge</td>
+<td style="text-align: left">检测左边的数是否大等于右边的，如果是，则返回 true。</td>
+<td style="text-align: left"><code>[ $a -ge $b ]</code> 返回 false。</td>
+</tr>
+<tr>
+<td style="text-align: left">-le</td>
+<td style="text-align: left">检测左边的数是否小于等于右边的，如果是，则返回 true。</td>
+<td style="text-align: left"><code>[ $a -le $b ]</code> 返回 true。</td>
+</tr>
+</tbody></table>
+
+<h5>布尔运算符列表</h5>
+
+<table><thead>
+<tr>
+<th style="text-align: left">运算符</th>
+<th style="text-align: left">说明</th>
+<th style="text-align: left">举例</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">!</td>
+<td style="text-align: left">非运算，表达式为 true 则返回 false，否则返回 true。</td>
+<td style="text-align: left">[ ! false ] 返回 true。</td>
+</tr>
+<tr>
+<td style="text-align: left">-o</td>
+<td style="text-align: left">或运算，有一个表达式为 true 则返回 true。</td>
+<td style="text-align: left"><code>[ $a -lt 20 -o $b -gt 100 ]</code> 返回 true。</td>
+</tr>
+<tr>
+<td style="text-align: left">-a</td>
+<td style="text-align: left">与运算，两个表达式都为 true 才返回 true。</td>
+<td style="text-align: left"><code>[ $a -lt 20 -a $b -gt 100 ]</code> 返回 false。</td>
+</tr>
+</tbody></table>
+
+<h5>字符串运算符列表</h5>
+
+<table><thead>
+<tr>
+<th style="text-align: left">运算符</th>
+<th style="text-align: left">说明</th>
+<th style="text-align: left">举例</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">=</td>
+<td style="text-align: left">检测两个字符串是否相等，相等返回 true。</td>
+<td style="text-align: left"><code>[ $a = $b ]</code> 返回 false。</td>
+</tr>
+<tr>
+<td style="text-align: left">!=</td>
+<td style="text-align: left">检测两个字符串是否相等，不相等返回 true。</td>
+<td style="text-align: left"><code>[ $a != $b ]</code> 返回 true。</td>
+</tr>
+<tr>
+<td style="text-align: left">-z</td>
+<td style="text-align: left">检测字符串长度是否为0，为0返回 true。</td>
+<td style="text-align: left">[ -z $a ] 返回 false。</td>
+</tr>
+<tr>
+<td style="text-align: left">-n</td>
+<td style="text-align: left">检测字符串长度是否为0，不为0返回 true。</td>
+<td style="text-align: left">[ -z $a ] 返回 true。</td>
+</tr>
+<tr>
+<td style="text-align: left">str</td>
+<td style="text-align: left">检测字符串是否为空，不为空返回 true。</td>
+<td style="text-align: left">[ $a ] 返回 true。</td>
+</tr>
+</tbody></table>
+
+<h5>文件测试运算符列表</h5>
+
+<table><thead>
+<tr>
+<th style="text-align: left">操作符</th>
+<th style="text-align: left">说明</th>
+<th style="text-align: left">举例</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">-b file</td>
+<td style="text-align: left">检测文件是否是块设备文件，如果是，则返回 true。</td>
+<td style="text-align: left">[ -b $file ] 返回 false。</td>
+</tr>
+<tr>
+<td style="text-align: left">-d file</td>
+<td style="text-align: left">检测文件是否是目录，如果是，则返回 true。</td>
+<td style="text-align: left">[ -d $file ] 返回 false。</td>
+</tr>
+<tr>
+<td style="text-align: left">-f file</td>
+<td style="text-align: left">检测文件是否是普通文件（既不是目录，也不是设备文件），如果是，则返回 true。</td>
+<td style="text-align: left">[ -f $file ] 返回 true。</td>
+</tr>
+<tr>
+<td style="text-align: left">-g file</td>
+<td style="text-align: left">检测文件是否设置了 SGID 位，如果是，则返回 true。</td>
+<td style="text-align: left">[ -g $file ] 返回 false。</td>
+</tr>
+<tr>
+<td style="text-align: left">-k file</td>
+<td style="text-align: left">检测文件是否设置了粘着位(Sticky Bit)，如果是，则返回 true。</td>
+<td style="text-align: left">[ -k $file ] 返回 false。</td>
+</tr>
+<tr>
+<td style="text-align: left">-p file</td>
+<td style="text-align: left">检测文件是否是具名管道，如果是，则返回 true。</td>
+<td style="text-align: left">[ -p $file ] 返回 false。</td>
+</tr>
+<tr>
+<td style="text-align: left">-u file</td>
+<td style="text-align: left">检测文件是否设置了 SUID 位，如果是，则返回 true。</td>
+<td style="text-align: left">[ -u $file ] 返回 false。</td>
+</tr>
+<tr>
+<td style="text-align: left">-r file</td>
+<td style="text-align: left">检测文件是否可读，如果是，则返回 true。</td>
+<td style="text-align: left">[ -r $file ] 返回 true。</td>
+</tr>
+<tr>
+<td style="text-align: left">-w file</td>
+<td style="text-align: left">检测文件是否可写，如果是，则返回 true。</td>
+<td style="text-align: left">[ -w $file ] 返回 true。</td>
+</tr>
+<tr>
+<td style="text-align: left">-x file</td>
+<td style="text-align: left">检测文件是否可执行，如果是，则返回 true。</td>
+<td style="text-align: left">[ -x $file ] 返回 true。</td>
+</tr>
+<tr>
+<td style="text-align: left">-s file</td>
+<td style="text-align: left">检测文件是否为空（文件大小是否大于0），不为空返回 true。</td>
+<td style="text-align: left">[ -s $file ] 返回 true。</td>
+</tr>
+<tr>
+<td style="text-align: left">-e file</td>
+<td style="text-align: left">检测文件（包括目录）是否存在，如果是，则返回 true。</td>
+<td style="text-align: left">[ -e $file ] 返回 true。</td>
+</tr>
+</tbody></table>
+
+<h2>字符串</h2>
+
+<p>字符串是shell编程中最常用最有用的数据类型（除了数字和字符串，也没啥其它类型好用了），字符串可以用单引号，也可以用双引号，也可以不用引号。单双引号的区别跟PHP类似。</p>
+
+<h4>单引号</h4>
+<div class="highlight"><pre><code class="language-text" data-lang="text">str=&#39;this is a string&#39;
+</code></pre></div>
+<p>单引号字符串的限制：</p>
+
+<ol>
+<li>单引号里的任何字符都会原样输出，单引号字符串中的变量是无效的；</li>
+<li>单引号字串中不能出现单引号（对单引号使用转义符后也不行）。</li>
+</ol>
+
+<h4>双引号</h4>
+<div class="highlight"><pre><code class="language-text" data-lang="text">your_name=&#39;qinjx&#39;
+str=&quot;Hello, I know your are \&quot;$your_name\&quot;! \n&quot;
+</code></pre></div>
+<p>双引号的优点：</p>
+
+<ol>
+<li>双引号里可以有变量</li>
+<li>双引号里可以出现转义字符</li>
+</ol>
+
+<h4>拼接字符串</h4>
+<div class="highlight"><pre><code class="language-text" data-lang="text">your_name=&quot;qinjx&quot;
+greeting=&quot;hello, &quot;$your_name&quot; !&quot;
+greeting_1=&quot;hello, ${your_name} !&quot;
+echo $greeting $greeting_1
+</code></pre></div>
+<h4>获取字符串长度</h4>
+<div class="highlight"><pre><code class="language-text" data-lang="text">string=&quot;abcd&quot;
+echo ${#string} #输出 4(#表示字符串长度)
+</code></pre></div>
+<h4>提取子字符串</h4>
+<div class="highlight"><pre><code class="language-text" data-lang="text">string=&quot;alibaba is a great company&quot;
+echo ${string:1:4} #输出liba
+echo ${string:1} #输出libaba is a great company
+</code></pre></div>
+<h4>查找子字符串</h4>
+<div class="highlight"><pre><code class="language-text" data-lang="text">string=&quot;alibaba is a great company&quot;
+echo `expr index &quot;$string&quot; is` # 输出3(i和s一共出现的次数)
+</code></pre></div>
+<h2>数组</h2>
+
+<p>bash支持一维数组（不支持多维数组），并且没有限定数组的大小。类似与C语言，数组元素的下标由0开始编号。获取数组中的元素要利用下标，下标可以是整数或算术表达式，其值应大于或等于0。
+定义数组</p>
+
+<p>在Shell中，用括号来表示数组，数组元素用“空格”符号分割开。定义数组的一般形式为：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">    array_name=(value1 ... valuen)
+</code></pre></div>
+<p>例如：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">array_name=(value0 value1 value2 value3)
+</code></pre></div>
+<p>或者</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">array_name=(
+value0
+value1
+value2
+value3
+)
+</code></pre></div>
+<p>还可以单独定义数组的各个分量：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">array_name[0]=value0
+array_name[1]=value1
+array_name[2]=value2
+</code></pre></div>
+<p>可以不使用连续的下标，而且下标的范围没有限制。</p>
+
+<h4>读取数组</h4>
+
+<p>读取数组元素值的一般格式是：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">    ${array_name[index]}
+</code></pre></div>
+<p>例如：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">valuen=${array_name[2]}
+</code></pre></div>
+<p>使用@ 或 * 可以获取数组中的所有元素，例如：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">${array_name[*]}
+${array_name[@]}
+</code></pre></div>
+<h4>获取数组的长度</h4>
+
+<p>获取数组长度的方法与获取字符串长度的方法相同，例如：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text"># 取得数组元素的个数
+length=${#array_name[@]}
+# 或者
+length=${#array_name[*]}
+# 取得数组单个元素的长度
+lengthn=${#array_name[n]}
+</code></pre></div>
+  </article>
+<!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/2014/09/06/shell-2"  data-title="Shell脚本语言笔记(2) - Hackerxu's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
+</div>
+
+      </div>
+    </div>
+    <footer class="site-footer">
+
+<div class="wrap">
+    <div class="footer-col-1 column">
+      <div class="github">
+            <!-- <span class="icon github"> -->
+              <svg version="1.1" class="github-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="#000" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761
+                c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32
+                c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472
+                c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037
+                C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65
+                c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261
+                c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082
+                c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129
+                c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            <!-- </span> -->
+          </div>
+          <a href="https://github.com/taizilongxu">
+            Fork me on github
+          </a>
+    </div>
+      <div class="footer-col-2">
+           <p>© 2014 - 2014 by <a href="http://github.com/taizilongxu">Hackerxu</a></p>
+      </div>
+    <!-- <div class="footer-col-3 column">
+      <p class="text">Python,HTML,CSS,Machine Leaning</p>
+    </div> -->
+</div>
+  <div class="scroll-top"><i class="fa fa-arrow-circle-up"></i></div>
+</footer>
+
+
+<!-- mathjax -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- highlight -->
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- duoshuo -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"taizilongxu"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+<!-- top-scrooll -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.js"></script>
+    <script type="text/javascript">
+
+$(window).scroll(function() {
+
+    if($(this).scrollTop() > 100) {
+        $('.scroll-top').fadeIn(200);
+    } else {
+        $('.scroll-top').fadeOut(200);
+    }
+});
+
+$('.scroll-top').bind('click', function(e) {
+    e.preventDefault();
+    $('body,html').animate({scrollTop:0},200);
+});
+</script>
+    </body>
+</html>

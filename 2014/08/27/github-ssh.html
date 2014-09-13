@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Hackerxu's Blog</title>
+    <title>Github不再需要密码,ssh连接模式</title>
     <link rel="shortcut icon" href=" /img/github.ico"/>
     <link rel="bookmark" href="/img/github.ico"/>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Python,HTML,CSS,Machine Leaning">
-    <link rel="canonical" href="http://hackerxu.com/">
+    <link rel="canonical" href="http://hackerxu.com/2014/08/27/github-ssh.html">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/github.css">
@@ -68,103 +68,54 @@
 
     <div class="page-content">
       <div class="wrap">
-      <div class="home">
-  
+      <div class="post">
   <header class="post-header">
-    <h1><a href="/2014/09/13/luobin.html">Captain,my captain!</a></h1>
-    <p class="meta"><i class="fa fa-calendar"></i> 2014-09-13&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#life">life</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#luobin">luobin</a></p>
+    <h1><a href="/2014/08/27/github-ssh.html">Github不再需要密码,ssh连接模式</a></h1>
+      <p class="meta"><i class="fa fa-calendar"></i> 2014-08-27&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#github">github</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#github">github</a></p>
   </header>
   <article class="post-content">
-  <p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/movie/luobin2.jpg" alt=""></p>
+  <p>只介绍主要方法</p>
 
-<p>我每天到你家接你，我们出去喝酒笑闹，那很棒是我一天中最棒的时刻，只有十秒，从停车到你家门口，每次我敲门，都希望你不在了，不说再见，什么都没有，你就走了，我懂得不多，但我很清楚。</p>
+<p>总共分3部:</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/movie/luobin.jpg" alt=""></p>
+<ol>
+<li>本地生成ssh密钥</li>
+<li>github上生成公钥</li>
+<li>修改git的remote url为ssh协议</li>
+</ol>
 
-<p>选择和别人不一样的路走的人,虽然会感觉孤独甚至会招致歧视,但并不意味着那就是过错——相反,一个真正的英雄往往会选择一条很少人会走的路.大多数的人都在平静的绝望着.</p>
+<h3>1 生成密钥对</h3>
+
+<p>再linux主机下</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text"> ssh-keygen -t rsa -C “468137306@qq.com”
+</code></pre></div>
+<p>在~/.ssh下会产生id_rsa和id_rsa.pub两个文件</p>
+
+<h3>2 添加密钥到github</h3>
+
+<p>进入github的settings里左侧有个SSHkeys,看到那个add一个就行</p>
+
+<p>把id_rsa.pub里的密钥放入这里就可以了(注意不要多加空格)</p>
+
+<p>用下面的命令测试</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text"> ssh -T git@github.com
+</code></pre></div>
+<p>输出</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">PTY allocation request failed on channel 0
+Hi taizilongxu! You&#39;ve successfully authenticated, but GitHub does not provide shell access.
+Connection to github.com closed.
+</code></pre></div>
+<h3>3 修改git的remote url</h3>
+
+<p>一般在./.git/config中修改url = ssh地址就可以了
+以后就可以和密码说88了</p>
 
   </article>
-  
-<!-- 分页 -->
-<!-- <div class="pagination">
-<ul id="pagination-flickr">
-  
-    <li class="previous-off"><i class="fa fa-arrow-left"></i></i></li>
-  
-      
-      <li><a href="/">1</a></li>
-      
-    
-  
-    <li class="next-off"><i class="fa fa-arrow-right"></i></li>
-  
-</ul>
-</div> -->
-  <ul class="posts">
-    <li class="listing-seperator">I have no time to waste</li>
-  
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2014-09-13">2014-09-13</time>
-      <a href="/2014/09/13/luobin.html" title="Captain,my captain!">Captain,my captain!</a>
-    </li>
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2014-09-09">2014-09-09</time>
-      <a href="/2014/09/09/scrapy-jd2.html" title="京东评论,价格排序">京东评论,价格排序</a>
-    </li>
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2014-09-07">2014-09-07</time>
-      <a href="/2014/09/07/scrapy-jd.html" title="基于Scrapy的京东爬虫">基于Scrapy的京东爬虫</a>
-    </li>
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2014-09-06">2014-09-06</time>
-      <a href="/2014/09/06/shell-4.html" title="Shell脚本语言笔记(4)">Shell脚本语言笔记(4)</a>
-    </li>
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2014-09-06">2014-09-06</time>
-      <a href="/2014/09/06/shell-3.html" title="Shell脚本语言笔记(3)">Shell脚本语言笔记(3)</a>
-    </li>
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2014-09-06">2014-09-06</time>
-      <a href="/2014/09/06/shell-2.html" title="Shell脚本语言笔记(2)">Shell脚本语言笔记(2)</a>
-    </li>
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2014-09-05">2014-09-05</time>
-      <a href="/2014/09/05/shell.html" title="Shell脚本语言笔记(1)">Shell脚本语言笔记(1)</a>
-    </li>
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2014-09-01">2014-09-01</time>
-      <a href="/2014/09/01/tmux.html" title="使用tmux">使用tmux</a>
-    </li>
-  
-    
-    
-    
-    <li class="listing-seperator"><a href="/archive/">Long ago</a></li>
-  </ul>
+<!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/2014/08/27/github-ssh"  data-title="Github不再需要密码,ssh连接模式 - Hackerxu's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
 </div>
 
       </div>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- 手机端页面 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>基于Scrapy的京东爬虫</title>
+    <link rel="shortcut icon" href=" /img/github.ico"/>
+    <link rel="bookmark" href="/img/github.ico"/>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Python,HTML,CSS,Machine Leaning">
+    <link rel="canonical" href="http://hackerxu.com/2014/09/07/scrapy-jd.html">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/github.css">
+  <!-- 返回顶部 -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="/js/jquery.js"></script>
+  <script src="/js/function_about.js"></script>
+</head>
+
+    <body>
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/"><h1><strong> <font style="color:#39B3D7" >L</font><font style="color:#ED9C28">i</font><font style="color:#47A447">m</font><font style="color:#D9534F">b</font><font style="color:#3276B1">o</font>
+    </strong>
+    </h1></a>
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+        
+          <a class="page-link" href="/about/">About</a>
+        
+        
+        
+          <a class="page-link" href="/archive/">Archive</a>
+        
+        
+        
+          <a class="page-link" href="/categories/">Categories</a>
+        
+        
+        
+        
+        
+          <a class="page-link" href="/tags/">Tags</a>
+        
+        
+      </div>
+    </nav>
+  </div>
+
+</header>
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+  <header class="post-header">
+    <h1><a href="/2014/09/07/scrapy-jd.html">基于Scrapy的京东爬虫</a></h1>
+      <p class="meta"><i class="fa fa-calendar"></i> 2014-09-07&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#python">python</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#python">python</a>&nbsp<a href="/tags/#scrapy">scrapy</a></p>
+  </header>
+  <article class="post-content">
+  <p>出于兴趣爱好原来就做过爬虫,从C到python,再到scrapy,一开始也是因为做爬虫才慢慢了解python,才知道有这么优雅的语言,废话不多说了.看一下是怎么爬取的.</p>
+
+<p>前期工作做了很多,学习了twisted,scrapy.京东的网页价格,评论是动态,怎么爬?google了一大堆什么,又抓包,发现关于评论的包不能正常的抓取,可能是设的cookies认证,没深入了解这方面的知识,发觉碰到一块难题.</p>
+
+<p>就在昨天,偶尔浏览到了京东的wap页面,我勒个大曹啊,wap页面都是静态的,而且和网页端的内容是一致更新的,终于送了一口气,三下五除二用了两个多小时写完了这个爬虫,今天早上正好到实验室开始抓取,抽空写个blog.</p>
+
+<p>项目地址:<a href="https://github.com/taizilongxu/scrapy_jingdong">https://github.com/taizilongxu/scrapy_jingdong</a></p>
+
+<h3>思路</h3>
+
+<p>同学只要价格,商品名和评论数,所以还算简单,最后要加个商品ID,方便去重</p>
+
+<h4>第一个页面</h4>
+
+<p>京东有一个商品全部分类的页面如下 <a href="http://wap.jd.com/category/all.html">http://wap.jd.com/category/all.html</a></p>
+
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-09-07%2009:17:58%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
+
+<p>其中红色的和后面的更多指向的是一个页面,只要抓取一个就可以到下一个页面了,进入第一个邪恶的服饰内衣看看.</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python">    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="s">&#39;获取全部分类商品&#39;</span>
+        <span class="n">req</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">sel</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&#39;/html/body/div[5]/div[2]/a&#39;</span><span class="p">):</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&#39;text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+            <span class="n">href</span> <span class="o">=</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&#39;@href&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">href</span><span class="p">:</span>
+                <span class="k">if</span> <span class="s">&#39;category&#39;</span> <span class="ow">in</span> <span class="n">i</span><span class="p">:</span>
+                    <span class="n">url</span> <span class="o">=</span> <span class="s">&quot;http://wap.jd.com&quot;</span> <span class="o">+</span> <span class="n">i</span>
+                    <span class="c"># print url</span>
+                    <span class="n">r</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse_category</span><span class="p">)</span>
+                    <span class="n">req</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">req</span>
+</code></pre></div>
+<h4>第二个页面</h4>
+
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-09-07%2009:20:42%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
+
+<p>这个页面就是服饰内衣的页面了,我们抓取每个页面的蓝色字体的小分类,保存进req</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python">    <span class="k">def</span> <span class="nf">parse_category</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">response</span><span class="p">):</span>
+        <span class="s">&#39;获取分类页&#39;</span>
+        <span class="n">req</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">sel</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&#39;/html/body/div[5]/div/a&#39;</span><span class="p">):</span>
+            <span class="n">href</span> <span class="o">=</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&#39;@href&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">href</span><span class="p">:</span>
+                <span class="n">url</span> <span class="o">=</span> <span class="s">&quot;http://wap.jd.com&quot;</span> <span class="o">+</span> <span class="n">i</span>
+                <span class="c"># print url</span>
+                <span class="n">r</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse_list</span><span class="p">)</span>
+                <span class="n">req</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">req</span>
+</code></pre></div>
+<h4>第三个页面</h4>
+
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-09-07%2009:23:32%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
+
+<p>这个就是列表页面了,我们沿着这个页面可以抓取所有商品的url,要说的就是要把下一页也放到parse_list里进行循环</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python">    <span class="k">def</span> <span class="nf">parse_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">response</span><span class="p">):</span>
+        <span class="s">&#39;分别获得商品的地址和下一页地址&#39;</span>
+        <span class="n">req</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="s">&#39;下一页地址&#39;</span>
+        <span class="n">next_list</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&#39;/html/body/div[21]/a[1]/@href&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">next_list</span><span class="p">:</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="s">&quot;http://wap.jd.com&quot;</span> <span class="o">+</span> <span class="n">next_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse_list</span><span class="p">)</span>
+            <span class="n">req</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+
+        <span class="s">&#39;商品地址&#39;</span>
+        <span class="k">for</span> <span class="n">sel</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&#39;/html/body/div[contains(@class, &quot;pmc&quot;)]/div[1]/a&#39;</span><span class="p">):</span>
+            <span class="n">href</span> <span class="o">=</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&#39;@href&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">href</span><span class="p">:</span>
+                <span class="n">url</span> <span class="o">=</span> <span class="s">&quot;http://wap.jd.com&quot;</span> <span class="o">+</span> <span class="n">i</span>
+                <span class="c"># print url</span>
+                <span class="n">r</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse_product</span><span class="p">)</span>
+                <span class="n">req</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">req</span>
+</code></pre></div>
+<h4>第四个页面</h4>
+
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-09-07%2009:25:36%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
+
+<p>在这里抓取title,price和id,id就是 <a href="http://wap.jd.com/product/1268172347.html">http://wap.jd.com/product/1268172347.html</a> 最后的数字.</p>
+
+<p>把上面网址中的product改成comments,就可以抓取评论页了</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python">    <span class="k">def</span> <span class="nf">parse_product</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">response</span><span class="p">):</span>
+        <span class="s">&#39;商品页获取title,price,product_id&#39;</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;product&#39;</span><span class="p">,</span><span class="s">&#39;comments&#39;</span><span class="p">,</span><span class="n">response</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse_comments</span><span class="p">)</span>
+
+        <span class="n">title</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&#39;//title/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()[</span><span class="mi">0</span><span class="p">][:</span><span class="o">-</span><span class="mi">6</span><span class="p">]</span>
+        <span class="n">price</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&#39;/html/body/div[4]/div[4]/font/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">product_id</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="o">-</span><span class="mi">5</span><span class="p">]</span>
+
+
+        <span class="n">item</span> <span class="o">=</span> <span class="n">TutorialItem</span><span class="p">()</span>
+        <span class="n">item</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">title</span>
+        <span class="n">item</span><span class="p">[</span><span class="s">&#39;price&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">price</span>
+        <span class="n">item</span><span class="p">[</span><span class="s">&#39;product_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">product_id</span>
+        <span class="n">r</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="s">&#39;item&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span>
+        <span class="k">print</span> <span class="n">title</span><span class="p">,</span><span class="n">price</span><span class="p">,</span><span class="n">product_id</span>
+        <span class="k">return</span> <span class="n">r</span>
+</code></pre></div>
+<h4>第五个页面</h4>
+
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-09-07%2009:29:07%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
+
+<p>这个页面也没什么好说的,把好中差评论加一起就是商品总数了,然后返回item(<a href="http://scrapy-chs.readthedocs.org/zh_CN/latest/topics/request-response.html#topics-request-response-ref-request-userlogin">如何爬取属性在不同页面的item呢？</a>scrapy里面介绍的很详细了</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python">    <span class="k">def</span> <span class="nf">parse_comments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">response</span><span class="p">):</span>
+        <span class="s">&#39;获取商品comment&#39;</span>
+        <span class="n">comment_5</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&#39;/html/body/div[4]/div[2]/a[1]/font[2]/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+        <span class="n">comment_3</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&#39;/html/body/div[4]/div[2]/a[2]/font/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+        <span class="n">comment_1</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&#39;/html/body/div[4]/div[2]/a[3]/font/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+        <span class="n">comment</span> <span class="o">=</span> <span class="n">comment_5</span> <span class="o">+</span> <span class="n">comment_3</span> <span class="o">+</span> <span class="n">comment_1</span>
+        <span class="k">print</span> <span class="n">comment</span>
+        <span class="n">totle_comment</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">comment</span><span class="p">])</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="s">&#39;item&#39;</span><span class="p">]</span>
+        <span class="n">item</span><span class="p">[</span><span class="s">&#39;comment&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">totle_comment</span>
+        <span class="k">print</span> <span class="n">totle_comment</span>
+        <span class="k">return</span> <span class="n">item</span>
+</code></pre></div>
+<p>至此整个爬虫完毕,剩下就是运行了,正在等待结果</p>
+
+  </article>
+<!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/2014/09/07/scrapy-jd"  data-title="基于Scrapy的京东爬虫 - Hackerxu's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
+</div>
+
+      </div>
+    </div>
+    <footer class="site-footer">
+
+<div class="wrap">
+    <div class="footer-col-1 column">
+      <div class="github">
+            <!-- <span class="icon github"> -->
+              <svg version="1.1" class="github-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="#000" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761
+                c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32
+                c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472
+                c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037
+                C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65
+                c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261
+                c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082
+                c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129
+                c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            <!-- </span> -->
+          </div>
+          <a href="https://github.com/taizilongxu">
+            Fork me on github
+          </a>
+    </div>
+      <div class="footer-col-2">
+           <p>© 2014 - 2014 by <a href="http://github.com/taizilongxu">Hackerxu</a></p>
+      </div>
+    <!-- <div class="footer-col-3 column">
+      <p class="text">Python,HTML,CSS,Machine Leaning</p>
+    </div> -->
+</div>
+  <div class="scroll-top"><i class="fa fa-arrow-circle-up"></i></div>
+</footer>
+
+
+<!-- mathjax -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- highlight -->
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- duoshuo -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"taizilongxu"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+<!-- top-scrooll -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.js"></script>
+    <script type="text/javascript">
+
+$(window).scroll(function() {
+
+    if($(this).scrollTop() > 100) {
+        $('.scroll-top').fadeIn(200);
+    } else {
+        $('.scroll-top').fadeOut(200);
+    }
+});
+
+$('.scroll-top').bind('click', function(e) {
+    e.preventDefault();
+    $('body,html').animate({scrollTop:0},200);
+});
+</script>
+    </body>
+</html>

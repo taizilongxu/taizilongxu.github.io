@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- 手机端页面 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Core Python programming（2）</title>
+    <link rel="shortcut icon" href=" /img/github.ico"/>
+    <link rel="bookmark" href="/img/github.ico"/>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Python,HTML,CSS,Machine Leaning">
+    <link rel="canonical" href="http://hackerxu.com/2014/06/21/core-python(2).html">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/github.css">
+  <!-- 返回顶部 -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="/js/jquery.js"></script>
+  <script src="/js/function_about.js"></script>
+</head>
+
+    <body>
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/"><h1><strong> <font style="color:#39B3D7" >L</font><font style="color:#ED9C28">i</font><font style="color:#47A447">m</font><font style="color:#D9534F">b</font><font style="color:#3276B1">o</font>
+    </strong>
+    </h1></a>
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+        
+          <a class="page-link" href="/about/">About</a>
+        
+        
+        
+          <a class="page-link" href="/archive/">Archive</a>
+        
+        
+        
+          <a class="page-link" href="/categories/">Categories</a>
+        
+        
+        
+        
+        
+          <a class="page-link" href="/tags/">Tags</a>
+        
+        
+      </div>
+    </nav>
+  </div>
+
+</header>
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+  <header class="post-header">
+    <h1><a href="/2014/06/21/core-python(2).html">Core Python programming（2）</a></h1>
+      <p class="meta"><i class="fa fa-calendar"></i> 2014-06-21&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#Core Python programming">Core Python programming</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#python">python</a></p>
+  </header>
+  <article class="post-content">
+  <p>4-5 chapter</p>
+
+<h3>第四章 python对象</h3>
+
+<h4>4.1Python对象</h4>
+
+<p>所有的Python对象拥有三个特性:<strong>身份,类型和值</strong></p>
+
+<h4>4.2标准类型(基本数据类型)</h4>
+
+<ul>
+<li>数字</li>
+<li>Integer 整形</li>
+<li>Boolean 布尔型</li>
+<li>Long integer 长整型</li>
+<li>Floating point real number 浮点型</li>
+<li>Complex number 复数型</li>
+<li>String 字符串</li>
+<li>List 列表</li>
+<li>Tuple 元祖</li>
+<li>Dictionary 字典</li>
+</ul>
+
+<h4>4.3其他内建类型</h4>
+
+<ul>
+<li>类型</li>
+<li>Null对象(None)</li>
+<li>文件</li>
+<li>集合/固定集合</li>
+<li>函数/方法</li>
+<li>模块</li>
+<li>类 </li>
+</ul>
+
+<p>通过<strong>type()</strong>函数你能得到特定对象的类型信息</p>
+
+<h4>4.4内部类型</h4>
+
+<ul>
+<li>代码</li>
+<li>帧</li>
+<li>跟踪记录</li>
+<li>切片</li>
+<li>省略</li>
+<li>Xrange</li>
+</ul>
+
+<h4>4.5标准类型操作符</h4>
+
+<ol>
+<li>对象值的比较</li>
+<li>对象身份的比较</li>
+<li>布尔型</li>
+</ol>
+
+<p>对象身份的比较:</p>
+
+<ul>
+<li>foo1和foo2指向相同的对象</li>
+</ul>
+
+<p>这里foo1和foo2实际指向的都是在内存创建的唯一一个4.3,如果调用<code>foo1 is foo2</code>(等价于<code>id(foo1) == id(foo2)</code>) 则返回结果true</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">foo1</span> <span class="o">=</span> <span class="n">foo2</span> <span class="o">=</span> <span class="mf">4.3</span>
+
+<span class="n">foo1</span> <span class="o">=</span> <span class="mf">4.3</span>
+<span class="n">foo2</span> <span class="o">=</span> <span class="n">foo1</span>
+</code></pre></div>
+<ul>
+<li>foo1和foo2指向不同的对象</li>
+</ul>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">foo1</span> <span class="o">=</span> <span class="mf">4.3</span>
+<span class="n">foo2</span> <span class="o">=</span> <span class="mf">1.3</span> <span class="o">+</span> <span class="mf">3.0</span>
+</code></pre></div>
+<p>虽然两个变量的值相等,但是两个对象指向的是不同的对象.调用<code>foo1 is foo2</code>结果返回false</p>
+
+<p>整形对象和字符串对象是不可变对象,所以python会很高效的缓存他们.这会造成我们认为python应该创建新对象时,它却没有创建对象的假象</p>
+
+<h4>4.6标准类型内建函数</h4>
+
+<ol>
+<li>cmp(obj1,obj2) 比较</li>
+<li>repr(obj)或&#39;obj&#39; 返回一个对象的字符串表示</li>
+<li>str(obj) 返回对象适合可读性好的字符串表示</li>
+<li>type() 得到一个对象的类型,并返回相应的type对象</li>
+</ol>
+
+<p>repr()和str()的区别:</p>
+
+<ul>
+<li>str()对用户更友好,repr()对python更友好</li>
+<li>当在python解释器中直接输入a时,调用的是repr()函数!而print语句调用的是str()函数</li>
+<li>repr()和``做的时完全一样的事情,他们返回一个对象的官方字符串表示,也就是说绝大多数情况下可以通过求值运算(使用内建函数eval()重新得到该对象),str()致力于生成一个对象的可读性更好的字符串表示,它返回的结果通常无法用于eval()求值.</li>
+</ul>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="s">&#39;haha&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="n">a</span>
+<span class="n">haha</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
+<span class="s">&#39;haha&#39;</span>
+</code></pre></div>
+<p>isinstance():检查一个对象是否是一个类的实例.(第13章详细研究).</p>
+
+<p>这里知道函数type()的一个调用,就是<code>type(obj).__name__</code>,它返回obj的类型的字符串表示.</p>
+
+<p>对于判断一个变量类型的方法还是用isinstance()比较好.</p>
+
+<h4>4.7类型工厂函数</h4>
+
+<p>工厂函数:int(),type(),list()虽然他们看上去有点像函数,实质上他们是类.当你调用他们时,实际上是生成了该类的一个实例,就像工厂生产货物一样.</p>
+
+<h4>4.8标准类型的分类</h4>
+
+<p>不怎么太实用,略去.</p>
+
+<h4>4.9不支持的类型</h4>
+
+<p>Python中一切都是指针.</p>
+
+<p>Python的整形实现等同于C语言的长整型.Python为用户解决了整型范围的烦恼,用户不用再担心两个大数相乘会溢出</p>
+
+<p>Python的浮点型实际上时C语言的双精度浮点型.Python不支持单精度浮点型.(如果要处理十进制浮点型类型,必须decimal模块,如计算金钱等)</p>
+
+<h3>第五章 数字</h3>
+
+<h4>5.1数字简介</h4>
+
+<p>注意删除数字对象的方法:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">del</span> <span class="n">number</span>
+</code></pre></div>
+<p>在这里要说明一下:del仅仅是删除一个引用,而不是删除对象本身,删除对象的操作还是留给了Python内存释放机制(引用计数机制),用户无法干预!!</p>
+
+<h4>5.2整型</h4>
+
+<p>这里的整型概念很简单,python不区分整型和长整型的区别,对程序员来说方便了很多.</p>
+
+<h4>5.5操作符</h4>
+
+<p>真正的除法:
+python中默认的除法是这样滴</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="mi">5</span><span class="o">/</span><span class="mi">2</span>
+<span class="mi">2</span>
+</code></pre></div>
+<p>但是如果引入division就变成了正常滴</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span><span class="n">form</span> <span class="n">__future__</span> <span class="kn">import</span> <span class="nn">division</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">5</span><span class="o">/</span><span class="mi">2</span>
+<span class="mf">2.5</span>
+</code></pre></div>
+<h4>5.6内建函数与工厂函数</h4>
+
+<p>这里讲了一个coerce()函数,返回类型转换完毕的两个数值元素的元组</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span><span class="nb">coerce</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="il">134L</span><span class="p">)</span>
+<span class="p">(</span><span class="il">1L</span><span class="p">,</span><span class="il">134L</span><span class="p">)</span>
+</code></pre></div>
+<p>pow(x,y,z)第三个参数可选,用来将运算结果和第三个参数进行取余运算.并且比pow(x,y)%z性能好.</p>
+
+<p>int(),floor(),round()区别:</p>
+
+<ul>
+<li>int()直接截去小数部分(返回值为整型)</li>
+<li>math.floor()得到最接近原数但小于原数的整数(返回浮点型)</li>
+<li>round()得到最接近原数的整型(返回值为浮点型)</li>
+</ul>
+
+<h4>5.7其他数字类型</h4>
+
+<p>布尔:没有<code>__nonzero__()</code>方法的对象的默认值时True.(其实判断一个对象的bool值就是调用该对象的<code>__nonzero()</code>方法)</p>
+
+  </article>
+<!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/2014/06/21/core-python(2)"  data-title="Core Python programming（2） - Hackerxu's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
+</div>
+
+      </div>
+    </div>
+    <footer class="site-footer">
+
+<div class="wrap">
+    <div class="footer-col-1 column">
+      <div class="github">
+            <!-- <span class="icon github"> -->
+              <svg version="1.1" class="github-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="#000" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761
+                c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32
+                c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472
+                c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037
+                C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65
+                c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261
+                c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082
+                c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129
+                c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            <!-- </span> -->
+          </div>
+          <a href="https://github.com/taizilongxu">
+            Fork me on github
+          </a>
+    </div>
+      <div class="footer-col-2">
+           <p>© 2014 - 2014 by <a href="http://github.com/taizilongxu">Hackerxu</a></p>
+      </div>
+    <!-- <div class="footer-col-3 column">
+      <p class="text">Python,HTML,CSS,Machine Leaning</p>
+    </div> -->
+</div>
+  <div class="scroll-top"><i class="fa fa-arrow-circle-up"></i></div>
+</footer>
+
+
+<!-- mathjax -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- highlight -->
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- duoshuo -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"taizilongxu"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+<!-- top-scrooll -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.js"></script>
+    <script type="text/javascript">
+
+$(window).scroll(function() {
+
+    if($(this).scrollTop() > 100) {
+        $('.scroll-top').fadeIn(200);
+    } else {
+        $('.scroll-top').fadeOut(200);
+    }
+});
+
+$('.scroll-top').bind('click', function(e) {
+    e.preventDefault();
+    $('body,html').animate({scrollTop:0},200);
+});
+</script>
+    </body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- 手机端页面 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ubuntu迁移系统,SSD与HDD混盘分区</title>
+    <link rel="shortcut icon" href=" /img/github.ico"/>
+    <link rel="bookmark" href="/img/github.ico"/>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Python,HTML,CSS,Machine Leaning">
+    <link rel="canonical" href="http://hackerxu.com/2014/08/21/ubuntu-reset.html">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/github.css">
+  <!-- 返回顶部 -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="/js/jquery.js"></script>
+  <script src="/js/function_about.js"></script>
+</head>
+
+    <body>
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/"><h1><strong> <font style="color:#39B3D7" >L</font><font style="color:#ED9C28">i</font><font style="color:#47A447">m</font><font style="color:#D9534F">b</font><font style="color:#3276B1">o</font>
+    </strong>
+    </h1></a>
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+        
+          <a class="page-link" href="/about/">About</a>
+        
+        
+        
+          <a class="page-link" href="/archive/">Archive</a>
+        
+        
+        
+          <a class="page-link" href="/categories/">Categories</a>
+        
+        
+        
+        
+        
+          <a class="page-link" href="/tags/">Tags</a>
+        
+        
+      </div>
+    </nav>
+  </div>
+
+</header>
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+  <header class="post-header">
+    <h1><a href="/2014/08/21/ubuntu-reset.html">Ubuntu迁移系统,SSD与HDD混盘分区</a></h1>
+      <p class="meta"><i class="fa fa-calendar"></i> 2014-08-21&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#linux">linux</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#linux">linux</a></p>
+  </header>
+  <article class="post-content">
+  <p>最近忍受不了打开matlab的速度,果断换了一个ssd,速度果然飞快.不过又得迁移一次系统,这重新安装一下软件,记录一下.</p>
+
+<p>最开始安装的是硬盘里的i386 32位的ubuntu,一开始没仔细看,等安完系统,下完sougou一看不满足依赖,这才检查了下系统,32位,真坑啊,于是又做了一下系统盘重新来了一遍.</p>
+
+<h4>分区策略</h4>
+
+<p>一共两张硬盘,一张500GHDD,一张128GSSD</p>
+
+<p>需求:因为想着放假回家要带着SSD,给我的老笔记本用着,平常的时候就放在实验室的台式里(毕竟天天你要用台式),所以SSD必须可单独拆卸,完整的安装系统,同时还要挂着那个台式机的HDD.</p>
+
+<p>ssd:</p>
+
+<ol>
+<li>/boot 200M</li>
+<li>swap 1000M</li>
+<li>/ 50000M</li>
+<li>/home 余下的空间</li>
+</ol>
+
+<p>hdd:</p>
+
+<ol>
+<li>/home/limbo/database 500G</li>
+</ol>
+
+<p>这样我就可以再台式机上用ssd做系统,hhd做仓库,把大容量的文件放进/home/limbo/database,方便存储,最后再装完系统后,改变一下database的权限就可以了</p>
+
+<p><strong>注意要建一个limbo的用户</strong></p>
+
+<h4>搜狗拼音</h4>
+
+<p>这货也挺坑的,按照<a href="http://pinyin.sogou.com/linux/">官网的地址</a>直接下载deb包,用软件中心直接傻瓜安装就可以了,这时候千万要注意了,许多网上教程要<strong>卸载ibus,fcitx</strong>什么的<strong>千万不要卸载</strong>,否则就要重装了,只在设置-&gt;语言里把默认的ibus输入方式改成fcitx就OK了(重装了3遍,泪崩~~)</p>
+
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-08-27%2018:48:25%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
+
+<h4>安装基本软件</h4>
+
+<p>几个常用的软件和支持</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get install openjdk-7-jre
+sudo apt-get install tree
+sudo apt-get install vim
+sudo apt-get install zsh
+sudo apt-get install tmux
+sudo apt-get install guake
+sudo apt-get install git
+sudo apt-get install tig
+sudo apt-get install ipython
+sudo apt-get install autojump
+------------
+September 6 2014 10:22 AM 更新
+sudo apt-get install htop #比top好用太多
+------------
+</code></pre></div>
+<p>python的<a href="https://bootstrap.pypa.io/get-pip.py">pip</a></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">https://bootstrap.pypa.io/get-pip.py
+</code></pre></div>
+<p>几个有用的改变guake终端颜色的脚本</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">git clone https://github.com/erroneousboat/guake-colors-monokai.git
+git clone https://github.com/sigurdga/gnome-terminal-colors-solarized
+</code></pre></div>
+<p>vim支持,首先下载事先保存的dotfile</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">git clone git@github.com:taizilongxu/dotfiles.git
+cd dotfiles
+chmod +x install.sh
+./install.sh
+</code></pre></div>
+<p>再下载vim需要的依赖</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">git clone https://github.com/terryma/vim-expand-region.git
+git clone https://github.com/terryma/vim-multiple-cursors.git
+git clone https://github.com/Yggdroot/indentLine.git
+sudo apt-get install ctags
+sudo apt-get install curl
+</code></pre></div>
+<p>非常奇怪,上面3个插件vundle里竟然没有,所以要单独git clone下,再把3个插件覆盖到~/.vim下即可</p>
+
+<p>几个zsh的theme放在<a href="https://gist.github.com/taizilongxu/f8881c4ff61fbf702641">gist</a>上了,以后有功夫再做脚本吧</p>
+
+<h4>安装jekyll</h4>
+
+<p>jekyll是ruby支持,所以要下载ruby和gem</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get install ruby
+sudo apt-get install gem
+sudo apt-get install ruby ruby-dev
+sudo gem install jekyll
+sudo apt-get install nodejs
+</code></pre></div>
+<h4>github</h4>
+
+<p>~/.gitconfig</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">[user]
+    name = taizilongxu
+    email = 468137306@qq.com
+[core]
+    editor = vim
+[alias]
+    ci = commit -a -v
+    co = checkout
+    st = status
+    br = branch
+    throw = reset --hard HEAD
+    throwh = reset --hard HEAD^
+[color]
+    ui = true
+[push]
+    default = current
+[merge]
+    tool = meld
+</code></pre></div>
+<h4>其他有用的软件</h4>
+
+<ol>
+<li><a href="http://pad.haroopress.com/">haroopad</a>:感觉是linux下markdown支持最好,用的最舒服的编辑器.</li>
+<li>smplayer:各个格式的音频都支持,满分</li>
+<li>virtualbox:虚拟机必备,轻量,快捷</li>
+<li>chrome:这个不必多说了</li>
+<li>unity-tweak-tool:ubuntu的unity桌面定制</li>
+<li>System Load Indicator:系统监视器,放在状态栏里,比起什么conky的简单些,也实用些.</li>
+<li>sublime text:这个可装可不装,作为vimer其实vim一个编辑器就够了,哈哈</li>
+</ol>
+
+<h4>SSD优化</h4>
+
+<p>ext4文件系统自动4k对齐,BIOS要开achi</p>
+
+<p>其实SSD也不必担心,优不优化的平常使用,它的寿命完全够用了,最起码有3年的质保呢,3年就该换了.网上说的什么trim的平常执行以下命令就可以了:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">sudo fstrim -v \
+sudo fstrim -v \home
+</code></pre></div>
+<h4>感触</h4>
+
+<p>SSD真的挺快的,浏览器 文本 ppt什么的都是秒开,最可歌可泣的是ubuntu的启动速度,目测10秒以内,快的我BIOS都来不及开就进去了,体验了SSD真的不想再等慢腾腾的HDD了.</p>
+
+  </article>
+<!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/2014/08/21/ubuntu-reset"  data-title="Ubuntu迁移系统,SSD与HDD混盘分区 - Hackerxu's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
+</div>
+
+      </div>
+    </div>
+    <footer class="site-footer">
+
+<div class="wrap">
+    <div class="footer-col-1 column">
+      <div class="github">
+            <!-- <span class="icon github"> -->
+              <svg version="1.1" class="github-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="#000" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761
+                c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32
+                c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472
+                c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037
+                C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65
+                c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261
+                c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082
+                c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129
+                c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            <!-- </span> -->
+          </div>
+          <a href="https://github.com/taizilongxu">
+            Fork me on github
+          </a>
+    </div>
+      <div class="footer-col-2">
+           <p>© 2014 - 2014 by <a href="http://github.com/taizilongxu">Hackerxu</a></p>
+      </div>
+    <!-- <div class="footer-col-3 column">
+      <p class="text">Python,HTML,CSS,Machine Leaning</p>
+    </div> -->
+</div>
+  <div class="scroll-top"><i class="fa fa-arrow-circle-up"></i></div>
+</footer>
+
+
+<!-- mathjax -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- highlight -->
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- duoshuo -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"taizilongxu"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+<!-- top-scrooll -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.js"></script>
+    <script type="text/javascript">
+
+$(window).scroll(function() {
+
+    if($(this).scrollTop() > 100) {
+        $('.scroll-top').fadeIn(200);
+    } else {
+        $('.scroll-top').fadeOut(200);
+    }
+});
+
+$('.scroll-top').bind('click', function(e) {
+    e.preventDefault();
+    $('body,html').animate({scrollTop:0},200);
+});
+</script>
+    </body>
+</html>

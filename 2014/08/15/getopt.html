@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Hackerxu's Blog</title>
+    <title>Python命令行参数-getopt</title>
     <link rel="shortcut icon" href=" /img/github.ico"/>
     <link rel="bookmark" href="/img/github.ico"/>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Python,HTML,CSS,Machine Leaning">
-    <link rel="canonical" href="http://hackerxu.com/">
+    <link rel="canonical" href="http://hackerxu.com/2014/08/15/getopt.html">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/github.css">
@@ -68,103 +68,97 @@
 
     <div class="page-content">
       <div class="wrap">
-      <div class="home">
-  
+      <div class="post">
   <header class="post-header">
-    <h1><a href="/2014/09/13/luobin.html">Captain,my captain!</a></h1>
-    <p class="meta"><i class="fa fa-calendar"></i> 2014-09-13&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#life">life</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#luobin">luobin</a></p>
+    <h1><a href="/2014/08/15/getopt.html">Python命令行参数-getopt</a></h1>
+      <p class="meta"><i class="fa fa-calendar"></i> 2014-08-15&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#python">python</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#python">python</a></p>
   </header>
   <article class="post-content">
-  <p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/movie/luobin2.jpg" alt=""></p>
+  <p>最近用到python的命令行参数,特地学习了以下,发现有以下三种方法:</p>
 
-<p>我每天到你家接你，我们出去喝酒笑闹，那很棒是我一天中最棒的时刻，只有十秒，从停车到你家门口，每次我敲门，都希望你不在了，不说再见，什么都没有，你就走了，我懂得不多，但我很清楚。</p>
+<ol>
+<li>sys.argv</li>
+<li>argparse</li>
+<li>getopt</li>
+</ol>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/movie/luobin.jpg" alt=""></p>
+<p>对于第一种方法是最原始的方法了,缺点是功能太单一了,什么都要自己实现;第二种功能很强大,对于一些参数的异常都能定制,但是缺点是有点复杂;最pythonic的就是getopt了,简单明了,清晰快捷.</p>
 
-<p>选择和别人不一样的路走的人,虽然会感觉孤独甚至会招致歧视,但并不意味着那就是过错——相反,一个真正的英雄往往会选择一条很少人会走的路.大多数的人都在平静的绝望着.</p>
+<h3>介绍下getopt的用法</h3>
+
+<p>命令行参数主要分为以下两种:</p>
+
+<ol>
+<li>短选项</li>
+<li>长选项</li>
+</ol>
+
+<p>而每种参数又分为附加参数和非附加参数,见下表:</p>
+
+<table><thead>
+<tr>
+<th></th>
+<th style="text-align: center">长选项</th>
+<th style="text-align: center">长选项附加参数</th>
+<th style="text-align: center">短选项</th>
+<th style="text-align: center">短选项附加参数</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>参数</td>
+<td style="text-align: center">--b</td>
+<td style="text-align: center">--b item</td>
+<td style="text-align: center">-b</td>
+<td style="text-align: center">-b item</td>
+</tr>
+<tr>
+<td>getopt表示</td>
+<td style="text-align: center">b</td>
+<td style="text-align: center">b=</td>
+<td style="text-align: center">b</td>
+<td style="text-align: center">b:</td>
+</tr>
+</tbody></table>
+
+<p>没看懂?看下面例子:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">./</span><span class="n">justForSample</span> <span class="o">-</span><span class="n">c</span> <span class="o">-</span><span class="n">b</span> <span class="mi">5</span> <span class="o">--</span><span class="n">mm</span> <span class="o">--</span><span class="n">lala</span> <span class="o">/</span><span class="n">home</span>
+</code></pre></div>
+<p>这个命令行包含以上四类:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">getopt</span>
+
+<span class="n">opts</span><span class="p">,</span><span class="n">args</span> <span class="o">=</span> <span class="n">getopt</span><span class="o">.</span><span class="n">getopt</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span><span class="s">&#39;cb:&#39;</span><span class="p">,[</span><span class="s">&#39;mm&#39;</span><span class="p">,</span><span class="s">&#39;lala=&#39;</span><span class="p">])</span>
+</code></pre></div>
+<p>getopt返回两个参数:一个是对应的参数选项和value元组，另一个是除去有用参数外的其他命令行输出(这个一般为空)。</p>
+
+<p>c和b是短选项,b后面需要参数所以加:,mm和lala是长选项,lala后面需要参数所以加=.</p>
+
+<p>完整程序arg.py</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python">  <span class="c">#-*- encoding: UTF-8 -*-                                                                                                     </span>
+  <span class="c">#---------------------------------import------------------------------------</span>
+  <span class="kn">import</span> <span class="nn">getopt</span>
+  <span class="kn">import</span> <span class="nn">sys</span>
+  <span class="c">#---------------------------------------------------------------------------</span>
+  <span class="n">opts</span><span class="p">,</span><span class="n">args</span> <span class="o">=</span> <span class="n">getopt</span><span class="o">.</span><span class="n">getopt</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span><span class="s">&#39;cb:&#39;</span><span class="p">,[</span><span class="s">&#39;mm&#39;</span><span class="p">,</span><span class="s">&#39;lala=&#39;</span><span class="p">])</span>
+  <span class="k">for</span> <span class="n">op</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">opts</span><span class="p">:</span>
+      <span class="k">print</span> <span class="n">op</span><span class="p">,</span><span class="n">value</span>
+ <span class="c">############################################################################</span>
+</code></pre></div>
+<p>输出结果</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="err">$</span><span class="n">python</span> <span class="n">arg</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">c</span> <span class="o">-</span><span class="n">b</span> <span class="mi">5</span> <span class="o">--</span><span class="n">mm</span> <span class="o">--</span><span class="n">lala</span> <span class="o">/</span><span class="n">home</span>
+
+<span class="o">-</span><span class="n">c</span> 
+<span class="o">-</span><span class="n">b</span> <span class="mi">5</span>
+<span class="o">--</span><span class="n">mm</span> 
+<span class="o">--</span><span class="n">lala</span> <span class="o">/</span><span class="n">home</span>
+</code></pre></div>
+<p>是不是很简单?</p>
 
   </article>
-  
-<!-- 分页 -->
-<!-- <div class="pagination">
-<ul id="pagination-flickr">
-  
-    <li class="previous-off"><i class="fa fa-arrow-left"></i></i></li>
-  
-      
-      <li><a href="/">1</a></li>
-      
-    
-  
-    <li class="next-off"><i class="fa fa-arrow-right"></i></li>
-  
-</ul>
-</div> -->
-  <ul class="posts">
-    <li class="listing-seperator">I have no time to waste</li>
-  
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2014-09-13">2014-09-13</time>
-      <a href="/2014/09/13/luobin.html" title="Captain,my captain!">Captain,my captain!</a>
-    </li>
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2014-09-09">2014-09-09</time>
-      <a href="/2014/09/09/scrapy-jd2.html" title="京东评论,价格排序">京东评论,价格排序</a>
-    </li>
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2014-09-07">2014-09-07</time>
-      <a href="/2014/09/07/scrapy-jd.html" title="基于Scrapy的京东爬虫">基于Scrapy的京东爬虫</a>
-    </li>
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2014-09-06">2014-09-06</time>
-      <a href="/2014/09/06/shell-4.html" title="Shell脚本语言笔记(4)">Shell脚本语言笔记(4)</a>
-    </li>
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2014-09-06">2014-09-06</time>
-      <a href="/2014/09/06/shell-3.html" title="Shell脚本语言笔记(3)">Shell脚本语言笔记(3)</a>
-    </li>
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2014-09-06">2014-09-06</time>
-      <a href="/2014/09/06/shell-2.html" title="Shell脚本语言笔记(2)">Shell脚本语言笔记(2)</a>
-    </li>
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2014-09-05">2014-09-05</time>
-      <a href="/2014/09/05/shell.html" title="Shell脚本语言笔记(1)">Shell脚本语言笔记(1)</a>
-    </li>
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2014-09-01">2014-09-01</time>
-      <a href="/2014/09/01/tmux.html" title="使用tmux">使用tmux</a>
-    </li>
-  
-    
-    
-    
-    <li class="listing-seperator"><a href="/archive/">Long ago</a></li>
-  </ul>
+<!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/2014/08/15/getopt"  data-title="Python命令行参数-getopt - Hackerxu's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
 </div>
 
       </div>

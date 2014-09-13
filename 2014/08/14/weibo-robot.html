@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Hackerxu's Blog</title>
+    <title>Python实现微博终端机器人</title>
     <link rel="shortcut icon" href=" /img/github.ico"/>
     <link rel="bookmark" href="/img/github.ico"/>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Python,HTML,CSS,Machine Leaning">
-    <link rel="canonical" href="http://hackerxu.com/">
+    <link rel="canonical" href="http://hackerxu.com/2014/08/14/weibo-robot.html">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/github.css">
@@ -68,103 +68,57 @@
 
     <div class="page-content">
       <div class="wrap">
-      <div class="home">
-  
+      <div class="post">
   <header class="post-header">
-    <h1><a href="/2014/09/13/luobin.html">Captain,my captain!</a></h1>
-    <p class="meta"><i class="fa fa-calendar"></i> 2014-09-13&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#life">life</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#luobin">luobin</a></p>
+    <h1><a href="/2014/08/14/weibo-robot.html">Python实现微博终端机器人</a></h1>
+      <p class="meta"><i class="fa fa-calendar"></i> 2014-08-14&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#python">python</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#python">python</a></p>
   </header>
   <article class="post-content">
-  <p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/movie/luobin2.jpg" alt=""></p>
+  <p>为了满足需要,做了这个程序~~没事玩玩的(最主要的是可以远程关机),手机或其他终端发送一个微博,主机就可以接受到命令,运行命令.项目地址<a href="https://github.com/taizilongxu/weibo_robot">https://github.com/taizilongxu/weibo_robot</a></p>
 
-<p>我每天到你家接你，我们出去喝酒笑闹，那很棒是我一天中最棒的时刻，只有十秒，从停车到你家门口，每次我敲门，都希望你不在了，不说再见，什么都没有，你就走了，我懂得不多，但我很清楚。</p>
+<p>利用这个代码,可以实现自动化发送,评论,还可以收集微博的各种信息,也可以无限扩展啊</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/movie/luobin.jpg" alt=""></p>
+<p><img src="https://github.com/taizilongxu/weibo_robot/raw/master/pic/1.png" alt=""></p>
 
-<p>选择和别人不一样的路走的人,虽然会感觉孤独甚至会招致歧视,但并不意味着那就是过错——相反,一个真正的英雄往往会选择一条很少人会走的路.大多数的人都在平静的绝望着.</p>
+<p><img src="https://github.com/taizilongxu/weibo_robot/raw/master/pic/2.png" alt=""></p>
+
+<h2>需要写入的参数</h2>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">APP_KEY</span> <span class="o">=</span> <span class="s">&#39;&#39;</span> <span class="c"># app key</span>
+<span class="n">APP_SECRET</span> <span class="o">=</span> <span class="s">&#39;&#39;</span> <span class="c"># app secret</span>
+<span class="n">CALLBACK_URL</span> <span class="o">=</span> <span class="s">&#39;&#39;</span> <span class="c"># callback url</span>
+<span class="n">AUTH_URL</span> <span class="o">=</span> <span class="s">&#39;https://api.weibo.com/oauth2/authorize&#39;</span>
+<span class="n">USERID</span> <span class="o">=</span> <span class="s">&#39;&#39;</span> <span class="c"># userid</span>
+<span class="n">PASSWD</span> <span class="o">=</span> <span class="s">&#39;&#39;</span> <span class="c">#password</span>
+</code></pre></div>
+<p>其中前3项需要自己注册新浪的API然后填入进程序,注意要和USERID是一个账号,否则后面的认证就会失败.</p>
+
+<p>后两项就是账号和密码了.</p>
+
+<h2>运行</h2>
+
+<p>在开机启动时自动启动脚本,然后~~~就可以了</p>
+
+<h2>过程难点</h2>
+
+<p>新浪的API需要返回一个code,网上大多数程序都是手动打开网页再获取code填入程序(这样一点也不科学!!)</p>
+
+<p>参考了<a href="http://blog.segmentfault.com/hongfei/1190000000343851">Python：模拟登录以获取新浪微博OAuth的code参数值</a>这篇文章,可以自动输入code了(哦也)</p>
+
+<h2>运行依赖</h2>
+
+<p>Python 2.7
+weibo
+urllib2
+urllib
+time
+subprocess</p>
 
   </article>
-  
-<!-- 分页 -->
-<!-- <div class="pagination">
-<ul id="pagination-flickr">
-  
-    <li class="previous-off"><i class="fa fa-arrow-left"></i></i></li>
-  
-      
-      <li><a href="/">1</a></li>
-      
-    
-  
-    <li class="next-off"><i class="fa fa-arrow-right"></i></li>
-  
-</ul>
-</div> -->
-  <ul class="posts">
-    <li class="listing-seperator">I have no time to waste</li>
-  
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2014-09-13">2014-09-13</time>
-      <a href="/2014/09/13/luobin.html" title="Captain,my captain!">Captain,my captain!</a>
-    </li>
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2014-09-09">2014-09-09</time>
-      <a href="/2014/09/09/scrapy-jd2.html" title="京东评论,价格排序">京东评论,价格排序</a>
-    </li>
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2014-09-07">2014-09-07</time>
-      <a href="/2014/09/07/scrapy-jd.html" title="基于Scrapy的京东爬虫">基于Scrapy的京东爬虫</a>
-    </li>
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2014-09-06">2014-09-06</time>
-      <a href="/2014/09/06/shell-4.html" title="Shell脚本语言笔记(4)">Shell脚本语言笔记(4)</a>
-    </li>
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2014-09-06">2014-09-06</time>
-      <a href="/2014/09/06/shell-3.html" title="Shell脚本语言笔记(3)">Shell脚本语言笔记(3)</a>
-    </li>
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2014-09-06">2014-09-06</time>
-      <a href="/2014/09/06/shell-2.html" title="Shell脚本语言笔记(2)">Shell脚本语言笔记(2)</a>
-    </li>
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2014-09-05">2014-09-05</time>
-      <a href="/2014/09/05/shell.html" title="Shell脚本语言笔记(1)">Shell脚本语言笔记(1)</a>
-    </li>
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2014-09-01">2014-09-01</time>
-      <a href="/2014/09/01/tmux.html" title="使用tmux">使用tmux</a>
-    </li>
-  
-    
-    
-    
-    <li class="listing-seperator"><a href="/archive/">Long ago</a></li>
-  </ul>
+<!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/2014/08/14/weibo-robot"  data-title="Python实现微博终端机器人 - Hackerxu's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
 </div>
 
       </div>

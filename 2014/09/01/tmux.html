@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- 手机端页面 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>使用tmux</title>
+    <link rel="shortcut icon" href=" /img/github.ico"/>
+    <link rel="bookmark" href="/img/github.ico"/>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Python,HTML,CSS,Machine Leaning">
+    <link rel="canonical" href="http://hackerxu.com/2014/09/01/tmux.html">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/github.css">
+  <!-- 返回顶部 -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="/js/jquery.js"></script>
+  <script src="/js/function_about.js"></script>
+</head>
+
+    <body>
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/"><h1><strong> <font style="color:#39B3D7" >L</font><font style="color:#ED9C28">i</font><font style="color:#47A447">m</font><font style="color:#D9534F">b</font><font style="color:#3276B1">o</font>
+    </strong>
+    </h1></a>
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+        
+          <a class="page-link" href="/about/">About</a>
+        
+        
+        
+          <a class="page-link" href="/archive/">Archive</a>
+        
+        
+        
+          <a class="page-link" href="/categories/">Categories</a>
+        
+        
+        
+        
+        
+          <a class="page-link" href="/tags/">Tags</a>
+        
+        
+      </div>
+    </nav>
+  </div>
+
+</header>
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+  <header class="post-header">
+    <h1><a href="/2014/09/01/tmux.html">使用tmux</a></h1>
+      <p class="meta"><i class="fa fa-calendar"></i> 2014-09-01&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#linux">linux</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#linux">linux</a></p>
+  </header>
+  <article class="post-content">
+  <p>这两天在修改blog,以前没怎么长时间写过css+html,后来发现很蛋疼的一件事就是每次调试的时候得看着终端生成blog页,代码得在终端下另一个标签里更改.切换起来很费劲,终于想起了大名鼎鼎的tmux.</p>
+
+<p>这是配置的最终效果:</p>
+
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-09-12%2010:29:35%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
+
+<h3>配置tmux</h3>
+
+<h5>1 如果你用zsh,设置zsh作为默认的shell解析器</h5>
+<div class="highlight"><pre><code class="language-text" data-lang="text"> set-option -g default-shell /bin/zsh 
+</code></pre></div>
+<h5>2 配置前缀键,我一般是用<code>&lt;C-q&gt;</code>来调用终端,<code>&lt;C-a&gt;</code>来绑定tmux的prefix</h5>
+<div class="highlight"><pre><code class="language-text" data-lang="text">set -g prefix C-a
+unbind C-b
+</code></pre></div>
+<h5>3 用vim的hjkl键来选择面板</h5>
+<div class="highlight"><pre><code class="language-text" data-lang="text">bind-key k select-pane -U
+bind-key j select-pane -D
+bind-key h select-pane -L
+bind-key l select-pane -R
+</code></pre></div>
+<h5>4 调整面板大小,也是vim的四个方向键,很舒服</h5>
+<div class="highlight"><pre><code class="language-text" data-lang="text">bind -r ^k resizep -U 10 # upward (prefix Ctrl+k)
+bind -r ^j resizep -D 10 # downward (prefix Ctrl+j)
+bind -r ^h resizep -L 10 # to the left (prefix Ctrl+h)
+bind -r ^l resizep -R 10 # to the right (prefix Ctrl+l)
+</code></pre></div>
+<h5>5 鼠标操作</h5>
+<div class="highlight"><pre><code class="language-text" data-lang="text">#鼠标滚轮可以使用
+set-window-option -g mode-mouse on
+# 鼠标可以选中窗口
+set-option -g mouse-select-pane on
+</code></pre></div>
+<h5>6 复制模式copy-mode</h5>
+
+<ol>
+<li>前缀 [ 进入复制模式</li>
+<li>按 space 开始复制，移动光标选择复制区域</li>
+<li>按 Enter 复制并退出copy-mode。</li>
+<li>将光标移动到指定位置，按 PREIFX ] 粘贴</li>
+</ol>
+
+<p>如果把tmux比作vim的话，那么我们大部分时间都是处于编辑模式，我们复制的时候可不可以像vim一样移动呢？只需要在配置文件(~/.tmux.conf)中加入如下行即可。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">#copy-mode 将快捷键设置为vi 模式
+setw -g mode-keys vi
+</code></pre></div>
+<p><strong>ps:如果想要返回终端鼠标复制的的话,按住<code>shift</code>就可以了</strong></p>
+
+<h5>7 分屏操作</h5>
+<div class="highlight"><pre><code class="language-text" data-lang="text">unbind &#39;&quot;&#39;
+bind - splitw -v # vertical split (prefix -)
+unbind %
+bind | splitw -h # horizontal split (prefix |)
+</code></pre></div>
+<h5>8 使当前pane 最大化,需要一个脚本,脚本地址发现失效了,把代码的贴出来</h5>
+<div class="highlight"><pre><code class="language-text" data-lang="text">#!/bin/bash
+
+# Copyright (c) 2012 Juan Ignacio Pumarino, jipumarino@gmail.com
+#
+# Permission is hereby granted, free of charge, to any person obtaining
+# a copy of this software and associated documentation files (the
+# &quot;Software&quot;), to deal in the Software without restriction, including
+# without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to
+# permit persons to whom the Software is furnished to do so, subject to
+# the following conditions:
+#
+# The above copyright notice and this permission notice shall be
+# included in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+# LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+# OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+# WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+# Instructions
+# ------------
+#
+# 1. Install this script and give it execute permission somewhere in your PATH.
+#    For example:
+#
+#    $ mkdir -p ~/bin
+#    $ wget https://raw.github.com/jipumarino/tmux-zoom/master/tmux-zoom.sh -O ~/bin/tmux-zoom.sh
+#    $ chmod +x ~/bin/tmux-zoom.sh
+#
+# 2. Add a shortcut in your ~/.tmux.conf file:
+#
+#    bind C-k run &quot;tmux-zoom.sh&quot;
+#
+# 3. When using this shortcut, the current tmux pane will open in a new window by itself.
+#    Running it again in the zoomed window will return it to its original pane. You can have
+#    as many zoomed windows as you want.
+
+current=$(tmux display-message -p &#39;#W-#I-#P&#39;)
+list=$(tmux list-window)
+
+[[ &quot;$current&quot; =~ ^(.*)-([0-9]+)-([0-9]+) ]]
+current_window=${BASH_REMATCH[1]}
+current_pane=${BASH_REMATCH[2]}-${BASH_REMATCH[3]}
+new_zoom_window=ZOOM-$current_pane
+
+if [[ $current_window =~ ZOOM-([0-9]+)-([0-9+]) ]]; then
+  old_zoom_window=ZOOM-${BASH_REMATCH[1]}-${BASH_REMATCH[2]}
+  tmux select-window -t ${BASH_REMATCH[1]} \; select-pane -t ${BASH_REMATCH[2]} \; swap-pane -s $old_zoom_window.1 \; kill-window -t $old_zoom_window
+elif [[ $list =~ $new_zoom_window ]]; then
+  tmux select-window -t $new_zoom_window
+else
+  tmux new-window -d -n $new_zoom_window \; swap-pane -s $new_zoom_window.1 \; select-window -t $new_zoom_window
+fi
+</code></pre></div>
+<h5>9 终端启动初始化</h5>
+
+<p>这也是再网上找到的,如果是zsh的话就写在~/.zshrc里,他会在每次打开终端的时候开启两个窗口并在第二个窗口开启三个panel并启动一个htop.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">tmux_init()
+{
+    tmux new-session -s &quot;vim&quot; -d -n &quot;local&quot;    # 开启一个会话
+    tmux new-window -n &quot;other&quot;          # 开启一个窗口
+    tmux split-window -h                # 开启一个竖屏
+    tmux split-window -v &quot;htop&quot;          # 开启一个横屏,并执行top命令
+    tmux -2 attach-session -d           # tmux -2强制启用256color，连接已开启的tmux
+    selectp -t 1 #选中0panel
+}
+# 判断是否已有开启的tmux会话，没有则开启
+if which tmux 2&gt;&amp;1 &gt;/dev/null; then
+test -z &quot;$TMUX&quot; &amp;&amp; (tmux attach || tmux_init)
+fi
+</code></pre></div>
+<h3>powerline</h3>
+
+<p>伟大的poweline也兼容在tmux上了,项目地址在 <a href="https://github.com/erikw/tmux-powerline">https://github.com/erikw/tmux-powerline</a> </p>
+
+<p>详细配置都有介绍,最主要的是还可以自己定制插件(shell),左右插件位置都可以设置,很方便.</p>
+
+<h3>自己常用操作</h3>
+
+<ol>
+<li>创建窗口 <code>&lt;C-a&gt;+C</code></li>
+<li>切换面板 <code>&lt;C-a&gt;+hjkl</code></li>
+<li>调整面板大小<code>&lt;C-a&gt;+&lt;C-hjkl&gt;</code></li>
+<li>切换窗口<code>&lt;C-a&gt;+1,2,3,4...</code></li>
+<li>分屏操作<code>&lt;C-a&gt;+-</code>和<code>&lt;C-a&gt;+|</code></li>
+<li>关闭当前面板<code>&lt;C-a&gt;+q</code></li>
+<li>上面那个最大化当前的面板,我绑定了k键但是和调整面板大小的按键有冲突(不管了)<code>&lt;C-a&gt;+&lt;C-k&gt;</code></li>
+<li>面板顺时针移位<code>&lt;C-a&gt;+&lt;C-o&gt;</code></li>
+<li>tmux自带内置布局<code>&lt;C-a&gt;+空格</code>可以切换</li>
+</ol>
+
+<p>参考资料:<a href="http://mingxinglai.com/cn/2012/09/tmux/">http://mingxinglai.com/cn/2012/09/tmux/</a></p>
+
+  </article>
+<!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/2014/09/01/tmux"  data-title="使用tmux - Hackerxu's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
+</div>
+
+      </div>
+    </div>
+    <footer class="site-footer">
+
+<div class="wrap">
+    <div class="footer-col-1 column">
+      <div class="github">
+            <!-- <span class="icon github"> -->
+              <svg version="1.1" class="github-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="#000" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761
+                c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32
+                c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472
+                c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037
+                C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65
+                c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261
+                c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082
+                c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129
+                c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            <!-- </span> -->
+          </div>
+          <a href="https://github.com/taizilongxu">
+            Fork me on github
+          </a>
+    </div>
+      <div class="footer-col-2">
+           <p>© 2014 - 2014 by <a href="http://github.com/taizilongxu">Hackerxu</a></p>
+      </div>
+    <!-- <div class="footer-col-3 column">
+      <p class="text">Python,HTML,CSS,Machine Leaning</p>
+    </div> -->
+</div>
+  <div class="scroll-top"><i class="fa fa-arrow-circle-up"></i></div>
+</footer>
+
+
+<!-- mathjax -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- highlight -->
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- duoshuo -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"taizilongxu"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+<!-- top-scrooll -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.js"></script>
+    <script type="text/javascript">
+
+$(window).scroll(function() {
+
+    if($(this).scrollTop() > 100) {
+        $('.scroll-top').fadeIn(200);
+    } else {
+        $('.scroll-top').fadeOut(200);
+    }
+});
+
+$('.scroll-top').bind('click', function(e) {
+    e.preventDefault();
+    $('body,html').animate({scrollTop:0},200);
+});
+</script>
+    </body>
+</html>

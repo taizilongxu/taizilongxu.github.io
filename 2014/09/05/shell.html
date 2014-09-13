@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- 手机端页面 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Shell脚本语言笔记(1)</title>
+    <link rel="shortcut icon" href=" /img/github.ico"/>
+    <link rel="bookmark" href="/img/github.ico"/>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Python,HTML,CSS,Machine Leaning">
+    <link rel="canonical" href="http://hackerxu.com/2014/09/05/shell.html">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/github.css">
+  <!-- 返回顶部 -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="/js/jquery.js"></script>
+  <script src="/js/function_about.js"></script>
+</head>
+
+    <body>
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/"><h1><strong> <font style="color:#39B3D7" >L</font><font style="color:#ED9C28">i</font><font style="color:#47A447">m</font><font style="color:#D9534F">b</font><font style="color:#3276B1">o</font>
+    </strong>
+    </h1></a>
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+        
+          <a class="page-link" href="/about/">About</a>
+        
+        
+        
+          <a class="page-link" href="/archive/">Archive</a>
+        
+        
+        
+          <a class="page-link" href="/categories/">Categories</a>
+        
+        
+        
+        
+        
+          <a class="page-link" href="/tags/">Tags</a>
+        
+        
+      </div>
+    </nav>
+  </div>
+
+</header>
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+  <header class="post-header">
+    <h1><a href="/2014/09/05/shell.html">Shell脚本语言笔记(1)</a></h1>
+      <p class="meta"><i class="fa fa-calendar"></i> 2014-09-05&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#linux">linux</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#linux">linux</a>&nbsp<a href="/tags/#shell">shell</a></p>
+  </header>
+  <article class="post-content">
+  <h3>脚本语言</h3>
+
+<p>一直很困惑什么是脚本,python是不是脚本,脚本怎么定义的?我觉得最主要的就是以下两点.</p>
+
+<ol>
+<li>脚本语言不需要编译，可以直接用，由解释器来负责解释.</li>
+<li>脚本语言一般都是以文本形式存在,类似于一种命令. </li>
+</ol>
+
+<p>其实理解批处理就可以理解shell了,早期的程序员是通过shell来进行文件的批处理,而程序员想要对文件进行控制就不能等文件一个个运行完再输入吧,所以创造了shell脚本语言,程序员只需要写入命令到一个文件里,然后shell一行行读取,就能实现批处理了.</p>
+
+<p>以大部分都是整理自<a href="http://see.xidian.edu.cn/cpp/view/6994.html">http://see.xidian.edu.cn/cpp/view/6994.html</a></p>
+
+<h3>1 Bash</h3>
+
+<p>Bash 是 GNU shell，兼容 sh 以及其他 shell 里的许多有用的特性。用户可以选择在终端里运行哪种解析器.</p>
+
+<p>运行如下命令可以查看机器里有哪种解析器:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">cat /etc/shells
+</code></pre></div>
+<p>自从遇见zsh后,我就转入了zsh门下,建议大家尝试一下,它还有一个很好的配置插件oh-my-zsh.自认为比bash好上不少.</p>
+
+<h3>2 编写脚本</h3>
+
+<h4>2.1 执行脚本的方法:</h4>
+
+<ol>
+<li>将文件夹放入PATH中<code>export PATH=&quot;$PATH:~/scripts&quot;</code>,改变文件权限<code>chmod u+x script1.sh</code>,直接运行<code>script1.sh</code></li>
+<li>如果没有加入PATH,那么这样也可以运行<code>./script_name.sh</code></li>
+<li>也可以这样,自己定义用哪个shell执行<code>bash script_name.sh</code>(一般不会用这个把)</li>
+<li><code>source script_name.sh</code>,这里的<code>source</code>和<code>.</code>是一样的效果,不过<code>source</code>不需要文件的执行权限.前三种方法都是在子shell里运行的命令,当命令结束的时候,子shell会退出,所有状态会清空.而这种方法是在自己的shell里运行的,也就是说脚本里设定的变量再本shell下依然可以实用(其他的调用不了哦)</li>
+</ol>
+
+<p>注意，执行一个文件一定要写成./test.sh，而不是test.sh。运行其它二进制的程序也一样，直接写test.sh，linux系统会去PATH里寻找有没有叫test.sh的，而只有/bin, /sbin, /usr/bin，/usr/sbin等在PATH里，你的当前目录通常不在PATH里，所以写成test.sh是会找不到命令的，要用./test.sh告诉系统说，就在当前目录找。</p>
+
+<h4>2.2 脚本基础</h4>
+
+<h5>2.2.1用哪个脚本来运行</h5>
+
+<p>一般的脚本程序都会有下面这一行:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">#!/bin/bash
+</code></pre></div>
+<p>就是告诉这个脚本用哪种shell来运行,防止用其他shell运行出错.</p>
+
+<p>注意:前面不能留空行,必须写在第一行</p>
+
+<h5>2.2.2加入注释</h5>
+
+<p>范例:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">#!/bin/bash 
+# This script clears the terminal, displays a greeting and gives information 
+# about currently connected users. The two example variables are set and displayed. 
+clear # clear terminal window 
+echo &quot;The script starts now.&quot; 
+echo &quot;Hi, $USER!&quot; # dollar sign is used to get content of variable 
+echo 
+echo &quot;I will now fetch you a list of connected users:&quot; 
+echo 
+w # show who is logged on and 
+echo # what they are doing 
+echo &quot;I&#39;m setting two variables now.&quot;
+COLOUR=&quot;black&quot; # set a local shell variable 
+VALUE=&quot;9&quot; # set a local shell variable 
+echo &quot;This is a string: $COLOUR&quot; # display content of variable 
+echo &quot;And this is a number: $VALUE&quot; # display content of variable 
+echo 
+echo &quot;I&#39;m giving you back your prompt now.&quot; 
+echo 
+</code></pre></div>
+<h4>2.3 调试脚本</h4>
+
+<h5>2.3.1 调试整个脚本</h5>
+<div class="highlight"><pre><code class="language-text" data-lang="text">illy:~/scripts&gt; bash −x script1.sh 
++ clear 
++ echo &#39;The script starts now.&#39; 
+The script starts now. 
++ echo &#39;Hi, willy!&#39; 
+Hi, willy! 
++ echo 
++ echo &#39;I will now fetch you a list of connected users:&#39; 
+I will now fetch you a list of connected users: 
++ echo 
++ w 
+4:50pm up 18 days, 6:49, 4 users, load average: 0.58, 0.62, 0.40 
+USER TTY FROM LOGIN@ IDLE JCPU PCPU WHAT 
+root tty2 − Sat 2pm 5:36m 0.24s 0.05s −bash 
+willy :0 − Sat 2pm ? 0.00s ? − 
+willy pts/3 − Sat 2pm 43:13 36.82s 36.82s BitchX willy ir 
+willy pts/2 − Sat 2pm 43:13 0.13s 0.06s /usr/bin/screen 
++ echo 
++ echo &#39;I&#39;\&#39;&#39;m setting two variables now.&#39; 
+I&#39;m setting two variables now. 
++ COLOUR=black 
++ VALUE=9 
++ echo &#39;This is a string: &#39; 
+This is a string: 
++ echo &#39;And this is a number: &#39; 
+And this is a number: 
++ echo 
++ echo &#39;I&#39;\&#39;&#39;m giving you back your prompt now.&#39; 
+I&#39;m giving you back your prompt now. 
++ echo 
+</code></pre></div>
+<p>以前真没用过,这样可以一行一行的观察脚本的运行了</p>
+
+<h5>2.3.2 调试部分脚本</h5>
+
+<p>在文件上下加上<code>set -x</code></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">set −x # activate debugging from here 
+w 
+set +x # stop debugging from here 
+</code></pre></div>
+<p>然后输出</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">willy: ~/scripts&gt; script1.sh 
+The script starts now. 
+Hi, willy! 
+I will now fetch you a list of connected users: 
++ w 
+5:00pm up 18 days, 7:00, 4 users, load average: 0.79, 0.39, 0.33 
+USER TTY FROM LOGIN@ IDLE JCPU PCPU WHAT 
+root tty2 ? Sat 2pm 5:47m 0.24s 0.05s ?bash 
+willy :0 ? Sat 2pm ? 0.00s ? ? 
+willy pts/3 ? Sat 2pm 54:02 36.88s 36.88s BitchX willyke 
+willy pts/2 ? Sat 2pm 54:02 0.13s 0.06s /usr/bin/screen 
++ set +x 
+I&#39;m setting two variables now. 
+This is a string: 
+And this is a number: 
+I&#39;m giving you back your prompt now. 
+</code></pre></div>
+<p>奇怪的是我在shell上没有显示,不知道是为什么?有知道的请告知</p>
+
+<p>调试的详细参数如下:</p>
+
+<p><code>bash -选择项 shell程序文件名</code></p>
+
+<p>几个常用的选择项是：</p>
+
+<ol>
+<li>set −f set −o noglob Disable file name generation using metacharacters (globbing). (文件)</li>
+<li>set −v set −o verbose Prints shell input lines as they are read. (输出的同时输出命令)</li>
+<li>set −x set −o xtrace Print command traces before executing command. (加入所有的调试信息)</li>
+</ol>
+
+<p>你可以把这些选项加入到脚本头部,这样:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">#!/bin/bash -xv 
+</code></pre></div>
+<p>当然最后,本人最长用的是<code>echo</code>~~</p>
+
+<h3>3 Bash环境</h3>
+
+<h4>3.1 shell初始化配置</h4>
+
+<h5>跨系统配置</h5>
+
+<p>linux文件下主要的bash配置文件:</p>
+
+<ol>
+<li>/etc/inputrc，可以配置命令行响铃风格的跨系统的行读取初始化文件。</li>
+<li>/etc/profile.d 目录，包含了配置特别程序的跨系统行为的文件。</li>
+<li>/etc/profile:此文件为系统的每个用户设置环境信息,当用户第一次登录时,该文件被执行，并从/etc/profile.d目录的配置文件中搜集shell的设置，</li>
+<li>/etc/bashrc:为每一个运行bash shell的用户执行此文件，当bash shell被打开时,该文件被读取。</li>
+<li>~/.bash_profile:每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些环境变量,执行用户的.bashrc文件。</li>
+<li>~/.bash_login:这个文件包含了只有在你登陆进系统的才执行的特殊的设置。</li>
+<li>~/.profile在没有~/.bash_profile 和~/.bash_login 的情况下，~/.profile 就被读取。他能保存一些可以被别的 shell 访问的配置。注意其他的 shell 可能不能识别 Bash 的语法。</li>
+<li>~/.bashrc:如今，更加普遍的是使用一个非登陆 shell，比如使用 X 终端窗口登陆进图形模式的时候。打开一个这样的窗口之后，用户不需要提供用户名和密码；无需认证。此时 Bash 会搜索~/.bashrc，所以也指向登陆时读取得文件，同时也意味着你不需要在多个文件中输入相同的设置.</li>
+</ol>
+
+<h4>3.2 变量</h4>
+
+<h5>3.2.1 变量的类型</h5>
+
+<p><strong>shell 变量约定俗成地用大写表示</strong></p>
+
+<ul>
+<li><p>全局变量:全局变量或者环境变量存在于所有的 shell 里面。<code>env</code> 和<code>printenv</code>命令能够通常用于显示环变量。</p></li>
+<li><p>本地变量:本地变量只存在于当前 shell。使用内建的不带选项的<code>set</code>命令将显示所有变量的列表（包括环
+境变量）和函数。输出会根据当前的设置排列而且以可以重用的方式显示。</p></li>
+</ul>
+
+<h5>3.2.2 变量基本操作</h5>
+
+<h5>定义变量</h5>
+
+<p>定义变量时，变量名不加美元符号（$），如：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">variableName=&quot;value&quot;
+</code></pre></div>
+<p>注意，变量名和等号之间不能有空格，这可能和你熟悉的所有编程语言都不一样。同时，变量名的命名须遵循如下规则：</p>
+
+<ol>
+<li>首个字符必须为字母（a-z，A-Z）。</li>
+<li>中间不能有空格，可以使用下划线（_）。</li>
+<li>不能使用标点符号。</li>
+<li>不能使用bash里的关键字（可用help命令查看保留关键字）。</li>
+</ol>
+
+<p>变量定义举例：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">myUrl=&quot;http://see.xidian.edu.cn/cpp/linux/&quot;
+myNum=100
+</code></pre></div>
+<h5>使用变量</h5>
+
+<p>使用一个定义过的变量，只要在变量名前面加美元符号<code>（$）</code>即可，如：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">your_name=&quot;mozhiyan&quot;
+echo $your_name
+echo ${your_name}
+</code></pre></div>
+<p>推荐给所有变量加上花括号，这是个好的编程习惯。</p>
+
+<h5>只读变量</h5>
+
+<p>使用<code>readonly</code>命令可以将变量定义为只读变量，只读变量的值不能被改变。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">#!/bin/bash
+myUrl=&quot;http://see.xidian.edu.cn/cpp/shell/&quot;
+readonly myUrl
+myUrl=&quot;http://see.xidian.edu.cn/cpp/danpianji/&quot;
+</code></pre></div>
+<p>运行脚本，结果如下：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">/bin/sh: NAME: This variable is read only.
+</code></pre></div>
+<h5>删除变量</h5>
+
+<p>使用<code>unset</code> 命令可以删除变量。语法：</p>
+
+<p><code>unset variable_name</code></p>
+
+<p>变量被删除后不能再次使用；unset 命令不能删除只读变量。</p>
+
+<p>举个例子：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">#!/bin/sh
+myUrl=&quot;http://see.xidian.edu.cn/cpp/u/xitong/&quot;
+unset myUrl
+echo $myUrl
+</code></pre></div>
+<p>上面的脚本没有任何输出。</p>
+
+<h5>3.2.3 特殊变量</h5>
+
+<p>特殊变量列表</p>
+
+<p>|变量|    含义|
+|:--||:---|
+|$0 |当前脚本的文件名|
+|$n |传递给脚本或函数的参数。n 是一个数字，表示第几个参数。例如，第一个参数是$1，第二个参数是$2。|
+|$# |传递给脚本或函数的参数<strong>个数</strong>。|
+|$* |传递给脚本或函数的所有参数。|
+|$@|    传递给脚本或函数的所有参数。被双引号(&quot; &quot;)包含时，与 $* 稍有不同，下面将会讲到。|
+|$? |上个命令的退出状态，或函数的返回值。|
+|$$ |当前Shell进程ID。对于 Shell 脚本，就是这些脚本所在的进程ID。|</p>
+
+<h5>$* 和 $@ 的区别</h5>
+
+<p>$* 和 $@ 都表示传递给函数或脚本的所有参数，不被双引号(&quot; &quot;)包含时，都以&quot;$1&quot; &quot;$2&quot; … &quot;$n&quot; 的形式输出所有参数。</p>
+
+<p>但是当它们被双引号(&quot; &quot;)包含时，&quot;$*&quot; 会将所有的参数作为一个整体，以&quot;$1 $2 … $n&quot;的形式输出所有参数；&quot;$@&quot; 会将各个参数分开，以&quot;$1&quot; &quot;$2&quot; … &quot;$n&quot; 的形式输出所有参数。</p>
+
+<h5>3.2.4 导出变量</h5>
+
+<p>在Bash Shell中变量都是局部的,它们只在创建它们的子Shell中有意义。使用export后,变量被设置为全局变量,这时可以被其它子Shell所识别 。</p>
+
+<p><code>export VARNAME=&quot;value&quot;</code></p>
+
+<p>被export后的变量,可以成为环境变量.</p>
+
+<h5>3.2.5  变量替换</h5>
+<div class="highlight"><pre><code class="language-text" data-lang="text">#!/bin/bash
+a=10
+echo -e &quot;Value of a is $a \n&quot;
+</code></pre></div>
+<p>运行结果：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Value of a is 10
+</code></pre></div>
+<p>这里 -e 表示对转义字符进行替换。如果不使用 -e 选项，将会原样输出：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Value of a is 10\n
+</code></pre></div>
+<p>下面的转义字符都可以用在 echo 中：</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">转义字符</th>
+<th style="text-align: left">含义</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">\</td>
+<td style="text-align: left">反斜杠</td>
+</tr>
+<tr>
+<td style="text-align: left">\a</td>
+<td style="text-align: left">警报，响铃</td>
+</tr>
+<tr>
+<td style="text-align: left">\b</td>
+<td style="text-align: left">退格（删除键）</td>
+</tr>
+<tr>
+<td style="text-align: left">\f</td>
+<td style="text-align: left">换页(FF)，将当前位置移到下页开头</td>
+</tr>
+<tr>
+<td style="text-align: left">\n</td>
+<td style="text-align: left">换行</td>
+</tr>
+<tr>
+<td style="text-align: left">\r</td>
+<td style="text-align: left">回车</td>
+</tr>
+<tr>
+<td style="text-align: left">\t</td>
+<td style="text-align: left">水平制表符（tab键）</td>
+</tr>
+<tr>
+<td style="text-align: left">\v</td>
+<td style="text-align: left">垂直制表符</td>
+</tr>
+</tbody></table>
+
+<p>可以使用 echo 命令的 -E 选项禁止转义，默认也是不转义的；使用 -n 选项可以禁止插入换行符。</p>
+
+<h5>命令替换</h5>
+
+<p>命令替换是指Shell可以先执行命令，将输出结果暂时保存，在适当的地方输出。</p>
+
+<p>命令替换的语法：</p>
+
+<p><code>`command`</code></p>
+
+<p>注意是反引号，不是单引号，这个键位于 Esc 键下方。</p>
+
+<p>下面的例子中，将命令执行结果保存在变量中：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">#!/bin/bash
+DATE=`date`
+echo &quot;Date is $DATE&quot;
+USERS=`who | wc -l`
+echo &quot;Logged in user are $USERS&quot;
+UP=`date ; uptime`
+echo &quot;Uptime is $UP&quot;
+</code></pre></div>
+<p>运行结果：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Date is Thu Jul  2 03:59:57 MST 2009
+Logged in user are 1
+Uptime is Thu Jul  2 03:59:57 MST 2009
+03:59:57 up 20 days, 14:03,  1 user,  load avg: 0.13, 0.07, 0.15
+</code></pre></div>
+<h5>变量替换</h5>
+
+<p>变量替换可以根据变量的状态（是否为空、是否定义等）来改变它的值</p>
+
+<p>可以使用的变量替换形式：</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">形式</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">${var}</td>
+<td style="text-align: left">变量本来的值</td>
+</tr>
+<tr>
+<td style="text-align: left">${var:-word}</td>
+<td style="text-align: left">如果变量 var 为空或已被删除(unset)，那么返回 word，但不改变 var 的值。</td>
+</tr>
+<tr>
+<td style="text-align: left">${var:=word}</td>
+<td style="text-align: left">如果变量 var 为空或已被删除(unset)，那么返回 word，并将 var 的值设置为 word。</td>
+</tr>
+<tr>
+<td style="text-align: left">${var:?message}</td>
+<td style="text-align: left">如果变量 var 为空或已被删除(unset)，那么将消息 message 送到标准错误输出，可以用来检测变量 var 是否可以被正常赋值。若此替换出现在Shell脚本中，那么脚本将停止运行。</td>
+</tr>
+<tr>
+<td style="text-align: left">${var:+word}</td>
+<td style="text-align: left">如果变量 var 被定义，那么返回 word，但不改变 var 的值。</td>
+</tr>
+</tbody></table>
+
+  </article>
+<!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/2014/09/05/shell"  data-title="Shell脚本语言笔记(1) - Hackerxu's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
+</div>
+
+      </div>
+    </div>
+    <footer class="site-footer">
+
+<div class="wrap">
+    <div class="footer-col-1 column">
+      <div class="github">
+            <!-- <span class="icon github"> -->
+              <svg version="1.1" class="github-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="#000" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761
+                c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32
+                c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472
+                c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037
+                C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65
+                c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261
+                c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082
+                c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129
+                c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            <!-- </span> -->
+          </div>
+          <a href="https://github.com/taizilongxu">
+            Fork me on github
+          </a>
+    </div>
+      <div class="footer-col-2">
+           <p>© 2014 - 2014 by <a href="http://github.com/taizilongxu">Hackerxu</a></p>
+      </div>
+    <!-- <div class="footer-col-3 column">
+      <p class="text">Python,HTML,CSS,Machine Leaning</p>
+    </div> -->
+</div>
+  <div class="scroll-top"><i class="fa fa-arrow-circle-up"></i></div>
+</footer>
+
+
+<!-- mathjax -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- highlight -->
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- duoshuo -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"taizilongxu"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+<!-- top-scrooll -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.js"></script>
+    <script type="text/javascript">
+
+$(window).scroll(function() {
+
+    if($(this).scrollTop() > 100) {
+        $('.scroll-top').fadeIn(200);
+    } else {
+        $('.scroll-top').fadeOut(200);
+    }
+});
+
+$('.scroll-top').bind('click', function(e) {
+    e.preventDefault();
+    $('body,html').animate({scrollTop:0},200);
+});
+</script>
+    </body>
+</html>
