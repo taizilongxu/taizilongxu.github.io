@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
- <title></title>
- <link href="/atom.xml" rel="self"/>
- <link href=""/>
- <updated>2014-09-17T14:38:18+08:00</updated>
- <id></id>
+ <title>Hackerxu's Blog</title>
+ <link href="http://hackerxu.com/atom.xml" rel="self"/>
+ <link href="http://hackerxu.com"/>
+ <updated>2014-09-17T14:48:22+08:00</updated>
+ <id>http://hackerxu.com</id>
  <author>
-   <name></name>
+   <name>xuxiao</name>
  </author>
 
  
  <entry>
    <title>Atom编辑器</title>
-   <link href="/2014/09/16/atom-setting.html"/>
+   <link href="http://hackerxu.com/2014/09/16/atom-setting.html"/>
    <updated>2014-09-16T00:00:00+08:00</updated>
-   <id>/2014/09/16/atom-setting</id>
+   <id>http://hackerxu.com/2014/09/16/atom-setting</id>
    <content type="html">&lt;h3&gt;插件&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://atom.io/packages/atom-beautify&quot;&gt;atom-beautify&lt;/a&gt;:&lt;/p&gt;
@@ -40,9 +40,9 @@
  
  <entry>
    <title>Captain,my captain!</title>
-   <link href="/2014/09/13/luobin.html"/>
+   <link href="http://hackerxu.com/2014/09/13/luobin.html"/>
    <updated>2014-09-13T00:00:00+08:00</updated>
-   <id>/2014/09/13/luobin</id>
+   <id>http://hackerxu.com/2014/09/13/luobin</id>
    <content type="html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/movie/luobin2.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;我每天到你家接你，我们出去喝酒笑闹，那很棒是我一天中最棒的时刻，只有十秒，从停车到你家门口，每次我敲门，都希望你不在了，不说再见，什么都没有，你就走了，我懂得不多，但我很清楚。&lt;/p&gt;
@@ -55,9 +55,9 @@
  
  <entry>
    <title>京东评论,价格排序</title>
-   <link href="/2014/09/09/scrapy-jd2.html"/>
+   <link href="http://hackerxu.com/2014/09/09/scrapy-jd2.html"/>
    <updated>2014-09-09T00:00:00+08:00</updated>
-   <id>/2014/09/09/scrapy-jd2</id>
+   <id>http://hackerxu.com/2014/09/09/scrapy-jd2</id>
    <content type="html">&lt;p&gt;由于爬取有用东西太少,只能看看这些了,一共是314476个商品&lt;/p&gt;
 
 &lt;p&gt;从早上8点多开始的,爬了7,8个小时吧,爬取结果&lt;/p&gt;
@@ -274,9 +274,9 @@
  
  <entry>
    <title>基于Scrapy的京东爬虫</title>
-   <link href="/2014/09/07/scrapy-jd.html"/>
+   <link href="http://hackerxu.com/2014/09/07/scrapy-jd.html"/>
    <updated>2014-09-07T00:00:00+08:00</updated>
-   <id>/2014/09/07/scrapy-jd</id>
+   <id>http://hackerxu.com/2014/09/07/scrapy-jd</id>
    <content type="html">&lt;p&gt;出于兴趣爱好原来就做过爬虫,从C到python,再到scrapy,一开始也是因为做爬虫才慢慢了解python,才知道有这么优雅的语言,废话不多说了.看一下是怎么爬取的.&lt;/p&gt;
 
 &lt;p&gt;前期工作做了很多,学习了twisted,scrapy.京东的网页价格,评论是动态,怎么爬?google了一大堆什么,又抓包,发现关于评论的包不能正常的抓取,可能是设的cookies认证,没深入了解这方面的知识,发觉碰到一块难题.&lt;/p&gt;
@@ -402,9 +402,9 @@
  
  <entry>
    <title>Shell脚本语言笔记(4)</title>
-   <link href="/2014/09/06/shell-4.html"/>
+   <link href="http://hackerxu.com/2014/09/06/shell-4.html"/>
    <updated>2014-09-06T00:00:00+08:00</updated>
-   <id>/2014/09/06/shell-4</id>
+   <id>http://hackerxu.com/2014/09/06/shell-4</id>
    <content type="html">&lt;p&gt;Shell函数&lt;/p&gt;
 
 &lt;h2&gt;Shell函数返回值、删除函数、在终端调用函数&lt;/h2&gt;
@@ -549,9 +549,9 @@ The string of the parameters is 1 2 3 4 5 6 7 8 9 34 73 !&amp;quot;
  
  <entry>
    <title>Shell脚本语言笔记(3)</title>
-   <link href="/2014/09/06/shell-3.html"/>
+   <link href="http://hackerxu.com/2014/09/06/shell-3.html"/>
    <updated>2014-09-06T00:00:00+08:00</updated>
-   <id>/2014/09/06/shell-3</id>
+   <id>http://hackerxu.com/2014/09/06/shell-3</id>
    <content type="html">&lt;p&gt;Shell的控制语句if,while,until,continue,break&lt;/p&gt;
 
 &lt;h2&gt;if else语句&lt;/h2&gt;
@@ -935,9 +935,9 @@ Found odd number
  
  <entry>
    <title>Shell脚本语言笔记(2)</title>
-   <link href="/2014/09/06/shell-2.html"/>
+   <link href="http://hackerxu.com/2014/09/06/shell-2.html"/>
    <updated>2014-09-06T00:00:00+08:00</updated>
-   <id>/2014/09/06/shell-2</id>
+   <id>http://hackerxu.com/2014/09/06/shell-2</id>
    <content type="html">&lt;p&gt;运算符,字符串,数组&lt;/p&gt;
 
 &lt;p&gt;Shell的运算符很特殊,需要记忆一下,此文留作查表之用&lt;/p&gt;
@@ -1286,9 +1286,9 @@ lengthn=${#array_name[n]}
  
  <entry>
    <title>Shell脚本语言笔记(1)</title>
-   <link href="/2014/09/05/shell.html"/>
+   <link href="http://hackerxu.com/2014/09/05/shell.html"/>
    <updated>2014-09-05T00:00:00+08:00</updated>
-   <id>/2014/09/05/shell</id>
+   <id>http://hackerxu.com/2014/09/05/shell</id>
    <content type="html">&lt;h3&gt;脚本语言&lt;/h3&gt;
 
 &lt;p&gt;一直很困惑什么是脚本,python是不是脚本,脚本怎么定义的?我觉得最主要的就是以下两点.&lt;/p&gt;
@@ -1671,9 +1671,9 @@ Uptime is Thu Jul  2 03:59:57 MST 2009
  
  <entry>
    <title>使用tmux</title>
-   <link href="/2014/09/01/tmux.html"/>
+   <link href="http://hackerxu.com/2014/09/01/tmux.html"/>
    <updated>2014-09-01T00:00:00+08:00</updated>
-   <id>/2014/09/01/tmux</id>
+   <id>http://hackerxu.com/2014/09/01/tmux</id>
    <content type="html">&lt;p&gt;这两天在修改blog,以前没怎么长时间写过css+html,后来发现很蛋疼的一件事就是每次调试的时候得看着终端生成blog页,代码得在终端下另一个标签里更改.切换起来很费劲,终于想起了大名鼎鼎的tmux.&lt;/p&gt;
 
 &lt;p&gt;这是配置的最终效果:&lt;/p&gt;
@@ -1830,9 +1830,9 @@ fi
  
  <entry>
    <title>github中ssh替换https脚本</title>
-   <link href="/2014/08/30/githubssh-sh.html"/>
+   <link href="http://hackerxu.com/2014/08/30/githubssh-sh.html"/>
    <updated>2014-08-30T00:00:00+08:00</updated>
-   <id>/2014/08/30/githubssh-sh</id>
+   <id>http://hackerxu.com/2014/08/30/githubssh-sh</id>
    <content type="html">&lt;p&gt;为了进一步提高程序效率(懒惰),把所有github项目的链接改成ssh,方便不用再打密码,哈哈&lt;/p&gt;
 
 &lt;p&gt;看了几个项目的共同点&lt;/p&gt;
