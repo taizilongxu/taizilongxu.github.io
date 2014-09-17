@@ -3,13 +3,14 @@
 
  <title>Hackerxu's Blog</title>
  <link href="http://hackerxu.com/atom.xml" rel="self"/>
- <link href="http://hackerxu.com/"/>
- <updated>2014-09-17T15:22:34+08:00</updated>
+ <link href="http://hackerxu.com"/>
+  <description>Python,HTML,CSS,Machine Leaning</description>
+ <updated>2014-09-17T15:43:12+08:00</updated>
  <id>http://hackerxu.com</id>
  <author>
    <name>xuxiao</name>
  </author>
-
+ <generator uri="http://zespia.tw/hexo/">Hexo</generator>
  
  <entry>
    <title>Atom编辑器</title>
