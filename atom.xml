@@ -5,7 +5,7 @@
  <subtitle>Python,HTML,CSS,Machine Leaning</subtitle>
  <link href="http://hackerxu.com/atom.xml" rel="self"/>
  <link href="http://hackerxu.com"/>
- <updated>2014-09-17T19:10:56+08:00</updated>
+ <updated>2014-09-17T19:38:27+08:00</updated>
  <id>http://hackerxu.com</id>
  <author>
    <name>xuxiao</name>
@@ -189,13 +189,33 @@
    <link href="http://hackerxu.com/2014/09/16/atom-setting.html"/>
    <updated>2014-09-16T00:00:00+08:00</updated>
    <id>http://hackerxu.com/2014/09/16/atom-setting</id>
-   <content type="html">&lt;p&gt;最近在用atom编辑器,&lt;/p&gt;
+   <content type="html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-09-17%2019:21:54%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
-&lt;h3&gt;插件&lt;/h3&gt;
+&lt;p&gt;最近在用atom编辑器,github出的东西想想怎么都不该差的,不过atom可能正处于一个刚开始起步的阶段,许多功能还没有被完善,发现了许多欠缺和不妥的地方&lt;/p&gt;
+
+&lt;p&gt;缺点:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;运行相比sublime慢.sublime是用c++写的,而atom运行在庞大冗余的V8内核之上&lt;/li&gt;
+&lt;li&gt;没有上一次文件夹保存功能.每次我打开atom都得重新寻找项目路径,不知道是不是我打开的方式不对.&lt;/li&gt;
+&lt;li&gt;插件不全.刚起步atom的插件数量明显比不过sublime之类啊&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;优点:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;作为一个github强推的核心编辑器,必然与github有深度的整合,这方面无人能比,修改,增添文件都在侧边栏可以高亮显示(这个再sublime上没有找到),文件中边框也显示哪行修改,删除或者新加(虽然sublime和vim都有这个功能),这也是我喜欢atom的主要原因之一&lt;/li&gt;
+&lt;li&gt;插件一键安装.的确atom提供的不是一个编辑器,而是一个线上的服务,更新插件so easy&lt;/li&gt;
+&lt;li&gt;因为atom是基于chrome的V8的,所以全平台支持,而且插件都是用coffeescript编写,方便开发者&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;作为一个非前端coder,感觉还是够用了,自己虽然是一个vimer,但是涉及到前端的东西感觉还得是atom,sublime之类的编辑器更方便点(代码看得更舒服).&lt;/p&gt;
+
+&lt;p&gt;试用的几个插件:&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://atom.io/packages/atom-beautify&quot;&gt;atom-beautify&lt;/a&gt;:美化丑陋的代码~&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://atom.io/packages/git-plus&quot;&gt;git-plus&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://atom.io/packages/git-plus&quot;&gt;git-plus&lt;/a&gt;:git操作&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://atom.io/packages/color-picker&quot;&gt;color-picker&lt;/a&gt;:获取颜色的插件,右键直接打开一个颜色值进行调整&lt;/p&gt;
 
@@ -209,7 +229,7 @@
 
 &lt;p&gt;&lt;a href=&quot;https://atom.io/packages/fuzzy-finder&quot;&gt;fuzzy-finder&lt;/a&gt;: &lt;code&gt;ctrl+t&lt;/code&gt; 打开快速查找项目中的文件&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://atom.io/packages/git-log&quot;&gt;gitlog&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://atom.io/packages/git-log&quot;&gt;gitlog&lt;/a&gt;:查看git日志&lt;/p&gt;
 </content>
  </entry>
  
