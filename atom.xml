@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>Hackerxu's Blog</title>
+ <subtitle>Python,HTML,CSS,Machine Leaning</subtitle>
  <link href="http://hackerxu.com/atom.xml" rel="self"/>
  <link href="http://hackerxu.com"/>
-  <description>Python,HTML,CSS,Machine Leaning</description>
- <updated>2014-09-17T15:43:12+08:00</updated>
+ <updated>2014-09-17T15:48:14+08:00</updated>
  <id>http://hackerxu.com</id>
  <author>
    <name>xuxiao</name>
