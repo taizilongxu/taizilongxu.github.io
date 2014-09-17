@@ -22,9 +22,7 @@
 
     <body>
     <header class="site-header">
-
   <div class="wrap">
-
     <a class="site-title" href="/"><h1><strong> <font style="color:#39B3D7" >L</font><font style="color:#ED9C28">i</font><font style="color:#47A447">m</font><font style="color:#D9534F">b</font><font style="color:#3276B1">o</font>
     </strong>
     </h1></a>
@@ -55,13 +53,11 @@
         
         
         
-        
-        
-          <a class="page-link" href="/movies/">Movies</a>
-        
-        
-        
           <a class="page-link" href="/tags/">Tags</a>
+        
+        
+        
+          <a class="page-link" href="/atom.xml">Rss</a>
         
         
       </div>
@@ -84,7 +80,7 @@
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="mf">1.</span> <span class="n">thelist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">thestring</span><span class="p">)</span>
      <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">tehstring</span><span class="p">:</span>
         <span class="n">do_something_with</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-<span class="mf">2.</span> <span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">do_something_with</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">thestring</span><span class="p">]</span> 
+<span class="mf">2.</span> <span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">do_something_with</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">thestring</span><span class="p">]</span>
 <span class="mf">3.</span> <span class="n">results</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">do_something</span><span class="p">,</span><span class="n">thestring</span><span class="p">)</span>
 </code></pre></div>
 <h2>1.2字符和字符值之间的转换</h2>
@@ -94,7 +90,7 @@
 <span class="n">a</span>
 
 <span class="o">&gt;&gt;&gt;</span><span class="k">print</span> <span class="nb">ord</span><span class="p">(</span><span class="s">u&#39;</span><span class="se">\u2020</span><span class="s">&#39;</span><span class="p">)</span>
-<span class="mi">8224</span> 
+<span class="mi">8224</span>
 <span class="o">&gt;&gt;&gt;</span><span class="k">print</span> <span class="nb">repr</span><span class="p">(</span><span class="nb">unichr</span><span class="p">(</span><span class="mi">8224</span><span class="p">))</span>
 <span class="s">u&#39;</span><span class="se">\u2020</span><span class="s">&#39;</span>
 </code></pre></div>
@@ -119,7 +115,7 @@
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">largeString</span> <span class="o">=</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">pieces</span><span class="p">)</span>
 </code></pre></div>
 <p>2.少量字符优先</p>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">largeString</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s%s</span><span class="s"> something </span><span class="si">%s</span><span class="s"> yet more&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">small1</span><span class="p">,</span><span class="n">small2</span><span class="p">,</span><span class="n">small3</span><span class="p">)</span> 
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">largeString</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s%s</span><span class="s"> something </span><span class="si">%s</span><span class="s"> yet more&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">small1</span><span class="p">,</span><span class="n">small2</span><span class="p">,</span><span class="n">small3</span><span class="p">)</span>
 </code></pre></div>
 <p>3.效率低下，会产生许多字符串的中间结果</p>
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">largeString</span> <span class="o">=</span> <span class="n">small1</span> <span class="o">+</span> <span class="n">small2</span> <span class="o">+</span> <span class="s">&#39;something&#39;</span> <span class="o">+</span> <span class="n">small3</span> <span class="o">+</span> <span class="s">&#39;yet more&#39;</span> <span class="mf">4.</span> <span class="kn">import</span> <span class="nn">operator</span>
@@ -128,7 +124,7 @@
 <h2>1.7将字符串逐个字符或逐个词进行反转</h2>
 
 <p>1.字符，切片方法</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">revchars = astring[::-1] 
+<div class="highlight"><pre><code class="language-text" data-lang="text">revchars = astring[::-1]
 </code></pre></div>
 <p>2.单词</p>
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">revwords</span> <span class="o">=</span> <span class="n">astring</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
@@ -136,13 +132,13 @@
 <span class="n">revwords</span> <span class="o">=</span> <span class="s">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">revwords</span><span class="p">)</span>
 <span class="n">revwords</span> <span class="o">=</span> <span class="s">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">astring</span><span class="o">.</span><span class="n">split</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </code></pre></div>
-<p>reversed返回一个迭代器 </p>
+<p>reversed返回一个迭代器</p>
 
 <h2>1.8检查字符中是否包含某字符集合中的字符</h2>
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">containsAny</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span><span class="n">aset</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">aset</span><span class="p">:</span> 
-        <span class="k">if</span> <span class="n">c</span> <span class="n">inaset</span><span class="p">:</span> 
-            <span class="k">return</span> <span class="bp">True</span> 
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">aset</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">c</span> <span class="n">inaset</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span>
     <span class="k">return</span> <span class="bp">False</span>
 </code></pre></div>
 <h2>1.9简化字符串的translate方法的使用</h2>
@@ -230,7 +226,7 @@ little = big.lower()</p>
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="err">‘</span>\<span class="n">n</span><span class="s">&#39;)</span>
 </code></pre></div>
 <p>也可以用一个for循环</p>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file_object</span><span class="p">:</span> 
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file_object</span><span class="p">:</span>
     <span class="n">process</span> <span class="n">line</span>
 </code></pre></div>
 <h2>2.2写入文件</h2>
@@ -249,14 +245,14 @@ little = big.lower()</p>
 <h2>2.4从文件中读取指定的行</h2>
 
 <p>如果文件不大的话：</p>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">linecache</span> 
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">linecache</span>
 <span class="n">theline</span> <span class="o">=</span> <span class="n">linecache</span><span class="o">.</span><span class="n">getline</span><span class="p">(</span><span class="n">thefilepath</span><span class="p">,</span><span class="n">desired_line_number</span><span class="p">)</span>
 </code></pre></div>
 <p>如果文件太大则：</p>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">getline</span><span class="p">(</span><span class="n">thefilepath</span><span class="p">,</span><span class="n">desired_line_number</span><span class="p">):</span> 
-    <span class="k">if</span> <span class="n">desired_line_number</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span> 
-        <span class="k">return</span> <span class="err">‘</span> <span class="err">‘</span> 
-    <span class="k">for</span> <span class="n">current_line_number</span><span class="p">,</span><span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">thefilepath</span><span class="p">,</span><span class="s">&#39;rU&#39;</span><span class="p">)):</span> 
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">getline</span><span class="p">(</span><span class="n">thefilepath</span><span class="p">,</span><span class="n">desired_line_number</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">desired_line_number</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="err">‘</span> <span class="err">‘</span>
+    <span class="k">for</span> <span class="n">current_line_number</span><span class="p">,</span><span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">thefilepath</span><span class="p">,</span><span class="s">&#39;rU&#39;</span><span class="p">)):</span>
         <span class="k">if</span> <span class="n">current_line_number</span> <span class="o">==</span> <span class="n">desired_line_number</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">line</span> <span class="k">return</span> <span class="err">‘</span> <span class="err">‘</span>
 </code></pre></div>
@@ -266,32 +262,32 @@ little = big.lower()</p>
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">thefilepath</span><span class="p">,</span><span class="s">&#39;rU&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">readlines</span><span class="p">())</span>
 </code></pre></div>
 <p>对于大文件：</p>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">count</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> 
-<span class="k">for</span> <span class="n">count</span><span class="p">,</span><span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">thefilepath</span><span class="p">,</span><span class="s">&#39;rU&#39;</span><span class="p">)):</span> 
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">count</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="k">for</span> <span class="n">count</span><span class="p">,</span><span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">thefilepath</span><span class="p">,</span><span class="s">&#39;rU&#39;</span><span class="p">)):</span>
     <span class="k">pass</span> <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
 </code></pre></div>
 <p>还有一种更巧妙的方法，寻找\n结尾的次数:</p>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span> 
-<span class="n">thefile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">thefilepath</span><span class="p">,</span><span class="s">&#39;rb&#39;</span><span class="p">)</span> 
-<span class="k">while</span> <span class="bp">True</span><span class="p">:</span> 
-    <span class="nb">buffer</span> <span class="o">=</span> <span class="n">thefile</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">8192</span><span class="o">*</span><span class="mi">1024</span><span class="p">)</span> 
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">buffer</span><span class="p">:</span> 
-        <span class="k">break</span> 
-    <span class="n">count</span> <span class="o">+</span> <span class="o">=</span> <span class="nb">buffer</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="err">‘</span>\<span class="n">n</span><span class="s">&#39;) </span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">thefile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">thefilepath</span><span class="p">,</span><span class="s">&#39;rb&#39;</span><span class="p">)</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="nb">buffer</span> <span class="o">=</span> <span class="n">thefile</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">8192</span><span class="o">*</span><span class="mi">1024</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">buffer</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">count</span> <span class="o">+</span> <span class="o">=</span> <span class="nb">buffer</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="err">‘</span>\<span class="n">n</span><span class="s">&#39;)</span>
 <span class="n">thefile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </code></pre></div>
 <h2>2.6处理文件中的每个词</h2>
 
 <p>使用两重循环</p>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="n">thefilepath</span><span class="p">):</span> 
-    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">():</span> 
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="n">thefilepath</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
         <span class="n">dosomethingwith</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
 </code></pre></div>
 <p>使用正则表达式(词被定义为数字字母，连字符或单引号构成的序列)：</p>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">re</span> 
-<span class="n">re_word</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">r</span><span class="err">”</span><span class="p">[</span>\<span class="n">w</span><span class="s">&#39;-]+”) </span>
-<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="n">thefilepath</span><span class="p">):</span> 
-    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">re_word</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">line</span><span class="p">):</span> 
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">re</span>
+<span class="n">re_word</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">r</span><span class="err">”</span><span class="p">[</span>\<span class="n">w</span><span class="s">&#39;-]+”)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="n">thefilepath</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">re_word</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
         <span class="n">dosomethingwith</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
 </code></pre></div>
 <h2>2.7随即输入/输出</h2>
@@ -301,23 +297,23 @@ little = big.lower()</p>
 </code></pre></div>
 <h2>2.16遍历目录树</h2>
 
-<p>glob.glob 
-当前目录下的所有文件！！！ 
-os.walk 
+<p>glob.glob
+当前目录下的所有文件！！！
+os.walk
 返回一个三元组：</p>
 
 <ul>
-<li>dirpath是以string字符串形式返回该目录下所有的绝对路径； </li>
-<li>dirnames是以列表list形式返回每一个绝对路径下的文件夹名字； </li>
+<li>dirpath是以string字符串形式返回该目录下所有的绝对路径；</li>
+<li>dirnames是以列表list形式返回每一个绝对路径下的文件夹名字；</li>
 <li>filesnames是以列表list形式返回该路径下所有文件名字。</li>
 </ul>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="err">‘</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">limbo</span><span class="o">/</span><span class="n">code</span><span class="o">/</span><span class="n">python</span><span class="s">&#39;): </span>
-    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">i</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> 
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="err">‘</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">limbo</span><span class="o">/</span><span class="n">code</span><span class="o">/</span><span class="n">python</span><span class="s">&#39;):</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">i</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span>
         <span class="k">print</span> <span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="err">‘</span><span class="o">/</span><span class="err">‘</span> <span class="o">+</span> <span class="n">name</span>
 </code></pre></div>
 <h2>2.17在目录树中改变文件扩展名</h2>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span> 
-<span class="k">def</span> <span class="nf">sqapextensions</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span><span class="n">before</span><span class="p">,</span><span class="n">after</span><span class="p">):</span> 
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span>
+<span class="k">def</span> <span class="nf">sqapextensions</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span><span class="n">before</span><span class="p">,</span><span class="n">after</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">before</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span>  <span class="o">!=</span> <span class="s">&#39;.&#39;</span><span class="p">:</span>
 
         <span class="n">before</span> <span class="o">=</span> <span class="s">&#39;.&#39;</span> <span class="o">+</span> <span class="n">before</span> <span class="c">#如果没有&#39;.&#39;加</span>
@@ -340,7 +336,7 @@ os.walk
 
                 <span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">oldfile</span><span class="p">,</span><span class="n">newfile</span><span class="p">)</span> <span class="c">#重命名</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span> 
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span>
     <span class="kn">import</span> <span class="nn">sys</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span>
@@ -352,7 +348,7 @@ os.walk
     <span class="n">swapextensions</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
 </code></pre></div>
 <h2>2.18从指定搜索路径搜索文件</h2>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span> 
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span>
 <span class="k">def</span> <span class="nf">search_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="n">search_path</span><span class="p">,</span><span class="n">pathsep</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">search_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">pathsep</span><span class="p">):</span>
         <span class="n">candiate</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">filename</span><span class="p">)</span>
@@ -360,24 +356,24 @@ os.walk
             <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">None</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span> 
-    <span class="n">search_path</span> <span class="o">=</span> 
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span>
+    <span class="n">search_path</span> <span class="o">=</span>
     <span class="n">find_file</span> <span class="o">=</span> <span class="n">search_file</span><span class="p">(</span><span class="s">&#39;ls&#39;</span><span class="p">,</span><span class="n">search_path</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">find_file</span><span class="p">:</span>
         <span class="k">print</span> <span class="s">&quot;File &#39;ls&#39; found at </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">find_file</span>
-    <span class="k">else</span><span class="p">:</span> 
+    <span class="k">else</span><span class="p">:</span>
         <span class="k">print</span> <span class="s">&quot;File &#39;ls&#39; not found&quot;</span>
 </code></pre></div>
 <h2>2.19根据指定的搜索路径和模式寻找文件</h2>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">glob</span><span class="o">,</span><span class="nn">os</span> 
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">glob</span><span class="o">,</span><span class="nn">os</span>
 
-<span class="k">def</span> <span class="nf">all_file</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span><span class="n">search_path</span><span class="p">,</span><span class="n">pathsep</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">):</span> 
+<span class="k">def</span> <span class="nf">all_file</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span><span class="n">search_path</span><span class="p">,</span><span class="n">pathsep</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">):</span>
 
     <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">search_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">pathsep</span><span class="p">):</span>
 
         <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">pattern</span><span class="p">)):</span>
 
-            <span class="k">yield</span> <span class="n">match</span> <span class="c">#生成迭代器 </span>
+            <span class="k">yield</span> <span class="n">match</span> <span class="c">#生成迭代器</span>
 </code></pre></div>
   </article>
 <!-- Duoshuo Comment BEGIN -->

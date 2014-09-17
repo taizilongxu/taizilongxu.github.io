@@ -1,0 +1,1882 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title></title>
+ <link href="/atom.xml" rel="self"/>
+ <link href=""/>
+ <updated>2014-09-17T14:38:18+08:00</updated>
+ <id></id>
+ <author>
+   <name></name>
+ </author>
+
+ 
+ <entry>
+   <title>Atom编辑器</title>
+   <link href="/2014/09/16/atom-setting.html"/>
+   <updated>2014-09-16T00:00:00+08:00</updated>
+   <id>/2014/09/16/atom-setting</id>
+   <content type="html">&lt;h3&gt;插件&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://atom.io/packages/atom-beautify&quot;&gt;atom-beautify&lt;/a&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://atom.io/packages/git-plus&quot;&gt;git-plus&lt;/a&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://atom.io/packages/color-picker&quot;&gt;color-picker&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://atom.io/packages/markdown-preview&quot;&gt;Markdown Preview package&lt;/a&gt;:预览markdown插件&lt;code&gt;ctrl + shift +m&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://atom.io/packages/sort-lines&quot;&gt;sort-lines&lt;/a&gt;:一个给文本单词排序的插件&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://atom.io/packages/bracket-matcher&quot;&gt;Bracket Matcher package &lt;/a&gt;:括号匹配插件,&lt;code&gt;ctrl + m&lt;/code&gt;跳转匹配括号,好像linux不太好使~&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;&quot;&gt;Tree View package&lt;/a&gt;:自带插件,&lt;code&gt;ctrl + \&lt;/code&gt; 打开 , &lt;code&gt;ctrl + 0&lt;/code&gt; 选中树形图, &lt;code&gt;a,m,delete&lt;/code&gt; 分别为增加,移动和删除&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://atom.io/packages/fuzzy-finder&quot;&gt;fuzzy-finder&lt;/a&gt;: &lt;code&gt;ctrl+t&lt;/code&gt; 打开快速查找项目中的文件&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://atom.io/packages/git-log&quot;&gt;gitlog&lt;/a&gt;:&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Captain,my captain!</title>
+   <link href="/2014/09/13/luobin.html"/>
+   <updated>2014-09-13T00:00:00+08:00</updated>
+   <id>/2014/09/13/luobin</id>
+   <content type="html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/movie/luobin2.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;我每天到你家接你，我们出去喝酒笑闹，那很棒是我一天中最棒的时刻，只有十秒，从停车到你家门口，每次我敲门，都希望你不在了，不说再见，什么都没有，你就走了，我懂得不多，但我很清楚。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/movie/luobin.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;选择和别人不一样的路走的人,虽然会感觉孤独甚至会招致歧视,但并不意味着那就是过错——相反,一个真正的英雄往往会选择一条很少人会走的路.大多数的人都在平静的绝望着.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>京东评论,价格排序</title>
+   <link href="/2014/09/09/scrapy-jd2.html"/>
+   <updated>2014-09-09T00:00:00+08:00</updated>
+   <id>/2014/09/09/scrapy-jd2</id>
+   <content type="html">&lt;p&gt;由于爬取有用东西太少,只能看看这些了,一共是314476个商品&lt;/p&gt;
+
+&lt;p&gt;从早上8点多开始的,爬了7,8个小时吧,爬取结果&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/scrapy_jingdong/master/img.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;评论数前一百,依次对应评论数,价格,商品ID和名字&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;617871  20  199069   川宇（kawau）蝴蝶Micro SD/T-Flash 读卡器（颜色随机） 
+543594  46.9    253393   金士顿（Kingston） DataTraveler 101 G2 16GB U盘 黑色 
+543590  399 839799   金士顿（Kingston） DataTraveler 101 G2 128GB U盘 白色 
+543583  169 647968   金士顿（Kingston） DataTraveler 101 G2 64GB U盘 绿色 
+540933  85.9    253392   金士顿（Kingston） DataTraveler 101 G2 32GB U盘 紫色 
+540933  29.9    253394   金士顿（Kingston） DataTraveler 101 G2 8GB U盘 红色  
+475822  26.9    136363   金士顿（Kingston）8G Class4 TF（micro SD）存储卡 
+438666  189 548501   好奇（Huggies）银装干爽舒适纸尿裤 大号L128片【10-14kg】 
+438665  189 548503   好奇（Huggies）银装干爽舒适纸尿裤 加大号XL104片【12-16kg】 
+438659  149 1092029  好奇（Huggies） 纸尿裤 银装干爽箱装S小号 148片 
+438656  189 548500   好奇（Huggies）银装干爽舒适纸尿裤 中号M160片【7-11kg】 
+389582  129 121707   TP-LINK TL-WR841N  300M无线路由器（蓝色） 
+361967  89  200577   TP-LINK TL-WR740N  150M无线路由器 
+357849  229 695467   帮宝适（Pampers）超薄干爽纸尿裤 大号L164片【9-14kg】 
+357846  239 695469   帮宝适（Pampers）超薄干爽纸尿裤 加大号XL128片【12-17kg】 
+357839  235 695466   帮宝适（Pampers）超薄干爽纸尿裤 中号M192片【6-11kg】 
+357814  160 1163863  帮宝适（Pampers）超薄干爽纸尿裤小号S152片【3-8kg】 
+335395  89  836677   TP-LINK TL-WR842N 300M无线路由器 
+332122  69  405074   罗技（Logitech）M185 无线鼠标 黑色红边 
+332122  69  423478   罗技（Logitech）M185 无线鼠标 黑色灰边 
+332120  69  405075   罗技（Logitech）M185 无线鼠标 黑色蓝边 
+330464  19.9    971035   360官方出品 360随身WiFi 2 （设置超简单，超便捷的无线路由器）  白色 
+316100  19.9    981285   360官方出品 360随身WiFi 2 （设置超简单，超便捷的无线路由器）  黑色 
+308863  59  409740   飞科（FLYCO）FS330充电式三刀头电动剃须刀（银色） 
+293032  789 931828   西部数据（WD） My Passport  Ultra USB3.0 2TB 超便携移动硬盘 （黑色）WDBMWV0020BBK-PESN 
+293029  469 931833   西部数据（WD） My Passport  Ultra USB3.0 1TB 超便携移动硬盘 （红色）WDBZFP0010BRD-PESN 
+293029  399 931824   西部数据（WD） My Passport  Ultra USB3.0 500G 超便携移动硬盘 （蓝色）WDBPGC5000ABL-PESN 
+293028  779 931822   西部数据（WD） My Passport  Ultra USB3.0 2TB 超便携移动硬盘 （钛）WDBMWV0020BTT-PESN 
+293028  399 931823   西部数据（WD） My Passport  Ultra USB3.0 500G 超便携移动硬盘 （黑色）WDBPGC5000ABK-PESN 
+293027  469 931831   西部数据（WD） My Passport  Ultra USB3.0 1TB 超便携移动硬盘 （黑色）WDBZFP0010BBK-PESN 
+293026  469 1099488  西部数据（WD） My Passport Ultra USB3.0 1TB 超便携移动硬盘 白色 WDBZFP0010BWT-PESN 
+293025  449 896813   西部数据（WD） Elements 新元素系列 2.5英寸 USB3.0 移动硬盘 1TB（WDBUZG0010BBK） 
+293023  349 896815   西部数据（WD） Elements 新元素系列 2.5英寸 USB3.0 移动硬盘 500G（WDBUZG5000ABK） 
+293021  479 931832   西部数据（WD） My Passport  Ultra USB3.0 1TB 超便携移动硬盘 （蓝色）WDBZFP0010BBL-PESN 
+293015  399 931825   西部数据（WD） My Passport  Ultra USB3.0 500G 超便携移动硬盘 （红色）WDBPGC5000ARD-PESN 
+293010  749 896814   西部数据（WD） Elements 新元素系列 2.5英寸 USB3.0 移动硬盘 2TB（WDBU6Y0020BBK） 
+293009  1599    1018798  西部数据(WD) My Cloud 4TB NAS 网络存储 个人云存储 WDBCTL0040HWT-CESN  
+293007  1049    1018801   西部数据(WD) My Cloud 2TB NAS 网络存储 个人云存储 WDBCTL0020HWT-CESN  
+293006  479 931827   西部数据（WD） My Passport  Ultra USB3.0 1TB 超便携移动硬盘 （钛）WDBZFP0010BTT-PESN 
+293004  789 1164790  西部数据（WD） My Passport  Ultra USB3.0 2TB 超便携移动硬盘 （白色）WDBMWV0020BWT 
+293004  779 931829   西部数据（WD） My Passport  Ultra USB3.0 2TB 超便携移动硬盘 （蓝色）WDBMWV0020BBL-PESN 
+293003  999 1034206  西部数据（WD） My Passport Air USB3.0 1TB 全金属超便携移动硬盘 WDBWDG0010BAL-PESN 
+293001  399 931826   西部数据（Western Digital） My Passport  Ultra USB3.0 500G 超便携移动硬盘 （钛）WDBPGC5000ATT-PESN 
+293000  699 989331   西部数据（WD） My Passport Slim USB3.0 1TB 超便携移动硬盘 WDBGMT0010BAL-PESN 
+292994  999 989324   西部数据（WD） My Passport Slim USB3.0 2TB 超便携移动硬盘 WDBPDZ0020BAL-PESN 
+292994  1249    1018797  西部数据(WD) My Cloud 3TB NAS 网络存储 个人云存储 WDBCTL0030HWT-CESN   
+290507  25.9    503213   闪迪（SanDisk）酷刃 (CZ50) 8GB U盘 黑红 
+290502  39.9    503220   闪迪（SanDisk）酷刃 (CZ50) 16GB U盘 黑红 
+290498  139 850144   闪迪（SanDisk） 酷刃（CZ50） 64GB U盘 黑红 
+290497  89  519932   闪迪（SanDisk）酷刃 CZ50 32GB U盘 黑红 
+271524  160 923050   好奇（Huggies）金装超柔贴身纸尿裤 小号S120片【4-8kg】 
+271524  303 351202   好奇（Huggies）金装超柔贴身纸尿裤 加大号XL105片【12-16kg】
+271519  299 351201   好奇（Huggies）金装超柔贴身纸尿裤 大号L129片【10-14kg】 
+271515  299 351200   好奇（Huggies）金装超柔贴身纸尿裤 中号M162片【7-11kg】 
+246430  399 888104   希捷（Seagate）2.5英寸 睿利slim 超薄便携式 500GB USB3.0移动硬盘 银色 (STCD500303) 
+246429  479 1000431  希捷（Seagate） Backup Plus睿品（升级版）1T 2.5英寸 USB3.0移动硬盘 丝绸红(STDR1000303) 
+246426  779 1021901  希捷（Seagate） Backup Plus睿品（升级版） 2T 2.5英寸 USB3.0移动硬盘 钛金灰(STDR2000301) 
+246426  599 667754   希捷（Seagate）Expansion 新睿翼2TB 3.5英寸 USB3.0 桌面式硬盘 (STBV2000300)  
+246426  859 1061254  希捷（Seagate） （新一代） 睿品 3T 3.5寸桌面式外置硬盘 (STDT3000300) 
+246426  1799    1152893  希捷（Seagate）Expansion新睿翼 5TB 3.5英寸 USB3.0桌面式硬盘 黑色（STBV5000300） 
+246426  498 980167   希捷（Seagate） 2.5英寸 睿利slim （苹果版） 500GB USB3.0移动硬盘 银色(STCF500300) 
+246424  779 1021900  希捷（Seagate） Backup Plus睿品（升级版） 2T 2.5英寸 USB3.0移动硬盘 蓝色 (STDR2000302) 
+246421  519 1093813  希捷（Seagate）Expansion 新睿翼1.5TB 2.5英寸 USB3.0 移动硬盘 (STBX1500401) 
+246420  779 1021894  希捷（Seagate） Backup Plus睿品（升级版） 2T 2.5英寸 USB3.0移动硬盘 陨石黑(STDR2000300) 
+246418  479 1000459  希捷（Seagate） Backup Plus睿品（升级版） 1T 2.5英寸 USB3.0移动硬盘 陨石黑(STDR1000300) 
+246418  799 667747   希捷（Seagate）Expansion 新睿翼3TB 3.5英寸 USB3.0 桌面式硬盘 (STBV3000300)  
+246418  659 1061252  希捷（Seagate） （新一代） 睿品 2T 3.5寸桌面式外置硬盘 (STDT2000300) 
+246414  1999    1074396  希捷（Seagate） 睿品 4T 2.5英寸高速便携式移动硬盘 黑色 (STDA4000300) 
+246413  479 1000468  希捷（Seagate） Backup Plus睿品（升级版） 1T 2.5英寸 USB3.0移动硬盘 宝石蓝(STDR1000302) 
+246413  1199    875234   希捷（Seagate） 无线硬盘移动存储设备 1TB USB3.0移动硬盘 灰色 (STCK1000300) 
+246412  439 667762   希捷（Seagate）Expansion 新睿翼1TB 2.5英寸 USB3.0 移动硬盘 (STBX1000301) 
+246411  349 667779   希捷（Seagate）Expansion 新睿翼500G 2.5英寸 USB3.0 移动硬盘 (STBX500300) 
+246410  739 1080708  希捷（Seagate） Expansion 新睿翼2TB 2.5英寸 USB3.0 移动硬盘 (STBX2000401) 
+246408  479 1000467  希捷（Seagate） Backup Plus睿品（升级版） 1T 2.5英寸 USB3.0移动硬盘 皓月银(STDR1000301)     
+246408  399 888106   希捷（Seagate）2.5英寸 睿利slim 超薄便携式 500GB USB3.0移动硬盘 黑色 (STCD500301) 
+246407  779 1021895  希捷（Seagate） Backup Plus睿品（升级版） 2T 2.5英寸 USB3.0移动硬盘 丝绸红(STDR2000303) 
+246407  1199    1061260  希捷（Seagate） （新一代） 睿品 4T 3.5寸桌面式外置硬盘 (STDT4000300) 
+246401  1499    1020848  希捷（Seagate） Central智汇盒 4TB NAS 网络存储 个人云存储（STCG4000300） 
+246401  999 1020849  希捷（Seagate） Central智汇盒 2TB NAS 网络存储 个人云存储（STCG2000300） 
+246398  1099    952606   希捷（Seagate）Expansion 新睿翼 4TB 3.5英寸 USB3.0桌面式硬盘 黑色 (STBV4000300) 
+246398  1899    1108829  希捷（Seagate） （新一代） 睿品 5T 3.5寸桌面式外置硬盘 (STDT5000300) 
+246397  698 980202   希捷（Seagate） Backup Plus 新睿品 （苹果版）1TB 2.5英寸 USB3.0 移动硬盘（STBW1000303） 
+245860  26.9    573333   东芝（TOSHIBA）隼系列（UHYBS-008G-LB） U盘 8G（浅蓝色） 
+245859  38.9    501463   东芝（TOSHIBA）隼系列（THUHYBS-016G）U盘 16G 
+245857  39.9    877117   东芝（TOSHIBA） 隼系列（UHYBS-016G-LB）U盘 16G 浅蓝色 
+245856  25.9    500247   东芝（TOSHIBA）隼系列（THUHYBS-008G）U盘 8G（白色） 
+245854  169 543120   东芝（TOSHIBA）隼系列（UHYBS-64G）U盘 64G 
+245853  39.9    877119   东芝（TOSHIBA） 隼系列（UHYBS-016G-BL）U盘 16G 蓝色 
+245852  77.9    512413   东芝（TOSHIBA）隼系列（THUHYBS-032G）U盘 32G 
+245847  39.9    877116   东芝（TOSHIBA） 隼系列（UHYBS-016G-OR）U盘 16G 橙色 
+245840  26.9    877120   东芝（TOSHIBA） 隼系列（UHYBS-008G-OR）U盘 8G 橙色 
+236025  26.9    520139   闪迪（SanDisk）MicroSDHC（TF）存储卡 8G-Class4 
+229932  47  368907   水星（Mercury）MW300R  300M无线路由器 
+226624  45.9    340843   金士顿（Kingston）16G Class10 -45MB/S TF(Micro SD)存储卡 
+226225  59  1023954  倍斯特 BST-0137格兰木 移动电源/充电宝 10400毫安 白色 
+226166  89  1075438  倍斯特 BST-0137格兰木 移动电源/充电宝 12000毫安 白色 
+209806  22.8    248983   亨氏 Heinz胡萝卜营养米粉225g(辅食添加初期至36个月适用) 
+209806  22.8    248998   亨氏 Heinz强化铁锌钙营养奶米粉225g(辅食添加初期至36个月适用) 
+209805  19.8    248985   亨氏 Heinz淮山薏米营养米粉225g(辅食添加初期至36个月适用) 
+209801  22.8    249030   亨氏 Heinz鳕鱼苹果营养米粉225g(6至36个月适用) 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;价格前一百&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;0   99999999    1006452157   钻宝源  GIA证书 10克拉粉钻 钻石女戒/结婚钻戒 稀世之宝 
+0   29999999    1006217061   钻宝源12克拉IF级D色3EX切工无荧光GIA证书钻石戒指女戒结婚钻戒钻宝源之星 
+0   29999999    1008175234   钻宝源 顶级品鉴 GIA梨形3.25克拉IF净度 浓彩级粉紫钻 
+0   12000000    1008175842   钻宝源 GIA裸钻20.65克拉垫形艳彩级黄钻 赠铂金戒托 
+0   9880000 1022744553   圣博大珠宝 18K金镶嵌满绿精品翡翠观音吊坠 
+0   4950000 1022744179   圣博大珠宝 玻璃种精品翡翠观音吊坠a货 天然翡翠玉石观音挂件男款 
+0   3120000 1022740394   圣博大珠宝 精品满绿老坑翡翠竹节吊坠天然a货 
+0   2418000 1022316984   圣博大珠宝 18K镶钻冰种满绿精品翡翠观音吊坠a货 天然玉石观音挂件正品 
+0   1590000 1035901016   御府新疆和田玉黄皮籽玉茶壶摆件 
+0   1399999 1034840948   御府 新疆和田玉黄皮白玉籽玉摆件 观音 1700克 
+0   1399999 1033314976   御府 新疆和田玉洒金皮白玉籽玉摆件 双娇 2000克 
+0   1300000 1033244698   御府新疆和田玉枣红皮白玉籽玉路路通摆件 
+0   1158000 1022739928   圣博大珠宝 精品翡翠飘花如意吊坠a货 天然玉石挂件 
+0   980000  1015644878   老山玉器 新疆和田玉石玉器 和田羊脂玉摆件黄鹤楼（附鉴定证书） 
+0   780000  1022739750   圣博大珠宝 精品满绿翡翠竹节吊坠a货 18K金钻石镶嵌玉石节节高挂件 节节高 
+0   599999  1003156111   戴维尼钻石 3克拉G色VS净度 GIA证书 定制克拉钻戒 送戒托 
+0   590000  1034848946   御府 新疆和田玉黄皮白玉籽玉观音摆件 416克 
+0   539800  1027283150   爱卓龙 翡翠戒面玻璃种满翠戒指面 
+10  500000  1054890274   鑫万福  GIA定制 南非天然裸钻/钻石/钻戒DIY个性专属定制 求婚戒指 婚戒 百万裸钻请看页面详情 
+0   420000  1021909191   玉品世家 纯天然A货翡翠 中华魂—翡翠九龙玉雕 孤品 
+0   380000  1015645746   老山玉器 新疆和田玉石玉器 和田白玉摆件乘兴而来（附鉴定证书） 
+0   360000  1268843783   红木家具 老挝红酸枝清式草龙宝座 客厅沙发 JH-G-025 
+0   360000  1015643839   老山玉器 新疆和田玉石玉器 和田白玉摆件莲藕童子（附鉴定证书） 
+0   338999  1067901  IBM Storwize V7000   网络存储   双控制器高端存储   自带虚拟化等功能 
+0   287294  1096185  EMC VNXe3150(3150_2SP_6_3TB)统一存储系统 
+0   280000  1135720576   寿山乌鸦皮 田黄石 《刘海戏蟾》摆件 精品收藏 
+0   269067  1096192  EMC VNXe3150(3150_2SP_6_2TB)统一存储系统 
+0   268000  1015646939   老山玉器 新疆和田玉石玉器 和田白玉摆件雄鹰展翅（附鉴定证书） 
+0   262000  1015838459   老山玉器 新疆和田玉石玉器 和田羊脂白玉籽料牌府上有龙（附鉴定证书） 
+3   255350  1252562309   在一起珠宝  投资产品 Au9999 梯形金条 黄金投资理财 收藏保值支持回购 大克重金条 1000g 
+0   250106  1096196  EMC VNXe3150(3150_2SP_6_600GB_15k)统一存储系统 
+2   250000  1274141102   lika 高端金条 好大气的金条 巧克力味哦 
+0   250000  1056033435   永乐大典：宣纸影印（北京图书馆出版、全164册） 
+0   240000  11206386     钦定武英殿聚珍版丛书（精装合订本） 
+0   235437  1096197  EMC VNXe3150(3150_1SP_6_3TB)统一存储系统 
+0   209999  779369   未来人类（Terrans Force）P57 17.3英寸游戏本(六核i7-4960X 32G 1.8TB SSD 双GTX780M SLI 2X4G独显) 
+0   198523  1096205  EMC VNXe3150(3150_1SP_6_2TB)统一存储系统 
+0   196917  1096198  EMC VNXe3150(3150_1SP_6_600GB_15K)统一存储系统 
+0   192407  1003434981   颜博钻石 2克拉G色VVS1级 GIA公主方形裸钻 可定制异形钻戒 独特婚戒 
+0   180000  1125459777   【西泠印社】刘一闻刻 寿山石《不似之似 》 闲章 印章藏书章 
+0   168000  1015645288   老山玉器 新疆和田玉石玉器 和田白玉摆件虎虎生威（附鉴定证书） 
+0   158888  1011339885   钻宝源南 非GIA裸钻1克拉IFD色3EX切工无荧光钻石女戒钻戒铂金PT900戒托二选 
+0   156999  1067900  IBM Storwize V5000    网络存储   双控制器中高端存储，双系统群集 内部存储的虚拟化 单向数据迁移等功能 
+0   148920  1096176  DCN NCS3600（NCS3600-FD）功能强大，绿色高效的网络控制器存储系统 
+0   148000  1015165186   老山玉器 新疆和田玉石玉器 白玉籽料手把件手玩件福寿双全（附鉴定证书） 
+0   144936  11211825     民国史料丛刊（续编）（全1140册，附总目提要） 
+17  139999  1285517458   钻宝源 50分I克拉H色 DE色FG色3EX切工天然南非裸钻GIA双证钻石女戒指 婚戒 2克拉H色SI/VG切工 
+0   131760  11211824     民国史料丛刊（全1128册） 
+0   130000  1126803182   【西泠印社】昌化鸡血石 素章 方章 篆刻刻字 收藏礼品 
+0   128600  1058077255   老山玉器 新疆天然玉石玉器 碧玉佛珠 质地细腻油润 112颗玉珠（附鉴定证书） 
+3   127700  1252562308   在一起珠宝  投资产品 Au9999 梯形金条 黄金投资理财 收藏保值支持回购 大克重金条 500g 
+0   123267  1096179  DCN NCS3600（NCS3600-ID）功能强大，绿色高效的网络控制器存储系统 
+0   120000  1138676585   【西泠印社】余正刻 寿山石《白云抱幽石》 闲章 印章藏书章 
+0   111888  1011334676   钻宝源 1克拉H色 SI 南非天然裸钻GIA双证 送18K白金戒托（钻石女戒/结婚） 
+0   110400  1022560027   翡翠A货 缅甸翡翠 翡翠吊坠 虾挂件 手工雕刻 金世玉 
+0   110000  1146704643   【西泠印社】副社长韩天衡 行书 《荷说一则》二平尺 书法 字画 
+0   107900  1096170  DCN NCS3600（NCS3600-FS）功能强大，绿色高效的网络控制器存储系统 
+0   100000  1146715834   【西泠印社】余正刻 寿山石《 宽柔和惠，则众相爱 》 闲章 印章藏书章 
+0   100000  1126783239   【西泠印社】 寿山石 刘海戏蟾 摆件 摆设 装饰 
+0   98800   1012898549   老山玉器 新疆和田玉 和田玉白玉把件手玩件寿星（附鉴定证书） 
+0   98000   1015550827   老山玉器 新疆和田玉石玉器 羊脂玉手把件手玩件天伦之乐（附鉴定证书） 
+0   92800   1014428878   老山玉器 新疆和田玉石玉器 白玉手把件 一品清廉 正面浮雕莲花（附鉴定书） 
+6   90000   1266299063   美立方 结婚礼物千足金鱼金条 年年有余金条 AU999千足金砖投资金条 300克 
+0   88000   1015034420   老山玉器 新疆和田玉石玉器 白玉籽料把件手玩件连年有余（附鉴定证书） 
+0   88000   1015895333   老山玉器 新疆和田玉石玉器 白玉摆件五鼠送财（附鉴定证书） 
+0   88000   1015924030   老山玉器 新疆和田玉石玉器 墨玉籽料四季发财印章（附鉴定证书） 
+0   88000   1015574789   老山玉器 新疆和田玉石玉器 和田玉手把件手玩件喜事连连（附鉴定证书） 
+17  86666   1285517457   钻宝源 50分I克拉H色 DE色FG色3EX切工天然南非裸钻GIA双证钻石女戒指 婚戒 2克拉IJ色SI/VG切工 
+3   86666   1006148479   钻宝源 南非天然GIA裸钻2克拉 VG以上切工 SI I-J色（送女戒PT950戒托） 
+0   86000   1015145560   老山玉器 新疆和田玉石玉器 羊脂玉籽料挂件吊坠观音（附鉴定证书） 
+0   86000   1015045900   老山玉器 新疆和田玉石玉器 白玉把件手玩件马上封侯（附鉴定证书） 
+0   86000   1004162  奥士达（OASTAR） Ht3.0*15 高保密超强长时涉密存储介质销毁机 2.5*15，50张，长时销毁光盘U盘移动硬盘硬盘 
+0   85504   1003401122   颜博钻石 1克拉D色VS2级GIA圆形裸钻 定制婚戒钻戒吊坠(货号:140090-52) 
+0   85000   1126746227   【西泠印社】 寿山石芙蓉石 童子拜寿 印石摆件 摆设 装饰 篆刻 
+1   82999   1011338625   钻宝源 南非天然GIA裸钻1.2克拉VVS2 F色 3EX 钻石女戒 结婚钻戒 
+0   82267   1096186  DCN NCS3600（NCS3600-IS）功能强大，绿色高效的网络控制器存储系统 
+0   80000   1126911614   【西泠印社】昌化鸡血石 素章 方章 篆刻刻字 收藏礼品 
+0   80000   1076008391   天龙八宝壶尊景泰蓝掐丝珐琅钱美华、米振雄、戴嘉林、钟连盛四位大师联袂创作 
+0   80000   1214681556   【西泠印社】寿山石 白杜陵 收藏篆刻礼品 
+0   80000   1126779753   【西泠印社】 寿山石 罗汉洗象 摆件 摆设 装饰 
+0   80000   1266643644   八马茶业 福建安溪原产铁观音 陈年浓香型 茶叶 高端礼盒 1380克 
+17  79999   1285517453   钻宝源 50分I克拉H色 DE色FG色3EX切工天然南非裸钻GIA双证钻石女戒指 婚戒 1.3克拉F色 3EX切工 
+1   79800   1224981764   佳能（Canon） Cinema System C300机身 专业摄像机 
+1   79699   1246818236   佳能（Canon） EOS 1DX+（16-35）+（24-70）+（70-200）套机 
+0   78800   1059536471   《龙腾虎跃》 景泰蓝 张同禄大师之作 馈赠商务礼品 工艺摆件礼品 
+0   78000   1125482760   【西泠印社】孙慰祖刻 青田石《修身事亲知人 》 闲章 印章藏书章 
+17  76999   1285517452   钻宝源 50分I克拉H色 DE色FG色3EX切工天然南非裸钻GIA双证钻石女戒指 婚戒 一克拉E色VVS1/3EX切工 
+0   76000   1059864504   kriti 黄皮白玉 玉料厚重老气 籽料和田玉大象摆件 吉祥如意 
+17  75999   1285517456   钻宝源 50分I克拉H色 DE色FG色3EX切工天然南非裸钻GIA双证钻石女戒指 婚戒 1.5克拉H色SI1/VG切工 
+0   74948   1004345572   颜博钻石 1克拉G色VVS1级GIA圆形裸钻 可定制婚戒钻戒(货号:141010-397) 
+0   73606   1004487727   颜博钻石 1.7克拉J色SI2级GIA圆形裸钻 可定制婚戒钻戒货号:140091-159) 
+0   72800   1012901671   老山玉器 和田玉 和田羊脂玉原料（附鉴定证书） 
+0   70000   1130131483   【西泠印社】昌化鸡血石 素章 方章 篆刻刻字 收藏礼品 
+0   68888   1044705  宝马（BMW） X5,X6原厂车轮组 铝合金车轮(21英寸) 镀铬的星式轮辐128*(一套4只含原厂邓禄普轮胎) 
+0   68800   1059727976   老山玉器 新疆天然玉石玉器 籽料摆件 俏丽的皮色包裹玉质（附鉴定证书） 
+0   68800   1003989303   地球城钻石1.01克拉 H VS1 3EX N GIA裸钻婚戒含18K金戒托 A款直臂雪花款戒指 
+0   68800   1003989306   地球城钻石1.01克拉 H VS1 3EX N GIA裸钻婚戒含18K金戒托 D款六爪皇冠戒指 
+0   68800   1003989305   地球城钻石1.01克拉 H VS1 3EX N GIA裸钻婚戒含18K金戒托 C款天使之吻戒指 
+0   68800   1003989304   地球城钻石1.01克拉 H VS1 3EX N GIA裸钻婚戒含18K金戒托 B款扭臂雪花款戒指 
+0   68600   1022560331   翡翠A货 缅甸翡翠 蟾蜍吊坠 招财辟邪 金世玉 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;可以看看这个商品页&lt;code&gt;0 209999  779369   未来人类（Terrans Force）P57 17.3英寸游戏本(六核i7-4960X 32G 1.8TB SSD 双GTX780M SLI 2X4G独显)&lt;/code&gt;,这个笔记本的价格碉堡了,底下的商品咨询也有点碉堡了.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>基于Scrapy的京东爬虫</title>
+   <link href="/2014/09/07/scrapy-jd.html"/>
+   <updated>2014-09-07T00:00:00+08:00</updated>
+   <id>/2014/09/07/scrapy-jd</id>
+   <content type="html">&lt;p&gt;出于兴趣爱好原来就做过爬虫,从C到python,再到scrapy,一开始也是因为做爬虫才慢慢了解python,才知道有这么优雅的语言,废话不多说了.看一下是怎么爬取的.&lt;/p&gt;
+
+&lt;p&gt;前期工作做了很多,学习了twisted,scrapy.京东的网页价格,评论是动态,怎么爬?google了一大堆什么,又抓包,发现关于评论的包不能正常的抓取,可能是设的cookies认证,没深入了解这方面的知识,发觉碰到一块难题.&lt;/p&gt;
+
+&lt;p&gt;就在昨天,偶尔浏览到了京东的wap页面,我勒个大曹啊,wap页面都是静态的,而且和网页端的内容是一致更新的,终于送了一口气,三下五除二用了两个多小时写完了这个爬虫,今天早上正好到实验室开始抓取,抽空写个blog.&lt;/p&gt;
+
+&lt;p&gt;项目地址:&lt;a href=&quot;https://github.com/taizilongxu/scrapy_jingdong&quot;&gt;https://github.com/taizilongxu/scrapy_jingdong&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3&gt;思路&lt;/h3&gt;
+
+&lt;p&gt;同学只要价格,商品名和评论数,所以还算简单,最后要加个商品ID,方便去重&lt;/p&gt;
+
+&lt;h4&gt;第一个页面&lt;/h4&gt;
+
+&lt;p&gt;京东有一个商品全部分类的页面如下 &lt;a href=&quot;http://wap.jd.com/category/all.html&quot;&gt;http://wap.jd.com/category/all.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-09-07%2009:17:58%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;其中红色的和后面的更多指向的是一个页面,只要抓取一个就可以到下一个页面了,进入第一个邪恶的服饰内衣看看.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&amp;#39;获取全部分类商品&amp;#39;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;req&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sel&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xpath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;/html/body/div[5]/div[2]/a&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xpath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;text()&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;extract&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;href&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xpath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;@href&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;extract&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;category&amp;#39;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;http://wap.jd.com&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;
+                    &lt;span class=&quot;c&quot;&gt;# print url&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parse_category&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;req&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;第二个页面&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-09-07%2009:20:42%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;这个页面就是服饰内衣的页面了,我们抓取每个页面的蓝色字体的小分类,保存进req&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;parse_category&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&amp;#39;获取分类页&amp;#39;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;req&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sel&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xpath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;/html/body/div[5]/div/a&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;href&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xpath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;@href&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;extract&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;http://wap.jd.com&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;
+                &lt;span class=&quot;c&quot;&gt;# print url&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parse_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;req&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;第三个页面&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-09-07%2009:23:32%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;这个就是列表页面了,我们沿着这个页面可以抓取所有商品的url,要说的就是要把下一页也放到parse_list里进行循环&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;parse_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&amp;#39;分别获得商品的地址和下一页地址&amp;#39;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;req&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+
+        &lt;span class=&quot;s&quot;&gt;&amp;#39;下一页地址&amp;#39;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;next_list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xpath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;/html/body/div[21]/a[1]/@href&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;extract&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;next_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;http://wap.jd.com&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;next_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parse_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;s&quot;&gt;&amp;#39;商品地址&amp;#39;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sel&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xpath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;/html/body/div[contains(@class, &amp;quot;pmc&amp;quot;)]/div[1]/a&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;href&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xpath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;@href&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;extract&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;http://wap.jd.com&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;
+                &lt;span class=&quot;c&quot;&gt;# print url&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parse_product&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;req&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;第四个页面&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-09-07%2009:25:36%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;在这里抓取title,price和id,id就是 &lt;a href=&quot;http://wap.jd.com/product/1268172347.html&quot;&gt;http://wap.jd.com/product/1268172347.html&lt;/a&gt; 最后的数字.&lt;/p&gt;
+
+&lt;p&gt;把上面网址中的product改成comments,就可以抓取评论页了&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;parse_product&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&amp;#39;商品页获取title,price,product_id&amp;#39;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;re&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sub&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;product&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;comments&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parse_comments&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;title&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xpath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;//title/text()&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;extract&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;price&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xpath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;/html/body/div[4]/div[4]/font/text()&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;extract&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;product_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+
+        &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TutorialItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;title&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;price&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;price&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;product_id&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;product_id&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;meta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;item&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;price&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;product_id&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;第五个页面&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-09-07%2009:29:07%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;这个页面也没什么好说的,把好中差评论加一起就是商品总数了,然后返回item(&lt;a href=&quot;http://scrapy-chs.readthedocs.org/zh_CN/latest/topics/request-response.html#topics-request-response-ref-request-userlogin&quot;&gt;如何爬取属性在不同页面的item呢？&lt;/a&gt;scrapy里面介绍的很详细了&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;parse_comments&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&amp;#39;获取商品comment&amp;#39;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;comment_5&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xpath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;/html/body/div[4]/div[2]/a[1]/font[2]/text()&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;extract&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;comment_3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xpath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;/html/body/div[4]/div[2]/a[2]/font/text()&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;extract&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;comment_1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xpath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;/html/body/div[4]/div[2]/a[3]/font/text()&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;extract&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;comment&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;comment_5&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;comment_3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;comment_1&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;comment&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;totle_comment&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;comment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;meta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;item&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;comment&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;totle_comment&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;totle_comment&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;至此整个爬虫完毕,剩下就是运行了,正在等待结果&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Shell脚本语言笔记(4)</title>
+   <link href="/2014/09/06/shell-4.html"/>
+   <updated>2014-09-06T00:00:00+08:00</updated>
+   <id>/2014/09/06/shell-4</id>
+   <content type="html">&lt;p&gt;Shell函数&lt;/p&gt;
+
+&lt;h2&gt;Shell函数返回值、删除函数、在终端调用函数&lt;/h2&gt;
+
+&lt;p&gt;函数可以让我们将一个复杂功能划分成若干模块，让程序结构更加清晰，代码重复利用率更高。像其他编程语言一样，Shell 也支持函数。Shell 函数必须先定义后使用。&lt;/p&gt;
+
+&lt;p&gt;Shell 函数的定义格式如下：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;function_name () {
+    list of commands
+    [ return value ]
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;如果你愿意，也可以在函数名前加上关键字 function：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;function function_name () {
+    list of commands
+    [ return value ]
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;函数返回值，可以显式增加return语句；如果不加，会将最后一条命令运行结果作为返回值。&lt;/p&gt;
+
+&lt;p&gt;Shell 函数返回值只能是整数，一般用来表示函数执行成功与否，0表示成功，其他值表示失败。如果 return 其他数据，比如一个字符串，往往会得到错误提示：“numeric argument required”。&lt;/p&gt;
+
+&lt;p&gt;如果一定要让函数返回字符串，那么可以先定义一个变量，用来接收函数的计算结果，脚本在需要的时候访问这个变量来获得函数返回值。&lt;/p&gt;
+
+&lt;p&gt;先来看一个例子：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/bash
+# Define your function here
+Hello () {
+   echo &amp;quot;Hello World&amp;quot;
+}
+# Invoke your function
+Hello
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;运行结果：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$./test.sh
+Hello World
+$
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;调用函数只需要给出函数名，不需要加括号。&lt;/p&gt;
+
+&lt;p&gt;再来看一个带有return语句的函数：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/bash
+funWithReturn(){
+    echo &amp;quot;The function is to get the sum of two numbers...&amp;quot;
+    echo -n &amp;quot;Input first number: &amp;quot;
+    read aNum
+    echo -n &amp;quot;Input another number: &amp;quot;
+    read anotherNum
+    echo &amp;quot;The two numbers are $aNum and $anotherNum !&amp;quot;
+    return $(($aNum+$anotherNum))
+}
+funWithReturn
+# Capture value returnd by last command
+ret=$?
+echo &amp;quot;The sum of two numbers is $ret !&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;运行结果：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;The function is to get the sum of two numbers...
+Input first number: 25
+Input another number: 50
+The two numbers are 25 and 50 !
+The sum of two numbers is 75 !
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;函数返回值在调用该函数后通过 $? 来获得。&lt;/p&gt;
+
+&lt;p&gt;再来看一个函数嵌套的例子：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/bash
+# Calling one function from another
+number_one () {
+   echo &amp;quot;Url_1 is http://see.xidian.edu.cn/cpp/shell/&amp;quot;
+   number_two
+}
+number_two () {
+   echo &amp;quot;Url_2 is http://see.xidian.edu.cn/cpp/u/xitong/&amp;quot;
+}
+number_one
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;运行结果：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;Url_1 is http://see.xidian.edu.cn/cpp/shell/
+Url_2 is http://see.xidian.edu.cn/cpp/u/xitong/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;像删除变量一样，删除函数也可以使用 unset 命令，不过要加上 .f 选项，如下所示：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$unset .f function_name
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;如果你希望直接从终端调用函数，可以将函数定义在主目录下的 .profile 文件，这样每次登录后，在命令提示符后面输入函数名字就可以立即调用。&lt;/p&gt;
+
+&lt;h2&gt;Shell函数参数&lt;/h2&gt;
+
+&lt;p&gt;在Shell中，调用函数时可以向其传递参数。在函数体内部，通过 $n 的形式来获取参数的值，例如，$1表示第一个参数，$2表示第二个参数...&lt;/p&gt;
+
+&lt;p&gt;带参数的函数示例：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/bash
+funWithParam(){
+    echo &amp;quot;The value of the first parameter is $1 !&amp;quot;
+    echo &amp;quot;The value of the second parameter is $2 !&amp;quot;
+    echo &amp;quot;The value of the tenth parameter is $10 !&amp;quot;
+    echo &amp;quot;The value of the tenth parameter is ${10} !&amp;quot;
+    echo &amp;quot;The value of the eleventh parameter is ${11} !&amp;quot;
+    echo &amp;quot;The amount of the parameters is $# !&amp;quot;  # 参数个数
+    echo &amp;quot;The string of the parameters is $* !&amp;quot;  # 传递给函数的所有参数
+}
+funWithParam 1 2 3 4 5 6 7 8 9 34 73
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;运行脚本：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;The value of the first parameter is 1 !
+The value of the second parameter is 2 !
+The value of the tenth parameter is 10 !
+The value of the tenth parameter is 34 !
+The value of the eleventh parameter is 73 !
+The amount of the parameters is 12 !
+The string of the parameters is 1 2 3 4 5 6 7 8 9 34 73 !&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;注意，$10 不能获取第十个参数，获取第十个参数需要${10}。当n&amp;gt;=10时，需要使用${n}来获取参数。&lt;/p&gt;
+
+&lt;p&gt;另外，还有几个特殊变量用来处理参数，前面已经提到：&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;特殊变量&lt;/th&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;$#&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;传递给函数的参数个数。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;$*&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;显示所有传递给函数的参数。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;$@&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;与$*相同，但是略有区别，请查看Shell特殊变量。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;$?&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;函数的返回值。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Shell脚本语言笔记(3)</title>
+   <link href="/2014/09/06/shell-3.html"/>
+   <updated>2014-09-06T00:00:00+08:00</updated>
+   <id>/2014/09/06/shell-3</id>
+   <content type="html">&lt;p&gt;Shell的控制语句if,while,until,continue,break&lt;/p&gt;
+
+&lt;h2&gt;if else语句&lt;/h2&gt;
+
+&lt;p&gt;if 语句通过关系运算符判断表达式的真假来决定执行哪个分支。Shell 有三种 if ... else 语句：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;if ... fi 语句；&lt;/li&gt;
+&lt;li&gt;if ... else ... fi 语句；&lt;/li&gt;
+&lt;li&gt;if ... elif ... else ... fi 语句。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;1) if ... else 语句&lt;/h4&gt;
+
+&lt;p&gt;if ... else 语句的语法：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;if [ expression ]
+then
+   Statement(s) to be executed if expression is true
+fi
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;如果 expression 返回 true，then 后边的语句将会被执行；如果返回 false，不会执行任何语句。&lt;/p&gt;
+
+&lt;p&gt;最后必须以 fi 来结尾闭合 if，fi 就是 if 倒过来拼写，后面也会遇见。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;注意：expression 和方括号([ ])之间必须有空格，否则会有语法错误。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4&gt;2) if ... else ... fi 语句&lt;/h4&gt;
+
+&lt;p&gt;if ... else ... fi 语句的语法：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;if [ expression ]
+then
+   Statement(s) to be executed if expression is true
+else
+   Statement(s) to be executed if expression is not true
+fi
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;如果 expression 返回 true，那么 then 后边的语句将会被执行；否则，执行 else 后边的语句。&lt;/p&gt;
+
+&lt;p&gt;举个例子：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/sh
+a=10
+b=20
+if [ $a == $b ]
+then
+   echo &amp;quot;a is equal to b&amp;quot;
+else
+   echo &amp;quot;a is not equal to b&amp;quot;
+fi
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;执行结果：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;a is not equal to b
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;3) if ... elif ... fi 语句&lt;/h4&gt;
+
+&lt;p&gt;if ... elif ... fi 语句可以对多个条件进行判断，语法为：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;if [ expression 1 ]
+then
+   Statement(s) to be executed if expression 1 is true
+elif [ expression 2 ]
+then
+   Statement(s) to be executed if expression 2 is true
+elif [ expression 3 ]
+then
+   Statement(s) to be executed if expression 3 is true
+else
+   Statement(s) to be executed if no expression is true
+fi
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;哪一个 expression 的值为 true，就执行哪个 expression 后面的语句；如果都为 false，那么不执行任何语句。&lt;/p&gt;
+
+&lt;p&gt;if ... else 语句也可以写成一行，以命令的方式来运行，像这样：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;if test $[2*3] -eq $[1+5]; then echo &amp;#39;The two numbers are equal!&amp;#39;; fi;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;if ... else 语句也经常与 test 命令结合使用，如下所示：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;num1=$[2*3]
+num2=$[1+5]
+if test $[num1] -eq $[num2]
+then
+    echo &amp;#39;The two numbers are equal!&amp;#39;
+else
+    echo &amp;#39;The two numbers are not equal!&amp;#39;
+fi
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;输出：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;The two numbers are equal!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;test 命令用于检查某个条件是否成立，与方括号([ ])类似。&lt;/p&gt;
+
+&lt;h2&gt;case esac语句&lt;/h2&gt;
+
+&lt;p&gt;case ... esac 与其他语言中的 switch ... case 语句类似，是一种多分枝选择结构。&lt;/p&gt;
+
+&lt;p&gt;case 语句匹配一个值或一个模式，如果匹配成功，执行相匹配的命令。case语句格式如下：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;case 值 in
+模式1)
+    command1
+    command2
+    command3
+    ;;
+模式2）
+    command1
+    command2
+    command3
+    ;;
+*)
+    command1
+    command2
+    command3
+    ;;
+esac
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;case工作方式如上所示。取值后面必须为关键字 in，每一模式必须以右括号结束。取值可以为变量或常数。匹配发现取值符合某一模式后，其间所有命令开始执行直至 ;;。;; 与其他语言中的 break 类似，意思是跳到整个 case 语句的最后。&lt;/p&gt;
+
+&lt;p&gt;取值将检测匹配的每一个模式。一旦模式匹配，则执行完匹配模式相应命令后不再继续其他模式。如果无一匹配模式，使用星号 * 捕获该值，再执行后面的命令。&lt;/p&gt;
+
+&lt;p&gt;下面的脚本提示输入1到4，与每一种模式进行匹配：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;echo &amp;#39;Input a number between 1 to 4&amp;#39;
+echo &amp;#39;Your number is:\c&amp;#39;
+read aNum
+case $aNum in
+    1)  echo &amp;#39;You select 1&amp;#39;
+    ;;
+    2)  echo &amp;#39;You select 2&amp;#39;
+    ;;
+    3)  echo &amp;#39;You select 3&amp;#39;
+    ;;
+    4)  echo &amp;#39;You select 4&amp;#39;
+    ;;
+    *)  echo &amp;#39;You do not select a number between 1 to 4&amp;#39;
+    ;;
+esac
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;输入不同的内容，会有不同的结果，例如：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;Input a number between 1 to 4
+Your number is:3
+You select 3
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;再举一个例子：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/bash
+option=&amp;quot;${1}&amp;quot;
+case ${option} in
+   -f) FILE=&amp;quot;${2}&amp;quot;
+      echo &amp;quot;File name is $FILE&amp;quot;
+      ;;
+   -d) DIR=&amp;quot;${2}&amp;quot;
+      echo &amp;quot;Dir name is $DIR&amp;quot;
+      ;;
+   *) 
+      echo &amp;quot;`basename ${0}`:usage: [-f file] | [-d directory]&amp;quot;
+      exit 1 # Command to come out of the program with status 1
+      ;;
+esac
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;运行结果：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$./test.sh
+test.sh: usage: [ -f filename ] | [ -d directory ]
+$ ./test.sh -f index.htm
+$ vi test.sh
+$ ./test.sh -f index.htm
+File name is index.htm
+$ ./test.sh -d unix
+Dir name is unix
+$
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;for循环&lt;/h2&gt;
+
+&lt;p&gt;与其他编程语言类似，Shell支持for循环。&lt;/p&gt;
+
+&lt;p&gt;for循环一般格式为：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;for 变量 in 列表
+do
+    command1
+    command2
+    ...
+    commandN
+done
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;列表是一组值（数字、字符串等）组成的序列，每个值通过空格分隔。每循环一次，就将列表中的下一个值赋给变量。&lt;/p&gt;
+
+&lt;p&gt;in 列表是可选的，如果不用它，for 循环使用命令行的位置参数。&lt;/p&gt;
+
+&lt;p&gt;例如，顺序输出当前列表中的数字：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;for loop in 1 2 3 4 5
+do
+    echo &amp;quot;The value is: $loop&amp;quot;
+done
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;运行结果：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;The value is: 1
+The value is: 2
+The value is: 3
+The value is: 4
+The value is: 5
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;顺序输出字符串中的字符：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;for str in &amp;#39;This is a string&amp;#39;
+do
+    echo $str
+done
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;运行结果：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;This is a string
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;显示主目录下以 .bash 开头的文件：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/bash
+for FILE in $HOME/.bash*
+do
+   echo $FILE
+done
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;运行结果：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;/root/.bash_history
+/root/.bash_logout
+/root/.bash_profile
+/root/.bashrc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;while循环&lt;/h2&gt;
+
+&lt;p&gt;while循环用于不断执行一系列命令，也用于从输入文件中读取数据；命令通常为测试条件。其格式为：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;while command
+do
+   Statement(s) to be executed if command is true
+done
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;命令执行完毕，控制返回循环顶部，从头开始直至测试条件为假。&lt;/p&gt;
+
+&lt;p&gt;以下是一个基本的while循环，测试条件是：如果COUNTER小于5，那么返回 true。COUNTER从0开始，每次循环处理时，COUNTER加1。运行上述脚本，返回数字1到5，然后终止。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;COUNTER=0
+while [ $COUNTER -lt 5 ]
+do
+    COUNTER=&amp;#39;expr $COUNTER+1&amp;#39;
+    echo $COUNTER
+done
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;运行脚本，输出：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;1
+2
+3
+4
+5
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;while循环可用于读取键盘信息。下面的例子中，输入信息被设置为变量FILM，按&lt;Ctrl-D&gt;结束循环。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;echo &amp;#39;type &amp;lt;CTRL-D&amp;gt; to terminate&amp;#39;
+echo -n &amp;#39;enter your most liked film: &amp;#39;
+while read FILM
+do
+    echo &amp;quot;Yeah! great film the $FILM&amp;quot;
+done
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;运行脚本，输出类似下面：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;type &amp;lt;CTRL-D&amp;gt; to terminate
+enter your most liked film: Sound of Music
+Yeah! great film the Sound of Music
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;until循环&lt;/h2&gt;
+
+&lt;p&gt;说白了就是do-while的模式,先执行语句,后判断条件表达式.&lt;/p&gt;
+
+&lt;p&gt;until 循环格式为：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;until command
+do
+   Statement(s) to be executed until command is true
+done
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;command 一般为条件表达式，如果返回值为 false，则继续执行循环体内的语句，否则跳出循环。&lt;/p&gt;
+
+&lt;p&gt;例如，使用 until 命令输出 0 ~ 9 的数字：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/bash
+a=0
+until [ ! $a -lt 10 ]
+do
+   echo $a
+   a=`expr $a + 1`
+done
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;运行结果：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;break和continue命令&lt;/h2&gt;
+
+&lt;p&gt;shell中break与C中唯一的不同就是前者可以在后面加上一个数字,跳出第几层循环.(当然if不算循环)&lt;/p&gt;
+
+&lt;h4&gt;break&lt;/h4&gt;
+
+&lt;p&gt;下面的例子中，脚本进入死循环直至用户输入数字大于5。要跳出这个循环，返回到shell提示符下，就要使用break命令。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/bash
+while :
+do
+    echo -n &amp;quot;Input a number between 1 to 5: &amp;quot;
+    read aNum
+    case $aNum in
+        1|2|3|4|5) echo &amp;quot;Your number is $aNum!&amp;quot;
+        ;;
+        *) echo &amp;quot;You do not select a number between 1 to 5, game is over!&amp;quot;
+            break
+        ;;
+    esac
+done
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;在嵌套循环中，break 命令后面还可以跟一个整数，表示跳出第几层循环。例如：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;break n
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;表示跳出第 n 层循环。&lt;/p&gt;
+
+&lt;p&gt;下面是一个嵌套循环的例子，如果 var1 等于 2，并且 var2 等于 0，就跳出循环：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/bash
+for var1 in 1 2 3
+do
+   for var2 in 0 5
+   do
+      if [ $var1 -eq 2 -a $var2 -eq 0 ]
+      then
+         break 2
+      else
+         echo &amp;quot;$var1 $var2&amp;quot;
+      fi
+   done
+done
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;如上，break 2 表示直接跳出外层循环。运行结果：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;1 0
+1 5
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;continue&lt;/h4&gt;
+
+&lt;p&gt;continue命令与break命令类似，只有一点差别，它不会跳出所有循环，仅仅跳出当前循环。&lt;/p&gt;
+
+&lt;p&gt;对上面的例子进行修改：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/bash
+while :
+do
+    echo -n &amp;quot;Input a number between 1 to 5: &amp;quot;
+    read aNum
+    case $aNum in
+        1|2|3|4|5) echo &amp;quot;Your number is $aNum!&amp;quot;
+        ;;
+        *) echo &amp;quot;You do not select a number between 1 to 5!&amp;quot;
+            continue
+            echo &amp;quot;Game is over!&amp;quot;
+        ;;
+    esac
+done
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;运行代码发现，当输入大于5的数字时，该例中的循环不会结束，语句&lt;code&gt;echo &amp;quot;Game is over!&amp;quot;&lt;/code&gt;永远不会被执行。&lt;/p&gt;
+
+&lt;p&gt;同样，continue 后面也可以跟一个数字，表示跳出第几层循环。&lt;/p&gt;
+
+&lt;p&gt;再看一个 continue 的例子：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/bash
+NUMS=&amp;quot;1 2 3 4 5 6 7&amp;quot;
+for NUM in $NUMS
+do
+   Q=`expr $NUM % 2`
+   if [ $Q -eq 0 ]
+   then
+      echo &amp;quot;Number is an even number!!&amp;quot;
+      continue
+   fi
+   echo &amp;quot;Found odd number&amp;quot;
+done
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;运行结果：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;Found odd number
+Number is an even number!!
+Found odd number
+Number is an even number!!
+Found odd number
+Number is an even number!!
+Found odd number
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Shell脚本语言笔记(2)</title>
+   <link href="/2014/09/06/shell-2.html"/>
+   <updated>2014-09-06T00:00:00+08:00</updated>
+   <id>/2014/09/06/shell-2</id>
+   <content type="html">&lt;p&gt;运算符,字符串,数组&lt;/p&gt;
+
+&lt;p&gt;Shell的运算符很特殊,需要记忆一下,此文留作查表之用&lt;/p&gt;
+
+&lt;h2&gt;Shell运算符&lt;/h2&gt;
+
+&lt;p&gt;Bash 支持很多运算符，包括算数运算符、关系运算符、布尔运算符、字符串运算符和文件测试运算符。&lt;/p&gt;
+
+&lt;p&gt;原生bash不支持简单的数学运算，但是可以通过其他命令来实现，例如 awk 和 expr，expr 最常用。&lt;/p&gt;
+
+&lt;p&gt;expr 是一款表达式计算工具，使用它能完成表达式的求值操作。&lt;/p&gt;
+
+&lt;p&gt;例如，两个数相加：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/bash
+val=`expr 2 + 2`
+echo &amp;quot;Total value : $val&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;运行脚本输出：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;Total value : 4
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;两点注意：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;表达式和运算符之间要有空格，例如&lt;code&gt;2+2&lt;/code&gt;是不对的，必须写成&lt;code&gt;2 + 2&lt;/code&gt;，这与我们熟悉的大多数编程语言不一样。&lt;/li&gt;
+&lt;li&gt;完整的表达式要被&lt;code&gt;` `&lt;/code&gt;包含，注意这个字符不是常用的单引号，在 Esc 键下边。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h5&gt;算术运算符列表&lt;/h5&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;运算符&lt;/th&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;说明&lt;/th&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;举例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;+&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;加法&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;`expr $a + $b`&lt;/code&gt; 结果为 30。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;-&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;减法&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;`expr $a - $b`&lt;/code&gt;结果为 10。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;*&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;乘法&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;`expr $a \* $b`&lt;/code&gt; 结果为  200。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;/&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;除法&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;`expr $b / $a`&lt;/code&gt;结果为 2。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;%&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;取余&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;`expr $b % $a`&lt;/code&gt;结果为 0。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;=&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;赋值&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;a=$b 将把变量 b 的值赋给 a。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;==&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;相等。&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;用于比较两个数字，相同则返回 true。   &lt;code&gt;[ $a == $b ]&lt;/code&gt; 返回 false。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;!=&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;不相等。&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;用于比较两个数字，不相同则返回 true。 &lt;code&gt;[ $a != $b ]&lt;/code&gt;返回 true。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h5&gt;关系运算符列表&lt;/h5&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;运算符&lt;/th&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;说明&lt;/th&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;举例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;-eq&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;检测两个数是否相等，相等返回 true。&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;[ $a -eq $b ]&lt;/code&gt;返回 true。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;-ne&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;检测两个数是否相等，不相等返回 true。&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;[ $a -ne $b ]&lt;/code&gt; 返回 true。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;-gt&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;检测左边的数是否大于右边的，如果是，则返回 true。&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;[ $a -gt $b ]&lt;/code&gt;返回 false。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;-lt&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;检测左边的数是否小于右边的，如果是，则返回 true。&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;[ $a -lt $b ]&lt;/code&gt;返回 true。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;-ge&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;检测左边的数是否大等于右边的，如果是，则返回 true。&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;[ $a -ge $b ]&lt;/code&gt; 返回 false。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;-le&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;检测左边的数是否小于等于右边的，如果是，则返回 true。&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;[ $a -le $b ]&lt;/code&gt; 返回 true。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h5&gt;布尔运算符列表&lt;/h5&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;运算符&lt;/th&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;说明&lt;/th&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;举例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;!&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;非运算，表达式为 true 则返回 false，否则返回 true。&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;[ ! false ] 返回 true。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;-o&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;或运算，有一个表达式为 true 则返回 true。&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;[ $a -lt 20 -o $b -gt 100 ]&lt;/code&gt; 返回 true。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;-a&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;与运算，两个表达式都为 true 才返回 true。&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;[ $a -lt 20 -a $b -gt 100 ]&lt;/code&gt; 返回 false。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h5&gt;字符串运算符列表&lt;/h5&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;运算符&lt;/th&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;说明&lt;/th&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;举例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;=&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;检测两个字符串是否相等，相等返回 true。&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;[ $a = $b ]&lt;/code&gt; 返回 false。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;!=&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;检测两个字符串是否相等，不相等返回 true。&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;[ $a != $b ]&lt;/code&gt; 返回 true。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;-z&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;检测字符串长度是否为0，为0返回 true。&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;[ -z $a ] 返回 false。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;-n&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;检测字符串长度是否为0，不为0返回 true。&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;[ -z $a ] 返回 true。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;str&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;检测字符串是否为空，不为空返回 true。&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;[ $a ] 返回 true。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h5&gt;文件测试运算符列表&lt;/h5&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;操作符&lt;/th&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;说明&lt;/th&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;举例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;-b file&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;检测文件是否是块设备文件，如果是，则返回 true。&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;[ -b $file ] 返回 false。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;-d file&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;检测文件是否是目录，如果是，则返回 true。&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;[ -d $file ] 返回 false。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;-f file&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;检测文件是否是普通文件（既不是目录，也不是设备文件），如果是，则返回 true。&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;[ -f $file ] 返回 true。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;-g file&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;检测文件是否设置了 SGID 位，如果是，则返回 true。&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;[ -g $file ] 返回 false。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;-k file&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;检测文件是否设置了粘着位(Sticky Bit)，如果是，则返回 true。&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;[ -k $file ] 返回 false。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;-p file&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;检测文件是否是具名管道，如果是，则返回 true。&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;[ -p $file ] 返回 false。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;-u file&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;检测文件是否设置了 SUID 位，如果是，则返回 true。&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;[ -u $file ] 返回 false。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;-r file&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;检测文件是否可读，如果是，则返回 true。&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;[ -r $file ] 返回 true。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;-w file&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;检测文件是否可写，如果是，则返回 true。&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;[ -w $file ] 返回 true。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;-x file&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;检测文件是否可执行，如果是，则返回 true。&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;[ -x $file ] 返回 true。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;-s file&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;检测文件是否为空（文件大小是否大于0），不为空返回 true。&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;[ -s $file ] 返回 true。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;-e file&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;检测文件（包括目录）是否存在，如果是，则返回 true。&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;[ -e $file ] 返回 true。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h2&gt;字符串&lt;/h2&gt;
+
+&lt;p&gt;字符串是shell编程中最常用最有用的数据类型（除了数字和字符串，也没啥其它类型好用了），字符串可以用单引号，也可以用双引号，也可以不用引号。单双引号的区别跟PHP类似。&lt;/p&gt;
+
+&lt;h4&gt;单引号&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;str=&amp;#39;this is a string&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;单引号字符串的限制：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;单引号里的任何字符都会原样输出，单引号字符串中的变量是无效的；&lt;/li&gt;
+&lt;li&gt;单引号字串中不能出现单引号（对单引号使用转义符后也不行）。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4&gt;双引号&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;your_name=&amp;#39;qinjx&amp;#39;
+str=&amp;quot;Hello, I know your are \&amp;quot;$your_name\&amp;quot;! \n&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;双引号的优点：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;双引号里可以有变量&lt;/li&gt;
+&lt;li&gt;双引号里可以出现转义字符&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4&gt;拼接字符串&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;your_name=&amp;quot;qinjx&amp;quot;
+greeting=&amp;quot;hello, &amp;quot;$your_name&amp;quot; !&amp;quot;
+greeting_1=&amp;quot;hello, ${your_name} !&amp;quot;
+echo $greeting $greeting_1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;获取字符串长度&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;string=&amp;quot;abcd&amp;quot;
+echo ${#string} #输出 4(#表示字符串长度)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;提取子字符串&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;string=&amp;quot;alibaba is a great company&amp;quot;
+echo ${string:1:4} #输出liba
+echo ${string:1} #输出libaba is a great company
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;查找子字符串&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;string=&amp;quot;alibaba is a great company&amp;quot;
+echo `expr index &amp;quot;$string&amp;quot; is` # 输出3(i和s一共出现的次数)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;数组&lt;/h2&gt;
+
+&lt;p&gt;bash支持一维数组（不支持多维数组），并且没有限定数组的大小。类似与C语言，数组元素的下标由0开始编号。获取数组中的元素要利用下标，下标可以是整数或算术表达式，其值应大于或等于0。
+定义数组&lt;/p&gt;
+
+&lt;p&gt;在Shell中，用括号来表示数组，数组元素用“空格”符号分割开。定义数组的一般形式为：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;    array_name=(value1 ... valuen)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;例如：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;array_name=(value0 value1 value2 value3)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;或者&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;array_name=(
+value0
+value1
+value2
+value3
+)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;还可以单独定义数组的各个分量：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;array_name[0]=value0
+array_name[1]=value1
+array_name[2]=value2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;可以不使用连续的下标，而且下标的范围没有限制。&lt;/p&gt;
+
+&lt;h4&gt;读取数组&lt;/h4&gt;
+
+&lt;p&gt;读取数组元素值的一般格式是：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;    ${array_name[index]}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;例如：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;valuen=${array_name[2]}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;使用@ 或 * 可以获取数组中的所有元素，例如：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;${array_name[*]}
+${array_name[@]}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;获取数组的长度&lt;/h4&gt;
+
+&lt;p&gt;获取数组长度的方法与获取字符串长度的方法相同，例如：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# 取得数组元素的个数
+length=${#array_name[@]}
+# 或者
+length=${#array_name[*]}
+# 取得数组单个元素的长度
+lengthn=${#array_name[n]}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Shell脚本语言笔记(1)</title>
+   <link href="/2014/09/05/shell.html"/>
+   <updated>2014-09-05T00:00:00+08:00</updated>
+   <id>/2014/09/05/shell</id>
+   <content type="html">&lt;h3&gt;脚本语言&lt;/h3&gt;
+
+&lt;p&gt;一直很困惑什么是脚本,python是不是脚本,脚本怎么定义的?我觉得最主要的就是以下两点.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;脚本语言不需要编译，可以直接用，由解释器来负责解释.&lt;/li&gt;
+&lt;li&gt;脚本语言一般都是以文本形式存在,类似于一种命令. &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;其实理解批处理就可以理解shell了,早期的程序员是通过shell来进行文件的批处理,而程序员想要对文件进行控制就不能等文件一个个运行完再输入吧,所以创造了shell脚本语言,程序员只需要写入命令到一个文件里,然后shell一行行读取,就能实现批处理了.&lt;/p&gt;
+
+&lt;p&gt;以大部分都是整理自&lt;a href=&quot;http://see.xidian.edu.cn/cpp/view/6994.html&quot;&gt;http://see.xidian.edu.cn/cpp/view/6994.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3&gt;1 Bash&lt;/h3&gt;
+
+&lt;p&gt;Bash 是 GNU shell，兼容 sh 以及其他 shell 里的许多有用的特性。用户可以选择在终端里运行哪种解析器.&lt;/p&gt;
+
+&lt;p&gt;运行如下命令可以查看机器里有哪种解析器:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;cat /etc/shells
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;自从遇见zsh后,我就转入了zsh门下,建议大家尝试一下,它还有一个很好的配置插件oh-my-zsh.自认为比bash好上不少.&lt;/p&gt;
+
+&lt;h3&gt;2 编写脚本&lt;/h3&gt;
+
+&lt;h4&gt;2.1 执行脚本的方法:&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;将文件夹放入PATH中&lt;code&gt;export PATH=&amp;quot;$PATH:~/scripts&amp;quot;&lt;/code&gt;,改变文件权限&lt;code&gt;chmod u+x script1.sh&lt;/code&gt;,直接运行&lt;code&gt;script1.sh&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;如果没有加入PATH,那么这样也可以运行&lt;code&gt;./script_name.sh&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;也可以这样,自己定义用哪个shell执行&lt;code&gt;bash script_name.sh&lt;/code&gt;(一般不会用这个把)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;source script_name.sh&lt;/code&gt;,这里的&lt;code&gt;source&lt;/code&gt;和&lt;code&gt;.&lt;/code&gt;是一样的效果,不过&lt;code&gt;source&lt;/code&gt;不需要文件的执行权限.前三种方法都是在子shell里运行的命令,当命令结束的时候,子shell会退出,所有状态会清空.而这种方法是在自己的shell里运行的,也就是说脚本里设定的变量再本shell下依然可以实用(其他的调用不了哦)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;注意，执行一个文件一定要写成./test.sh，而不是test.sh。运行其它二进制的程序也一样，直接写test.sh，linux系统会去PATH里寻找有没有叫test.sh的，而只有/bin, /sbin, /usr/bin，/usr/sbin等在PATH里，你的当前目录通常不在PATH里，所以写成test.sh是会找不到命令的，要用./test.sh告诉系统说，就在当前目录找。&lt;/p&gt;
+
+&lt;h4&gt;2.2 脚本基础&lt;/h4&gt;
+
+&lt;h5&gt;2.2.1用哪个脚本来运行&lt;/h5&gt;
+
+&lt;p&gt;一般的脚本程序都会有下面这一行:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/bash
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;就是告诉这个脚本用哪种shell来运行,防止用其他shell运行出错.&lt;/p&gt;
+
+&lt;p&gt;注意:前面不能留空行,必须写在第一行&lt;/p&gt;
+
+&lt;h5&gt;2.2.2加入注释&lt;/h5&gt;
+
+&lt;p&gt;范例:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/bash 
+# This script clears the terminal, displays a greeting and gives information 
+# about currently connected users. The two example variables are set and displayed. 
+clear # clear terminal window 
+echo &amp;quot;The script starts now.&amp;quot; 
+echo &amp;quot;Hi, $USER!&amp;quot; # dollar sign is used to get content of variable 
+echo 
+echo &amp;quot;I will now fetch you a list of connected users:&amp;quot; 
+echo 
+w # show who is logged on and 
+echo # what they are doing 
+echo &amp;quot;I&amp;#39;m setting two variables now.&amp;quot;
+COLOUR=&amp;quot;black&amp;quot; # set a local shell variable 
+VALUE=&amp;quot;9&amp;quot; # set a local shell variable 
+echo &amp;quot;This is a string: $COLOUR&amp;quot; # display content of variable 
+echo &amp;quot;And this is a number: $VALUE&amp;quot; # display content of variable 
+echo 
+echo &amp;quot;I&amp;#39;m giving you back your prompt now.&amp;quot; 
+echo 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;2.3 调试脚本&lt;/h4&gt;
+
+&lt;h5&gt;2.3.1 调试整个脚本&lt;/h5&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;illy:~/scripts&amp;gt; bash −x script1.sh 
++ clear 
++ echo &amp;#39;The script starts now.&amp;#39; 
+The script starts now. 
++ echo &amp;#39;Hi, willy!&amp;#39; 
+Hi, willy! 
++ echo 
++ echo &amp;#39;I will now fetch you a list of connected users:&amp;#39; 
+I will now fetch you a list of connected users: 
++ echo 
++ w 
+4:50pm up 18 days, 6:49, 4 users, load average: 0.58, 0.62, 0.40 
+USER TTY FROM LOGIN@ IDLE JCPU PCPU WHAT 
+root tty2 − Sat 2pm 5:36m 0.24s 0.05s −bash 
+willy :0 − Sat 2pm ? 0.00s ? − 
+willy pts/3 − Sat 2pm 43:13 36.82s 36.82s BitchX willy ir 
+willy pts/2 − Sat 2pm 43:13 0.13s 0.06s /usr/bin/screen 
++ echo 
++ echo &amp;#39;I&amp;#39;\&amp;#39;&amp;#39;m setting two variables now.&amp;#39; 
+I&amp;#39;m setting two variables now. 
++ COLOUR=black 
++ VALUE=9 
++ echo &amp;#39;This is a string: &amp;#39; 
+This is a string: 
++ echo &amp;#39;And this is a number: &amp;#39; 
+And this is a number: 
++ echo 
++ echo &amp;#39;I&amp;#39;\&amp;#39;&amp;#39;m giving you back your prompt now.&amp;#39; 
+I&amp;#39;m giving you back your prompt now. 
++ echo 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;以前真没用过,这样可以一行一行的观察脚本的运行了&lt;/p&gt;
+
+&lt;h5&gt;2.3.2 调试部分脚本&lt;/h5&gt;
+
+&lt;p&gt;在文件上下加上&lt;code&gt;set -x&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;set −x # activate debugging from here 
+w 
+set +x # stop debugging from here 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;然后输出&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;willy: ~/scripts&amp;gt; script1.sh 
+The script starts now. 
+Hi, willy! 
+I will now fetch you a list of connected users: 
++ w 
+5:00pm up 18 days, 7:00, 4 users, load average: 0.79, 0.39, 0.33 
+USER TTY FROM LOGIN@ IDLE JCPU PCPU WHAT 
+root tty2 ? Sat 2pm 5:47m 0.24s 0.05s ?bash 
+willy :0 ? Sat 2pm ? 0.00s ? ? 
+willy pts/3 ? Sat 2pm 54:02 36.88s 36.88s BitchX willyke 
+willy pts/2 ? Sat 2pm 54:02 0.13s 0.06s /usr/bin/screen 
++ set +x 
+I&amp;#39;m setting two variables now. 
+This is a string: 
+And this is a number: 
+I&amp;#39;m giving you back your prompt now. 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;奇怪的是我在shell上没有显示,不知道是为什么?有知道的请告知&lt;/p&gt;
+
+&lt;p&gt;调试的详细参数如下:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;bash -选择项 shell程序文件名&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;几个常用的选择项是：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;set −f set −o noglob Disable file name generation using metacharacters (globbing). (文件)&lt;/li&gt;
+&lt;li&gt;set −v set −o verbose Prints shell input lines as they are read. (输出的同时输出命令)&lt;/li&gt;
+&lt;li&gt;set −x set −o xtrace Print command traces before executing command. (加入所有的调试信息)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;你可以把这些选项加入到脚本头部,这样:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/bash -xv 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;当然最后,本人最长用的是&lt;code&gt;echo&lt;/code&gt;~~&lt;/p&gt;
+
+&lt;h3&gt;3 Bash环境&lt;/h3&gt;
+
+&lt;h4&gt;3.1 shell初始化配置&lt;/h4&gt;
+
+&lt;h5&gt;跨系统配置&lt;/h5&gt;
+
+&lt;p&gt;linux文件下主要的bash配置文件:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;/etc/inputrc，可以配置命令行响铃风格的跨系统的行读取初始化文件。&lt;/li&gt;
+&lt;li&gt;/etc/profile.d 目录，包含了配置特别程序的跨系统行为的文件。&lt;/li&gt;
+&lt;li&gt;/etc/profile:此文件为系统的每个用户设置环境信息,当用户第一次登录时,该文件被执行，并从/etc/profile.d目录的配置文件中搜集shell的设置，&lt;/li&gt;
+&lt;li&gt;/etc/bashrc:为每一个运行bash shell的用户执行此文件，当bash shell被打开时,该文件被读取。&lt;/li&gt;
+&lt;li&gt;~/.bash_profile:每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些环境变量,执行用户的.bashrc文件。&lt;/li&gt;
+&lt;li&gt;~/.bash_login:这个文件包含了只有在你登陆进系统的才执行的特殊的设置。&lt;/li&gt;
+&lt;li&gt;~/.profile在没有~/.bash_profile 和~/.bash_login 的情况下，~/.profile 就被读取。他能保存一些可以被别的 shell 访问的配置。注意其他的 shell 可能不能识别 Bash 的语法。&lt;/li&gt;
+&lt;li&gt;~/.bashrc:如今，更加普遍的是使用一个非登陆 shell，比如使用 X 终端窗口登陆进图形模式的时候。打开一个这样的窗口之后，用户不需要提供用户名和密码；无需认证。此时 Bash 会搜索~/.bashrc，所以也指向登陆时读取得文件，同时也意味着你不需要在多个文件中输入相同的设置.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4&gt;3.2 变量&lt;/h4&gt;
+
+&lt;h5&gt;3.2.1 变量的类型&lt;/h5&gt;
+
+&lt;p&gt;&lt;strong&gt;shell 变量约定俗成地用大写表示&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;全局变量:全局变量或者环境变量存在于所有的 shell 里面。&lt;code&gt;env&lt;/code&gt; 和&lt;code&gt;printenv&lt;/code&gt;命令能够通常用于显示环变量。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;本地变量:本地变量只存在于当前 shell。使用内建的不带选项的&lt;code&gt;set&lt;/code&gt;命令将显示所有变量的列表（包括环
+境变量）和函数。输出会根据当前的设置排列而且以可以重用的方式显示。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5&gt;3.2.2 变量基本操作&lt;/h5&gt;
+
+&lt;h5&gt;定义变量&lt;/h5&gt;
+
+&lt;p&gt;定义变量时，变量名不加美元符号（$），如：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;variableName=&amp;quot;value&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;注意，变量名和等号之间不能有空格，这可能和你熟悉的所有编程语言都不一样。同时，变量名的命名须遵循如下规则：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;首个字符必须为字母（a-z，A-Z）。&lt;/li&gt;
+&lt;li&gt;中间不能有空格，可以使用下划线（_）。&lt;/li&gt;
+&lt;li&gt;不能使用标点符号。&lt;/li&gt;
+&lt;li&gt;不能使用bash里的关键字（可用help命令查看保留关键字）。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;变量定义举例：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;myUrl=&amp;quot;http://see.xidian.edu.cn/cpp/linux/&amp;quot;
+myNum=100
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h5&gt;使用变量&lt;/h5&gt;
+
+&lt;p&gt;使用一个定义过的变量，只要在变量名前面加美元符号&lt;code&gt;（$）&lt;/code&gt;即可，如：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;your_name=&amp;quot;mozhiyan&amp;quot;
+echo $your_name
+echo ${your_name}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;推荐给所有变量加上花括号，这是个好的编程习惯。&lt;/p&gt;
+
+&lt;h5&gt;只读变量&lt;/h5&gt;
+
+&lt;p&gt;使用&lt;code&gt;readonly&lt;/code&gt;命令可以将变量定义为只读变量，只读变量的值不能被改变。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/bash
+myUrl=&amp;quot;http://see.xidian.edu.cn/cpp/shell/&amp;quot;
+readonly myUrl
+myUrl=&amp;quot;http://see.xidian.edu.cn/cpp/danpianji/&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;运行脚本，结果如下：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;/bin/sh: NAME: This variable is read only.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h5&gt;删除变量&lt;/h5&gt;
+
+&lt;p&gt;使用&lt;code&gt;unset&lt;/code&gt; 命令可以删除变量。语法：&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;unset variable_name&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;变量被删除后不能再次使用；unset 命令不能删除只读变量。&lt;/p&gt;
+
+&lt;p&gt;举个例子：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/sh
+myUrl=&amp;quot;http://see.xidian.edu.cn/cpp/u/xitong/&amp;quot;
+unset myUrl
+echo $myUrl
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;上面的脚本没有任何输出。&lt;/p&gt;
+
+&lt;h5&gt;3.2.3 特殊变量&lt;/h5&gt;
+
+&lt;p&gt;特殊变量列表&lt;/p&gt;
+
+&lt;p&gt;|变量|    含义|
+|:--||:---|
+|$0 |当前脚本的文件名|
+|$n |传递给脚本或函数的参数。n 是一个数字，表示第几个参数。例如，第一个参数是$1，第二个参数是$2。|
+|$# |传递给脚本或函数的参数&lt;strong&gt;个数&lt;/strong&gt;。|
+|$* |传递给脚本或函数的所有参数。|
+|$@|    传递给脚本或函数的所有参数。被双引号(&amp;quot; &amp;quot;)包含时，与 $* 稍有不同，下面将会讲到。|
+|$? |上个命令的退出状态，或函数的返回值。|
+|$$ |当前Shell进程ID。对于 Shell 脚本，就是这些脚本所在的进程ID。|&lt;/p&gt;
+
+&lt;h5&gt;$* 和 $@ 的区别&lt;/h5&gt;
+
+&lt;p&gt;$* 和 $@ 都表示传递给函数或脚本的所有参数，不被双引号(&amp;quot; &amp;quot;)包含时，都以&amp;quot;$1&amp;quot; &amp;quot;$2&amp;quot; … &amp;quot;$n&amp;quot; 的形式输出所有参数。&lt;/p&gt;
+
+&lt;p&gt;但是当它们被双引号(&amp;quot; &amp;quot;)包含时，&amp;quot;$*&amp;quot; 会将所有的参数作为一个整体，以&amp;quot;$1 $2 … $n&amp;quot;的形式输出所有参数；&amp;quot;$@&amp;quot; 会将各个参数分开，以&amp;quot;$1&amp;quot; &amp;quot;$2&amp;quot; … &amp;quot;$n&amp;quot; 的形式输出所有参数。&lt;/p&gt;
+
+&lt;h5&gt;3.2.4 导出变量&lt;/h5&gt;
+
+&lt;p&gt;在Bash Shell中变量都是局部的,它们只在创建它们的子Shell中有意义。使用export后,变量被设置为全局变量,这时可以被其它子Shell所识别 。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;export VARNAME=&amp;quot;value&amp;quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;被export后的变量,可以成为环境变量.&lt;/p&gt;
+
+&lt;h5&gt;3.2.5  变量替换&lt;/h5&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/bash
+a=10
+echo -e &amp;quot;Value of a is $a \n&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;运行结果：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;Value of a is 10
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这里 -e 表示对转义字符进行替换。如果不使用 -e 选项，将会原样输出：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;Value of a is 10\n
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;下面的转义字符都可以用在 echo 中：&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;转义字符&lt;/th&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;\&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;反斜杠&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;\a&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;警报，响铃&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;\b&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;退格（删除键）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;\f&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;换页(FF)，将当前位置移到下页开头&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;\n&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;换行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;\r&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;回车&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;\t&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;水平制表符（tab键）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;\v&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;垂直制表符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;可以使用 echo 命令的 -E 选项禁止转义，默认也是不转义的；使用 -n 选项可以禁止插入换行符。&lt;/p&gt;
+
+&lt;h5&gt;命令替换&lt;/h5&gt;
+
+&lt;p&gt;命令替换是指Shell可以先执行命令，将输出结果暂时保存，在适当的地方输出。&lt;/p&gt;
+
+&lt;p&gt;命令替换的语法：&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;`command`&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;注意是反引号，不是单引号，这个键位于 Esc 键下方。&lt;/p&gt;
+
+&lt;p&gt;下面的例子中，将命令执行结果保存在变量中：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/bash
+DATE=`date`
+echo &amp;quot;Date is $DATE&amp;quot;
+USERS=`who | wc -l`
+echo &amp;quot;Logged in user are $USERS&amp;quot;
+UP=`date ; uptime`
+echo &amp;quot;Uptime is $UP&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;运行结果：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;Date is Thu Jul  2 03:59:57 MST 2009
+Logged in user are 1
+Uptime is Thu Jul  2 03:59:57 MST 2009
+03:59:57 up 20 days, 14:03,  1 user,  load avg: 0.13, 0.07, 0.15
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h5&gt;变量替换&lt;/h5&gt;
+
+&lt;p&gt;变量替换可以根据变量的状态（是否为空、是否定义等）来改变它的值&lt;/p&gt;
+
+&lt;p&gt;可以使用的变量替换形式：&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;形式&lt;/th&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;${var}&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;变量本来的值&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;${var:-word}&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;如果变量 var 为空或已被删除(unset)，那么返回 word，但不改变 var 的值。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;${var:=word}&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;如果变量 var 为空或已被删除(unset)，那么返回 word，并将 var 的值设置为 word。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;${var:?message}&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;如果变量 var 为空或已被删除(unset)，那么将消息 message 送到标准错误输出，可以用来检测变量 var 是否可以被正常赋值。若此替换出现在Shell脚本中，那么脚本将停止运行。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;${var:+word}&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;如果变量 var 被定义，那么返回 word，但不改变 var 的值。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>使用tmux</title>
+   <link href="/2014/09/01/tmux.html"/>
+   <updated>2014-09-01T00:00:00+08:00</updated>
+   <id>/2014/09/01/tmux</id>
+   <content type="html">&lt;p&gt;这两天在修改blog,以前没怎么长时间写过css+html,后来发现很蛋疼的一件事就是每次调试的时候得看着终端生成blog页,代码得在终端下另一个标签里更改.切换起来很费劲,终于想起了大名鼎鼎的tmux.&lt;/p&gt;
+
+&lt;p&gt;这是配置的最终效果:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-09-12%2010:29:35%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+&lt;h3&gt;配置tmux&lt;/h3&gt;
+
+&lt;h5&gt;1 如果你用zsh,设置zsh作为默认的shell解析器&lt;/h5&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt; set-option -g default-shell /bin/zsh 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h5&gt;2 配置前缀键,我一般是用&lt;code&gt;&amp;lt;C-q&amp;gt;&lt;/code&gt;来调用终端,&lt;code&gt;&amp;lt;C-a&amp;gt;&lt;/code&gt;来绑定tmux的prefix&lt;/h5&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;set -g prefix C-a
+unbind C-b
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h5&gt;3 用vim的hjkl键来选择面板&lt;/h5&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;bind-key k select-pane -U
+bind-key j select-pane -D
+bind-key h select-pane -L
+bind-key l select-pane -R
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h5&gt;4 调整面板大小,也是vim的四个方向键,很舒服&lt;/h5&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;bind -r ^k resizep -U 10 # upward (prefix Ctrl+k)
+bind -r ^j resizep -D 10 # downward (prefix Ctrl+j)
+bind -r ^h resizep -L 10 # to the left (prefix Ctrl+h)
+bind -r ^l resizep -R 10 # to the right (prefix Ctrl+l)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h5&gt;5 鼠标操作&lt;/h5&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#鼠标滚轮可以使用
+set-window-option -g mode-mouse on
+# 鼠标可以选中窗口
+set-option -g mouse-select-pane on
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h5&gt;6 复制模式copy-mode&lt;/h5&gt;
+
+&lt;ol&gt;
+&lt;li&gt;前缀 [ 进入复制模式&lt;/li&gt;
+&lt;li&gt;按 space 开始复制，移动光标选择复制区域&lt;/li&gt;
+&lt;li&gt;按 Enter 复制并退出copy-mode。&lt;/li&gt;
+&lt;li&gt;将光标移动到指定位置，按 PREIFX ] 粘贴&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;如果把tmux比作vim的话，那么我们大部分时间都是处于编辑模式，我们复制的时候可不可以像vim一样移动呢？只需要在配置文件(~/.tmux.conf)中加入如下行即可。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#copy-mode 将快捷键设置为vi 模式
+setw -g mode-keys vi
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;ps:如果想要返回终端鼠标复制的的话,按住&lt;code&gt;shift&lt;/code&gt;就可以了&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h5&gt;7 分屏操作&lt;/h5&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;unbind &amp;#39;&amp;quot;&amp;#39;
+bind - splitw -v # vertical split (prefix -)
+unbind %
+bind | splitw -h # horizontal split (prefix |)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h5&gt;8 使当前pane 最大化,需要一个脚本,脚本地址发现失效了,把代码的贴出来&lt;/h5&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/bash
+
+# Copyright (c) 2012 Juan Ignacio Pumarino, jipumarino@gmail.com
+#
+# Permission is hereby granted, free of charge, to any person obtaining
+# a copy of this software and associated documentation files (the
+# &amp;quot;Software&amp;quot;), to deal in the Software without restriction, including
+# without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to
+# permit persons to whom the Software is furnished to do so, subject to
+# the following conditions:
+#
+# The above copyright notice and this permission notice shall be
+# included in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED &amp;quot;AS IS&amp;quot;, WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+# LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+# OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+# WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+# Instructions
+# ------------
+#
+# 1. Install this script and give it execute permission somewhere in your PATH.
+#    For example:
+#
+#    $ mkdir -p ~/bin
+#    $ wget https://raw.github.com/jipumarino/tmux-zoom/master/tmux-zoom.sh -O ~/bin/tmux-zoom.sh
+#    $ chmod +x ~/bin/tmux-zoom.sh
+#
+# 2. Add a shortcut in your ~/.tmux.conf file:
+#
+#    bind C-k run &amp;quot;tmux-zoom.sh&amp;quot;
+#
+# 3. When using this shortcut, the current tmux pane will open in a new window by itself.
+#    Running it again in the zoomed window will return it to its original pane. You can have
+#    as many zoomed windows as you want.
+
+current=$(tmux display-message -p &amp;#39;#W-#I-#P&amp;#39;)
+list=$(tmux list-window)
+
+[[ &amp;quot;$current&amp;quot; =~ ^(.*)-([0-9]+)-([0-9]+) ]]
+current_window=${BASH_REMATCH[1]}
+current_pane=${BASH_REMATCH[2]}-${BASH_REMATCH[3]}
+new_zoom_window=ZOOM-$current_pane
+
+if [[ $current_window =~ ZOOM-([0-9]+)-([0-9+]) ]]; then
+  old_zoom_window=ZOOM-${BASH_REMATCH[1]}-${BASH_REMATCH[2]}
+  tmux select-window -t ${BASH_REMATCH[1]} \; select-pane -t ${BASH_REMATCH[2]} \; swap-pane -s $old_zoom_window.1 \; kill-window -t $old_zoom_window
+elif [[ $list =~ $new_zoom_window ]]; then
+  tmux select-window -t $new_zoom_window
+else
+  tmux new-window -d -n $new_zoom_window \; swap-pane -s $new_zoom_window.1 \; select-window -t $new_zoom_window
+fi
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h5&gt;9 终端启动初始化&lt;/h5&gt;
+
+&lt;p&gt;这也是再网上找到的,如果是zsh的话就写在~/.zshrc里,他会在每次打开终端的时候开启两个窗口并在第二个窗口开启三个panel并启动一个htop.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;tmux_init()
+{
+    tmux new-session -s &amp;quot;vim&amp;quot; -d -n &amp;quot;local&amp;quot;    # 开启一个会话
+    tmux new-window -n &amp;quot;other&amp;quot;          # 开启一个窗口
+    tmux split-window -h                # 开启一个竖屏
+    tmux split-window -v &amp;quot;htop&amp;quot;          # 开启一个横屏,并执行top命令
+    tmux -2 attach-session -d           # tmux -2强制启用256color，连接已开启的tmux
+    selectp -t 1 #选中0panel
+}
+# 判断是否已有开启的tmux会话，没有则开启
+if which tmux 2&amp;gt;&amp;amp;1 &amp;gt;/dev/null; then
+test -z &amp;quot;$TMUX&amp;quot; &amp;amp;&amp;amp; (tmux attach || tmux_init)
+fi
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;powerline&lt;/h3&gt;
+
+&lt;p&gt;伟大的poweline也兼容在tmux上了,项目地址在 &lt;a href=&quot;https://github.com/erikw/tmux-powerline&quot;&gt;https://github.com/erikw/tmux-powerline&lt;/a&gt; &lt;/p&gt;
+
+&lt;p&gt;详细配置都有介绍,最主要的是还可以自己定制插件(shell),左右插件位置都可以设置,很方便.&lt;/p&gt;
+
+&lt;h3&gt;自己常用操作&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;创建窗口 &lt;code&gt;&amp;lt;C-a&amp;gt;+C&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;切换面板 &lt;code&gt;&amp;lt;C-a&amp;gt;+hjkl&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;调整面板大小&lt;code&gt;&amp;lt;C-a&amp;gt;+&amp;lt;C-hjkl&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;切换窗口&lt;code&gt;&amp;lt;C-a&amp;gt;+1,2,3,4...&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;分屏操作&lt;code&gt;&amp;lt;C-a&amp;gt;+-&lt;/code&gt;和&lt;code&gt;&amp;lt;C-a&amp;gt;+|&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;关闭当前面板&lt;code&gt;&amp;lt;C-a&amp;gt;+q&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;上面那个最大化当前的面板,我绑定了k键但是和调整面板大小的按键有冲突(不管了)&lt;code&gt;&amp;lt;C-a&amp;gt;+&amp;lt;C-k&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;面板顺时针移位&lt;code&gt;&amp;lt;C-a&amp;gt;+&amp;lt;C-o&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;tmux自带内置布局&lt;code&gt;&amp;lt;C-a&amp;gt;+空格&lt;/code&gt;可以切换&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;参考资料:&lt;a href=&quot;http://mingxinglai.com/cn/2012/09/tmux/&quot;&gt;http://mingxinglai.com/cn/2012/09/tmux/&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>github中ssh替换https脚本</title>
+   <link href="/2014/08/30/githubssh-sh.html"/>
+   <updated>2014-08-30T00:00:00+08:00</updated>
+   <id>/2014/08/30/githubssh-sh</id>
+   <content type="html">&lt;p&gt;为了进一步提高程序效率(懒惰),把所有github项目的链接改成ssh,方便不用再打密码,哈哈&lt;/p&gt;
+
+&lt;p&gt;看了几个项目的共同点&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;git@github.com:taizilongxu/ici.git
+https://github.com/taizilongxu/ici.git
+
+git@github.com:taizilongxu/jekyll_blog_source.git
+https://github.com/taizilongxu/jekyll_blog_source.git
+
+git@github.com:taizilongxu/report.git
+https://github.com/taizilongxu/report.git
+
+git@github.com:taizilongxu/wangdaoOJ.git
+https://github.com/taizilongxu/wangdaoOJ.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;只需要把&lt;code&gt;https://github.com/&lt;/code&gt;替换成&lt;code&gt;git@github.com:&lt;/code&gt;就可以了,脚本如下:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c&quot;&gt;#-*- encoding: UTF-8 -*-&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#---------------------------------import------------------------------------&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os.path&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;re&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#---------------------------------------------------------------------------&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;rootdir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;/home/limbo/&amp;quot;&lt;/span&gt;                                   &lt;span class=&quot;c&quot;&gt;# 指明被遍历的文件夹&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;username&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;taizilongxu&amp;#39;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;git_ssh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rootdir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dirnames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filenames&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;walk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rootdir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;    &lt;span class=&quot;c&quot;&gt;#三个参数：分别返回1.父目录 2.所有文件夹名字（不含路径） 3.所有文件名字&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;.git&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;config&amp;#39;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filenames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;/&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;config&amp;#39;&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;r&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;re&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sub&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;r&amp;#39;https://github.com/&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;git@github.com:&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;w&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;git_ssh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rootdir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;############################################################################&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+ </entry>
+ 
+
+</feed>

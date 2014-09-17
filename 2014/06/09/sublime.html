@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Set Sublime 2/3</title>
+    <title>Set Sublime 3</title>
     <link rel="shortcut icon" href=" /img/github.ico"/>
     <link rel="bookmark" href="/img/github.ico"/>
     <meta name="viewport" content="width=device-width">
@@ -22,9 +22,7 @@
 
     <body>
     <header class="site-header">
-
   <div class="wrap">
-
     <a class="site-title" href="/"><h1><strong> <font style="color:#39B3D7" >L</font><font style="color:#ED9C28">i</font><font style="color:#47A447">m</font><font style="color:#D9534F">b</font><font style="color:#3276B1">o</font>
     </strong>
     </h1></a>
@@ -55,13 +53,11 @@
         
         
         
-        
-        
-          <a class="page-link" href="/movies/">Movies</a>
-        
-        
-        
           <a class="page-link" href="/tags/">Tags</a>
+        
+        
+        
+          <a class="page-link" href="/atom.xml">Rss</a>
         
         
       </div>
@@ -74,23 +70,42 @@
       <div class="wrap">
       <div class="post">
   <header class="post-header">
-    <h1><a href="/2014/06/09/sublime.html">Set Sublime 2/3</a></h1>
+    <h1><a href="/2014/06/09/sublime.html">Set Sublime 3</a></h1>
       <p class="meta"><i class="fa fa-calendar"></i> 2014-06-09&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#sublime">sublime</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#sublime">sublime</a></p>
   </header>
   <article class="post-content">
-  <h4>插件安装:</h4>
+  <h4>首先安装Package control</h4>
+
+<p><code>ctrl+`</code>打开控制台,然后输入</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span>  <span class="nn">urllib.request</span><span class="o">,</span><span class="nn">os</span><span class="p">;</span><span class="n">pf</span><span class="o">=</span><span class="s">&#39;Package Control.sublime-package&#39;</span><span class="p">;</span><span class="n">ipp</span><span class="o">=</span><span class="n">sublime</span><span class="o">.</span><span class="n">installed_packages_path</span><span class="p">();</span><span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">install_opener</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">build_opener</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">ProxyHandler</span><span class="p">()));</span><span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ipp</span><span class="p">,</span><span class="n">pf</span><span class="p">),</span><span class="s">&#39;wb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s">&#39;http://sublime.wbond.net/&#39;</span><span class="o">+</span><span class="n">pf</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">,</span><span class="s">&#39;%20&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</code></pre></div>
+<p>回车,然后按<code>Ctrl + Shift + p</code>搜索package,然后就可以安装插件了</p>
+
+<h4>空格等字符宽度问题</h4>
+
+<p><a href="http://stackoverflow.com/questions/18171536/the-size-of-the-space-and-the-char-on-the-sublime-text">stackoverflow</a>,这里有,更改一下font_face搞定</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">    &quot;font_face&quot;: &quot;Courier New&quot;,
+    &quot;font_size&quot;: 10
+</code></pre></div>
+<h4>插件安装:</h4>
 
 <ul>
+<li>sidebar enhancement:侧边栏增强,加入几个选项,挺方便的</li>
 <li>ConvertToUTF8 ST2只支持utf8编码，该插件可以显示与编辑 GBK, BIG5, EUC-KR, EUC-JP, Shift_JIS 等编码的文件</li>
-<li>Bracket Highlighter 括号增强</li>
-<li>SublimeLinter </li>
+<li>Bracket Highlighter 括号匹配高亮</li>
+<li>SublimeLinter:这个吗~~代码校验,找出错误</li>
 <li>function name display</li>
+<li><a href="https://github.com/SublimeText/TrailingSpaces">TrailingSpacer</a>:显示行尾部多余空格,可以快捷键删除</li>
+<li>CSScomb:CSS属性排序,方便查看和修改</li>
+<li>Monokai Extended:monokai色彩增强</li>
+<li>Gitgutter:这个非常重要了,git的一切状态尽在掌握中</li>
+<li>Sublime Code Intel:代码补全 </li>
 </ul>
 
 <h4>配置：</h4>
 
 <ul>
-<li>光标外形:default-setting:caret_style:phase（像在呼吸）</li>
+<li>光标外形:&quot;caret_style&quot;:&quot;phase&quot;（像在呼吸）</li>
 <li>关闭括号的自动完成:&quot;auto_match_enabled&quot;: false</li>
 </ul>
 
@@ -488,7 +503,7 @@
   </article>
 <!-- Duoshuo Comment BEGIN -->
     <div id="comments">
-        <div class="ds-thread" data-thread-key="/2014/06/09/sublime"  data-title="Set Sublime 2/3 - Hackerxu's Blog"></div>
+        <div class="ds-thread" data-thread-key="/2014/06/09/sublime"  data-title="Set Sublime 3 - Hackerxu's Blog"></div>
     </div>
 <!-- Duoshuo Comment END -->
 </div>
