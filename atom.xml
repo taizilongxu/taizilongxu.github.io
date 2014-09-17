@@ -5,25 +5,199 @@
  <subtitle>Python,HTML,CSS,Machine Leaning</subtitle>
  <link href="http://hackerxu.com/atom.xml" rel="self"/>
  <link href="http://hackerxu.com"/>
- <updated>2014-09-17T15:48:14+08:00</updated>
+ <updated>2014-09-17T19:08:14+08:00</updated>
  <id>http://hackerxu.com</id>
  <author>
    <name>xuxiao</name>
  </author>
- <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+ 
+ <entry>
+   <title>数据挖掘笔记</title>
+   <link href="http://hackerxu.com/2014/09/16/datamining1.html"/>
+   <updated>2014-09-16T00:00:00+08:00</updated>
+   <id>http://hackerxu.com/2014/09/16/datamining1</id>
+   <content type="html">&lt;h2&gt;Data Preprocessing(数据预处理)&lt;/h2&gt;
+
+&lt;p&gt;定期更新中~&lt;/p&gt;
+
+&lt;h3&gt;1 Why preprocess the data?(数据预处理的必要性）&lt;/h3&gt;
+
+&lt;p&gt;要进行数据挖掘需要把数据进行预处理,最简单的原因就是如果提供了完整干净的数据集,那么在数据挖掘的过程中就不用考虑这些东西了,所以很有必要.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;不完整(缺少属性值)&lt;/li&gt;
+&lt;li&gt;含噪音(错误的值或者偏离太大的值)&lt;/li&gt;
+&lt;li&gt;不一致(比如字符串和整数相混)&lt;/li&gt;
+&lt;li&gt;重复的(一个人对应几个名字)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;把大象装冰箱总共分四部:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;数据清理(Data cleaning): 可以去掉数据中的噪声，纠正不一致&lt;/li&gt;
+&lt;li&gt;数据集成(Data integration): 将多个数据源合并成一致的数据存储，构成一个完整的数据集，如数据仓库或数据立方体&lt;/li&gt;
+&lt;li&gt;数据变换(Data transformation): 将一种格式的数据转换为另一格式的数据(如规范化)&lt;/li&gt;
+&lt;li&gt;数据归约(Data reduction): 可以通过聚集、删除冗余特性或聚类等方法来压缩数据&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;如下图所示:&lt;/p&gt;
+
+&lt;p&gt;![]((&lt;a href=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-09-17&quot;&gt;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-09-17&lt;/a&gt; 16:52:40 的屏幕截图.png)&lt;/p&gt;
+
+&lt;h3&gt;2 Descriptive Date Summarization(描述性数据汇总)&lt;/h3&gt;
+
+&lt;p&gt;这些东西可以更加直观的观测数据,更好的理解数据&lt;/p&gt;
+
+&lt;h4&gt;Measuring the Central Tendency（度量数据的中心趋势）&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;mean(几何平均数)&lt;/li&gt;
+&lt;li&gt;median(中值)&lt;/li&gt;
+&lt;li&gt;mode(众数): 出现最多的一个数&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;这里有一个经验公式:&lt;/p&gt;
+
+&lt;p&gt;$$ mean - mode = 3 * (mean - median) $$&lt;/p&gt;
+
+&lt;p&gt;条件是单峰的情况下,并且是asymmetrical类型(倾斜的数据)&lt;/p&gt;
+
+&lt;h4&gt;Measuring the Dispersion of Data(度量数据的离散程度)&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Quartiles, outliers and boxplots（四分位数、离散点和盒图）
+
+&lt;ul&gt;
+&lt;li&gt;Inter-quartile range: IQR = Q3 – Q1;(Q1(25%),Q3(75%))&lt;/li&gt;
+&lt;li&gt;Five number summary: min, Q1, M, Q3, max&lt;/li&gt;
+&lt;li&gt;Boxplot(盒图):招不开了,见下&lt;/li&gt;
+&lt;li&gt;Outlier: usually, a value higher/lower than 1.5 x IQR&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Variance and standard deviation (sample: s, population: σ)（方差和标准差）&lt;/li&gt;
+&lt;li&gt;Properties of Normal Distribution Curve(正态分布特性)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4&gt;Graphic Displays of Basic Statistical Descriptions(描述数据的基本图形)&lt;/h4&gt;
+
+&lt;p&gt;Boxplot(盒图)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Data is represented with a box(一个盒子来表示)&lt;/li&gt;
+&lt;li&gt;The ends of the box are at the first and third quartiles, i.e., the height of the box is IRQ(上下边界分别是四分位点,即Q1和Q3,高度就是IRQ的高度了)&lt;/li&gt;
+&lt;li&gt;The median is marked by a line within the box(中值在盒子里用一个线表示)&lt;/li&gt;
+&lt;li&gt;Whiskers: two lines outside the box extend to Minimum and Maximum(盒子外两条线延伸到最大最小值)&lt;/li&gt;
+&lt;li&gt;whiskers(上面两条线)长度不会大于1.5 * IRQ&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;来感受下:&lt;/p&gt;
+
+&lt;p&gt;![]((&lt;a href=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/Cpb7Fx.png&quot;&gt;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/Cpb7Fx.png&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;Histogram Analysis(直方图)&lt;/p&gt;
+
+&lt;p&gt;Quantile Plot(分位数图)&lt;/p&gt;
+
+&lt;p&gt;Quantile-Quantile (Q-Q) Plot()(Q-Q图,横纵坐标都为分位数)&lt;/p&gt;
+
+&lt;p&gt;Scatter plot（散点图）&lt;/p&gt;
+
+&lt;p&gt;Loess (local regression) curve(回归曲线?): add a smooth curve to a scatter plot to provide better perception of the pattern of dependence&lt;/p&gt;
+
+&lt;h3&gt;3 Data Cleaning&lt;/h3&gt;
+
+&lt;p&gt;数据清理分以下几步:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;填充空缺的值&lt;/li&gt;
+&lt;li&gt;识别孤立点&lt;/li&gt;
+&lt;li&gt;消除噪声&lt;/li&gt;
+&lt;li&gt;纠正数据中的不一致&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4&gt;Missing Values(空缺数据)&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;忽略该元组(最常用的)&lt;/li&gt;
+&lt;li&gt;人工填写空缺值: 量太大!&lt;/li&gt;
+&lt;li&gt;使用一个全局常量填充空缺值: 将空缺的属性值用同一个常数(如“Unknown”或)替换。如果空缺值都用“Unknown”替换，当空缺值较多时。挖掘程序可能误以为它们形成了一个有趣的概念，因为它们都具有相同的值——“Unknown”。因此，尽管该方法简单，我们并不推荐它。&lt;/li&gt;
+&lt;li&gt;使用属性的平均值填充空缺值&lt;/li&gt;
+&lt;li&gt;利用同类别均值填补遗漏数据: 例如，如果将顾客按credit risk分类， 则用具有相同信用度的顾客的平均收入替换income中的缺值&lt;/li&gt;
+&lt;li&gt;使用最可能的值填充空缺值:可以利用回归、贝叶斯计算公式或判定树归纳确定，推断出该条记录特定属性最大可能的取值。例如，利用数据集中其他顾客的属性，可以构造一棵判定树，来预测income的空缺值。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4&gt;Noisy Data&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;binning(分箱)&lt;/strong&gt;: 分箱方法通过考察“邻居”(即周围的值)来平滑存储数据的值。存储的值被分布到一些“桶”或箱中。由于分箱方法参考相邻的值，因此它进行局部平滑。这里平滑方法又分了3种
+
+&lt;ul&gt;
+&lt;li&gt;按箱平均值平滑&lt;/li&gt;
+&lt;li&gt;按箱中值平滑&lt;/li&gt;
+&lt;li&gt;按箱边界平滑&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;clustering(聚类)&lt;/strong&gt;: 通过聚类分析可以检测孤立点，聚类将类似的值组织成群或“聚类”。直观地看，落在聚类集合之外的值被视为孤立点,这个方法在机器学习里有过了解.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;regression(回归)&lt;/strong&gt;: 以利用拟合函数(如回归函数)来平滑数据。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3&gt;4 Data Integration(数据集成)&lt;/h3&gt;
+
+&lt;p&gt;它需要统一原始数据中的所有矛盾之处，如字段的:同名异义、异名同义、单位不统一,字长不一致，从而把原始数据在最低层上加以转换，提炼和集成。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;模式集成&lt;/strong&gt;: 通常，数据库和数据仓库有元数据——关于数据的数据。这种元数据可以帮助避免模式集成中的错误。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;冗余问题&lt;/strong&gt;: 可以用概率的方法算出两个数据是相关还是独立,这种分析可以度量一个属性能在多大程度上蕴含另一个.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数据值冲突的检测与处理&lt;/strong&gt;:
+
+&lt;ul&gt;
+&lt;li&gt;表示不同导致数据冲突&lt;/li&gt;
+&lt;li&gt;语义不同导致数据冲突&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;对于现实世界的同一实体，来自不同数据源的属性值可能不同。这可能是因为表示、比例或编码不同。例如，重量属性可能在一个系统中以公制单位存放，而在另一个系统中以英制单位存放。不同旅馆的价格不仅可能涉及不同的货币，而且可能涉及不同的服务(如免费早餐)和税。数据这种语义上的异种性，是数据集成的巨大挑战。&lt;/p&gt;
+
+&lt;p&gt;将多个数据源中的数据集成起来，能够减少或避免结果数据集中数据的冗余和不一致性。这有助于提高其后挖掘的精度和速度。另外，在数据集成中还应考虑数据类型的选择问题，如在值域范围内应尽量用tinyint代替int, 可大大减少字节数，对于大规模数据集来说将会大大减少系统开销。&lt;/p&gt;
+
+&lt;h3&gt;5 Data Transformation(数据变换)&lt;/h3&gt;
+
+&lt;p&gt;数据变换将数据转换成适合于挖掘的形式。主要是找到数据的特征表示，对数据进行规格化处理。用维变换或转换方式减少有效变量的数目或找到数据的不变式.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;smoothing(平滑)&lt;/strong&gt;: 去掉数据中的噪声。这种技术包括分箱（Bin)、聚类和回归。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Aggregation(聚集)&lt;/strong&gt;:对数据进行汇总和聚集例如，可以聚集日销售数据，计算月和年销售额。这一步用来为多粒度数据分析构造数据立方体。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Generalization(概化)&lt;/strong&gt;:使用概念分层，用高层次概念替换低层次“原始”数据。例如，分类的属性，如street，可以概化为较高层的概念，如city或country.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Normalization(规范化)&lt;/strong&gt;: 将属性数据按比例缩放，使之落入一个小的特定区间，如-1．0到1．0或0.0到1.0。规格化的目的是将一个属性取值范围影射到一个特定范围之内，以消除数值性属性因大小不一而造成挖掘结果的偏差.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Attribute construction属性构造或特征构造&lt;/strong&gt;: 可以利用已知的属性构造新的属性并添加到属性集中，以帮助挖掘过程。(由长，宽求面积)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3&gt;7 Data Reduction(数据规约)&lt;/h3&gt;
+
+&lt;p&gt;主要以下步骤:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;数据立方合计&lt;/li&gt;
+&lt;li&gt;维数削减&lt;/li&gt;
+&lt;li&gt;数据压缩&lt;/li&gt;
+&lt;li&gt;数据块消减&lt;/li&gt;
+&lt;li&gt;离散化与概念层次生成&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Atom编辑器</title>
    <link href="http://hackerxu.com/2014/09/16/atom-setting.html"/>
    <updated>2014-09-16T00:00:00+08:00</updated>
    <id>http://hackerxu.com/2014/09/16/atom-setting</id>
-   <content type="html">&lt;h3&gt;插件&lt;/h3&gt;
+   <content type="html">&lt;p&gt;最近在用atom编辑器,&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://atom.io/packages/atom-beautify&quot;&gt;atom-beautify&lt;/a&gt;:&lt;/p&gt;
+&lt;h3&gt;插件&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://atom.io/packages/atom-beautify&quot;&gt;atom-beautify&lt;/a&gt;:美化丑陋的代码~&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://atom.io/packages/git-plus&quot;&gt;git-plus&lt;/a&gt;:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://atom.io/packages/color-picker&quot;&gt;color-picker&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://atom.io/packages/color-picker&quot;&gt;color-picker&lt;/a&gt;:获取颜色的插件,右键直接打开一个颜色值进行调整&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://atom.io/packages/markdown-preview&quot;&gt;Markdown Preview package&lt;/a&gt;:预览markdown插件&lt;code&gt;ctrl + shift +m&lt;/code&gt;&lt;/p&gt;
 
@@ -1827,56 +2001,6 @@ fi
 
 &lt;p&gt;参考资料:&lt;a href=&quot;http://mingxinglai.com/cn/2012/09/tmux/&quot;&gt;http://mingxinglai.com/cn/2012/09/tmux/&lt;/a&gt;&lt;/p&gt;
 </content>
- </entry>
- 
- <entry>
-   <title>github中ssh替换https脚本</title>
-   <link href="http://hackerxu.com/2014/08/30/githubssh-sh.html"/>
-   <updated>2014-08-30T00:00:00+08:00</updated>
-   <id>http://hackerxu.com/2014/08/30/githubssh-sh</id>
-   <content type="html">&lt;p&gt;为了进一步提高程序效率(懒惰),把所有github项目的链接改成ssh,方便不用再打密码,哈哈&lt;/p&gt;
-
-&lt;p&gt;看了几个项目的共同点&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;git@github.com:taizilongxu/ici.git
-https://github.com/taizilongxu/ici.git
-
-git@github.com:taizilongxu/jekyll_blog_source.git
-https://github.com/taizilongxu/jekyll_blog_source.git
-
-git@github.com:taizilongxu/report.git
-https://github.com/taizilongxu/report.git
-
-git@github.com:taizilongxu/wangdaoOJ.git
-https://github.com/taizilongxu/wangdaoOJ.git
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;只需要把&lt;code&gt;https://github.com/&lt;/code&gt;替换成&lt;code&gt;git@github.com:&lt;/code&gt;就可以了,脚本如下:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c&quot;&gt;#-*- encoding: UTF-8 -*-&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;#---------------------------------import------------------------------------&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os.path&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;re&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;#---------------------------------------------------------------------------&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;rootdir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;/home/limbo/&amp;quot;&lt;/span&gt;                                   &lt;span class=&quot;c&quot;&gt;# 指明被遍历的文件夹&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;username&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;taizilongxu&amp;#39;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;git_ssh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rootdir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dirnames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filenames&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;walk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rootdir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;    &lt;span class=&quot;c&quot;&gt;#三个参数：分别返回1.父目录 2.所有文件夹名字（不含路径） 3.所有文件名字&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;.git&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;config&amp;#39;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filenames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;/&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;config&amp;#39;&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;r&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-                    &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;re&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sub&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;r&amp;#39;https://github.com/&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;git@github.com:&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
-                    &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;w&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-                        &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;git_ssh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rootdir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;############################################################################&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
  </entry>
  
 
