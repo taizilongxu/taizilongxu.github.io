@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Hackerxu's Blog</title>
+<title>douban.fm 终端命令行豆瓣FM</title>
 <link rel="shortcut icon" href=" /img/github.ico"/>
 <link rel="bookmark" href="/img/github.ico"/>
 <meta name="viewport" content="width=device-width">
 <meta name="description" content="Python,HTML,CSS,Machine Leaning">
-<link rel="canonical" href="http://hackerxu.com/">
+<link rel="canonical" href="http://hackerxu.com/2014/10/07/doubanfm.html">
 <!-- Custom CSS -->
 <link rel="stylesheet" href="/css/main.css">
 <link rel="stylesheet" href="/css/github.css">
@@ -69,49 +69,97 @@
 
 <div class="page-content">
     <div class="wrap">
-        <div class="home">
-  
-  <header class="post-header">
-    <h1><a href="/2014/09/20/Aaron-Swartz.html">Aaron Swartz</a></h1>
-    <p class="meta"><i class="fa fa-calendar"></i> 2014-09-20&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#life">life</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#movie">movie</a></p>
-  </header>
-  <article class="post-content">
-  <p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/Aaron_Swartz_at_Boston_Wikipedia_Meetup,_2009-08-18.jpg" alt=""></p>
+        <div class="post">
+    <header class="post-header">
+        <h1><a href="/2014/10/07/doubanfm.html">douban.fm 终端命令行豆瓣FM</a></h1>
+        <p class="meta"><i class="fa fa-calendar"></i> 2014-10-07&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#python">python</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#python">python</a></p>
+    </header>
+    <article class="post-content">
+        <p>项目地址 <a href="https://github.com/taizilongxu/douban.fm">https://github.com/taizilongxu/douban.fm</a></p>
 
-<p>相信你应该真的每时每刻都问自己，现在这世界有什么最重要的事是我能参与去做的？如果你没在做那最重要的事，那又是为什么？</p>
+<h2>douban.fm  <a href="http://badge.fury.io/py/douban.fm"><img src="https://badge.fury.io/py/douban.fm.svg" alt="PyPI version"></a></h2>
 
-  </article>
-  
-  <ul class="posts">
-    <li class="listing-seperator">Yesterday you said tomorrow</li>
-  
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2014-10-08">2014-10-08</time>
-      <a href="/2014/10/08/Pypi.html" title="把程序打包上传到PyPi版本库中">把程序打包上传到PyPi版本库中</a>
-    </li>
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2014-10-07">2014-10-07</time>
-      <a href="/2014/10/07/doubanfm.html" title="douban.fm 终端命令行豆瓣FM">douban.fm 终端命令行豆瓣FM</a>
-    </li>
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2014-10-01">2014-10-01</time>
-      <a href="/2014/10/01/DoubanFm-threading.html" title="Douban Fm 之多进程,多线程">Douban Fm 之多进程,多线程</a>
-    </li>
-  
-    
-    
-    
-    <li class="listing-seperator"><a href="/archive/">Long ago</a></li>
-  </ul>
+<p>ubuntu通过测试,其他平台暂时未做测试.</p>
+
+<p>这个版本的命令行界面是参考了 Node.js版本的<a href="https://github.com/turingou/douban.fm">douban.fm</a>制作的.</p>
+
+<p>Python版本</p>
+
+<p><img src="https://raw.githubusercontent.com/taizilongxu/douban.fm/master/img/2.png" alt="screenshot"></p>
+
+<h3>为什么Python版本</h3>
+
+<p>其实Node.js版本已经很好了,功能齐全,但是我发现在我的zsh + tmux环境下颜色竟然显示不出来,感觉很蛋疼.</p>
+
+<h3>安装</h3>
+<div class="highlight"><pre><code class="language-text" data-lang="text">sudo pip install douban.fm
+</code></pre></div>
+<p>需要mplayer播放器依赖,如未安装:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get install mplayer
+</code></pre></div>
+<h3>使用</h3>
+
+<p>在终端下直接输入douban.fm</p>
+
+<h3>登陆</h3>
+
+<p>第一次登陆需要输入账号,密码,程序不会保留密码,而是保存返回的token存储在.douban_token.txt,下次登陆无需输入密码.</p>
+
+<h3>按键</h3>
+
+<p>支持vim按键</p>
+
+<ul>
+<li>j 下</li>
+<li>k 上</li>
+<li>g 移到最顶</li>
+<li>G 移到最底</li>
+<li>n 下一首</li>
+<li>r 喜欢/取消喜欢</li>
+<li>b 不再播放</li>
+<li>space 播放</li>
+</ul>
+
+<h3>已完成功能</h3>
+
+<ul>
+<li>登陆token</li>
+<li>显示PRO 暂时只支持最高128kbps</li>
+<li>cli设计</li>
+<li>播放,下一首,红心,不再播放</li>
+<li>进度条</li>
+</ul>
+
+<h3>TODO</h3>
+
+<ul>
+<li>歌曲暂停</li>
+<li>歌曲结束request(记录歌曲播放数)</li>
+<li>播放歌曲数 红心数 不再播放数</li>
+<li>歌词</li>
+<li>终端高度的自动调整</li>
+</ul>
+
+<h3>BUG</h3>
+
+<ul>
+<li><del>播放歌曲中有时候会暂停</del></li>
+<li><del>退出后终端光标会隐藏</del></li>
+</ul>
+
+<h3>参考资料</h3>
+
+<ul>
+<li>Node.js版本的<a href="https://github.com/turingou/douban.fm">douban.fm</a></li>
+<li><a href="https://github.com/zonyitoo/doubanfm-qt/wiki/%E8%B1%86%E7%93%A3FM-API">豆瓣电台 API</a></li>
+</ul>
+
+    </article>
+    <!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/2014/10/07/doubanfm"  data-title="douban.fm 终端命令行豆瓣FM - Hackerxu's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
 </div>
 
     </div>
