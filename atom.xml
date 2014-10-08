@@ -5,11 +5,158 @@
     <subtitle>Python,HTML,CSS,Machine Leaning</subtitle>
     <link href="http://hackerxu.com/atom.xml" rel="self"/>
     <link href="http://hackerxu.com"/>
-    <updated>2014-09-20T09:23:19+08:00</updated>
+    <updated>2014-10-08T19:00:56+08:00</updated>
     <id>http://hackerxu.com</id>
     <author>
         <name>xuxiao</name>
     </author>
+    
+    <entry>
+        <title>把程序打包上传到PyPi版本库中</title>
+        <link href="http://hackerxu.com/2014/10/08/Pypi.html"/>
+        <updated>2014-10-08T00:00:00+08:00</updated>
+        <id>http://hackerxu.com/2014/10/08/Pypi</id>
+        <content type="html">&lt;h4&gt;1 首先必须要按照以下文件结构&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;douban&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cli&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;py&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;douban&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;py&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;douban_token&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;py&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;py&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;py&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;README&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;md&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;setup&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;py&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;必须至少一个包,即上面的douban,把模块都放在包下,且包中必须有&lt;code&gt;__init__.py&lt;/code&gt;文件(可以为空)&lt;/li&gt;
+&lt;li&gt;必须有一个setup.py文件&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;2 setup.py文件&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c&quot;&gt;#-*- encoding: UTF-8 -*-&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;setuptools&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;setup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;find_packages&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;打包的用的setup必须引入&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;VERSION&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;0.2.0&amp;#39;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;README.md&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;long_description&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;setup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;douban.fm&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 文件名&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;VERSION&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 版本(每次更新上传Pypi需要修改)&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;a tiny and smart cli player of douban.fm based on Python&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;long_description&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;long_description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 放README.md文件,方便在Pypi页展示&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;classifiers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[],&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;keywords&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;python douban douban.fm terminal&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 关键字&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;taizilongxu&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 用户名&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;author_email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;468137306@qq.com&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 邮箱&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;https://github.com/taizilongxu/douban.fm&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# github上的地址,别的地址也可以&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;license&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;MIT&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 遵循的协议&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;packages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;douban&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 发布的包名&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;include_package_data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;zip_safe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;install_requires&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&amp;#39;termcolor&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 满足的依赖&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;entry_points&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&amp;#39;console_scripts&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;
+            &lt;span class=&quot;s&quot;&gt;&amp;#39;douban.fm = douban.douban:main&amp;#39;&lt;/span&gt; 
+        &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt; entry_points : [可执行程序名]=引入的包名.子包名.模块名:入口函数.这个要注意了,主程序要引入main函数进行执行.好让包找到执行的位置&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;3 安装&lt;/h4&gt;
+
+&lt;p&gt;如果不上传文件,只在本机中安装,那么可以运行以下命令&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;python setup.py install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这样就在本机安装了程序,在shell中输入douban.fm(刚才在entry_points中输入的可执行程序名),就可以执行了&lt;/p&gt;
+
+&lt;h4&gt;4 上传到Pypi&lt;/h4&gt;
+
+&lt;p&gt;先注在 &lt;a href=&quot;https://pypi.python.org/pypi&quot;&gt;https://pypi.python.org/pypi&lt;/a&gt; 注册个Pypi号,认证邮箱.&lt;/p&gt;
+
+&lt;p&gt;然后再在你的用户目录下新建一个&lt;code&gt;.pypirc&lt;/code&gt;文件,输入如下:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;[distutils]
+index-servers =
+    pypi
+
+[pypi]
+username:
+password:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;把username和password填上保存就可以了&lt;/p&gt;
+
+&lt;p&gt;回到你的setup.py目录,输入如下命令&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo python setup.py register sdist bdist_egg upload
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;你的包就可以发到Pypi里了,通过pip或者easy_install就可以下载你的包了&lt;/p&gt;
+
+&lt;h4&gt;5 更新Pypi包&lt;/h4&gt;
+
+&lt;p&gt;当包版本更新后,需要在你的setup.py文件里修改VERSION,然后运行第4部的命令就可以了(如果不更新VERSION包就不能上传成功)&lt;/p&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>Douban Fm 之多进程,多线程</title>
+        <link href="http://hackerxu.com/2014/10/01/DoubanFm-threading.html"/>
+        <updated>2014-10-01T00:00:00+08:00</updated>
+        <id>http://hackerxu.com/2014/10/01/DoubanFm-threading</id>
+        <content type="html">&lt;p&gt;最近Python版本的Douban Fm制作接近尾声,不过困扰我的有一个最大的难题,那就是前台界面和后台程序的融合.&lt;/p&gt;
+
+&lt;p&gt;在以前的编程中虽然语言是面向对象的,但程序的设计主旨一般都还是面向过程的,也就是说平常的程序设计中从来没考虑过进程,线程,以及他们之间的通信.虽然操作系统中对线程,进程都有所了解,但是一想到的是系统编程里的就望而却步了.这会终于好好的研究了一下进程编程,稍后会写笔记,先写写Douban Fm碰到的问题.&lt;/p&gt;
+
+&lt;p&gt;没错,就是线程,进程的问题,当你设计一个cli样式的界面,而且还需要有进程在后端运行,那么你一定需要多线程或是多进程的.在Python里最最原始的方法有一个fork()方法,相信这个方法是从linux中继承过来的,不过这种方法既难掌握,又非常的混乱,比如我们有一个while循环的话,那么在其中的fork()就是一个灾难了.&lt;/p&gt;
+
+&lt;p&gt;相对比较高级的一个方法是multiprocessing,这个函数可以创建一个进程,如下:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;multiprocessing&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;multiprocessing&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fun&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,))&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 注意函数没有括号&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这个函数允许你创建一个进程,运行在主程序之外,当然可以和主程序进行一些交互.&lt;/p&gt;
+
+&lt;p&gt;另外一个比较高级的方法是subprocess,这是一个非常重要的函数,相信大多数人已经知道啦,这个函数最主要的就是调用一个外部程序或者shell里的命令,可以用阻塞的方式调用(subprocess.call()),也可以用非阻塞的方式(subprocess.Popen())&lt;/p&gt;
+
+&lt;p&gt;程序中遇到的问题是这样的,cli界面是主程序,用一个while循环去抓取按键,当空格的时候就会播放选中频道的歌曲,然而如果用subprocess调用mplayer播放器,只能播放一首,第二首就会停止,怎么办?&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;把播放歌曲封装进一个函数,当做一个进程,在进程里无线循环调用歌曲,不停的播放,而界面程序会当做另一个进程监控按键&lt;/li&gt;
+&lt;li&gt;创建一个守护进程或者守护线程不停的监听subprocess的状态,如运行完成则立刻进行反应&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;最后我还是选了2,因为2比较简单,1需要的交互太多,比较麻烦&lt;/p&gt;
+
+&lt;p&gt;下面这个程序是个实验小程序,用一个守护进程去监听mplayer,如果播放完毕则重新启用mplayer,无限循环的过程&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c&quot;&gt;#-*- encoding: UTF-8 -*-&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#---------------------------------import------------------------------------&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;subprocess&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;time&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;threading&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#---------------------------------------------------------------------------&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subprocess&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Popen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;mplayer ~/01\ 21\ Guns\ \(feat.\ The\ Cast\ of\ _Ameri.m4a  &amp;gt;/dev/null 2&amp;gt;&amp;amp;1&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shell&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;protect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;c&quot;&gt;# time.sleep(1)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;poll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;returncode:&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;returncode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39; &amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;returncode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subprocess&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Popen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;mplayer ~/01\ 21\ Guns\ \(feat.\ The\ Cast\ of\ _Ameri.m4a  &amp;gt;/dev/null 2&amp;gt;&amp;amp;1&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shell&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;pr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;threading&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Thread&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;protect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,))&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;pr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;protect&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;############################################################################&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+    </entry>
     
     <entry>
         <title>Aaron Swartz</title>
@@ -18,7 +165,7 @@
         <id>http://hackerxu.com/2014/09/20/Aaron-Swartz</id>
         <content type="html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/Aaron_Swartz_at_Boston_Wikipedia_Meetup,_2009-08-18.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
-&lt;h2&gt;相信你应该真的每时每刻都问自己，现在这世界有什么最重要的事是我能参与去做的？如果你没在做那最重要的事，那又是为什么？&lt;/h2&gt;
+&lt;p&gt;相信你应该真的每时每刻都问自己，现在这世界有什么最重要的事是我能参与去做的？如果你没在做那最重要的事，那又是为什么？&lt;/p&gt;
 </content>
     </entry>
     
@@ -1137,742 +1284,6 @@ Found odd number
 Number is an even number!!
 Found odd number
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
-    </entry>
-    
-    <entry>
-        <title>Shell脚本语言笔记(2)</title>
-        <link href="http://hackerxu.com/2014/09/06/shell-2.html"/>
-        <updated>2014-09-06T00:00:00+08:00</updated>
-        <id>http://hackerxu.com/2014/09/06/shell-2</id>
-        <content type="html">&lt;p&gt;运算符,字符串,数组&lt;/p&gt;
-
-&lt;p&gt;Shell的运算符很特殊,需要记忆一下,此文留作查表之用&lt;/p&gt;
-
-&lt;h2&gt;Shell运算符&lt;/h2&gt;
-
-&lt;p&gt;Bash 支持很多运算符，包括算数运算符、关系运算符、布尔运算符、字符串运算符和文件测试运算符。&lt;/p&gt;
-
-&lt;p&gt;原生bash不支持简单的数学运算，但是可以通过其他命令来实现，例如 awk 和 expr，expr 最常用。&lt;/p&gt;
-
-&lt;p&gt;expr 是一款表达式计算工具，使用它能完成表达式的求值操作。&lt;/p&gt;
-
-&lt;p&gt;例如，两个数相加：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/bash
-val=`expr 2 + 2`
-echo &amp;quot;Total value : $val&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;运行脚本输出：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;Total value : 4
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;两点注意：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;表达式和运算符之间要有空格，例如&lt;code&gt;2+2&lt;/code&gt;是不对的，必须写成&lt;code&gt;2 + 2&lt;/code&gt;，这与我们熟悉的大多数编程语言不一样。&lt;/li&gt;
-&lt;li&gt;完整的表达式要被&lt;code&gt;` `&lt;/code&gt;包含，注意这个字符不是常用的单引号，在 Esc 键下边。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h5&gt;算术运算符列表&lt;/h5&gt;
-
-&lt;table&gt;&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&quot;text-align: left&quot;&gt;运算符&lt;/th&gt;
-&lt;th style=&quot;text-align: left&quot;&gt;说明&lt;/th&gt;
-&lt;th style=&quot;text-align: left&quot;&gt;举例&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;+&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;加法&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;`expr $a + $b`&lt;/code&gt; 结果为 30。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;-&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;减法&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;`expr $a - $b`&lt;/code&gt;结果为 10。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;*&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;乘法&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;`expr $a \* $b`&lt;/code&gt; 结果为  200。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;/&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;除法&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;`expr $b / $a`&lt;/code&gt;结果为 2。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;%&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;取余&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;`expr $b % $a`&lt;/code&gt;结果为 0。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;=&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;赋值&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;a=$b 将把变量 b 的值赋给 a。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;==&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;相等。&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;用于比较两个数字，相同则返回 true。   &lt;code&gt;[ $a == $b ]&lt;/code&gt; 返回 false。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;!=&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;不相等。&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;用于比较两个数字，不相同则返回 true。 &lt;code&gt;[ $a != $b ]&lt;/code&gt;返回 true。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
-
-&lt;h5&gt;关系运算符列表&lt;/h5&gt;
-
-&lt;table&gt;&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&quot;text-align: left&quot;&gt;运算符&lt;/th&gt;
-&lt;th style=&quot;text-align: left&quot;&gt;说明&lt;/th&gt;
-&lt;th style=&quot;text-align: left&quot;&gt;举例&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;-eq&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;检测两个数是否相等，相等返回 true。&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;[ $a -eq $b ]&lt;/code&gt;返回 true。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;-ne&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;检测两个数是否相等，不相等返回 true。&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;[ $a -ne $b ]&lt;/code&gt; 返回 true。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;-gt&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;检测左边的数是否大于右边的，如果是，则返回 true。&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;[ $a -gt $b ]&lt;/code&gt;返回 false。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;-lt&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;检测左边的数是否小于右边的，如果是，则返回 true。&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;[ $a -lt $b ]&lt;/code&gt;返回 true。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;-ge&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;检测左边的数是否大等于右边的，如果是，则返回 true。&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;[ $a -ge $b ]&lt;/code&gt; 返回 false。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;-le&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;检测左边的数是否小于等于右边的，如果是，则返回 true。&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;[ $a -le $b ]&lt;/code&gt; 返回 true。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
-
-&lt;h5&gt;布尔运算符列表&lt;/h5&gt;
-
-&lt;table&gt;&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&quot;text-align: left&quot;&gt;运算符&lt;/th&gt;
-&lt;th style=&quot;text-align: left&quot;&gt;说明&lt;/th&gt;
-&lt;th style=&quot;text-align: left&quot;&gt;举例&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;!&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;非运算，表达式为 true 则返回 false，否则返回 true。&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;[ ! false ] 返回 true。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;-o&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;或运算，有一个表达式为 true 则返回 true。&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;[ $a -lt 20 -o $b -gt 100 ]&lt;/code&gt; 返回 true。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;-a&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;与运算，两个表达式都为 true 才返回 true。&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;[ $a -lt 20 -a $b -gt 100 ]&lt;/code&gt; 返回 false。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
-
-&lt;h5&gt;字符串运算符列表&lt;/h5&gt;
-
-&lt;table&gt;&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&quot;text-align: left&quot;&gt;运算符&lt;/th&gt;
-&lt;th style=&quot;text-align: left&quot;&gt;说明&lt;/th&gt;
-&lt;th style=&quot;text-align: left&quot;&gt;举例&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;=&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;检测两个字符串是否相等，相等返回 true。&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;[ $a = $b ]&lt;/code&gt; 返回 false。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;!=&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;检测两个字符串是否相等，不相等返回 true。&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;&lt;code&gt;[ $a != $b ]&lt;/code&gt; 返回 true。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;-z&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;检测字符串长度是否为0，为0返回 true。&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;[ -z $a ] 返回 false。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;-n&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;检测字符串长度是否为0，不为0返回 true。&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;[ -z $a ] 返回 true。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;str&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;检测字符串是否为空，不为空返回 true。&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;[ $a ] 返回 true。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
-
-&lt;h5&gt;文件测试运算符列表&lt;/h5&gt;
-
-&lt;table&gt;&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&quot;text-align: left&quot;&gt;操作符&lt;/th&gt;
-&lt;th style=&quot;text-align: left&quot;&gt;说明&lt;/th&gt;
-&lt;th style=&quot;text-align: left&quot;&gt;举例&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;-b file&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;检测文件是否是块设备文件，如果是，则返回 true。&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;[ -b $file ] 返回 false。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;-d file&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;检测文件是否是目录，如果是，则返回 true。&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;[ -d $file ] 返回 false。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;-f file&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;检测文件是否是普通文件（既不是目录，也不是设备文件），如果是，则返回 true。&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;[ -f $file ] 返回 true。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;-g file&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;检测文件是否设置了 SGID 位，如果是，则返回 true。&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;[ -g $file ] 返回 false。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;-k file&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;检测文件是否设置了粘着位(Sticky Bit)，如果是，则返回 true。&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;[ -k $file ] 返回 false。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;-p file&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;检测文件是否是具名管道，如果是，则返回 true。&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;[ -p $file ] 返回 false。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;-u file&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;检测文件是否设置了 SUID 位，如果是，则返回 true。&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;[ -u $file ] 返回 false。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;-r file&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;检测文件是否可读，如果是，则返回 true。&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;[ -r $file ] 返回 true。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;-w file&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;检测文件是否可写，如果是，则返回 true。&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;[ -w $file ] 返回 true。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;-x file&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;检测文件是否可执行，如果是，则返回 true。&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;[ -x $file ] 返回 true。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;-s file&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;检测文件是否为空（文件大小是否大于0），不为空返回 true。&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;[ -s $file ] 返回 true。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;-e file&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;检测文件（包括目录）是否存在，如果是，则返回 true。&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;[ -e $file ] 返回 true。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
-
-&lt;h2&gt;字符串&lt;/h2&gt;
-
-&lt;p&gt;字符串是shell编程中最常用最有用的数据类型（除了数字和字符串，也没啥其它类型好用了），字符串可以用单引号，也可以用双引号，也可以不用引号。单双引号的区别跟PHP类似。&lt;/p&gt;
-
-&lt;h4&gt;单引号&lt;/h4&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;str=&amp;#39;this is a string&amp;#39;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;单引号字符串的限制：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;单引号里的任何字符都会原样输出，单引号字符串中的变量是无效的；&lt;/li&gt;
-&lt;li&gt;单引号字串中不能出现单引号（对单引号使用转义符后也不行）。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4&gt;双引号&lt;/h4&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;your_name=&amp;#39;qinjx&amp;#39;
-str=&amp;quot;Hello, I know your are \&amp;quot;$your_name\&amp;quot;! \n&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;双引号的优点：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;双引号里可以有变量&lt;/li&gt;
-&lt;li&gt;双引号里可以出现转义字符&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4&gt;拼接字符串&lt;/h4&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;your_name=&amp;quot;qinjx&amp;quot;
-greeting=&amp;quot;hello, &amp;quot;$your_name&amp;quot; !&amp;quot;
-greeting_1=&amp;quot;hello, ${your_name} !&amp;quot;
-echo $greeting $greeting_1
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4&gt;获取字符串长度&lt;/h4&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;string=&amp;quot;abcd&amp;quot;
-echo ${#string} #输出 4(#表示字符串长度)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4&gt;提取子字符串&lt;/h4&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;string=&amp;quot;alibaba is a great company&amp;quot;
-echo ${string:1:4} #输出liba
-echo ${string:1} #输出libaba is a great company
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4&gt;查找子字符串&lt;/h4&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;string=&amp;quot;alibaba is a great company&amp;quot;
-echo `expr index &amp;quot;$string&amp;quot; is` # 输出3(i和s一共出现的次数)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;数组&lt;/h2&gt;
-
-&lt;p&gt;bash支持一维数组（不支持多维数组），并且没有限定数组的大小。类似与C语言，数组元素的下标由0开始编号。获取数组中的元素要利用下标，下标可以是整数或算术表达式，其值应大于或等于0。
-定义数组&lt;/p&gt;
-
-&lt;p&gt;在Shell中，用括号来表示数组，数组元素用“空格”符号分割开。定义数组的一般形式为：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;    array_name=(value1 ... valuen)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;例如：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;array_name=(value0 value1 value2 value3)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;或者&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;array_name=(
-value0
-value1
-value2
-value3
-)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;还可以单独定义数组的各个分量：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;array_name[0]=value0
-array_name[1]=value1
-array_name[2]=value2
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;可以不使用连续的下标，而且下标的范围没有限制。&lt;/p&gt;
-
-&lt;h4&gt;读取数组&lt;/h4&gt;
-
-&lt;p&gt;读取数组元素值的一般格式是：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;    ${array_name[index]}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;例如：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;valuen=${array_name[2]}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;使用@ 或 * 可以获取数组中的所有元素，例如：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;${array_name[*]}
-${array_name[@]}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4&gt;获取数组的长度&lt;/h4&gt;
-
-&lt;p&gt;获取数组长度的方法与获取字符串长度的方法相同，例如：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# 取得数组元素的个数
-length=${#array_name[@]}
-# 或者
-length=${#array_name[*]}
-# 取得数组单个元素的长度
-lengthn=${#array_name[n]}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
-    </entry>
-    
-    <entry>
-        <title>Shell脚本语言笔记(1)</title>
-        <link href="http://hackerxu.com/2014/09/05/shell.html"/>
-        <updated>2014-09-05T00:00:00+08:00</updated>
-        <id>http://hackerxu.com/2014/09/05/shell</id>
-        <content type="html">&lt;h3&gt;脚本语言&lt;/h3&gt;
-
-&lt;p&gt;一直很困惑什么是脚本,python是不是脚本,脚本怎么定义的?我觉得最主要的就是以下两点.&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;脚本语言不需要编译，可以直接用，由解释器来负责解释.&lt;/li&gt;
-&lt;li&gt;脚本语言一般都是以文本形式存在,类似于一种命令. &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;其实理解批处理就可以理解shell了,早期的程序员是通过shell来进行文件的批处理,而程序员想要对文件进行控制就不能等文件一个个运行完再输入吧,所以创造了shell脚本语言,程序员只需要写入命令到一个文件里,然后shell一行行读取,就能实现批处理了.&lt;/p&gt;
-
-&lt;p&gt;以大部分都是整理自&lt;a href=&quot;http://see.xidian.edu.cn/cpp/view/6994.html&quot;&gt;http://see.xidian.edu.cn/cpp/view/6994.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3&gt;1 Bash&lt;/h3&gt;
-
-&lt;p&gt;Bash 是 GNU shell，兼容 sh 以及其他 shell 里的许多有用的特性。用户可以选择在终端里运行哪种解析器.&lt;/p&gt;
-
-&lt;p&gt;运行如下命令可以查看机器里有哪种解析器:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;cat /etc/shells
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;自从遇见zsh后,我就转入了zsh门下,建议大家尝试一下,它还有一个很好的配置插件oh-my-zsh.自认为比bash好上不少.&lt;/p&gt;
-
-&lt;h3&gt;2 编写脚本&lt;/h3&gt;
-
-&lt;h4&gt;2.1 执行脚本的方法:&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;将文件夹放入PATH中&lt;code&gt;export PATH=&amp;quot;$PATH:~/scripts&amp;quot;&lt;/code&gt;,改变文件权限&lt;code&gt;chmod u+x script1.sh&lt;/code&gt;,直接运行&lt;code&gt;script1.sh&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;如果没有加入PATH,那么这样也可以运行&lt;code&gt;./script_name.sh&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;也可以这样,自己定义用哪个shell执行&lt;code&gt;bash script_name.sh&lt;/code&gt;(一般不会用这个把)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;source script_name.sh&lt;/code&gt;,这里的&lt;code&gt;source&lt;/code&gt;和&lt;code&gt;.&lt;/code&gt;是一样的效果,不过&lt;code&gt;source&lt;/code&gt;不需要文件的执行权限.前三种方法都是在子shell里运行的命令,当命令结束的时候,子shell会退出,所有状态会清空.而这种方法是在自己的shell里运行的,也就是说脚本里设定的变量再本shell下依然可以实用(其他的调用不了哦)&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;注意，执行一个文件一定要写成./test.sh，而不是test.sh。运行其它二进制的程序也一样，直接写test.sh，linux系统会去PATH里寻找有没有叫test.sh的，而只有/bin, /sbin, /usr/bin，/usr/sbin等在PATH里，你的当前目录通常不在PATH里，所以写成test.sh是会找不到命令的，要用./test.sh告诉系统说，就在当前目录找。&lt;/p&gt;
-
-&lt;h4&gt;2.2 脚本基础&lt;/h4&gt;
-
-&lt;h5&gt;2.2.1用哪个脚本来运行&lt;/h5&gt;
-
-&lt;p&gt;一般的脚本程序都会有下面这一行:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/bash
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;就是告诉这个脚本用哪种shell来运行,防止用其他shell运行出错.&lt;/p&gt;
-
-&lt;p&gt;注意:前面不能留空行,必须写在第一行&lt;/p&gt;
-
-&lt;h5&gt;2.2.2加入注释&lt;/h5&gt;
-
-&lt;p&gt;范例:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/bash 
-# This script clears the terminal, displays a greeting and gives information 
-# about currently connected users. The two example variables are set and displayed. 
-clear # clear terminal window 
-echo &amp;quot;The script starts now.&amp;quot; 
-echo &amp;quot;Hi, $USER!&amp;quot; # dollar sign is used to get content of variable 
-echo 
-echo &amp;quot;I will now fetch you a list of connected users:&amp;quot; 
-echo 
-w # show who is logged on and 
-echo # what they are doing 
-echo &amp;quot;I&amp;#39;m setting two variables now.&amp;quot;
-COLOUR=&amp;quot;black&amp;quot; # set a local shell variable 
-VALUE=&amp;quot;9&amp;quot; # set a local shell variable 
-echo &amp;quot;This is a string: $COLOUR&amp;quot; # display content of variable 
-echo &amp;quot;And this is a number: $VALUE&amp;quot; # display content of variable 
-echo 
-echo &amp;quot;I&amp;#39;m giving you back your prompt now.&amp;quot; 
-echo 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4&gt;2.3 调试脚本&lt;/h4&gt;
-
-&lt;h5&gt;2.3.1 调试整个脚本&lt;/h5&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;illy:~/scripts&amp;gt; bash −x script1.sh 
-+ clear 
-+ echo &amp;#39;The script starts now.&amp;#39; 
-The script starts now. 
-+ echo &amp;#39;Hi, willy!&amp;#39; 
-Hi, willy! 
-+ echo 
-+ echo &amp;#39;I will now fetch you a list of connected users:&amp;#39; 
-I will now fetch you a list of connected users: 
-+ echo 
-+ w 
-4:50pm up 18 days, 6:49, 4 users, load average: 0.58, 0.62, 0.40 
-USER TTY FROM LOGIN@ IDLE JCPU PCPU WHAT 
-root tty2 − Sat 2pm 5:36m 0.24s 0.05s −bash 
-willy :0 − Sat 2pm ? 0.00s ? − 
-willy pts/3 − Sat 2pm 43:13 36.82s 36.82s BitchX willy ir 
-willy pts/2 − Sat 2pm 43:13 0.13s 0.06s /usr/bin/screen 
-+ echo 
-+ echo &amp;#39;I&amp;#39;\&amp;#39;&amp;#39;m setting two variables now.&amp;#39; 
-I&amp;#39;m setting two variables now. 
-+ COLOUR=black 
-+ VALUE=9 
-+ echo &amp;#39;This is a string: &amp;#39; 
-This is a string: 
-+ echo &amp;#39;And this is a number: &amp;#39; 
-And this is a number: 
-+ echo 
-+ echo &amp;#39;I&amp;#39;\&amp;#39;&amp;#39;m giving you back your prompt now.&amp;#39; 
-I&amp;#39;m giving you back your prompt now. 
-+ echo 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;以前真没用过,这样可以一行一行的观察脚本的运行了&lt;/p&gt;
-
-&lt;h5&gt;2.3.2 调试部分脚本&lt;/h5&gt;
-
-&lt;p&gt;在文件上下加上&lt;code&gt;set -x&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;set −x # activate debugging from here 
-w 
-set +x # stop debugging from here 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;然后输出&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;willy: ~/scripts&amp;gt; script1.sh 
-The script starts now. 
-Hi, willy! 
-I will now fetch you a list of connected users: 
-+ w 
-5:00pm up 18 days, 7:00, 4 users, load average: 0.79, 0.39, 0.33 
-USER TTY FROM LOGIN@ IDLE JCPU PCPU WHAT 
-root tty2 ? Sat 2pm 5:47m 0.24s 0.05s ?bash 
-willy :0 ? Sat 2pm ? 0.00s ? ? 
-willy pts/3 ? Sat 2pm 54:02 36.88s 36.88s BitchX willyke 
-willy pts/2 ? Sat 2pm 54:02 0.13s 0.06s /usr/bin/screen 
-+ set +x 
-I&amp;#39;m setting two variables now. 
-This is a string: 
-And this is a number: 
-I&amp;#39;m giving you back your prompt now. 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;奇怪的是我在shell上没有显示,不知道是为什么?有知道的请告知&lt;/p&gt;
-
-&lt;p&gt;调试的详细参数如下:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;bash -选择项 shell程序文件名&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;几个常用的选择项是：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;set −f set −o noglob Disable file name generation using metacharacters (globbing). (文件)&lt;/li&gt;
-&lt;li&gt;set −v set −o verbose Prints shell input lines as they are read. (输出的同时输出命令)&lt;/li&gt;
-&lt;li&gt;set −x set −o xtrace Print command traces before executing command. (加入所有的调试信息)&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;你可以把这些选项加入到脚本头部,这样:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/bash -xv 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;当然最后,本人最长用的是&lt;code&gt;echo&lt;/code&gt;~~&lt;/p&gt;
-
-&lt;h3&gt;3 Bash环境&lt;/h3&gt;
-
-&lt;h4&gt;3.1 shell初始化配置&lt;/h4&gt;
-
-&lt;h5&gt;跨系统配置&lt;/h5&gt;
-
-&lt;p&gt;linux文件下主要的bash配置文件:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;/etc/inputrc，可以配置命令行响铃风格的跨系统的行读取初始化文件。&lt;/li&gt;
-&lt;li&gt;/etc/profile.d 目录，包含了配置特别程序的跨系统行为的文件。&lt;/li&gt;
-&lt;li&gt;/etc/profile:此文件为系统的每个用户设置环境信息,当用户第一次登录时,该文件被执行，并从/etc/profile.d目录的配置文件中搜集shell的设置，&lt;/li&gt;
-&lt;li&gt;/etc/bashrc:为每一个运行bash shell的用户执行此文件，当bash shell被打开时,该文件被读取。&lt;/li&gt;
-&lt;li&gt;~/.bash_profile:每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些环境变量,执行用户的.bashrc文件。&lt;/li&gt;
-&lt;li&gt;~/.bash_login:这个文件包含了只有在你登陆进系统的才执行的特殊的设置。&lt;/li&gt;
-&lt;li&gt;~/.profile在没有~/.bash_profile 和~/.bash_login 的情况下，~/.profile 就被读取。他能保存一些可以被别的 shell 访问的配置。注意其他的 shell 可能不能识别 Bash 的语法。&lt;/li&gt;
-&lt;li&gt;~/.bashrc:如今，更加普遍的是使用一个非登陆 shell，比如使用 X 终端窗口登陆进图形模式的时候。打开一个这样的窗口之后，用户不需要提供用户名和密码；无需认证。此时 Bash 会搜索~/.bashrc，所以也指向登陆时读取得文件，同时也意味着你不需要在多个文件中输入相同的设置.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4&gt;3.2 变量&lt;/h4&gt;
-
-&lt;h5&gt;3.2.1 变量的类型&lt;/h5&gt;
-
-&lt;p&gt;&lt;strong&gt;shell 变量约定俗成地用大写表示&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;全局变量:全局变量或者环境变量存在于所有的 shell 里面。&lt;code&gt;env&lt;/code&gt; 和&lt;code&gt;printenv&lt;/code&gt;命令能够通常用于显示环变量。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;本地变量:本地变量只存在于当前 shell。使用内建的不带选项的&lt;code&gt;set&lt;/code&gt;命令将显示所有变量的列表（包括环
-境变量）和函数。输出会根据当前的设置排列而且以可以重用的方式显示。&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5&gt;3.2.2 变量基本操作&lt;/h5&gt;
-
-&lt;h5&gt;定义变量&lt;/h5&gt;
-
-&lt;p&gt;定义变量时，变量名不加美元符号（$），如：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;variableName=&amp;quot;value&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;注意，变量名和等号之间不能有空格，这可能和你熟悉的所有编程语言都不一样。同时，变量名的命名须遵循如下规则：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;首个字符必须为字母（a-z，A-Z）。&lt;/li&gt;
-&lt;li&gt;中间不能有空格，可以使用下划线（_）。&lt;/li&gt;
-&lt;li&gt;不能使用标点符号。&lt;/li&gt;
-&lt;li&gt;不能使用bash里的关键字（可用help命令查看保留关键字）。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;变量定义举例：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;myUrl=&amp;quot;http://see.xidian.edu.cn/cpp/linux/&amp;quot;
-myNum=100
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h5&gt;使用变量&lt;/h5&gt;
-
-&lt;p&gt;使用一个定义过的变量，只要在变量名前面加美元符号&lt;code&gt;（$）&lt;/code&gt;即可，如：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;your_name=&amp;quot;mozhiyan&amp;quot;
-echo $your_name
-echo ${your_name}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;推荐给所有变量加上花括号，这是个好的编程习惯。&lt;/p&gt;
-
-&lt;h5&gt;只读变量&lt;/h5&gt;
-
-&lt;p&gt;使用&lt;code&gt;readonly&lt;/code&gt;命令可以将变量定义为只读变量，只读变量的值不能被改变。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/bash
-myUrl=&amp;quot;http://see.xidian.edu.cn/cpp/shell/&amp;quot;
-readonly myUrl
-myUrl=&amp;quot;http://see.xidian.edu.cn/cpp/danpianji/&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;运行脚本，结果如下：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;/bin/sh: NAME: This variable is read only.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h5&gt;删除变量&lt;/h5&gt;
-
-&lt;p&gt;使用&lt;code&gt;unset&lt;/code&gt; 命令可以删除变量。语法：&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;unset variable_name&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;变量被删除后不能再次使用；unset 命令不能删除只读变量。&lt;/p&gt;
-
-&lt;p&gt;举个例子：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/sh
-myUrl=&amp;quot;http://see.xidian.edu.cn/cpp/u/xitong/&amp;quot;
-unset myUrl
-echo $myUrl
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;上面的脚本没有任何输出。&lt;/p&gt;
-
-&lt;h5&gt;3.2.3 特殊变量&lt;/h5&gt;
-
-&lt;p&gt;特殊变量列表&lt;/p&gt;
-
-&lt;p&gt;|变量|    含义|
-|:--||:---|
-|$0 |当前脚本的文件名|
-|$n |传递给脚本或函数的参数。n 是一个数字，表示第几个参数。例如，第一个参数是$1，第二个参数是$2。|
-|$# |传递给脚本或函数的参数&lt;strong&gt;个数&lt;/strong&gt;。|
-|$* |传递给脚本或函数的所有参数。|
-|$@|    传递给脚本或函数的所有参数。被双引号(&amp;quot; &amp;quot;)包含时，与 $* 稍有不同，下面将会讲到。|
-|$? |上个命令的退出状态，或函数的返回值。|
-|$$ |当前Shell进程ID。对于 Shell 脚本，就是这些脚本所在的进程ID。|&lt;/p&gt;
-
-&lt;h5&gt;$* 和 $@ 的区别&lt;/h5&gt;
-
-&lt;p&gt;$* 和 $@ 都表示传递给函数或脚本的所有参数，不被双引号(&amp;quot; &amp;quot;)包含时，都以&amp;quot;$1&amp;quot; &amp;quot;$2&amp;quot; … &amp;quot;$n&amp;quot; 的形式输出所有参数。&lt;/p&gt;
-
-&lt;p&gt;但是当它们被双引号(&amp;quot; &amp;quot;)包含时，&amp;quot;$*&amp;quot; 会将所有的参数作为一个整体，以&amp;quot;$1 $2 … $n&amp;quot;的形式输出所有参数；&amp;quot;$@&amp;quot; 会将各个参数分开，以&amp;quot;$1&amp;quot; &amp;quot;$2&amp;quot; … &amp;quot;$n&amp;quot; 的形式输出所有参数。&lt;/p&gt;
-
-&lt;h5&gt;3.2.4 导出变量&lt;/h5&gt;
-
-&lt;p&gt;在Bash Shell中变量都是局部的,它们只在创建它们的子Shell中有意义。使用export后,变量被设置为全局变量,这时可以被其它子Shell所识别 。&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;export VARNAME=&amp;quot;value&amp;quot;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;被export后的变量,可以成为环境变量.&lt;/p&gt;
-
-&lt;h5&gt;3.2.5  变量替换&lt;/h5&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/bash
-a=10
-echo -e &amp;quot;Value of a is $a \n&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;运行结果：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;Value of a is 10
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;这里 -e 表示对转义字符进行替换。如果不使用 -e 选项，将会原样输出：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;Value of a is 10\n
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;下面的转义字符都可以用在 echo 中：&lt;/p&gt;
-
-&lt;table&gt;&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&quot;text-align: left&quot;&gt;转义字符&lt;/th&gt;
-&lt;th style=&quot;text-align: left&quot;&gt;含义&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;\&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;反斜杠&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;\a&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;警报，响铃&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;\b&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;退格（删除键）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;\f&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;换页(FF)，将当前位置移到下页开头&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;\n&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;换行&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;\r&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;回车&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;\t&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;水平制表符（tab键）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;\v&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;垂直制表符&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
-
-&lt;p&gt;可以使用 echo 命令的 -E 选项禁止转义，默认也是不转义的；使用 -n 选项可以禁止插入换行符。&lt;/p&gt;
-
-&lt;h5&gt;命令替换&lt;/h5&gt;
-
-&lt;p&gt;命令替换是指Shell可以先执行命令，将输出结果暂时保存，在适当的地方输出。&lt;/p&gt;
-
-&lt;p&gt;命令替换的语法：&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;`command`&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;注意是反引号，不是单引号，这个键位于 Esc 键下方。&lt;/p&gt;
-
-&lt;p&gt;下面的例子中，将命令执行结果保存在变量中：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/bash
-DATE=`date`
-echo &amp;quot;Date is $DATE&amp;quot;
-USERS=`who | wc -l`
-echo &amp;quot;Logged in user are $USERS&amp;quot;
-UP=`date ; uptime`
-echo &amp;quot;Uptime is $UP&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;运行结果：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;Date is Thu Jul  2 03:59:57 MST 2009
-Logged in user are 1
-Uptime is Thu Jul  2 03:59:57 MST 2009
-03:59:57 up 20 days, 14:03,  1 user,  load avg: 0.13, 0.07, 0.15
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h5&gt;变量替换&lt;/h5&gt;
-
-&lt;p&gt;变量替换可以根据变量的状态（是否为空、是否定义等）来改变它的值&lt;/p&gt;
-
-&lt;p&gt;可以使用的变量替换形式：&lt;/p&gt;
-
-&lt;table&gt;&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&quot;text-align: left&quot;&gt;形式&lt;/th&gt;
-&lt;th style=&quot;text-align: left&quot;&gt;说明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;${var}&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;变量本来的值&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;${var:-word}&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;如果变量 var 为空或已被删除(unset)，那么返回 word，但不改变 var 的值。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;${var:=word}&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;如果变量 var 为空或已被删除(unset)，那么返回 word，并将 var 的值设置为 word。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;${var:?message}&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;如果变量 var 为空或已被删除(unset)，那么将消息 message 送到标准错误输出，可以用来检测变量 var 是否可以被正常赋值。若此替换出现在Shell脚本中，那么脚本将停止运行。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;${var:+word}&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;如果变量 var 被定义，那么返回 word，但不改变 var 的值。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
-</content>
     </entry>
     
 
