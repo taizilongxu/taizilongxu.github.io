@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- 手机端页面 -->
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Python subprocess模块总结</title>
+<link rel="shortcut icon" href=" /img/github.ico"/>
+<link rel="bookmark" href="/img/github.ico"/>
+<meta name="viewport" content="width=device-width">
+<meta name="description" content="Python,HTML,CSS,Machine Leaning">
+<link rel="canonical" href="http://hackerxu.com/2014/10/09/subprocess.html">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/github.css">
+<!-- 返回顶部 -->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="/js/jquery.js"></script>
+<script src="/js/function_about.js"></script>
+<!--  -->
+</head>
+
+<body>
+<header class="site-header">
+    <div class="wrap">
+        <a class="site-title" href="/"><h1><strong> <font style="color:#39B3D7" >L</font><font style="color:#ED9C28">i</font><font style="color:#47A447">m</font><font style="color:#D9534F">b</font><font style="color:#3276B1">o</font>
+                </strong>
+        </h1></a>
+        <nav class="site-nav">
+            <a href="#" class="menu-icon">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+                    <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+                    h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                    <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+                    h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                    <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+                    c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                </svg>
+            </a>
+            <div class="trigger">
+                
+                
+                <a class="page-link" href="/about/">About</a>
+                
+                
+                
+                <a class="page-link" href="/archive/">Archive</a>
+                
+                
+                
+                <a class="page-link" href="/categories/">Categories</a>
+                
+                
+                
+                <a class="page-link" href="/tags/">Tags</a>
+                
+                
+                
+                <a class="page-link" href="/atom.xml">Rss</a>
+                
+                
+            </div>
+        </nav>
+    </div>
+
+</header>
+
+<div class="page-content">
+    <div class="wrap">
+        <div class="post">
+    <header class="post-header">
+        <h1><a href="/2014/10/09/subprocess.html">Python subprocess模块总结</a></h1>
+        <p class="meta"><i class="fa fa-calendar"></i> 2014-10-09&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#python">python</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#python">python</a></p>
+    </header>
+    <article class="post-content">
+        <blockquote>
+<p>subprocess意在替代其他几个老的模块或者函数，比如：os.system os.spawn* os.popen* popen2.* commands.*</p>
+</blockquote>
+
+<p>subprocess最简单的用法就是调用shell命令了,另外也可以调用程序,并且可以通过stdout,stdin和stderr进行交互</p>
+
+<h4>subprocess的主类</h4>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span>
+      <span class="n">args</span><span class="p">,</span> 
+      <span class="n">bufsize</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+      <span class="n">executable</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+      <span class="n">stdin</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+      <span class="n">stdout</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> 
+      <span class="n">stderr</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> 
+      <span class="n">preexec_fn</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> 
+      <span class="n">close_fds</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> 
+      <span class="n">shell</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> 
+      <span class="n">cwd</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> 
+      <span class="n">env</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> 
+      <span class="n">universal_newlines</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> 
+      <span class="n">startupinfo</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> 
+      <span class="n">creationflags</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>args可以是字符串或者序列类型（如：list，元组），用于指定进程的可执行文件及其参数。如果是序列类型，第一个元素通常是可执行文件的路径。我们也可以显式的使用executeable参数来指定可执行文件的路径。</li>
+<li>bufsize：指定缓冲。0 无缓冲,1 行缓冲,其他 缓冲区大小,负值 系统缓冲(全缓冲)</li>
+<li>stdin, stdout, stderr分别表示程序的标准输入、输出、错误句柄。他们可以是PIPE，文件描述符或文件对象，也可以设置为None，表示从父进程继承。</li>
+<li>preexec_fn只在Unix平台下有效，用于指定一个可执行对象（callable object），它将在子进程运行之前被调用。</li>
+<li>Close_sfs：在windows平台下，如果close_fds被设置为True，则新创建的子进程将不会继承父进程的输入、输出、错误管道。我们不能将close_fds设置为True同时重定向子进程的标准输入、输出与错误(stdin, stdout, stderr)。</li>
+<li>shell设为true，程序将通过shell来执行。</li>
+<li>cwd用于设置子进程的当前目录</li>
+<li>env是字典类型，用于指定子进程的环境变量。如果env = None，子进程的环境变量将从父进程中继承。</li>
+<li>Universal_newlines:不同操作系统下，文本的换行符是不一样的。如：windows下用&#39;/r/n&#39;表示换，而Linux下用&#39;/n&#39;。如果将此参数设置为True，Python统一把这些换行符当作&#39;/n&#39;来处理。startupinfo与createionflags只在windows下用效，它们将被传递给底层的CreateProcess()函数，用于设置子进程的一些属性，如：主窗口的外观，进程的优先级等等。 </li>
+<li>startupinfo与createionflags只在windows下有效，它们将被传递给底层的CreateProcess()函数，用于设置子进程的一些属性，如：主窗口的外观，进程的优先级等等。 </li>
+</ul>
+
+<h4>Popen方法</h4>
+
+<ol>
+<li>Popen.poll()：用于检查子进程是否已经结束。设置并返回returncode属性。</li>
+<li>Popen.wait()：等待子进程结束。设置并返回returncode属性。</li>
+<li>Popen.communicate(input=None)：与子进程进行交互。向stdin发送数据，或从stdout和stderr中读取数据。可选参数input指定发送到子进程的参数。Communicate()返回一个元组：(stdoutdata, stderrdata)。注意：如果希望通过进程的stdin向其发送数据，在创建Popen对象的时候，参数stdin必须被设置为PIPE。同样，如果希望从stdout和stderr获取数据，必须将stdout和stderr设置为PIPE。</li>
+<li>Popen.send_signal(signal)：向子进程发送信号。</li>
+<li>Popen.terminate()：停止(stop)子进程。在windows平台下，该方法将调用Windows API TerminateProcess（）来结束子进程。</li>
+<li>Popen.kill()：杀死子进程。</li>
+<li>Popen.stdin：如果在创建Popen对象是，参数stdin被设置为PIPE，Popen.stdin将返回一个文件对象用于策子进程发送指令。否则返回None。</li>
+<li>Popen.stdout：如果在创建Popen对象是，参数stdout被设置为PIPE，Popen.stdout将返回一个文件对象用于策子进程发送指令。否则返回None。</li>
+<li>Popen.stderr：如果在创建Popen对象是，参数stdout被设置为PIPE，Popen.stdout将返回一个文件对象用于策子进程发送指令。否则返回None。</li>
+<li>Popen.pid：获取子进程的进程ID。</li>
+<li>Popen.returncode：获取进程的返回值。如果进程还没有结束，返回None。</li>
+<li><code>subprocess.call(*popenargs, **kwargs)</code>：运行命令。该函数将一直等待到子进程运行结束，并返回进程的returncode。文章一开始的例子就演示了call函数。如果子进程不需要进行交互,就可以使用该函数来创建。</li>
+<li><code>subprocess.check_call(*popenargs, **kwargs)</code>：与<code>subprocess.call(*popenargs, **kwargs)</code>功能一样，只是如果子进程返回的returncode不为0的话，将触发CalledProcessError异常。在异常对象中，包括进程的returncode信息。</li>
+</ol>
+
+<p>以上全是抄的</p>
+
+<h4>在程序中运行其他程序或shell</h4>
+
+<p>可以这样写</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">subprocess.Popen(&#39;脚本/shell&#39;, shell=True)
+</code></pre></div>
+<p>也可以这样</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">subprocess.call(&#39;脚本/shell&#39;, shell=True)
+</code></pre></div>
+<p>两者的区别是前者无阻塞,会和主程序并行运行,后者必须等待命令执行完毕,如果想要前者编程阻塞可以这样</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">s = subprocess.Popen(&#39;脚本/shell&#39;, shell=True)
+s.wait()
+</code></pre></div>
+<h4>程序返回运行结果</h4>
+
+<p>有时候我们需要程序的返回结果,可以这样做</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&gt;&gt;&gt; s = subprocess.Popen(&#39;ls -l&#39;, shell=True, stdout=subprocess.PIPE) 
+&gt;&gt;&gt; s.communicate() 
+(&#39;\xe6\x80\xbb\xe7\x94\xa8\xe9\x87\x8f 152\n-rw------- 1 limbo limbo   808  7\xe6\x9c\x88  6 17:46 0000-00-00-welcome-to-jekyll.markdown.erb\ndrwx------ 2 limbo limbo  4096  8\xe6\x9c\x88 15 18:43 arg\ndrwx------ 2 limbo limbo  4096  8\xe6\x9c\x88  7 17:37 argv\ndrwxrwxr-x 2 limbo limbo  4096  9\xe6\x9c\x88 10 15:27 c\ndrwxrwxr-x 3 limbo limbo  4096  9\xe6\x9c\x88 11 14:35 d3\ndrwxrwxr-x 3 limbo limbo  4096  9\xe6\x9n&#39;, None)
+</code></pre></div>
+<p>它会返回一个元组：(stdoutdata, stderrdata)</p>
+
+<p>subprocess还有另一种更简单方法,效果一样,它会返回stdout</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&gt;&gt;&gt; s = subprocess.check_output(&#39;ls -l&#39;, shell=True)
+&gt;&gt;&gt; s
+&#39;\xe6\x80\xbb\xe7\x94\xa8\xe9\x87\x8f 152\n-rw------- 1 limbo limbo   808  7\xe6\x9c\x88  6 17:46 0000-00-00-welcome-to-jekyll.markdown.erb\ndrwx------ 2 limbo limbo  4096  8\xe6\x9c\x88 15 18:43 arg\ndrwx------ 2 limbo limbo  4096  8\xe6\x9c\x88  7 17:37 argv\ndrwxrwxr-x 2 limbo limbo  4096  9\xe6\x9c\x88 10 15:27 c\ndrwxrwxr-x 3 limbo limbo  4096  9\xe6\x9c\x88 11 14:35 d3\ndrwxrwxr-x 3 limbo limbo  4096  9\xe6\x9n&#39;
+</code></pre></div>
+<p>前者可以实现更多的交互,如stderr和stdin,但是在前面调用Popen的时候要实现定义<code>Popen(stdin=subprocess.PIPE, stderr=subprocess)</code></p>
+
+<h4>给子进程输入</h4>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="n">child</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="s">&quot;cat&quot;</span><span class="p">],</span> <span class="n">stdin</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span>
+<span class="n">child</span><span class="o">.</span><span class="n">communicate</span><span class="p">(</span><span class="s">&quot;vamei&quot;</span><span class="p">)</span> 
+</code></pre></div>
+<p>()不为空，则写入subprocess.PIPE，为空，则从subprocess.PIPE读取</p>
+
+<h4>subprocess.PIPE</h4>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/bin/env python</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="n">child1</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="s">&quot;ls&quot;</span><span class="p">,</span><span class="s">&quot;-l&quot;</span><span class="p">],</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span>
+<span class="n">child2</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="s">&quot;wc&quot;</span><span class="p">],</span> <span class="n">stdin</span><span class="o">=</span><span class="n">child1</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span><span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">child2</span><span class="o">.</span><span class="n">communicate</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">out</span>
+</code></pre></div>
+<p>实际上是这样的过程</p>
+
+<p>child1.stdout--&gt;subprocess.PIPE</p>
+
+<p>child2.stdin&lt;--subprocess.PIPE</p>
+
+<p>child2.stdout--&gt;subprocess.PIPE</p>
+
+<p>要注意的是，communicate()是Popen对象的一个方法，该方法会阻塞父进程，直到子进程完成。</p>
+
+<blockquote>
+<p>subprocess.PIPE实际上为文本流提供一个缓存区。直到communicate()方法从PIPE中读取出PIPE中的文本.要注意的是，communicate()是Popen对象的一个方法，该方法会阻塞父进程，直到子进程完成。</p>
+</blockquote>
+
+<h3>参考资料</h3>
+
+<ol>
+<li><a href="http://blog.csdn.net/jgood/article/details/4498166">http://blog.csdn.net/jgood/article/details/4498166</a></li>
+<li><a href="http://www.cnblogs.com/GODYCA/archive/2013/05/08/3066870.html">http://www.cnblogs.com/GODYCA/archive/2013/05/08/3066870.html</a></li>
+<li><a href="http://blog.csdn.net/imzoer/article/details/8678029">http://blog.csdn.net/imzoer/article/details/8678029</a></li>
+<li><a href="http://ipseek.blog.51cto.com/1041109/807513">http://ipseek.blog.51cto.com/1041109/807513</a></li>
+<li><a href="http://www.jb51.net/article/48086.htm">http://www.jb51.net/article/48086.htm</a></li>
+</ol>
+
+    </article>
+    <!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/2014/10/09/subprocess"  data-title="Python subprocess模块总结 - Hackerxu's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
+</div>
+
+    </div>
+</div>
+<footer class="site-footer">
+
+    <div class="wrap">
+        <div class="footer-col-1 column">
+            <div class="github">
+                <!-- <span class="icon github"> -->
+                <svg version="1.1" class="github-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                    <path fill-rule="evenodd" clip-rule="evenodd" fill="#000" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761
+                    c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32
+                    c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472
+                    c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037
+                    C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65
+                    c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261
+                    c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082
+                    c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129
+                    c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+                <!-- </span> -->
+            </div>
+            <a href="https://github.com/taizilongxu">
+                Fork me on github
+            </a>
+        </div>
+        <div class="footer-col-2">
+            <p>© 2014 - 2014 by <a href="http://github.com/taizilongxu">Hackerxu</a></p>
+        </div>
+        <!-- <div class="footer-col-3 column">
+      <p class="text">Python,HTML,CSS,Machine Leaning</p>
+    </div> -->
+    </div>
+    <div class="scroll-top"><i class="fa fa-arrow-circle-up"></i></div>
+</footer>
+
+
+<!-- mathjax -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript"
+src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- highlight -->
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- duoshuo -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"taizilongxu"};
+(function() {
+ var ds = document.createElement('script');
+ ds.type = 'text/javascript';ds.async = true;
+ ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+ ds.charset = 'UTF-8';
+ (document.getElementsByTagName('head')[0]
+  || document.getElementsByTagName('body')[0]).appendChild(ds);
+ })();
+</script>
+<!-- top-scrooll -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.js"></script>
+<script type="text/javascript">
+
+$(window).scroll(function() {
+
+        if($(this).scrollTop() > 100) {
+        $('.scroll-top').fadeIn(200);
+        } else {
+        $('.scroll-top').fadeOut(200);
+        }
+        });
+
+$('.scroll-top').bind('click', function(e) {
+        e.preventDefault();
+        $('body,html').animate({scrollTop:0},200);
+        });
+</script>
+</body>
+</html>

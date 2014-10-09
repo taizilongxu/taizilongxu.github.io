@@ -5,11 +5,141 @@
     <subtitle>Python,HTML,CSS,Machine Leaning</subtitle>
     <link href="http://hackerxu.com/atom.xml" rel="self"/>
     <link href="http://hackerxu.com"/>
-    <updated>2014-10-08T19:25:39+08:00</updated>
+    <updated>2014-10-09T19:48:34+08:00</updated>
     <id>http://hackerxu.com</id>
     <author>
         <name>xuxiao</name>
     </author>
+    
+    <entry>
+        <title>Python subprocess模块总结</title>
+        <link href="http://hackerxu.com/2014/10/09/subprocess.html"/>
+        <updated>2014-10-09T00:00:00+08:00</updated>
+        <id>http://hackerxu.com/2014/10/09/subprocess</id>
+        <content type="html">&lt;blockquote&gt;
+&lt;p&gt;subprocess意在替代其他几个老的模块或者函数，比如：os.system os.spawn* os.popen* popen2.* commands.*&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;subprocess最简单的用法就是调用shell命令了,另外也可以调用程序,并且可以通过stdout,stdin和stderr进行交互&lt;/p&gt;
+
+&lt;h4&gt;subprocess的主类&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;subprocess&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Popen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+      &lt;span class=&quot;n&quot;&gt;bufsize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+      &lt;span class=&quot;n&quot;&gt;executable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;stdin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;stdout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+      &lt;span class=&quot;n&quot;&gt;stderr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+      &lt;span class=&quot;n&quot;&gt;preexec_fn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+      &lt;span class=&quot;n&quot;&gt;close_fds&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+      &lt;span class=&quot;n&quot;&gt;shell&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+      &lt;span class=&quot;n&quot;&gt;cwd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+      &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+      &lt;span class=&quot;n&quot;&gt;universal_newlines&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+      &lt;span class=&quot;n&quot;&gt;startupinfo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+      &lt;span class=&quot;n&quot;&gt;creationflags&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;args可以是字符串或者序列类型（如：list，元组），用于指定进程的可执行文件及其参数。如果是序列类型，第一个元素通常是可执行文件的路径。我们也可以显式的使用executeable参数来指定可执行文件的路径。&lt;/li&gt;
+&lt;li&gt;bufsize：指定缓冲。0 无缓冲,1 行缓冲,其他 缓冲区大小,负值 系统缓冲(全缓冲)&lt;/li&gt;
+&lt;li&gt;stdin, stdout, stderr分别表示程序的标准输入、输出、错误句柄。他们可以是PIPE，文件描述符或文件对象，也可以设置为None，表示从父进程继承。&lt;/li&gt;
+&lt;li&gt;preexec_fn只在Unix平台下有效，用于指定一个可执行对象（callable object），它将在子进程运行之前被调用。&lt;/li&gt;
+&lt;li&gt;Close_sfs：在windows平台下，如果close_fds被设置为True，则新创建的子进程将不会继承父进程的输入、输出、错误管道。我们不能将close_fds设置为True同时重定向子进程的标准输入、输出与错误(stdin, stdout, stderr)。&lt;/li&gt;
+&lt;li&gt;shell设为true，程序将通过shell来执行。&lt;/li&gt;
+&lt;li&gt;cwd用于设置子进程的当前目录&lt;/li&gt;
+&lt;li&gt;env是字典类型，用于指定子进程的环境变量。如果env = None，子进程的环境变量将从父进程中继承。&lt;/li&gt;
+&lt;li&gt;Universal_newlines:不同操作系统下，文本的换行符是不一样的。如：windows下用&amp;#39;/r/n&amp;#39;表示换，而Linux下用&amp;#39;/n&amp;#39;。如果将此参数设置为True，Python统一把这些换行符当作&amp;#39;/n&amp;#39;来处理。startupinfo与createionflags只在windows下用效，它们将被传递给底层的CreateProcess()函数，用于设置子进程的一些属性，如：主窗口的外观，进程的优先级等等。 &lt;/li&gt;
+&lt;li&gt;startupinfo与createionflags只在windows下有效，它们将被传递给底层的CreateProcess()函数，用于设置子进程的一些属性，如：主窗口的外观，进程的优先级等等。 &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Popen方法&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Popen.poll()：用于检查子进程是否已经结束。设置并返回returncode属性。&lt;/li&gt;
+&lt;li&gt;Popen.wait()：等待子进程结束。设置并返回returncode属性。&lt;/li&gt;
+&lt;li&gt;Popen.communicate(input=None)：与子进程进行交互。向stdin发送数据，或从stdout和stderr中读取数据。可选参数input指定发送到子进程的参数。Communicate()返回一个元组：(stdoutdata, stderrdata)。注意：如果希望通过进程的stdin向其发送数据，在创建Popen对象的时候，参数stdin必须被设置为PIPE。同样，如果希望从stdout和stderr获取数据，必须将stdout和stderr设置为PIPE。&lt;/li&gt;
+&lt;li&gt;Popen.send_signal(signal)：向子进程发送信号。&lt;/li&gt;
+&lt;li&gt;Popen.terminate()：停止(stop)子进程。在windows平台下，该方法将调用Windows API TerminateProcess（）来结束子进程。&lt;/li&gt;
+&lt;li&gt;Popen.kill()：杀死子进程。&lt;/li&gt;
+&lt;li&gt;Popen.stdin：如果在创建Popen对象是，参数stdin被设置为PIPE，Popen.stdin将返回一个文件对象用于策子进程发送指令。否则返回None。&lt;/li&gt;
+&lt;li&gt;Popen.stdout：如果在创建Popen对象是，参数stdout被设置为PIPE，Popen.stdout将返回一个文件对象用于策子进程发送指令。否则返回None。&lt;/li&gt;
+&lt;li&gt;Popen.stderr：如果在创建Popen对象是，参数stdout被设置为PIPE，Popen.stdout将返回一个文件对象用于策子进程发送指令。否则返回None。&lt;/li&gt;
+&lt;li&gt;Popen.pid：获取子进程的进程ID。&lt;/li&gt;
+&lt;li&gt;Popen.returncode：获取进程的返回值。如果进程还没有结束，返回None。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;subprocess.call(*popenargs, **kwargs)&lt;/code&gt;：运行命令。该函数将一直等待到子进程运行结束，并返回进程的returncode。文章一开始的例子就演示了call函数。如果子进程不需要进行交互,就可以使用该函数来创建。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;subprocess.check_call(*popenargs, **kwargs)&lt;/code&gt;：与&lt;code&gt;subprocess.call(*popenargs, **kwargs)&lt;/code&gt;功能一样，只是如果子进程返回的returncode不为0的话，将触发CalledProcessError异常。在异常对象中，包括进程的returncode信息。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;以上全是抄的&lt;/p&gt;
+
+&lt;h4&gt;在程序中运行其他程序或shell&lt;/h4&gt;
+
+&lt;p&gt;可以这样写&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;subprocess.Popen(&amp;#39;脚本/shell&amp;#39;, shell=True)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;也可以这样&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;subprocess.call(&amp;#39;脚本/shell&amp;#39;, shell=True)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;两者的区别是前者无阻塞,会和主程序并行运行,后者必须等待命令执行完毕,如果想要前者编程阻塞可以这样&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;s = subprocess.Popen(&amp;#39;脚本/shell&amp;#39;, shell=True)
+s.wait()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;程序返回运行结果&lt;/h4&gt;
+
+&lt;p&gt;有时候我们需要程序的返回结果,可以这样做&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&amp;gt;&amp;gt;&amp;gt; s = subprocess.Popen(&amp;#39;ls -l&amp;#39;, shell=True, stdout=subprocess.PIPE) 
+&amp;gt;&amp;gt;&amp;gt; s.communicate() 
+(&amp;#39;\xe6\x80\xbb\xe7\x94\xa8\xe9\x87\x8f 152\n-rw------- 1 limbo limbo   808  7\xe6\x9c\x88  6 17:46 0000-00-00-welcome-to-jekyll.markdown.erb\ndrwx------ 2 limbo limbo  4096  8\xe6\x9c\x88 15 18:43 arg\ndrwx------ 2 limbo limbo  4096  8\xe6\x9c\x88  7 17:37 argv\ndrwxrwxr-x 2 limbo limbo  4096  9\xe6\x9c\x88 10 15:27 c\ndrwxrwxr-x 3 limbo limbo  4096  9\xe6\x9c\x88 11 14:35 d3\ndrwxrwxr-x 3 limbo limbo  4096  9\xe6\x9n&amp;#39;, None)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;它会返回一个元组：(stdoutdata, stderrdata)&lt;/p&gt;
+
+&lt;p&gt;subprocess还有另一种更简单方法,效果一样,它会返回stdout&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&amp;gt;&amp;gt;&amp;gt; s = subprocess.check_output(&amp;#39;ls -l&amp;#39;, shell=True)
+&amp;gt;&amp;gt;&amp;gt; s
+&amp;#39;\xe6\x80\xbb\xe7\x94\xa8\xe9\x87\x8f 152\n-rw------- 1 limbo limbo   808  7\xe6\x9c\x88  6 17:46 0000-00-00-welcome-to-jekyll.markdown.erb\ndrwx------ 2 limbo limbo  4096  8\xe6\x9c\x88 15 18:43 arg\ndrwx------ 2 limbo limbo  4096  8\xe6\x9c\x88  7 17:37 argv\ndrwxrwxr-x 2 limbo limbo  4096  9\xe6\x9c\x88 10 15:27 c\ndrwxrwxr-x 3 limbo limbo  4096  9\xe6\x9c\x88 11 14:35 d3\ndrwxrwxr-x 3 limbo limbo  4096  9\xe6\x9n&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;前者可以实现更多的交互,如stderr和stdin,但是在前面调用Popen的时候要实现定义&lt;code&gt;Popen(stdin=subprocess.PIPE, stderr=subprocess)&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4&gt;给子进程输入&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;subprocess&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;child&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subprocess&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Popen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;cat&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stdin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;subprocess&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PIPE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;child&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;communicate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;vamei&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;()不为空，则写入subprocess.PIPE，为空，则从subprocess.PIPE读取&lt;/p&gt;
+
+&lt;h4&gt;subprocess.PIPE&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/env python&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;subprocess&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;child1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subprocess&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Popen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;ls&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;-l&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stdout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;subprocess&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PIPE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;child2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subprocess&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Popen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;wc&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stdin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;child1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stdout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stdout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;subprocess&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PIPE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;child2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;communicate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;实际上是这样的过程&lt;/p&gt;
+
+&lt;p&gt;child1.stdout--&amp;gt;subprocess.PIPE&lt;/p&gt;
+
+&lt;p&gt;child2.stdin&amp;lt;--subprocess.PIPE&lt;/p&gt;
+
+&lt;p&gt;child2.stdout--&amp;gt;subprocess.PIPE&lt;/p&gt;
+
+&lt;p&gt;要注意的是，communicate()是Popen对象的一个方法，该方法会阻塞父进程，直到子进程完成。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;subprocess.PIPE实际上为文本流提供一个缓存区。直到communicate()方法从PIPE中读取出PIPE中的文本.要注意的是，communicate()是Popen对象的一个方法，该方法会阻塞父进程，直到子进程完成。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt;参考资料&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.csdn.net/jgood/article/details/4498166&quot;&gt;http://blog.csdn.net/jgood/article/details/4498166&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/GODYCA/archive/2013/05/08/3066870.html&quot;&gt;http://www.cnblogs.com/GODYCA/archive/2013/05/08/3066870.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.csdn.net/imzoer/article/details/8678029&quot;&gt;http://blog.csdn.net/imzoer/article/details/8678029&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://ipseek.blog.51cto.com/1041109/807513&quot;&gt;http://ipseek.blog.51cto.com/1041109/807513&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.jb51.net/article/48086.htm&quot;&gt;http://www.jb51.net/article/48086.htm&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    </entry>
     
     <entry>
         <title>把程序打包上传到PyPi版本库中</title>
@@ -836,153 +966,6 @@ password:
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;至此整个爬虫完毕,剩下就是运行了,正在等待结果&lt;/p&gt;
-</content>
-    </entry>
-    
-    <entry>
-        <title>Shell脚本语言笔记(4)</title>
-        <link href="http://hackerxu.com/2014/09/06/shell-4.html"/>
-        <updated>2014-09-06T00:00:00+08:00</updated>
-        <id>http://hackerxu.com/2014/09/06/shell-4</id>
-        <content type="html">&lt;p&gt;Shell函数&lt;/p&gt;
-
-&lt;h2&gt;Shell函数返回值、删除函数、在终端调用函数&lt;/h2&gt;
-
-&lt;p&gt;函数可以让我们将一个复杂功能划分成若干模块，让程序结构更加清晰，代码重复利用率更高。像其他编程语言一样，Shell 也支持函数。Shell 函数必须先定义后使用。&lt;/p&gt;
-
-&lt;p&gt;Shell 函数的定义格式如下：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;function_name () {
-    list of commands
-    [ return value ]
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;如果你愿意，也可以在函数名前加上关键字 function：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;function function_name () {
-    list of commands
-    [ return value ]
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;函数返回值，可以显式增加return语句；如果不加，会将最后一条命令运行结果作为返回值。&lt;/p&gt;
-
-&lt;p&gt;Shell 函数返回值只能是整数，一般用来表示函数执行成功与否，0表示成功，其他值表示失败。如果 return 其他数据，比如一个字符串，往往会得到错误提示：“numeric argument required”。&lt;/p&gt;
-
-&lt;p&gt;如果一定要让函数返回字符串，那么可以先定义一个变量，用来接收函数的计算结果，脚本在需要的时候访问这个变量来获得函数返回值。&lt;/p&gt;
-
-&lt;p&gt;先来看一个例子：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/bash
-# Define your function here
-Hello () {
-   echo &amp;quot;Hello World&amp;quot;
-}
-# Invoke your function
-Hello
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;运行结果：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$./test.sh
-Hello World
-$
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;调用函数只需要给出函数名，不需要加括号。&lt;/p&gt;
-
-&lt;p&gt;再来看一个带有return语句的函数：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/bash
-funWithReturn(){
-    echo &amp;quot;The function is to get the sum of two numbers...&amp;quot;
-    echo -n &amp;quot;Input first number: &amp;quot;
-    read aNum
-    echo -n &amp;quot;Input another number: &amp;quot;
-    read anotherNum
-    echo &amp;quot;The two numbers are $aNum and $anotherNum !&amp;quot;
-    return $(($aNum+$anotherNum))
-}
-funWithReturn
-# Capture value returnd by last command
-ret=$?
-echo &amp;quot;The sum of two numbers is $ret !&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;运行结果：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;The function is to get the sum of two numbers...
-Input first number: 25
-Input another number: 50
-The two numbers are 25 and 50 !
-The sum of two numbers is 75 !
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;函数返回值在调用该函数后通过 $? 来获得。&lt;/p&gt;
-
-&lt;p&gt;再来看一个函数嵌套的例子：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/bash
-# Calling one function from another
-number_one () {
-   echo &amp;quot;Url_1 is http://see.xidian.edu.cn/cpp/shell/&amp;quot;
-   number_two
-}
-number_two () {
-   echo &amp;quot;Url_2 is http://see.xidian.edu.cn/cpp/u/xitong/&amp;quot;
-}
-number_one
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;运行结果：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;Url_1 is http://see.xidian.edu.cn/cpp/shell/
-Url_2 is http://see.xidian.edu.cn/cpp/u/xitong/
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;像删除变量一样，删除函数也可以使用 unset 命令，不过要加上 .f 选项，如下所示：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$unset .f function_name
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;如果你希望直接从终端调用函数，可以将函数定义在主目录下的 .profile 文件，这样每次登录后，在命令提示符后面输入函数名字就可以立即调用。&lt;/p&gt;
-
-&lt;h2&gt;Shell函数参数&lt;/h2&gt;
-
-&lt;p&gt;在Shell中，调用函数时可以向其传递参数。在函数体内部，通过 $n 的形式来获取参数的值，例如，$1表示第一个参数，$2表示第二个参数...&lt;/p&gt;
-
-&lt;p&gt;带参数的函数示例：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/bash
-funWithParam(){
-    echo &amp;quot;The value of the first parameter is $1 !&amp;quot;
-    echo &amp;quot;The value of the second parameter is $2 !&amp;quot;
-    echo &amp;quot;The value of the tenth parameter is $10 !&amp;quot;
-    echo &amp;quot;The value of the tenth parameter is ${10} !&amp;quot;
-    echo &amp;quot;The value of the eleventh parameter is ${11} !&amp;quot;
-    echo &amp;quot;The amount of the parameters is $# !&amp;quot;  # 参数个数
-    echo &amp;quot;The string of the parameters is $* !&amp;quot;  # 传递给函数的所有参数
-}
-funWithParam 1 2 3 4 5 6 7 8 9 34 73
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;运行脚本：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;The value of the first parameter is 1 !
-The value of the second parameter is 2 !
-The value of the tenth parameter is 10 !
-The value of the tenth parameter is 34 !
-The value of the eleventh parameter is 73 !
-The amount of the parameters is 12 !
-The string of the parameters is 1 2 3 4 5 6 7 8 9 34 73 !&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;注意，$10 不能获取第十个参数，获取第十个参数需要${10}。当n&amp;gt;=10时，需要使用${n}来获取参数。&lt;/p&gt;
-
-&lt;p&gt;另外，还有几个特殊变量用来处理参数，前面已经提到：&lt;/p&gt;
-
-&lt;table&gt;&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&quot;text-align: left&quot;&gt;特殊变量&lt;/th&gt;
-&lt;th style=&quot;text-align: left&quot;&gt;说明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;$#&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;传递给函数的参数个数。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;$*&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;显示所有传递给函数的参数。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;$@&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;与$*相同，但是略有区别，请查看Shell特殊变量。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;$?&lt;/td&gt;
-&lt;td style=&quot;text-align: left&quot;&gt;函数的返回值。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
 </content>
     </entry>
     
