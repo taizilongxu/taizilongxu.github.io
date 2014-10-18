@@ -75,9 +75,9 @@
         <p class="meta"><i class="fa fa-calendar"></i> 2014-09-16&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#datamining">datamining</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#datamining">datamining</a></p>
     </header>
     <article class="post-content">
-        <h2>Data Preprocessing(数据预处理)</h2>
+        <h2>Chanpter 2 Data Preprocessing(数据预处理)</h2>
 
-<p>定期更新中~</p>
+<p>定期更新中~October 11 2014 10:36 AM</p>
 
 <h3>1 Why preprocess the data?(数据预处理的必要性）</h3>
 
@@ -229,17 +229,34 @@
 <li><strong>Attribute construction属性构造或特征构造</strong>: 可以利用已知的属性构造新的属性并添加到属性集中，以帮助挖掘过程。(由长，宽求面积)</li>
 </ol>
 
-<h3>7 Data Reduction(数据规约)</h3>
+<h3>7 Data Reduction(数据归约)</h3>
 
-<p>主要以下步骤:</p>
+<p>主要以下方法:</p>
 
 <ol>
-<li>数据立方合计</li>
-<li>维数削减</li>
-<li>数据压缩</li>
-<li>数据块消减</li>
-<li>离散化与概念层次生成</li>
+<li>Data cube aggregation(数据方聚集):聚集操作用于数据方中的数据。主要用来构建数据立方.
+<img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-10-11%2010:28:48%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></li>
+<li>Atrribute subset selection(维归约):可以检测并删除不相关、弱相关或冗余的属性或维。(去除多余的属性值)</li>
+<li>Dimensionality reduction(数据压缩):使用编码机制压缩数据集。
+
+<ul>
+<li>discrete wavelet transform小波变换DWT</li>
+<li>principal components analysis 主要成分分析</li>
+</ul></li>
+<li>Numerosity reduction(数值压缩):用替代的、较小的数据表示替换或估计数据,如参数模型(只需要存放模型参数,而不是实际数据)或非参数方法,如<strong>聚类</strong>、<strong>选样</strong>和使用<strong>直方图</strong>。</li>
+<li>Discretization and concept hierarchy generation(离散化和概念分层产生):属性的原始值用区间值或较高层的概念替换。概念分层允许挖掘多个抽象层上的数据,是数据挖掘的一种强有力的工具。
+五种数值概念分层产生方法:
+
+<ul>
+<li>分箱</li>
+<li>直方图分析</li>
+<li>聚类分析</li>
+<li>基于熵的离散化</li>
+<li>通过“自然划分”的数据分段 :  <strong>3-4-5 规则</strong></li>
+</ul></li>
 </ol>
+
+<h2>Chapter 3 Data warehouse and OLAP technology:an overview(数据仓库和数据挖掘的 OLAP 技术)</h2>
 
     </article>
     <!-- Duoshuo Comment BEGIN -->
