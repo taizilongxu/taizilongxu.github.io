@@ -5,7 +5,7 @@
     <subtitle>Python,HTML,CSS,Machine Leaning</subtitle>
     <link href="http://hackerxu.com/atom.xml" rel="self"/>
     <link href="http://hackerxu.com"/>
-    <updated>2014-10-31T11:33:07+08:00</updated>
+    <updated>2014-10-31T11:34:59+08:00</updated>
     <id>http://hackerxu.com</id>
     <author>
         <name>xuxiao</name>
@@ -297,69 +297,113 @@ password:
         <link href="http://hackerxu.com/2014/10/07/doubanfm.html"/>
         <updated>2014-10-07T00:00:00+08:00</updated>
         <id>http://hackerxu.com/2014/10/07/doubanfm</id>
-        <content type="html">&lt;p&gt;项目地址 &lt;a href=&quot;https://github.com/taizilongxu/douban.fm&quot;&gt;https://github.com/taizilongxu/douban.fm&lt;/a&gt;&lt;/p&gt;
+        <content type="html">&lt;h2&gt;douban.fm &lt;a href=&quot;https://pypi.python.org/pypi/douban.fm&quot;&gt;&lt;img src=&quot;https://pypip.in/version/douban.fm/badge.svg&quot; alt=&quot;version&quot;&gt;&lt;/a&gt; &lt;a href=&quot;https://pypi.python.org/pypi/douban.fm&quot;&gt;&lt;img src=&quot;https://pypip.in/download/douban.fm/badge.png&quot; alt=&quot;Downloads&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h2&gt;douban.fm  &lt;a href=&quot;http://badge.fury.io/py/douban.fm&quot;&gt;&lt;img src=&quot;https://badge.fury.io/py/douban.fm.svg&quot; alt=&quot;PyPI version&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;这个版本的命令行界面是参考了 Node.js版本的&lt;a href=&quot;https://github.com/turingou/douban.fm&quot;&gt;douban.fm&lt;/a&gt;制作的,向原作者致敬.终端界面设计的非常好看.&lt;/p&gt;
 
-&lt;p&gt;ubuntu通过测试,其他平台暂时未做测试.&lt;/p&gt;
+&lt;p&gt;感谢&lt;a href=&quot;https://github.com/cloverstd&quot;&gt;Cloverstd&lt;/a&gt;的修改,已经支持Mac OS X(&amp;gt;=V0.2.9)&lt;/p&gt;
 
-&lt;p&gt;这个版本的命令行界面是参考了 Node.js版本的&lt;a href=&quot;https://github.com/turingou/douban.fm&quot;&gt;douban.fm&lt;/a&gt;制作的.&lt;/p&gt;
+&lt;p&gt;PS:如果喜欢请加Star(&lt;em&gt;^__^&lt;/em&gt;)……&lt;/p&gt;
 
-&lt;p&gt;Python版本&lt;/p&gt;
+&lt;h3&gt;Screenshots&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/douban.fm/master/img/2.png&quot; alt=&quot;screenshot&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/douban.fm/master/img/out.gif&quot; alt=&quot;screenshot&quot;&gt;&lt;/p&gt;
 
-&lt;h3&gt;为什么Python版本&lt;/h3&gt;
+&lt;h3&gt;Support&lt;/h3&gt;
+
+&lt;p&gt;Linux/Mac OS X&lt;/p&gt;
+
+&lt;h3&gt;Do something cool!&lt;/h3&gt;
 
 &lt;p&gt;其实Node.js版本已经很好了,功能齐全,但是我发现在我的zsh + tmux环境下颜色竟然显示不出来,感觉很蛋疼.&lt;/p&gt;
 
-&lt;h3&gt;安装&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo pip install douban.fm
+&lt;h3&gt;Installation&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ sudo pip install douban.fm
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;需要mplayer播放器依赖,如未安装:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo apt-get install mplayer
+
+&lt;p&gt;Ubuntu:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ sudo apt-get install mplayer
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;使用&lt;/h3&gt;
+&lt;p&gt;OS X:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ brew install mplayer
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Usage&lt;/h3&gt;
 
-&lt;p&gt;在终端下直接输入douban.fm&lt;/p&gt;
+&lt;p&gt;在终端下直接输入&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ douban.fm
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Login&lt;/h3&gt;
 
-&lt;h3&gt;登陆&lt;/h3&gt;
+&lt;p&gt;第一次登陆需要输入账号,密码,程序不会保留密码,而是保存返回的token存储在~/.douban_token.txt,下次登陆无需输入密码.&lt;/p&gt;
 
-&lt;p&gt;第一次登陆需要输入账号,密码,程序不会保留密码,而是保存返回的token存储在.douban_token.txt,下次登陆无需输入密码.&lt;/p&gt;
-
-&lt;h3&gt;按键&lt;/h3&gt;
+&lt;h3&gt;Keys&lt;/h3&gt;
 
 &lt;p&gt;支持vim按键&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;移动
+ [j]     --&amp;gt; 下
+ [k]     --&amp;gt; 上
+ [g]     --&amp;gt; 移到最顶
+ [G]     --&amp;gt; 移到最底
+音乐
+ [space] --&amp;gt; 播放
+ [w]     --&amp;gt; 打开歌曲主页
+ [n]     --&amp;gt; 下一首
+ [r]     --&amp;gt; 喜欢/取消喜欢
+ [b]     --&amp;gt; 不再播放
+ [q]     --&amp;gt; 退出
+ [p]     --&amp;gt; 暂停
+ [l]     --&amp;gt; 单曲循环
+音量(&amp;gt;=V0.2.9)
+ [=]     --&amp;gt; 增
+ [-]     --&amp;gt; 减
+ [m]     --&amp;gt; 静音
+歌词(&amp;gt;=v0.2.9)
+ [o]     --&amp;gt; 显示歌词(Bug很多,先别用,没有反应就是没找到歌词)
+ [q]     --&amp;gt; 退出歌词
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Configuration(&amp;gt;=v0.2.8)&lt;/h3&gt;
 
-&lt;ul&gt;
-&lt;li&gt;j 下&lt;/li&gt;
-&lt;li&gt;k 上&lt;/li&gt;
-&lt;li&gt;g 移到最顶&lt;/li&gt;
-&lt;li&gt;G 移到最底&lt;/li&gt;
-&lt;li&gt;n 下一首&lt;/li&gt;
-&lt;li&gt;r 喜欢/取消喜欢&lt;/li&gt;
-&lt;li&gt;b 不再播放&lt;/li&gt;
-&lt;li&gt;space 播放&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3&gt;已完成功能&lt;/h3&gt;
+&lt;p&gt;.doubanfm_config保存在了~/.doubanfm_config,根据需要可以修改按键的映射&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;[key]
+UP = k       # 上
+DOWN = j     # 下
+TOP = g      # 顶
+BOTTOM = G   # 底
+OPENURL = w  # 打开歌曲主页
+RATE = r     # 标记喜欢/取消喜欢
+NEXT = n     # 下一首
+BYE = b      # 不再播放
+QUIT = q     # 退出
+PAUSE = p    # 暂停
+LOOP = l     # 单曲循环
+MUTE = m     # 静音
+LRC = o      # 歌词
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Done&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;登陆token&lt;/li&gt;
-&lt;li&gt;显示PRO 暂时只支持最高128kbps&lt;/li&gt;
+&lt;li&gt;显示PRO&lt;/li&gt;
 &lt;li&gt;cli设计&lt;/li&gt;
 &lt;li&gt;播放,下一首,红心,不再播放&lt;/li&gt;
-&lt;li&gt;进度条&lt;/li&gt;
+&lt;li&gt;进度条(时间)&lt;/li&gt;
+&lt;li&gt;终端高度的自动调整&lt;/li&gt;
+&lt;li&gt;pro用户歌曲kbps的选择(pro用户会自动选择192kbps)&lt;/li&gt;
+&lt;li&gt;歌曲结束request(发送歌曲完成)&lt;/li&gt;
+&lt;li&gt;config设置&lt;/li&gt;
+&lt;li&gt;调节音量(amixer) + 标题中显示音量&lt;/li&gt;
+&lt;li&gt;歌词&lt;/li&gt;
+&lt;li&gt;歌曲暂停&lt;/li&gt;
+&lt;li&gt;单曲播放&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3&gt;TODO&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;歌曲暂停&lt;/li&gt;
-&lt;li&gt;歌曲结束request(记录歌曲播放数)&lt;/li&gt;
+&lt;li&gt;默认频道&lt;/li&gt;
 &lt;li&gt;播放歌曲数 红心数 不再播放数&lt;/li&gt;
-&lt;li&gt;歌词&lt;/li&gt;
-&lt;li&gt;终端高度的自动调整&lt;/li&gt;
+&lt;li&gt;异常处理&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3&gt;BUG&lt;/h3&gt;
@@ -367,14 +411,45 @@ password:
 &lt;ul&gt;
 &lt;li&gt;&lt;del&gt;播放歌曲中有时候会暂停&lt;/del&gt;&lt;/li&gt;
 &lt;li&gt;&lt;del&gt;退出后终端光标会隐藏&lt;/del&gt;&lt;/li&gt;
+&lt;li&gt;&lt;del&gt;.douban_token.txt路径问题&lt;/del&gt;&lt;/li&gt;
+&lt;li&gt;&lt;del&gt;登陆异常处理&lt;/del&gt;&lt;/li&gt;
+&lt;li&gt;&lt;del&gt;静音后播放下一首会取消静音&lt;/del&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3&gt;参考资料&lt;/h3&gt;
+&lt;h3&gt;Authors&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/Fansion&quot;&gt;Fansion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/cloverstd&quot;&gt;Cloverstd&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Reference&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Node.js版本的&lt;a href=&quot;https://github.com/turingou/douban.fm&quot;&gt;douban.fm&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/skyline75489/pyfm&quot;&gt;豆瓣FM命令行播放器(pyfm)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/zonyitoo/doubanfm-qt/wiki/%E8%B1%86%E7%93%A3FM-API&quot;&gt;豆瓣电台 API&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h3&gt;Log&lt;/h3&gt;
+
+&lt;p&gt;V0.2.11 config兼容问题&lt;/p&gt;
+
+&lt;p&gt;V0.2.10 滚动歌词,单曲循环,暂停,静音&lt;/p&gt;
+
+&lt;p&gt;V0.2.9 支持歌词,支持Mac OS X&lt;/p&gt;
+
+&lt;p&gt;V0.2.8 增加config&lt;/p&gt;
+
+&lt;h3&gt;License (MIT)&lt;/h3&gt;
+
+&lt;p&gt;Copyright (c) 2014 hackerxu&lt;/p&gt;
+
+&lt;p&gt;Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &amp;quot;Software&amp;quot;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:&lt;/p&gt;
+
+&lt;p&gt;The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.&lt;/p&gt;
+
+&lt;p&gt;THE SOFTWARE IS PROVIDED &amp;quot;AS IS&amp;quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.&lt;/p&gt;
 </content>
     </entry>
     
