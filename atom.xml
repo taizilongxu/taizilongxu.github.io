@@ -5,11 +5,84 @@
     <subtitle>Python,HTML,CSS,Machine Leaning</subtitle>
     <link href="http://hackerxu.com/atom.xml" rel="self"/>
     <link href="http://hackerxu.com"/>
-    <updated>2014-10-31T11:34:59+08:00</updated>
+    <updated>2014-11-14T10:21:25+08:00</updated>
     <id>http://hackerxu.com</id>
     <author>
         <name>xuxiao</name>
     </author>
+    
+    <entry>
+        <title>粒子群算法(转)</title>
+        <link href="http://hackerxu.com/2014/11/14/PSO.html"/>
+        <updated>2014-11-14T00:00:00+08:00</updated>
+        <id>http://hackerxu.com/2014/11/14/PSO</id>
+        <content type="html">&lt;p&gt;本文整理自: &lt;a href=&quot;http://blog.csdn.net/niuyongjie/article/details/1569671&quot;&gt;http://blog.csdn.net/niuyongjie/article/details/1569671&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1&gt;粒子群算法简介&lt;/h1&gt;
+
+&lt;h2&gt;1 粒子群算法的历史&lt;/h2&gt;
+
+&lt;p&gt;粒子群算法源于复杂适应系统（Complex Adaptive System,CAS）。CAS理论于1994年正式提出，CAS中的成员称为主体。比如研究鸟群系统，每个鸟在这个系统中就称为主体。主体有适应性，它能够与环境及其他的主体进行交流，并且根据交流的过程“学习”或“积累经验”改变自身结构与行为。整个系统的演变或进化包括：新层次的产生（小鸟的出生）；分化和多样性的出现（鸟群中的鸟分成许多小的群）；新的主题的出现（鸟寻找食物过程中，不断发现新的食物）。&lt;/p&gt;
+
+&lt;p&gt;所以CAS系统中的主体具有4个基本特点（这些特点是粒子群算法发展变化的依据）：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;首先，主体是主动的、活动的。&lt;/li&gt;
+&lt;li&gt;主体与环境及其他主体是相互影响、相互作用的，这种影响是系统发展变化的主要动力。&lt;/li&gt;
+&lt;li&gt;环境的影响是宏观的，主体之间的影响是微观的，宏观与微观要有机结合。&lt;/li&gt;
+&lt;li&gt;最后，整个系统可能还要受一些随机因素的影响。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;粒子群算法就是对一个CAS系统－－－鸟群社会系统的研究得出的。&lt;/p&gt;
+
+&lt;p&gt;粒子群算法（ Particle Swarm Optimization, PSO）最早是由Eberhart和Kennedy于1995年提出，它的基本概念源于对鸟群觅食行为的研究。设想这样一个场景:一群鸟在随机搜寻食物，在这个区域里只有一块食物，所有的鸟都不知道食物在哪里，但是它们知道当前的位置离食物还有多远。那么找到食物的最优策略是什么呢?最简单有效的就是搜寻目前离食物最近的鸟的周围区域。&lt;/p&gt;
+
+&lt;p&gt;PSO算法就从这种生物种群行为特性中得到启发并用于求解优化问题。在PSO中，每个优化问题的潜在解都可以想象成d维搜索空间上的一个点，我们称之为“粒子”（Particle），所有的粒子都有一个被目标函数决定的适应值(Fitness Value )，每个粒子还有一个速度决定他们飞翔的方向和距离，然后粒子们就追随当前的最优粒子在解空间中搜索。Reynolds对鸟群飞行的研究发现。鸟仅仅是追踪它有限数量的邻居但最终的整体结果是整个鸟群好像在一个中心的控制之下.即复杂的全局行为是由简单规则的相互作用引起的。&lt;/p&gt;
+
+&lt;h2&gt;2 粒子群算法的具体表述&lt;/h2&gt;
+
+&lt;p&gt;上面罗嗦了半天，那些都是科研工作者写论文的语气，不过，PSO的历史就像上面说的那样。下面通俗的解释PSO算法。&lt;/p&gt;
+
+&lt;p&gt;PSO算法就是模拟一群鸟寻找食物的过程，每个鸟就是PSO中的粒子，也就是我们需要求解问题的可能解，这些鸟在寻找食物的过程中，不停改变自己在空中飞行的位置与速度。大家也可以观察一下，鸟群在寻找食物的过程中，开始鸟群比较分散，逐渐这些鸟就会聚成一群，这个群忽高忽低、忽左忽右，直到最后找到食物。这个过程我们转化为一个数学问题。寻找函数&lt;code&gt;y=1-cos(3*x)*exp(-x)&lt;/code&gt;的在[0,4]最大值。该函数的图形如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/o_hanshutuxing.bmp&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;当x=0.9350-0.9450，达到最大值y=1.3706。为了得到该函数的最大值，我们在[0，4]之间随机的洒一些点，为了演示，我们放置两个点，并且计算这两个点的函数值，同时给这两个点设置在[0，4]之间的一个速度。下面这些点就会按照一定的公式更改自己的位置，到达新位置后，再计算这两个点的值，然后再按照一定的公式更新自己的位置。直到最后在y=1.3706这个点停止自己的更新。这个过程与粒子群算法作为对照如下：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;这两个点就是粒子群算法中的粒子。&lt;/li&gt;
+&lt;li&gt;该函数的最大值就是鸟群中的食物 &lt;/li&gt;
+&lt;li&gt;计算两个点函数值就是粒子群算法中的适应值，计算用的函数就是粒子群算法中的适应度函数。&lt;/li&gt;
+&lt;li&gt;更新自己位置的一定公式就是粒子群算法中的位置速度更新公式。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;下面演示一下这个算法运行一次的大概过程：&lt;/p&gt;
+
+&lt;p&gt;第一次初始化:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/o_yanshi1.bmp&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;第一次更新位置:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/o_yanshi2.bmp&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;第二次更新位置:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/o_yanshi3.bmp&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;第21次更新:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/o_yanshi4.bmp&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;最后的结果（30次迭代）:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/o_yanshi5.bmp&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;最后所有的点都集中在最大值的地方。&lt;/p&gt;
+
+&lt;p&gt;呵呵，现在粒子群算法的大概思想就说到这里。下节介绍标准的粒子群算法&lt;/p&gt;
+</content>
+    </entry>
     
     <entry>
         <title>草帽星系</title>
@@ -753,21 +826,6 @@ LRC = o      # 歌词
 &lt;p&gt;&lt;a href=&quot;https://atom.io/packages/fuzzy-finder&quot;&gt;fuzzy-finder&lt;/a&gt;: &lt;code&gt;ctrl+t&lt;/code&gt; 打开快速查找项目中的文件&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://atom.io/packages/git-log&quot;&gt;gitlog&lt;/a&gt;:查看git日志&lt;/p&gt;
-</content>
-    </entry>
-    
-    <entry>
-        <title>Captain,my captain!</title>
-        <link href="http://hackerxu.com/2014/09/13/luobin.html"/>
-        <updated>2014-09-13T00:00:00+08:00</updated>
-        <id>http://hackerxu.com/2014/09/13/luobin</id>
-        <content type="html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/movie/luobin2.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;我每天到你家接你，我们出去喝酒笑闹，那很棒是我一天中最棒的时刻，只有十秒，从停车到你家门口，每次我敲门，都希望你不在了，不说再见，什么都没有，你就走了，我懂得不多，但我很清楚。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/movie/luobin.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;选择和别人不一样的路走的人,虽然会感觉孤独甚至会招致歧视,但并不意味着那就是过错——相反,一个真正的英雄往往会选择一条很少人会走的路.大多数的人都在平静的绝望着.&lt;/p&gt;
 </content>
     </entry>
     
