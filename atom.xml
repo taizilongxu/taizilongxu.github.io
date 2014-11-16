@@ -5,11 +5,24 @@
     <subtitle>Python,HTML,CSS,Machine Leaning</subtitle>
     <link href="http://hackerxu.com/atom.xml" rel="self"/>
     <link href="http://hackerxu.com"/>
-    <updated>2014-11-14T11:11:28+08:00</updated>
+    <updated>2014-11-16T09:51:23+08:00</updated>
     <id>http://hackerxu.com</id>
     <author>
         <name>xuxiao</name>
     </author>
+    
+    <entry>
+        <title>TCP三次握手</title>
+        <link href="http://hackerxu.com/2014/11/16/TCP.html"/>
+        <updated>2014-11-16T00:00:00+08:00</updated>
+        <id>http://hackerxu.com/2014/11/16/TCP</id>
+        <content type="html">&lt;p&gt;上周终于面了知乎,结果跪了~一是基础还不怎么扎实,二是没有准备,原以为能在12月分面试呢,结果发完题过两天就发了面试通知,不过知乎的态度真的不错,面了一个半点,虽然大多数问的问题都能知道,但是平时都没深入了解,所以今天总结一下TCP协议.&lt;/p&gt;
+
+&lt;h2&gt;TCP图示&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/tcp-ip-handshark.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</content>
+    </entry>
     
     <entry>
         <title>粒子群算法(转)</title>
@@ -118,9 +131,12 @@ $r$是对位置更新的时候，在速度前面加的一个系数，这个系�
 
 &lt;h1&gt;标准的粒子群算法(局部版本)&lt;/h1&gt;
 
-&lt;p&gt;在全局版的标准粒子群算法中，每个粒子的速度的更新是根据两个因素来变化的，这两个因素是：
-1. 粒子自己历史最优值$p_i$。
-2. 粒子群体的全局最优值$p_g$。&lt;/p&gt;
+&lt;p&gt;在全局版的标准粒子群算法中，每个粒子的速度的更新是根据两个因素来变化的，这两个因素是：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;粒子自己历史最优值$p_i$。&lt;/li&gt;
+&lt;li&gt;粒子群体的全局最优值$p_g$。&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;p&gt;如果改变粒子速度更新公式，让每个粒子的速度的更新根据以下两个因素更新，&lt;/p&gt;
 
@@ -905,55 +921,6 @@ LRC = o      # 歌词
 &lt;/ol&gt;
 
 &lt;h2&gt;Chapter 3 Data warehouse and OLAP technology:an overview(数据仓库和数据挖掘的 OLAP 技术)&lt;/h2&gt;
-</content>
-    </entry>
-    
-    <entry>
-        <title>Atom编辑器</title>
-        <link href="http://hackerxu.com/2014/09/16/atom-setting.html"/>
-        <updated>2014-09-16T00:00:00+08:00</updated>
-        <id>http://hackerxu.com/2014/09/16/atom-setting</id>
-        <content type="html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-09-17%2019:21:54%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;最近在用atom编辑器,github出的东西想想怎么都不该差的,不过atom可能正处于一个刚开始起步的阶段,许多功能还没有被完善,发现了许多欠缺和不妥的地方&lt;/p&gt;
-
-&lt;p&gt;缺点:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;运行相比sublime慢.sublime是用c++写的,而atom运行在庞大冗余的V8内核之上&lt;/li&gt;
-&lt;li&gt;没有上一次文件夹保存功能.每次我打开atom都得重新寻找项目路径,不知道是不是我打开的方式不对.&lt;/li&gt;
-&lt;li&gt;插件不全.刚起步atom的插件数量明显比不过sublime之类啊&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;优点:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;作为一个github强推的核心编辑器,必然与github有深度的整合,这方面无人能比,修改,增添文件都在侧边栏可以高亮显示(这个再sublime上没有找到),文件中边框也显示哪行修改,删除或者新加(虽然sublime和vim都有这个功能),这也是我喜欢atom的主要原因之一&lt;/li&gt;
-&lt;li&gt;插件一键安装.的确atom提供的不是一个编辑器,而是一个线上的服务,更新插件so easy&lt;/li&gt;
-&lt;li&gt;因为atom是基于chrome的V8的,所以全平台支持,而且插件都是用coffeescript编写,方便开发者&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;作为一个非前端coder,感觉还是够用了,自己虽然是一个vimer,但是涉及到前端的东西感觉还得是atom,sublime之类的编辑器更方便点(代码看得更舒服).&lt;/p&gt;
-
-&lt;p&gt;试用的几个插件:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://atom.io/packages/atom-beautify&quot;&gt;atom-beautify&lt;/a&gt;:美化丑陋的代码~&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://atom.io/packages/git-plus&quot;&gt;git-plus&lt;/a&gt;:git操作&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://atom.io/packages/color-picker&quot;&gt;color-picker&lt;/a&gt;:获取颜色的插件,右键直接打开一个颜色值进行调整&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://atom.io/packages/markdown-preview&quot;&gt;Markdown Preview package&lt;/a&gt;:预览markdown插件&lt;code&gt;ctrl + shift +m&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://atom.io/packages/sort-lines&quot;&gt;sort-lines&lt;/a&gt;:一个给文本单词排序的插件&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://atom.io/packages/bracket-matcher&quot;&gt;Bracket Matcher package &lt;/a&gt;:括号匹配插件,&lt;code&gt;ctrl + m&lt;/code&gt;跳转匹配括号,好像linux不太好使~&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;&quot;&gt;Tree View package&lt;/a&gt;:自带插件,&lt;code&gt;ctrl + \&lt;/code&gt; 打开 , &lt;code&gt;ctrl + 0&lt;/code&gt; 选中树形图, &lt;code&gt;a,m,delete&lt;/code&gt; 分别为增加,移动和删除&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://atom.io/packages/fuzzy-finder&quot;&gt;fuzzy-finder&lt;/a&gt;: &lt;code&gt;ctrl+t&lt;/code&gt; 打开快速查找项目中的文件&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://atom.io/packages/git-log&quot;&gt;gitlog&lt;/a&gt;:查看git日志&lt;/p&gt;
 </content>
     </entry>
     
