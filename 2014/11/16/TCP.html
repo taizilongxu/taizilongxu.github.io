@@ -89,7 +89,7 @@
 
 <p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/375102e721925d18e6ac4e994a5ace8f.gif" alt=""></p>
 
-<p>上面图是TCP协议的字段,可以看到TCP的flag有6个,着重介绍下:</p>
+<p>上面图中白色部分是TCP协议的字段,可以看到TCP的flag有6个,着重介绍下:</p>
 
 <ol>
 <li>URG:紧急URG,当URG置为1时,发送应用进程就告诉发送方的TCO有紧急数据发送,于是发送方TCP就把紧急数据插入到<strong>本报文段数据的最前面</strong>.*(例如用户从键盘发出中断命令,如果不使用紧急数据那么这个命令就会放在TCO的缓存末尾,这样浪费很多时间)</li>

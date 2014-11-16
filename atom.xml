@@ -5,7 +5,7 @@
     <subtitle>Python,HTML,CSS,Machine Leaning</subtitle>
     <link href="http://hackerxu.com/atom.xml" rel="self"/>
     <link href="http://hackerxu.com"/>
-    <updated>2014-11-16T11:08:11+08:00</updated>
+    <updated>2014-11-16T11:26:38+08:00</updated>
     <id>http://hackerxu.com</id>
     <author>
         <name>xuxiao</name>
@@ -30,7 +30,7 @@
 
 &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/375102e721925d18e6ac4e994a5ace8f.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;上面图是TCP协议的字段,可以看到TCP的flag有6个,着重介绍下:&lt;/p&gt;
+&lt;p&gt;上面图中白色部分是TCP协议的字段,可以看到TCP的flag有6个,着重介绍下:&lt;/p&gt;
 
 &lt;ol&gt;
 &lt;li&gt;URG:紧急URG,当URG置为1时,发送应用进程就告诉发送方的TCO有紧急数据发送,于是发送方TCP就把紧急数据插入到&lt;strong&gt;本报文段数据的最前面&lt;/strong&gt;.*(例如用户从键盘发出中断命令,如果不使用紧急数据那么这个命令就会放在TCO的缓存末尾,这样浪费很多时间)&lt;/li&gt;
