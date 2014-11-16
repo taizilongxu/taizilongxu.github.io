@@ -75,10 +75,50 @@
         <p class="meta"><i class="fa fa-calendar"></i> 2014-11-17&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#network">network</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#network">network</a>&nbsp<a href="/tags/#linux">linux</a>&nbsp<a href="/tags/#tcp">tcp</a></p>
     </header>
     <article class="post-content">
-        <h1>参考资料</h1>
+        <h1>基础概念</h1>
+
+<h3>1.1 层次关系</h3>
+
+<p>HTTP协议通常承载于TCP协议之上，有时也承载于TLS或SSL协议层之上，这个时候，就成了我们常说的HTTPS。如下图所示：</p>
+
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/5657919_1.jpg" alt=""></p>
+
+<p>默认HTTP的端口号为80，HTTPS的端口号为443。</p>
+
+<h3>1.2 HTTP的请求响应模型</h3>
+
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/o_http%E5%8D%8F%E8%AE%AE%E5%AD%A6%E4%B9%A0-12.jpg" alt=""></p>
+
+<p>HTTP协议永远都是客户端发起请求，服务器回送响应。</p>
+
+<p>这样就限制了使用HTTP协议，无法实现在客户端没有发起请求的时候，服务器将消息推送给客户端</p>
+
+<p>HTTP协议是一个无状态的协议，同一个客户端的这次请求和上次请求是没有对应关系。</p>
+
+<h3>1.3 工作流程</h3>
+
+<p>一次HTTP操作称为一个事务，其工作过程可分为四步：</p>
+
+<ol>
+<li>首先客户机与服务器需要建立连接。只要单击某个超级链接，HTTP的工作开始。</li>
+<li>建立连接后，客户机发送一个请求给服务器，请求方式的格式为：统一资源标识符（URL）、协议版本号，后边是MIME信息包括请求修饰符、客户机信息和可能的内容。</li>
+<li>服务器接到请求后，给予相应的响应信息，其格式为一个状态行，包括信息的协议版本号、一个成功或错误的代码，后边是MIME信息包括服务器信息、实体信息和可能的内容。</li>
+<li>客户端接收服务器所返回的信息通过浏览器显示在用户的显示屏上，然后客户机与服务器断开连接。</li>
+</ol>
+
+<p>如果在以上过程中的某一步出现错误，那么产生错误的信息将返回到客户端，有显示屏输出。对于用户来说，这些过程是由HTTP自己完成的，用户只要用鼠标点击，等待信息显示就可以了。</p>
+
+<h3>1.4 查看HTTP</h3>
+
+<p>我们可以在chrome的审查元素里查看network,也可以用firefox的LiveHTTP插件:</p>
+
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-11-16%2014:44:18%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
+
+<h1>参考资料</h1>
 
 <ul>
 <li><a href="http://www.cnblogs.com/CareySon/archive/2012/04/27/HTTP-Protocol.html">http://www.cnblogs.com/CareySon/archive/2012/04/27/HTTP-Protocol.html</a></li>
+<li><a href="http://www.360doc.com/content/10/0930/17/3668821_57590979.shtml">http://www.360doc.com/content/10/0930/17/3668821_57590979.shtml</a></li>
 </ul>
 
     </article>
