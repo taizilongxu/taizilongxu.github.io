@@ -5,11 +5,24 @@
     <subtitle>Python,HTML,CSS,Machine Leaning</subtitle>
     <link href="http://hackerxu.com/atom.xml" rel="self"/>
     <link href="http://hackerxu.com"/>
-    <updated>2014-11-16T12:10:57+08:00</updated>
+    <updated>2014-11-16T14:32:14+08:00</updated>
     <id>http://hackerxu.com</id>
     <author>
         <name>xuxiao</name>
     </author>
+    
+    <entry>
+        <title>HTTP协议</title>
+        <link href="http://hackerxu.com/2014/11/17/HTTP.html"/>
+        <updated>2014-11-17T00:00:00+08:00</updated>
+        <id>http://hackerxu.com/2014/11/17/HTTP</id>
+        <content type="html">&lt;h1&gt;参考资料&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/CareySon/archive/2012/04/27/HTTP-Protocol.html&quot;&gt;http://www.cnblogs.com/CareySon/archive/2012/04/27/HTTP-Protocol.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    </entry>
     
     <entry>
         <title>TCP三次握手和四次挥手</title>
@@ -110,6 +123,14 @@
 &lt;p&gt;最后TCP有限状态机:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/39b9724c51eec0a4380d0ca5e44cb227.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+&lt;h1&gt;参考资料&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cppblog.com/csolay/archive/2011/10/22/158859.aspx&quot;&gt;http://www.cppblog.com/csolay/archive/2011/10/22/158859.aspx&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.chinaunix.net/uid-7411781-id-3812206.html&quot;&gt;http://blog.chinaunix.net/uid-7411781-id-3812206.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.2cto.com/net/201208/149347.html&quot;&gt;http://www.2cto.com/net/201208/149347.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </content>
     </entry>
     
@@ -314,6 +335,17 @@ $r$是对位置更新的时候，在速度前面加的一个系数，这个系�
 &lt;p&gt;协同PSO，该方法将粒子的D维分到D个粒子群中，每个粒子群优化一维向量，评价适应度时将这些分量合并为一个完整的向量。例如第i个粒子群，除第i个分量外，其他D-1个分量都设为最优值，不断用第i个粒子群中的粒子替换第i个分量，直到得到第i维的最优值，其他维相同。为将有联系的分量划分在一个群，可将D维向量分配到m个粒子群优化，则前D mod m个粒子群的维数是D/m的向上取整。后m－(D mod m)个粒子群的维数是D/m的向下取整。协同PSO在某些问题上有更快的收敛速度，但该算法容易被欺骗。&lt;/p&gt;
 
 &lt;p&gt;基本的粒子群算法的分支就着4个，大部分的粒子群算法都围绕着这4个分支在变化，其中粒子群算法的变形居多，从根本上来说，几乎没有什么新的思想的提出。&lt;/p&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>One Piece</title>
+        <link href="http://hackerxu.com/2014/11/05/OnePiece.html"/>
+        <updated>2014-11-05T00:00:00+08:00</updated>
+        <id>http://hackerxu.com/2014/11/05/OnePiece</id>
+        <content type="html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/7702.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;我是要成为海贼王的男人.&lt;/p&gt;
 </content>
     </entry>
     
@@ -810,207 +842,6 @@ LRC = o      # 歌词
 &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;protect&amp;#39;&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;############################################################################&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
-    </entry>
-    
-    <entry>
-        <title>Aaron Swartz</title>
-        <link href="http://hackerxu.com/2014/09/20/Aaron-Swartz.html"/>
-        <updated>2014-09-20T00:00:00+08:00</updated>
-        <id>http://hackerxu.com/2014/09/20/Aaron-Swartz</id>
-        <content type="html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/Aaron_Swartz_at_Boston_Wikipedia_Meetup,_2009-08-18.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;相信你应该真的每时每刻都问自己，现在这世界有什么最重要的事是我能参与去做的？如果你没在做那最重要的事，那又是为什么？&lt;/p&gt;
-</content>
-    </entry>
-    
-    <entry>
-        <title>数据挖掘笔记</title>
-        <link href="http://hackerxu.com/2014/09/16/datamining1.html"/>
-        <updated>2014-09-16T00:00:00+08:00</updated>
-        <id>http://hackerxu.com/2014/09/16/datamining1</id>
-        <content type="html">&lt;h2&gt;Chanpter 2 Data Preprocessing(数据预处理)&lt;/h2&gt;
-
-&lt;p&gt;定期更新中~October 11 2014 10:36 AM&lt;/p&gt;
-
-&lt;h3&gt;1 Why preprocess the data?(数据预处理的必要性）&lt;/h3&gt;
-
-&lt;p&gt;要进行数据挖掘需要把数据进行预处理,最简单的原因就是如果提供了完整干净的数据集,那么在数据挖掘的过程中就不用考虑这些东西了,所以很有必要.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;不完整(缺少属性值)&lt;/li&gt;
-&lt;li&gt;含噪音(错误的值或者偏离太大的值)&lt;/li&gt;
-&lt;li&gt;不一致(比如字符串和整数相混)&lt;/li&gt;
-&lt;li&gt;重复的(一个人对应几个名字)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;把大象装冰箱总共分四部:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;数据清理(Data cleaning): 可以去掉数据中的噪声，纠正不一致&lt;/li&gt;
-&lt;li&gt;数据集成(Data integration): 将多个数据源合并成一致的数据存储，构成一个完整的数据集，如数据仓库或数据立方体&lt;/li&gt;
-&lt;li&gt;数据变换(Data transformation): 将一种格式的数据转换为另一格式的数据(如规范化)&lt;/li&gt;
-&lt;li&gt;数据归约(Data reduction): 可以通过聚集、删除冗余特性或聚类等方法来压缩数据&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;如下图所示:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-09-17%2016:52:40%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-
-&lt;h3&gt;2 Descriptive Date Summarization(描述性数据汇总)&lt;/h3&gt;
-
-&lt;p&gt;这些东西可以更加直观的观测数据,更好的理解数据&lt;/p&gt;
-
-&lt;h4&gt;Measuring the Central Tendency（度量数据的中心趋势）&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;mean(几何平均数)&lt;/li&gt;
-&lt;li&gt;median(中值)&lt;/li&gt;
-&lt;li&gt;mode(众数): 出现最多的一个数&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;这里有一个经验公式:&lt;/p&gt;
-
-&lt;p&gt;$$ mean - mode = 3 * (mean - median) $$&lt;/p&gt;
-
-&lt;p&gt;条件是单峰的情况下,并且是asymmetrical类型(倾斜的数据)&lt;/p&gt;
-
-&lt;h4&gt;Measuring the Dispersion of Data(度量数据的离散程度)&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Quartiles, outliers and boxplots（四分位数、离散点和盒图）
-
-&lt;ul&gt;
-&lt;li&gt;Inter-quartile range: IQR = Q3 – Q1;(Q1(25%),Q3(75%))&lt;/li&gt;
-&lt;li&gt;Five number summary: min, Q1, M, Q3, max&lt;/li&gt;
-&lt;li&gt;Boxplot(盒图):招不开了,见下&lt;/li&gt;
-&lt;li&gt;Outlier: usually, a value higher/lower than 1.5 x IQR&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Variance and standard deviation (sample: s, population: σ)（方差和标准差）&lt;/li&gt;
-&lt;li&gt;Properties of Normal Distribution Curve(正态分布特性)&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4&gt;Graphic Displays of Basic Statistical Descriptions(描述数据的基本图形)&lt;/h4&gt;
-
-&lt;p&gt;Boxplot(盒图)&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Data is represented with a box(一个盒子来表示)&lt;/li&gt;
-&lt;li&gt;The ends of the box are at the first and third quartiles, i.e., the height of the box is IRQ(上下边界分别是四分位点,即Q1和Q3,高度就是IRQ的高度了)&lt;/li&gt;
-&lt;li&gt;The median is marked by a line within the box(中值在盒子里用一个线表示)&lt;/li&gt;
-&lt;li&gt;Whiskers: two lines outside the box extend to Minimum and Maximum(盒子外两条线延伸到最大最小值)&lt;/li&gt;
-&lt;li&gt;whiskers(上面两条线)长度不会大于1.5 * IRQ&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;来感受下:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/Cpb7Fx.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;Histogram Analysis(直方图)&lt;/p&gt;
-
-&lt;p&gt;Quantile Plot(分位数图)&lt;/p&gt;
-
-&lt;p&gt;Quantile-Quantile (Q-Q) Plot()(Q-Q图,横纵坐标都为分位数)&lt;/p&gt;
-
-&lt;p&gt;Scatter plot（散点图）&lt;/p&gt;
-
-&lt;p&gt;Loess (local regression) curve(回归曲线?): add a smooth curve to a scatter plot to provide better perception of the pattern of dependence&lt;/p&gt;
-
-&lt;h3&gt;3 Data Cleaning&lt;/h3&gt;
-
-&lt;p&gt;数据清理分以下几步:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;填充空缺的值&lt;/li&gt;
-&lt;li&gt;识别孤立点&lt;/li&gt;
-&lt;li&gt;消除噪声&lt;/li&gt;
-&lt;li&gt;纠正数据中的不一致&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4&gt;Missing Values(空缺数据)&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;忽略该元组(最常用的)&lt;/li&gt;
-&lt;li&gt;人工填写空缺值: 量太大!&lt;/li&gt;
-&lt;li&gt;使用一个全局常量填充空缺值: 将空缺的属性值用同一个常数(如“Unknown”或)替换。如果空缺值都用“Unknown”替换，当空缺值较多时。挖掘程序可能误以为它们形成了一个有趣的概念，因为它们都具有相同的值——“Unknown”。因此，尽管该方法简单，我们并不推荐它。&lt;/li&gt;
-&lt;li&gt;使用属性的平均值填充空缺值&lt;/li&gt;
-&lt;li&gt;利用同类别均值填补遗漏数据: 例如，如果将顾客按credit risk分类， 则用具有相同信用度的顾客的平均收入替换income中的缺值&lt;/li&gt;
-&lt;li&gt;使用最可能的值填充空缺值:可以利用回归、贝叶斯计算公式或判定树归纳确定，推断出该条记录特定属性最大可能的取值。例如，利用数据集中其他顾客的属性，可以构造一棵判定树，来预测income的空缺值。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4&gt;Noisy Data&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;binning(分箱)&lt;/strong&gt;: 分箱方法通过考察“邻居”(即周围的值)来平滑存储数据的值。存储的值被分布到一些“桶”或箱中。由于分箱方法参考相邻的值，因此它进行局部平滑。这里平滑方法又分了3种
-
-&lt;ul&gt;
-&lt;li&gt;按箱平均值平滑&lt;/li&gt;
-&lt;li&gt;按箱中值平滑&lt;/li&gt;
-&lt;li&gt;按箱边界平滑&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;clustering(聚类)&lt;/strong&gt;: 通过聚类分析可以检测孤立点，聚类将类似的值组织成群或“聚类”。直观地看，落在聚类集合之外的值被视为孤立点,这个方法在机器学习里有过了解.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;regression(回归)&lt;/strong&gt;: 以利用拟合函数(如回归函数)来平滑数据。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3&gt;4 Data Integration(数据集成)&lt;/h3&gt;
-
-&lt;p&gt;它需要统一原始数据中的所有矛盾之处，如字段的:同名异义、异名同义、单位不统一,字长不一致，从而把原始数据在最低层上加以转换，提炼和集成。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;模式集成&lt;/strong&gt;: 通常，数据库和数据仓库有元数据——关于数据的数据。这种元数据可以帮助避免模式集成中的错误。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;冗余问题&lt;/strong&gt;: 可以用概率的方法算出两个数据是相关还是独立,这种分析可以度量一个属性能在多大程度上蕴含另一个.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;数据值冲突的检测与处理&lt;/strong&gt;:
-
-&lt;ul&gt;
-&lt;li&gt;表示不同导致数据冲突&lt;/li&gt;
-&lt;li&gt;语义不同导致数据冲突&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;对于现实世界的同一实体，来自不同数据源的属性值可能不同。这可能是因为表示、比例或编码不同。例如，重量属性可能在一个系统中以公制单位存放，而在另一个系统中以英制单位存放。不同旅馆的价格不仅可能涉及不同的货币，而且可能涉及不同的服务(如免费早餐)和税。数据这种语义上的异种性，是数据集成的巨大挑战。&lt;/p&gt;
-
-&lt;p&gt;将多个数据源中的数据集成起来，能够减少或避免结果数据集中数据的冗余和不一致性。这有助于提高其后挖掘的精度和速度。另外，在数据集成中还应考虑数据类型的选择问题，如在值域范围内应尽量用tinyint代替int, 可大大减少字节数，对于大规模数据集来说将会大大减少系统开销。&lt;/p&gt;
-
-&lt;h3&gt;5 Data Transformation(数据变换)&lt;/h3&gt;
-
-&lt;p&gt;数据变换将数据转换成适合于挖掘的形式。主要是找到数据的特征表示，对数据进行规格化处理。用维变换或转换方式减少有效变量的数目或找到数据的不变式.&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;smoothing(平滑)&lt;/strong&gt;: 去掉数据中的噪声。这种技术包括分箱（Bin)、聚类和回归。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Aggregation(聚集)&lt;/strong&gt;:对数据进行汇总和聚集例如，可以聚集日销售数据，计算月和年销售额。这一步用来为多粒度数据分析构造数据立方体。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Generalization(概化)&lt;/strong&gt;:使用概念分层，用高层次概念替换低层次“原始”数据。例如，分类的属性，如street，可以概化为较高层的概念，如city或country.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Normalization(规范化)&lt;/strong&gt;: 将属性数据按比例缩放，使之落入一个小的特定区间，如-1．0到1．0或0.0到1.0。规格化的目的是将一个属性取值范围影射到一个特定范围之内，以消除数值性属性因大小不一而造成挖掘结果的偏差.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Attribute construction属性构造或特征构造&lt;/strong&gt;: 可以利用已知的属性构造新的属性并添加到属性集中，以帮助挖掘过程。(由长，宽求面积)&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3&gt;7 Data Reduction(数据归约)&lt;/h3&gt;
-
-&lt;p&gt;主要以下方法:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Data cube aggregation(数据方聚集):聚集操作用于数据方中的数据。主要用来构建数据立方.
-&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-10-11%2010:28:48%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
-&lt;li&gt;Atrribute subset selection(维归约):可以检测并删除不相关、弱相关或冗余的属性或维。(去除多余的属性值)&lt;/li&gt;
-&lt;li&gt;Dimensionality reduction(数据压缩):使用编码机制压缩数据集。
-
-&lt;ul&gt;
-&lt;li&gt;discrete wavelet transform小波变换DWT&lt;/li&gt;
-&lt;li&gt;principal components analysis 主要成分分析&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Numerosity reduction(数值压缩):用替代的、较小的数据表示替换或估计数据,如参数模型(只需要存放模型参数,而不是实际数据)或非参数方法,如&lt;strong&gt;聚类&lt;/strong&gt;、&lt;strong&gt;选样&lt;/strong&gt;和使用&lt;strong&gt;直方图&lt;/strong&gt;。&lt;/li&gt;
-&lt;li&gt;Discretization and concept hierarchy generation(离散化和概念分层产生):属性的原始值用区间值或较高层的概念替换。概念分层允许挖掘多个抽象层上的数据,是数据挖掘的一种强有力的工具。
-五种数值概念分层产生方法:
-
-&lt;ul&gt;
-&lt;li&gt;分箱&lt;/li&gt;
-&lt;li&gt;直方图分析&lt;/li&gt;
-&lt;li&gt;聚类分析&lt;/li&gt;
-&lt;li&gt;基于熵的离散化&lt;/li&gt;
-&lt;li&gt;通过“自然划分”的数据分段 :  &lt;strong&gt;3-4-5 规则&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2&gt;Chapter 3 Data warehouse and OLAP technology:an overview(数据仓库和数据挖掘的 OLAP 技术)&lt;/h2&gt;
-</content>
     </entry>
     
 
