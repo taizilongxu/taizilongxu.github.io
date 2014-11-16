@@ -79,7 +79,43 @@
 
 <h2>TCP图示</h2>
 
+<p>TCP(Transmission Control Protocol)传输控制协议.</p>
+
+<p>TCP是主机对主机层的传输控制协议，提供可靠的连接服务，采用三次握手确认建立一个连接.</p>
+
 <p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/tcp-ip-handshark.png" alt=""></p>
+
+<h2>TCP状态</h2>
+
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/375102e721925d18e6ac4e994a5ace8f.gif" alt=""></p>
+
+<p>上面图是TCP协议的字段,可以看到TCP的flag有6个,着重介绍下:</p>
+
+<ol>
+<li>URG:紧急URG,当URG置为1时,发送应用进程就告诉发送方的TCO有紧急数据发送,于是发送方TCP就把紧急数据插入到<strong>本报文段数据的最前面</strong>.*(例如用户从键盘发出中断命令,如果不使用紧急数据那么这个命令就会放在TCO的缓存末尾,这样浪费很多时间)</li>
+<li>ACK:当ACK=1时<code>Acknowledgment Number</code>才有效.(仅在三次握手第一次握手时ACK=0,其他时刻ACK都为1)</li>
+<li>PSH:操作很少用到,当接受方TCP接受到PSH=1的报文段,就尽快的PUSH给接收应用进程,而不再等待整个缓存都填满后再向上交付.</li>
+<li>RST:当RST=1时说明发生了严重错误,必须释放连接,然后重新建立运输连接.</li>
+<li>SYN:连接建立时的同步信号,后面会说.</li>
+<li>FIN:释放连接,后面会说.</li>
+</ol>
+
+<h2>三次握手</h2>
+
+<ul>
+<li><p>第一次握手:
+客户端发送一个TCP的SYN标志位置1的包指明客户打算连接的服务器的端口，以及初始序号X,保存在包头的序列号(Sequence Number)字段里。</p>
+
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/100327002911.png" alt=""></p></li>
+<li><p>第二次握手:
+服务器发回确认包(ACK)应答。即SYN标志位和ACK标志位均为1同时，将确认序号(Acknowledgement Number)设置为客户的I S N加1以.即X+1。</p>
+
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/100327003054.png" alt=""></p></li>
+<li><p>第三次握手.
+客户端再次发送确认包(ACK) SYN标志位为0,ACK标志位为1.并且把服务器发来ACK的序号字段+1,放在确定字段中发送给对方.并且在数据段放写ISN的+1</p>
+
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/100327003214.png" alt=""></p></li>
+</ul>
 
     </article>
     <!-- Duoshuo Comment BEGIN -->

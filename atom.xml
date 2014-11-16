@@ -5,7 +5,7 @@
     <subtitle>Python,HTML,CSS,Machine Leaning</subtitle>
     <link href="http://hackerxu.com/atom.xml" rel="self"/>
     <link href="http://hackerxu.com"/>
-    <updated>2014-11-16T09:51:23+08:00</updated>
+    <updated>2014-11-16T10:32:19+08:00</updated>
     <id>http://hackerxu.com</id>
     <author>
         <name>xuxiao</name>
@@ -20,7 +20,43 @@
 
 &lt;h2&gt;TCP图示&lt;/h2&gt;
 
+&lt;p&gt;TCP(Transmission Control Protocol)传输控制协议.&lt;/p&gt;
+
+&lt;p&gt;TCP是主机对主机层的传输控制协议，提供可靠的连接服务，采用三次握手确认建立一个连接.&lt;/p&gt;
+
 &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/tcp-ip-handshark.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+&lt;h2&gt;TCP状态&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/375102e721925d18e6ac4e994a5ace8f.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;上面图是TCP协议的字段,可以看到TCP的flag有6个,着重介绍下:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;URG:紧急URG,当URG置为1时,发送应用进程就告诉发送方的TCO有紧急数据发送,于是发送方TCP就把紧急数据插入到&lt;strong&gt;本报文段数据的最前面&lt;/strong&gt;.*(例如用户从键盘发出中断命令,如果不使用紧急数据那么这个命令就会放在TCO的缓存末尾,这样浪费很多时间)&lt;/li&gt;
+&lt;li&gt;ACK:当ACK=1时&lt;code&gt;Acknowledgment Number&lt;/code&gt;才有效.(仅在三次握手第一次握手时ACK=0,其他时刻ACK都为1)&lt;/li&gt;
+&lt;li&gt;PSH:操作很少用到,当接受方TCP接受到PSH=1的报文段,就尽快的PUSH给接收应用进程,而不再等待整个缓存都填满后再向上交付.&lt;/li&gt;
+&lt;li&gt;RST:当RST=1时说明发生了严重错误,必须释放连接,然后重新建立运输连接.&lt;/li&gt;
+&lt;li&gt;SYN:连接建立时的同步信号,后面会说.&lt;/li&gt;
+&lt;li&gt;FIN:释放连接,后面会说.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2&gt;三次握手&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;第一次握手:
+客户端发送一个TCP的SYN标志位置1的包指明客户打算连接的服务器的端口，以及初始序号X,保存在包头的序列号(Sequence Number)字段里。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/100327002911.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;第二次握手:
+服务器发回确认包(ACK)应答。即SYN标志位和ACK标志位均为1同时，将确认序号(Acknowledgement Number)设置为客户的I S N加1以.即X+1。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/100327003054.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;第三次握手.
+客户端再次发送确认包(ACK) SYN标志位为0,ACK标志位为1.并且把服务器发来ACK的序号字段+1,放在确定字段中发送给对方.并且在数据段放写ISN的+1&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/100327003214.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </content>
     </entry>
     
