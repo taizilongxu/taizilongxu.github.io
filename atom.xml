@@ -5,7 +5,7 @@
     <subtitle>Python,HTML,CSS,Machine Leaning</subtitle>
     <link href="http://hackerxu.com/atom.xml" rel="self"/>
     <link href="http://hackerxu.com"/>
-    <updated>2014-11-16T10:32:19+08:00</updated>
+    <updated>2014-11-16T11:08:11+08:00</updated>
     <id>http://hackerxu.com</id>
     <author>
         <name>xuxiao</name>
@@ -57,6 +57,25 @@
 
 &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/100327003214.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;我们可以在wireshark上看一下包的传递,下面以解析百度首页为例:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-11-16%2010:38:22%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;可以清楚的看到前三个包就是三次握手的TCP包,所有包中有用信息都在info里,再来解释下其他字段含义:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Win:窗口字段明确指出&lt;strong&gt;现在&lt;/strong&gt;允许&lt;strong&gt;对方&lt;/strong&gt;发送的数据量(经常变化)&lt;/li&gt;
+&lt;li&gt;Len:暂时未知,TCP字段未有这个关键字?&lt;/li&gt;
+&lt;li&gt;MSS(Maximum Segment Size):最大报文段长度,即每个TCP报文段中的数据字段的最大长度.这里需要在握手的时候进行协商,双方都给出MSS,最后以最小MSS确定为最终的MSS.IP数据报最大传输单位为MTU(Maximum Transmission Unit，Effect of short board),对于大多数使用以太网的局域网来说，MTU=1500。MSS往往基于MTU计算出来，通常MSS=MTU-sizeof(IP Header)-sizeof(TCP Header)=1500-20-20=1460,这里我们看到服务器MSS=1460,而客户端的MSS=1440,所以最终为1440.&lt;/li&gt;
+&lt;li&gt;SACK_PERM:选择确认字段,如果中间缺少包而其他包都已经接收,那么直接传送缺少包.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;第三次握手和其他数据传输包没有区别,原因是这个包是为了改变服务器状态,使服务器从半连接状态转换为全连接状态.&lt;/p&gt;
+
+&lt;h4&gt;为什么采用3次握手而不是2次握手?&lt;/h4&gt;
+
+&lt;p&gt;如果两次握手的话,客户端有可能因为网络阻塞等原因会发送多个请求报文,这时服务器就会建立连接,浪费掉许多服务器的资源.&lt;/p&gt;
 </content>
     </entry>
     
