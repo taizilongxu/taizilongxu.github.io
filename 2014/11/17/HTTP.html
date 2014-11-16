@@ -433,10 +433,13 @@ username=guest&amp;extension=&amp;issearch=on&amp;searchword=pd%3D%2820100901%29
 
 <ol>
 <li>355,356,357是三次握手的过程</li>
-<li>然后浏览器发送HTTP请求(其实这次请求是夹在第三次握手的包中的<code>Transmission Control Protocol, Src Port: 50536 (50536), Dst Port: http (80), Seq: 1, Ack: 1, Len: 77</code>),因为HTTP是由TCP包包装成的,所以这里显示的HTTP包其实是前面的TCP包的解包.</li>
-<li>接下来是一连串由服务器发来的TCP包和浏览器确认TCP包.</li>
-<li>直到476浏览器请求的所有TCP包都被接受,这时TCP按照序号把所有TCP包拆解并组成HTTP包.</li>
-<li>478~481最后4个为4次挥手.</li>
+<li><p>然后浏览器发送HTTP请求,其实这次请求是夹在第三次握手的包中的,可以看到HTTP包的详细信息</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Transmission Control Protocol, Src Port: 50536 (50536), Dst Port: http (80), Seq: 1, Ack: 1, Len: 77
+</code></pre></div>
+<p>它的seq=1,所以它是来自上一个TCP包.因为HTTP是由TCP包包装成的,所以这里显示的HTTP包其实是前面的TCP包的解包.</p></li>
+<li><p>接下来是一连串由服务器发来的TCP包和浏览器确认TCP包.</p></li>
+<li><p>直到476浏览器请求的所有TCP包都被接受,这时TCP按照序号把所有TCP包拆解并组成HTTP包.</p></li>
+<li><p>478~481最后4个为4次挥手.</p></li>
 </ol>
 
 <h1>参考资料</h1>

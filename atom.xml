@@ -5,11 +5,87 @@
     <subtitle>Python,HTML,CSS,Machine Leaning</subtitle>
     <link href="http://hackerxu.com/atom.xml" rel="self"/>
     <link href="http://hackerxu.com"/>
-    <updated>2014-11-16T16:47:15+08:00</updated>
+    <updated>2014-11-16T19:45:52+08:00</updated>
     <id>http://hackerxu.com</id>
     <author>
         <name>xuxiao</name>
     </author>
+    
+    <entry>
+        <title>HTTPS协议</title>
+        <link href="http://hackerxu.com/2014/11/18/HTTPS.html"/>
+        <updated>2014-11-18T00:00:00+08:00</updated>
+        <id>http://hackerxu.com/2014/11/18/HTTPS</id>
+        <content type="html">&lt;h2&gt;HTTPS简介&lt;/h2&gt;
+
+&lt;p&gt;它是一个安全通信通道，它基于HTTP开发，用于在客户计算机和服务器之间交换信息。它使用安全套接字层(SSL)进行信息交换，简单来说它是HTTP的安全版。&lt;/p&gt;
+
+&lt;p&gt;它是由Netscape开发并内置于其浏览器中，用于对数据进行压缩和解压操作，并返回网络上传送回的结果。HTTPS实际上应用了Netscape的安全全套接字层（SSL）作为HTTP应用层的子层。（HTTPS使用端口443，而不是象HTTP那样使用端口80来和TCP/IP进行通信。）SSL使用40 位关键字作为RC4流加密算法，这对于商业信息的加密是合适的。HTTPS和SSL支持使用X.509数字认证，如果需要的话用户可以确认发送者是谁。&lt;/p&gt;
+
+&lt;h2&gt;HTTPS图示&lt;/h2&gt;
+
+&lt;p&gt;HTTPS其实是有两部分组成：HTTP + SSL / TLS，也就是在HTTP上又加了一层处理加密信息的模块。服务端和客户端的信息传输都会通过TLS进行加密，所以传输的数据都是加密后的数据。具体是如何进行加密，解密，验证的，且看下图。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2011082417242348.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+&lt;h4&gt;1 客户端发起HTTPS请求&lt;/h4&gt;
+
+&lt;p&gt;这个没什么好说的，就是用户在浏览器里输入一个https网址，然后连接到server的443端口。&lt;/p&gt;
+
+&lt;h4&gt;2 服务端的配置&lt;/h4&gt;
+
+&lt;p&gt;采用HTTPS协议的服务器必须要有一套数字证书，可以自己制作，也可以向组织申请。区别就是自己颁发的证书需要客户端验证通过，才可以继续访问，而使用受信任的公司申请的证书则不会弹出提示页面(startssl就是个不错的选择，有1年的免费服务)。这套证书其实就是一对公钥和私钥。如果对公钥和私钥不太理解，可以想象成一把钥匙和一个锁头，只是全世界只有你一个人有这把钥匙，你可以把锁头给别人，别人可以用这个锁把重要的东西锁起来，然后发给你，因为只有你一个人有这把钥匙，所以只有你才能看到被这把锁锁起来的东西。&lt;/p&gt;
+
+&lt;h4&gt;3 传送证书&lt;/h4&gt;
+
+&lt;p&gt;这个证书其实就是公钥，只是包含了很多信息，如证书的颁发机构，过期时间等等。&lt;/p&gt;
+
+&lt;h4&gt;4 客户端解析证书&lt;/h4&gt;
+
+&lt;p&gt;这部分工作是有客户端的TLS来完成的，首先会验证公钥是否有效，比如颁发机构，过期时间等等，如果发现异常，则会弹出一个警告框，提示证书存在问题。如果证书没有问题，那么就生成一个随机值。然后用证书对该随机值进行加密。就好像上面说的，把随机值用锁头锁起来，这样除非有钥匙，不然看不到被锁住的内容。&lt;/p&gt;
+
+&lt;h4&gt;5 传送加密信息&lt;/h4&gt;
+
+&lt;p&gt;这部分传送的是用证书加密后的随机值，目的就是让服务端得到这个随机值，以后客户端和服务端的通信就可以通过这个随机值来进行加密解密了。&lt;/p&gt;
+
+&lt;h4&gt;6 服务段解密信息&lt;/h4&gt;
+
+&lt;p&gt;服务端用私钥解密后，得到了客户端传过来的随机值(私钥)，然后把内容通过该值进行对称加密。所谓对称加密就是，将信息和私钥通过某种算法混合在一起，这样除非知道私钥，不然无法获取内容，而正好客户端和服务端都知道这个私钥，所以只要加密算法够彪悍，私钥够复杂，数据就够安全。&lt;/p&gt;
+
+&lt;h4&gt;7 传输加密后的信息&lt;/h4&gt;
+
+&lt;p&gt;这部分信息是服务段用私钥加密后的信息，可以在客户端被还原。&lt;/p&gt;
+
+&lt;h4&gt;8 客户端解密信息&lt;/h4&gt;
+
+&lt;p&gt;客户端用之前生成的私钥解密服务段传过来的信息，于是获取了解密后的内容。整个过程第三方即使监听到了数据，也束手无策。&lt;/p&gt;
+
+&lt;h2&gt;HTTPS和HTTP的区别&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;https协议需要到ca申请证书，一般免费证书很少，需要交费。&lt;/li&gt;
+&lt;li&gt;http是超文本传输协议，信息是明文传输，https 则是具有安全性的ssl加密传输协议&lt;/li&gt;
+&lt;li&gt;http和https使用的是完全不同的连接方式用的端口也不一样,前者是80,后者是443。&lt;/li&gt;
+&lt;li&gt;http的连接很简单,是无状态的&lt;/li&gt;
+&lt;li&gt;HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议 要比http协议安全&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;因为用HTTPS协议需要对传送数据进行加密解密,所以一定会影响速度和性能,所以一般只有银行等关键位置才会设置HTTPS.&lt;/p&gt;
+
+&lt;h2&gt;Q&amp;amp;A&lt;/h2&gt;
+
+&lt;h4&gt;如果中间的路由从双方发送证书的时候就开始监听的话呢，是否就可以窃取内容了？&lt;/h4&gt;
+
+&lt;p&gt;否，服务器那边有一个非对称密钥加密系统，首先他将公开密钥发送给客户端，客户端接收之后为会话创建一个pre-master secret(一个用在对称加密密钥生成中的 46 字节的随机数字)，然后用服务器发送过来的公开密钥加密，然后将加密后的内容发送给服务器，这两个阶段，如果有人监听，即使窃取到也没办法，首先公开密钥对所有人其实都是公开的，用公开密钥加密后的内容是非常非常难解密的，只有用服务器自己有的私有密钥解密才可以。服务器获取到46字节的随机数字之后，通过这个来对将来要发送的加密内容加密，而这个解密方法之后对应的那个客户端才知道，钥匙是通过公开密钥加密的，其他人都不知道，所有就保证了内容的安全性。&lt;/p&gt;
+
+&lt;h1&gt;参考资料&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.csdn.net/yufaw/article/details/8515889&quot;&gt;http://blog.csdn.net/yufaw/article/details/8515889&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2014/02/ssl_tls.html&quot;&gt;http://www.ruanyifeng.com/blog/2014/02/ssl_tls.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    </entry>
     
     <entry>
         <title>HTTP协议</title>
@@ -374,10 +450,13 @@ username=guest&amp;amp;extension=&amp;amp;issearch=on&amp;amp;searchword=pd%3D%2
 
 &lt;ol&gt;
 &lt;li&gt;355,356,357是三次握手的过程&lt;/li&gt;
-&lt;li&gt;然后浏览器发送HTTP请求(其实这次请求是夹在第三次握手的包中的&lt;code&gt;Transmission Control Protocol, Src Port: 50536 (50536), Dst Port: http (80), Seq: 1, Ack: 1, Len: 77&lt;/code&gt;),因为HTTP是由TCP包包装成的,所以这里显示的HTTP包其实是前面的TCP包的解包.&lt;/li&gt;
-&lt;li&gt;接下来是一连串由服务器发来的TCP包和浏览器确认TCP包.&lt;/li&gt;
-&lt;li&gt;直到476浏览器请求的所有TCP包都被接受,这时TCP按照序号把所有TCP包拆解并组成HTTP包.&lt;/li&gt;
-&lt;li&gt;478~481最后4个为4次挥手.&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;然后浏览器发送HTTP请求,其实这次请求是夹在第三次握手的包中的,可以看到HTTP包的详细信息&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;Transmission Control Protocol, Src Port: 50536 (50536), Dst Port: http (80), Seq: 1, Ack: 1, Len: 77
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;它的seq=1,所以它是来自上一个TCP包.因为HTTP是由TCP包包装成的,所以这里显示的HTTP包其实是前面的TCP包的解包.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;接下来是一连串由服务器发来的TCP包和浏览器确认TCP包.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;直到476浏览器请求的所有TCP包都被接受,这时TCP按照序号把所有TCP包拆解并组成HTTP包.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;478~481最后4个为4次挥手.&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h1&gt;参考资料&lt;/h1&gt;
@@ -1155,59 +1234,6 @@ LRC = o      # 歌词
 
 &lt;p&gt;THE SOFTWARE IS PROVIDED &amp;quot;AS IS&amp;quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.&lt;/p&gt;
 </content>
-    </entry>
-    
-    <entry>
-        <title>Douban Fm 之多进程,多线程</title>
-        <link href="http://hackerxu.com/2014/10/01/DoubanFm-threading.html"/>
-        <updated>2014-10-01T00:00:00+08:00</updated>
-        <id>http://hackerxu.com/2014/10/01/DoubanFm-threading</id>
-        <content type="html">&lt;p&gt;最近Python版本的Douban Fm制作接近尾声,不过困扰我的有一个最大的难题,那就是前台界面和后台程序的融合.&lt;/p&gt;
-
-&lt;p&gt;在以前的编程中虽然语言是面向对象的,但程序的设计主旨一般都还是面向过程的,也就是说平常的程序设计中从来没考虑过进程,线程,以及他们之间的通信.虽然操作系统中对线程,进程都有所了解,但是一想到的是系统编程里的就望而却步了.这会终于好好的研究了一下进程编程,稍后会写笔记,先写写Douban Fm碰到的问题.&lt;/p&gt;
-
-&lt;p&gt;没错,就是线程,进程的问题,当你设计一个cli样式的界面,而且还需要有进程在后端运行,那么你一定需要多线程或是多进程的.在Python里最最原始的方法有一个fork()方法,相信这个方法是从linux中继承过来的,不过这种方法既难掌握,又非常的混乱,比如我们有一个while循环的话,那么在其中的fork()就是一个灾难了.&lt;/p&gt;
-
-&lt;p&gt;相对比较高级的一个方法是multiprocessing,这个函数可以创建一个进程,如下:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;multiprocessing&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;multiprocessing&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fun&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,))&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 注意函数没有括号&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;这个函数允许你创建一个进程,运行在主程序之外,当然可以和主程序进行一些交互.&lt;/p&gt;
-
-&lt;p&gt;另外一个比较高级的方法是subprocess,这是一个非常重要的函数,相信大多数人已经知道啦,这个函数最主要的就是调用一个外部程序或者shell里的命令,可以用阻塞的方式调用(subprocess.call()),也可以用非阻塞的方式(subprocess.Popen())&lt;/p&gt;
-
-&lt;p&gt;程序中遇到的问题是这样的,cli界面是主程序,用一个while循环去抓取按键,当空格的时候就会播放选中频道的歌曲,然而如果用subprocess调用mplayer播放器,只能播放一首,第二首就会停止,怎么办?&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;把播放歌曲封装进一个函数,当做一个进程,在进程里无线循环调用歌曲,不停的播放,而界面程序会当做另一个进程监控按键&lt;/li&gt;
-&lt;li&gt;创建一个守护进程或者守护线程不停的监听subprocess的状态,如运行完成则立刻进行反应&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;最后我还是选了2,因为2比较简单,1需要的交互太多,比较麻烦&lt;/p&gt;
-
-&lt;p&gt;下面这个程序是个实验小程序,用一个守护进程去监听mplayer,如果播放完毕则重新启用mplayer,无限循环的过程&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c&quot;&gt;#-*- encoding: UTF-8 -*-&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;#---------------------------------import------------------------------------&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;subprocess&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;time&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;threading&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;#---------------------------------------------------------------------------&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subprocess&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Popen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;mplayer ~/01\ 21\ Guns\ \(feat.\ The\ Cast\ of\ _Ameri.m4a  &amp;gt;/dev/null 2&amp;gt;&amp;amp;1&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shell&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;protect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;c&quot;&gt;# time.sleep(1)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;poll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;returncode:&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;returncode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39; &amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;returncode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subprocess&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Popen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;mplayer ~/01\ 21\ Guns\ \(feat.\ The\ Cast\ of\ _Ameri.m4a  &amp;gt;/dev/null 2&amp;gt;&amp;amp;1&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shell&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;pr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;threading&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Thread&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;protect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,))&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;pr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;protect&amp;#39;&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;############################################################################&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
     </entry>
     
 
