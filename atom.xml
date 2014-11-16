@@ -5,7 +5,7 @@
     <subtitle>Python,HTML,CSS,Machine Leaning</subtitle>
     <link href="http://hackerxu.com/atom.xml" rel="self"/>
     <link href="http://hackerxu.com"/>
-    <updated>2014-11-16T11:26:38+08:00</updated>
+    <updated>2014-11-16T11:59:13+08:00</updated>
     <id>http://hackerxu.com</id>
     <author>
         <name>xuxiao</name>
@@ -24,7 +24,7 @@
 
 &lt;p&gt;TCP是主机对主机层的传输控制协议，提供可靠的连接服务，采用三次握手确认建立一个连接.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/tcp-ip-handshark.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/ae52f886642e0019fa0973268eeb08b4.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
 &lt;h2&gt;TCP状态&lt;/h2&gt;
 
@@ -73,9 +73,32 @@
 
 &lt;p&gt;第三次握手和其他数据传输包没有区别,原因是这个包是为了改变服务器状态,使服务器从半连接状态转换为全连接状态.&lt;/p&gt;
 
+&lt;h2&gt;四次挥手&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/u=220219588,1869709485&amp;amp;fm=23&amp;amp;gp=0.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;由于TCP连接是全双工的，因此每个方向都必须单独进行关闭。这个原则是当一方完成它的数据发送任务后就能发送一个FIN来终止这个方向的连接。收到一个FIN只意味着这一方向上没有数据流动，一个TCP连接在收到一个FIN后仍能发送数据。首先进行关闭的一方将执行主动关闭，而另一方执行被动关闭。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;客户端A发送一个FIN，用来关闭客户A到服务器B的数据传送。&lt;/li&gt;
+&lt;li&gt;服务器B收到这个FIN，它发回一个ACK，确认序号为收到的序号加1。和SYN一样，一个FIN将占用一个序号。&lt;/li&gt;
+&lt;li&gt;服务器B关闭与客户端A的连接，发送一个FIN给客户端A。&lt;/li&gt;
+&lt;li&gt;客户端A发回ACK报文确认，并将确认序号设置为收到序号加1。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;在来看看百度的例子:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-11-16%2011:54:51%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;其实第2,4部和普通的数据传输包没有区别,关键是第1,3个FIN包,它们告诉对方自己将不传送信息,只接受信息.所以TCP的四次挥手可以看成是&lt;strong&gt;两个二次握手&lt;/strong&gt;&lt;/p&gt;
+
 &lt;h4&gt;为什么采用3次握手而不是2次握手?&lt;/h4&gt;
 
 &lt;p&gt;如果两次握手的话,客户端有可能因为网络阻塞等原因会发送多个请求报文,这时服务器就会建立连接,浪费掉许多服务器的资源.&lt;/p&gt;
+
+&lt;h4&gt;为什么建立连接是三次握手，而关闭连接却是四次挥手呢？&lt;/h4&gt;
+
+&lt;p&gt;这是因为服务端在LISTEN状态下，收到建立连接请求的SYN报文后，把ACK和SYN放在一个报文里发送给客户端。而关闭连接时，当收到对方的FIN报文时，仅仅表示对方不再发送数据了但是还能接收数据，己方也未必全部数据都发送给对方了，所以己方可以立即close，也可以发送一些数据给对方后，再发送FIN报文给对方来表示同意现在关闭连接，因此，己方ACK和FIN一般都会分开发送。&lt;/p&gt;
 </content>
     </entry>
     

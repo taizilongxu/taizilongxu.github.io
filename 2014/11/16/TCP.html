@@ -83,7 +83,7 @@
 
 <p>TCP是主机对主机层的传输控制协议，提供可靠的连接服务，采用三次握手确认建立一个连接.</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/tcp-ip-handshark.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/ae52f886642e0019fa0973268eeb08b4.jpg" alt=""></p>
 
 <h2>TCP状态</h2>
 
@@ -132,9 +132,32 @@
 
 <p>第三次握手和其他数据传输包没有区别,原因是这个包是为了改变服务器状态,使服务器从半连接状态转换为全连接状态.</p>
 
+<h2>四次挥手</h2>
+
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/u=220219588,1869709485&amp;fm=23&amp;gp=0.jpg" alt=""></p>
+
+<p>由于TCP连接是全双工的，因此每个方向都必须单独进行关闭。这个原则是当一方完成它的数据发送任务后就能发送一个FIN来终止这个方向的连接。收到一个FIN只意味着这一方向上没有数据流动，一个TCP连接在收到一个FIN后仍能发送数据。首先进行关闭的一方将执行主动关闭，而另一方执行被动关闭。</p>
+
+<ol>
+<li>客户端A发送一个FIN，用来关闭客户A到服务器B的数据传送。</li>
+<li>服务器B收到这个FIN，它发回一个ACK，确认序号为收到的序号加1。和SYN一样，一个FIN将占用一个序号。</li>
+<li>服务器B关闭与客户端A的连接，发送一个FIN给客户端A。</li>
+<li>客户端A发回ACK报文确认，并将确认序号设置为收到序号加1。</li>
+</ol>
+
+<p>在来看看百度的例子:</p>
+
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-11-16%2011:54:51%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
+
+<p>其实第2,4部和普通的数据传输包没有区别,关键是第1,3个FIN包,它们告诉对方自己将不传送信息,只接受信息.所以TCP的四次挥手可以看成是<strong>两个二次握手</strong></p>
+
 <h4>为什么采用3次握手而不是2次握手?</h4>
 
 <p>如果两次握手的话,客户端有可能因为网络阻塞等原因会发送多个请求报文,这时服务器就会建立连接,浪费掉许多服务器的资源.</p>
+
+<h4>为什么建立连接是三次握手，而关闭连接却是四次挥手呢？</h4>
+
+<p>这是因为服务端在LISTEN状态下，收到建立连接请求的SYN报文后，把ACK和SYN放在一个报文里发送给客户端。而关闭连接时，当收到对方的FIN报文时，仅仅表示对方不再发送数据了但是还能接收数据，己方也未必全部数据都发送给对方了，所以己方可以立即close，也可以发送一些数据给对方后，再发送FIN报文给对方来表示同意现在关闭连接，因此，己方ACK和FIN一般都会分开发送。</p>
 
     </article>
     <!-- Duoshuo Comment BEGIN -->
