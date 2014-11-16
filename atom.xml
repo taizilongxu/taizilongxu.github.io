@@ -5,7 +5,7 @@
     <subtitle>Python,HTML,CSS,Machine Leaning</subtitle>
     <link href="http://hackerxu.com/atom.xml" rel="self"/>
     <link href="http://hackerxu.com"/>
-    <updated>2014-11-16T19:45:52+08:00</updated>
+    <updated>2014-11-16T21:16:26+08:00</updated>
     <id>http://hackerxu.com</id>
     <author>
         <name>xuxiao</name>
@@ -784,6 +784,160 @@ $r$是对位置更新的时候，在速度前面加的一个系数，这个系�
     </entry>
     
     <entry>
+        <title>协程</title>
+        <link href="http://hackerxu.com/2014/11/08/Coroutine.html"/>
+        <updated>2014-11-08T00:00:00+08:00</updated>
+        <id>http://hackerxu.com/2014/11/08/Coroutine</id>
+        <content type="html">&lt;p&gt;知乎上的&lt;a href=&quot;http://www.zhihu.com/question/20511233&quot;&gt;这个&lt;/a&gt;答案很好,总结一下协程.&lt;/p&gt;
+
+&lt;p&gt;协程，又称微线程，纤程。英文名Coroutine。&lt;/p&gt;
+
+&lt;h2&gt;进程、线程和协程&lt;/h2&gt;
+
+&lt;p&gt;进程拥有自己独立的堆和栈，既不共享堆，亦不共享栈，进程由操作系统调度。&lt;/p&gt;
+
+&lt;p&gt;线程拥有自己独立的栈和共享的堆，共享堆，不共享栈，线程亦由操作系统调度(标准线程是的)。&lt;/p&gt;
+
+&lt;p&gt;协程和线程一样共享堆，不共享栈，协程由程序员在协程的代码里显示调度。&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align: center&quot;&gt;&lt;/th&gt;
+&lt;th style=&quot;text-align: center&quot;&gt;共享堆&lt;/th&gt;
+&lt;th style=&quot;text-align: center&quot;&gt;共享栈&lt;/th&gt;
+&lt;th style=&quot;text-align: center&quot;&gt;操作系统调度&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;进程&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;×&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;×&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;√&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;线程&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;√&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;×&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;√&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;协程&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;√&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;×&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;×&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h4&gt;与进程&amp;amp;线程的不同之处&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;操作系统内核不知道协程的存在&lt;/li&gt;
+&lt;li&gt;协程不独享进程控制块和处理机时间片&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;与进程&amp;amp;线程的相同之处&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;协程的状态存在挂起、唤醒、死亡&lt;/li&gt;
+&lt;li&gt;协程和协程之前有控制权的释放和获取&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;打个比方吧，假设有一个操作系统，是单核的，系统上没有其他的程序需要运行，有两个线程 A 和 B ，A 和 B 在单独运行时都需要 10 秒来完成自己的任务，而且任务都是运算操作，A B 之间也没有竞争和共享数据的问题。现在 A B 两个线程并行，操作系统会不停的在 A B 两个线程之间切换，达到一种伪并行的效果，假设切换的频率是每秒一次，切换的成本是 0.1 秒(主要是栈切换)，总共需要 20 + 19 * 0.1 = 21.9 秒。如果使用协程的方式，可以先运行协程 A ，A 结束的时候让位给协程 B ，只发生一次切换，总时间是 20 + 1 * 0.1 = 20.1 秒。如果系统是双核的，而且线程是标准线程，那么 A B 两个线程就可以真并行，总时间只需要 10 秒，而协程的方案仍然需要 20.1 秒。&lt;/p&gt;
+
+&lt;h2&gt;协程的优势&lt;/h2&gt;
+
+&lt;p&gt;最大的优势就是协程极高的执行效率。因为子程序切换不是线程切换，而是由程序自身控制，因此，没有线程切换的开销，和多线程比，线程数量越多，协程的性能优势就越明显。&lt;/p&gt;
+
+&lt;p&gt;第二大优势就是不需要多线程的锁机制，因为只有一个线程，也不存在同时写变量冲突，在协程中控制共享资源不加锁，只需要判断状态就好了，所以执行效率比多线程高很多。&lt;/p&gt;
+
+&lt;h2&gt;Python中的协程&lt;/h2&gt;
+
+&lt;p&gt;一个实际一点的例子：thread.py&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/python&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# python thread.py&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# python -m gevent.monkey thread.py&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;threading&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Thread&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;threading&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Thread&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;threading&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Thread&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;xrange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;threadA&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Thread&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;A&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;threadB&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Thread&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;B&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;threadA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;threadB&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;运行:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;python thread.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;如果你是均匀输出的:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;A
+B
+A
+B
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;那么总共发生了 20 次切换：主线程 -&amp;gt; A -&amp;gt; B -&amp;gt; A -&amp;gt; B …&lt;/p&gt;
+
+&lt;p&gt;再看一个协程的例子：gr.py&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/python&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# python gr.py&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;greenlet&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nextGreenlets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;xrange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nextGreenlets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;nextGreenlets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;switch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;chr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ord&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nextGreenlets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;greenletA&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;greenlet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;greenlet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;greenletB&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;greenlet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;greenlet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;greenletA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;switch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;A&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;greenletB&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;greenlet 是 python 的协程实现。&lt;/p&gt;
+
+&lt;p&gt;运行：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;python gr.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;此时发生了 2 次切换：主协程 -&amp;gt; A -&amp;gt; B&lt;/p&gt;
+
+&lt;p&gt;可能你已经注意到了，还有一个命令：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;python -m gevent.monkey thread.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;gevent 是基于 greenlet 的一个 python 库，它可以把 python 的内置线程用 greenlet 包装，这样在我们使用线程的时候，实际上使用的是协程，在上一个协程的例子里，协程 A 结束时，由协程 A 让位给协程 B ，而在 gevent 里，所有需要让位的协程都让位给主协程，由主协程决定运行哪一个协程，gevent 也会包装一些可能需要阻塞的方法，比如 sleep ，比如读 socket ，比如等待锁，等等，在这些方法里会自动让位给主协程，而不是由程序员显示让位，这样程序员就可以按照线程的模式进行线性编程，不需要考虑切换的逻辑。&lt;/p&gt;
+
+&lt;p&gt;假设代码质量相同，用原生的协程实现需要切换 n 次，用协程包装后的线程实现，就需要 2n - 1 次，姑且算是两倍吧。很显然，单纯从效率上来说，代码质量相同的前提下，用 gevent 永远也不可能比用 greenlet 快，然而，问题往往不那么单纯，比方说，单纯从效率上来说，代码质量相同的前提下，用 C 实现的程序永远不可能比汇编快。&lt;/p&gt;
+
+&lt;p&gt;再来说说 python 的线程，python 的线程不是标准线程，在 python 中，一个进程内的多个线程只能使用一个 CPU 。&lt;/p&gt;
+
+&lt;p&gt;重新来看一下协程和线程的区别：协程避免了无意义的调度，由此可以提高性能，但也因此，程序员必须自己承担调度的责任，同时，协程也失去了标准线程使用多CPU的能力。&lt;/p&gt;
+
+&lt;p&gt;如果使用 gevent 包装后的线程，程序员就不必承担调度的责任，而 python 的线程本身就没有使用多 CPU 的能力，那么，用 gevent 包装后的线程，取代 python 的内置线程，不是只有避免无意义的调度，提高性能的好处，而没有什么坏处了吗？&lt;/p&gt;
+
+&lt;p&gt;答案是否定的。举一个例子，有一个 GUI 程序，上面有两个按钮，一个 运算 一个 取消 ，点击运算，会有一个运算线程启动，不停的运算，点击取消，会取消这个线程，如果使用 python 的内置线程或者标准线程，都是没有问题的，即便运算线程不停的运算，调度器仍然会给 GUI 线程分配时间片，用户可以点击取消，然而，如果使用 gevent 包装后的线程就完蛋了，一旦运算开始，GUI 就会失去相应，因为那个运算线程(协程)霸着 CPU 不让位。不单是 GUI ，所有和用户交互的程序都会有这个问题。&lt;/p&gt;
+
+&lt;h1&gt;参考资料&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.leiqin.info/2012/12/02/%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%8D%8F%E7%A8%8B%E7%9A%84%E7%90%86%E8%A7%A3.html&quot;&gt;http://blog.leiqin.info/2012/12/02/%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%8D%8F%E7%A8%8B%E7%9A%84%E7%90%86%E8%A7%A3.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/tonyseek/introduce-to-coroutine/blob/master/docs/source/index.rst&quot;&gt;https://github.com/tonyseek/introduce-to-coroutine/blob/master/docs/source/index.rst&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/0013868328689835ecd883d910145dfa8227b539725e5ed000&quot;&gt;http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/0013868328689835ecd883d910145dfa8227b539725e5ed000&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.zhihu.com/question/20511233&quot;&gt;http://www.zhihu.com/question/20511233&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    </entry>
+    
+    <entry>
         <title>One Piece</title>
         <link href="http://hackerxu.com/2014/11/05/OnePiece.html"/>
         <updated>2014-11-05T00:00:00+08:00</updated>
@@ -1072,167 +1226,6 @@ password:
 &lt;h4&gt;5 更新Pypi包&lt;/h4&gt;
 
 &lt;p&gt;当包版本更新后,需要在你的setup.py文件里修改VERSION,然后运行第4部的命令就可以了(如果不更新VERSION包就不能上传成功)&lt;/p&gt;
-</content>
-    </entry>
-    
-    <entry>
-        <title>douban.fm 终端命令行豆瓣FM</title>
-        <link href="http://hackerxu.com/2014/10/07/doubanfm.html"/>
-        <updated>2014-10-07T00:00:00+08:00</updated>
-        <id>http://hackerxu.com/2014/10/07/doubanfm</id>
-        <content type="html">&lt;h2&gt;douban.fm &lt;a href=&quot;https://pypi.python.org/pypi/douban.fm&quot;&gt;&lt;img src=&quot;https://pypip.in/version/douban.fm/badge.svg&quot; alt=&quot;version&quot;&gt;&lt;/a&gt; &lt;a href=&quot;https://pypi.python.org/pypi/douban.fm&quot;&gt;&lt;img src=&quot;https://pypip.in/download/douban.fm/badge.png&quot; alt=&quot;Downloads&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
-
-&lt;p&gt;这个版本的命令行界面是参考了 Node.js版本的&lt;a href=&quot;https://github.com/turingou/douban.fm&quot;&gt;douban.fm&lt;/a&gt;制作的,向原作者致敬.终端界面设计的非常好看.&lt;/p&gt;
-
-&lt;p&gt;感谢&lt;a href=&quot;https://github.com/cloverstd&quot;&gt;Cloverstd&lt;/a&gt;的修改,已经支持Mac OS X(&amp;gt;=V0.2.9)&lt;/p&gt;
-
-&lt;p&gt;PS:如果喜欢请加Star(&lt;em&gt;^__^&lt;/em&gt;)……&lt;/p&gt;
-
-&lt;h3&gt;Screenshots&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/douban.fm/master/img/out.gif&quot; alt=&quot;screenshot&quot;&gt;&lt;/p&gt;
-
-&lt;h3&gt;Support&lt;/h3&gt;
-
-&lt;p&gt;Linux/Mac OS X&lt;/p&gt;
-
-&lt;h3&gt;Do something cool!&lt;/h3&gt;
-
-&lt;p&gt;其实Node.js版本已经很好了,功能齐全,但是我发现在我的zsh + tmux环境下颜色竟然显示不出来,感觉很蛋疼.&lt;/p&gt;
-
-&lt;h3&gt;Installation&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ sudo pip install douban.fm
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;需要mplayer播放器依赖,如未安装:&lt;/p&gt;
-
-&lt;p&gt;Ubuntu:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ sudo apt-get install mplayer
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;OS X:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ brew install mplayer
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;Usage&lt;/h3&gt;
-
-&lt;p&gt;在终端下直接输入&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ douban.fm
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;Login&lt;/h3&gt;
-
-&lt;p&gt;第一次登陆需要输入账号,密码,程序不会保留密码,而是保存返回的token存储在~/.douban_token.txt,下次登陆无需输入密码.&lt;/p&gt;
-
-&lt;h3&gt;Keys&lt;/h3&gt;
-
-&lt;p&gt;支持vim按键&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;移动
- [j]     --&amp;gt; 下
- [k]     --&amp;gt; 上
- [g]     --&amp;gt; 移到最顶
- [G]     --&amp;gt; 移到最底
-音乐
- [space] --&amp;gt; 播放
- [w]     --&amp;gt; 打开歌曲主页
- [n]     --&amp;gt; 下一首
- [r]     --&amp;gt; 喜欢/取消喜欢
- [b]     --&amp;gt; 不再播放
- [q]     --&amp;gt; 退出
- [p]     --&amp;gt; 暂停
- [l]     --&amp;gt; 单曲循环
-音量(&amp;gt;=V0.2.9)
- [=]     --&amp;gt; 增
- [-]     --&amp;gt; 减
- [m]     --&amp;gt; 静音
-歌词(&amp;gt;=v0.2.9)
- [o]     --&amp;gt; 显示歌词(Bug很多,先别用,没有反应就是没找到歌词)
- [q]     --&amp;gt; 退出歌词
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;Configuration(&amp;gt;=v0.2.8)&lt;/h3&gt;
-
-&lt;p&gt;.doubanfm_config保存在了~/.doubanfm_config,根据需要可以修改按键的映射&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;[key]
-UP = k       # 上
-DOWN = j     # 下
-TOP = g      # 顶
-BOTTOM = G   # 底
-OPENURL = w  # 打开歌曲主页
-RATE = r     # 标记喜欢/取消喜欢
-NEXT = n     # 下一首
-BYE = b      # 不再播放
-QUIT = q     # 退出
-PAUSE = p    # 暂停
-LOOP = l     # 单曲循环
-MUTE = m     # 静音
-LRC = o      # 歌词
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;Done&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;登陆token&lt;/li&gt;
-&lt;li&gt;显示PRO&lt;/li&gt;
-&lt;li&gt;cli设计&lt;/li&gt;
-&lt;li&gt;播放,下一首,红心,不再播放&lt;/li&gt;
-&lt;li&gt;进度条(时间)&lt;/li&gt;
-&lt;li&gt;终端高度的自动调整&lt;/li&gt;
-&lt;li&gt;pro用户歌曲kbps的选择(pro用户会自动选择192kbps)&lt;/li&gt;
-&lt;li&gt;歌曲结束request(发送歌曲完成)&lt;/li&gt;
-&lt;li&gt;config设置&lt;/li&gt;
-&lt;li&gt;调节音量(amixer) + 标题中显示音量&lt;/li&gt;
-&lt;li&gt;歌词&lt;/li&gt;
-&lt;li&gt;歌曲暂停&lt;/li&gt;
-&lt;li&gt;单曲播放&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3&gt;TODO&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;默认频道&lt;/li&gt;
-&lt;li&gt;播放歌曲数 红心数 不再播放数&lt;/li&gt;
-&lt;li&gt;异常处理&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3&gt;BUG&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;del&gt;播放歌曲中有时候会暂停&lt;/del&gt;&lt;/li&gt;
-&lt;li&gt;&lt;del&gt;退出后终端光标会隐藏&lt;/del&gt;&lt;/li&gt;
-&lt;li&gt;&lt;del&gt;.douban_token.txt路径问题&lt;/del&gt;&lt;/li&gt;
-&lt;li&gt;&lt;del&gt;登陆异常处理&lt;/del&gt;&lt;/li&gt;
-&lt;li&gt;&lt;del&gt;静音后播放下一首会取消静音&lt;/del&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3&gt;Authors&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/Fansion&quot;&gt;Fansion&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/cloverstd&quot;&gt;Cloverstd&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3&gt;Reference&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Node.js版本的&lt;a href=&quot;https://github.com/turingou/douban.fm&quot;&gt;douban.fm&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/skyline75489/pyfm&quot;&gt;豆瓣FM命令行播放器(pyfm)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/zonyitoo/doubanfm-qt/wiki/%E8%B1%86%E7%93%A3FM-API&quot;&gt;豆瓣电台 API&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3&gt;Log&lt;/h3&gt;
-
-&lt;p&gt;V0.2.11 config兼容问题&lt;/p&gt;
-
-&lt;p&gt;V0.2.10 滚动歌词,单曲循环,暂停,静音&lt;/p&gt;
-
-&lt;p&gt;V0.2.9 支持歌词,支持Mac OS X&lt;/p&gt;
-
-&lt;p&gt;V0.2.8 增加config&lt;/p&gt;
-
-&lt;h3&gt;License (MIT)&lt;/h3&gt;
-
-&lt;p&gt;Copyright (c) 2014 hackerxu&lt;/p&gt;
-
-&lt;p&gt;Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &amp;quot;Software&amp;quot;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:&lt;/p&gt;
-
-&lt;p&gt;The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.&lt;/p&gt;
-
-&lt;p&gt;THE SOFTWARE IS PROVIDED &amp;quot;AS IS&amp;quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.&lt;/p&gt;
 </content>
     </entry>
     
