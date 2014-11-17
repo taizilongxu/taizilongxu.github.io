@@ -200,13 +200,15 @@ $r$是对位置更新的时候，在速度前面加的一个系数，这个系�
 <p>第一种方法：按照粒子的编号取粒子的邻域，取法有四种：</p>
 
 <ol>
-<li>环形取法 </li>
-<li>随机环形取法 </li>
-<li>轮形取法 </li>
-<li>随机轮形取法。</li>
+<li>环形取法 
+<img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/o_huan.bmp" alt=""></li>
+<li><p>随机环形取法
+<img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/o_shuan.bmp" alt=""></p></li>
+<li><p>轮形取法 
+<img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/o_lun.bmp" alt=""></p></li>
+<li><p>随机轮形取法。
+<img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/o_slun.bmp" alt=""></p></li>
 </ol>
-
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/o_huan.bmp" alt=""></p>
 
 <p>因为后面有以环形取法实现的算法，对环形取法在这里做一点点说明：以粒子1为例，当邻域是0的时候，邻域是它本身，当邻域是1时，邻域为2，8；当邻域是2时，邻域是2，3，7，8；......，以此类推，一直到邻域为4，这个时候，邻域扩展到整个例子群体。据文献介绍（<strong>国外的文献</strong>），采用轮形拓扑结构，PSO的效果很好。</p>
 

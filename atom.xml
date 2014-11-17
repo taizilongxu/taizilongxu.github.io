@@ -5,7 +5,7 @@
     <subtitle>Python,HTML,CSS,Machine Leaning</subtitle>
     <link href="http://hackerxu.com/atom.xml" rel="self"/>
     <link href="http://hackerxu.com"/>
-    <updated>2014-11-16T21:16:26+08:00</updated>
+    <updated>2014-11-17T09:31:55+08:00</updated>
     <id>http://hackerxu.com</id>
     <author>
         <name>xuxiao</name>
@@ -709,13 +709,15 @@ $r$是对位置更新的时候，在速度前面加的一个系数，这个系�
 &lt;p&gt;第一种方法：按照粒子的编号取粒子的邻域，取法有四种：&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;环形取法 &lt;/li&gt;
-&lt;li&gt;随机环形取法 &lt;/li&gt;
-&lt;li&gt;轮形取法 &lt;/li&gt;
-&lt;li&gt;随机轮形取法。&lt;/li&gt;
+&lt;li&gt;环形取法 
+&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/o_huan.bmp&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;随机环形取法
+&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/o_shuan.bmp&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;轮形取法 
+&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/o_lun.bmp&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;随机轮形取法。
+&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/o_slun.bmp&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/o_huan.bmp&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;因为后面有以环形取法实现的算法，对环形取法在这里做一点点说明：以粒子1为例，当邻域是0的时候，邻域是它本身，当邻域是1时，邻域为2，8；当邻域是2时，邻域是2，3，7，8；......，以此类推，一直到邻域为4，这个时候，邻域扩展到整个例子群体。据文献介绍（&lt;strong&gt;国外的文献&lt;/strong&gt;），采用轮形拓扑结构，PSO的效果很好。&lt;/p&gt;
 
