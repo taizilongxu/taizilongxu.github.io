@@ -77,6 +77,8 @@
     <article class="post-content">
         <h1>基础概念</h1>
 
+<p>HTTP（超文本传输协议）是一个基于请求与响应模式的、无状态的、应用层的协议，常基于TCP的连接方式，HTTP1.1版本中给出一种持续连接的机制，绝大多数的Web开发，都是构建在HTTP协议之上的Web应用。</p>
+
 <p>HTTP协议的主要特点可概括如下：</p>
 
 <ol>
@@ -87,11 +89,13 @@
 <li>无状态：HTTP协议是无状态协议。无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快。</li>
 </ol>
 
-<h4>HTTP的URL</h4>
+<h4>URI</h4>
 
-<p>http（超文本传输协议）是一个基于请求与响应模式的、无状态的、应用层的协议，常基于TCP的连接方式，HTTP1.1版本中给出一种持续连接的机制，绝大多数的Web开发，都是构建在HTTP协议之上的Web应用。</p>
+<p>URI统一资源标识符(Unicform Resource Identifier):唯一标识并定位信息资源.它有两个子集,一个是URL(Unicform Resource Locator),另一个是URN(Unicform Resource Name)</p>
 
-<p>HTTP URL (URL是一种特殊类型的URI，包含了用于查找某个资源的足够的信息)的格式如下：</p>
+<h4>URL</h4>
+
+<p>URL (URL是一种特殊类型的URI，包含了用于查找某个资源的足够的信息)的格式如下：</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">http://host[&quot;:&quot;port][abs_path]
 </code></pre></div>
 <ul>
@@ -107,8 +111,12 @@
 <ol>
 <li>输入：www.guet.edu.cn
 浏览器自动转换成：<a href="http://www.guet.edu.cn/">http://www.guet.edu.cn/</a></li>
-<li>http:192.168.0.116:8080/index.jsp </li>
+<li>http:192.168.0.116:8080/index.jsp</li>
 </ol>
+
+<h4>URN</h4>
+
+<p>URN：URL的一种更新形式，统一资源名称(URN, Uniform Resource Name)不依赖于位置，并且有可能减少失效连接的个数。但是其流行还需假以时日，因为它需要更精密软件的支持。</p>
 
 <h3>1.1 层次关系</h3>
 

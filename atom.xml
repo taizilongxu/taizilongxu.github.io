@@ -5,11 +5,19 @@
     <subtitle>Python,HTML,CSS,Machine Leaning</subtitle>
     <link href="http://hackerxu.com/atom.xml" rel="self"/>
     <link href="http://hackerxu.com"/>
-    <updated>2014-11-17T09:31:55+08:00</updated>
+    <updated>2014-11-20T15:58:13+08:00</updated>
     <id>http://hackerxu.com</id>
     <author>
         <name>xuxiao</name>
     </author>
+    
+    <entry>
+        <title>C10K问题</title>
+        <link href="http://hackerxu.com/2014/11/19/C10K.html"/>
+        <updated>2014-11-19T00:00:00+08:00</updated>
+        <id>http://hackerxu.com/2014/11/19/C10K</id>
+        <content type="html"></content>
+    </entry>
     
     <entry>
         <title>HTTPS协议</title>
@@ -94,6 +102,8 @@
         <id>http://hackerxu.com/2014/11/17/HTTP</id>
         <content type="html">&lt;h1&gt;基础概念&lt;/h1&gt;
 
+&lt;p&gt;HTTP（超文本传输协议）是一个基于请求与响应模式的、无状态的、应用层的协议，常基于TCP的连接方式，HTTP1.1版本中给出一种持续连接的机制，绝大多数的Web开发，都是构建在HTTP协议之上的Web应用。&lt;/p&gt;
+
 &lt;p&gt;HTTP协议的主要特点可概括如下：&lt;/p&gt;
 
 &lt;ol&gt;
@@ -104,11 +114,13 @@
 &lt;li&gt;无状态：HTTP协议是无状态协议。无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快。&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h4&gt;HTTP的URL&lt;/h4&gt;
+&lt;h4&gt;URI&lt;/h4&gt;
 
-&lt;p&gt;http（超文本传输协议）是一个基于请求与响应模式的、无状态的、应用层的协议，常基于TCP的连接方式，HTTP1.1版本中给出一种持续连接的机制，绝大多数的Web开发，都是构建在HTTP协议之上的Web应用。&lt;/p&gt;
+&lt;p&gt;URI统一资源标识符(Unicform Resource Identifier):唯一标识并定位信息资源.它有两个子集,一个是URL(Unicform Resource Locator),另一个是URN(Unicform Resource Name)&lt;/p&gt;
 
-&lt;p&gt;HTTP URL (URL是一种特殊类型的URI，包含了用于查找某个资源的足够的信息)的格式如下：&lt;/p&gt;
+&lt;h4&gt;URL&lt;/h4&gt;
+
+&lt;p&gt;URL (URL是一种特殊类型的URI，包含了用于查找某个资源的足够的信息)的格式如下：&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;http://host[&amp;quot;:&amp;quot;port][abs_path]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
@@ -124,8 +136,12 @@
 &lt;ol&gt;
 &lt;li&gt;输入：www.guet.edu.cn
 浏览器自动转换成：&lt;a href=&quot;http://www.guet.edu.cn/&quot;&gt;http://www.guet.edu.cn/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;http:192.168.0.116:8080/index.jsp &lt;/li&gt;
+&lt;li&gt;http:192.168.0.116:8080/index.jsp&lt;/li&gt;
 &lt;/ol&gt;
+
+&lt;h4&gt;URN&lt;/h4&gt;
+
+&lt;p&gt;URN：URL的一种更新形式，统一资源名称(URN, Uniform Resource Name)不依赖于位置，并且有可能减少失效连接的个数。但是其流行还需假以时日，因为它需要更精密软件的支持。&lt;/p&gt;
 
 &lt;h3&gt;1.1 层次关系&lt;/h3&gt;
 
@@ -648,7 +664,7 @@ username=guest&amp;amp;extension=&amp;amp;issearch=on&amp;amp;searchword=pd%3D%2
 
 &lt;p&gt;最后所有的点都集中在最大值的地方。&lt;/p&gt;
 
-&lt;p&gt;呵呵，现在粒子群算法的大概思想就说到这里。下节介绍标准的粒子群算法.&lt;/p&gt;
+&lt;p&gt;在粒子群算法的大概思想就说到这里。下节介绍标准的粒子群算法.&lt;/p&gt;
 
 &lt;h1&gt;标准的粒子群算法&lt;/h1&gt;
 
@@ -1134,100 +1150,6 @@ s.wait()
 &lt;li&gt;&lt;a href=&quot;http://ipseek.blog.51cto.com/1041109/807513&quot;&gt;http://ipseek.blog.51cto.com/1041109/807513&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.jb51.net/article/48086.htm&quot;&gt;http://www.jb51.net/article/48086.htm&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
-</content>
-    </entry>
-    
-    <entry>
-        <title>把程序打包上传到PyPi版本库中</title>
-        <link href="http://hackerxu.com/2014/10/08/Pypi.html"/>
-        <updated>2014-10-08T00:00:00+08:00</updated>
-        <id>http://hackerxu.com/2014/10/08/Pypi</id>
-        <content type="html">&lt;h4&gt;1 首先必须要按照以下文件结构&lt;/h4&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;douban&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cli&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;py&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;douban&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;py&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;douban_token&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;py&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;py&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;py&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;README&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;md&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;setup&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;py&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;必须至少一个包,即上面的douban,把模块都放在包下,且包中必须有&lt;code&gt;__init__.py&lt;/code&gt;文件(可以为空)&lt;/li&gt;
-&lt;li&gt;必须有一个setup.py文件&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4&gt;2 setup.py文件&lt;/h4&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c&quot;&gt;#-*- encoding: UTF-8 -*-&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;setuptools&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;setup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;find_packages&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt;打包的用的setup必须引入&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;VERSION&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;0.2.0&amp;#39;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;README.md&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;long_description&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;setup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;douban.fm&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 文件名&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;VERSION&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 版本(每次更新上传Pypi需要修改)&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;a tiny and smart cli player of douban.fm based on Python&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;long_description&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;long_description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 放README.md文件,方便在Pypi页展示&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;classifiers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[],&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;keywords&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;python douban douban.fm terminal&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 关键字&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;taizilongxu&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 用户名&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;author_email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;468137306@qq.com&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 邮箱&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;https://github.com/taizilongxu/douban.fm&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# github上的地址,别的地址也可以&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;license&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;MIT&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 遵循的协议&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;packages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;douban&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 发布的包名&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;include_package_data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;zip_safe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;install_requires&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&amp;#39;termcolor&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 满足的依赖&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;entry_points&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&amp;#39;console_scripts&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&amp;#39;douban.fm = douban.douban:main&amp;#39;&lt;/span&gt; 
-        &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt; entry_points : [可执行程序名]=引入的包名.子包名.模块名:入口函数.这个要注意了,主程序要引入main函数进行执行.好让包找到执行的位置&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4&gt;3 安装&lt;/h4&gt;
-
-&lt;p&gt;如果不上传文件,只在本机中安装,那么可以运行以下命令&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;python setup.py install
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;这样就在本机安装了程序,在shell中输入douban.fm(刚才在entry_points中输入的可执行程序名),就可以执行了&lt;/p&gt;
-
-&lt;h4&gt;4 上传到Pypi&lt;/h4&gt;
-
-&lt;p&gt;先在 &lt;a href=&quot;https://pypi.python.org/pypi&quot;&gt;https://pypi.python.org/pypi&lt;/a&gt; 注册个Pypi号,认证邮箱.&lt;/p&gt;
-
-&lt;p&gt;然后再在你的用户目录下新建一个&lt;code&gt;.pypirc&lt;/code&gt;文件,输入如下:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;[distutils]
-index-servers =
-    pypi
-
-[pypi]
-username:
-password:
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;把username和password填上保存就可以了&lt;/p&gt;
-
-&lt;p&gt;回到你的setup.py目录,输入如下命令&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo python setup.py register sdist bdist_egg upload
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;你的包就可以发到Pypi里了,通过pip或者easy_install就可以下载你的包了&lt;/p&gt;
-
-&lt;h4&gt;5 更新Pypi包&lt;/h4&gt;
-
-&lt;p&gt;当包版本更新后,需要在你的setup.py文件里修改VERSION,然后运行第4部的命令就可以了(如果不更新VERSION包就不能上传成功)&lt;/p&gt;
 </content>
     </entry>
     
