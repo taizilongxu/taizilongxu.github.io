@@ -168,12 +168,7 @@ Content-Type: text/html; charset=utf-8
 Transfer-Encoding: chunked
 Connection: Keep-Alive
 Vary: Accept-Encoding
-Set-Cookie: BAIDUID=53D3052AEE1A2972D5AED1E505323E95:FG=1; expires=Thu, 31-Dec-37 23:55:55 GMT; max-age=2147483647; path=/; domain=.baidu.com
-Set-Cookie: BAIDUPSID=53D3052AEE1A2972D5AED1E505323E95; expires=Thu, 31-Dec-37 23:55:55 GMT; max-age=2147483647; path=/; domain=.baidu.com
-Set-Cookie: BDSVRTM=0; path=/
-Set-Cookie: BD_HOME=0; path=/
-Set-Cookie: H_PS_PSSID=9984_1445_9592_7800_9536_9476_9498_9770_9909_9758_9478_7798_9453_9978_9023; path=/; domain=.baidu.com
-P3P: CP=&quot; OTI DSP COR IVA OUR IND COM &quot;
+Set-Cookie: BAIDUID=53D3052AEE1A2972D5AED1E505323E95
 Cache-Control: private
 Cxy_all: baidu+8e65b23e6d5bd3877ec23fa1c478e07c
 Expires: Sun, 16 Nov 2014 06:42:56 GMT
@@ -196,7 +191,7 @@ HTTP状态行
 空行 
 可选的消息体
 </code></pre></div>
-<h2>HTTP请求</h2>
+<h2>HTTP请求报文(request message)</h2>
 
 <p>HTTP协议的请求主要由一下几部分组成：请求行，请求头，请求体（post）</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">请求行\r\n
@@ -278,7 +273,7 @@ Accept-Language: zh-CN,zh;q=0.8,en;q=0.6,zh-TW;q=0.4,ja;q=0.2
 
 <h3>请求体</h3>
 
-<p>请求体（又叫请求正文）是post请求方式当中的请求参数，以key=value形式进行存储，多个请求参数之间用&amp;连接，如果请求当中有请求提，那么在请求头当中的Content-Length属性中记录的是该请求体的长度。</p>
+<p>请求体（又叫请求正文）是post请求方式当中的请求参数,get方式则无请求体，以key=value形式进行存储，多个请求参数之间用&amp;连接，如果请求当中有请求提，那么在请求头当中的Content-Length属性中记录的是该请求体的长度。</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">POST hysj.jsp HTTP/1.1
 Host: search.cnipr.com
 User-Agent: Mozilla/5.0 (Windows; U; Windows NT 6.0; zh-CN; rv:1.9.1.13) Gecko/20100914 Firefox/3.5.13 ( .NET CLR 3.5.30729)
@@ -292,7 +287,7 @@ Referer: http://search.cnipr.com/cnipr/zljs/hyjs-biaodan-y.jsp
 Content-Length: 405
 username=guest&amp;extension=&amp;issearch=on&amp;searchword=pd%3D%2820100901%29&amp;presearchword=&amp;sortfield=RELEVANCE&amp;sRecordNumber=&amp;searchType=0&amp;searchFrom=0&amp;channelid=14%2C15%2C16&amp;searchChannel=14%2C15%2C16&amp;strdb=14&amp;strdb=15&amp;strdb=16&amp;cizi=2&amp;sortcolumn=RELEVANCE&amp;R1=-&amp;txtA=&amp;txtB=&amp;txtC=&amp;txtD=20100901&amp;txtE=&amp;txtF=&amp;txtG=&amp;txtH=&amp;txtI=&amp;txtJ=&amp;txtK=&amp;txtL=&amp;txtM=&amp;txtN=&amp;txtP=&amp;txtQ=&amp;txtR=&amp;txtSearchWord=&amp;Submit=%BC%EC%A1%A1%CB%F7
 </code></pre></div>
-<h2>HTTP响应</h2>
+<h2>HTTP响应报文(response message)</h2>
 
 <p>HTTP响应信息(服务器信息) </p>
 
@@ -515,7 +510,7 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
 <!-- highlight -->
 <script src="/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
-<!-- duoshuo -->
+<!-- pleace change it! -->
 <script type="text/javascript">
 var duoshuoQuery = {short_name:"taizilongxu"};
 (function() {
