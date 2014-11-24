@@ -5,7 +5,7 @@
     <subtitle>Python,HTML,CSS,Machine Leaning</subtitle>
     <link href="http://hackerxu.com/atom.xml" rel="self"/>
     <link href="http://hackerxu.com"/>
-    <updated>2014-11-24T20:53:29+08:00</updated>
+    <updated>2014-11-24T21:12:17+08:00</updated>
     <id>http://hackerxu.com</id>
     <author>
         <name>xuxiao</name>
@@ -318,6 +318,8 @@
 &lt;p&gt;客户端用之前生成的私钥解密服务段传过来的信息，于是获取了解密后的内容。整个过程第三方即使监听到了数据，也束手无策。&lt;/p&gt;
 
 &lt;h2&gt;HTTPS和HTTP的区别&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-11-24%2021:11:23%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;https协议需要到ca申请证书，一般免费证书很少，需要交费。&lt;/li&gt;
