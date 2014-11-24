@@ -5,7 +5,7 @@
     <subtitle>Python,HTML,CSS,Machine Leaning</subtitle>
     <link href="http://hackerxu.com/atom.xml" rel="self"/>
     <link href="http://hackerxu.com"/>
-    <updated>2014-11-24T20:47:08+08:00</updated>
+    <updated>2014-11-24T20:51:26+08:00</updated>
     <id>http://hackerxu.com</id>
     <author>
         <name>xuxiao</name>
@@ -630,6 +630,42 @@ username=guest&amp;amp;extension=&amp;amp;issearch=on&amp;amp;searchword=pd%3D%2
 &lt;p&gt;标识服务器端对客户端请求的处理结果，主要由响应状态信息，响应状态码，服务器协议.&lt;/p&gt;
 
 &lt;p&gt;响应状态信息:HTTP协议&lt;/p&gt;
+
+&lt;p&gt;状态代码分类:&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;整体范围&lt;/th&gt;
+&lt;th&gt;已定义范围&lt;/th&gt;
+&lt;th&gt;分类&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;100 ~ 199&lt;/td&gt;
+&lt;td&gt;100 ~ 101&lt;/td&gt;
+&lt;td&gt;信息提示&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;200 ~ 299&lt;/td&gt;
+&lt;td&gt;200 ~ 206&lt;/td&gt;
+&lt;td&gt;成功&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;300 ~ 399&lt;/td&gt;
+&lt;td&gt;300 ~ 305&lt;/td&gt;
+&lt;td&gt;重定向&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;400 ~ 499&lt;/td&gt;
+&lt;td&gt;400 ~ 415&lt;/td&gt;
+&lt;td&gt;客户端错误&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;500 ~ 599&lt;/td&gt;
+&lt;td&gt;500 ~ 505&lt;/td&gt;
+&lt;td&gt;服务器错误&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
 
 &lt;p&gt;响应状态码:&lt;/p&gt;
 
