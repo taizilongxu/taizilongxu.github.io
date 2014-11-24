@@ -5,7 +5,7 @@
     <subtitle>Python,HTML,CSS,Machine Leaning</subtitle>
     <link href="http://hackerxu.com/atom.xml" rel="self"/>
     <link href="http://hackerxu.com"/>
-    <updated>2014-11-24T19:09:32+08:00</updated>
+    <updated>2014-11-24T20:47:08+08:00</updated>
     <id>http://hackerxu.com</id>
     <author>
         <name>xuxiao</name>
@@ -349,7 +349,7 @@
         <link href="http://hackerxu.com/2014/11/17/HTTP.html"/>
         <updated>2014-11-17T00:00:00+08:00</updated>
         <id>http://hackerxu.com/2014/11/17/HTTP</id>
-        <content type="html">&lt;h1&gt;基础概念&lt;/h1&gt;
+        <content type="html">&lt;h1&gt;1 基础概念&lt;/h1&gt;
 
 &lt;p&gt;HTTP（超文本传输协议）是一个基于请求与响应模式的、无状态的、应用层的协议，常基于TCP的连接方式，HTTP1.1版本中给出一种持续连接的机制，绝大多数的Web开发，都是构建在HTTP协议之上的Web应用。&lt;/p&gt;
 
@@ -363,11 +363,11 @@
 &lt;li&gt;无状态：HTTP协议是无状态协议。无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快。&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h4&gt;URI&lt;/h4&gt;
+&lt;h3&gt;1.1 URI&lt;/h3&gt;
 
 &lt;p&gt;URI统一资源标识符(Unicform Resource Identifier):唯一标识并定位信息资源.它有两个子集,一个是URL(Unicform Resource Locator),另一个是URN(Unicform Resource Name)&lt;/p&gt;
 
-&lt;h4&gt;URL&lt;/h4&gt;
+&lt;h4&gt;1.1.1 URL&lt;/h4&gt;
 
 &lt;p&gt;URL (URL是一种特殊类型的URI，包含了用于查找某个资源的足够的信息)的格式如下：&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;http://host[&amp;quot;:&amp;quot;port][abs_path]
@@ -388,7 +388,7 @@
 &lt;li&gt;http:192.168.0.116:8080/index.jsp&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h4&gt;URN&lt;/h4&gt;
+&lt;h4&gt;1.1.2 URN&lt;/h4&gt;
 
 &lt;p&gt;URN：URL的一种更新形式，统一资源名称(URN, Uniform Resource Name)不依赖于位置，并且有可能减少失效连接的个数。但是其流行还需假以时日，因为它需要更精密软件的支持。&lt;/p&gt;
 
@@ -465,7 +465,11 @@ HTTP状态行
 空行 
 可选的消息体
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;HTTP请求报文(request message)&lt;/h2&gt;
+&lt;h1&gt;2 HTTP报文&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-11-24%2020:43:24%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+&lt;h2&gt;2.1 HTTP请求报文(request message)&lt;/h2&gt;
 
 &lt;p&gt;HTTP协议的请求主要由一下几部分组成：请求行，请求头，请求体（post）&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;请求行\r\n
@@ -475,23 +479,58 @@ HTTP状态行
 \r\n
 请求体（Post方式）\r\n
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4&gt;请求行&lt;/h4&gt;
+&lt;h4&gt;2.1.1 请求行&lt;/h4&gt;
 
 &lt;p&gt;请求行主要由三部分组成，请求方法，请求路径，请求协议.例如上面的:&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;GET / HTTP/1.1
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;请求方法：HTTP规范定义了8种可能的请求方法：&lt;/p&gt;
+&lt;p&gt;常用的HTTP方法:&lt;/p&gt;
 
-&lt;ol&gt;
-&lt;li&gt;GET  检索URI中标识资源的一个简单请求&lt;/li&gt;
-&lt;li&gt;HEAD 与GET方法相同，服务器只返回状态行和头标，并不返回请求文档&lt;/li&gt;
-&lt;li&gt;POST 服务器接受被写入客户端输出流中的数据的请求&lt;/li&gt;
-&lt;li&gt;PUT 服务器保存请求数据作为指定URI新内容的请求&lt;/li&gt;
-&lt;li&gt;DELETE 服务器删除URI中命名的资源的请求&lt;/li&gt;
-&lt;li&gt;OPTIONS 关于服务器支持的请求方法信息的请求&lt;/li&gt;
-&lt;li&gt;TRACE Web服务器反馈Http请求和其头标的请求&lt;/li&gt;
-&lt;li&gt;CONNECT 已文档化但当前未实现的一个方法，预留做隧道处理&lt;/li&gt;
-&lt;/ol&gt;
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;方法&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;th&gt;是否包含主体&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;GET&lt;/td&gt;
+&lt;td&gt;从服务器获取一份文档&lt;/td&gt;
+&lt;td&gt;×&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HEAD&lt;/td&gt;
+&lt;td&gt;只从服务器获取文档首部&lt;/td&gt;
+&lt;td&gt;×&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;POST&lt;/td&gt;
+&lt;td&gt;向服务器发送需要处理的数据&lt;/td&gt;
+&lt;td&gt;√&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PUT&lt;/td&gt;
+&lt;td&gt;将请求的主体部分存储在服务器上&lt;/td&gt;
+&lt;td&gt;√&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;TRACE&lt;/td&gt;
+&lt;td&gt;对可能经过代理服务器传送到服务器上去的报文进行追踪&lt;/td&gt;
+&lt;td&gt;×&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;OPTIONS&lt;/td&gt;
+&lt;td&gt;决定可以在服务器上执行那些方法&lt;/td&gt;
+&lt;td&gt;×&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DELETE&lt;/td&gt;
+&lt;td&gt;从服务器删除一份文档&lt;/td&gt;
+&lt;td&gt;×&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;还有一种CONNECT,已文档化但当前未实现的一个方法，预留做隧道处理&lt;/p&gt;
 
 &lt;p&gt;当然我们最常用的也就是get和post方法，get方法的请求方式比较简单，所有请求的参数都显示追加在请求的url后面，而且请求长度有限制，post方式的请求参数都追加在请求体当中，消息长度没有限制而且以隐式的方式进行发送，安全性相对较高（这个安全性对于现在的网络技术也没有什么可安全的了，^_^）。&lt;/p&gt;
 
@@ -499,7 +538,7 @@ HTTP状态行
 
 &lt;p&gt;请求协议：目前常用的支持HTTP/1.0和HTTP/1.1方式，HTTP/1.1和HTTP/1.0之间存在不少差异性，&lt;/p&gt;
 
-&lt;h3&gt;请求头&lt;/h3&gt;
+&lt;h3&gt;2.1.2 请求头&lt;/h3&gt;
 
 &lt;p&gt;比如上面的例子中:&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;Host: www.baidu.com
@@ -545,7 +584,7 @@ Accept-Language: zh-CN,zh;q=0.8,en;q=0.6,zh-TW;q=0.4,ja;q=0.2
 &lt;li&gt;&lt;p&gt;UA-Pixels，UA-Color，UA-OS，UA-CPU：由某些版本的IE浏览器所发送的非标准的请求头，表示屏幕大小、颜色深度、操作系统和CPU类型.&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3&gt;请求体&lt;/h3&gt;
+&lt;h3&gt;2.1.3 请求体&lt;/h3&gt;
 
 &lt;p&gt;请求体（又叫请求正文）是post请求方式当中的请求参数,get方式则无请求体，以key=value形式进行存储，多个请求参数之间用&amp;amp;连接，如果请求当中有请求提，那么在请求头当中的Content-Length属性中记录的是该请求体的长度。&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;POST hysj.jsp HTTP/1.1
@@ -561,7 +600,7 @@ Referer: http://search.cnipr.com/cnipr/zljs/hyjs-biaodan-y.jsp
 Content-Length: 405
 username=guest&amp;amp;extension=&amp;amp;issearch=on&amp;amp;searchword=pd%3D%2820100901%29&amp;amp;presearchword=&amp;amp;sortfield=RELEVANCE&amp;amp;sRecordNumber=&amp;amp;searchType=0&amp;amp;searchFrom=0&amp;amp;channelid=14%2C15%2C16&amp;amp;searchChannel=14%2C15%2C16&amp;amp;strdb=14&amp;amp;strdb=15&amp;amp;strdb=16&amp;amp;cizi=2&amp;amp;sortcolumn=RELEVANCE&amp;amp;R1=-&amp;amp;txtA=&amp;amp;txtB=&amp;amp;txtC=&amp;amp;txtD=20100901&amp;amp;txtE=&amp;amp;txtF=&amp;amp;txtG=&amp;amp;txtH=&amp;amp;txtI=&amp;amp;txtJ=&amp;amp;txtK=&amp;amp;txtL=&amp;amp;txtM=&amp;amp;txtN=&amp;amp;txtP=&amp;amp;txtQ=&amp;amp;txtR=&amp;amp;txtSearchWord=&amp;amp;Submit=%BC%EC%A1%A1%CB%F7
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;HTTP响应报文(response message)&lt;/h2&gt;
+&lt;h2&gt;2.2 HTTP响应报文(response message)&lt;/h2&gt;
 
 &lt;p&gt;HTTP响应信息(服务器信息) &lt;/p&gt;
 
@@ -585,7 +624,7 @@ username=guest&amp;amp;extension=&amp;amp;issearch=on&amp;amp;searchword=pd%3D%2
 
 响应体
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4&gt;响应行&lt;/h4&gt;
+&lt;h4&gt;2.2.1 响应行&lt;/h4&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;HTTP/1.1 200 OK
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;标识服务器端对客户端请求的处理结果，主要由响应状态信息，响应状态码，服务器协议.&lt;/p&gt;
@@ -656,7 +695,7 @@ username=guest&amp;amp;extension=&amp;amp;issearch=on&amp;amp;searchword=pd%3D%2
 500 Internal Server Error //服务器发生不可预期的错误
 503 Server Unavailable  //服务器当前不能处理客户端的请求，一段时间后可能恢复正常
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4&gt;响应头&lt;/h4&gt;
+&lt;h4&gt;2.2.2 响应头&lt;/h4&gt;
 
 &lt;p&gt;类似于请求头的key：value形式，常用响应头如下所示:&lt;/p&gt;
 
@@ -681,7 +720,7 @@ username=guest&amp;amp;extension=&amp;amp;issearch=on&amp;amp;searchword=pd%3D%2
 
 &lt;p&gt;&lt;a href=&quot;http://t.cn/R7FguRq&quot;&gt;HTTP权威指南&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3&gt;wireshark抓包查看HTTP过程&lt;/h3&gt;
+&lt;h1&gt;3 wireshark抓包查看HTTP过程&lt;/h1&gt;
 
 &lt;p&gt;下面是打开&lt;code&gt;www.baidu.com&lt;/code&gt;所有的包:&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;No.     Time           Source                Destination           Protocol Length Info
