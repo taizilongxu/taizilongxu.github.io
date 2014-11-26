@@ -5,11 +5,19 @@
     <subtitle>Python,HTML,CSS,Machine Leaning</subtitle>
     <link href="http://hackerxu.com/atom.xml" rel="self"/>
     <link href="http://hackerxu.com"/>
-    <updated>2014-11-25T18:21:09+08:00</updated>
+    <updated>2014-11-26T19:00:37+08:00</updated>
     <id>http://hackerxu.com</id>
     <author>
         <name>xuxiao</name>
     </author>
+    
+    <entry>
+        <title>Python中的type和object</title>
+        <link href="http://hackerxu.com/2014/11/26/type_object.html"/>
+        <updated>2014-11-26T00:00:00+08:00</updated>
+        <id>http://hackerxu.com/2014/11/26/type_object</id>
+        <content type="html"></content>
+    </entry>
     
     <entry>
         <title>回调函数(callback)</title>
@@ -1295,52 +1303,6 @@ B
         <content type="html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/900x600_A9FVD2A84T8F0001.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;渺小的人类&lt;/p&gt;
-</content>
-    </entry>
-    
-    <entry>
-        <title>数据挖掘之Apriori算法</title>
-        <link href="http://hackerxu.com/2014/10/18/apriori.html"/>
-        <updated>2014-10-18T00:00:00+08:00</updated>
-        <id>http://hackerxu.com/2014/10/18/apriori</id>
-        <content type="html">&lt;p&gt;关联规则挖掘（Association rule mining）是数据挖掘中最活跃的研究方法之一，可以用来发现事情之间的联系，最早是为了发现超市交易数据库中不同的商品之间的关系。(啤酒与尿布)&lt;/p&gt;
-
-&lt;h4&gt;基本概念&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;支持度的定义：support(X--&amp;gt;Y) = |X交Y|/N=集合X与集合Y中的项在一条记录中同时出现的次数/数据记录的个数。例如：support({啤酒}--&amp;gt;{尿布}) = 啤酒和尿布同时出现的次数/数据记录数 = 3/5=60%。&lt;/li&gt;
-&lt;li&gt;自信度的定义：confidence(X--&amp;gt;Y) = |X交Y|/|X| = 集合X与集合Y中的项在一条记录中同时出现的次数/集合X出现的个数 。例如：confidence({啤酒}--&amp;gt;{尿布}) = 啤酒和尿布同时出现的次数/啤酒出现的次数=3/3=100%;confidence({尿布}--&amp;gt;{啤酒}) = 啤酒和尿布同时出现的次数/尿布出现的次数 = 3/4 = 75%&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;同时满足最小支持度阈值(min_sup)和最小置信度阈值(min_conf)的规则称作&lt;strong&gt;强规则&lt;/strong&gt; ,如果项集满足最小支持度,则称它为&lt;strong&gt;频繁项集&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;“如何由大型数据库挖掘关联规则?”关联规则的挖掘是一个两步的过程:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;找出所有频繁项集:根据定义,这些项集出现的频繁性至少和预定义的最小支持计数一样。&lt;/li&gt;
-&lt;li&gt;由频繁项集产生强关联规则:根据定义,这些规则必须满足最小支持度和最小置信度。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Apriori定律&lt;/p&gt;
-
-&lt;p&gt;为了减少频繁项集的生成时间，我们应该尽早的消除一些完全不可能是频繁项集的集合，Apriori的两条定律就是干这事的。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Apriori定律1&lt;/strong&gt;：如果一个集合是频繁项集，则它的所有子集都是频繁项集。举例：假设一个集合{A,B}是频繁项集，即A、B同时出现在一条记录的次数大于等于最小支持度min_support，则它的子集{A},{B}出现次数必定大于等于min_support，即它的子集都是频繁项集。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Apriori定律2&lt;/strong&gt;：如果一个集合不是频繁项集，则它的所有超集都不是频繁项集。举例：假设集合{A}不是频繁项集，即A出现的次数小于min_support，则它的任何超集如{A,B}出现的次数必定小于min_support，因此其超集必定也不是频繁项集。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/31160727-a7d9a4d0a64a4f4b83a831980273450d.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;上面的图演示了Apriori算法的过程，注意看由二级频繁项集生成三级候选项集时，没有{牛奶,面包,啤酒}，那是因为{面包,啤酒}不是二级频繁项集，这里利用了Apriori定理。最后生成三级频繁项集后，没有更高一级的候选项集，因此整个算法结束，{牛奶,面包,尿布}是最大频繁子集。&lt;/p&gt;
-
-&lt;p&gt;Python实现算法地址&lt;a href=&quot;https://github.com/taizilongxu/datamining&quot;&gt;https://github.com/taizilongxu/datamining&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3&gt;参考资料&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/fengfenggirl/p/associate_apriori.html&quot;&gt;http://www.cnblogs.com/fengfenggirl/p/associate_apriori.html&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://blog.csdn.net/lizhengnanhua/article/details/9061887&quot;&gt;http://blog.csdn.net/lizhengnanhua/article/details/9061887&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </content>
     </entry>
     
