@@ -5,7 +5,7 @@
     <subtitle>Python,HTML,CSS,Machine Leaning</subtitle>
     <link href="http://hackerxu.com/atom.xml" rel="self"/>
     <link href="http://hackerxu.com"/>
-    <updated>2014-11-26T20:18:32+08:00</updated>
+    <updated>2014-11-26T21:10:34+08:00</updated>
     <id>http://hackerxu.com</id>
     <author>
         <name>xuxiao</name>
@@ -16,13 +16,15 @@
         <link href="http://hackerxu.com/2014/11/26/type_object.html"/>
         <updated>2014-11-26T00:00:00+08:00</updated>
         <id>http://hackerxu.com/2014/11/26/type_object</id>
-        <content type="html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/types_map.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+        <content type="html">&lt;p&gt;图片来源 &lt;a href=&quot;http://wiki.woodpecker.org.cn/moin/PyTypesAndObjects&quot;&gt;http://wiki.woodpecker.org.cn/moin/PyTypesAndObjects&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/types_map.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;先解释一下图片,虚线表示一个对象的type(类型),实线表示一个对象的base(基类/父类).&lt;/p&gt;
 
 &lt;p&gt;这个图片很有意思的一个地方是&lt;code&gt;&amp;lt;type &amp;#39;type&amp;#39;&amp;gt;&lt;/code&gt;和&lt;code&gt;&amp;lt;type &amp;#39;object&amp;#39;&amp;gt;&lt;/code&gt;之间的关系,可以看到&lt;code&gt;&amp;lt;type &amp;#39;object&amp;#39;&amp;gt;&lt;/code&gt;是&lt;code&gt;&amp;lt;type &amp;#39;type&amp;#39;&amp;gt;&lt;/code&gt;的基类,而&lt;code&gt;&amp;lt;type &amp;#39;type&amp;#39;&amp;gt;&lt;/code&gt;是&lt;code&gt;&amp;lt;type &amp;#39;object&amp;#39;&amp;gt;&lt;/code&gt;的type(类型),这到底为什么?(这里先拿新式类来说,旧式类后面在说.)&lt;/p&gt;
 
-&lt;p&gt;我觉得最主要的原因是来源于Python*&lt;em&gt;一切皆为对象&lt;/em&gt;*的概念,在Python中所有的类或实例(比如list,int,1,&amp;#39;abc&amp;#39;)都是对象.&lt;/p&gt;
+&lt;p&gt;我觉得最主要的原因是来源于Python &lt;strong&gt;一切皆为对象&lt;/strong&gt; 的概念,在Python中所有的类或实例(比如list,int,1,&amp;#39;abc&amp;#39;)都是对象.&lt;/p&gt;
 
 &lt;p&gt;如果要你设计会怎么设计?那就是设计一个超类,所有的对象的超集都是一个&lt;code&gt;&amp;lt;type &amp;#39;object&amp;#39;&amp;gt;&lt;/code&gt;类(也就是图上的&lt;code&gt;&amp;lt;type &amp;#39;object&amp;#39;&amp;gt;&lt;/code&gt;),即所有的对象都继承这个object类.这就是&lt;code&gt;&amp;lt;type &amp;#39;object&amp;#39;&amp;gt;&lt;/code&gt;类的由来.&lt;/p&gt;
 
@@ -33,15 +35,17 @@
 &lt;li&gt;instances(实例)&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;类和实例有什么关系呢?类创造了实例,而不是继承关系.那么问题来了,是什么创造了类呢?于是在Python里引进了&lt;code&gt;metaclasses&lt;/code&gt;,&lt;code&gt;&amp;lt;type &amp;#39;type&amp;#39;&amp;gt;&lt;/code&gt;就是元类,它可以创建类.记住&lt;strong&gt;Python中的一切都是对象，它们要么是类的实例，要么是元类的实例&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;类和实例有什么关系呢?类创造了实例,而不是继承关系.那么问题来了,是什么创造了类呢?于是在Python里引进了&lt;code&gt;metaclasses&lt;/code&gt;,&lt;code&gt;&amp;lt;type &amp;#39;type&amp;#39;&amp;gt;&lt;/code&gt;就是元类,它可以创建类.记住 &lt;strong&gt;Python中的一切都是对象，它们要么是类的实例，要么是元类的实例&lt;/strong&gt; .&lt;/p&gt;
 
-&lt;p&gt;这样我们就统一了对象的创建,所有的对象都是&lt;code&gt;metaclasses&lt;/code&gt;创建的,而所有的对象都是&lt;code&gt;&amp;lt;type &amp;#39;object&amp;#39;&amp;gt;&lt;/code&gt;的子集,这就是为什么我们分别需要&lt;code&gt;type&lt;/code&gt;和&lt;code&gt;object&lt;/code&gt;这两个东西~~最后,&lt;code&gt;&amp;lt;type &amp;#39;type&amp;#39;&amp;gt;&lt;/code&gt;和&lt;code&gt;&amp;lt;type &amp;#39;object&amp;#39;&amp;gt;&lt;/code&gt;之间的实线部分,那是因为&lt;strong&gt;一切皆为对象&lt;/strong&gt;,所以&lt;code&gt;type&lt;/code&gt;自然是&lt;code&gt;object&lt;/code&gt;的子集了.&lt;/p&gt;
+&lt;p&gt;这样我们就统一了对象的创建,所有的对象都是&lt;code&gt;metaclasses&lt;/code&gt;创建的,而所有的对象都是&lt;code&gt;&amp;lt;type &amp;#39;object&amp;#39;&amp;gt;&lt;/code&gt;的子集,这就是为什么我们分别需要&lt;code&gt;type&lt;/code&gt;和&lt;code&gt;object&lt;/code&gt;这两个东西~~最后,&lt;code&gt;&amp;lt;type &amp;#39;type&amp;#39;&amp;gt;&lt;/code&gt;和&lt;code&gt;&amp;lt;type &amp;#39;object&amp;#39;&amp;gt;&lt;/code&gt;之间的实线部分,那是因为 &lt;strong&gt;一切皆为对象&lt;/strong&gt; ,所以&lt;code&gt;type&lt;/code&gt;自然是&lt;code&gt;object&lt;/code&gt;的子集了.&lt;/p&gt;
 
-&lt;p&gt;总之,&lt;strong&gt;&lt;code&gt;type&lt;/code&gt;是所有对象的妈或者奶奶,创建所有对象(包括自己,它的&lt;code&gt;__class__&lt;/code&gt;为&lt;code&gt;&amp;lt;type &amp;#39;type&amp;#39;&amp;gt;&lt;/code&gt;),&lt;code&gt;object&lt;/code&gt;是所有对象的祖宗(不包括自己,它的&lt;code&gt;__base__&lt;/code&gt;为空),所有对象继承祖宗的血统&lt;/strong&gt;,就酱紫.&lt;/p&gt;
+&lt;p&gt;总之, &lt;strong&gt;&lt;code&gt;type&lt;/code&gt;是所有对象的妈或者奶奶,创建所有对象(包括自己,它的&lt;code&gt;__class__&lt;/code&gt;为&lt;code&gt;&amp;lt;type &amp;#39;type&amp;#39;&amp;gt;&lt;/code&gt;),&lt;code&gt;object&lt;/code&gt;是所有对象的祖宗(不包括自己,它的&lt;code&gt;__base__&lt;/code&gt;为空),所有对象继承祖宗的血统&lt;/strong&gt; ,就酱紫.&lt;/p&gt;
 
 &lt;p&gt;ps:&lt;/p&gt;
 
 &lt;ul&gt;
+&lt;li&gt;不能通过形式上判断类的类型,应当从元类的类型来确定:古典类的元类为&lt;code&gt;types.ClassType&lt;/code&gt;,新式类的元类为&lt;code&gt;type&lt;/code&gt;,可以通过设置&lt;code&gt;__metaclass__&lt;/code&gt;来设置一个类的元类.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;type(*)&lt;/code&gt;等同于&lt;code&gt;*.__class__&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;每个对象都有class，并且等于该对象的type.&lt;/li&gt;
 &lt;li&gt;每个类(classes)或者type有bases属性，而实例(instances)则没有.只有&lt;code&gt;&amp;lt;type &amp;#39;object&amp;#39;&amp;gt;&lt;/code&gt;的bases是空的.&lt;/li&gt;
 &lt;li&gt;要通过子类化构建对象,我们使用class关键字，并指定新对象的基类bases (或者可选的 type) . 这样通常创建出的是type object.&lt;/li&gt;
@@ -49,10 +53,10 @@
 &lt;/ul&gt;
 
 &lt;p&gt;对于上一个问题可以引出为什么要加入新式类?&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# 旧式类&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
 
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# 新式类&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;假设a,b分别是类A,类B的实例,则:&lt;/p&gt;
@@ -100,6 +104,12 @@
 &lt;td&gt;×&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;可以看到对于旧式类,它的&lt;code&gt;type&lt;/code&gt;和&lt;code&gt;*.__class__&lt;/code&gt;还有&lt;code&gt;*.__bases__&lt;/code&gt;比较混乱,而新式类就是为了解决这个问题,做到了大一统.&lt;/p&gt;
+
+&lt;p&gt;新式类有很多优势:基于内建类型构建新的用户类型,支持property和描述符特性等.作为新式类的祖先,Object类中还定义了一些特殊方法,如:&lt;code&gt;__new__()&lt;/code&gt;,&lt;code&gt;__init__()&lt;/code&gt;,&lt;code&gt;__delattr__()&lt;/code&gt;,&lt;code&gt;__getattribute__()&lt;/code&gt;,&lt;code&gt;__setattr__()&lt;/code&gt;,&lt;code&gt;__hash__()&lt;/code&gt;,&lt;code&gt;__repr__()&lt;/code&gt;,&lt;code&gt;__str__()&lt;/code&gt;等等.Object的子类可以对这些方法进行覆盖以满足自身的特殊需求.&lt;/p&gt;
+
+&lt;p&gt;另外，新式类和旧式类还有一个区别就是在多继承的时候，查找要调用的方法。新式类是广度优先的查找算法。旧式类的查找方法是深度优先的.&lt;/p&gt;
 </content>
     </entry>
     
