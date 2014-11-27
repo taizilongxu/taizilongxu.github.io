@@ -102,6 +102,8 @@
 <li>作为用来初始化的<code>__init__()</code>方法在多继承的情况下,子类的<code>__init__()</code>方法如果不显式调用父类的<code>__init__()</code>方法,则父类的<code>__init__()</code>方法不会被调用.</li>
 </ol>
 
+<h3>new方法举例</h3>
+
 <p>举个工厂模式的例子:</p>
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">ShapeFactory</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="n">shapes</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;triangle&#39;</span><span class="p">:</span> <span class="n">Triangle</span><span class="p">,</span> <span class="s">&#39;rectangle&#39;</span><span class="p">:</span> <span class="n">Rectangle</span><span class="p">}</span>
@@ -134,6 +136,52 @@
 <p>在ShapeFactory类中重新覆盖了<code>__new__()</code>方法,外界通过调用该方法来创建其所需要的对象类型,但如果所请求的类是系统所不支持的,则返回Shape对象.在引入了工厂类之后,只需要用如下形式就可以创建不同的图形对象:</p>
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">ShapeFactory</span><span class="p">(</span><span class="s">&#39;rectangle&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
 </code></pre></div>
+<p>另一个继承不可变类型的例子:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">UserSet</span><span class="p">(</span><span class="nb">frozenset</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span><span class="nb">basestring</span><span class="p">):</span>
+            <span class="n">arg</span> <span class="o">=</span> <span class="n">arg</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+        <span class="nb">frozenset</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+
+<span class="k">print</span> <span class="n">UserSet</span><span class="p">(</span><span class="s">&quot;I am testing&quot;</span><span class="p">)</span>
+<span class="k">print</span> <span class="nb">frozenset</span><span class="p">(</span><span class="s">&quot;I am testing&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>输出:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">UserSet</span><span class="p">([</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39; &#39;</span><span class="p">,</span> <span class="s">&#39;e&#39;</span><span class="p">,</span> <span class="s">&#39;g&#39;</span><span class="p">,</span> <span class="s">&#39;I&#39;</span><span class="p">,</span> <span class="s">&#39;m&#39;</span><span class="p">,</span> <span class="s">&#39;n&#39;</span><span class="p">,</span> <span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="s">&#39;s&#39;</span><span class="p">,</span> <span class="s">&#39;t&#39;</span><span class="p">])</span>
+<span class="nb">frozenset</span><span class="p">([</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39; &#39;</span><span class="p">,</span> <span class="s">&#39;e&#39;</span><span class="p">,</span> <span class="s">&#39;g&#39;</span><span class="p">,</span> <span class="s">&#39;I&#39;</span><span class="p">,</span> <span class="s">&#39;m&#39;</span><span class="p">,</span> <span class="s">&#39;n&#39;</span><span class="p">,</span> <span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="s">&#39;s&#39;</span><span class="p">,</span> <span class="s">&#39;t&#39;</span><span class="p">])</span>
+</code></pre></div>
+<p>注意:为什么举这个例子呢,因为我们<code>print UserSet(&quot;I am testing&quot;)</code>输出的是实例的值,而不是<code>__init__()</code>的值,所以必须在<code>__new__()</code>过程中(生成实例时)进行更改,才能输出我们想要的值.</p>
+
+<p>在UserSet中加入下面的</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">args</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">basestring</span><span class="p">):</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(),)</span> <span class="o">+</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">UserSet</span><span class="p">,</span> <span class="n">cls</span><span class="p">)</span><span class="o">.</span><span class="n">__new__</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+</code></pre></div>
+<p>输出:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">UserSet</span><span class="p">([</span><span class="s">&#39;I&#39;</span><span class="p">,</span> <span class="s">&#39;testing&#39;</span><span class="p">,</span> <span class="s">&#39;am&#39;</span><span class="p">])</span>
+<span class="nb">frozenset</span><span class="p">([</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39; &#39;</span><span class="p">,</span> <span class="s">&#39;e&#39;</span><span class="p">,</span> <span class="s">&#39;g&#39;</span><span class="p">,</span> <span class="s">&#39;I&#39;</span><span class="p">,</span> <span class="s">&#39;m&#39;</span><span class="p">,</span> <span class="s">&#39;n&#39;</span><span class="p">,</span> <span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="s">&#39;s&#39;</span><span class="p">,</span> <span class="s">&#39;t&#39;</span><span class="p">])</span>
+</code></pre></div>
+<h3>总结</h3>
+
+<p>实例化一个类的过程:</p>
+
+<ol>
+<li>检查是否有<code>__new__()</code>方法,如果没有就继承父类的<code>__new__()</code>方法;如果有则用自己的<code>__new__()</code>方法.</li>
+<li>如果<code>__new__()</code>方法有返回值(类实例)则调用<code>__init__()</code>方法;如果没有则不掉用.</li>
+</ol>
+
+<p>其实<code>__new__()</code>方法就是构造函数,是这个类实例的构造(实例参数类型),而<code>__init__()</code>方法是对实例初值进行赋值.大多数情况下我们可以用<code>__init__()</code>完成任务,但是上面那几种情况就需要<code>__new__()</code>方法.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Use __new__ when you need to control the creation of a new instance. Use __init__ when you need to control initialization of a new instance.
+
+__new__ is the first step of instance creation. It&#39;s called first, and is responsible for returning a new instance of your class. In contrast, __init__ doesn&#39;t return anything; it&#39;s only responsible for initializing the instance after it&#39;s been created.
+
+In general, you shouldn&#39;t need to override __new__ unless you&#39;re subclassing an immutable type like str, int, unicode or tuple.
+</code></pre></div>
+<p>From: <a href="http://mail.python.org/pipermail/tutor/2008-April/061426.html">http://mail.python.org/pipermail/tutor/2008-April/061426.html</a></p>
+
     </article>
     <!-- Duoshuo Comment BEGIN -->
     <div id="comments">
