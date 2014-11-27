@@ -5,11 +5,77 @@
     <subtitle>Python,HTML,CSS,Machine Leaning</subtitle>
     <link href="http://hackerxu.com/atom.xml" rel="self"/>
     <link href="http://hackerxu.com"/>
-    <updated>2014-11-26T21:10:34+08:00</updated>
+    <updated>2014-11-27T09:53:57+08:00</updated>
     <id>http://hackerxu.com</id>
     <author>
         <name>xuxiao</name>
     </author>
+    
+    <entry>
+        <title>new和init</title>
+        <link href="http://hackerxu.com/2014/11/27/new_init.html"/>
+        <updated>2014-11-27T00:00:00+08:00</updated>
+        <id>http://hackerxu.com/2014/11/27/new_init</id>
+        <content type="html">&lt;p&gt;许多人认为&lt;code&gt;__init()__&lt;/code&gt;方法是类的构造方法,其实不然.&lt;code&gt;__init__()&lt;/code&gt;方法所做的工作是在类的对象创建好之后进行变量的初始化.&lt;code&gt;__new__()&lt;/code&gt;方法才会真正创建实例,是类的构造方法.这两个方法都是object类中默认的方法,继承自object的新式类,如果不覆盖这两个方法将会默认调用object中对应的方法.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;__new__()&lt;/code&gt;和&lt;code&gt;__init()__&lt;/code&gt;的定义:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;object.__new__(cls[,args...])&lt;/code&gt;:其中cls代表类,args为参数列表.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;object.__init__(self[,args...])&lt;/code&gt;:其中self代表实例对象,args为参数列表.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;不同之处:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;__new__()&lt;/code&gt;方法为静态方法,&lt;code&gt;__init__()&lt;/code&gt;方法为实例方法.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;__new__()&lt;/code&gt;方法一般需要返回类的对象,当返回类的对象时将会自动调用&lt;code&gt;__init__()&lt;/code&gt;方法进行初始化,如果没有对象返回,则&lt;code&gt;__init__()&lt;/code&gt;方法不会被调用.&lt;code&gt;__init__()&lt;/code&gt;方法不需要显示返回,默认为None,否则会在运行时抛出TypeError.&lt;/li&gt;
+&lt;li&gt;当需要控制实例创建的时候可使用&lt;code&gt;__new__()&lt;/code&gt;方法,而控制实例初始化的时候用&lt;code&gt;__init__()&lt;/code&gt;方法.&lt;/li&gt;
+&lt;li&gt;一般情况下不需要覆盖&lt;code&gt;__new__()&lt;/code&gt;方法,但当子类继承自不可变类型,如str,int,unicode或者tuple的时候,往往需要覆盖该方法.&lt;/li&gt;
+&lt;li&gt;当需要覆盖&lt;code&gt;__new__()&lt;/code&gt;和&lt;code&gt;__init()__&lt;/code&gt;方法的时候这两个方法的参数必须保持一致,如果不一致将导致异常.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;__new__()&lt;/code&gt;方法很少可以用到,有以下几种情况:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;当类继承(如str,int,unicode,tuple或者forzenset等)不可变类型且默认的&lt;code&gt;__new__()&lt;/code&gt;方法不能满足需求的时候.&lt;/li&gt;
+&lt;li&gt;用来实现工厂模式或者单例模式或者进行元类编程的时候.&lt;/li&gt;
+&lt;li&gt;作为用来初始化的&lt;code&gt;__init__()&lt;/code&gt;方法在多继承的情况下,子类的&lt;code&gt;__init__()&lt;/code&gt;方法如果不显式调用父类的&lt;code&gt;__init__()&lt;/code&gt;方法,则父类的&lt;code&gt;__init__()&lt;/code&gt;方法不会被调用.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;举个工厂模式的例子:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ShapeFactory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;shapes&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;triangle&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Triangle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;rectangle&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Rectangle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__new__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;klass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ShapeFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shapes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;creating a new shape &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%s&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ShapeFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shapes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]()&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;creating a new shape &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%s&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;draw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Triangle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;I am a triangle&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;draw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;proint&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;I am drawing triangle&amp;quot;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Rectangle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;I am a rectangle&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;draw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;proint&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;I am drawing tectangle&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;在ShapeFactory类中重新覆盖了&lt;code&gt;__new__()&lt;/code&gt;方法,外界通过调用该方法来创建其所需要的对象类型,但如果所请求的类是系统所不支持的,则返回Shape对象.在引入了工厂类之后,只需要用如下形式就可以创建不同的图形对象:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;ShapeFactory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;rectangle&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;draw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+    </entry>
     
     <entry>
         <title>为什么要有type和object?</title>
@@ -1386,17 +1452,6 @@ B
         <content type="html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/7702.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;我是要成为海贼王的男人.&lt;/p&gt;
-</content>
-    </entry>
-    
-    <entry>
-        <title>草帽星系</title>
-        <link href="http://hackerxu.com/2014/10/26/habo.html"/>
-        <updated>2014-10-26T00:00:00+08:00</updated>
-        <id>http://hackerxu.com/2014/10/26/habo</id>
-        <content type="html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/900x600_A9FVD2A84T8F0001.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;渺小的人类&lt;/p&gt;
 </content>
     </entry>
     
