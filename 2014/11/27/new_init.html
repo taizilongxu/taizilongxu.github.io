@@ -174,12 +174,13 @@
 </ol>
 
 <p>其实<code>__new__()</code>方法就是构造函数,是这个类实例的构造(实例参数类型),而<code>__init__()</code>方法是对实例初值进行赋值.大多数情况下我们可以用<code>__init__()</code>完成任务,但是上面那几种情况就需要<code>__new__()</code>方法.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">Use __new__ when you need to control the creation of a new instance. Use __init__ when you need to control initialization of a new instance.
 
-__new__ is the first step of instance creation. It&#39;s called first, and is responsible for returning a new instance of your class. In contrast, __init__ doesn&#39;t return anything; it&#39;s only responsible for initializing the instance after it&#39;s been created.
+<blockquote>
+<p>Use <code>__new__</code> when you need to control the creation of a new instance. Use <code>__init__</code> when you need to control initialization of a new instance.
+<code>__new__</code> is the first step of instance creation. It&#39;s called first, and is responsible for returning a new instance of your class. In contrast, <code>__init__</code> doesn&#39;t return anything; it&#39;s only responsible for initializing the instance after it&#39;s been created.
+In general, you shouldn&#39;t need to override <code>__new__</code> unless you&#39;re subclassing an immutable type like str, int, unicode or tuple.</p>
+</blockquote>
 
-In general, you shouldn&#39;t need to override __new__ unless you&#39;re subclassing an immutable type like str, int, unicode or tuple.
-</code></pre></div>
 <p>From: <a href="http://mail.python.org/pipermail/tutor/2008-April/061426.html">http://mail.python.org/pipermail/tutor/2008-April/061426.html</a></p>
 
     </article>
