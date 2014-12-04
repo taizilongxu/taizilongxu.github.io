@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Hackerxu's Blog</title>
+<title>apt-get 命令原理</title>
 <link rel="shortcut icon" href=" /img/github.ico"/>
 <link rel="bookmark" href="/img/github.ico"/>
 <meta name="viewport" content="width=device-width">
 <meta name="description" content="Python,HTML,CSS,Machine Leaning">
-<link rel="canonical" href="http://hackerxu.com/">
+<link rel="canonical" href="http://hackerxu.com/2014/12/03/apt_get.html">
 <!-- Custom CSS -->
 <link rel="stylesheet" href="/css/main.css">
 <link rel="stylesheet" href="/css/github.css">
@@ -69,35 +69,72 @@
 
 <div class="page-content">
     <div class="wrap">
-        <div class="home">
-  
-  <header class="post-header">
-    <h1><a href="/2014/11/05/OnePiece.html">One Piece</a></h1>
-    <p class="meta"><i class="fa fa-calendar"></i> 2014-11-05&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#life">life</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#Luffy">Luffy</a></p>
-  </header>
-  <article class="post-content">
-  <p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/7702.jpg" alt=""></p>
+        <div class="post">
+    <header class="post-header">
+        <h1><a href="/2014/12/03/apt_get.html">apt-get 命令原理</a></h1>
+        <p class="meta"><i class="fa fa-calendar"></i> 2014-12-03&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#linux">linux</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#linux">linux</a></p>
+    </header>
+    <article class="post-content">
+        <h2>apt-get原理</h2>
 
-<p>我是要成为海贼王的男人.</p>
+<p>工作顺序</p>
 
-  </article>
-  
-  <ul class="posts">
-    <li class="listing-seperator">Yesterday you said tomorrow</li>
-  
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2014-12-03">2014-12-03</time>
-      <a href="/2014/12/03/apt_get.html" title="apt-get 命令原理">apt-get 命令原理</a>
-    </li>
-  
-    
-    
-    
-    <li class="listing-seperator"><a href="/archive/">Long ago</a></li>
-  </ul>
+<p>apt命令会访问<code>/etc/apt/sources.list</code>源列表.(这个源列表可以添加好多源,每次都选中开头的有效源)</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">deb http://mirror.neu.edu.cn/ubuntu/ trusty main restricted   
+</code></pre></div>
+<p>我的这个是东大的源.</p>
+
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-12-04%2010:20:50%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
+
+<p>Main 的包的相关信息均在 dists/lucid/main/binary-i386/下。不是把包放在这里就行了，还需要生成Packages.gz的包文件，因为apt-get 每次都会读取这个文件，从而获取的包的信息。</p>
+
+<p>从Packages.gz中获取到所有包的信息，然后apt-get就可以通过它找到所有的包并且自动下载安装了。</p>
+
+<p>来看看Packages.gz都有什么吧:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Package: python
+Priority: important
+Section: python
+Installed-Size: 640
+Maintainer: Ubuntu Developers &lt;ubuntu-devel-discuss@lists.ubuntu.com&gt;
+Original-Maintainer: Matthias Klose &lt;doko@debian.org&gt;
+Architecture: all
+Source: python-defaults
+Version: 2.6.5-0ubuntu1
+Replaces: python-base, python-xmlbase, python2.3 (&lt;= 2.3.2-6)
+Provides: python-ctypes, python-email, python-plistlib, python-wsgiref, python-xmlbase
+Depends: python2.6 (&gt;= 2.6.5), python-minimal (= 2.6.5-0ubuntu1)
+Suggests: python-doc (&gt;= 2.6.5-0ubuntu1), python-tk (&gt;= 2.6.5-0ubuntu1), python-profiler (&gt;= 2.6.5-0ubuntu1)
+Conflicts: libboost-dbg (&lt;&lt; 1.34.1-15ubuntu3), libboost-python-dev (&lt;&lt; 1.34.1-15ubuntu3), libboost-python1.35-dev (&lt;&lt; 1.35.0-8ubuntu5), libboost1.35-dbg (&lt;&lt; 1.35.0-8ubuntu5), pitivi (&lt;&lt; 0.11.3-1ubuntu1), python-aubio (&lt;&lt; 0.3.2-2ubuntu3), python-base, python-bz2, python-central (&lt;&lt; 0.5.5), python-csv, python-freevo (&lt;&lt; 1.8.1-3ubuntu3), python-xmlbase, python2.1 (&lt;= 2.1.2), python2.3 (&lt;&lt; 2.3.5-14), qmtest (&lt;&lt; 2.4-5ubuntu1), ufw (&lt;&lt; 0.27~r416)
+Filename: pool/main/p/python-defaults/python_2.6.5-0ubuntu1_all.deb
+Size: 147766
+MD5sum: 457b6f467e45287b8430833ec7d2f9ec
+SHA1: 3d67dd0ebf003ede05dbae034616c1f519ea5962
+SHA256: 5aa5086459e04815980329b66f430321cf490d7d37c9550e30d43125dd2dc5fc
+Description: An interactive high-level object-oriented language (default version)
+ Python, the high-level, interactive object oriented language,
+ includes an extensive class library with lots of goodies for
+ network programming, system administration, sounds and graphics.
+ .
+ This package is a dependency package, which depends on Debian&#39;s default
+ Python version (currently v2.6).
+Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+Origin: Ubuntu
+Supported: 5y
+Task: minimal
+</code></pre></div>
+<p>包含的信息有：  </p>
+
+<p>包名，优先级，类型，维护者，架构，源文件（source），版本号，依赖包，冲突性信息，包大小，文件的下载路径，MD5sum，SHA1，包描述，Xul-Appid---应用程序id，Bugs信息，Origin，Supported </p>
+
+<p>从以上可以看到包的下载地址为:    </p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">pool/main/p/python-defaults/python_2.6.5-0ubuntu1_all.deb
+</code></pre></div>
+    </article>
+    <!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/2014/12/03/apt_get"  data-title="apt-get 命令原理 - Hackerxu's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
 </div>
 
     </div>
