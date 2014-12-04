@@ -5,7 +5,7 @@
     <subtitle>Python,HTML,CSS,Machine Leaning</subtitle>
     <link href="http://hackerxu.com/atom.xml" rel="self"/>
     <link href="http://hackerxu.com"/>
-    <updated>2014-12-04T10:54:49+08:00</updated>
+    <updated>2014-12-04T11:13:15+08:00</updated>
     <id>http://hackerxu.com</id>
     <author>
         <name>xuxiao</name>
@@ -16,12 +16,10 @@
         <link href="http://hackerxu.com/2014/12/03/apt_get.html"/>
         <updated>2014-12-03T00:00:00+08:00</updated>
         <id>http://hackerxu.com/2014/12/03/apt_get</id>
-        <content type="html">&lt;h2&gt;apt-get原理&lt;/h2&gt;
-
-&lt;p&gt;工作顺序&lt;/p&gt;
+        <content type="html">&lt;h2&gt;apt-get工作顺序&lt;/h2&gt;
 
 &lt;p&gt;apt命令会访问&lt;code&gt;/etc/apt/sources.list&lt;/code&gt;源列表.(这个源列表可以添加好多源,每次都选中开头的有效源)&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;deb http://mirror.neu.edu.cn/ubuntu/ trusty main restricted   
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;deb http://mirror.neu.edu.cn/ubuntu/(网址) trusty main restricted   (版本号)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;我的这个是东大的源.&lt;/p&gt;
 
@@ -31,7 +29,7 @@
 
 &lt;p&gt;从Packages.gz中获取到所有包的信息，然后apt-get就可以通过它找到所有的包并且自动下载安装了。&lt;/p&gt;
 
-&lt;p&gt;来看看Packages.gz都有什么吧:&lt;/p&gt;
+&lt;p&gt;来看看Packages.gz都有什么吧(下面是python包的信息):&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;Package: python
 Priority: important
 Section: python
@@ -68,8 +66,46 @@ Task: minimal
 &lt;p&gt;包名，优先级，类型，维护者，架构，源文件（source），版本号，依赖包，冲突性信息，包大小，文件的下载路径，MD5sum，SHA1，包描述，Xul-Appid---应用程序id，Bugs信息，Origin，Supported &lt;/p&gt;
 
 &lt;p&gt;从以上可以看到包的下载地址为:    &lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;pool/main/p/python-defaults/python_2.6.5-0ubuntu1_all.deb
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;(http://mirror.neu.edu.cn/ubuntu/)pool/main/p/python-defaults/python_2.6.5-0ubuntu1_all.deb
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;它会首先检查依赖,如果不存在则下载依赖包,这个依赖包或许还有依赖(递归下载),在完成了所有依赖包则可以进行下载,安装完成,中间任意一环没有完成则失败退出.这就是整个过程啦.&lt;/p&gt;
+
+&lt;h2&gt;总结&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;更新Packages.gz解析安装包所依赖的文件&lt;/li&gt;
+&lt;li&gt;根据1的结果检查是否所需要的依赖都已经安装，假设没有安装，则下载（应该有自己的下载功能）这些依赖并进行安装,这个过程中会对每个依赖重复1、2这两个过程&lt;/li&gt;
+&lt;li&gt;解决依赖关系，下载指定软件并安装,2、3中如果找不到软件或者库，则失败.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Packages.gz已经包含所有所依赖的软件及其版本信息、以及下载地址.&lt;/p&gt;
+
+&lt;h2&gt;apt-get常用命令&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;sudo apt-get install package 安装包&lt;/li&gt;
+&lt;li&gt;sudo apt-get remove package 删除包&lt;/li&gt;
+&lt;li&gt;sudo apt-get update  更新源&lt;/li&gt;
+&lt;li&gt;sudo apt-get upgrade 更新已安装的包&lt;/li&gt;
+&lt;li&gt;apt-get source package  下载该包的源代码&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;还有一些命令:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;apt-cache search package 搜索软件包&lt;/li&gt;
+&lt;li&gt;apt-cache show package  获取包的相关信息，如说明、大小、版本等&lt;/li&gt;
+&lt;li&gt;sudo apt-get install package --reinstall   重新安装包&lt;/li&gt;
+&lt;li&gt;sudo apt-get -f install   修复安装&lt;/li&gt;
+&lt;li&gt;sudo apt-get remove package --purge 删除包，包括配置文件等&lt;/li&gt;
+&lt;li&gt;sudo apt-get dist-upgrade 升级系统&lt;/li&gt;
+&lt;li&gt;apt-cache depends package 了解使用该包依赖那些包&lt;/li&gt;
+&lt;li&gt;apt-cache rdepends package 查看该包被哪些包依赖&lt;/li&gt;
+&lt;li&gt;sudo apt-get build-dep package 安装相关的编译环境&lt;/li&gt;
+&lt;li&gt;sudo apt-get clean &amp;amp;&amp;amp; sudo apt-get autoclean 清理无用的包&lt;/li&gt;
+&lt;li&gt;sudo apt-get check 检查是否有损坏的依赖&lt;/li&gt;
+&lt;/ul&gt;
+</content>
     </entry>
     
     <entry>
