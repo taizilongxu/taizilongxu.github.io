@@ -77,12 +77,16 @@
     <article class="post-content">
         <h2>apt-get工作顺序</h2>
 
+<h3>1 查询源列表</h3>
+
 <p>apt命令会访问<code>/etc/apt/sources.list</code>源列表.(这个源列表可以添加好多源,每次都选中开头的有效源)</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">deb http://mirror.neu.edu.cn/ubuntu/(网址) trusty main restricted   (版本号)
 </code></pre></div>
 <p>我的这个是东大的源.</p>
 
 <p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-12-04%2010:20:50%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
+
+<h3>2 查询Packages.gz</h3>
 
 <p>Main 的包的相关信息均在 dists/lucid/main/binary-i386/下。不是把包放在这里就行了，还需要生成Packages.gz的包文件，因为apt-get 每次都会读取这个文件，从而获取的包的信息。</p>
 
@@ -127,6 +131,8 @@ Task: minimal
 <p>从以上可以看到包的下载地址为:    </p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">(http://mirror.neu.edu.cn/ubuntu/)pool/main/p/python-defaults/python_2.6.5-0ubuntu1_all.deb
 </code></pre></div>
+<h3>3 下载包或者依赖</h3>
+
 <p>它会首先检查依赖,如果不存在则下载依赖包,这个依赖包或许还有依赖(递归下载),在完成了所有依赖包则可以进行下载,安装完成,中间任意一环没有完成则失败退出.这就是整个过程啦.</p>
 
 <h2>总结</h2>
