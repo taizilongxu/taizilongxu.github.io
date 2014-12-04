@@ -5,11 +5,255 @@
     <subtitle>Python,HTML,CSS,Machine Leaning</subtitle>
     <link href="http://hackerxu.com/atom.xml" rel="self"/>
     <link href="http://hackerxu.com"/>
-    <updated>2014-12-04T11:28:27+08:00</updated>
+    <updated>2014-12-04T19:55:19+08:00</updated>
     <id>http://hackerxu.com</id>
     <author>
         <name>xuxiao</name>
     </author>
+    
+    <entry>
+        <title>javascript基础语法笔记</title>
+        <link href="http://hackerxu.com/2014/12/04/javascript.html"/>
+        <updated>2014-12-04T00:00:00+08:00</updated>
+        <id>http://hackerxu.com/2014/12/04/javascript</id>
+        <content type="html">&lt;p&gt;javascript的语法相比于c和python来说真是简单不少.下面是javascript的基础语法,作为笔记记录,这篇笔记假设有Python和C的基础.只列出一些需要记忆和区别的地方.&lt;/p&gt;
+
+&lt;h2&gt;1 语法&lt;/h2&gt;
+
+&lt;h3&gt;1.1 语句&lt;/h3&gt;
+
+&lt;p&gt;三种形式:&lt;/p&gt;
+
+&lt;p&gt;每条语句放在不同行:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;first&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;statement&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;second&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;statement&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;放在同一行:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;first&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;statement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;second&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;statement&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;建议写法,通用写法:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;first&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;statement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;second&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;statement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;1.2 注释&lt;/h3&gt;
+
+&lt;p&gt;单行:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//注释&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;多行:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;cm&quot;&gt;/*注释&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;  注释&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;  注释*/&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;1.3 变量&lt;/h3&gt;
+
+&lt;p&gt;javascript允许程序员直接对变量赋值而无需事先声明.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;mod&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;happy&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;33&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;但提前声明变量是一种良好的编程习惯.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;或者&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;在javascript里变量和其他语法元素的名字都是&lt;strong&gt;区分字母大小写&lt;/strong&gt;的.&lt;/p&gt;
+
+&lt;h3&gt;1.4 数据类型&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;字符串:单双引号都可以(同Python一样),个人感觉双引号更好,不过随便,程序保持一致最重要.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mood&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;happy&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mood&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;happy&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mood&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;don&amp;#39;t ask&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mood&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;don\&amp;#39;t ask&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mood&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;about 5&amp;#39;10\&amp;quot; tall&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;数值:整数,浮点数,负数.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;33.25&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;temperature&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;temperature&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;20.3333333&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;布尔值:和Python不一样的是关键字是小写,&lt;code&gt;true&lt;/code&gt;和&lt;code&gt;false&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sleeping&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3&gt;1.5 数组&lt;/h3&gt;
+
+&lt;p&gt;4个元素的数组:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;beatles&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;无法预支元素个数:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;beatles&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;在声明数组时进行赋值:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;beatles&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;John&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Paul&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;George&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Ringo&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;还有一种方法创建,和python列表一样:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;beatles&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;John&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Paul&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;George&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Ringo&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;数组元素可以混合类型:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;lennon&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;John&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1940&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;数组元素还可以是变量:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;John&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;beatles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;元素赋值:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;数组基本和Python语法一致.&lt;/p&gt;
+
+&lt;h3&gt;1.6 对象&lt;/h3&gt;
+
+&lt;p&gt;与数组类似.对象的每个值都是对象的一个属性.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;lennon&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;lennon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;John&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;lennon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;year&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1940&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;lennon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;living&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;还有一种方法,和Python的字典一个样:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;lennon&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;John&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;year&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1940&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;living&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;或者&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;lennon&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{};&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;lennon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;John&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;lennon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;year&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1940&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;lennon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;living&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这里的属性名和Javascript的变量名命名规则相同,属性值可以是任何Javascript值,包括对象.&lt;/p&gt;
+
+&lt;h3&gt;1.7 算术操作符&lt;/h3&gt;
+
+&lt;p&gt;这个没什么好说的了:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;total&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;year&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;year&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;year&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;year&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;数值和字符串拼接,这里数值将会自动转换为字符串进行相加:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;year&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2005&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;The year is &amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;year&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;2 控制语句&lt;/h2&gt;
+
+&lt;h3&gt;2.1 条件语句&lt;/h3&gt;
+
+&lt;p&gt;基本语法:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;condition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;statements&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;statements&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;2.1.1 比较操作符&lt;/h4&gt;
+
+&lt;p&gt;还是那几种:&lt;code&gt;&amp;gt;&lt;/code&gt;,&lt;code&gt;&amp;lt;&lt;/code&gt;,&lt;code&gt;&amp;lt;=&lt;/code&gt;,&lt;code&gt;&amp;gt;=&lt;/code&gt;,&lt;code&gt;==&lt;/code&gt;,&lt;code&gt;!=&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;最后还有一种和别的语言不一样的:&lt;code&gt;===&lt;/code&gt;,这个全等操作符会执行严格的比较,不仅比较值,而且会比较变量的类型.例如:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//false&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;2.1.2 逻辑操作符&lt;/h4&gt;
+
+&lt;p&gt;逻辑与&lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt;,逻辑或&lt;code&gt;||&lt;/code&gt;,逻辑非&lt;code&gt;!&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3&gt;2.2 循环语句&lt;/h3&gt;
+
+&lt;h4&gt;2.2.1 while循环&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;condition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;statements&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;statements&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;condition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;例子:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;2.2.2 for循环&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;initial&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;condition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;condition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;alter&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;condition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;statements&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;例子:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;3 函数&lt;/h2&gt;
+
+&lt;p&gt;函数的作用就是重用和封装,每个语言都差不多.先定义,后调用.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arguments&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;statements&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;例子:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;shout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;beatles&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;John&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Paul&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;George&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Ringo&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;beatles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;beatles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;调用:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;shout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;还可以return:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;converToCelsius&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;temp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;命名规则:&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;变量:下划线分隔各个单词.例如&lt;code&gt;temp_celsius&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;函数:从第二个单词开始把每个而单词的第一个字母写成大写形式(驼峰命名).例如&lt;code&gt;convertToCelsius()&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4&gt;变量的作用域&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;全局变量:可以在脚本中任何位置引用.注意:在函数里也可以引用.&lt;/li&gt;
+&lt;li&gt;局部变量:只存在于声明它的那个函数内部,在函数外部是无法引用的.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;所以,我们在函数里既可以使用全局变量,也可以用局部变量.&lt;/p&gt;
+
+&lt;p&gt;BUG:如果我们在函数里的变量和全局变量重名,那么我们不能轻易使用,必须提前声明,所以声明是个好习惯.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;total&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;square&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;total&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// 不能这样写 total = num * num;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;total&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;4 对象&lt;/h2&gt;
+
+&lt;p&gt;属性,方法,实例自不必说了.&lt;/p&gt;
+
+&lt;h4&gt;4.1 内建对象&lt;/h4&gt;
+
+&lt;p&gt;提供的预先定义好的对象,这些可以拿来就用的对象称为内建对象(native object).&lt;/p&gt;
+
+&lt;p&gt;比如,Array对象,Math对象和Date对象.&lt;/p&gt;
+
+&lt;h4&gt;4.2 宿主对象&lt;/h4&gt;
+
+&lt;p&gt;由浏览器提供的预定义对象被称为宿主对象(host object).&lt;/p&gt;
+
+&lt;p&gt;宿主对象包括Form,Image和Element等.&lt;/p&gt;
+</content>
+    </entry>
     
     <entry>
         <title>apt-get 命令原理</title>
@@ -1475,212 +1719,6 @@ username=guest&amp;amp;extension=&amp;amp;issearch=on&amp;amp;searchword=pd%3D%2
 &lt;li&gt;&lt;a href=&quot;http://blog.chinaunix.net/uid-7411781-id-3812206.html&quot;&gt;http://blog.chinaunix.net/uid-7411781-id-3812206.html&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.2cto.com/net/201208/149347.html&quot;&gt;http://www.2cto.com/net/201208/149347.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</content>
-    </entry>
-    
-    <entry>
-        <title>粒子群算法(转)</title>
-        <link href="http://hackerxu.com/2014/11/14/PSO.html"/>
-        <updated>2014-11-14T00:00:00+08:00</updated>
-        <id>http://hackerxu.com/2014/11/14/PSO</id>
-        <content type="html">&lt;p&gt;本文整理自: &lt;a href=&quot;http://blog.csdn.net/niuyongjie/article/details/1569671&quot;&gt;http://blog.csdn.net/niuyongjie/article/details/1569671&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1&gt;粒子群算法简介&lt;/h1&gt;
-
-&lt;h2&gt;1 粒子群算法的历史&lt;/h2&gt;
-
-&lt;p&gt;粒子群算法源于复杂适应系统（Complex Adaptive System,CAS）。CAS理论于1994年正式提出，CAS中的成员称为主体。比如研究鸟群系统，每个鸟在这个系统中就称为主体。主体有适应性，它能够与环境及其他的主体进行交流，并且根据交流的过程“学习”或“积累经验”改变自身结构与行为。整个系统的演变或进化包括：新层次的产生（小鸟的出生）；分化和多样性的出现（鸟群中的鸟分成许多小的群）；新的主题的出现（鸟寻找食物过程中，不断发现新的食物）。&lt;/p&gt;
-
-&lt;p&gt;所以CAS系统中的主体具有4个基本特点（这些特点是粒子群算法发展变化的依据）：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;首先，主体是主动的、活动的。&lt;/li&gt;
-&lt;li&gt;主体与环境及其他主体是相互影响、相互作用的，这种影响是系统发展变化的主要动力。&lt;/li&gt;
-&lt;li&gt;环境的影响是宏观的，主体之间的影响是微观的，宏观与微观要有机结合。&lt;/li&gt;
-&lt;li&gt;最后，整个系统可能还要受一些随机因素的影响。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;粒子群算法就是对一个CAS系统－－－鸟群社会系统的研究得出的。&lt;/p&gt;
-
-&lt;p&gt;粒子群算法（ Particle Swarm Optimization, PSO）最早是由Eberhart和Kennedy于1995年提出，它的基本概念源于对鸟群觅食行为的研究。设想这样一个场景:一群鸟在随机搜寻食物，在这个区域里只有一块食物，所有的鸟都不知道食物在哪里，但是它们知道当前的位置离食物还有多远。那么找到食物的最优策略是什么呢?最简单有效的就是搜寻目前离食物最近的鸟的周围区域。&lt;/p&gt;
-
-&lt;p&gt;PSO算法就从这种生物种群行为特性中得到启发并用于求解优化问题。在PSO中，每个优化问题的潜在解都可以想象成d维搜索空间上的一个点，我们称之为“粒子”（Particle），所有的粒子都有一个被目标函数决定的适应值(Fitness Value )，每个粒子还有一个速度决定他们飞翔的方向和距离，然后粒子们就追随当前的最优粒子在解空间中搜索。Reynolds对鸟群飞行的研究发现。鸟仅仅是追踪它有限数量的邻居但最终的整体结果是整个鸟群好像在一个中心的控制之下.即复杂的全局行为是由简单规则的相互作用引起的。&lt;/p&gt;
-
-&lt;h2&gt;2 粒子群算法的具体表述&lt;/h2&gt;
-
-&lt;p&gt;上面罗嗦了半天，那些都是科研工作者写论文的语气，不过，PSO的历史就像上面说的那样。下面通俗的解释PSO算法。&lt;/p&gt;
-
-&lt;p&gt;PSO算法就是模拟一群鸟寻找食物的过程，每个鸟就是PSO中的粒子，也就是我们需要求解问题的可能解，这些鸟在寻找食物的过程中，不停改变自己在空中飞行的位置与速度。大家也可以观察一下，鸟群在寻找食物的过程中，开始鸟群比较分散，逐渐这些鸟就会聚成一群，这个群忽高忽低、忽左忽右，直到最后找到食物。这个过程我们转化为一个数学问题。寻找函数&lt;code&gt;y=1-cos(3*x)*exp(-x)&lt;/code&gt;的在[0,4]最大值。该函数的图形如下：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/o_hanshutuxing.bmp&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;当x=0.9350-0.9450，达到最大值y=1.3706。为了得到该函数的最大值，我们在[0，4]之间随机的洒一些点，为了演示，我们放置两个点，并且计算这两个点的函数值，同时给这两个点设置在[0，4]之间的一个速度。下面这些点就会按照一定的公式更改自己的位置，到达新位置后，再计算这两个点的值，然后再按照一定的公式更新自己的位置。直到最后在y=1.3706这个点停止自己的更新。这个过程与粒子群算法作为对照如下：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;这两个点就是粒子群算法中的粒子。&lt;/li&gt;
-&lt;li&gt;该函数的最大值就是鸟群中的食物 &lt;/li&gt;
-&lt;li&gt;计算两个点函数值就是粒子群算法中的适应值，计算用的函数就是粒子群算法中的适应度函数。&lt;/li&gt;
-&lt;li&gt;更新自己位置的一定公式就是粒子群算法中的位置速度更新公式。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;下面演示一下这个算法运行一次的大概过程：&lt;/p&gt;
-
-&lt;p&gt;第一次初始化:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/o_yanshi1.bmp&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;第一次更新位置:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/o_yanshi2.bmp&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;第二次更新位置:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/o_yanshi3.bmp&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;第21次更新:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/o_yanshi4.bmp&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;最后的结果（30次迭代）:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/o_yanshi5.bmp&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;最后所有的点都集中在最大值的地方。&lt;/p&gt;
-
-&lt;p&gt;在粒子群算法的大概思想就说到这里。下节介绍标准的粒子群算法.&lt;/p&gt;
-
-&lt;h1&gt;标准的粒子群算法&lt;/h1&gt;
-
-&lt;p&gt;在上一节的叙述中，唯一没有给大家介绍的就是函数的这些随机的点（粒子）是如何运动的，只是说按照一定的公式更新。这个公式就是粒子群算法中的位置速度更新公式。下面就介绍这个公式是什么。在上一节中我们求取函数y=1-cos(3*x)*exp(-x)的在[0,4]最大值。并在[0,4]之间放置了两个随机的点，这些点的坐标假设为$x_1=1.5$；$ x_2=2.5$；这里的点是一个标量，但是我们经常遇到的问题可能是更一般的情况－－x为一个矢量的情况，比如二维的情$况 z=2*x_1+3*x_2$的情况。这个时候我们的每个粒子为二维，记粒$子P_1＝(x_{11},x_{12}),P2=(x_{21},x_{22}),P3=(x_{31},x_{32})，......Pn=(x_{n1},x_{n2})$。这里n为粒子群群体的规模，也就是这个群中粒子的个数，每个粒子的维数为2。更一般的是粒子的维数为q，这样在这个种群中有n个粒子，每个粒子为q 维。&lt;/p&gt;
-
-&lt;p&gt;由n个粒子组成的群体对Q维（就是每个粒子的维数）空间进行搜索。每个粒子表示为：$xi＝（x_{i1},x_{i2},x_{i3},...,x_{iQ}）$，每个粒子对应的速度可以表示为$vi=(v_{i1},v_{i2},v_{i3},....,v_{iQ})$，每个粒子在搜索时要考虑两个因素：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;自己搜索到的历史最优值 $p_i ，p_i=(p_{i1},p_{i2},....,p_{iQ})$，i=1,2,3,....,n。&lt;/li&gt;
-&lt;li&gt;全部粒子搜索到的最优值$p_g，p_g=(p_{g1},p_{g2},....,p_{gQ})$，注意这里的$p_g$只有一个。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;下面给出粒子群算法的位置速度更新公式：&lt;/p&gt;
-
-&lt;p&gt;$$v_{id}^{k+1} = wv_{id}^{k} + c_1\xi(p_{id}^k - x_{id}^k) + c_2\eta(p_{gd}^{k} - x_{id}^k)$$&lt;/p&gt;
-
-&lt;p&gt;$$x_{id}^{k+1} = x_{id}^{k} + rv_{id}^{k+1}$$&lt;/p&gt;
-
-&lt;p&gt;这里有几个重要的参数需要大家记忆，因为在以后的讲解中将会经常用到,它们是：&lt;/p&gt;
-
-&lt;p&gt;$w$是保持原来速度的系数，所以叫做&lt;strong&gt;惯性权重&lt;/strong&gt;。
-$c_1$是粒子跟踪自己历史最优值的权重系数，它表示粒子自身的认识，所以叫“&lt;strong&gt;认知&lt;/strong&gt;”。通常设置为2。
-$\xi$  $\eta$是[0,1]区间内均匀分布的随机数。
-$r$是对位置更新的时候，在速度前面加的一个系数，这个系数我们叫做&lt;strong&gt;约束因子&lt;/strong&gt;。通常设置为1。&lt;/p&gt;
-
-&lt;p&gt;这样一个标准的粒子群算法就结束了。&lt;/p&gt;
-
-&lt;p&gt;下面对整个基本的粒子群的过程给一个简单的图形表示：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/o_liucheng.bmp&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;判断终止条件可是设置适应值到达一定的数值或者循环一定的次数。&lt;/p&gt;
-
-&lt;p&gt;注意：这里的粒子是同时跟踪自己的历史最优值与全局（群体）最优值来改变自己的位置预速度的，所以又叫做&lt;strong&gt;全局版本的标准粒子群优化算法&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;h1&gt;标准的粒子群算法(局部版本)&lt;/h1&gt;
-
-&lt;p&gt;在全局版的标准粒子群算法中，每个粒子的速度的更新是根据两个因素来变化的，这两个因素是：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;粒子自己历史最优值$p_i$。&lt;/li&gt;
-&lt;li&gt;粒子群体的全局最优值$p_g$。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;如果改变粒子速度更新公式，让每个粒子的速度的更新根据以下两个因素更新，&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;粒子自己历史最优值$p_i$。&lt;/li&gt;
-&lt;li&gt;粒子&lt;strong&gt;邻域内&lt;/strong&gt;粒子的最优值$pn_k$。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;其余保持跟全局版的标准粒子群算法一样，这个算法就变为局部版的粒子群算法。&lt;/p&gt;
-
-&lt;p&gt;一般一个粒子i 的邻域随着迭代次数的增加而逐渐增加，开始第一次迭代，它的邻域为0，随着迭代次数邻域线性变大，最后邻域扩展到整个粒子群，这时就变成全局版本的粒子群算法了。经过实践证明：全局版本的粒子群算法收敛速度快，但是容易陷入局部最优。局部版本的粒子群算法收敛速度慢，但是很难陷入局部最优。现在的粒子群算法大都在&lt;strong&gt;收敛速度与摆脱局部最优&lt;/strong&gt;这两个方面下功夫。其实这两个方面是矛盾的。看如何更好的折中了。&lt;/p&gt;
-
-&lt;p&gt;根据取邻域的方式的不同，局部版本的粒子群算法有很多不同的实现方法.&lt;/p&gt;
-
-&lt;p&gt;第一种方法：按照粒子的编号取粒子的邻域，取法有四种：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;环形取法 
-&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/o_huan.bmp&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;随机环形取法
-&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/o_shuan.bmp&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;轮形取法 
-&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/o_lun.bmp&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;随机轮形取法。
-&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/o_slun.bmp&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;因为后面有以环形取法实现的算法，对环形取法在这里做一点点说明：以粒子1为例，当邻域是0的时候，邻域是它本身，当邻域是1时，邻域为2，8；当邻域是2时，邻域是2，3，7，8；......，以此类推，一直到邻域为4，这个时候，邻域扩展到整个例子群体。据文献介绍（&lt;strong&gt;国外的文献&lt;/strong&gt;），采用轮形拓扑结构，PSO的效果很好。&lt;/p&gt;
-
-&lt;p&gt;第二种方法：按照粒子的欧式距离取粒子的邻域&lt;/p&gt;
-
-&lt;p&gt;在第一种方法中，按照粒子的编号来得到粒子的邻域，但是这些粒子其实可能在实际位置上并不相邻，于是Suganthan提出基于空间距离的划分方案，在迭代中计算每一个粒子与群中其他粒子的距离。记录任何2个粒子间的的最大距离为dm。对每一粒子按照$||x_a-x_b||/dm$计算一个比值。其中||xa-xb||是当前粒子a到b的距离。而选择阈值frac根据迭代次数而变化。当另一粒子b满足$||x_a-x_b||/dm &amp;lt; frac$时，认为b成为当前粒子的邻域。&lt;/p&gt;
-
-&lt;p&gt;这种办法经过实验，取得较好的应用效果，但是由于要计算所有粒子之间的距离，计算量大，且需要很大的存储空间，所以，&lt;strong&gt;该方法一般不经常使用&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;h1&gt;粒子群算法分类&lt;/h1&gt;
-
-&lt;p&gt;粒子群算法主要分为4个大的分支：&lt;/p&gt;
-
-&lt;h2&gt;1 标准粒子群算法的变形&lt;/h2&gt;
-
-&lt;p&gt;在这个分支中，主要是对标准粒子群算法的惯性因子、收敛因子（约束因子）、“认知”部分的$c_1$，“社会”部分的$c_2$进行变化与调节，希望获得好的效果。&lt;/p&gt;
-
-&lt;p&gt;惯性因子的原始版本是保持不变的，后来有人提出随着算法迭代的进行，惯性因子需要逐渐减小的思想。算法开始阶段，大的惯性因子可以使算法不容易陷入局部最优，到算法的后期，小的惯性因子可以使收敛速度加快，使收敛更加平稳，不至于出现振荡现象。&lt;strong&gt;经过本人测试&lt;/strong&gt;，动态的减小惯性因子w，的确可以使算法更加稳定，效果比较好。但是递减惯性因子采用什么样的方法呢？人们首先想到的是线型递减，这种策略的确很好，但是是不是最优的呢？于是有人对递减的策略作了研究，研究结果指出：线型函数的递减优于凸函数的递减策略，但是凹函数的递减策略又优于线型的递减，经过本人测试，实验结果基本符合这个结论，但是效果不是很明显。&lt;/p&gt;
-
-&lt;p&gt;对于收敛因子，经过证明如果收敛因子取0.729,可以确保算法的收敛，但是不能保证算法收敛到全局最优，经过本人测试，取收敛因子为0.729效果较好。对于社会与认知的系数$c_1$,$c_2$也有人提出：$c_1$先大后小，而$c_2$先小后大的思想，因为在算法运行初期，每个鸟要有大的自己的认知部分而又比较小的社会部分，这个与我们自己一群人找东西的情形比较接近，因为在我们找东西的初期，我们基本依靠自己的知识取寻找，而后来，我们积累的经验越来越丰富，于是大家开始逐渐达成共识（社会知识），这样我们就开始依靠社会知识来寻找东西了。&lt;/p&gt;
-
-&lt;p&gt;2007年希腊的两位学者提出将收敛速度比较快的全局版本的粒子群算法与不容易陷入局部最优的局部版本的粒子群算法相结合的办法，利用的公式是:&lt;/p&gt;
-
-&lt;p&gt;速度更新公式，v代表速度&lt;/p&gt;
-
-&lt;p&gt;$$ v＝n*v(全局版本)＋（1－n）*v(局部版本) $$&lt;/p&gt;
-
-&lt;p&gt;位置更新公式&lt;/p&gt;
-
-&lt;p&gt;$$w（k＋1）＝w(k)＋v$$&lt;/p&gt;
-
-&lt;p&gt;该算法在文献中讨论了系数n取各种不同情况的情况，并且运行来了20000次来分析各种系数的结果。&lt;/p&gt;
-
-&lt;h2&gt;2 粒子群算法的混合&lt;/h2&gt;
-
-&lt;p&gt;这个分支主要是将粒子群算法与各种算法相混合，有人将它与模拟退火算法相混合，有些人将它与单纯形方法相混合。但是最多的是将它与遗传算法的混合。根据遗传算法的三种不同算子可以生成3中不同的混合算法。&lt;/p&gt;
-
-&lt;h3&gt;粒子群算法与选择算子的结合&lt;/h3&gt;
-
-&lt;p&gt;这里相混合的思想是：在原来的粒子群算法中，我们选择粒子群群体的最优值作为$p_g$，但是相结合的版本是根据所有粒子的适应度的大小给每个粒子赋予一个被选中的概率，然后依据概率对这些粒子进行选择，被选中的粒子作为$p_g$，其它的情况都不变。这样的算法可以在算法运行过程中保持粒子群的多样性，但是致命的缺点是收敛速度缓慢。&lt;/p&gt;
-
-&lt;h3&gt;粒子群算法与杂交算子的结合&lt;/h3&gt;
-
-&lt;p&gt;结合的思想与遗传算法的基本一样，在算法运行过程中根据适应度的大小，粒子之间可以两两杂交，比如用一个很简单的公式:&lt;/p&gt;
-
-&lt;p&gt;$$w（新）＝n×w_1＋（1－n）×w_2$$&lt;/p&gt;
-
-&lt;p&gt;w1与w2就是这个新粒子的父辈粒子。&lt;/p&gt;
-
-&lt;p&gt;这种算法可以在算法的运行过程中引入新的粒子，但是算法一旦陷入局部最优，那么粒子群算法将很难摆脱局部最优。&lt;/p&gt;
-
-&lt;h3&gt;粒子群算法与变异算子的结合&lt;/h3&gt;
-
-&lt;p&gt;结合的思想：测试所有粒子与当前最优的距离，当距离小于一定的数值的时候，可以拿出所有粒子的一个百分比（如10％）的粒子进行随机初始化，让这些粒子重新寻找最优值。&lt;/p&gt;
-
-&lt;h2&gt;3 二进制粒子群算法&lt;/h2&gt;
-
-&lt;p&gt;最初的PSO是从解决连续优化问题发展起来的.Eberhart等又提出了PSO的离散二进制版.用来解决工程实际中的组合优化问题。他们在提出的模型中将粒子的每一维及粒子本身的历史最优、全局最优限制为1或0，而速度不作这种限制。用速度更新位置时，设定一个阈值，当速度高于该阈值时，粒子的位置取1，否则取0。二进制PSO与遗传算法在形式上很相似，但实验结果显示，在大多数测试函数中，二进制PSO比遗传算法速度快，尤其在问题的维数增加时.&lt;/p&gt;
-
-&lt;h2&gt;4 协同粒子群算法&lt;/h2&gt;
-
-&lt;p&gt;协同PSO，该方法将粒子的D维分到D个粒子群中，每个粒子群优化一维向量，评价适应度时将这些分量合并为一个完整的向量。例如第i个粒子群，除第i个分量外，其他D-1个分量都设为最优值，不断用第i个粒子群中的粒子替换第i个分量，直到得到第i维的最优值，其他维相同。为将有联系的分量划分在一个群，可将D维向量分配到m个粒子群优化，则前D mod m个粒子群的维数是D/m的向上取整。后m－(D mod m)个粒子群的维数是D/m的向下取整。协同PSO在某些问题上有更快的收敛速度，但该算法容易被欺骗。&lt;/p&gt;
-
-&lt;p&gt;基本的粒子群算法的分支就着4个，大部分的粒子群算法都围绕着这4个分支在变化，其中粒子群算法的变形居多，从根本上来说，几乎没有什么新的思想的提出。&lt;/p&gt;
 </content>
     </entry>
     
