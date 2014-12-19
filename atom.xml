@@ -5,11 +5,65 @@
     <subtitle>Python,HTML,CSS,Machine Leaning</subtitle>
     <link href="http://hackerxu.com/atom.xml" rel="self"/>
     <link href="http://hackerxu.com"/>
-    <updated>2014-12-17T11:00:24+08:00</updated>
+    <updated>2014-12-19T18:49:33+08:00</updated>
     <id>http://hackerxu.com</id>
     <author>
         <name>xuxiao</name>
     </author>
+    
+    <entry>
+        <title>Macos</title>
+        <link href="http://hackerxu.com/2014/12/18/macos.html"/>
+        <updated>2014-12-18T00:00:00+08:00</updated>
+        <id>http://hackerxu.com/2014/12/18/macos</id>
+        <content type="html">&lt;h2&gt;iterm2&lt;/h2&gt;
+
+&lt;p&gt;复制&lt;/p&gt;
+
+&lt;p&gt;iterm2有2种好用的选中即复制模式。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;用鼠标，在iterm2中，选中某个路径或者某个词汇，那么，iterm2就自动复制了。&lt;/li&gt;
+&lt;li&gt;无鼠标模式，command+f,弹出iterm2的查找模式，输入要查找并复制的内容的前几个字母，确认找到的是自己的内容之后，输入tab，查找窗口将自动变化内容，并将其复制。如果输入的是shift+tab，则自动将查找内容的左边选中并复制。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;显示 Mac 隐藏文件的命令：&lt;/p&gt;
+
+&lt;p&gt;defaults write com.apple.finder AppleShowAllFiles -bool true
+  &lt;a href=&quot;http://www.2cto.com&quot;&gt;www.2cto.com&lt;/a&gt;&lt;br&gt;
+隐藏 Mac 隐藏文件的命令：&lt;/p&gt;
+
+&lt;p&gt;defaults write com.apple.finder AppleShowAllFiles -bool false&lt;/p&gt;
+
+&lt;p&gt;剪切历史&lt;/p&gt;
+
+&lt;p&gt;输入command+shift+h，iterm2将自动列出剪切板的历史记录。如果需要将剪切板的历史记录保存到磁盘，在Preferences &amp;gt; General &amp;gt; Save copy/paste history to disk.中设置。&lt;/p&gt;
+
+&lt;p&gt;全屏切换&lt;/p&gt;
+
+&lt;p&gt;command+enter进入与返回全屏模式&lt;/p&gt;
+
+&lt;h2&gt;截屏&lt;/h2&gt;
+
+&lt;p&gt;command + shift + 3 整个屏幕&lt;/p&gt;
+
+&lt;p&gt;command + shift + 4  截取选择区域&lt;/p&gt;
+
+&lt;p&gt;command + shift + 4 + 空格 截取选择窗口&lt;/p&gt;
+
+&lt;p&gt;command + 空格 输入法切换&lt;/p&gt;
+
+&lt;h2&gt;通用&lt;/h2&gt;
+
+&lt;p&gt;command + h 隐藏窗口&lt;/p&gt;
+
+&lt;p&gt;command + m 最小化窗口&lt;/p&gt;
+
+&lt;p&gt;command + w 关闭&lt;/p&gt;
+
+&lt;p&gt;command + q 退出&lt;/p&gt;
+</content>
+    </entry>
     
     <entry>
         <title>Unix,linux和OSX</title>
@@ -17,6 +71,28 @@
         <updated>2014-12-17T00:00:00+08:00</updated>
         <id>http://hackerxu.com/2014/12/17/OS</id>
         <content type="html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/7a899e510fb30f2440d33c63c895d143ad4b0300.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;完整的3个OS内核:Minix,Linux,Unix&lt;/p&gt;
+
+&lt;p&gt;Unix演变最为复杂多样,由Unix衍生的系统主要有两个,一个是BSD,另一个是System V.从BSD4.3开始就已经开源了,BSD最主要的3个分支是FreeBSD,NetBSD和OpenBSD.其中Mac OS X的内核是基于FreeBSD(其实还有Mach).&lt;/p&gt;
+
+&lt;p&gt;在Unix演化期间有许多重大事件:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;GNU&lt;/li&gt;
+&lt;li&gt;POSIX&lt;/li&gt;
+&lt;li&gt;Linux&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Linux其实就是Linus山寨Unix的内核，自己实现了Unix系统内核，大神终究是大神，他有两个牛逼的东西，一个是Linux，一个是git。&lt;/p&gt;
+
+&lt;p&gt;GNU其实比Linux早一些，因为开源的精神走到了一起，GNU在Linux出来之前也有自己的内核，不过名不见经传。&lt;/p&gt;
+
+&lt;p&gt;大家经常接触的就是图上绿色的部分，而其他的Unix都属于商业用途。&lt;/p&gt;
+
+&lt;p&gt;BSD其实不是一个内核，它其实是一个完整的操作系统。而像常见的Ubuntu，Fedora都是一些基于Linux的内核的系统。&lt;/p&gt;
+
+&lt;p&gt;其实现在的Unix已经演化成了一种规范，不同版本的实现也不一样，而这种规范促进着Unix或者类Unix系统的欣欣向荣，相信终有一日他会打败windows。&lt;/p&gt;
 </content>
     </entry>
     
@@ -1009,50 +1085,6 @@ In general, you shouldn&amp;#39;t need to override &lt;code&gt;__new__&lt;/code&
 &lt;p&gt;新式类有很多优势:基于内建类型构建新的用户类型,支持property和描述符特性等.作为新式类的祖先,Object类中还定义了一些特殊方法,如:&lt;code&gt;__new__()&lt;/code&gt;,&lt;code&gt;__init__()&lt;/code&gt;,&lt;code&gt;__delattr__()&lt;/code&gt;,&lt;code&gt;__getattribute__()&lt;/code&gt;,&lt;code&gt;__setattr__()&lt;/code&gt;,&lt;code&gt;__hash__()&lt;/code&gt;,&lt;code&gt;__repr__()&lt;/code&gt;,&lt;code&gt;__str__()&lt;/code&gt;等等.Object的子类可以对这些方法进行覆盖以满足自身的特殊需求.&lt;/p&gt;
 
 &lt;p&gt;另外，新式类和旧式类还有一个区别就是在多继承的时候，查找要调用的方法。新式类是广度优先的查找算法。旧式类的查找方法是深度优先的.&lt;/p&gt;
-</content>
-    </entry>
-    
-    <entry>
-        <title>回调函数(callback)</title>
-        <link href="http://hackerxu.com/2014/11/22/callback.html"/>
-        <updated>2014-11-22T00:00:00+08:00</updated>
-        <id>http://hackerxu.com/2014/11/22/callback</id>
-        <content type="html">&lt;p&gt;回调函数其实一个很简单的概念,前几天突然看到这个概念一时间摸不到头脑.&lt;/p&gt;
-
-&lt;p&gt;假如你开发个爬虫,要把它做成非阻塞异步的模式,而且你事先不知道如何爬取,你会怎么做呢?最好的方法是把每个页面和函数一一对应,然后每个页面都有自己的抓取规则,这样程序就知道对应的网页该如何处理了,把它放到线程(进程)池,再做异步处理,这就是&lt;code&gt;scrapy&lt;/code&gt;处理的方式.&lt;/p&gt;
-
-&lt;p&gt;下面是scrapy的小demo(&lt;a href=&quot;https://github.com/taizilongxu/scrapy_jingdong/blob/master/tutorial/spiders/jd_spider.py&quot;&gt;源代码&lt;/a&gt;):&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;JdSpider&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scrapy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Spider&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;test&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;allowed_domains&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;jd.com&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;start_urls&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&amp;quot;http://wap.jd.com/category/all.html&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&amp;#39;获取全部分类商品&amp;#39;&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;req&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sel&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xpath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;/html/body/div[5]/div[2]/a&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xpath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;@href&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;extract&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;category&amp;#39;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-                    &lt;span class=&quot;n&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;http://wap.jd.com&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;
-                    &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parse_category&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# 回调函数用来指定特定页面的操作.对应的是self.parse_category函数&lt;/span&gt;
-                    &lt;span class=&quot;n&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;req&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;parse_category&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&amp;#39;获取分类页&amp;#39;&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;req&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sel&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xpath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;/html/body/div[5]/div/a&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xpath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;@href&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;extract&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;http://wap.jd.com&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parse_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# 回调函数&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;req&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;可以看到Request里每一个url对应一个callback,我们要做的就是把url和提取规则联系起来交给scrapy处理.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://www.zhihu.com/question/19801131&quot;&gt;这里&lt;/a&gt;是知乎的答案,长篇大论的写了很多,但是饶了很多弯子.&lt;/p&gt;
 </content>
     </entry>
     
