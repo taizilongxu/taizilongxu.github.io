@@ -5,7 +5,7 @@
     <subtitle>Python,HTML,CSS,Machine Leaning</subtitle>
     <link href="http://hackerxu.com/atom.xml" rel="self"/>
     <link href="http://hackerxu.com"/>
-    <updated>2014-12-19T18:50:30+08:00</updated>
+    <updated>2014-12-20T22:36:52+08:00</updated>
     <id>http://hackerxu.com</id>
     <author>
         <name>xuxiao</name>
@@ -29,9 +29,9 @@
 
 &lt;p&gt;显示 Mac 隐藏文件的命令：&lt;/p&gt;
 
-&lt;p&gt;defaults write com.apple.finder AppleShowAllFiles -bool true
-  &lt;a href=&quot;http://www.2cto.com&quot;&gt;www.2cto.com&lt;/a&gt;&lt;br&gt;
-隐藏 Mac 隐藏文件的命令：&lt;/p&gt;
+&lt;p&gt;defaults write com.apple.finder AppleShowAllFiles -bool true&lt;/p&gt;
+
+&lt;p&gt;隐藏 Mac 隐藏文件的命令：&lt;/p&gt;
 
 &lt;p&gt;defaults write com.apple.finder AppleShowAllFiles -bool false&lt;/p&gt;
 
@@ -42,6 +42,8 @@
 &lt;p&gt;全屏切换&lt;/p&gt;
 
 &lt;p&gt;command+enter进入与返回全屏模式&lt;/p&gt;
+
+&lt;h1&gt;全局快捷键&lt;/h1&gt;
 
 &lt;h2&gt;截屏&lt;/h2&gt;
 
@@ -62,6 +64,22 @@
 &lt;p&gt;command + w 关闭&lt;/p&gt;
 
 &lt;p&gt;command + q 退出&lt;/p&gt;
+
+&lt;h2&gt;输入法&lt;/h2&gt;
+
+&lt;p&gt;command + 空格 中英文切换&lt;/p&gt;
+
+&lt;p&gt;caps lock 中文下输入英文&lt;/p&gt;
+
+&lt;h2&gt;alfred&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;dash&lt;/li&gt;
+&lt;li&gt;v2ex&lt;/li&gt;
+&lt;li&gt;zh : 知乎&lt;/li&gt;
+&lt;li&gt;tb : 淘宝&lt;/li&gt;
+&lt;li&gt;bd : 百度&lt;/li&gt;
+&lt;/ul&gt;
 </content>
     </entry>
     
