@@ -5,18 +5,34 @@
     <subtitle>Python,HTML,CSS,Machine Leaning</subtitle>
     <link href="http://hackerxu.com/atom.xml" rel="self"/>
     <link href="http://hackerxu.com"/>
-    <updated>2014-12-20T22:36:52+08:00</updated>
+    <updated>2014-12-21T13:42:22+08:00</updated>
     <id>http://hackerxu.com</id>
     <author>
         <name>xuxiao</name>
     </author>
     
     <entry>
-        <title>Macos</title>
+        <title>OS X 配置</title>
         <link href="http://hackerxu.com/2014/12/18/macos.html"/>
         <updated>2014-12-18T00:00:00+08:00</updated>
         <id>http://hackerxu.com/2014/12/18/macos</id>
-        <content type="html">&lt;h2&gt;iterm2&lt;/h2&gt;
+        <content type="html">&lt;h2&gt;移动硬盘&lt;/h2&gt;
+
+&lt;p&gt;Mac只支持读NTFS，并不能写，最好的方法就是把移动硬盘格式化成exfat，这样就可以兼容win和mac了。&lt;/p&gt;
+
+&lt;h2&gt;输入法&lt;/h2&gt;
+
+&lt;p&gt;搜狗输入法，自带也不错，不过中英文标点不好切换，还是搜狗用着习惯。&lt;/p&gt;
+
+&lt;h2&gt;office&lt;/h2&gt;
+
+&lt;p&gt;到macx.cn下载Microsoft office for mac&lt;/p&gt;
+
+&lt;h2&gt;音乐&lt;/h2&gt;
+
+&lt;p&gt;网易云音乐或者豆瓣FM（diumoo比官方好用）&lt;/p&gt;
+
+&lt;h2&gt;iterm2&lt;/h2&gt;
 
 &lt;p&gt;复制&lt;/p&gt;
 
