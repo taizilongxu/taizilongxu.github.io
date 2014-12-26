@@ -77,7 +77,7 @@
     <article class="post-content">
         <h1>XML</h1>
 
-<h2>历史</h2>
+<h2>1 历史</h2>
 
 <p>XML是从1995年开始有其雏形，并向W3C（万维网联盟）提案，而在1998年二月发布为W3C的标准（XML1.0）。XML的前身是SGML（The Standard Generalized Markup Language），是自IBM从1960年代就开始发展的GML（Generalized Markup Language）标准化后的名称。</p>
 
@@ -104,7 +104,7 @@
 
 <p>XML被广泛用来作为跨平台之间交互数据的形式，主要针对数据的内容，通过不同的格式化描述手段（XSLT，CSS等）可以完成最终的形式表达（生成对应的HTML，PDF或者其他的文件格式）。</p>
 
-<h2>什么是 XML?</h2>
+<h2>2 什么是 XML?</h2>
 
 <ul>
 <li>XML 指可扩展标记语言（EXtensible Markup Language）</li>
@@ -115,7 +115,7 @@
 <li>XML 是 W3C 的推荐标准</li>
 </ul>
 
-<h2>XML 与 HTML 的主要差异</h2>
+<h2>3 XML 与 HTML 的主要差异</h2>
 
 <ul>
 <li>XML 不是 HTML 的替代。</li>
@@ -125,9 +125,9 @@
 <li>HTML 旨在显示信息，而 XML 旨在传输信息。</li>
 </ul>
 
-<h2>XML 的用途</h2>
+<h2>4 XML 的用途</h2>
 
-<h4>XML 把数据从 HTML 分离</h4>
+<h4>4.1 XML 把数据从 HTML 分离</h4>
 
 <p>如果你需要在 HTML 文档中显示动态数据，那么每当数据改变时将花费大量的时间来编辑 HTML。</p>
 
@@ -135,7 +135,7 @@
 
 <p>通过使用几行 JavaScript，你就可以读取一个外部 XML 文件，然后更新 HTML 中的数据内容。</p>
 
-<h4>XML 简化数据共享</h4>
+<h4>4.2 XML 简化数据共享</h4>
 
 <p>在真实的世界中，计算机系统和数据使用不兼容的格式来存储数据。</p>
 
@@ -143,7 +143,7 @@
 
 <p>这让创建不同应用程序可以共享的数据变得更加容易。</p>
 
-<h4>XML 简化数据传输</h4>
+<h4>4.3 XML 简化数据传输</h4>
 
 <p>通过 XML，可以在不兼容的系统之间轻松地交换数据。</p>
 
@@ -151,15 +151,15 @@
 
 <p>由于可以通过各种不兼容的应用程序来读取数据，以 XML 交换数据降低了这种复杂性。</p>
 
-<h4>XML 简化平台的变更</h4>
+<h4>4.4 XML 简化平台的变更</h4>
 
 <p>升级到新的系统（硬件或软件平台），总是非常费时的。必须转换大量的数据，不兼容的数据经常会丢失。</p>
 
 <p>XML 数据以文本格式存储。这使得 XML 在不损失数据的情况下，更容易扩展或升级到新的操作系统、新应用程序或新的浏览器。</p>
 
-<h2>XML用法</h2>
+<h2>5 XML用法</h2>
 
-<h4>一个XML文档实例</h4>
+<h4>5.1 一个XML文档实例</h4>
 
 <p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/ct_nodetree1.gif" alt=""></p>
 
@@ -189,7 +189,7 @@
 
 <p><code>&lt;book&gt;</code> 元素有 4 个子元素：<code>&lt;title&gt;</code>、<code>&lt; author&gt;</code>、<code>&lt;year&gt;</code>、<code>&lt;price&gt;</code>。</p>
 
-<h4>XML 语法规则</h4>
+<h4>5.2 XML 语法规则</h4>
 
 <ol>
 <li><p>所有 XML 元素都须有关闭标签</p>
@@ -233,7 +233,7 @@
 </code></pre></div></li>
 </ol>
 
-<h4>属性</h4>
+<h4>5.3 属性</h4>
 
 <p>有时候要为元素添加属性。属性由一个名称-值对构成，值包含在双引号中（&quot;），比如<code>type=&quot;dessert&quot;</code>。属性是在使用元素时存储额外信息的一种方式。在同一个文档中，可以根据需要对每个元素的不同实例采用不同的属性值。</p>
 
@@ -248,11 +248,11 @@
 </code></pre></div>
 <p>您可以根据需要使用任意数量的属性。要考虑需要添加到文档的细节。如果要对文档分类，属性尤其有用，比如按照菜谱的 type 进行分类。属性名可以包含在元素名中使用的字符，规则也是类似的，即字符之间不能带有空格，名称只能以字母开始。</p>
 
-<h2>XML验证</h2>
+<h2>6 XML验证</h2>
 
 <p>拥有正确语法的 XML 被称为“形式良好”的 XML。通过 DTD 验证的 XML 是“合法”的 XML。</p>
 
-<h4>DTD</h4>
+<h4>6.1 DTD</h4>
 
 <p>文档类型定义（Document Type Definition）可定义合法的XML文档构建模块。它使用一系列合法的元素来定义文档的结构。DTD 可被成行地声明于 XML 文档中，也可作为一个外部引用。</p>
 
@@ -289,7 +289,7 @@
 
 <p>对于XML文档而言，虽然DTD不是必须的，但它为文档的编制带来了方便。加强了文档标记内参数的一致性，使XML语法分析器能够确认文档。如果不使用DTD来对XML文档进行定义，那么XML语法分析器将无法对该文档进行确认。</p>
 
-<h4>XML Schema</h4>
+<h4>6.2 XML Schema</h4>
 
 <p>W3C 支持一种基于 XML 的 DTD 代替者，它名为 XML Schema：</p>
 <div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;xs:element</span> <span class="na">name=</span><span class="s">&quot;note&quot;</span><span class="nt">&gt;</span>
@@ -317,7 +317,7 @@
 <li>XML Schema 支持命名空间</li>
 </ul>
 
-<h2>XPath</h2>
+<h2>7 XPath</h2>
 
 <p>XPath是W3C的一个标准。它最主要的目的是为了在XML1.0或XML1.1文档节点树中定位节点所设计。目前有XPath1.0和XPath2.0两个版本。</p>
 
@@ -325,7 +325,7 @@
 
 <p>在 XPath 中，有七种类型的节点：元素、属性、文本、命名空间、处理指令、注释以及文档节点（或称为根节点）。</p>
 
-<h4>XPath语法</h4>
+<h4>7.1 XPath语法</h4>
 
 <ol>
 <li>选取节点：XPath 使用路径表达式在 XML 文档中选取节点。节点是通过沿着路径或者 step 来选取的。</li>
@@ -334,7 +334,7 @@
 <li>选取若干路径：通过在路径表达式中使用“|”运算符，您可以选取若干个路径。</li>
 </ol>
 
-<h4>生成XPath的简单方法</h4>
+<h4>7.2 生成XPath的简单方法</h4>
 
 <p>在Chrome浏览器中按F12调用开发着模式，找到指定的节点单机右键选择<code>copy xpath</code>即可生成XPath地址。</p>
 
