@@ -5,36 +5,373 @@
     <subtitle>Python,HTML,CSS,Machine Leaning</subtitle>
     <link href="http://hackerxu.com/atom.xml" rel="self"/>
     <link href="http://hackerxu.com"/>
-    <updated>2014-12-21T13:42:22+08:00</updated>
+    <updated>2014-12-26T10:24:50+08:00</updated>
     <id>http://hackerxu.com</id>
     <author>
         <name>xuxiao</name>
     </author>
     
     <entry>
+        <title>XML</title>
+        <link href="http://hackerxu.com/2014/12/26/xml-json.html"/>
+        <updated>2014-12-26T00:00:00+08:00</updated>
+        <id>http://hackerxu.com/2014/12/26/xml-json</id>
+        <content type="html">&lt;h1&gt;XML&lt;/h1&gt;
+
+&lt;h2&gt;历史&lt;/h2&gt;
+
+&lt;p&gt;XML是从1995年开始有其雏形，并向W3C（万维网联盟）提案，而在1998年二月发布为W3C的标准（XML1.0）。XML的前身是SGML（The Standard Generalized Markup Language），是自IBM从1960年代就开始发展的GML（Generalized Markup Language）标准化后的名称。&lt;/p&gt;
+
+&lt;p&gt;GML的重要概念：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;文件中能够明确的将标示与内容分开&lt;/li&gt;
+&lt;li&gt;所有文件的标示使用方法均一致&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;1978年，ANSI将GML加以整理规范，发布成为SGML，1986年起为ISO所采用（ISO 8879），并且被广泛地运用在各种大型的文件计划中，但是SGML是一种非常严谨的文件描述法，导致过于庞大复杂（标准手册就有500多页），难以理解和学习，进而影响其推广与应用。&lt;/p&gt;
+
+&lt;p&gt;同时W3C也发现到HTML的问题：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;不能解决所有解释数据的问题 - 像是影音文件或化学公式、音乐符号等其他形态的内容。&lt;/li&gt;
+&lt;li&gt;性能问题 - 需要下载整份文件，才能开始对文件做搜索。&lt;/li&gt;
+&lt;li&gt;扩充性、弹性、易读性均不佳&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;为了解决以上问题，专家们使用SGML精简制作，并依照HTML的发展经验，产生出一套使用上规则严谨，但是简单的描述数据语言：XML。&lt;/p&gt;
+
+&lt;p&gt;XML是在一个这样的背景下诞生的——为了有一个更中立的方式，让消费端自行决定要如何消化、呈现从服务端所提供的信息。&lt;/p&gt;
+
+&lt;p&gt;XML被广泛用来作为跨平台之间交互数据的形式，主要针对数据的内容，通过不同的格式化描述手段（XSLT，CSS等）可以完成最终的形式表达（生成对应的HTML，PDF或者其他的文件格式）。&lt;/p&gt;
+
+&lt;h2&gt;什么是 XML?&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;XML 指可扩展标记语言（EXtensible Markup Language）&lt;/li&gt;
+&lt;li&gt;XML 是一种标记语言，很类似 HTML&lt;/li&gt;
+&lt;li&gt;XML 的设计宗旨是传输数据，而非显示数据&lt;/li&gt;
+&lt;li&gt;XML 标签没有被预定义。您需要自行定义标签。&lt;/li&gt;
+&lt;li&gt;XML 被设计为具有自我描述性。&lt;/li&gt;
+&lt;li&gt;XML 是 W3C 的推荐标准&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;XML 与 HTML 的主要差异&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;XML 不是 HTML 的替代。&lt;/li&gt;
+&lt;li&gt;XML 和 HTML 为不同的目的而设计：&lt;/li&gt;
+&lt;li&gt;XML 被设计为传输和存储数据，其焦点是数据的内容。&lt;/li&gt;
+&lt;li&gt;HTML 被设计用来显示数据，其焦点是数据的外观。&lt;/li&gt;
+&lt;li&gt;HTML 旨在显示信息，而 XML 旨在传输信息。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;XML 的用途&lt;/h2&gt;
+
+&lt;h4&gt;XML 把数据从 HTML 分离&lt;/h4&gt;
+
+&lt;p&gt;如果你需要在 HTML 文档中显示动态数据，那么每当数据改变时将花费大量的时间来编辑 HTML。&lt;/p&gt;
+
+&lt;p&gt;通过 XML，数据能够存储在独立的 XML 文件中。这样你就可以专注于使用 HTML 进行布局和显示，并确保修改底层数据不再需要对 HTML 进行任何的改变。&lt;/p&gt;
+
+&lt;p&gt;通过使用几行 JavaScript，你就可以读取一个外部 XML 文件，然后更新 HTML 中的数据内容。&lt;/p&gt;
+
+&lt;h4&gt;XML 简化数据共享&lt;/h4&gt;
+
+&lt;p&gt;在真实的世界中，计算机系统和数据使用不兼容的格式来存储数据。&lt;/p&gt;
+
+&lt;p&gt;XML 数据以纯文本格式进行存储，因此提供了一种独立于软件和硬件的数据存储方法。&lt;/p&gt;
+
+&lt;p&gt;这让创建不同应用程序可以共享的数据变得更加容易。&lt;/p&gt;
+
+&lt;h4&gt;XML 简化数据传输&lt;/h4&gt;
+
+&lt;p&gt;通过 XML，可以在不兼容的系统之间轻松地交换数据。&lt;/p&gt;
+
+&lt;p&gt;对开发人员来说，其中一项最费时的挑战一直是在因特网上的不兼容系统之间交换数据。&lt;/p&gt;
+
+&lt;p&gt;由于可以通过各种不兼容的应用程序来读取数据，以 XML 交换数据降低了这种复杂性。&lt;/p&gt;
+
+&lt;h4&gt;XML 简化平台的变更&lt;/h4&gt;
+
+&lt;p&gt;升级到新的系统（硬件或软件平台），总是非常费时的。必须转换大量的数据，不兼容的数据经常会丢失。&lt;/p&gt;
+
+&lt;p&gt;XML 数据以文本格式存储。这使得 XML 在不损失数据的情况下，更容易扩展或升级到新的操作系统、新应用程序或新的浏览器。&lt;/p&gt;
+
+&lt;h2&gt;XML用法&lt;/h2&gt;
+
+&lt;h4&gt;一个XML文档实例&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/ct_nodetree1.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;上图表示下面的 XML 中的一本书：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;bookstore&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;book&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;category=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;COOKING&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;en&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Everyday Italian&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt; 
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;author&amp;gt;&lt;/span&gt;Giada De Laurentiis&lt;span class=&quot;nt&quot;&gt;&amp;lt;/author&amp;gt;&lt;/span&gt; 
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;year&amp;gt;&lt;/span&gt;2005&lt;span class=&quot;nt&quot;&gt;&amp;lt;/year&amp;gt;&lt;/span&gt; 
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;price&amp;gt;&lt;/span&gt;30.00&lt;span class=&quot;nt&quot;&gt;&amp;lt;/price&amp;gt;&lt;/span&gt; 
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/book&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;book&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;category=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;CHILDREN&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;en&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Harry Potter&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt; 
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;author&amp;gt;&lt;/span&gt;J K. Rowling&lt;span class=&quot;nt&quot;&gt;&amp;lt;/author&amp;gt;&lt;/span&gt; 
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;year&amp;gt;&lt;/span&gt;2005&lt;span class=&quot;nt&quot;&gt;&amp;lt;/year&amp;gt;&lt;/span&gt; 
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;price&amp;gt;&lt;/span&gt;29.99&lt;span class=&quot;nt&quot;&gt;&amp;lt;/price&amp;gt;&lt;/span&gt; 
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/book&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;book&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;category=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;WEB&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;en&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Learning XML&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt; 
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;author&amp;gt;&lt;/span&gt;Erik T. Ray&lt;span class=&quot;nt&quot;&gt;&amp;lt;/author&amp;gt;&lt;/span&gt; 
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;year&amp;gt;&lt;/span&gt;2003&lt;span class=&quot;nt&quot;&gt;&amp;lt;/year&amp;gt;&lt;/span&gt; 
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;price&amp;gt;&lt;/span&gt;39.95&lt;span class=&quot;nt&quot;&gt;&amp;lt;/price&amp;gt;&lt;/span&gt; 
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/book&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/bookstore&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;例子中的根元素是 &lt;code&gt;&amp;lt;bookstore&amp;gt;&lt;/code&gt;。文档中的所有 &lt;code&gt;&amp;lt;book&amp;gt;&lt;/code&gt; 元素都被包含在 &lt;code&gt;&amp;lt;bookstore&amp;gt;&lt;/code&gt; 中。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;lt;book&amp;gt;&lt;/code&gt; 元素有 4 个子元素：&lt;code&gt;&amp;lt;title&amp;gt;&lt;/code&gt;、&lt;code&gt;&amp;lt; author&amp;gt;&lt;/code&gt;、&lt;code&gt;&amp;lt;year&amp;gt;&lt;/code&gt;、&lt;code&gt;&amp;lt;price&amp;gt;&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h4&gt;XML 语法规则&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;所有 XML 元素都须有关闭标签&lt;/p&gt;
+
+&lt;p&gt;在 XML 中，省略关闭标签是非法的。所有元素都必须有关闭标签：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;This is a paragraph&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;This is another paragraph&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;注意： XML 声明没有关闭标签。这不是错误。声明不属于XML本身的组成部分。它不是 XML 元素，也不需要关闭标签。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;XML 标签对大小写敏感&lt;/p&gt;
+
+&lt;p&gt;必须使用相同的大小写来编写打开标签和关闭标签：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;Message&amp;gt;&lt;/span&gt;这是错误的。&lt;span class=&quot;nt&quot;&gt;&amp;lt;/message&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;message&amp;gt;&lt;/span&gt;这是正确的。&lt;span class=&quot;nt&quot;&gt;&amp;lt;/message&amp;gt;&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;XML 必须正确地嵌套&lt;/p&gt;
+
+&lt;p&gt;在 XML 中，所有元素都必须彼此正确地嵌套：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;b&amp;gt;&amp;lt;i&amp;gt;&lt;/span&gt;This text is bold and italic&lt;span class=&quot;nt&quot;&gt;&amp;lt;/i&amp;gt;&amp;lt;/b&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;XML 文档必须有根元素&lt;/p&gt;
+
+&lt;p&gt;XML 文档必须有一个元素是所有其他元素的父元素。该元素称为根元素。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;root&amp;gt;&lt;/span&gt;
+ &lt;span class=&quot;nt&quot;&gt;&amp;lt;child&amp;gt;&lt;/span&gt;
+   &lt;span class=&quot;nt&quot;&gt;&amp;lt;subchild&amp;gt;&lt;/span&gt;.....&lt;span class=&quot;nt&quot;&gt;&amp;lt;/subchild&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/child&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/root&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;XML 的属性值须加引号&lt;/p&gt;
+
+&lt;p&gt;在 XML 中，XML 的属性值须加引号。请研究下面的两个 XML 文档。第一个是错误的，第二个是正确的：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;note&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;date=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;08/08/2008&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;to&amp;gt;&lt;/span&gt;George&lt;span class=&quot;nt&quot;&gt;&amp;lt;/to&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;from&amp;gt;&lt;/span&gt;John&lt;span class=&quot;nt&quot;&gt;&amp;lt;/from&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/note&amp;gt;&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;note&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;date=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;08/08/2008&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;to&amp;gt;&lt;/span&gt;George&lt;span class=&quot;nt&quot;&gt;&amp;lt;/to&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;from&amp;gt;&lt;/span&gt;John&lt;span class=&quot;nt&quot;&gt;&amp;lt;/from&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/note&amp;gt;&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4&gt;属性&lt;/h4&gt;
+
+&lt;p&gt;有时候要为元素添加属性。属性由一个名称-值对构成，值包含在双引号中（&amp;quot;），比如&lt;code&gt;type=&amp;quot;dessert&amp;quot;&lt;/code&gt;。属性是在使用元素时存储额外信息的一种方式。在同一个文档中，可以根据需要对每个元素的不同实例采用不同的属性值。&lt;/p&gt;
+
+&lt;p&gt;您可以在元素的开始标记内部输入一个或多个属性，比如：&lt;code&gt;&amp;lt;recipe type=&amp;quot;dessert&amp;quot;&amp;gt;&lt;/code&gt;。如果要添加多个属性，各个属性之间使用空格分开，比如：&lt;code&gt;&amp;lt;recipename cuisine=&amp;quot;american&amp;quot; servings=&amp;quot;1&amp;quot;&amp;gt;&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;带有元素和属性的 XML 文件：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;recipe&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;dessert&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;recipename&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;cuisine=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;american&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;servings=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;1&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Ice Cream Sundae&lt;span class=&quot;nt&quot;&gt;&amp;lt;/recipename&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;preptime&amp;gt;&lt;/span&gt;5 minutes&lt;span class=&quot;nt&quot;&gt;&amp;lt;/preptime&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/recipe&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;您可以根据需要使用任意数量的属性。要考虑需要添加到文档的细节。如果要对文档分类，属性尤其有用，比如按照菜谱的 type 进行分类。属性名可以包含在元素名中使用的字符，规则也是类似的，即字符之间不能带有空格，名称只能以字母开始。&lt;/p&gt;
+
+&lt;h2&gt;XML验证&lt;/h2&gt;
+
+&lt;p&gt;拥有正确语法的 XML 被称为“形式良好”的 XML。通过 DTD 验证的 XML 是“合法”的 XML。&lt;/p&gt;
+
+&lt;h4&gt;DTD&lt;/h4&gt;
+
+&lt;p&gt;文档类型定义（Document Type Definition）可定义合法的XML文档构建模块。它使用一系列合法的元素来定义文档的结构。DTD 可被成行地声明于 XML 文档中，也可作为一个外部引用。&lt;/p&gt;
+
+&lt;p&gt;带有 DTD 的 XML 文档实例：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE note [&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;  &amp;lt;!ELEMENT note (to,from,heading,body)&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;cp&quot;&gt;&amp;lt;!ELEMENT to      (#PCDATA)&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;cp&quot;&gt;&amp;lt;!ELEMENT from    (#PCDATA)&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;cp&quot;&gt;&amp;lt;!ELEMENT heading (#PCDATA)&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;cp&quot;&gt;&amp;lt;!ELEMENT body    (#PCDATA)&amp;gt;&lt;/span&gt;
+]&amp;gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;note&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;to&amp;gt;&lt;/span&gt;George&lt;span class=&quot;nt&quot;&gt;&amp;lt;/to&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;from&amp;gt;&lt;/span&gt;John&lt;span class=&quot;nt&quot;&gt;&amp;lt;/from&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;heading&amp;gt;&lt;/span&gt;Reminder&lt;span class=&quot;nt&quot;&gt;&amp;lt;/heading&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;Don&amp;#39;t forget the meeting!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/note&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;以上 DTD 解释如下：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;!DOCTYPE note (第二行)定义此文档是 note 类型的文档。&lt;/li&gt;
+&lt;li&gt;!ELEMENT note (第三行)定义 note 元素有四个元素：&amp;quot;to、from、heading,、body&amp;quot;&lt;/li&gt;
+&lt;li&gt;!ELEMENT to (第四行)定义 to 元素为 &amp;quot;#PCDATA&amp;quot; 类型&lt;/li&gt;
+&lt;li&gt;!ELEMENT from (第五行)定义 from 元素为 &amp;quot;#PCDATA&amp;quot; 类型&lt;/li&gt;
+&lt;li&gt;!ELEMENT heading (第六行)定义 heading 元素为 &amp;quot;#PCDATA&amp;quot; 类型&lt;/li&gt;
+&lt;li&gt;!ELEMENT body (第七行)定义 body 元素为 &amp;quot;#PCDATA&amp;quot; 类型&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;DTD优势：&lt;/p&gt;
+
+&lt;p&gt;每一个XML文档都可携带一个DTD，用来对该文档格式进行描述，测试该文档是否为有效的XML文档。既然DTD有外部和内部之分，当然就可以为某个独立的团体定义一个公用的外部DTD，那么多个XML文档就都可以共享使用该DTD，使得数据交换更为有效。甚至在某些文档中还可以使内部DTD和外部DTD相结合。在应用程序中也可以用某个DTD来检测接收到的数据是否符合某个标准。&lt;/p&gt;
+
+&lt;p&gt;对于XML文档而言，虽然DTD不是必须的，但它为文档的编制带来了方便。加强了文档标记内参数的一致性，使XML语法分析器能够确认文档。如果不使用DTD来对XML文档进行定义，那么XML语法分析器将无法对该文档进行确认。&lt;/p&gt;
+
+&lt;h4&gt;XML Schema&lt;/h4&gt;
+
+&lt;p&gt;W3C 支持一种基于 XML 的 DTD 代替者，它名为 XML Schema：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;xs:element&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;note&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;xs:complexType&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;xs:sequence&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;xs:element&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;to&amp;quot;&lt;/span&gt;      &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;xs:string&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;xs:element&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;from&amp;quot;&lt;/span&gt;    &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;xs:string&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;xs:element&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;heading&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;xs:string&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;xs:element&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;body&amp;quot;&lt;/span&gt;    &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;xs:string&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/xs:sequence&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/xs:complexType&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/xs:element&amp;gt;&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;我们认为 XML Schema 很快会在大部分网络应用程序中取代 DTD。&lt;/p&gt;
+
+&lt;p&gt;理由如下：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;XML Schema 可针对未来的需求进行扩展&lt;/li&gt;
+&lt;li&gt;XML Schema 更完善，功能更强大&lt;/li&gt;
+&lt;li&gt;XML Schema 基于 XML 编写&lt;/li&gt;
+&lt;li&gt;XML Schema 支持数据类型&lt;/li&gt;
+&lt;li&gt;XML Schema 支持命名空间&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;XPath&lt;/h2&gt;
+
+&lt;p&gt;XPath是W3C的一个标准。它最主要的目的是为了在XML1.0或XML1.1文档节点树中定位节点所设计。目前有XPath1.0和XPath2.0两个版本。&lt;/p&gt;
+
+&lt;p&gt;XPath是一种表达式语言，它的返回值可能是节点，节点集合，原子值，以及节点和原子值的混合等.&lt;/p&gt;
+
+&lt;p&gt;在 XPath 中，有七种类型的节点：元素、属性、文本、命名空间、处理指令、注释以及文档节点（或称为根节点）。&lt;/p&gt;
+
+&lt;h4&gt;XPath语法&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;选取节点：XPath 使用路径表达式在 XML 文档中选取节点。节点是通过沿着路径或者 step 来选取的。&lt;/li&gt;
+&lt;li&gt;谓语（Predicates）：谓语用来查找某个特定的节点或者包含某个指定的值的节点。谓语被嵌在方括号中。&lt;/li&gt;
+&lt;li&gt;选取未知节点：XPath 通配符可用来选取未知的 XML 元素。&lt;/li&gt;
+&lt;li&gt;选取若干路径：通过在路径表达式中使用“|”运算符，您可以选取若干个路径。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4&gt;生成XPath的简单方法&lt;/h4&gt;
+
+&lt;p&gt;在Chrome浏览器中按F12调用开发着模式，找到指定的节点单机右键选择&lt;code&gt;copy xpath&lt;/code&gt;即可生成XPath地址。&lt;/p&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>Leetcode Python</title>
+        <link href="http://hackerxu.com/2014/12/23/leetcode-python.html"/>
+        <updated>2014-12-23T00:00:00+08:00</updated>
+        <id>http://hackerxu.com/2014/12/23/leetcode-python</id>
+        <content type="html">&lt;h2&gt;Single Number&lt;/h2&gt;
+
+&lt;p&gt;Given an array of integers, every element appears twice except for one. Find that single one.&lt;/p&gt;
+
+&lt;p&gt;Note:
+Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?&lt;/p&gt;
+
+&lt;p&gt;tags:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Hash Table &lt;/li&gt;
+&lt;li&gt;Bit Manipulation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;singleNumber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;singleNumber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;reduce&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;operator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Maximum Depth of Binary Tree&lt;/h2&gt;
+
+&lt;p&gt;Given a binary tree, find its maximum depth.&lt;/p&gt;
+
+&lt;p&gt;The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.&lt;/p&gt;
+
+&lt;p&gt;tags:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Tree &lt;/li&gt;
+&lt;li&gt;Depth-first Search&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;maxDepth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;maxDepth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;maxDepth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Same Tree&lt;/h2&gt;
+
+&lt;p&gt;Given two binary trees, write a function to check if they are equal or not.&lt;/p&gt;
+
+&lt;p&gt;Two binary trees are considered equal if they are structurally identical and the nodes have the same value.&lt;/p&gt;
+
+&lt;p&gt;tags:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Tree &lt;/li&gt;
+&lt;li&gt;Depth-first Search&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;isSameTree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isSameTree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isSameTree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+    </entry>
+    
+    <entry>
         <title>OS X 配置</title>
         <link href="http://hackerxu.com/2014/12/18/macos.html"/>
         <updated>2014-12-18T00:00:00+08:00</updated>
         <id>http://hackerxu.com/2014/12/18/macos</id>
-        <content type="html">&lt;h2&gt;移动硬盘&lt;/h2&gt;
+        <content type="html">&lt;h3&gt;移动硬盘&lt;/h3&gt;
 
 &lt;p&gt;Mac只支持读NTFS，并不能写，最好的方法就是把移动硬盘格式化成exfat，这样就可以兼容win和mac了。&lt;/p&gt;
 
-&lt;h2&gt;输入法&lt;/h2&gt;
+&lt;h3&gt;输入法&lt;/h3&gt;
 
 &lt;p&gt;搜狗输入法，自带也不错，不过中英文标点不好切换，还是搜狗用着习惯。&lt;/p&gt;
 
-&lt;h2&gt;office&lt;/h2&gt;
+&lt;h3&gt;office&lt;/h3&gt;
 
 &lt;p&gt;到macx.cn下载Microsoft office for mac&lt;/p&gt;
 
-&lt;h2&gt;音乐&lt;/h2&gt;
+&lt;h3&gt;音乐&lt;/h3&gt;
 
 &lt;p&gt;网易云音乐或者豆瓣FM（diumoo比官方好用）&lt;/p&gt;
 
-&lt;h2&gt;iterm2&lt;/h2&gt;
+&lt;h3&gt;time machine&lt;/h3&gt;
 
-&lt;p&gt;复制&lt;/p&gt;
+&lt;p&gt;关于time machine确实是一个好东西啊,在运行时遇到一个问题,就是长时间的在&lt;code&gt;正在准备备份&lt;/code&gt;,搜了搜说是需要很长时间,于是...开了一夜早晨起来一看还是&lt;code&gt;正在准备备份&lt;/code&gt;,连续试了好几次都不行,醉了,后来发现系统更新10.10.1,更了以后重启以后就OK了,不知道是更系统的问题还是重启才好使.整个备份30分钟左右吧.&lt;/p&gt;
+
+&lt;h3&gt;iterm2&lt;/h3&gt;
+
+&lt;h4&gt;复制&lt;/h4&gt;
 
 &lt;p&gt;iterm2有2种好用的选中即复制模式。&lt;/p&gt;
 
@@ -43,25 +380,17 @@
 &lt;li&gt;无鼠标模式，command+f,弹出iterm2的查找模式，输入要查找并复制的内容的前几个字母，确认找到的是自己的内容之后，输入tab，查找窗口将自动变化内容，并将其复制。如果输入的是shift+tab，则自动将查找内容的左边选中并复制。&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;显示 Mac 隐藏文件的命令：&lt;/p&gt;
-
-&lt;p&gt;defaults write com.apple.finder AppleShowAllFiles -bool true&lt;/p&gt;
-
-&lt;p&gt;隐藏 Mac 隐藏文件的命令：&lt;/p&gt;
-
-&lt;p&gt;defaults write com.apple.finder AppleShowAllFiles -bool false&lt;/p&gt;
-
-&lt;p&gt;剪切历史&lt;/p&gt;
+&lt;h4&gt;剪切历史&lt;/h4&gt;
 
 &lt;p&gt;输入command+shift+h，iterm2将自动列出剪切板的历史记录。如果需要将剪切板的历史记录保存到磁盘，在Preferences &amp;gt; General &amp;gt; Save copy/paste history to disk.中设置。&lt;/p&gt;
 
-&lt;p&gt;全屏切换&lt;/p&gt;
+&lt;h4&gt;全屏切换&lt;/h4&gt;
 
 &lt;p&gt;command+enter进入与返回全屏模式&lt;/p&gt;
 
-&lt;h1&gt;全局快捷键&lt;/h1&gt;
+&lt;h2&gt;全局快捷键&lt;/h2&gt;
 
-&lt;h2&gt;截屏&lt;/h2&gt;
+&lt;h3&gt;截屏&lt;/h3&gt;
 
 &lt;p&gt;command + shift + 3 整个屏幕&lt;/p&gt;
 
@@ -71,7 +400,7 @@
 
 &lt;p&gt;command + 空格 输入法切换&lt;/p&gt;
 
-&lt;h2&gt;通用&lt;/h2&gt;
+&lt;h3&gt;通用&lt;/h3&gt;
 
 &lt;p&gt;command + h 隐藏窗口&lt;/p&gt;
 
@@ -89,12 +418,42 @@
 
 &lt;h2&gt;alfred&lt;/h2&gt;
 
+&lt;p&gt;alfred有一个剪切板是&lt;code&gt;option + command + c&lt;/code&gt;调用&lt;/p&gt;
+
 &lt;ul&gt;
 &lt;li&gt;dash&lt;/li&gt;
 &lt;li&gt;v2ex&lt;/li&gt;
 &lt;li&gt;zh : 知乎&lt;/li&gt;
 &lt;li&gt;tb : 淘宝&lt;/li&gt;
 &lt;li&gt;bd : 百度&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;一些shell命令&lt;/h2&gt;
+
+&lt;p&gt;显示 Mac 隐藏文件的命令：&lt;/p&gt;
+
+&lt;p&gt;defaults write com.apple.finder AppleShowAllFiles -bool true&lt;/p&gt;
+
+&lt;p&gt;隐藏 Mac 隐藏文件的命令：&lt;/p&gt;
+
+&lt;p&gt;defaults write com.apple.finder AppleShowAllFiles -bool false&lt;/p&gt;
+
+&lt;h2&gt;软件&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;moom 窗口工具&lt;/li&gt;
+&lt;li&gt;monosnap 截图工具&lt;/li&gt;
+&lt;li&gt;Popclip 剪切工具&lt;/li&gt;
+&lt;li&gt;Mou、haroopad Markdown工具&lt;/li&gt;
+&lt;li&gt;Alfred 快速启动工具&lt;/li&gt;
+&lt;li&gt;iStat Menus 系统状态指示&lt;/li&gt;
+&lt;li&gt;坚果云 同步盘&lt;/li&gt;
+&lt;li&gt;Xcode,dash 开发用&lt;/li&gt;
+&lt;li&gt;Bartending 系统托盘管理工具&lt;/li&gt;
+&lt;li&gt;Sublime 文本编辑器&lt;/li&gt;
+&lt;li&gt;Evernote 笔记&lt;/li&gt;
+&lt;li&gt;Xmind 思维导图&lt;/li&gt;
+&lt;li&gt;SimpleCleaner 清理工具&lt;/li&gt;
 &lt;/ul&gt;
 </content>
     </entry>
@@ -672,22 +1031,36 @@ Task: minimal
 
 &lt;h2&gt;1 socket基础&lt;/h2&gt;
 
-&lt;h3&gt;1.1 socket 套接字&lt;/h3&gt;
+&lt;h3&gt;1.1 socket历史&lt;/h3&gt;
+
+&lt;p&gt;当前经常使用的socket，最早起源于BSD UNIX类的操作系统。在UNIX系统上，比如BSD，有一些现有的，和文件描述符一起工作的系统调用，其中包括open(),read(),write()和 close().文件描述符一般是指一个文件或某个类似文件的实体.&lt;/p&gt;
+
+&lt;p&gt;把对网络的支持加入操作系统,是以一种扩展现有文件描述符的方法实现的.新的系统调用被加入并和 socket 一起工作,而很多现有的系统调用同样能和 socket 一起工作.因此,一个 socket 允许你使用标准的操作系统和其他的计算机以及自己机器上的不用进程来通信.&lt;/p&gt;
+
+&lt;p&gt;在某些方面, socket 可以被看成一个标准的文件描述符.在 UNIX 类的平台上, read(),write(),dup(),dup2(),close()这样的系统调用会像为标准文件描述符那样为 socket 工作.很多时候,程序并不需要知道它正在把数据写进一个文件,终端或是一个 TCP 连接.&lt;/p&gt;
+
+&lt;p&gt;然而, socket 的确存在一些不同的工作方式.最明显的就是建立 socket 的方法.很多文件是通过 open() 函数打开的,但 socket 是通过调用 socket() 函数来建立的,并且还需要另外的调用来连接和激活他们. recv() 和 send() 这两个系统调用和 read()和 write() 极为相似.&lt;/p&gt;
+
+&lt;h3&gt;1.2 socket 套接字&lt;/h3&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;套接字 socket = (IP地址: 端口号)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;就这么简单,IP负责主机到主机(点到点)通讯,而端口号负责进程到进程(端到端)的通讯.python中socket编程在网络的应用层,涉及到些许运输层,所以极大简化了编程,我们只要对socket进行操作就可以了.&lt;/p&gt;
 
-&lt;h3&gt;1.2 套接字家族&lt;/h3&gt;
+&lt;h3&gt;1.3 套接字家族&lt;/h3&gt;
 
 &lt;p&gt;套接字起源于20世纪70年代加州大学伯克利分校版本的Unix，即人们所说的BSD Unix。因此，有时人们也把套接字称为“伯克利套接字”或“BSD套接字”。套接字有两种，分别是&lt;strong&gt;基于文件型&lt;/strong&gt;的和&lt;strong&gt;基于网络型&lt;/strong&gt;的。&lt;/p&gt;
 
-&lt;h4&gt;基于文件型&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;基于文件型&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;&lt;code&gt;AF_UNIX&lt;/code&gt;或者&lt;code&gt;AF_LOCAL&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;主要特点是两个进程都运行在同一台机器上，而且这些套接字是基于文件的,所以，它们的底层结构是由文件系统来支持的.&lt;/p&gt;
 
-&lt;h4&gt;基于网络型&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;基于网络型&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;&lt;code&gt;AF_INET&lt;/code&gt;或者&lt;code&gt;AF_INET6&lt;/code&gt;或者&lt;code&gt;AF_NETLINK&lt;/code&gt;&lt;/p&gt;
 
@@ -902,223 +1275,6 @@ Task: minimal
 &lt;li&gt;&lt;a href=&quot;http://yangrong.blog.51cto.com/6945369/1339593&quot;&gt;python socket编程详细介绍&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://openexperience.iteye.com/blog/145701&quot;&gt;一个简单的python socket编程&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</content>
-    </entry>
-    
-    <entry>
-        <title>new和init</title>
-        <link href="http://hackerxu.com/2014/11/27/new_init.html"/>
-        <updated>2014-11-27T00:00:00+08:00</updated>
-        <id>http://hackerxu.com/2014/11/27/new_init</id>
-        <content type="html">&lt;p&gt;许多人认为&lt;code&gt;__init()__&lt;/code&gt;方法是类的构造方法,其实不然.&lt;code&gt;__init__()&lt;/code&gt;方法所做的工作是在类的对象创建好之后进行变量的初始化.&lt;code&gt;__new__()&lt;/code&gt;方法才会真正创建实例,是类的构造方法.这两个方法都是object类中默认的方法,继承自object的新式类,如果不覆盖这两个方法将会默认调用object中对应的方法.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;__new__()&lt;/code&gt;和&lt;code&gt;__init()__&lt;/code&gt;的定义:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;object.__new__(cls[,args...])&lt;/code&gt;:其中cls代表类,args为参数列表.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;object.__init__(self[,args...])&lt;/code&gt;:其中self代表实例对象,args为参数列表.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;不同之处:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;__new__()&lt;/code&gt;方法为静态方法,&lt;code&gt;__init__()&lt;/code&gt;方法为实例方法.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;__new__()&lt;/code&gt;方法一般需要返回类的对象,当返回类的对象时将会自动调用&lt;code&gt;__init__()&lt;/code&gt;方法进行初始化,如果没有对象返回,则&lt;code&gt;__init__()&lt;/code&gt;方法不会被调用.&lt;code&gt;__init__()&lt;/code&gt;方法不需要显示返回,默认为None,否则会在运行时抛出TypeError.&lt;/li&gt;
-&lt;li&gt;当需要控制实例创建的时候可使用&lt;code&gt;__new__()&lt;/code&gt;方法,而控制实例初始化的时候用&lt;code&gt;__init__()&lt;/code&gt;方法.&lt;/li&gt;
-&lt;li&gt;一般情况下不需要覆盖&lt;code&gt;__new__()&lt;/code&gt;方法,但当子类继承自不可变类型,如str,int,unicode或者tuple的时候,往往需要覆盖该方法.&lt;/li&gt;
-&lt;li&gt;当需要覆盖&lt;code&gt;__new__()&lt;/code&gt;和&lt;code&gt;__init()__&lt;/code&gt;方法的时候这两个方法的参数必须保持一致,如果不一致将导致异常.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code&gt;__new__()&lt;/code&gt;方法很少可以用到,有以下几种情况:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;当类继承(如str,int,unicode,tuple或者forzenset等)不可变类型且默认的&lt;code&gt;__new__()&lt;/code&gt;方法不能满足需求的时候.&lt;/li&gt;
-&lt;li&gt;用来实现工厂模式或者单例模式或者进行元类编程的时候.&lt;/li&gt;
-&lt;li&gt;作为用来初始化的&lt;code&gt;__init__()&lt;/code&gt;方法在多继承的情况下,子类的&lt;code&gt;__init__()&lt;/code&gt;方法如果不显式调用父类的&lt;code&gt;__init__()&lt;/code&gt;方法,则父类的&lt;code&gt;__init__()&lt;/code&gt;方法不会被调用.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3&gt;new方法举例&lt;/h3&gt;
-
-&lt;p&gt;举个工厂模式的例子:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ShapeFactory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;shapes&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;triangle&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Triangle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;rectangle&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Rectangle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__new__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;klass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ShapeFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shapes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;creating a new shape &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%s&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ShapeFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shapes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]()&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;creating a new shape &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%s&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;draw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Triangle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;I am a triangle&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;draw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;proint&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;I am drawing triangle&amp;quot;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Rectangle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;I am a rectangle&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;draw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;proint&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;I am drawing tectangle&amp;quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;在ShapeFactory类中重新覆盖了&lt;code&gt;__new__()&lt;/code&gt;方法,外界通过调用该方法来创建其所需要的对象类型,但如果所请求的类是系统所不支持的,则返回Shape对象.在引入了工厂类之后,只需要用如下形式就可以创建不同的图形对象:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;ShapeFactory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;rectangle&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;draw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;另一个继承不可变类型的例子:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UserSet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;frozenset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;isinstance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;basestring&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;arg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-        &lt;span class=&quot;nb&quot;&gt;frozenset&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;UserSet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;I am testing&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;frozenset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;I am testing&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;输出:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;UserSet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39; &amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;e&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;g&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;I&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;m&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;n&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;i&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;s&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;t&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;frozenset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39; &amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;e&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;g&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;I&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;m&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;n&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;i&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;s&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;t&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;注意:为什么举这个例子呢,因为我们&lt;code&gt;print UserSet(&amp;quot;I am testing&amp;quot;)&lt;/code&gt;输出的是实例的值,而不是&lt;code&gt;__init__()&lt;/code&gt;的值,所以必须在&lt;code&gt;__new__()&lt;/code&gt;过程中(生成实例时)进行更改,才能输出我们想要的值.&lt;/p&gt;
-
-&lt;p&gt;在UserSet中加入下面的&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__new__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cls&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;isinstance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;basestring&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UserSet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cls&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__new__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cls&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;输出:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;UserSet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;I&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;testing&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;am&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;frozenset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39; &amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;e&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;g&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;I&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;m&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;n&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;i&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;s&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;t&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;总结&lt;/h3&gt;
-
-&lt;p&gt;实例化一个类的过程:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;检查是否有&lt;code&gt;__new__()&lt;/code&gt;方法,如果没有就继承父类的&lt;code&gt;__new__()&lt;/code&gt;方法;如果有则用自己的&lt;code&gt;__new__()&lt;/code&gt;方法.&lt;/li&gt;
-&lt;li&gt;如果&lt;code&gt;__new__()&lt;/code&gt;方法有返回值(类实例)则调用&lt;code&gt;__init__()&lt;/code&gt;方法;如果没有则不掉用.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;其实&lt;code&gt;__new__()&lt;/code&gt;方法就是构造函数,是这个类实例的构造(实例参数类型),而&lt;code&gt;__init__()&lt;/code&gt;方法是对实例初值进行赋值.大多数情况下我们可以用&lt;code&gt;__init__()&lt;/code&gt;完成任务,但是上面那几种情况就需要&lt;code&gt;__new__()&lt;/code&gt;方法.&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Use &lt;code&gt;__new__&lt;/code&gt; when you need to control the creation of a new instance. Use &lt;code&gt;__init__&lt;/code&gt; when you need to control initialization of a new instance.
-&lt;code&gt;__new__&lt;/code&gt; is the first step of instance creation. It&amp;#39;s called first, and is responsible for returning a new instance of your class. In contrast, &lt;code&gt;__init__&lt;/code&gt; doesn&amp;#39;t return anything; it&amp;#39;s only responsible for initializing the instance after it&amp;#39;s been created.
-In general, you shouldn&amp;#39;t need to override &lt;code&gt;__new__&lt;/code&gt; unless you&amp;#39;re subclassing an immutable type like str, int, unicode or tuple.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;From: &lt;a href=&quot;http://mail.python.org/pipermail/tutor/2008-April/061426.html&quot;&gt;http://mail.python.org/pipermail/tutor/2008-April/061426.html&lt;/a&gt;&lt;/p&gt;
-</content>
-    </entry>
-    
-    <entry>
-        <title>为什么要有type和object?</title>
-        <link href="http://hackerxu.com/2014/11/26/type_object.html"/>
-        <updated>2014-11-26T00:00:00+08:00</updated>
-        <id>http://hackerxu.com/2014/11/26/type_object</id>
-        <content type="html">&lt;p&gt;图片来源 &lt;a href=&quot;http://wiki.woodpecker.org.cn/moin/PyTypesAndObjects&quot;&gt;http://wiki.woodpecker.org.cn/moin/PyTypesAndObjects&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/types_map.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;先解释一下图片,虚线表示一个对象的type(类型),实线表示一个对象的base(基类/父类).&lt;/p&gt;
-
-&lt;p&gt;这个图片很有意思的一个地方是&lt;code&gt;&amp;lt;type &amp;#39;type&amp;#39;&amp;gt;&lt;/code&gt;和&lt;code&gt;&amp;lt;type &amp;#39;object&amp;#39;&amp;gt;&lt;/code&gt;之间的关系,可以看到&lt;code&gt;&amp;lt;type &amp;#39;object&amp;#39;&amp;gt;&lt;/code&gt;是&lt;code&gt;&amp;lt;type &amp;#39;type&amp;#39;&amp;gt;&lt;/code&gt;的基类,而&lt;code&gt;&amp;lt;type &amp;#39;type&amp;#39;&amp;gt;&lt;/code&gt;是&lt;code&gt;&amp;lt;type &amp;#39;object&amp;#39;&amp;gt;&lt;/code&gt;的type(类型),这到底为什么?(这里先拿新式类来说,旧式类后面在说.)&lt;/p&gt;
-
-&lt;p&gt;我觉得最主要的原因是来源于Python &lt;strong&gt;一切皆为对象&lt;/strong&gt; 的概念,在Python中所有的类或实例(比如list,int,1,&amp;#39;abc&amp;#39;)都是对象.&lt;/p&gt;
-
-&lt;p&gt;如果要你设计会怎么设计?那就是设计一个超类,所有的对象的超集都是一个&lt;code&gt;&amp;lt;type &amp;#39;object&amp;#39;&amp;gt;&lt;/code&gt;类(也就是图上的&lt;code&gt;&amp;lt;type &amp;#39;object&amp;#39;&amp;gt;&lt;/code&gt;),即所有的对象都继承这个object类.这就是&lt;code&gt;&amp;lt;type &amp;#39;object&amp;#39;&amp;gt;&lt;/code&gt;类的由来.&lt;/p&gt;
-
-&lt;p&gt;再看看&lt;code&gt;&amp;lt;type &amp;#39;type&amp;#39;&amp;gt;&lt;/code&gt;是怎么来的.看图,先撇开&lt;code&gt;metaclasses&lt;/code&gt;,来看右边两个矩形.可以看出对象分两种:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;classes(类)&lt;/li&gt;
-&lt;li&gt;instances(实例)&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;类和实例有什么关系呢?类创造了实例,而不是继承关系.那么问题来了,是什么创造了类呢?于是在Python里引进了&lt;code&gt;metaclasses&lt;/code&gt;,&lt;code&gt;&amp;lt;type &amp;#39;type&amp;#39;&amp;gt;&lt;/code&gt;就是元类,它可以创建类.记住 &lt;strong&gt;Python中的一切都是对象，它们要么是类的实例，要么是元类的实例&lt;/strong&gt; .&lt;/p&gt;
-
-&lt;p&gt;这样我们就统一了对象的创建,所有的对象都是&lt;code&gt;metaclasses&lt;/code&gt;创建的,而所有的对象都是&lt;code&gt;&amp;lt;type &amp;#39;object&amp;#39;&amp;gt;&lt;/code&gt;的子集,这就是为什么我们分别需要&lt;code&gt;type&lt;/code&gt;和&lt;code&gt;object&lt;/code&gt;这两个东西~~最后,&lt;code&gt;&amp;lt;type &amp;#39;type&amp;#39;&amp;gt;&lt;/code&gt;和&lt;code&gt;&amp;lt;type &amp;#39;object&amp;#39;&amp;gt;&lt;/code&gt;之间的实线部分,那是因为 &lt;strong&gt;一切皆为对象&lt;/strong&gt; ,所以&lt;code&gt;type&lt;/code&gt;自然是&lt;code&gt;object&lt;/code&gt;的子集了.&lt;/p&gt;
-
-&lt;p&gt;总之, &lt;strong&gt;&lt;code&gt;type&lt;/code&gt;是所有对象的妈或者奶奶,创建所有对象(包括自己,它的&lt;code&gt;__class__&lt;/code&gt;为&lt;code&gt;&amp;lt;type &amp;#39;type&amp;#39;&amp;gt;&lt;/code&gt;),&lt;code&gt;object&lt;/code&gt;是所有对象的祖宗(不包括自己,它的&lt;code&gt;__base__&lt;/code&gt;为空),所有对象继承祖宗的血统&lt;/strong&gt; ,就酱紫.&lt;/p&gt;
-
-&lt;p&gt;ps:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;不能通过形式上判断类的类型,应当从元类的类型来确定:古典类的元类为&lt;code&gt;types.ClassType&lt;/code&gt;,新式类的元类为&lt;code&gt;type&lt;/code&gt;,可以通过设置&lt;code&gt;__metaclass__&lt;/code&gt;来设置一个类的元类.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;type(*)&lt;/code&gt;等同于&lt;code&gt;*.__class__&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;每个对象都有class，并且等于该对象的type.&lt;/li&gt;
-&lt;li&gt;每个类(classes)或者type有bases属性，而实例(instances)则没有.只有&lt;code&gt;&amp;lt;type &amp;#39;object&amp;#39;&amp;gt;&lt;/code&gt;的bases是空的.&lt;/li&gt;
-&lt;li&gt;要通过子类化构建对象,我们使用class关键字，并指定新对象的基类bases (或者可选的 type) . 这样通常创建出的是type object.&lt;/li&gt;
-&lt;li&gt;要通过实例化构建对象, 需要使用在类对象上使用调用操作符即小括号 (())&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;对于上一个问题可以引出为什么要加入新式类?&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# 旧式类&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# 新式类&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;假设a,b分别是类A,类B的实例,则:&lt;/p&gt;
-
-&lt;table&gt;&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;对象&lt;/th&gt;
-&lt;th&gt;&lt;code&gt;type&amp;lt;*&amp;gt;&lt;/code&gt;&lt;/th&gt;
-&lt;th&gt;&lt;code&gt;*.__class__&lt;/code&gt;&lt;/th&gt;
-&lt;th&gt;&lt;code&gt;*.__bases__&lt;/code&gt;&lt;/th&gt;
-&lt;th&gt;&lt;code&gt;isinstance(*, object)&lt;/code&gt;&lt;/th&gt;
-&lt;th&gt;&lt;code&gt;isinstance(*, type)&lt;/code&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;object&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;type &amp;#39;type&amp;#39;&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;type &amp;#39;type&amp;#39;&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;()&lt;/td&gt;
-&lt;td&gt;√&lt;/td&gt;
-&lt;td&gt;√&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;type&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;type &amp;#39;type&amp;#39;&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;type &amp;#39;type&amp;#39;&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;(&lt;code&gt;&amp;lt;type &amp;#39;type&amp;#39;&amp;gt;&lt;/code&gt;,)&lt;/td&gt;
-&lt;td&gt;√&lt;/td&gt;
-&lt;td&gt;√&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;a&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;type &amp;#39;instance&amp;#39;&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;type &amp;#39;type&amp;#39;&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;()&lt;/td&gt;
-&lt;td&gt;√&lt;/td&gt;
-&lt;td&gt;×&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;b&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;class &amp;#39;__main__.B&amp;#39;&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;class &amp;#39;__main__.B&amp;#39;&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;(&lt;code&gt;&amp;lt;type &amp;#39;type&amp;#39;&amp;gt;&lt;/code&gt;,)&lt;/td&gt;
-&lt;td&gt;√&lt;/td&gt;
-&lt;td&gt;×&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
-
-&lt;p&gt;可以看到对于旧式类,它的&lt;code&gt;type&lt;/code&gt;和&lt;code&gt;*.__class__&lt;/code&gt;还有&lt;code&gt;*.__bases__&lt;/code&gt;比较混乱,而新式类就是为了解决这个问题,做到了大一统.&lt;/p&gt;
-
-&lt;p&gt;新式类有很多优势:基于内建类型构建新的用户类型,支持property和描述符特性等.作为新式类的祖先,Object类中还定义了一些特殊方法,如:&lt;code&gt;__new__()&lt;/code&gt;,&lt;code&gt;__init__()&lt;/code&gt;,&lt;code&gt;__delattr__()&lt;/code&gt;,&lt;code&gt;__getattribute__()&lt;/code&gt;,&lt;code&gt;__setattr__()&lt;/code&gt;,&lt;code&gt;__hash__()&lt;/code&gt;,&lt;code&gt;__repr__()&lt;/code&gt;,&lt;code&gt;__str__()&lt;/code&gt;等等.Object的子类可以对这些方法进行覆盖以满足自身的特殊需求.&lt;/p&gt;
-
-&lt;p&gt;另外，新式类和旧式类还有一个区别就是在多继承的时候，查找要调用的方法。新式类是广度优先的查找算法。旧式类的查找方法是深度优先的.&lt;/p&gt;
 </content>
     </entry>
     
