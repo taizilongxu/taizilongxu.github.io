@@ -20,6 +20,40 @@
 				navigation: true,
 				navigationPosition: 'right',
 				//navigationTooltips: ['First page', 'Second page', 'Third and last page']
+			    afterLoad: function(anchorLink, index){
+
+					//section 2
+					if(index == 2){
+						//moving the image
+						$('#section1').find('img').delay(100).animate({
+							left: '0%'
+						}, 1500, 'easeOutExpo');
+
+						$('#section1').find('p').delay(100).animate({
+							right: '0%'
+						}, 1500, 'easeOutExpo');					
+					}
+					//section 3
+					if(index == 3){
+						//moving the image
+						$('#section2').find('img').delay(100).animate({
+							right: '0%',
+						}, 1500, 'easeOutExpo');
+
+						$('#section2').find('p').fadeIn();
+					}
+					//section 4
+					if(index == 4){
+						$('#section3').find('p').delay(100).animate({
+							top: '12px',
+							fontSize: '30px'
+						}, 1500, 'easeOutExpo');
+						$('#section3').find('h2').delay(100).animate({
+							bottom: '12px',
+							fontSize: '45px'
+						}, 1500, 'easeOutExpo');
+					}
+				}
 			});
 		});
 	</script>
@@ -88,7 +122,36 @@
 		padding-right: 10%;
 	}
 
-	</style>
+	#section1 img {
+		left: 130%;
+		position:relative;
+	}
+
+	#section1 p {
+		right : 130%;
+		position: relative;
+	}
+
+	#section2 img {
+		right : 130%;
+		position: relative;
+	}
+
+	#section2 p {
+		display: none;
+	}
+
+	#section3 h2 {
+		bottom: -5px;
+		position: relative;
+	}
+
+	#section3 p {
+		top: -5px;
+		position: relative;
+	}
+
+		</style>
 </head>
 <body>
 <div id="fullpage">
