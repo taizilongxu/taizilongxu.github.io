@@ -5,14 +5,103 @@
     <subtitle>Python,HTML,CSS,Machine Leaning</subtitle>
     <link href="http://hackerxu.com/atom.xml" rel="self"/>
     <link href="http://hackerxu.com"/>
-    <updated>2015-01-04T21:36:52+08:00</updated>
+    <updated>2015-01-12T14:46:23+08:00</updated>
     <id>http://hackerxu.com</id>
     <author>
         <name>xuxiao</name>
     </author>
     
     <entry>
-        <title>XML</title>
+        <title>数据库与树</title>
+        <link href="http://hackerxu.com/2015/01/10/tree.html"/>
+        <updated>2015-01-10T00:00:00+08:00</updated>
+        <id>http://hackerxu.com/2015/01/10/tree</id>
+        <content type="html">&lt;p&gt;数据库中需要引用查找结构,为了更加迅速的查找硬盘中的数据库,因为硬盘IO的速度非常的耗时,所以要尽量选择能够将IO次数减少的数据结构,下面一个个分析动态查找结构,找到最合适的结构.&lt;/p&gt;
+
+&lt;h2&gt;二叉排序树(二叉查找树,二叉搜索树)&lt;/h2&gt;
+
+&lt;p&gt;二叉排序树（Binary Sort Tree）又称二叉查找树（Binary Search Tree），亦称二叉搜索树。 它或者是一棵空树；或者是具有下列性质的二叉树： &lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;若左子树不空，则左子树上所有结点的值均小于它的根结点的值； &lt;/li&gt;
+&lt;li&gt;若右子树不空，则右子树上所有结点的值均大于或等于它的根结点的值；&lt;/li&gt;
+&lt;li&gt;左、右子树也分别为二叉排序树；&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2012072113392755.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;它的查找复杂度 P(n)=O(logn)&lt;/p&gt;
+
+&lt;p&gt;这里就不讲它的插入,删除操作了&lt;/p&gt;
+
+&lt;p&gt;可以看到二叉排序树是最简单的一种动态查找结构,它对树的深度没有进行优化,这就使得树深有可能非常的大(最坏情况树深=节点数).&lt;/p&gt;
+
+&lt;h2&gt;平衡二叉树&lt;/h2&gt;
+
+&lt;p&gt;平衡二叉树（Balanced Binary Tree）又被称为AVL树（有别于AVL算法），且具有以下性质：它是一 棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树。构造与调整方法 平衡二叉树的常用算法有红黑树、AVL、Treap等。 最小二叉平衡树的节点的公式如下 F(n)=F(n-1)+F(n-2)+1 这个类似于一个递归的数列，可以参考Fibonacci数列，1是根节点，F(n-1)是左子树的节点数量，F(n-2)是右子树的节点数量。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/bf096b63f6246b6060c35d63e9f81a4c500fa2dc.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;平衡二叉树通过旋转可以使树深不至于太大,它的平均查找长度也是logn,但它能有效避免二叉排序树的那种极端情况出现.&lt;/p&gt;
+
+&lt;h2&gt;B-tree&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;这里B-tree不是B减树而是叫做B树&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;对于上面两种树形结构,它们的树深往往太深,对于海量数据而言简直是个灾难,所以有人发明了B-tree,它是一个多路查找树,很轻易的就减小了树深.&lt;/p&gt;
+
+&lt;p&gt;一棵m阶B树(balanced tree of order m)是一棵平衡的m路搜索树。它或者是空树，或者是满足下列性质的树：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;根结点至少有两个子女；&lt;/li&gt;
+&lt;li&gt;每个非根节点所包含的关键字个数 j 满足：┌m/2┐ - 1 &amp;lt;= j &amp;lt;= m - 1；&lt;/li&gt;
+&lt;li&gt;除根结点以外的所有结点（不包括叶子结点）的度数正好是关键字总数加1，故内部子树个数 k 满足：┌m/2┐ &amp;lt;= k &amp;lt;= m ；&lt;/li&gt;
+&lt;li&gt;所有的叶子结点都位于同一层。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;在B-树中，每个结点中关键字从小到大排列，并且当该结点的孩子是非叶子结点时，该k-1个关键字正好是k个孩子包含的关键字的值域的分划。&lt;/p&gt;
+
+&lt;p&gt;因为叶子结点不包含关键字，所以可以把叶子结点看成在树里实际上并不存在外部结点，指向这些外部结点的指针为空，叶子结点的数目正好等于树中所包含的关键字总个数加1。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/8394323_13074405906V6Q.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;下面，咱们来模拟下查找文件29的过程：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;根据根结点指针找到文件目录的根磁盘块1，将其中的信息导入内存。【磁盘IO操作 1次】&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;此时内存中有两个文件名17、35和三个存储其他磁盘页面地址的数据。根据算法我们发现：&lt;code&gt;17&amp;lt;29&amp;lt;35&lt;/code&gt;，因此我们找到指针p2。&lt;/li&gt;
+&lt;li&gt;根据p2指针，我们定位到磁盘块3，并将其中的信息导入内存。【磁盘IO操作 2次】&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;此时内存中有两个文件名26，30和三个存储其他磁盘页面地址的数据。根据算法我们发现：&lt;code&gt;26&amp;lt;29&amp;lt;30&lt;/code&gt;，因此我们找到指针p2。&lt;/li&gt;
+&lt;li&gt;根据p2指针，我们定位到磁盘块8，并将其中的信息导入内存。【磁盘IO操作 3次】&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;此时内存中有两个文件名28，29。根据算法我们查找到文件名29，并定位了该文件内存的磁盘地址。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;分析上面的过程，发现需要&lt;strong&gt;3次磁盘IO操作和3次内存查找操作&lt;/strong&gt;。关于内存中的文件名查找，由于是一个有序表结构，可以利用折半查找提高效率。至于IO操作是影响整个B树查找效率的决定因素。&lt;/p&gt;
+
+&lt;p&gt;当然，如果我们使用平衡二叉树的磁盘存储结构来进行查找，磁盘4次，最多5次，而且文件越多，B树比平衡二叉树所用的磁盘IO操作次数将越少，效率也越高。&lt;/p&gt;
+
+&lt;h2&gt;B+tree&lt;/h2&gt;
+
+&lt;p&gt;对于B-tree,所有节点都会带有指向其关键字的指针(途中红色小方块),这样做有利于加快查找速度,但是还有个缺点,就是会加大节点存储空间,造成盘块读取的增加,导致增加硬盘IO;而B+tree则取消掉这个红块,所有的关键字和关键字指针都存在叶子节点中,每次查找都会遍历到B+tree的底部(不管查找到还是没查找到),增加了查询深度的稳定,还有一点就是它解决了元素遍历效率底下的问题,就是说它的叶子节点链接成一个链表,可以有效的进行链表遍历.&lt;/p&gt;
+
+&lt;p&gt;B+tree是应文件系统所需而产生的一种B-tree的变形树。&lt;/p&gt;
+
+&lt;p&gt;一棵m阶的B+树和m阶的B树的异同点在于：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;有n棵子树的结点中含有n-1 个关键字； (此处颇有争议，B+树到底是与B 树n棵子树有n-1个关键字 保持一致，还是不一致：B树n棵子树的结点中含有n个关键字，待后续查证。暂先提供两个参考链接：①wikipedia &lt;a href=&quot;http://en.wikipedia.org/wiki/B%2B_tree#Overview%EF%BC%9B%E2%91%A1http://hedengcheng.com/?p=525%E3%80%82%E8%80%8C%E4%B8%8B%E9%9D%A2B+%E6%A0%91%E7%9A%84%E5%9B%BE%E5%B0%9A%E6%9C%AA%E6%9C%80%E7%BB%88%E7%A1%AE%E5%AE%9A%E6%98%AF%E5%90%A6%E6%9C%89%E9%97%AE%E9%A2%98%EF%BC%8C%E8%AF%B7%E8%AF%BB%E8%80%85%E6%B3%A8%E6%84%8F&quot;&gt;http://en.wikipedia.org/wiki/B%2B_tree#Overview；②http://hedengcheng.com/?p=525。而下面B+树的图尚未最终确定是否有问题，请读者注意&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;所有的叶子结点中包含了全部关键字的信息，及指向含有这些关键字记录的指针，且叶子结点本身依关键字的大小自小而大的顺序链接。 (而B 树的叶子节点并没有包括全部需要查找的信息)&lt;/li&gt;
+&lt;li&gt;所有的非终端结点可以看成是索引部分，结点中仅含有其子树根结点中最大（或最小）关键字。 (而B 树的非终节点也包含需要查找的有效信息)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/8394323_1307440587b6WG.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>Xml Json</title>
         <link href="http://hackerxu.com/2014/12/26/xml-json.html"/>
         <updated>2014-12-26T00:00:00+08:00</updated>
         <id>http://hackerxu.com/2014/12/26/xml-json</id>
@@ -274,10 +363,6 @@
 &lt;li&gt;选取未知节点：XPath 通配符可用来选取未知的 XML 元素。&lt;/li&gt;
 &lt;li&gt;选取若干路径：通过在路径表达式中使用“|”运算符，您可以选取若干个路径。&lt;/li&gt;
 &lt;/ol&gt;
-
-&lt;h4&gt;7.2 生成XPath的简单方法&lt;/h4&gt;
-
-&lt;p&gt;在Chrome浏览器中按F12调用开发着模式，找到指定的节点单机右键选择&lt;code&gt;copy xpath&lt;/code&gt;即可生成XPath地址。&lt;/p&gt;
 </content>
     </entry>
     
@@ -1018,262 +1103,6 @@ Task: minimal
 &lt;li&gt;sudo apt-get build-dep package 安装相关的编译环境&lt;/li&gt;
 &lt;li&gt;sudo apt-get clean &amp;amp;&amp;amp; sudo apt-get autoclean 清理无用的包&lt;/li&gt;
 &lt;li&gt;sudo apt-get check 检查是否有损坏的依赖&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    </entry>
-    
-    <entry>
-        <title>Python中的socket编程</title>
-        <link href="http://hackerxu.com/2014/11/28/python_socket.html"/>
-        <updated>2014-11-28T00:00:00+08:00</updated>
-        <id>http://hackerxu.com/2014/11/28/python_socket</id>
-        <content type="html">&lt;p&gt;最近在看tornado源码,发现里面的tcp层会用到很多socket的知识,所以特地恶补一下.&lt;/p&gt;
-
-&lt;h2&gt;1 socket基础&lt;/h2&gt;
-
-&lt;h3&gt;1.1 socket历史&lt;/h3&gt;
-
-&lt;p&gt;当前经常使用的socket，最早起源于BSD UNIX类的操作系统。在UNIX系统上，比如BSD，有一些现有的，和文件描述符一起工作的系统调用，其中包括open(),read(),write()和 close().文件描述符一般是指一个文件或某个类似文件的实体.&lt;/p&gt;
-
-&lt;p&gt;把对网络的支持加入操作系统,是以一种扩展现有文件描述符的方法实现的.新的系统调用被加入并和 socket 一起工作,而很多现有的系统调用同样能和 socket 一起工作.因此,一个 socket 允许你使用标准的操作系统和其他的计算机以及自己机器上的不用进程来通信.&lt;/p&gt;
-
-&lt;p&gt;在某些方面, socket 可以被看成一个标准的文件描述符.在 UNIX 类的平台上, read(),write(),dup(),dup2(),close()这样的系统调用会像为标准文件描述符那样为 socket 工作.很多时候,程序并不需要知道它正在把数据写进一个文件,终端或是一个 TCP 连接.&lt;/p&gt;
-
-&lt;p&gt;然而, socket 的确存在一些不同的工作方式.最明显的就是建立 socket 的方法.很多文件是通过 open() 函数打开的,但 socket 是通过调用 socket() 函数来建立的,并且还需要另外的调用来连接和激活他们. recv() 和 send() 这两个系统调用和 read()和 write() 极为相似.&lt;/p&gt;
-
-&lt;h3&gt;1.2 socket 套接字&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;套接字 socket = (IP地址: 端口号)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;就这么简单,IP负责主机到主机(点到点)通讯,而端口号负责进程到进程(端到端)的通讯.python中socket编程在网络的应用层,涉及到些许运输层,所以极大简化了编程,我们只要对socket进行操作就可以了.&lt;/p&gt;
-
-&lt;h3&gt;1.3 套接字家族&lt;/h3&gt;
-
-&lt;p&gt;套接字起源于20世纪70年代加州大学伯克利分校版本的Unix，即人们所说的BSD Unix。因此，有时人们也把套接字称为“伯克利套接字”或“BSD套接字”。套接字有两种，分别是&lt;strong&gt;基于文件型&lt;/strong&gt;的和&lt;strong&gt;基于网络型&lt;/strong&gt;的。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;基于文件型&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code&gt;AF_UNIX&lt;/code&gt;或者&lt;code&gt;AF_LOCAL&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;主要特点是两个进程都运行在同一台机器上，而且这些套接字是基于文件的,所以，它们的底层结构是由文件系统来支持的.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;基于网络型&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code&gt;AF_INET&lt;/code&gt;或者&lt;code&gt;AF_INET6&lt;/code&gt;或者&lt;code&gt;AF_NETLINK&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;它们的特点是基于网络的,所有地址家族中，&lt;code&gt;AF_INET&lt;/code&gt;是使用最广泛的一个.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/TCP_IP.JPG&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-
-&lt;h3&gt;1.3 面向连接与无连接&lt;/h3&gt;
-
-&lt;p&gt;上面的图可以看到&lt;code&gt;AF_INET&lt;/code&gt;家族可以分为3种,我们常用的就两种TCP和UDP,对应的套接字类型为&lt;code&gt;SOCK_STREAM&lt;/code&gt;和&lt;code&gt;SOCK_DGRAM&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2&gt;2 Python中网络编程&lt;/h2&gt;
-
-&lt;p&gt;Python 提供了两个基本的 socket 模块。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;第一个是 Socket，它提供了标准的 BSD Sockets API。&lt;/li&gt;
-&lt;li&gt;第二个是 SocketServer， 它提供了服务器中心类，可以简化网络服务器的开发。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3&gt;2.1 socket()函数&lt;/h3&gt;
-
-&lt;p&gt;在Python里我们用socket（）函数来创建套接字.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;socket(socket_family, socket_type, protocol=0)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;参数:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;socket_family: 套接字家族可以使AF_UNIX或者AF_INET&lt;/li&gt;
-&lt;li&gt;socket_type: 套接字类型可以根据是面向连接的还是非连接分为&lt;code&gt;SOCK_STREAM&lt;/code&gt;或&lt;code&gt;SOCK_DGRAM&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;protocol: 一般不填默认为0.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3&gt;2.2 套接字对象(内建)方法&lt;/h3&gt;
-
-&lt;p&gt;下面是经常用到的套接字方法:&lt;/p&gt;
-
-&lt;table&gt;&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;函数&lt;/th&gt;
-&lt;th&gt;描述&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;服务器端套接字&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;s.bind()&lt;/td&gt;
-&lt;td&gt;绑定地址(主机号,端口号)到套接字&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;s.listen()&lt;/td&gt;
-&lt;td&gt;开始TCP监听&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;s.accept()&lt;/td&gt;
-&lt;td&gt;被动接受TCP客户端连接,(阻塞式)等待连接的到来&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;客户端套接字&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;s.connect()&lt;/td&gt;
-&lt;td&gt;主动初始化TCP服务器连接&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;s.connect_ex()&lt;/td&gt;
-&lt;td&gt;connect()函数的扩展版本,出错时返回出错码,而不是抛出异常&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;公共用途的套接字函数&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;s.recv()&lt;/td&gt;
-&lt;td&gt;接收TCP数据&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;s.send()&lt;/td&gt;
-&lt;td&gt;发送TCP数据&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;s.sendall()&lt;/td&gt;
-&lt;td&gt;完整发送TCP数据&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;s.recvform()&lt;/td&gt;
-&lt;td&gt;接收UDP数据&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;s.sendto()&lt;/td&gt;
-&lt;td&gt;发送UDP数据&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;s.close()&lt;/td&gt;
-&lt;td&gt;关闭套接字&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
-
-&lt;h3&gt;2.3 客户端和服务器编程&lt;/h3&gt;
-
-&lt;h4&gt;server&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;创建socket对象。调用socket构造函数。如：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;socket = socket.socket( family, type )
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;将socket绑定到指定地址。这是通过socket对象的bind方法来实现的：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;socket.bind( address ) 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;由AF_INET所创建的套接字，address地址必须是一个双元素元组，格式是(host,port)。host代表主机，port代表端口号。如果端口号正在使用、主机名不正确或端口已被保留，bind方法将引发socket.error异常。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;使用socket套接字的listen方法接收连接请求。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;socket.listen( backlog )
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;backlog指定最多允许多少个客户连接到服务器。它的值至少为1。收到连接请求后，这些请求需要排队，如果队列满，就拒绝请求。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;服务器套接字通过socket的accept方法等待客户请求一个连接。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;connection, address = socket.accept()
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;调用accept方法时，socket会时入“waiting”状态。客户请求连接时，方法建立连接并返回服务器。accept方法返回一个含有两个元素的 元组(connection,address)。第一个元素connection是新的socket对象，服务器必须通过它与客户通信；第二个元素 address是客户的Internet地址。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;处理阶段，服务器和客户端通过send和recv方法通信(传输 数据)。服务器调用send，并采用字符串形式向客户发送信息。send方法返回已发送的字符个数。服务器使用recv方法从客户接收信息。调用recv 时，服务器必须指定一个整数，它对应于可通过本次方法调用来接收的最大数据量。recv方法在接收数据时会进入“blocked”状态，最后返回一个字符 串，用它表示收到的数据。如果发送的数据量超过了recv所允许的，数据会被截短。多余的数据将缓冲于接收端。以后调用recv时，多余的数据会从缓冲区 删除(以及自上次调用recv以来，客户可能发送的其它任何数据)&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;传输结束，服务器调用socket的close方法关闭连接。&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4&gt;client&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;创建一个socket以连接服务器：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;socket = socket.socket( family, type )
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;使用socket的connect方法连接服务器。对于AF_INET家族,连接格式如下：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;socket.connect( (host,port) )
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;host代表服务器主机名或IP，port代表服务器进程所绑定的端口号。如连接成功，客户就可通过套接字与服务器通信，如果连接失败，会引发socket.error异常。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;处理阶段，客户和服务器将通过send方法和recv方法通信。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;传输结束，客户通过调用socket的close方法关闭连接。&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4&gt;代码&lt;/h4&gt;
-
-&lt;p&gt;server:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c&quot;&gt;#-*- encoding: UTF-8 -*-&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;#---------------------------------import------------------------------------&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;socket&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ctime&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;#---------------------------------------------------------------------------&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt;阻塞方式进行连接,当客户端退出继续监听,等待下一个客户端连接&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;HOST&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;PORT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;21568&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;BUFSIZ&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1024&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;ADDR&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HOST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PORT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;tcpSerSock&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AF_INET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SOCK_STREAM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;tcpSerSock&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ADDR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;tcpSerSock&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;listen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;waiting for connection...&amp;#39;&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;tcpCliSock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;addr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tcpSerSock&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;accept&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# 等待连接&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;...connected from:&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;addr&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tcpCliSock&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;recv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BUFSIZ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# 接收数据&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;&amp;lt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;tcpCliSock&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;[&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%s&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;] &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%s&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ctime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# 发送数据&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;except&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;disconnect from:&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;addr&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;tcpCliSock&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# 退出&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;tcpSerSock&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;############################################################################&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;client:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c&quot;&gt;#-*- encoding: UTF-8 -*-&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;#---------------------------------import------------------------------------&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;socket&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;#---------------------------------------------------------------------------&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt;只进行一次连接,输入`close`后退出程序&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;HOST&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;PORT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;21568&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;BUFSIZ&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1024&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;ADDR&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HOST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PORT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;tcpCliSock&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AF_INET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SOCK_STREAM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;tcpCliSock&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ADDR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# 套接字连接&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;raw_input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;close&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;tcpCliSock&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# 发送数据&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tcpCliSock&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;recv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BUFSIZ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# 接受数据&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;except&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;tcpCliSock&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# 退出&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;############################################################################&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;参考资料&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://blog.163.com/yi_yixinyiyi/blog/static/136286889201152814341144/&quot;&gt;python_socket 网络编程 &lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://blog.csdn.net/jasonm2008/article/details/3964065&quot;&gt;TCP/IP 地址家族 ，协议类型 ，套接字类型 ，协议字段!&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://yangrong.blog.51cto.com/6945369/1339593&quot;&gt;python socket编程详细介绍&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://openexperience.iteye.com/blog/145701&quot;&gt;一个简单的python socket编程&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </content>
     </entry>
