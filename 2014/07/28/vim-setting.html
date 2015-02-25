@@ -75,196 +75,228 @@
         <p class="meta"><i class="fa fa-calendar"></i> 2014-07-28&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#vim">vim</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#vim">vim</a></p>
     </header>
     <article class="post-content">
-        <p>地址:<a href="https://github.com/taizilongxu/vim_set">https://github.com/taizilongxu/vim_set</a></p>
+        <p>地址:https://github.com/taizilongxu/vim_set</p>
 
-<h1>1 bashrc配置</h1>
+<h1 id="bashrc">1 bashrc配置</h1>
 
-<p><img src="https://github.com/taizilongxu/vim_set/raw/master/pic/1.png" alt=""></p>
+<p><img src="https://github.com/taizilongxu/vim_set/raw/master/pic/1.png" alt="" /></p>
 
 <p>只需在.bashrc中加入</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s2">&quot;\[\e[37m\][\[\e[31m\]\u\[\e[37m\]@Pig \t\[\e[35m\]\w #\#\[\e[37m\]]\\$\[\e[37m\]&quot;</span>
-</code></pre></div>
-<h1>2 vim插件</h1>
+
+<p><code>bash
+PS1="\[\e[37m\][\[\e[31m\]\u\[\e[37m\]@Pig \t\[\e[35m\]\w #\#\[\e[37m\]]\\$\[\e[37m\]"
+</code></p>
+
+<h1 id="vim">2 vim插件</h1>
 
 <p>以下配置均在根目录的.vimrc文件中配置,墙裂建议用vundle管理vim插件方便快捷(全部用vundle添加插件)
-vundle地址:<a href="https://github.com/gmarik/Vundle.vim">https://github.com/gmarik/Vundle.vim</a>
+vundle地址:https://github.com/gmarik/Vundle.vim
 下面的只做演示，具体配置均在.vimrc文件中,</p>
 
-<h2>2.1 Powerline和Molokai，Solarized</h2>
+<h2 id="powerlinemolokaisolarized">2.1 Powerline和Molokai，Solarized</h2>
 
 <p>三个插件均为美化</p>
 
 <p>推荐等级:5星</p>
 
-<p><img src="https://github.com/taizilongxu/vim_set/raw/master/pic/2.png" alt=""></p>
-<div class="highlight"><pre><code class="language-vim" data-lang="vim">Plugin <span class="s1">&#39;vim-powerline&#39;</span>
-Plugin <span class="s1">&#39;molokai&#39;</span>                      <span class="c">&quot; 配色</span>
-Plugin <span class="s1">&#39;Solarized&#39;</span>                    <span class="c">&quot; 配色</span>
-</code></pre></div>
+<p><img src="https://github.com/taizilongxu/vim_set/raw/master/pic/2.png" alt="" /></p>
+
+<p><code>vim
+Plugin 'vim-powerline'
+Plugin 'molokai'                      " 配色
+Plugin 'Solarized'                    " 配色
+</code></p>
+
 <ol>
-<li>powerline是一款非常好看的状态栏,它基于python,还有一款叫做airline非常轻量级,但感觉还是每powerline好看一些.</li>
-<li>Molokai和Solarized大名鼎鼎的配色，不多说</li>
-<li>if下边的对齐线是一款叫做indentline的插件，新版的vundle不知道为什么没有找到，可以自己搜索下载</li>
+  <li>powerline是一款非常好看的状态栏,它基于python,还有一款叫做airline非常轻量级,但感觉还是每powerline好看一些.</li>
+  <li>Molokai和Solarized大名鼎鼎的配色，不多说</li>
+  <li>if下边的对齐线是一款叫做indentline的插件，新版的vundle不知道为什么没有找到，可以自己搜索下载</li>
 </ol>
 
-<h2>2.2　Nerdtree,winmanager,taglist,minibufexpl和ctags</h2>
+<h2 id="nerdtreewinmanagertaglistminibufexplctags">2.2　Nerdtree,winmanager,taglist,minibufexpl和ctags</h2>
 
 <p>推荐等级:４星</p>
 
-<p>从别人转来的，非常实用<a href="http://blog.csdn.net/bokee/article/details/6633193">http://blog.csdn.net/bokee/article/details/6633193</a></p>
+<p>从别人转来的，非常实用http://blog.csdn.net/bokee/article/details/6633193</p>
 
-<p><img src="https://github.com/taizilongxu/vim_set/raw/master/pic/1.gif" alt=""></p>
-<div class="highlight"><pre><code class="language-vim" data-lang="vim">Plugin <span class="s1">&#39;The-NERD-tree&#39;</span>
-Plugin <span class="s1">&#39;winmanager&#39;</span>
-Plugin <span class="s1">&#39;taglist.vim&#39;</span>
-Plugin <span class="s1">&#39;minibufexpl.vim&#39;</span>              <span class="c">&quot; buffer插件</span>
-Plugin <span class="s1">&#39;ctags.vim&#39;</span>
-</code></pre></div>
-<ol>
-<li>在vim的normal模式下直接按<code>wm</code>调出界面</li>
-<li><code>&lt;C + h,j,k,l&gt;</code>可以切换各个分区</li>
-<li>minibufexpl只能在多个窗口下才显示</li>
-</ol>
+<p><img src="https://github.com/taizilongxu/vim_set/raw/master/pic/1.gif" alt="" /></p>
 
-<h2>2.3 FuzzyFinder和ctrlp</h2>
+<p><code>vim
+Plugin 'The-NERD-tree'
+Plugin 'winmanager'
+Plugin 'taglist.vim'
+Plugin 'minibufexpl.vim'              " buffer插件
+Plugin 'ctags.vim'
+</code>
+1. 在vim的normal模式下直接按<code>wm</code>调出界面
+2. <code>&lt;C + h,j,k,l&gt;</code>可以切换各个分区
+3. minibufexpl只能在多个窗口下才显示</p>
+
+<h2 id="fuzzyfinderctrlp">2.3 FuzzyFinder和ctrlp</h2>
 
 <p>文件查找插件</p>
 
 <p>推荐等级:４星</p>
 
-<p><img src="https://github.com/taizilongxu/vim_set/raw/master/pic/2.gif" alt=""></p>
-<div class="highlight"><pre><code class="language-vim" data-lang="vim">Plugin <span class="s1">&#39;L9&#39;</span>                           <span class="c">&quot; FuzzyFinder依赖包</span>
-Plugin <span class="s1">&#39;FuzzyFinder&#39;</span>                  <span class="c">&quot; 文件快速查找</span>
-</code></pre></div>
+<p><img src="https://github.com/taizilongxu/vim_set/raw/master/pic/2.gif" alt="" /></p>
+
+<p><code>vim
+Plugin 'L9'                           " FuzzyFinder依赖包
+Plugin 'FuzzyFinder'                  " 文件快速查找
+</code></p>
+
 <ol>
-<li>绑定<code>,,</code>作为启动</li>
-<li><code>&lt;C + n,p&gt;</code>上下翻页</li>
-<li>设置的是精确匹配</li>
-<li>查找的是当前目录下的文件</li>
+  <li>绑定<code>,,</code>作为启动</li>
+  <li><code>&lt;C + n,p&gt;</code>上下翻页</li>
+  <li>设置的是精确匹配</li>
+  <li>查找的是当前目录下的文件</li>
 </ol>
 
 <p>后来发现ctrlp也非常好用，更加智能,所以选择了ctrlp.
-视频地址<a href="http://happycasts.net/episodes/64">http://happycasts.net/episodes/64</a></p>
-<div class="highlight"><pre><code class="language-vim" data-lang="vim">Plugin <span class="s1">&#39;ctrlp.vim&#39;</span>
-</code></pre></div>
+视频地址http://happycasts.net/episodes/64</p>
+
+<p><code>vim
+Plugin 'ctrlp.vim'
+</code></p>
+
 <ol>
-<li><code>,,</code>呼出</li>
-<li>在ctrlp下<code>&lt;c + d&gt;</code>切换路径和文件查找</li>
-<li>在ctrlp下<code>&lt;c + f&gt;</code>在mru,mru buf和list之间切换</li>
-<li><code>&lt;c + j,k&gt;</code>在列表上移动</li>
-<li><code>&lt;c + z&gt;</code>可以标记选定多个文件，用<code>&lt;c + o&gt;</code>打开</li>
-<li><code>&lt;c + w + o&gt;</code>只显示当前窗口</li>
-<li><code>&lt;c + v,x&gt;</code>分别为横向或纵向打开窗口，和现有窗口并存</li>
-<li><code>&lt;c + n,p&gt;</code>历史记录</li>
-<li><code>&lt;c + y&gt;</code>可以创建目录和文件</li>
-<li><code>&lt;c + r&gt;</code>切换到正则表达式匹配</li>
-<li>还有一点值得留意的是ctrlp支持tab补全！！</li>
+  <li><code>,,</code>呼出</li>
+  <li>在ctrlp下<code>&lt;c + d&gt;</code>切换路径和文件查找</li>
+  <li>在ctrlp下<code>&lt;c + f&gt;</code>在mru,mru buf和list之间切换</li>
+  <li><code>&lt;c + j,k&gt;</code>在列表上移动</li>
+  <li><code>&lt;c + z&gt;</code>可以标记选定多个文件，用<code>&lt;c + o&gt;</code>打开</li>
+  <li><code>&lt;c + w + o&gt;</code>只显示当前窗口</li>
+  <li><code>&lt;c + v,x&gt;</code>分别为横向或纵向打开窗口，和现有窗口并存</li>
+  <li><code>&lt;c + n,p&gt;</code>历史记录</li>
+  <li><code>&lt;c + y&gt;</code>可以创建目录和文件</li>
+  <li><code>&lt;c + r&gt;</code>切换到正则表达式匹配</li>
+  <li>还有一点值得留意的是ctrlp支持tab补全！！</li>
 </ol>
 
-<h2>2.4 ultisnips</h2>
+<h2 id="ultisnips">2.4 ultisnips</h2>
 
 <p>快速补全插件，妈妈再也不用担心我加班了</p>
 
 <p>推荐等级:４星</p>
 
-<p><img src="https://github.com/taizilongxu/vim_set/raw/master/pic/3.gif" alt=""></p>
-<div class="highlight"><pre><code class="language-vim" data-lang="vim">Plugin <span class="s1">&#39;SirVer/ultisnips&#39;</span>             <span class="c">&quot; Track the engine.</span>
-Plugin <span class="s1">&#39;honza/vim-snippets&#39;</span>           <span class="c">&quot; Snippets are separated from the engine. Add this if you want them: Plugin &#39;</span>
-</code></pre></div>
-<ol>
-<li>在~/.vim/bundle/vim-snippets/snippets/python.snippets下可以自定义对应的补全函数</li>
-<li><code>&lt;C + b,z&gt;</code>在定义变量出切换</li>
-<li><code>&lt;tab&gt;</code>键触发</li>
-</ol>
+<p><img src="https://github.com/taizilongxu/vim_set/raw/master/pic/3.gif" alt="" /></p>
 
-<h2>2.5 Tabular</h2>
+<p><code>vim
+Plugin 'SirVer/ultisnips'             " Track the engine.
+Plugin 'honza/vim-snippets'           " Snippets are separated from the engine. Add this if you want them: Plugin '
+</code>
+1. 在~/.vim/bundle/vim-snippets/snippets/python.snippets下可以自定义对应的补全函数
+2. <code>&lt;C + b,z&gt;</code>在定义变量出切换
+3. <code>&lt;tab&gt;</code>键触发</p>
+
+<h2 id="tabular">2.5 Tabular</h2>
 
 <p>也许你需要注释代码更整齐，那么你就得需要这个插件了</p>
 
 <p>推荐等级:3星</p>
 
-<p><img src="https://github.com/taizilongxu/vim_set/raw/master/pic/4.gif" alt="">
+<p><img src="https://github.com/taizilongxu/vim_set/raw/master/pic/4.gif" alt="" />
 图片操作为<code>vG:Tab /=</code>，其中的＝可以替换成需要的符号</p>
-<div class="highlight"><pre><code class="language-vim" data-lang="vim">Plugin <span class="s1">&#39;Tabular&#39;</span>                      <span class="c">&quot; 注释等格式对齐插件</span>
-</code></pre></div>
-<h2>2.5 commentary</h2>
+
+<p><code>vim
+Plugin 'Tabular'                      " 注释等格式对齐插件
+</code></p>
+
+<h2 id="commentary">2.5 commentary</h2>
 
 <p>注释多行，比较常用</p>
 
 <p>推荐等级:４星</p>
 
-<p><img src="https://github.com/taizilongxu/vim_set/raw/master/pic/5.gif" alt=""></p>
+<p><img src="https://github.com/taizilongxu/vim_set/raw/master/pic/5.gif" alt="" /></p>
 
 <p>操作<code>vGgcc</code></p>
-<div class="highlight"><pre><code class="language-vim" data-lang="vim">Plugin <span class="s1">&#39;commentary.vim&#39;</span>               <span class="c">&quot; 注释多行</span>
-</code></pre></div>
+
+<p><code>vim
+Plugin 'commentary.vim'               " 注释多行
+</code></p>
+
 <ol>
-<li>gc注释一行</li>
-<li>gcc注释多行</li>
+  <li>gc注释一行</li>
+  <li>gcc注释多行</li>
 </ol>
 
-<h2>2.6 surround</h2>
+<h2 id="surround">2.6 surround</h2>
 
-<p>有时候一些单词或断句需要用引号圈起来，那么这个插件比较有用处啦，推荐这个文章<a href="http://blog.csdn.net/lalor/article/details/8095512%E3%80%80%EF%BC%8C%E4%BB%8B%E7%BB%8D%E7%9A%84%E6%8C%BA%E8%AF%A6%E7%BB%86%E7%9A%84">http://blog.csdn.net/lalor/article/details/8095512　，介绍的挺详细的</a></p>
+<p>有时候一些单词或断句需要用引号圈起来，那么这个插件比较有用处啦，推荐这个文章http://blog.csdn.net/lalor/article/details/8095512　，介绍的挺详细的</p>
 
 <p>推荐等级:3星</p>
-<div class="highlight"><pre><code class="language-vim" data-lang="vim">Plugin <span class="s1">&#39;surround.vim&#39;</span>                 <span class="c">&quot; 补全括号或引号等cs,ds,yss</span>
-</code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">Normal mode
------------
+
+<p><code>vim
+Plugin 'surround.vim'                 " 补全括号或引号等cs,ds,yss
+</code></p>
+
+<p>```
+Normal mode
+———–
 ds  - delete a surrounding
 cs  - change a surrounding
 ys  - add a surrounding
 yS  - add a surrounding and place the surrounded text on a new line + indent it
 yss - add a surrounding to the whole line
 ySs - add a surrounding to the whole line, place it on a new line + indent it
-ySS - same as ySs
+ySS - same as ySs</p>
 
-Visual mode
------------
-s   - in visual mode, add a surrounding
-S   - in visual mode, add a surrounding but place text on new line + indent it
+<h2 id="visual-mode">Visual mode</h2>
+<p>s   - in visual mode, add a surrounding
+S   - in visual mode, add a surrounding but place text on new line + indent it</p>
 
-Insert mode
------------
-&lt;CTRL-s&gt; - in insert mode, add a surrounding
-&lt;CTRL-s&gt;&lt;CTRL-s&gt; - in insert mode, add a new line + surrounding + indent
-&lt;CTRL-g&gt;s - same as &lt;CTRL-s&gt;
-&lt;CTRL-g&gt;S - same as &lt;CTRL-s&gt;&lt;CTRL-s&gt;
-</code></pre></div>
-<h2>2.7 rainbow_parentheses</h2>
+<h2 id="insert-mode">Insert mode</h2>
+<ctrl-s> - in insert mode, add a surrounding
+<ctrl-s><ctrl-s> - in insert mode, add a new line + surrounding + indent
+<ctrl-g>s - same as <ctrl-s>
+<ctrl-g>S - same as <ctrl-s><ctrl-s>
+```
 
-<p>括号颜色增强，比较漂亮</p>
+##2.7 rainbow_parentheses
 
-<p>推荐等级:3星</p>
+括号颜色增强，比较漂亮
 
-<p><img src="https://github.com/taizilongxu/vim_set/raw/master/pic/3.png" alt=""></p>
-<div class="highlight"><pre><code class="language-vim" data-lang="vim">Plugin <span class="s1">&#39;kien/rainbow_parentheses.vim&#39;</span>               <span class="c">&quot; 括号增强,彩色</span>
-</code></pre></div>
-<h2>2.8 mru</h2>
+推荐等级:3星
 
-<p>历史文件查找</p>
+![](https://github.com/taizilongxu/vim_set/raw/master/pic/3.png)
 
-<p>推荐等级:3星</p>
+```vim
+Plugin 'kien/rainbow_parentheses.vim'               " 括号增强,彩色
+```
 
-<p><img src="https://github.com/taizilongxu/vim_set/raw/master/pic/5.png" alt=""></p>
-<div class="highlight"><pre><code class="language-vim" data-lang="vim">Plugin <span class="s1">&#39;mru.vim&#39;</span>                                    <span class="c">&quot; 历史文件</span>
-</code></pre></div>
-<ol>
-<li>快捷键映射<code>,h</code></li>
-</ol>
+##2.8 mru
 
-<h2>2.9 trailing-whitespace</h2>
+历史文件查找
 
-<p>行尾部括号高亮显示,对于有强迫症的人群墙裂推荐</p>
+推荐等级:3星
 
-<p><img src="https://github.com/taizilongxu/vim_set/raw/master/pic/4.png" alt=""></p>
+![](https://github.com/taizilongxu/vim_set/raw/master/pic/5.png)
 
-<p>推荐等级:3星</p>
-<div class="highlight"><pre><code class="language-vim" data-lang="vim">Plugin <span class="s1">&#39;trailing-whitespace&#39;</span>          <span class="c">&quot; 增加尾部空格的显示 </span>
-</code></pre></div>
-<p>如果想要去掉所有尾行的空格可以用如下命令：</p>
-<div class="highlight"><pre><code class="language-vim" data-lang="vim"><span class="p">:</span>%<span class="k">s</span><span class="sr">/\s\+$/</span>/
-</code></pre></div>
+```vim
+Plugin 'mru.vim'                                    " 历史文件
+```
+1. 快捷键映射```,h```
+
+##2.9 trailing-whitespace
+
+行尾部括号高亮显示,对于有强迫症的人群墙裂推荐
+
+![](https://github.com/taizilongxu/vim_set/raw/master/pic/4.png)
+
+推荐等级:3星
+
+```vim
+Plugin 'trailing-whitespace'          " 增加尾部空格的显示 
+```
+
+如果想要去掉所有尾行的空格可以用如下命令：
+
+```vim
+:%s/\s\+$//
+```
+</ctrl-s></ctrl-s></ctrl-g></ctrl-s></ctrl-g></ctrl-s></ctrl-s></ctrl-s>
+
     </article>
     <!-- Duoshuo Comment BEGIN -->
     <div id="comments">

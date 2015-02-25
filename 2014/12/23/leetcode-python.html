@@ -1,4 +1,4 @@
-<h2>Single Number</h2>
+<h2 id="single-number">Single Number</h2>
 
 <p>Given an array of integers, every element appears twice except for one. Find that single one.</p>
 
@@ -8,15 +8,21 @@ Your algorithm should have a linear runtime complexity. Could you implement it w
 <p>tags:</p>
 
 <ul>
-<li>Hash Table </li>
-<li>Bit Manipulation</li>
+  <li>Hash Table </li>
+  <li>Bit Manipulation</li>
 </ul>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">singleNumber</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A</span><span class="p">):</span>
-    <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="nb">sum</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">A</span><span class="p">))</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">singleNumber</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A</span><span class="p">):</span>
-    <span class="k">return</span> <span class="nb">reduce</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">xor</span><span class="p">,</span><span class="n">A</span><span class="p">)</span>
-</code></pre></div>
-<h2>Single Number II</h2>
+
+<p><code>python
+def singleNumber(self, A):
+    return 2*sum(set(A)) - sum(A)
+</code></p>
+
+<p><code>python
+def singleNumber(self, A):
+    return reduce(operator.xor,A)
+</code></p>
+
+<h2 id="single-number-ii">Single Number II</h2>
 
 <p>Given an array of integers, every element appears three times except for one. Find that single one.</p>
 
@@ -26,40 +32,43 @@ Your algorithm should have a linear runtime complexity. Could you implement it w
 <p>tags:</p>
 
 <ul>
-<li>Bit Manipulation</li>
+  <li>Bit Manipulation</li>
 </ul>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-<span class="c"># @param A, a list of integer</span>
-<span class="c"># @return an integer</span>
-    <span class="k">def</span> <span class="nf">singleNumber</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A</span><span class="p">):</span>
-        <span class="n">ec1</span><span class="p">,</span> <span class="n">ec2</span><span class="p">,</span> <span class="n">ec3</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
-        <span class="k">for</span> <span class="n">ai</span> <span class="ow">in</span> <span class="n">A</span><span class="p">:</span>
-            <span class="n">ec3</span> <span class="o">=</span> <span class="n">ec2</span> <span class="o">&amp;</span> <span class="n">ai</span>
-            <span class="n">ec2</span> <span class="o">=</span> <span class="p">(</span><span class="n">ec2</span> <span class="o">|</span> <span class="p">(</span><span class="n">ec1</span> <span class="o">&amp;</span> <span class="n">ai</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="o">~</span><span class="n">ec3</span><span class="p">)</span>
-            <span class="n">ec1</span> <span class="o">=</span> <span class="p">(</span><span class="n">ec1</span> <span class="o">|</span> <span class="n">ai</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="o">~</span><span class="n">ec3</span><span class="p">)</span>        
-        <span class="k">return</span> <span class="n">ec1</span>
-</code></pre></div>
+
+<p><code>python
+class Solution:
+# @param A, a list of integer
+# @return an integer
+    def singleNumber(self, A):
+        ec1, ec2, ec3 = 0, 0, 0
+        for ai in A:
+            ec3 = ec2 &amp; ai
+            ec2 = (ec2 | (ec1 &amp; ai)) &amp; (~ec3)
+            ec1 = (ec1 | ai) &amp; (~ec3)        
+        return ec1
+</code></p>
+
 <p>Image the numbers in A have just one bit,</p>
 
 <p>that is: A = [0, 0, 0, 1, 1, 1, x]</p>
 
-<p>We have three times &quot;0&quot;, three times &quot;1&quot;, and a different &quot;x&quot;.</p>
+<p>We have three times “0”, three times “1”, and a different “x”.</p>
 
-<p>So, if count of &quot;1&quot; in A is three&#39;s multiple, than x = 0,</p>
+<p>So, if count of “1” in A is three’s multiple, than x = 0,</p>
 
 <p>else, x = 1.</p>
 
 <p>Iterate all numbers in A.</p>
 
-<p>When encount FIRST &quot;1&quot;, set &quot;ec1 = 1&quot;;</p>
+<p>When encount FIRST “1”, set “ec1 = 1”;</p>
 
-<p>When encount SECOND &quot;1&quot;, set &quot;ec2 = 1&quot;;</p>
+<p>When encount SECOND “1”, set “ec2 = 1”;</p>
 
-<p>When encount THIRD &quot;1&quot;, set &quot;ec3 = 1, ec1 = 0, ec2 = 0&quot;, and move on...</p>
+<p>When encount THIRD “1”, set “ec3 = 1, ec1 = 0, ec2 = 0”, and move on…</p>
 
-<p>At last &quot;ec1&quot; is the different number.</p>
+<p>At last “ec1” is the different number.</p>
 
-<h2>Maximum Depth of Binary Tree</h2>
+<h2 id="maximum-depth-of-binary-tree">Maximum Depth of Binary Tree</h2>
 
 <p>Given a binary tree, find its maximum depth.</p>
 
@@ -68,15 +77,18 @@ Your algorithm should have a linear runtime complexity. Could you implement it w
 <p>tags:</p>
 
 <ul>
-<li>Tree </li>
-<li>Depth-first Search</li>
+  <li>Tree </li>
+  <li>Depth-first Search</li>
 </ul>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">maxDepth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">):</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">root</span><span class="p">:</span>
-            <span class="k">return</span> <span class="mi">0</span>
-        <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">maxDepth</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">maxDepth</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span>
-</code></pre></div>
-<h2>Same Tree</h2>
+
+<p><code>python
+def maxDepth(self, root):
+        if not root:
+            return 0
+        return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
+</code></p>
+
+<h2 id="same-tree">Same Tree</h2>
 
 <p>Given two binary trees, write a function to check if they are equal or not.</p>
 
@@ -85,18 +97,21 @@ Your algorithm should have a linear runtime complexity. Could you implement it w
 <p>tags:</p>
 
 <ul>
-<li>Tree </li>
-<li>Depth-first Search</li>
+  <li>Tree </li>
+  <li>Depth-first Search</li>
 </ul>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">isSameTree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">q</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">True</span>
-    <span class="k">elif</span> <span class="n">p</span> <span class="ow">and</span> <span class="n">q</span> <span class="p">:</span>
-        <span class="k">return</span> <span class="n">p</span><span class="o">.</span><span class="n">val</span> <span class="o">==</span> <span class="n">q</span><span class="o">.</span><span class="n">val</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">isSameTree</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">left</span><span class="p">,</span><span class="n">q</span><span class="o">.</span><span class="n">left</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">isSameTree</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">right</span><span class="p">,</span><span class="n">q</span><span class="o">.</span><span class="n">right</span><span class="p">)</span>
-    <span class="k">else</span> <span class="p">:</span>
-        <span class="k">return</span> <span class="bp">False</span>
-</code></pre></div>
-<h2>Roman to Integer</h2>
+
+<p><code>python
+def isSameTree(self, p, q):
+    if p == None and q == None:
+        return True
+    elif p and q :
+        return p.val == q.val and self.isSameTree(p.left,q.left) and self.isSameTree(p.right,q.right)
+    else :
+        return False
+</code></p>
+
+<h2 id="roman-to-integer">Roman to Integer</h2>
 
 <p>Given a roman numeral, convert it to an integer.</p>
 
@@ -105,58 +120,69 @@ Your algorithm should have a linear runtime complexity. Could you implement it w
 <p>tags:</p>
 
 <ul>
-<li>Math </li>
-<li>String</li>
+  <li>Math </li>
+  <li>String</li>
 </ul>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="c"># @return an integer</span>
-    <span class="k">def</span> <span class="nf">romanToInt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-        <span class="n">roman</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;I&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s">&#39;V&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="s">&#39;X&#39;</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="s">&#39;L&#39;</span><span class="p">:</span><span class="mi">50</span><span class="p">,</span><span class="s">&#39;C&#39;</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span><span class="s">&#39;D&#39;</span><span class="p">:</span><span class="mi">500</span><span class="p">,</span><span class="s">&#39;M&#39;</span><span class="p">:</span><span class="mi">1000</span><span class="p">}</span>
-        <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="nb">sum</span> <span class="o">+=</span> <span class="n">roman</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-                <span class="k">continue</span>
-            <span class="k">if</span> <span class="n">roman</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">roman</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]]:</span>
-                <span class="nb">sum</span> <span class="o">+=</span> <span class="n">roman</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="nb">sum</span> <span class="o">=</span> <span class="nb">sum</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">roman</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">+</span> <span class="n">roman</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-        <span class="k">return</span> <span class="nb">sum</span>
-</code></pre></div><div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="c"># @return an integer</span>
-    <span class="k">def</span> <span class="nf">romanToInt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-        <span class="n">dic</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s">&#39;I&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;V&#39;</span><span class="p">,</span> <span class="s">&#39;X&#39;</span><span class="p">]</span> <span class="k">else</span> <span class="mi">1</span><span class="p">,</span>
-            <span class="s">&#39;X&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="o">-</span><span class="mi">10</span> <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;L&#39;</span><span class="p">,</span> <span class="s">&#39;C&#39;</span><span class="p">]</span> <span class="k">else</span> <span class="mi">10</span><span class="p">,</span>
-            <span class="s">&#39;C&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="o">-</span><span class="mi">100</span> <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;D&#39;</span><span class="p">,</span> <span class="s">&#39;M&#39;</span><span class="p">]</span> <span class="k">else</span> <span class="mi">100</span><span class="p">,</span>
-            <span class="s">&#39;V&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-            <span class="s">&#39;L&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
-            <span class="s">&#39;D&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
-            <span class="s">&#39;M&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
-        <span class="p">}</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">s</span> <span class="o">+=</span> <span class="s">&#39;@&#39;</span>
-        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ch</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">s</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
-            <span class="n">x</span> <span class="o">+=</span> <span class="n">dic</span><span class="p">[</span><span class="n">ch</span><span class="p">](</span><span class="n">i</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">x</span>
-</code></pre></div><div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="c"># @return an integer</span>
-    <span class="k">def</span> <span class="nf">romanToInt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-        <span class="n">result</span><span class="o">=</span><span class="mi">0</span>
-        <span class="n">dic</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;I&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s">&#39;V&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="s">&#39;X&#39;</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="s">&#39;L&#39;</span><span class="p">:</span><span class="mi">50</span><span class="p">,</span><span class="s">&#39;C&#39;</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span><span class="s">&#39;D&#39;</span><span class="p">:</span><span class="mi">500</span><span class="p">,</span><span class="s">&#39;M&#39;</span><span class="p">:</span><span class="mi">1000</span><span class="p">}</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">s</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
-            <span class="n">symbol</span><span class="o">=</span><span class="mi">1</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;I&#39;</span><span class="p">,</span><span class="s">&#39;X&#39;</span><span class="p">,</span><span class="s">&#39;C&#39;</span><span class="p">])</span> <span class="ow">and</span> <span class="n">result</span><span class="o">&gt;=</span><span class="mi">5</span><span class="o">*</span><span class="n">dic</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
-                <span class="n">symbol</span><span class="o">=-</span><span class="mi">1</span>
-            <span class="n">result</span><span class="o">+=</span><span class="n">dic</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">symbol</span>
-        <span class="k">return</span> <span class="n">result</span> 
-</code></pre></div>
-<p>The main problem is to deal with the special numbers &quot;IV&quot;,&quot;IX&quot;,&quot;XL&quot;,&quot;XC&quot;,&quot;CD&quot;,&quot;CM&quot;,for in these numbers &quot;I&quot;,&quot;X&quot;,&quot;C&quot; have the unusual meaning(subtract not plus). </p>
+
+<p>```python
+class Solution:
+    # @return an integer
+    def romanToInt(self, s):
+        roman = {‘I’:1,’V’:5,’X’:10,’L’:50,’C’:100,’D’:500,’M’:1000}
+        sum = 0
+        for index, i in enumerate(s):
+            if index == 0:
+                sum += roman[i]
+                continue
+            if roman[i] &lt;= roman[s[index - 1]]:
+                sum += roman[i]
+            else:
+                sum = sum - 2 * roman[s[index - 1]] + roman[i]
+        return sum</p>
+
+<p>```</p>
+
+<p><code>python
+class Solution:
+    # @return an integer
+    def romanToInt(self, s):
+        dic = {
+            'I': lambda i: -1 if s[i + 1] in ['V', 'X'] else 1,
+            'X': lambda i: -10 if s[i + 1] in ['L', 'C'] else 10,
+            'C': lambda i: -100 if s[i + 1] in ['D', 'M'] else 100,
+            'V': lambda i: 5,
+            'L': lambda i: 50,
+            'D': lambda i: 500,
+            'M': lambda i: 1000,
+        }
+        x = 0
+        s += '@'
+        for i, ch in enumerate(s[:-1]):
+            x += dic[ch](i)
+        return x
+</code></p>
+
+<p><code>python
+class Solution:
+    # @return an integer
+    def romanToInt(self, s):
+        result=0
+        dic={'I':1,'V':5,'X':10,'L':50,'C':100,'D':500,'M':1000}
+        for i in s[-1::-1]:
+            symbol=1
+            if (i in ['I','X','C']) and result&gt;=5*dic[i]:
+                symbol=-1
+            result+=dic[i]*symbol
+        return result 
+</code></p>
+
+<p>The main problem is to deal with the special numbers “IV”,”IX”,”XL”,”XC”,”CD”,”CM”,for in these numbers “I”,”X”,”C” have the unusual meaning(subtract not plus). </p>
 
 <p>If given a Roman without numbers mentioned above,we can easily get the result by plusing all the numbers from right to left . 
-So we need to find out what &quot;I&quot;,&quot;X&quot;,&quot;C&quot; mean when they appear(mean plus or subtract). </p>
+So we need to find out what “I”,”X”,”C” mean when they appear(mean plus or subtract). </p>
 
-<p>&quot;I&quot; for example,the symbol &quot;I&quot; only appear in following circumstances:
-&quot;I&quot;,&quot;II&quot;,&quot;III&quot;,&quot;VI&quot;,VII&quot;,&quot;VIII&quot;,&quot;IV&quot;,&quot;IX&quot;,&quot;XI&quot;····(omitting &quot;IIII&quot; for it is special) . </p>
+<p>“I” for example,the symbol “I” only appear in following circumstances:
+“I”,”II”,”III”,”VI”,VII”,”VIII”,”IV”,”IX”,”XI”····(omitting “IIII” for it is special) . </p>
 
-<p>We can figure out that when we plus the symbols from left to right. If sum&gt;=5,then the &quot;I&quot; we get can only mean &quot;-1&quot;.Otherwise,it means &quot;+1&quot;.The same is true with &quot;X&quot; and &quot;C&quot;.</p>
+<p>We can figure out that when we plus the symbols from left to right. If sum&gt;=5,then the “I” we get can only mean “-1”.Otherwise,it means “+1”.The same is true with “X” and “C”.</p>
+

@@ -76,16 +76,27 @@
     </header>
     <article class="post-content">
         <p>用Jekyll来显示数学公式：</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="na">src=</span><span class="s">&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;</span><span class="nt">&gt;</span>
-<span class="nt">&lt;/script&gt;</span>
-</code></pre></div>
+
+<p>```html</p>
+
+<p>&lt;script type=”text/javascript”src=”http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML”&gt;
+&lt;/script&gt;</p>
+
+<p>```</p>
+
 <p>如果要加 <code>$</code> <code>\\</code>匹配：</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/x-mathjax-config&quot;</span><span class="nt">&gt;</span>
-<span class="nx">MathJax</span><span class="p">.</span><span class="nx">Hub</span><span class="p">.</span><span class="nx">Config</span><span class="p">({</span>
-  <span class="nx">tex2jax</span><span class="o">:</span> <span class="p">{</span><span class="nx">inlineMath</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;$&#39;</span><span class="p">,</span><span class="s1">&#39;$&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;\\(&#39;</span><span class="p">,</span><span class="s1">&#39;\\)&#39;</span><span class="p">]]}</span>
-<span class="p">});</span>
-<span class="nt">&lt;/script&gt;</span>
-</code></pre></div>
+
+<p>```html</p>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+
+<p>```</p>
+
+
     </article>
     <!-- Duoshuo Comment BEGIN -->
     <div id="comments">

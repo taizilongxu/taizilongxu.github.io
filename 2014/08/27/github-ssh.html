@@ -80,36 +80,46 @@
 <p>总共分3部:</p>
 
 <ol>
-<li>本地生成ssh密钥</li>
-<li>github上生成公钥</li>
-<li>修改git的remote url为ssh协议</li>
+  <li>本地生成ssh密钥</li>
+  <li>github上生成公钥</li>
+  <li>修改git的remote url为ssh协议</li>
 </ol>
 
-<h3>1 生成密钥对</h3>
+<h3 id="section">1 生成密钥对</h3>
 
 <p>再linux主机下</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"> ssh-keygen -t rsa -C “468137306@qq.com”
-</code></pre></div>
+
+<p><code>
+ ssh-keygen -t rsa -C “468137306@qq.com”
+</code></p>
+
 <p>在~/.ssh下会产生id_rsa和id_rsa.pub两个文件</p>
 
-<h3>2 添加密钥到github</h3>
+<h3 id="github">2 添加密钥到github</h3>
 
 <p>进入github的settings里左侧有个SSHkeys,看到那个add一个就行</p>
 
 <p>把id_rsa.pub里的密钥放入这里就可以了(注意不要多加空格)</p>
 
 <p>用下面的命令测试</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"> ssh -T git@github.com
-</code></pre></div>
+
+<p><code>
+ ssh -T git@github.com
+</code></p>
+
 <p>输出</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">PTY allocation request failed on channel 0
-Hi taizilongxu! You&#39;ve successfully authenticated, but GitHub does not provide shell access.
+
+<p><code>
+PTY allocation request failed on channel 0
+Hi taizilongxu! You've successfully authenticated, but GitHub does not provide shell access.
 Connection to github.com closed.
-</code></pre></div>
-<h3>3 修改git的remote url</h3>
+</code></p>
+
+<h3 id="gitremote-url">3 修改git的remote url</h3>
 
 <p>一般在./.git/config中修改url = ssh地址就可以了
 以后就可以和密码说88了</p>
+
 
     </article>
     <!-- Duoshuo Comment BEGIN -->

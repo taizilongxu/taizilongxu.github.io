@@ -79,31 +79,44 @@
 
 <p>安装pip之前要确保安装了 setuptools或者distribute</p>
 
-<p>介绍linux下pip的安装</p>
+<p>介绍linux下pip的安装
+###1. 安装distribute</p>
 
-<h3>1. 安装distribute</h3>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="err">$</span> <span class="n">curl</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">python</span><span class="o">-</span><span class="n">distribute</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">distribute_setup</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">python</span>
-<span class="err">$</span> <span class="n">curl</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">pypa</span><span class="o">/</span><span class="n">pip</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">contrib</span><span class="o">/</span><span class="n">get</span><span class="o">-</span><span class="n">pip</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">python</span>
+<p>```python
+$ curl http://python-distribute.org/distribute_setup.py | python
+$ curl https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python</p>
 
-<span class="c">#python3.X版本必须安装distribute，setuptools不支持python3.x以上版本</span>
-</code></pre></div>
-<h3>2. 安装pip</h3>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="err">$</span> <span class="n">curl</span> <span class="o">-</span><span class="n">O</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">pypi</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">p</span><span class="o">/</span><span class="n">pip</span><span class="o">/</span><span class="n">pip</span><span class="o">-</span><span class="mf">1.0</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
-<span class="err">$</span> <span class="n">tar</span> <span class="n">xvfz</span> <span class="n">pip</span><span class="o">-</span><span class="mf">1.0</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
-<span class="err">$</span> <span class="n">cd</span> <span class="n">pip</span><span class="o">-</span><span class="mf">1.0</span>
-<span class="err">$</span> <span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
-</code></pre></div>
-<h3>3. pip应用</h3>
+<h1 id="python3xdistributesetuptoolspython3x">python3.X版本必须安装distribute，setuptools不支持python3.x以上版本</h1>
+<p>```
+###2. 安装pip</p>
+
+<p><code>python
+$ curl -O http://pypi.python.org/packages/source/p/pip/pip-1.0.tar.gz
+$ tar xvfz pip-1.0.tar.gz
+$ cd pip-1.0
+$ python setup.py install
+</code></p>
+
+<h3 id="pip">3. pip应用</h3>
 
 <p>安装包</p>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="err">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">simplejson</span>
-</code></pre></div>
+
+<p><code>python
+$ pip install simplejson
+</code></p>
+
 <p>更新包</p>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="err">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">simplejson</span>
-</code></pre></div>
+
+<p><code>python
+$ pip install --upgrade simplejson
+</code></p>
+
 <p>移除包</p>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="err">$</span> <span class="n">pip</span> <span class="n">uninstall</span> <span class="n">simplejson</span>
-</code></pre></div>
+
+<p><code>python
+$ pip uninstall simplejson
+</code></p>
+
     </article>
     <!-- Duoshuo Comment BEGIN -->
     <div id="comments">

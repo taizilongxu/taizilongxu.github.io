@@ -75,140 +75,150 @@
         <p class="meta"><i class="fa fa-calendar"></i> 2014-08-07&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#python">python</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#python">python</a></p>
     </header>
     <article class="post-content">
-        <h2>简介</h2>
+        <h2 id="section">简介</h2>
 
 <p>Pylint是一个代码检测工具,对于追求Pyhonic的人来说,再适合不过了,他也可以定制一些规范,有利于更好的协同开发.<a href="http://docs.pylint.org/">Pylint doc</a></p>
 
-<h2>linux下安装</h2>
+<h2 id="linux">linux下安装</h2>
 
 <p>命令行下直接安装</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get install pylint
-</code></pre></div>
-<h2>使用</h2>
+
+<p><code>
+sudo apt-get install pylint
+</code></p>
+
+<h2 id="section-1">使用</h2>
 
 <p>直接输入</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">pylint test.py
-</code></pre></div>
+
+<p><code>
+pylint test.py
+</code></p>
+
 <p>pylint会直接提示代码变量,注释,类,方法的一些不标准的错误,方便修改</p>
 
 <p>输出结果:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">No config file found, using default configuration
-************* Module zhihu2
-C: 85, 0: Missing function docstring (missing-docstring)
 
+<p>```
+No config file found, using default configuration
+<strong>**</strong><strong>**</strong>* Module zhihu2
+C: 85, 0: Missing function docstring (missing-docstring)</p>
 
-Report
-======
-68 statements analysed.
+<h1 id="report">Report</h1>
+<p>68 statements analysed.</p>
 
-Raw metrics
------------
+<h2 id="raw-metrics">Raw metrics</h2>
 
-+----------+-------+------+---------+-----------+
+<p>+———-+——-+——+———+———–+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
 |code      |70     |77.78 |70       |=          |
-+----------+-------+------+---------+-----------+
++———-+——-+——+———+———–+
 |docstring |12     |13.33 |12       |=          |
-+----------+-------+------+---------+-----------+
++———-+——-+——+———+———–+
 |comment   |2      |2.22  |2        |=          |
-+----------+-------+------+---------+-----------+
++———-+——-+——+———+———–+
 |empty     |6      |6.67  |6        |=          |
-+----------+-------+------+---------+-----------+
++———-+——-+——+———+———–+</p>
 
+<h2 id="statistics-by-type">Statistics by type</h2>
 
-
-Statistics by type
-------------------
-
-+---------+-------+-----------+-----------+------------+---------+
+<p>+———+——-+———–+———–+————+———+
 |type     |number |old number |difference |%documented |%badname |
 +=========+=======+===========+===========+============+=========+
 |module   |1      |1          |=          |100.00      |0.00     |
-+---------+-------+-----------+-----------+------------+---------+
++———+——-+———–+———–+————+———+
 |class    |1      |1          |=          |100.00      |0.00     |
-+---------+-------+-----------+-----------+------------+---------+
++———+——-+———–+———–+————+———+
 |method   |6      |6          |=          |100.00      |0.00     |
-+---------+-------+-----------+-----------+------------+---------+
++———+——-+———–+———–+————+———+
 |function |1      |1          |=          |0.00        |0.00     |
-+---------+-------+-----------+-----------+------------+---------+
++———+——-+———–+———–+————+———+</p>
 
+<h2 id="messages-by-category">Messages by category</h2>
 
-
-Messages by category
---------------------
-
-+-----------+-------+---------+-----------+
+<p>+———–+——-+———+———–+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
 |convention |1      |1        |=          |
-+-----------+-------+---------+-----------+
++———–+——-+———+———–+
 |refactor   |0      |0        |=          |
-+-----------+-------+---------+-----------+
++———–+——-+———+———–+
 |warning    |0      |1        |-1.00      |
-+-----------+-------+---------+-----------+
++———–+——-+———+———–+
 |error      |0      |0        |=          |
-+-----------+-------+---------+-----------+
++———–+——-+———+———–+</p>
 
+<h2 id="messages">Messages</h2>
 
-
-Messages
---------
-
-+------------------+------------+
+<p>+——————+————+
 |message id        |occurrences |
 +==================+============+
 |missing-docstring |1           |
-+------------------+------------+
++——————+————+</p>
 
+<h2 id="global-evaluation">Global evaluation</h2>
+<p>Your code has been rated at 9.85/10 (previous run: 9.71/10, +0.15)</p>
 
+<h2 id="duplication">Duplication</h2>
 
-Global evaluation
------------------
-Your code has been rated at 9.85/10 (previous run: 9.71/10, +0.15)
-
-Duplication
------------
-
-+-------------------------+------+---------+-----------+
+<p>+————————-+——+———+———–+
 |                         |now   |previous |difference |
 +=========================+======+=========+===========+
 |nb duplicated lines      |0     |0        |=          |
-+-------------------------+------+---------+-----------+
++————————-+——+———+———–+
 |percent duplicated lines |0.000 |0.000    |=          |
-+-------------------------+------+---------+-----------+
-</code></pre></div>
-<h2>常用参数</h2>
++————————-+——+———+———–+</p>
+
+<p>```</p>
+
+<h2 id="section-2">常用参数</h2>
 
 <ul>
-<li><p>-h,--help
-显示所有帮助信息。</p></li>
-<li><p>--generate-rcfile
-可以使用 pylint --generate-rcfile 来生成一个配置文件示例。可以使用重定向把这个配置文件保存下来用做以后使用。也可以在前面加上其它选项，使这些选项的值被包含在这个产生的配置文件里。如：pylint --persistent=n --generate-rcfile &gt; pylint.conf，查看 pylint.conf，可以看到 persistent=no，而不再是其默认值 yes。</p></li>
-<li><p>--rcfile=<file>
-指定一个配置文件。把使用的配置放在配置文件中，这样不仅规范了自己代码，也可以方便地和别人共享这些规范。</p></li>
-<li><p>-i <y_or_n>, --include-ids=<y_or_n>
-在输出中包含 message 的 id, 然后通过 pylint --help-msg=<msg-id>来查看这个错误的详细信息，这样可以具体地定位错误。</p></li>
-<li><p>-r <y_or_n>, --reports=<y_or_n>
-默认是 y, 表示 Pylint 的输出中除了包含源代码分析部分，也包含报告部分。</p></li>
-<li><p>--files-output=<y_or_n>
-将每个 module /package 的 message 输出到一个以 pylint_module/package. [txt|html] 命名的文件中，如果有 report 的话，输出到名为 pylint_global.[txt|html] 的文件中。默认是输出到屏幕上不输出到文件里。</p></li>
-<li><p>-f <format>, --output-format=<format>
-设置输出格式。可以选择的格式有 text, parseable, colorized, msvs (visual studio) 和 html, 默认的输出格式是 text。</p></li>
-<li><p>--disable-msg=<msg ids>
-禁止指定 id 的 message. 比如说输出中包含了 W0402 这个 warning 的 message, 如果不希望它在输出中出现，可以使用 --disable-msg= W0402</p></li>
+  <li>
+    <p>-h,–help
+显示所有帮助信息。</p>
+  </li>
+  <li>
+    <p>–generate-rcfile
+可以使用 pylint –generate-rcfile 来生成一个配置文件示例。可以使用重定向把这个配置文件保存下来用做以后使用。也可以在前面加上其它选项，使这些选项的值被包含在这个产生的配置文件里。如：pylint –persistent=n –generate-rcfile &gt; pylint.conf，查看 pylint.conf，可以看到 persistent=no，而不再是其默认值 yes。</p>
+  </li>
+  <li>
+    <p>–rcfile=<file>
+指定一个配置文件。把使用的配置放在配置文件中，这样不仅规范了自己代码，也可以方便地和别人共享这些规范。</file></p>
+  </li>
+  <li>
+    <p>-i <y_or_n>, --include-ids=<y_or_n>
+在输出中包含 message 的 id, 然后通过 pylint --help-msg=<msg-id>来查看这个错误的详细信息，这样可以具体地定位错误。</msg-id></y_or_n></y_or_n></p>
+  </li>
+  <li>
+    <p>-r <y_or_n>, --reports=<y_or_n>
+默认是 y, 表示 Pylint 的输出中除了包含源代码分析部分，也包含报告部分。</y_or_n></y_or_n></p>
+  </li>
+  <li>
+    <p>–files-output=<y_or_n>
+将每个 module /package 的 message 输出到一个以 pylint_module/package. [txt|html] 命名的文件中，如果有 report 的话，输出到名为 pylint_global.[txt|html] 的文件中。默认是输出到屏幕上不输出到文件里。</y_or_n></p>
+  </li>
+  <li>
+    <p>-f <format>, --output-format=<format>
+设置输出格式。可以选择的格式有 text, parseable, colorized, msvs (visual studio) 和 html, 默认的输出格式是 text。</format></format></p>
+  </li>
+  <li>
+    <p>–disable-msg=<msg ids="">
+禁止指定 id 的 message. 比如说输出中包含了 W0402 这个 warning 的 message, 如果不希望它在输出中出现，可以使用 --disable-msg= W0402</msg></p>
+  </li>
 </ul>
 
-<h2>常见错误</h2>
+<h2 id="section-3">常见错误</h2>
 
 <p>以下是我常出现的错误</p>
 
 <ol>
-<li>忘记加docstring</li>
-<li>沿用old class style(new class = class Foo(object))</li>
-<li>变量名有时候会在<code>__builtin__</code>里</li>
-<li>不支持的变量名(i,j,k)</li>
-<li>没有用到的import和变量</li>
+  <li>忘记加docstring</li>
+  <li>沿用old class style(new class = class Foo(object))</li>
+  <li>变量名有时候会在<code>__builtin__</code>里</li>
+  <li>不支持的变量名(i,j,k)</li>
+  <li>没有用到的import和变量</li>
 </ol>
 
 <p>差不多就这些吧,不过对于评分系统大可不必在意,标准是因人而定的,得多少就看缘分了~~~</p>

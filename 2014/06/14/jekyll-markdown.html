@@ -77,35 +77,41 @@
     <article class="post-content">
         <p>jekyll可以有多种markdown的解析器，目前找到的支持GFM的解析器有两个，一个是kramdown，另一个是redcarpet。</p>
 
-<h3>kramdown</h3>
-
+<h3 id="kramdown">kramdown</h3>
 <p>最开始用的是kramdown，配置都很简单。</p>
 
 <p>_config.yml配置：</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="ss">markdown</span><span class="p">:</span> <span class="n">kramdowm</span>
-<span class="ss">kramdown</span><span class="p">:</span>
-  <span class="ss">input</span><span class="p">:</span> <span class="no">GFM</span>
-</code></pre></div>
-<h3>redcarpet</h3>
+
+<p><code>ruby
+markdown: kramdowm
+kramdown:
+  input: GFM
+</code></p>
+
+<h3 id="redcarpet">redcarpet</h3>
 
 <p>redcarpet用起来还是比较方便的。</p>
 
 <p>_config.yml配置：</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="ss">markdown</span><span class="p">:</span> <span class="n">redcarpet</span>
-<span class="ss">redcarpet</span><span class="p">:</span>
-  <span class="ss">extensions</span><span class="p">:</span> <span class="o">[]</span>
-</code></pre></div>
+
+<p><code>ruby
+markdown: redcarpet
+redcarpet:
+  extensions: []
+</code></p>
+
 <p>[]中可以添加的常用扩展选项有如下：</p>
 
 <ul>
-<li>no_intra_emphasis：不解析单词中的下划线，如foo_em_body</li>
-<li>fenced_code_blocks :这个比较实用，就是用GFM的方式标记代码段，即三个<strong>`</strong></li>
-<li>autolink：自动解析链接</li>
-<li>strikethrough：删除线，this is <del>good</del> bad</li>
-<li>space_after_headers：后边必须接空格，否则不会被解析为标题</li>
+  <li>no_intra_emphasis：不解析单词中的下划线，如foo_em_body</li>
+  <li>fenced_code_blocks :这个比较实用，就是用GFM的方式标记代码段，即三个<strong>`</strong></li>
+  <li>autolink：自动解析链接</li>
+  <li>strikethrough：删除线，this is ~~good~~ bad</li>
+  <li>space_after_headers：后边必须接空格，否则不会被解析为标题</li>
 </ul>
 
 <p>用redcarpet的一个好处是，可以和<a href="http://highlightjs.org/">highlights.js</a>配合，可以选的css样式也很多，方便布局和修改，这个博客的样式就是GFM的样式。</p>
+
 
     </article>
     <!-- Duoshuo Comment BEGIN -->

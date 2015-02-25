@@ -75,10 +75,13 @@
         <p class="meta"><i class="fa fa-calendar"></i> 2014-07-29&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#software">software</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#gif">gif</a></p>
     </header>
     <article class="post-content">
-        <h2>安装</h2>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get install byzanz
-</code></pre></div>
-<h2>使用</h2>
+        <h2 id="section">安装</h2>
+
+<p><code>bash
+sudo apt-get install byzanz
+</code></p>
+
+<h2 id="section-1">使用</h2>
 
 <p>录制15秒，x，y区域左上角坐标，out.gif 输出的文件
 <code>bash
@@ -86,70 +89,76 @@ byzanz-record --duration=15 --x=200 --y=300 --width=700 --height=400 out.gif
 </code></p>
 
 <p>要怎么才能自己选定区域呢，有高手已经写成脚本了,只要执行以下脚本便可以自己手动选择区域进行录制，输出文件在/tmp里，可以修改<code>--duration=需要的录制时间</code>（ps要有bash的执行权限）</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/bin/bash</span>
 
-<span class="c"># Delay before starting</span>
-<span class="nv">DELAY</span><span class="o">=</span>10
+<p>```bash
+#!/bin/bash</p>
 
-<span class="c"># Sound notification to let one know when recording is about to start (and ends)</span>
-beep<span class="o">()</span> <span class="o">{</span>
-    paplay /usr/share/sounds/KDE-Im-Irc-Event.ogg <span class="p">&amp;</span>
-<span class="o">}</span>
+<h1 id="delay-before-starting">Delay before starting</h1>
+<p>DELAY=10</p>
 
-<span class="c"># Duration and output file</span>
-<span class="k">if</span> <span class="o">[</span> <span class="nv">$# </span>-gt <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-    <span class="nv">D</span><span class="o">=</span><span class="s2">&quot;--duration=$@&quot;</span>
-<span class="k">else</span>
-    <span class="nb">echo </span>Default recording duration 10s to /tmp/recorded.gif
-    <span class="nv">D</span><span class="o">=</span><span class="s2">&quot;--duration=10 /tmp/recorded.gif&quot;</span>
-<span class="k">fi</span>
+<h1 id="sound-notification-to-let-one-know-when-recording-is-about-to-start-and-ends">Sound notification to let one know when recording is about to start (and ends)</h1>
+<p>beep() {
+    paplay /usr/share/sounds/KDE-Im-Irc-Event.ogg &amp;
+}</p>
 
-<span class="c"># xrectsel from https://github.com/lolilolicon/FFcast2/blob/master/xrectsel.c</span>
-<span class="nv">ARGUMENTS</span><span class="o">=</span><span class="k">$(</span>xrectsel <span class="s2">&quot;--x=%x --y=%y --width=%w --height=%h&quot;</span><span class="k">)</span> <span class="o">||</span> <span class="nb">exit</span> -1
+<h1 id="duration-and-output-file">Duration and output file</h1>
+<p>if [ $# -gt 0 ]; then
+    D=”–duration=$@”
+else
+    echo Default recording duration 10s to /tmp/recorded.gif
+    D=”–duration=10 /tmp/recorded.gif”
+fi</p>
 
-<span class="nb">echo </span>Delaying <span class="nv">$DELAY</span> seconds. After that, byzanz will start
-<span class="k">for</span> <span class="o">((</span> <span class="nv">i</span><span class="o">=</span><span class="nv">$DELAY</span><span class="p">;</span> i&gt;0<span class="p">;</span> --i <span class="o">))</span> <span class="p">;</span> <span class="k">do</span>
-    <span class="nb">echo</span> <span class="nv">$i</span>
+<h1 id="xrectsel-from-httpsgithubcomloliloliconffcast2blobmasterxrectselc">xrectsel from https://github.com/lolilolicon/FFcast2/blob/master/xrectsel.c</h1>
+<p>ARGUMENTS=$(xrectsel “–x=%x –y=%y –width=%w –height=%h”) || exit -1</p>
+
+<p>echo Delaying $DELAY seconds. After that, byzanz will start
+for (( i=$DELAY; i&gt;0; –i )) ; do
+    echo $i
     sleep 1
-<span class="k">done</span>
+done
 beep
-byzanz-record --verbose --delay<span class="o">=</span><span class="m">0</span> <span class="k">${</span><span class="nv">ARGUMENTS</span><span class="k">}</span> <span class="nv">$D</span>
+byzanz-record –verbose –delay=0 ${ARGUMENTS} $D
 beep
-</code></pre></div>
+```</p>
+
 <p>下面这个脚本是选择窗口进行录制，方法同上，直接运行</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/bin/bash</span>
 
-<span class="c"># Delay before starting</span>
-<span class="nv">DELAY</span><span class="o">=</span>10
+<p>```bash
+#!/bin/bash</p>
 
-<span class="c"># Sound notification to let one know when recording is about to start (and ends)</span>
-beep<span class="o">()</span> <span class="o">{</span>
-    paplay /usr/share/sounds/KDE-Im-Irc-Event.ogg <span class="p">&amp;</span>
-<span class="o">}</span>
+<h1 id="delay-before-starting-1">Delay before starting</h1>
+<p>DELAY=10</p>
 
-<span class="c"># Duration and output file</span>
-<span class="k">if</span> <span class="o">[</span> <span class="nv">$# </span>-gt <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-    <span class="nv">D</span><span class="o">=</span><span class="s2">&quot;--duration=$@&quot;</span>
-<span class="k">else</span>
-    <span class="nb">echo </span>Default recording duration 10s to /tmp/recorded.gif
-    <span class="nv">D</span><span class="o">=</span><span class="s2">&quot;--duration=10 /tmp/recorded.gif&quot;</span>
-<span class="k">fi</span>
-<span class="nv">XWININFO</span><span class="o">=</span><span class="k">$(</span>xwininfo<span class="k">)</span>
-<span class="nb">read </span>X &lt; &lt;<span class="o">(</span>awk -F: <span class="s1">&#39;/Absolute upper-left X/{print $2}&#39;</span> <span class="o">&lt;&lt;&lt;</span> <span class="s2">&quot;$XWININFO&quot;</span><span class="o">)</span>
-<span class="nb">read </span>Y &lt; &lt;<span class="o">(</span>awk -F: <span class="s1">&#39;/Absolute upper-left Y/{print $2}&#39;</span> <span class="o">&lt;&lt;&lt;</span> <span class="s2">&quot;$XWININFO&quot;</span><span class="o">)</span>
-<span class="nb">read </span>W &lt; &lt;<span class="o">(</span>awk -F: <span class="s1">&#39;/Width/{print $2}&#39;</span> <span class="o">&lt;&lt;&lt;</span> <span class="s2">&quot;$XWININFO&quot;</span><span class="o">)</span>
-<span class="nb">read </span>H &lt; &lt;<span class="o">(</span>awk -F: <span class="s1">&#39;/Height/{print $2}&#39;</span> <span class="o">&lt;&lt;&lt;</span> <span class="s2">&quot;$XWININFO&quot;</span><span class="o">)</span>
+<h1 id="sound-notification-to-let-one-know-when-recording-is-about-to-start-and-ends-1">Sound notification to let one know when recording is about to start (and ends)</h1>
+<p>beep() {
+    paplay /usr/share/sounds/KDE-Im-Irc-Event.ogg &amp;
+}</p>
 
-<span class="nb">echo </span>Delaying <span class="nv">$DELAY</span> seconds. After that, byzanz will start
-<span class="k">for</span> <span class="o">((</span> <span class="nv">i</span><span class="o">=</span><span class="nv">$DELAY</span><span class="p">;</span> i&gt;0<span class="p">;</span> --i <span class="o">))</span> <span class="p">;</span> <span class="k">do</span>
-    <span class="nb">echo</span> <span class="nv">$i</span>
+<h1 id="duration-and-output-file-1">Duration and output file</h1>
+<p>if [ $# -gt 0 ]; then
+    D=”–duration=$@”
+else
+    echo Default recording duration 10s to /tmp/recorded.gif
+    D=”–duration=10 /tmp/recorded.gif”
+fi
+XWININFO=$(xwininfo)
+read X &lt; &lt;(awk -F: ‘/Absolute upper-left X/{print $2}’ «&lt; “$XWININFO”)
+read Y &lt; &lt;(awk -F: ‘/Absolute upper-left Y/{print $2}’ «&lt; “$XWININFO”)
+read W &lt; &lt;(awk -F: ‘/Width/{print $2}’ «&lt; “$XWININFO”)
+read H &lt; &lt;(awk -F: ‘/Height/{print $2}’ «&lt; “$XWININFO”)</p>
+
+<p>echo Delaying $DELAY seconds. After that, byzanz will start
+for (( i=$DELAY; i&gt;0; –i )) ; do
+    echo $i
     sleep 1
-<span class="k">done</span>
+done</p>
 
+<p>beep
+byzanz-record –verbose –delay=0 –x=$X –y=$Y –width=$W –height=$H $D
 beep
-byzanz-record --verbose --delay<span class="o">=</span><span class="m">0</span> --x<span class="o">=</span><span class="nv">$X</span> --y<span class="o">=</span><span class="nv">$Y</span> --width<span class="o">=</span><span class="nv">$W</span> --height<span class="o">=</span><span class="nv">$H</span> <span class="nv">$D</span>
-beep
-</code></pre></div>
+```</p>
+
     </article>
     <!-- Duoshuo Comment BEGIN -->
     <div id="comments">
