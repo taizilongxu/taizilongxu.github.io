@@ -75,7 +75,7 @@
         <p class="meta"><i class="fa fa-calendar"></i> 2014-11-19&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#zsh">zsh</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#linux">linux</a>&nbsp<a href="/tags/#zsh">zsh</a></p>
     </header>
     <article class="post-content">
-        <p>原文:http://code.joejag.com/2014/why-zsh.html</p>
+        <p>原文:<a href="http://code.joejag.com/2014/why-zsh.html">http://code.joejag.com/2014/why-zsh.html</a></p>
 
 <p>Zsh,因为其强大的shell交互功能已经被许多开发者所使用.虽然我也刚开始入门,但希望大家也一起加入Zsh的行列.</p>
 
@@ -83,7 +83,7 @@
 
 <p>然后我发现了<a href="https://github.com/robbyrussell/oh-my-zsh">oh-my-zsh</a>.一个集合了许多Zsh默认配置的项目.如果你们还没有接触过Zsh,那么相信你看完下面的介绍会毫不犹豫的更改你的shell.</p>
 
-<h3 id="section">背景</h3>
+<h3>背景</h3>
 
 <p>如果你对Bash比较习惯并且担心会丢失所有Bash知识,那么大可不必担心,99%的操作Bash和Zsh都是相同的.你可以很好的完成shell的转换.</p>
 
@@ -91,195 +91,195 @@
 
 <p>在例子中用<code>&lt;TAB&gt;</code>来表示敲击tab键,别傻乎乎的打出来~</p>
 
-<h3 id="cdtab">‘cd’中tab补全</h3>
+<h3>&#39;cd&#39;中tab补全</h3>
 
 <p>让我们从最常用的出发.改变当前目录.</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/cd_before.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/cd_before.jpg" alt=""></p>
 
 <p>在Bash里当你按下<code>&lt;TAB&gt;</code>你会得到当前目录下的文件.</p>
 
 <p>这种情况下你只能进入到目录里,对于其他上下文来说并不是太有用.Zsh知道这点,它只给你显示有效的文件目录.</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/cd_after.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/cd_after.jpg" alt=""></p>
 
 <p>他不仅可以帮你匹配目录,而且还可以允许你用方向键进行选取.(<code>&lt;TAB&gt;向后,&lt;Shift+TAB&gt;向前</code>)</p>
 
 <p>对于TAB智能补全和用按键进行选择交互这种方式是Zsh简单易用的核心.</p>
 
-<h3 id="ls">快速’ls’</h3>
+<h3>快速&#39;ls&#39;</h3>
 
 <p>不必输入整个目录的名字,只需要输入几个能唯一识别的字母就可以了.</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/ls_shorthand_before.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/ls_shorthand_before.jpg" alt=""></p>
 
 <p>吡!</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/ls_shorthand_after.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/ls_shorthand_after.jpg" alt=""></p>
 
-<h3 id="section-1">清除历史</h3>
+<h3>清除历史</h3>
 
 <p>你可能熟悉使用<code>&lt;CTRL&gt;+R</code>命令来寻找你使用过的命令.在Bash和Zsh中这是非常方便的方法.</p>
 
 <p>Zsh有一个更好的方法.你可以输入一部分命令然后按<code>&lt;UP&gt;</code>键.</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/history_before.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/history_before.jpg" alt=""></p>
 
 <p>它会找他你最近用过的以<code>ls</code>开始的命令.还可以继续寻找前面的命令.</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/history_after.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/history_after.jpg" alt=""></p>
 
-<h3 id="section-2">分享命令历史</h3>
+<h3>分享命令历史</h3>
 
 <p>在每个shell里Bash都有它自己的输入历史.但是在Zsh里它所有活动shell里都会有一个共同的历史.所以你就不用不得不记住你在哪里输入这个命令了.</p>
 
-<h3 id="section-3">扩展环境变量</h3>
+<h3>扩展环境变量</h3>
 
 <p>在我们的shell里提供了环境变量.有些时候我们要使用这些变量值或者只是检查一下它们.</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/path_expansion_before.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/path_expansion_before.jpg" alt=""></p>
 
 <p>在Zsh里你可以按<code>&lt;TAB&gt;</code>键使这些变量转换成它们所表达的值.</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/path_expansion_after.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/path_expansion_after.jpg" alt=""></p>
 
-<h3 id="killtab">kill命令的tab补全</h3>
+<h3>kill命令的tab补全</h3>
 
 <p>我通常用<code>kill</code>前先使用<code>ps</code>命令检查它们的进程号,或者当我确认的时候用<code>pkill</code>命令,Zsh给你另一种方法.</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/kill_before.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/kill_before.jpg" alt=""></p>
 
 <p>在输入<code>kill</code>命令后,按<code>tab</code>键它会提供一个以当前输入字母为开始的程序列表,通过方向键你可以选择杀掉哪个进程.</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/kill_after.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/kill_after.jpg" alt=""></p>
 
-<h3 id="section-4">命令参数</h3>
+<h3>命令参数</h3>
 
 <p>当想要了解一个命令的时候你通常需要输入<code>-help</code>或者检查<code>man page</code>.Zsh提供了更好的方法.</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/switch_before.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/switch_before.jpg" alt=""></p>
 
 <p>输入<code>-</code>然后按<code>&lt;TAB&gt;</code>键.</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/switch_after.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/switch_after.jpg" alt=""></p>
 
 <p>它会列出选项和说明.你也可以用方向键进行选择.</p>
 
 <p>它步进在<code>ls</code>命令中,他可以.它可以工作在像<code>netstat</code>,<code>git</code>,<code>chmod</code>等大量的命令中.</p>
 
-<h3 id="git">Git辅助</h3>
+<h3>Git辅助</h3>
 
 <p>每个人都有自己喜欢的<code>git</code>命令的别名.oh-my-zsh给出了一大堆默认别名.</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/git_aliases.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/git_aliases.jpg" alt=""></p>
 
 <p>当你进入一个git目录的时候它也会有提示.</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/git_prompt.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/git_prompt.jpg" alt=""></p>
 
 <p>你可以查看它所在的分支名,上面的小叉号提示我有没有提交的更改.</p>
 
-<h3 id="section-5">上一个失败命令</h3>
+<h3>上一个失败命令</h3>
 
 <p>你可能注意到了在截屏里的绿色小箭头.提示我上个命令运行成功.</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/fail_prompt.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/fail_prompt.jpg" alt=""></p>
 
 <p>如果命令不成功提示符就会变成红色,直到命令运行成功.</p>
 
-<h3 id="section-6">匹配</h3>
+<h3>匹配</h3>
 
 <p>在Bash里我通常用<code>find</code>搭配<code>xargs</code>命令去寻找文件.Zsh内建对这一功能的支持.</p>
 
 <p>让我们看看这个项目里的文件,而我要找到今天修改的文件.</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/glob_time_before.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/glob_time_before.jpg" alt=""></p>
 
 <p>我们只需要在<code>ls</code>后面加入一个模式匹配符就可以得到我们想要的了.</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/glob_time_after.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/glob_time_after.jpg" alt=""></p>
 
 <p>另一个比较实用的技巧是使用<code>**</code>可以递归查找.我要在目录下寻找Rakefile.</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/glob_recursive.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/glob_recursive.jpg" alt=""></p>
 
 <p>让我们加一个修饰符来递归查找大于20mb的文件.</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/glob_large_files.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/glob_large_files.jpg" alt=""></p>
 
 <p>这个方法不止限于<code>ls</code>.在这个项目里查找有多少行Clojure代码.</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/glob_wc.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/glob_wc.jpg" alt=""></p>
 
 <p>让我们递归的删除在这个项目里的所有Clojure文件.</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/glob_rm_before.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/glob_rm_before.jpg" alt=""></p>
 
 <p>恩.但是我不太确信这个命令.所以让我们按<code>&lt;TAB&gt;</code>列出所有文件来代替.</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/glob_rm_after.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/glob_rm_after.jpg" alt=""></p>
 
-<h3 id="section-7">键入错误名字</h3>
+<h3>键入错误名字</h3>
 
 <p>经常我们忘了文件名字的大小写,或者错误的输入了文件名的中间部分而不是开头.Zsh能察觉到并帮我们自动的修改.</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/autocorrect_before.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/autocorrect_before.jpg" alt=""></p>
 
 <p>Zsh修改</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/autocorrect_after.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/autocorrect_after.jpg" alt=""></p>
 
-<h3 id="section-8">有用的别名</h3>
+<h3>有用的别名</h3>
 
 <p>除了git的别名,oh-my-zsh提供了许多有用的别名.</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/cd_aliases.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/cd_aliases.jpg" alt=""></p>
 
 <p>用<code>...</code>帮你移到两层目录外真是太棒了.</p>
 
-<h3 id="tabs-named-after-the-running-process">Tabs named after the running process</h3>
+<h3>Tabs named after the running process</h3>
 
 <p>Having the tab name changed to be the same as the running process is useful when you are hunting down where you are running that server.</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/tab_names.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/tab_names.jpg" alt=""></p>
 
-<h3 id="vim">在Vim里编辑长命令</h3>
+<h3>在Vim里编辑长命令</h3>
 
 <p>你可以在Bash和Zsh里用<code>&lt;CTRL&gt;+k</code>在长命令里来删除字符(我这里怎么是<code>&lt;CTRL&gt;+h</code>?).但是有时候你想用功能更强大的编辑器来写长命令.</p>
 
 <p>可以按<code>&lt;CTRL&gt;+X &lt;CTRL&gt;+E</code>把当前命令放到你的<code>$EDITOR</code>里.</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/vim_mode_before.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/vim_mode_before.jpg" alt=""></p>
 
 <p>温馨的<code>$EDITOR</code>.</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/vim_mode_after.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/vim_mode_after.jpg" alt=""></p>
 
 <p>我们可以编辑命令保存然后就会退回到终端里.</p>
 
-<h3 id="section-9">工具插件</h3>
+<h3>工具插件</h3>
 
 <p>oh-my-zsh有一个为工具提供的插件的列表.我用rake插件可以允许你用<code>&lt;TAB&gt;</code>进入在你Rakefile里的rake命令.</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/rake_before.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/rake_before.jpg" alt=""></p>
 
 <p>双击<code>&lt;TAB&gt;</code>可以进入可以选择的列表.</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/rake_after.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/rake_after.jpg" alt=""></p>
 
-<h3 id="section-10">仅此而已?</h3>
+<h3>仅此而已?</h3>
 
 <p>我直到最近才发现Zsh真他娘的好用啊.原因如下:</p>
 
 <ul>
-  <li>Tab补全和选择</li>
-  <li>活跃的插件社区提供我们基本的dotfile</li>
-  <li>Bash中99%的东西都能用</li>
+<li>Tab补全和选择</li>
+<li>活跃的插件社区提供我们基本的dotfile</li>
+<li>Bash中99%的东西都能用</li>
 </ul>
 
 <p>你准备好用zsh了吗?</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/chsh.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/chsh.jpg" alt=""></p>
 
     </article>
     <!-- Duoshuo Comment BEGIN -->

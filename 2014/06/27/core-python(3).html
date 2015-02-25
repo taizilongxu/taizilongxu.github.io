@@ -75,82 +75,80 @@
         <p class="meta"><i class="fa fa-calendar"></i> 2014-06-27&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#Core Python programming">Core Python programming</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#python">python</a></p>
     </header>
     <article class="post-content">
-        <p>6 chapter
-###第六章 序列:字符串,列表和元组</p>
+        <p>6 chapter</p>
+
+<h3>第六章 序列:字符串,列表和元组</h3>
 
 <p>为什么把字符串,列表和元组叫做序列呢,因为这些类型其实都是由一些成员共同组成的一个序列整体,并且可以通过下标偏移量访问到它的一个或者几个成员.序列是Python很重要的数据结构,方便又快捷,干活基本都靠他们了.</p>
 
-<h4 id="section">6.1序列</h4>
+<h4>6.1序列</h4>
 
 <p>标准类型操作符:详见4.5</p>
 
 <p>序列类型操作符:</p>
 
 <ol>
-  <li>成员关系操作符(in,not in)</li>
-  <li>连接操作符(+)</li>
-  <li>重复操作符(*)</li>
-  <li>切片操作符([],[:],[::])</li>
+<li>成员关系操作符(in,not in)</li>
+<li>连接操作符(+)</li>
+<li>重复操作符(*)</li>
+<li>切片操作符([],[:],[::])</li>
 </ol>
 
 <p>内建函数:</p>
 
 <ol>
-  <li>类型转换(工厂函数):list(iter),str(),unicode(),basestring()(str和unicode的父类,不能实例化也不能调用),tuple(iter)</li>
-  <li>可操作:</li>
+<li>类型转换(工厂函数):list(iter),str(),unicode(),basestring()(str和unicode的父类,不能实例化也不能调用),tuple(iter)</li>
+<li>可操作:</li>
 </ol>
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">函数名</th>
-      <th style="text-align: left">功能</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left">enumerate(iter)</td>
-      <td style="text-align: left">接受一个可迭代对象,返回一个enumerate对象(由iter每个元素的index值和item值组成的元祖)</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">len(seq)</td>
-      <td style="text-align: left">返回seq的长度</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">max(iter,key=None) or max(arg0,arg1…key=None)</td>
-      <td style="text-align: left">返回iter里面的最小值或者返回(arg0,arg1…)里面的最小值;如果指定了key,这个key必须时一个可以传给sort()方法的,用于比较的回调函数</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">reversed(seq)</td>
-      <td style="text-align: left">接受一个序列作为参数,返回一个以逆序访问的迭代器</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">sort(iter,func=None,key=None,reverse=False)</td>
-      <td style="text-align: left">接受一个可迭代对象作为参数,返回一个有序列表;可选参数func,key和reverse的含义跟list.sor()内建函数的参数含义一样.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">sum(swq,init=0)</td>
-      <td style="text-align: left">返回seq和参数init的总和</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">zip([it0,it1,it2…itN])</td>
-      <td style="text-align: left">返回一个列表,其第一个元素是it0,it1…这些元素第一个元素组成的一个元祖,第二个…以此类推</td>
-    </tr>
-  </tbody>
-</table>
+<table><thead>
+<tr>
+<th style="text-align: left">函数名</th>
+<th style="text-align: left">功能</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">enumerate(iter)</td>
+<td style="text-align: left">接受一个可迭代对象,返回一个enumerate对象(由iter每个元素的index值和item值组成的元祖)</td>
+</tr>
+<tr>
+<td style="text-align: left">len(seq)</td>
+<td style="text-align: left">返回seq的长度</td>
+</tr>
+<tr>
+<td style="text-align: left">max(iter,key=None) or max(arg0,arg1...key=None)</td>
+<td style="text-align: left">返回iter里面的最小值或者返回(arg0,arg1...)里面的最小值;如果指定了key,这个key必须时一个可以传给sort()方法的,用于比较的回调函数</td>
+</tr>
+<tr>
+<td style="text-align: left">reversed(seq)</td>
+<td style="text-align: left">接受一个序列作为参数,返回一个以逆序访问的迭代器</td>
+</tr>
+<tr>
+<td style="text-align: left">sort(iter,func=None,key=None,reverse=False)</td>
+<td style="text-align: left">接受一个可迭代对象作为参数,返回一个有序列表;可选参数func,key和reverse的含义跟list.sor()内建函数的参数含义一样.</td>
+</tr>
+<tr>
+<td style="text-align: left">sum(swq,init=0)</td>
+<td style="text-align: left">返回seq和参数init的总和</td>
+</tr>
+<tr>
+<td style="text-align: left">zip([it0,it1,it2...itN])</td>
+<td style="text-align: left">返回一个列表,其第一个元素是it0,it1...这些元素第一个元素组成的一个元祖,第二个...以此类推</td>
+</tr>
+</tbody></table>
 
-<h4 id="section-1">6.2字符串</h4>
+<h4>6.2字符串</h4>
 
 <p>Python实际上有三类字符串.通常意义的字符串(str)和Unicode字符串(unicode)实际上都是抽象类basestring的子类.这个basestring()不能被调用也不能实例化.</p>
 
 <ol>
-  <li>字符串的创建和赋值</li>
-  <li>访问字符串的值(切片)</li>
-  <li>如何改变字符串:字符串跟数字类型一样,是不可变类型,要改变一个字符串必须通过创建一个新串的方式来实现.</li>
-  <li>删除字符和字符串(del):没有必要显示的删除字符串!</li>
+<li>字符串的创建和赋值</li>
+<li>访问字符串的值(切片)</li>
+<li>如何改变字符串:字符串跟数字类型一样,是不可变类型,要改变一个字符串必须通过创建一个新串的方式来实现.</li>
+<li>删除字符和字符串(del):没有必要显示的删除字符串!</li>
 </ol>
 
-<h4 id="section-2">6.4只适用于字符串的操作符</h4>
+<h4>6.4只适用于字符串的操作符</h4>
 
 <p>格式化操作符(%):非常类似C语言里面的printf()函数的字符串格式化,并且支持所有printf()式的格式化操作.格式字符串既可以跟print语句一起用来向终端用户输出数据,又可以用来合并字符串形成新字符串,而且还可以直接显示到GUI界面上去.</p>
 
@@ -161,24 +159,25 @@
 <p>字符串类型函数:</p>
 
 <ol>
-  <li>raw_input():输入函数</li>
-  <li>str()和unicode():工厂函数</li>
-  <li>chr(),unichr(),ord():</li>
+<li>raw_input():输入函数</li>
+<li>str()和unicode():工厂函数</li>
+<li>chr(),unichr(),ord():</li>
 </ol>
 
 <ul>
-  <li>chr():用一个范围在range(256)内的整数做参数,返回一个对应的字符.</li>
-  <li>unichr():与chr()一样,但返回的是unicode字符</li>
-  <li>ord():它以一个字符作为参数,返回对应的ASCII数值,或者Unicode数值.</li>
+<li>chr():用一个范围在range(256)内的整数做参数,返回一个对应的字符.</li>
+<li>unichr():与chr()一样,但返回的是unicode字符</li>
+<li>ord():它以一个字符作为参数,返回对应的ASCII数值,或者Unicode数值.</li>
 </ul>
 
-<h4 id="unicode">6.8Unicode</h4>
+<h4>6.8Unicode</h4>
+
 <p>一直对Unicode迷惑不解,想不明白为什么Python的Unicode编码写入的时候既要编码,又要解码,直到我看了这个文章~~[字符编码笔记：ASCII，Unicode和UTF-8][1]</p>
 
 <p>这里需要注意的是区分Unicode和UTF-8之间的区别:</p>
 
 <blockquote>
-  <p>Unicode只是一个符号集,它只规定了符号的二进制代码.而UTF-8则是Unicode的一种编码实现,它规定了Unicode编码以怎样的二进制编码进行存储.</p>
+<p>Unicode只是一个符号集,它只规定了符号的二进制代码.而UTF-8则是Unicode的一种编码实现,它规定了Unicode编码以怎样的二进制编码进行存储.</p>
 </blockquote>
 
 <p>下面看例子来区分Unicode和UTF-8:</p>
@@ -186,101 +185,92 @@
 <p>UTF-8的编码规则很简单，只有二条：</p>
 
 <ol>
-  <li>对于单字节的符号，字节的第一位设为0，后面7位为这个符号的unicode码。因此对于英语字母，UTF-8编码和ASCII码是相同的。</li>
-  <li>对于n字节的符号（n&gt;1），第一个字节的前n位都设为1，第n+1位设为0，后面字节的前两位一律设为10。剩下的没有提及的二进制位，全部为这个符号的unicode码。</li>
+<li>对于单字节的符号，字节的第一位设为0，后面7位为这个符号的unicode码。因此对于英语字母，UTF-8编码和ASCII码是相同的。</li>
+<li>对于n字节的符号（n&gt;1），第一个字节的前n位都设为1，第n+1位设为0，后面字节的前两位一律设为10。剩下的没有提及的二进制位，全部为这个符号的unicode码。</li>
 </ol>
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">Unicode符号范围 (十六进制)</th>
-      <th style="text-align: left">UTF-8编码方式（二进制）</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left">0000 0000-0000 007F</td>
-      <td style="text-align: left">0xxxxxxx(可以装7位)</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">0000 0080-0000 07FF</td>
-      <td style="text-align: left">110xxxxx 10xxxxxx(11位)</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">0000 0800-0000 FFFF</td>
-      <td style="text-align: left">1110xxxx 10xxxxxx 10xxxxxx(17位)</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">0001 0000-0010 FFFF</td>
-      <td style="text-align: left">11110xxx 10xxxxxx 10xxxxxx 10xxxxxx(23位)</td>
-    </tr>
-  </tbody>
-</table>
+<table><thead>
+<tr>
+<th style="text-align: left">Unicode符号范围 (十六进制)</th>
+<th style="text-align: left">UTF-8编码方式（二进制）</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">0000 0000-0000 007F</td>
+<td style="text-align: left">0xxxxxxx(可以装7位)</td>
+</tr>
+<tr>
+<td style="text-align: left">0000 0080-0000 07FF</td>
+<td style="text-align: left">110xxxxx 10xxxxxx(11位)</td>
+</tr>
+<tr>
+<td style="text-align: left">0000 0800-0000 FFFF</td>
+<td style="text-align: left">1110xxxx 10xxxxxx 10xxxxxx(17位)</td>
+</tr>
+<tr>
+<td style="text-align: left">0001 0000-0010 FFFF</td>
+<td style="text-align: left">11110xxx 10xxxxxx 10xxxxxx 10xxxxxx(23位)</td>
+</tr>
+</tbody></table>
 
 <p>上表总结了UTF-8编码规则，字母x表示可用编码的位,也就是说Unicode编码可以填充进x中.</p>
 
 <p>比如:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="mi">100111000100101</span> <span class="c">#&quot;严&quot;的unicode编码</span>
 
-<p>```python
-100111000100101 #”严”的unicode编码</p>
+<span class="mi">11100100</span> <span class="mi">10111000</span> <span class="mi">10100101</span> <span class="c">#&quot;严&quot;的UTF-8编码</span>
+</code></pre></div>
+<p>已知&quot;严&quot;的unicode是4E25（100111000100101），根据上面的表，可以发现4E25处在第三行的范围内（0000 0800-0000 FFFF），因此&quot;严&quot;的UTF-8编码需要三个字节，即格式是&quot;1110xxxx 10xxxxxx 10xxxxxx&quot;。然后，从&quot;严&quot;的最后一个二进制位开始，依次从后向前填入格式中的x，多出的位补0。这样就得到了，&quot;严&quot;的UTF-8编码是&quot;11100100 10111000 10100101&quot;，转换成十六进制就是E4B8A5。</p>
 
-<p>11100100 10111000 10100101 #”严”的UTF-8编码
-```</p>
-
-<p>已知”严”的unicode是4E25（100111000100101），根据上面的表，可以发现4E25处在第三行的范围内（0000 0800-0000 FFFF），因此”严”的UTF-8编码需要三个字节，即格式是”1110xxxx 10xxxxxx 10xxxxxx”。然后，从”严”的最后一个二进制位开始，依次从后向前填入格式中的x，多出的位补0。这样就得到了，”严”的UTF-8编码是”11100100 10111000 10100101”，转换成十六进制就是E4B8A5。</p>
-
-<h4 id="section-3">6.14列表类型的内建函数</h4>
+<h4>6.14列表类型的内建函数</h4>
 
 <p>我们可以在一个列表对象上应用<code>dir()</code>方法来得到它所有的方法和属性.</p>
 
 <p>列表类型内建方法:</p>
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">列表函数</th>
-      <th style="text-align: left">作用</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left">list.append(obj)</td>
-      <td style="text-align: left">列表添加obj对象</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">list.count(0bj)</td>
-      <td style="text-align: left">返回obj在列表中出现次数</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">list.extend(seq)</td>
-      <td style="text-align: left">把序列seq的内容添加到列表中</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">list.index(obj,i=0,j=len(list))</td>
-      <td style="text-align: left">返回list[k]==obj的k值,并且k的范围在<code>i&lt;=k&lt;j</code>;否则引发ValueError异常</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">list.insert(index,obj)</td>
-      <td style="text-align: left">在索引量为index的位置插入对象obj</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">list.pop(index==-1)</td>
-      <td style="text-align: left">删除并返回制定位置的对象,默认是最后一个对象</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">list.remove(obj)</td>
-      <td style="text-align: left">删除obj对象</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">list.reverse()</td>
-      <td style="text-align: left">原地翻转列表</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">list.sort(func=None,key=None,reverse=False)</td>
-      <td style="text-align: left">以制定方式排序列表中的成员,如果func和key参数制定,则按照指定方式比较各个元素,如果reverse标志被置为True,则列表以反序排列</td>
-    </tr>
-  </tbody>
-</table>
+<table><thead>
+<tr>
+<th style="text-align: left">列表函数</th>
+<th style="text-align: left">作用</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">list.append(obj)</td>
+<td style="text-align: left">列表添加obj对象</td>
+</tr>
+<tr>
+<td style="text-align: left">list.count(0bj)</td>
+<td style="text-align: left">返回obj在列表中出现次数</td>
+</tr>
+<tr>
+<td style="text-align: left">list.extend(seq)</td>
+<td style="text-align: left">把序列seq的内容添加到列表中</td>
+</tr>
+<tr>
+<td style="text-align: left">list.index(obj,i=0,j=len(list))</td>
+<td style="text-align: left">返回list[k]==obj的k值,并且k的范围在<code>i&lt;=k&lt;j</code>;否则引发ValueError异常</td>
+</tr>
+<tr>
+<td style="text-align: left">list.insert(index,obj)</td>
+<td style="text-align: left">在索引量为index的位置插入对象obj</td>
+</tr>
+<tr>
+<td style="text-align: left">list.pop(index==-1)</td>
+<td style="text-align: left">删除并返回制定位置的对象,默认是最后一个对象</td>
+</tr>
+<tr>
+<td style="text-align: left">list.remove(obj)</td>
+<td style="text-align: left">删除obj对象</td>
+</tr>
+<tr>
+<td style="text-align: left">list.reverse()</td>
+<td style="text-align: left">原地翻转列表</td>
+</tr>
+<tr>
+<td style="text-align: left">list.sort(func=None,key=None,reverse=False)</td>
+<td style="text-align: left">以制定方式排序列表中的成员,如果func和key参数制定,则按照指定方式比较各个元素,如果reverse标志被置为True,则列表以反序排列</td>
+</tr>
+</tbody></table>
 
 <p>这里总结一下sorted和sort的用法:</p>
 
@@ -290,135 +280,94 @@ sorted(data, cmp=None, key=None, reverse=False)
 </code></p>
 
 <p>list.sort(这里的默认排序方法是归并排序,时间复杂度为O(lg(n!))):</p>
-
-<p><code>python
-list.sort(cmp=None,key=None,reverse=False)  
-</code></p>
-
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="nb">list</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="nb">cmp</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">key</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">reverse</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>  
+</code></pre></div>
 <ul>
-  <li>cmp(e1, e2) 是带两个参数的比较函数, 返回值: 负数: e1 &lt; e2, 0: e1 == e2, 正数: e1 &gt; e2. 默认为 None, 即用内建的比较函数. </li>
-  <li>key 是带一个参数的函数, 用来为每个元素提取比较值. 默认为 None, 即直接比较每个元素. </li>
-  <li>通常, key 和 reverse 比 cmp 快很多, 因为对每个元素它们只处理一次; 而 cmp 会处理多次. </li>
+<li>cmp(e1, e2) 是带两个参数的比较函数, 返回值: 负数: e1 &lt; e2, 0: e1 == e2, 正数: e1 &gt; e2. 默认为 None, 即用内建的比较函数. </li>
+<li>key 是带一个参数的函数, 用来为每个元素提取比较值. 默认为 None, 即直接比较每个元素. </li>
+<li>通常, key 和 reverse 比 cmp 快很多, 因为对每个元素它们只处理一次; 而 cmp 会处理多次. </li>
 </ul>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">students</span> <span class="o">=</span> <span class="p">[(</span><span class="s">&#39;john&#39;</span><span class="p">,</span> <span class="s">&#39;A&#39;</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;jane&#39;</span><span class="p">,</span> <span class="s">&#39;B&#39;</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;dave&#39;</span><span class="p">,</span> <span class="s">&#39;B&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">),]</span> 
 
-<p>```python
-»&gt; students = [(‘john’, ‘A’, 15), (‘jane’, ‘B’, 12), (‘dave’, ‘B’, 10),] </p>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">students</span><span class="p">,</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">student</span><span class="p">:</span><span class="n">student</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="c"># sort by age </span>
+<span class="p">[(</span><span class="s">&#39;dave&#39;</span><span class="p">,</span> <span class="s">&#39;B&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;jane&#39;</span><span class="p">,</span> <span class="s">&#39;B&#39;</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;john&#39;</span><span class="p">,</span> <span class="s">&#39;A&#39;</span><span class="p">,</span> <span class="mi">15</span><span class="p">)]</span>
 
-<blockquote>
-  <blockquote>
-    <blockquote>
-      <p>sorted(students,key=lambda student:student[2]) # sort by age 
-[(‘dave’, ‘B’, 10), (‘jane’, ‘B’, 12), (‘john’, ‘A’, 15)]</p>
-    </blockquote>
-  </blockquote>
-</blockquote>
-
-<blockquote>
-  <blockquote>
-    <blockquote>
-      <p>sorted(students, cmp=lambda x,y : cmp(x[2], y[2])) # sort by age<br />
-[(‘dave’, ‘B’, 10), (‘jane’, ‘B’, 12), (‘john’, ‘A’, 15)]  </p>
-    </blockquote>
-  </blockquote>
-</blockquote>
-
-<p>```
-用 operator 函数来加快速度, 上面排序等价于:</p>
-
-<p><code>python
-&gt;&gt;&gt; from operator import itemgetter, attrgetter  
-&gt;&gt;&gt; sorted(students, key=itemgetter(2))  
-</code></p>
-
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">students</span><span class="p">,</span> <span class="nb">cmp</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="p">:</span> <span class="nb">cmp</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span> <span class="c"># sort by age  </span>
+<span class="p">[(</span><span class="s">&#39;dave&#39;</span><span class="p">,</span> <span class="s">&#39;B&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;jane&#39;</span><span class="p">,</span> <span class="s">&#39;B&#39;</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;john&#39;</span><span class="p">,</span> <span class="s">&#39;A&#39;</span><span class="p">,</span> <span class="mi">15</span><span class="p">)]</span>  
+</code></pre></div>
+<p>用 operator 函数来加快速度, 上面排序等价于:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">operator</span> <span class="kn">import</span> <span class="n">itemgetter</span><span class="p">,</span> <span class="n">attrgetter</span>  
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">students</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>  
+</code></pre></div>
 <p>用 operator 函数进行多级排序:</p>
-
-<p><code>python
-&gt;&gt;&gt; sorted(students, key=itemgetter(1,2))  # sort by grade then by age  
-[('john', 'A', 15), ('dave', 'B', 10), ('jane', 'B', 12)]  
-</code></p>
-
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">students</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>  <span class="c"># sort by grade then by age  </span>
+<span class="p">[(</span><span class="s">&#39;john&#39;</span><span class="p">,</span> <span class="s">&#39;A&#39;</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;dave&#39;</span><span class="p">,</span> <span class="s">&#39;B&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;jane&#39;</span><span class="p">,</span> <span class="s">&#39;B&#39;</span><span class="p">,</span> <span class="mi">12</span><span class="p">)]</span>  
+</code></pre></div>
 <p>对由字典排序 :</p>
-
-<p><code>python
-&gt;&gt;&gt; d = {'data1':3, 'data2':1, 'data3':2, 'data4':4}  
-&gt;&gt;&gt; sorted(d.iteritems(), key=itemgetter(1), reverse=True)  
-[('data4', 4), ('data1', 3), ('data3', 2), ('data2', 1)]  
-</code></p>
-
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;data1&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s">&#39;data2&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;data3&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s">&#39;data4&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">}</span>  
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">iteritems</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>  
+<span class="p">[(</span><span class="s">&#39;data4&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;data1&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;data3&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;data2&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>  
+</code></pre></div>
 <p><strong>区别</strong>:sorted排序过后返回一个新的列表,而list.sort返回的是原列表并排好序.</p>
 
-<h4 id="section-4">6.15列表的特殊特性</h4>
+<h4>6.15列表的特殊特性</h4>
 
 <p>这里列表可以构建堆栈和队列:仅使用append()和pop()方法即可</p>
 
-<h4 id="section-5">6.16元组</h4>
+<h4>6.16元组</h4>
 
 <p>注意:只有一个元组需要在元组分割符里面加一个逗号(,),以防止跟普通的分组操作符混淆.</p>
 
-<h4 id="section-6">6.18元组的特殊性</h4>
+<h4>6.18元组的特殊性</h4>
 
 <p>python的3个标准不可变类型:数字,字符串和元组字符串.</p>
 
-<p>元组并不是’不可变’:</p>
+<p>元组并不是&#39;不可变&#39;:</p>
 
 <ul>
-  <li>把元组连接成一个大元组:</li>
+<li>把元组连接成一个大元组:</li>
 </ul>
-
-<p>```python
-»&gt; t=(‘third’,’fourth’)
-»&gt; t
-(‘third’, ‘fourth’)
-»&gt; t = t + (‘fifth’,’sixth’)
-»&gt; t
-(‘third’, ‘fourth’, ‘fifth’, ‘sixth’)</p>
-
-<p>```</p>
-
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">t</span><span class="o">=</span><span class="p">(</span><span class="s">&#39;third&#39;</span><span class="p">,</span><span class="s">&#39;fourth&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span>
+<span class="p">(</span><span class="s">&#39;third&#39;</span><span class="p">,</span> <span class="s">&#39;fourth&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="p">(</span><span class="s">&#39;fifth&#39;</span><span class="p">,</span><span class="s">&#39;sixth&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span>
+<span class="p">(</span><span class="s">&#39;third&#39;</span><span class="p">,</span> <span class="s">&#39;fourth&#39;</span><span class="p">,</span> <span class="s">&#39;fifth&#39;</span><span class="p">,</span> <span class="s">&#39;sixth&#39;</span><span class="p">)</span>
+</code></pre></div>
 <ul>
-  <li>元组中包含可变的对象:</li>
+<li>元组中包含可变的对象:</li>
 </ul>
-
-<p><code>python
-&gt;&gt;&gt;t = (['xyz',123],23,456)
-&gt;&gt;&gt;t[0][0] = 'abc'
-&gt;&gt;&gt;t
- (['abc',123],23,456)
-</code></p>
-
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span><span class="n">t</span> <span class="o">=</span> <span class="p">([</span><span class="s">&#39;xyz&#39;</span><span class="p">,</span><span class="mi">123</span><span class="p">],</span><span class="mi">23</span><span class="p">,</span><span class="mi">456</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;abc&#39;</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">t</span>
+ <span class="p">([</span><span class="s">&#39;abc&#39;</span><span class="p">,</span><span class="mi">123</span><span class="p">],</span><span class="mi">23</span><span class="p">,</span><span class="mi">456</span><span class="p">)</span>
+</code></pre></div>
 <p>所有的多对象的,逗号分割的,没有明确用符号定义的,这些集合默认的类型都是元组.</p>
-
-<p><code>python
-&gt;&gt;&gt; 123,'23',345
-(123, '23', 345)
-</code></p>
-
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="mi">123</span><span class="p">,</span><span class="s">&#39;23&#39;</span><span class="p">,</span><span class="mi">345</span>
+<span class="p">(</span><span class="mi">123</span><span class="p">,</span> <span class="s">&#39;23&#39;</span><span class="p">,</span> <span class="mi">345</span><span class="p">)</span>
+</code></pre></div>
 <p>所有函数返回的多对象都是元组类型.注意,有符号封装的多对象集合其实是返回的一个单一的容器对象.</p>
-
-<p><code>python
-def foo1():
-    :
-    return obj1,obj2,obj3
-</code></p>
-
-<h4 id="section-7">6.20浅拷贝和深拷贝</h4>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">foo1</span><span class="p">():</span>
+    <span class="p">:</span>
+    <span class="k">return</span> <span class="n">obj1</span><span class="p">,</span><span class="n">obj2</span><span class="p">,</span><span class="n">obj3</span>
+</code></pre></div>
+<h4>6.20浅拷贝和深拷贝</h4>
 
 <p>序列类型的对象的浅拷贝是默认拷贝类型,有以下几种方法:</p>
 
 <ol>
-  <li>完全切片[:]</li>
-  <li>利用工厂函数,如list(),dict()等</li>
-  <li>使用copy模块的copy函数</li>
+<li>完全切片[:]</li>
+<li>利用工厂函数,如list(),dict()等</li>
+<li>使用copy模块的copy函数</li>
 </ol>
 
 <p>如果使用深拷贝则要用copy.deepcopy()函数.</p>
 
 <blockquote>
-  <p>注意:
+<p>注意:
 1. 非容器类型(数字,字符串)没有被拷贝一说,浅拷贝是用完全切片操作来完成的.
 2. 如果元组变量只包含原子类型对象,对它的深拷贝将不会进行.</p>
 </blockquote>
-
 
     </article>
     <!-- Duoshuo Comment BEGIN -->

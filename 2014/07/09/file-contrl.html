@@ -75,45 +75,33 @@
         <p class="meta"><i class="fa fa-calendar"></i> 2014-07-09&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#Python">Python</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#python">python</a></p>
     </header>
     <article class="post-content">
-        <h2 id="oslistdir">方法1：使用os.listdir</h2>
-
-<p><code>python
-import os
-for filename in os.listdir(r'c:\windows'):
-    print filename
-</code></p>
-
-<h2 id="glob">方法2：使用glob模块，可以设置文件过滤</h2>
-
-<p><code>python
-import glob
-for filename in glob.glob(r'c:\windows\*.exe'):
-    print filename
-</code></p>
-
-<h2 id="ospathwalk">方法3：通过os.path.walk递归遍历，可以访问子文件夹</h2>
-
-<p>```python
-import os.path
-def processDirectory ( args, dirname, filenames ):
-    print ‘Directory’,dirname
-    for filename in filenames:
-        print ‘ File’,filename</p>
-
-<p>os.path.walk(r’c:\windows’, processDirectory, None )
-```</p>
-
-<h2 id="section">方法4：非递归</h2>
-
-<p><code>python
-import os
-for dirpath, dirnames, filenames in os.walk('c:\\winnt'):
-    print 'Directory', dirpath
-    for filename in filenames:
-        print ' File', filename
-</code></p>
+        <h2>方法1：使用os.listdir</h2>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span>
+<span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s">r&#39;c:\windows&#39;</span><span class="p">):</span>
+    <span class="k">print</span> <span class="n">filename</span>
+</code></pre></div>
+<h2>方法2：使用glob模块，可以设置文件过滤</h2>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">glob</span>
+<span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s">r&#39;c:\windows\*.exe&#39;</span><span class="p">):</span>
+    <span class="k">print</span> <span class="n">filename</span>
+</code></pre></div>
+<h2>方法3：通过os.path.walk递归遍历，可以访问子文件夹</h2>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os.path</span>
+<span class="k">def</span> <span class="nf">processDirectory</span> <span class="p">(</span> <span class="n">args</span><span class="p">,</span> <span class="n">dirname</span><span class="p">,</span> <span class="n">filenames</span> <span class="p">):</span>
+    <span class="k">print</span> <span class="s">&#39;Directory&#39;</span><span class="p">,</span><span class="n">dirname</span>
+    <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&#39; File&#39;</span><span class="p">,</span><span class="n">filename</span>
 
 
+<span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s">r&#39;c:\windows&#39;</span><span class="p">,</span> <span class="n">processDirectory</span><span class="p">,</span> <span class="bp">None</span> <span class="p">)</span>
+</code></pre></div>
+<h2>方法4：非递归</h2>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span>
+<span class="k">for</span> <span class="n">dirpath</span><span class="p">,</span> <span class="n">dirnames</span><span class="p">,</span> <span class="n">filenames</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s">&#39;c:</span><span class="se">\\</span><span class="s">winnt&#39;</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&#39;Directory&#39;</span><span class="p">,</span> <span class="n">dirpath</span>
+    <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&#39; File&#39;</span><span class="p">,</span> <span class="n">filename</span>
+</code></pre></div>
     </article>
     <!-- Duoshuo Comment BEGIN -->
     <div id="comments">

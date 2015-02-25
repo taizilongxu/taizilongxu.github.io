@@ -77,340 +77,240 @@
     <article class="post-content">
         <p>javascript的语法相比于c和python来说真是简单不少.下面是javascript的基础语法,作为笔记记录,这篇笔记假设有Python和C的基础.只列出一些需要记忆和区别的地方.</p>
 
-<h2 id="section">1 语法</h2>
+<h2>1 语法</h2>
 
-<h3 id="section-1">1.1 语句</h3>
+<h3>1.1 语句</h3>
 
 <p>三种形式:</p>
 
 <p>每条语句放在不同行:</p>
-
-<p><code>javascript
-first statement
-second statement
-</code></p>
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">first</span> <span class="nx">statement</span>
+<span class="nx">second</span> <span class="nx">statement</span>
+</code></pre></div>
 <p>放在同一行:</p>
-
-<p><code>javascript
-first statement; second statement
-</code></p>
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">first</span> <span class="nx">statement</span><span class="p">;</span> <span class="nx">second</span> <span class="nx">statement</span>
+</code></pre></div>
 <p>建议写法,通用写法:</p>
-
-<p><code>javascript
-first statement;
-second statement;
-</code></p>
-
-<h3 id="section-2">1.2 注释</h3>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">first</span> <span class="nx">statement</span><span class="p">;</span>
+<span class="nx">second</span> <span class="nx">statement</span><span class="p">;</span>
+</code></pre></div>
+<h3>1.2 注释</h3>
 
 <p>单行:</p>
-
-<p><code>javascript
-//注释
-</code></p>
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//注释</span>
+</code></pre></div>
 <p>多行:</p>
-
-<p><code>javascript
-/*注释
-  注释
-  注释*/
-</code></p>
-
-<h3 id="section-3">1.3 变量</h3>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/*注释</span>
+<span class="cm">  注释</span>
+<span class="cm">  注释*/</span>
+</code></pre></div>
+<h3>1.3 变量</h3>
 
 <p>javascript允许程序员直接对变量赋值而无需事先声明.</p>
-
-<p><code>javascript
-mod = "happy";
-age = 33
-</code></p>
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">mod</span> <span class="o">=</span> <span class="s2">&quot;happy&quot;</span><span class="p">;</span>
+<span class="nx">age</span> <span class="o">=</span> <span class="mi">33</span>
+</code></pre></div>
 <p>但提前声明变量是一种良好的编程习惯.</p>
-
-<p><code>javascript
-var mod;
-var age;
-或者
-var mod, age;
-</code></p>
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">mod</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">age</span><span class="p">;</span>
+<span class="err">或者</span>
+<span class="kd">var</span> <span class="nx">mod</span><span class="p">,</span> <span class="nx">age</span><span class="p">;</span>
+</code></pre></div>
 <p>在javascript里变量和其他语法元素的名字都是<strong>区分字母大小写</strong>的.</p>
 
-<h3 id="section-4">1.4 数据类型</h3>
+<h3>1.4 数据类型</h3>
 
 <ol>
-  <li>
-    <p>字符串:单双引号都可以(同Python一样),个人感觉双引号更好,不过随便,程序保持一致最重要.</p>
-
-    <p><code>javascript
- var mood = 'happy';
- var mood = "happy";
- var mood = "don't ask";
- var mood = 'don\'t ask';
- var mood = "about 5'10\" tall";
-</code></p>
-  </li>
-  <li>
-    <p>数值:整数,浮点数,负数.</p>
-
-    <p><code>javascript
- var age = 33.25;
- var temperature = -20;
- var temperature = -20.3333333;
-</code></p>
-  </li>
-  <li>
-    <p>布尔值:和Python不一样的是关键字是小写,<code>true</code>和<code>false</code></p>
-
-    <p><code>javascript
- var sleeping = true;
-</code></p>
-  </li>
+<li><p>字符串:单双引号都可以(同Python一样),个人感觉双引号更好,不过随便,程序保持一致最重要.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">mood</span> <span class="o">=</span> <span class="s1">&#39;happy&#39;</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">mood</span> <span class="o">=</span> <span class="s2">&quot;happy&quot;</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">mood</span> <span class="o">=</span> <span class="s2">&quot;don&#39;t ask&quot;</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">mood</span> <span class="o">=</span> <span class="s1">&#39;don\&#39;t ask&#39;</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">mood</span> <span class="o">=</span> <span class="s2">&quot;about 5&#39;10\&quot; tall&quot;</span><span class="p">;</span>
+</code></pre></div></li>
+<li><p>数值:整数,浮点数,负数.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">age</span> <span class="o">=</span> <span class="mf">33.25</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">temperature</span> <span class="o">=</span> <span class="o">-</span><span class="mi">20</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">temperature</span> <span class="o">=</span> <span class="o">-</span><span class="mf">20.3333333</span><span class="p">;</span>
+</code></pre></div></li>
+<li><p>布尔值:和Python不一样的是关键字是小写,<code>true</code>和<code>false</code></p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">sleeping</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</code></pre></div></li>
 </ol>
 
-<h3 id="section-5">1.5 数组</h3>
+<h3>1.5 数组</h3>
 
 <p>4个元素的数组:</p>
-
-<p><code>javascript
-var beatles = Array(4);
-</code></p>
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">beatles</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+</code></pre></div>
 <p>无法预支元素个数:</p>
-
-<p><code>javascript
-var beatles = Array();
-</code></p>
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">beatles</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">();</span>
+</code></pre></div>
 <p>在声明数组时进行赋值:</p>
-
-<p><code>javascript
-var beatles = Array("John", "Paul", "George", "Ringo");
-</code></p>
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">beatles</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">(</span><span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Paul&quot;</span><span class="p">,</span> <span class="s2">&quot;George&quot;</span><span class="p">,</span> <span class="s2">&quot;Ringo&quot;</span><span class="p">);</span>
+</code></pre></div>
 <p>还有一种方法创建,和python列表一样:</p>
-
-<p><code>javascript
-var beatles = ["John", "Paul", "George", "Ringo"];
-</code></p>
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">beatles</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Paul&quot;</span><span class="p">,</span> <span class="s2">&quot;George&quot;</span><span class="p">,</span> <span class="s2">&quot;Ringo&quot;</span><span class="p">];</span>
+</code></pre></div>
 <p>数组元素可以混合类型:</p>
-
-<p><code>javascript
-var lennon = ["John", 1940, false]
-</code></p>
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">lennon</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="mi">1940</span><span class="p">,</span> <span class="kc">false</span><span class="p">]</span>
+</code></pre></div>
 <p>数组元素还可以是变量:</p>
-
-<p><code>javascript
-var name = "John";
-beatles[0] = name;
-</code></p>
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="s2">&quot;John&quot;</span><span class="p">;</span>
+<span class="nx">beatles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+</code></pre></div>
 <p>元素赋值:</p>
-
-<p><code>javascript
-array[index] = element;
-</code></p>
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">array</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span> <span class="o">=</span> <span class="nx">element</span><span class="p">;</span>
+</code></pre></div>
 <p>数组基本和Python语法一致.</p>
 
-<h3 id="section-6">1.6 对象</h3>
+<h3>1.6 对象</h3>
 
 <p>与数组类似.对象的每个值都是对象的一个属性.</p>
-
-<p><code>javascript
-var lennon = Object();
-lennon.name = "John";
-lennon.year = 1940;
-lennon.living = false;
-</code></p>
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">lennon</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">();</span>
+<span class="nx">lennon</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s2">&quot;John&quot;</span><span class="p">;</span>
+<span class="nx">lennon</span><span class="p">.</span><span class="nx">year</span> <span class="o">=</span> <span class="mi">1940</span><span class="p">;</span>
+<span class="nx">lennon</span><span class="p">.</span><span class="nx">living</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</code></pre></div>
 <p>还有一种方法,和Python的字典一个样:</p>
-
-<p><code>javascript
-var lennon = {name:"John", year:1940, living:false};
-或者
-var lennon = {};
-lennon.name = "John";
-lennon.year = 1940;
-lennon.living = false;
-</code></p>
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">lennon</span> <span class="o">=</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="nx">year</span><span class="o">:</span><span class="mi">1940</span><span class="p">,</span> <span class="nx">living</span><span class="o">:</span><span class="kc">false</span><span class="p">};</span>
+<span class="err">或者</span>
+<span class="kd">var</span> <span class="nx">lennon</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="nx">lennon</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s2">&quot;John&quot;</span><span class="p">;</span>
+<span class="nx">lennon</span><span class="p">.</span><span class="nx">year</span> <span class="o">=</span> <span class="mi">1940</span><span class="p">;</span>
+<span class="nx">lennon</span><span class="p">.</span><span class="nx">living</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</code></pre></div>
 <p>这里的属性名和Javascript的变量名命名规则相同,属性值可以是任何Javascript值,包括对象.</p>
 
-<h3 id="section-7">1.7 算术操作符</h3>
+<h3>1.7 算术操作符</h3>
 
 <p>这个没什么好说的了:</p>
-
-<p><code>javascript
-var total = (1 + 4) * 5;
-year = year + 1;
-year++;
-year += 1;
-</code></p>
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">total</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span><span class="p">;</span>
+<span class="nx">year</span> <span class="o">=</span> <span class="nx">year</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<span class="nx">year</span><span class="o">++</span><span class="p">;</span>
+<span class="nx">year</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+</code></pre></div>
 <p>数值和字符串拼接,这里数值将会自动转换为字符串进行相加:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">year</span> <span class="o">=</span> <span class="mi">2005</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">message</span> <span class="o">=</span> <span class="s2">&quot;The year is &quot;</span> <span class="o">+</span> <span class="nx">year</span><span class="p">;</span>
+</code></pre></div>
+<h2>2 控制语句</h2>
 
-<p><code>javascript
-var year = 2005;
-var message = "The year is " + year;
-</code></p>
-
-<h2 id="section-8">2 控制语句</h2>
-
-<h3 id="section-9">2.1 条件语句</h3>
+<h3>2.1 条件语句</h3>
 
 <p>基本语法:</p>
-
-<p><code>javascript
-if (condition){
-    statements;
-} else {
-    statements;
-}
-</code></p>
-
-<h4 id="section-10">2.1.1 比较操作符</h4>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">if</span> <span class="p">(</span><span class="nx">condition</span><span class="p">){</span>
+    <span class="nx">statements</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">statements</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4>2.1.1 比较操作符</h4>
 
 <p>还是那几种:<code>&gt;</code>,<code>&lt;</code>,<code>&lt;=</code>,<code>&gt;=</code>,<code>==</code>,<code>!=</code>.</p>
 
 <p>最后还有一种和别的语言不一样的:<code>===</code>,这个全等操作符会执行严格的比较,不仅比较值,而且会比较变量的类型.例如:</p>
-
-<p><code>javascript
-var a = false;
-var b = "";
-a == b; // true
-a === b; //false
-</code></p>
-
-<h4 id="section-11">2.1.2 逻辑操作符</h4>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="nx">a</span> <span class="o">==</span> <span class="nx">b</span><span class="p">;</span> <span class="c1">// true</span>
+<span class="nx">a</span> <span class="o">===</span> <span class="nx">b</span><span class="p">;</span> <span class="c1">//false</span>
+</code></pre></div>
+<h4>2.1.2 逻辑操作符</h4>
 
 <p>逻辑与<code>&amp;&amp;</code>,逻辑或<code>||</code>,逻辑非<code>!</code>.</p>
 
-<h3 id="section-12">2.2 循环语句</h3>
+<h3>2.2 循环语句</h3>
 
-<h4 id="while">2.2.1 while循环</h4>
+<h4>2.2.1 while循环</h4>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">while</span> <span class="p">(</span><span class="nx">condition</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">statements</span><span class="p">;</span>
+<span class="p">}</span>
 
-<p>```javascript
-while (condition) {
-    statements;
-}</p>
-
-<p>do{
-	statements;
-} while(condition);
-```</p>
-
+<span class="k">do</span><span class="p">{</span>
+    <span class="nx">statements</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">while</span><span class="p">(</span><span class="nx">condition</span><span class="p">);</span>
+</code></pre></div>
 <p>例子:</p>
-
-<p><code>javascript
-var count = 1;
-while(count &lt; 11){
-	alert(count);
-    count++;
-}
-</code></p>
-
-<h4 id="for">2.2.2 for循环</h4>
-
-<p><code>javascript
-for (initial condition; test condition; alter condition){
-	statements;
-}
-</code></p>
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">while</span><span class="p">(</span><span class="nx">count</span> <span class="o">&lt;</span> <span class="mi">11</span><span class="p">){</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">count</span><span class="p">);</span>
+    <span class="nx">count</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4>2.2.2 for循环</h4>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">for</span> <span class="p">(</span><span class="nx">initial</span> <span class="nx">condition</span><span class="p">;</span> <span class="nx">test</span> <span class="nx">condition</span><span class="p">;</span> <span class="nx">alter</span> <span class="nx">condition</span><span class="p">){</span>
+    <span class="nx">statements</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>例子:</p>
-
-<p><code>javascript
-for (var count = 1; count &lt; 11; count++){
-	alert(count);
-}
-</code></p>
-
-<h2 id="section-13">3 函数</h2>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">count</span> <span class="o">&lt;</span> <span class="mi">11</span><span class="p">;</span> <span class="nx">count</span><span class="o">++</span><span class="p">){</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">count</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2>3 函数</h2>
 
 <p>函数的作用就是重用和封装,每个语言都差不多.先定义,后调用.</p>
-
-<p><code>javascript
-function name(arguments){
-	statements;
-}
-</code></p>
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">name</span><span class="p">(</span><span class="nx">arguments</span><span class="p">){</span>
+    <span class="nx">statements</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>例子:</p>
-
-<p><code>javascript
-function shout(){
-	var beatles = ["John", "Paul", "George", "Ringo"];
-    for (var count = 0; count &lt; beatles.length; count++){
-    	alert(beatles[count]);
-    }
-}
-</code></p>
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">shout</span><span class="p">(){</span>
+    <span class="kd">var</span> <span class="nx">beatles</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Paul&quot;</span><span class="p">,</span> <span class="s2">&quot;George&quot;</span><span class="p">,</span> <span class="s2">&quot;Ringo&quot;</span><span class="p">];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">count</span> <span class="o">&lt;</span> <span class="nx">beatles</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">count</span><span class="o">++</span><span class="p">){</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="nx">beatles</span><span class="p">[</span><span class="nx">count</span><span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>调用:</p>
-
-<p><code>javascript
-shout();
-</code></p>
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">shout</span><span class="p">();</span>
+</code></pre></div>
 <p>还可以return:</p>
-
-<p><code>javascript
-function converToCelsius(temp){
-	var result = temp - 32;
-    result = result / 1.8;
-    return result;
-}
-</code></p>
-
-<h4 id="section-14">命名规则:</h4>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">converToCelsius</span><span class="p">(</span><span class="nx">temp</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">temp</span> <span class="o">-</span> <span class="mi">32</span><span class="p">;</span>
+    <span class="nx">result</span> <span class="o">=</span> <span class="nx">result</span> <span class="o">/</span> <span class="mf">1.8</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4>命名规则:</h4>
 
 <ol>
-  <li>变量:下划线分隔各个单词.例如<code>temp_celsius</code>.</li>
-  <li>函数:从第二个单词开始把每个而单词的第一个字母写成大写形式(驼峰命名).例如<code>convertToCelsius()</code></li>
+<li>变量:下划线分隔各个单词.例如<code>temp_celsius</code>.</li>
+<li>函数:从第二个单词开始把每个而单词的第一个字母写成大写形式(驼峰命名).例如<code>convertToCelsius()</code></li>
 </ol>
 
-<h4 id="section-15">变量的作用域</h4>
+<h4>变量的作用域</h4>
 
 <ul>
-  <li>全局变量:可以在脚本中任何位置引用.注意:在函数里也可以引用.</li>
-  <li>局部变量:只存在于声明它的那个函数内部,在函数外部是无法引用的.</li>
+<li>全局变量:可以在脚本中任何位置引用.注意:在函数里也可以引用.</li>
+<li>局部变量:只存在于声明它的那个函数内部,在函数外部是无法引用的.</li>
 </ul>
 
 <p>所以,我们在函数里既可以使用全局变量,也可以用局部变量.</p>
 
 <p>BUG:如果我们在函数里的变量和全局变量重名,那么我们不能轻易使用,必须提前声明,所以声明是个好习惯.</p>
-
-<p><code>javascript
-total = 100
-function square(num){
-	var total = num * num;
-    // 不能这样写 total = num * num;
-    return total;
-}
-</code></p>
-
-<h2 id="section-16">4 对象</h2>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">total</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="kd">function</span> <span class="nx">square</span><span class="p">(</span><span class="nx">num</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">total</span> <span class="o">=</span> <span class="nx">num</span> <span class="o">*</span> <span class="nx">num</span><span class="p">;</span>
+    <span class="c1">// 不能这样写 total = num * num;</span>
+    <span class="k">return</span> <span class="nx">total</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2>4 对象</h2>
 
 <p>属性,方法,实例自不必说了.</p>
 
-<h4 id="section-17">4.1 内建对象</h4>
+<h4>4.1 内建对象</h4>
 
 <p>提供的预先定义好的对象,这些可以拿来就用的对象称为内建对象(native object).</p>
 
 <p>比如,Array对象,Math对象和Date对象.</p>
 
-<h4 id="section-18">4.2 宿主对象</h4>
+<h4>4.2 宿主对象</h4>
 
 <p>由浏览器提供的预定义对象被称为宿主对象(host object).</p>
 
 <p>宿主对象包括Form,Image和Element等.</p>
-
 
     </article>
     <!-- Duoshuo Comment BEGIN -->

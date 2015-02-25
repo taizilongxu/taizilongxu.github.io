@@ -80,41 +80,37 @@
 <p>假如你开发个爬虫,要把它做成非阻塞异步的模式,而且你事先不知道如何爬取,你会怎么做呢?最好的方法是把每个页面和函数一一对应,然后每个页面都有自己的抓取规则,这样程序就知道对应的网页该如何处理了,把它放到线程(进程)池,再做异步处理,这就是<code>scrapy</code>处理的方式.</p>
 
 <p>下面是scrapy的小demo(<a href="https://github.com/taizilongxu/scrapy_jingdong/blob/master/tutorial/spiders/jd_spider.py">源代码</a>):</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">JdSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;test&quot;</span>
+    <span class="n">allowed_domains</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;jd.com&quot;</span><span class="p">]</span>
+    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s">&quot;http://wap.jd.com/category/all.html&quot;</span>
+    <span class="p">]</span>
 
-<p>```python
-class JdSpider(scrapy.Spider):
-    name = “test”
-    allowed_domains = [“jd.com”]
-    start_urls = [
-        “http://wap.jd.com/category/all.html”
-    ]</p>
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="s">&#39;获取全部分类商品&#39;</span>
+        <span class="n">req</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">sel</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&#39;/html/body/div[5]/div[2]/a&#39;</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&#39;@href&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">():</span>
+                <span class="k">if</span> <span class="s">&#39;category&#39;</span> <span class="ow">in</span> <span class="n">i</span><span class="p">:</span>
+                    <span class="n">url</span> <span class="o">=</span> <span class="s">&quot;http://wap.jd.com&quot;</span> <span class="o">+</span> <span class="n">i</span>
+                    <span class="n">r</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse_category</span><span class="p">)</span>  <span class="c"># 回调函数用来指定特定页面的操作.对应的是self.parse_category函数</span>
+                    <span class="n">req</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">req</span>
 
-<pre><code>def parse(self, response):
-    '获取全部分类商品'
-    req = []
-    for sel in response.xpath('/html/body/div[5]/div[2]/a'):
-        for i in sel.xpath('@href').extract():
-            if 'category' in i:
-                url = "http://wap.jd.com" + i
-                r = Request(url, callback=self.parse_category)  # 回调函数用来指定特定页面的操作.对应的是self.parse_category函数
-                req.append(r)
-    return req
-
-def parse_category(self,response):
-    '获取分类页'
-    req = []
-    for sel in response.xpath('/html/body/div[5]/div/a'):
-        for i in sel.xpath('@href').extract():
-            url = "http://wap.jd.com" + i
-            r = Request(url, callback=self.parse_list)  # 回调函数
-            req.append(r)
-    return req ```
-</code></pre>
-
+    <span class="k">def</span> <span class="nf">parse_category</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">response</span><span class="p">):</span>
+        <span class="s">&#39;获取分类页&#39;</span>
+        <span class="n">req</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">sel</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&#39;/html/body/div[5]/div/a&#39;</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&#39;@href&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">():</span>
+                <span class="n">url</span> <span class="o">=</span> <span class="s">&quot;http://wap.jd.com&quot;</span> <span class="o">+</span> <span class="n">i</span>
+                <span class="n">r</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse_list</span><span class="p">)</span>  <span class="c"># 回调函数</span>
+                <span class="n">req</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">req</span>
+</code></pre></div>
 <p>可以看到Request里每一个url对应一个callback,我们要做的就是把url和提取规则联系起来交给scrapy处理.</p>
 
 <p><a href="http://www.zhihu.com/question/19801131">这里</a>是知乎的答案,长篇大论的写了很多,但是饶了很多弯子.</p>
-
 
     </article>
     <!-- Duoshuo Comment BEGIN -->

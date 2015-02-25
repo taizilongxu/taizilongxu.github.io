@@ -79,87 +79,64 @@
 
 <p>这是配置的最终效果:</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-09-12 10:29:35 的屏幕截图.png" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-09-12%2010:29:35%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
 
-<h3 id="tmux">配置tmux</h3>
+<h3>配置tmux</h3>
 
-<h5 id="zshzshshell">1 如果你用zsh,设置zsh作为默认的shell解析器</h5>
-
-<p><code>
- set-option -g default-shell /bin/zsh 
-</code></p>
-
-<h5 id="c-qc-atmuxprefix">2 配置前缀键,我一般是用<code>&lt;C-q&gt;</code>来调用终端,<code>&lt;C-a&gt;</code>来绑定tmux的prefix</h5>
-
-<p><code>
-set -g prefix C-a
+<h5>1 如果你用zsh,设置zsh作为默认的shell解析器</h5>
+<div class="highlight"><pre><code class="language-text" data-lang="text"> set-option -g default-shell /bin/zsh 
+</code></pre></div>
+<h5>2 配置前缀键,我一般是用<code>&lt;C-q&gt;</code>来调用终端,<code>&lt;C-a&gt;</code>来绑定tmux的prefix</h5>
+<div class="highlight"><pre><code class="language-text" data-lang="text">set -g prefix C-a
 unbind C-b
-</code></p>
-
-<h5 id="vimhjkl">3 用vim的hjkl键来选择面板</h5>
-
-<p><code>
-bind-key k select-pane -U
+</code></pre></div>
+<h5>3 用vim的hjkl键来选择面板</h5>
+<div class="highlight"><pre><code class="language-text" data-lang="text">bind-key k select-pane -U
 bind-key j select-pane -D
 bind-key h select-pane -L
 bind-key l select-pane -R
-</code></p>
-
-<h5 id="vim">4 调整面板大小,也是vim的四个方向键,很舒服</h5>
-
-<p><code>
-bind -r ^k resizep -U 10 # upward (prefix Ctrl+k)
+</code></pre></div>
+<h5>4 调整面板大小,也是vim的四个方向键,很舒服</h5>
+<div class="highlight"><pre><code class="language-text" data-lang="text">bind -r ^k resizep -U 10 # upward (prefix Ctrl+k)
 bind -r ^j resizep -D 10 # downward (prefix Ctrl+j)
 bind -r ^h resizep -L 10 # to the left (prefix Ctrl+h)
 bind -r ^l resizep -R 10 # to the right (prefix Ctrl+l)
-</code></p>
-
-<h5 id="section">5 鼠标操作</h5>
-
-<p><code>
-#鼠标滚轮可以使用
+</code></pre></div>
+<h5>5 鼠标操作</h5>
+<div class="highlight"><pre><code class="language-text" data-lang="text">#鼠标滚轮可以使用
 set-window-option -g mode-mouse on
 # 鼠标可以选中窗口
 set-option -g mouse-select-pane on
-</code></p>
-
-<h5 id="copy-mode">6 复制模式copy-mode</h5>
+</code></pre></div>
+<h5>6 复制模式copy-mode</h5>
 
 <ol>
-  <li>前缀 [ 进入复制模式</li>
-  <li>按 space 开始复制，移动光标选择复制区域</li>
-  <li>按 Enter 复制并退出copy-mode。</li>
-  <li>将光标移动到指定位置，按 PREIFX ] 粘贴</li>
+<li>前缀 [ 进入复制模式</li>
+<li>按 space 开始复制，移动光标选择复制区域</li>
+<li>按 Enter 复制并退出copy-mode。</li>
+<li>将光标移动到指定位置，按 PREIFX ] 粘贴</li>
 </ol>
 
 <p>如果把tmux比作vim的话，那么我们大部分时间都是处于编辑模式，我们复制的时候可不可以像vim一样移动呢？只需要在配置文件(~/.tmux.conf)中加入如下行即可。</p>
-
-<p><code>
-#copy-mode 将快捷键设置为vi 模式
+<div class="highlight"><pre><code class="language-text" data-lang="text">#copy-mode 将快捷键设置为vi 模式
 setw -g mode-keys vi
-</code></p>
-
+</code></pre></div>
 <p><strong>ps:如果想要返回终端鼠标复制的的话,按住<code>shift</code>就可以了</strong></p>
 
-<h5 id="section-1">7 分屏操作</h5>
-
-<p><code>
-unbind '"'
+<h5>7 分屏操作</h5>
+<div class="highlight"><pre><code class="language-text" data-lang="text">unbind &#39;&quot;&#39;
 bind - splitw -v # vertical split (prefix -)
 unbind %
 bind | splitw -h # horizontal split (prefix |)
-</code></p>
+</code></pre></div>
+<h5>8 使当前pane 最大化,需要一个脚本,脚本地址发现失效了,把代码的贴出来</h5>
+<div class="highlight"><pre><code class="language-text" data-lang="text">#!/bin/bash
 
-<h5 id="pane-">8 使当前pane 最大化,需要一个脚本,脚本地址发现失效了,把代码的贴出来</h5>
-
-<p>```
-#!/bin/bash</p>
-
-<h1 id="copyright-c-2012-juan-ignacio-pumarino-jipumarinogmailcom">Copyright (c) 2012 Juan Ignacio Pumarino, jipumarino@gmail.com</h1>
-<p>#
+# Copyright (c) 2012 Juan Ignacio Pumarino, jipumarino@gmail.com
+#
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the
-# “Software”), to deal in the Software without restriction, including
+# &quot;Software&quot;), to deal in the Software without restriction, including
 # without limitation the rights to use, copy, modify, merge, publish,
 # distribute, sublicense, and/or sell copies of the Software, and to
 # permit persons to whom the Software is furnished to do so, subject to
@@ -168,16 +145,16 @@ bind | splitw -h # horizontal split (prefix |)
 # The above copyright notice and this permission notice shall be
 # included in all copies or substantial portions of the Software.
 #
-# THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND,
+# THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
 # EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 # MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
 # LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-# WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+# WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-<h1 id="instructions">Instructions</h1>
-<p># ————
+# Instructions
+# ------------
 #
 # 1. Install this script and give it execute permission somewhere in your PATH.
 #    For example:
@@ -188,21 +165,21 @@ bind | splitw -h # horizontal split (prefix |)
 #
 # 2. Add a shortcut in your ~/.tmux.conf file:
 #
-#    bind C-k run “tmux-zoom.sh”
+#    bind C-k run &quot;tmux-zoom.sh&quot;
 #
 # 3. When using this shortcut, the current tmux pane will open in a new window by itself.
 #    Running it again in the zoomed window will return it to its original pane. You can have
-#    as many zoomed windows as you want.</p>
+#    as many zoomed windows as you want.
 
-<p>current=$(tmux display-message -p ‘#W-#I-#P’)
-list=$(tmux list-window)</p>
+current=$(tmux display-message -p &#39;#W-#I-#P&#39;)
+list=$(tmux list-window)
 
-<p>[[ “$current” =~ ^(.*)-([0-9]+)-([0-9]+) ]]
+[[ &quot;$current&quot; =~ ^(.*)-([0-9]+)-([0-9]+) ]]
 current_window=${BASH_REMATCH[1]}
 current_pane=${BASH_REMATCH[2]}-${BASH_REMATCH[3]}
-new_zoom_window=ZOOM-$current_pane</p>
+new_zoom_window=ZOOM-$current_pane
 
-<p>if [[ $current_window =~ ZOOM-([0-9]+)-([0-9+]) ]]; then
+if [[ $current_window =~ ZOOM-([0-9]+)-([0-9+]) ]]; then
   old_zoom_window=ZOOM-${BASH_REMATCH[1]}-${BASH_REMATCH[2]}
   tmux select-window -t ${BASH_REMATCH[1]} \; select-pane -t ${BASH_REMATCH[2]} \; swap-pane -s $old_zoom_window.1 \; kill-window -t $old_zoom_window
 elif [[ $list =~ $new_zoom_window ]]; then
@@ -210,52 +187,47 @@ elif [[ $list =~ $new_zoom_window ]]; then
 else
   tmux new-window -d -n $new_zoom_window \; swap-pane -s $new_zoom_window.1 \; select-window -t $new_zoom_window
 fi
-```</p>
-
-<h5 id="section-2">9 终端启动初始化</h5>
+</code></pre></div>
+<h5>9 终端启动初始化</h5>
 
 <p>这也是再网上找到的,如果是zsh的话就写在~/.zshrc里,他会在每次打开终端的时候开启两个窗口并在第二个窗口开启三个panel并启动一个htop.</p>
-
-<p>```
-tmux_init()
+<div class="highlight"><pre><code class="language-text" data-lang="text">tmux_init()
 {
-    tmux new-session -s “vim” -d -n “local”    # 开启一个会话
-    tmux new-window -n “other”          # 开启一个窗口
+    tmux new-session -s &quot;vim&quot; -d -n &quot;local&quot;    # 开启一个会话
+    tmux new-window -n &quot;other&quot;          # 开启一个窗口
     tmux split-window -h                # 开启一个竖屏
-    tmux split-window -v “htop”          # 开启一个横屏,并执行top命令
+    tmux split-window -v &quot;htop&quot;          # 开启一个横屏,并执行top命令
     tmux -2 attach-session -d           # tmux -2强制启用256color，连接已开启的tmux
     selectp -t 1 #选中0panel
 }
 # 判断是否已有开启的tmux会话，没有则开启
 if which tmux 2&gt;&amp;1 &gt;/dev/null; then
-test -z “$TMUX” &amp;&amp; (tmux attach || tmux_init)
-fi</p>
+test -z &quot;$TMUX&quot; &amp;&amp; (tmux attach || tmux_init)
+fi
+</code></pre></div>
+<h3>powerline</h3>
 
-<p>```</p>
-
-<h3 id="powerline">powerline</h3>
-
-<p>伟大的poweline也兼容在tmux上了,项目地址在 https://github.com/erikw/tmux-powerline </p>
+<p>伟大的poweline也兼容在tmux上了,项目地址在 <a href="https://github.com/erikw/tmux-powerline">https://github.com/erikw/tmux-powerline</a> </p>
 
 <p>详细配置都有介绍,最主要的是还可以自己定制插件(shell),左右插件位置都可以设置,很方便.</p>
 
-<h3 id="section-3">自己常用操作</h3>
+<h3>自己常用操作</h3>
 
 <ol>
-  <li>创建窗口 <code>&lt;C-a&gt;+C</code></li>
-  <li>选择窗口 <code>&lt;C-a&gt;+w</code></li>
-  <li>切换上一个下一个会话 <code>&lt;C-a&gt;+&lt;n,p&gt;</code></li>
-  <li>切换面板 <code>&lt;C-a&gt;+hjkl</code></li>
-  <li>调整面板大小<code>&lt;C-a&gt;+&lt;C-hjkl&gt;</code></li>
-  <li>切换窗口<code>&lt;C-a&gt;+1,2,3,4...</code></li>
-  <li>分屏操作<code>&lt;C-a&gt;+-</code>和<code>&lt;C-a&gt;+|</code></li>
-  <li>关闭当前面板<code>&lt;C-a&gt;+q</code></li>
-  <li>上面那个最大化当前的面板,我绑定了k键但是和调整面板大小的按键有冲突(不管了)<code>&lt;C-a&gt;+&lt;C-k&gt;</code></li>
-  <li>面板顺时针移位<code>&lt;C-a&gt;+&lt;C-o&gt;</code></li>
-  <li>tmux自带内置布局<code>&lt;C-a&gt;+空格</code>可以切换</li>
+<li>创建窗口 <code>&lt;C-a&gt;+C</code></li>
+<li>选择窗口 <code>&lt;C-a&gt;+w</code></li>
+<li>切换上一个下一个会话 <code>&lt;C-a&gt;+&lt;n,p&gt;</code></li>
+<li>切换面板 <code>&lt;C-a&gt;+hjkl</code></li>
+<li>调整面板大小<code>&lt;C-a&gt;+&lt;C-hjkl&gt;</code></li>
+<li>切换窗口<code>&lt;C-a&gt;+1,2,3,4...</code></li>
+<li>分屏操作<code>&lt;C-a&gt;+-</code>和<code>&lt;C-a&gt;+|</code></li>
+<li>关闭当前面板<code>&lt;C-a&gt;+q</code></li>
+<li>上面那个最大化当前的面板,我绑定了k键但是和调整面板大小的按键有冲突(不管了)<code>&lt;C-a&gt;+&lt;C-k&gt;</code></li>
+<li>面板顺时针移位<code>&lt;C-a&gt;+&lt;C-o&gt;</code></li>
+<li>tmux自带内置布局<code>&lt;C-a&gt;+空格</code>可以切换</li>
 </ol>
 
-<p>参考资料:http://mingxinglai.com/cn/2012/09/tmux/</p>
+<p>参考资料:<a href="http://mingxinglai.com/cn/2012/09/tmux/">http://mingxinglai.com/cn/2012/09/tmux/</a></p>
 
     </article>
     <!-- Duoshuo Comment BEGIN -->

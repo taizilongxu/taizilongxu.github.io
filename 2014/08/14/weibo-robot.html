@@ -75,40 +75,37 @@
         <p class="meta"><i class="fa fa-calendar"></i> 2014-08-14&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#python">python</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#python">python</a></p>
     </header>
     <article class="post-content">
-        <p>为了满足需要,做了这个程序~~没事玩玩的(最主要的是可以远程关机),手机或其他终端发送一个微博,主机就可以接受到命令,运行命令.项目地址https://github.com/taizilongxu/weibo_robot</p>
+        <p>为了满足需要,做了这个程序~~没事玩玩的(最主要的是可以远程关机),手机或其他终端发送一个微博,主机就可以接受到命令,运行命令.项目地址<a href="https://github.com/taizilongxu/weibo_robot">https://github.com/taizilongxu/weibo_robot</a></p>
 
 <p>利用这个代码,可以实现自动化发送,评论,还可以收集微博的各种信息,也可以无限扩展啊</p>
 
-<p><img src="https://github.com/taizilongxu/weibo_robot/raw/master/pic/1.png" alt="" /></p>
+<p><img src="https://github.com/taizilongxu/weibo_robot/raw/master/pic/1.png" alt=""></p>
 
-<p><img src="https://github.com/taizilongxu/weibo_robot/raw/master/pic/2.png" alt="" /></p>
+<p><img src="https://github.com/taizilongxu/weibo_robot/raw/master/pic/2.png" alt=""></p>
 
-<h2 id="section">需要写入的参数</h2>
-
-<p><code>python
-APP_KEY = '' # app key
-APP_SECRET = '' # app secret
-CALLBACK_URL = '' # callback url
-AUTH_URL = 'https://api.weibo.com/oauth2/authorize'
-USERID = '' # userid
-PASSWD = '' #password
-</code></p>
-
+<h2>需要写入的参数</h2>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">APP_KEY</span> <span class="o">=</span> <span class="s">&#39;&#39;</span> <span class="c"># app key</span>
+<span class="n">APP_SECRET</span> <span class="o">=</span> <span class="s">&#39;&#39;</span> <span class="c"># app secret</span>
+<span class="n">CALLBACK_URL</span> <span class="o">=</span> <span class="s">&#39;&#39;</span> <span class="c"># callback url</span>
+<span class="n">AUTH_URL</span> <span class="o">=</span> <span class="s">&#39;https://api.weibo.com/oauth2/authorize&#39;</span>
+<span class="n">USERID</span> <span class="o">=</span> <span class="s">&#39;&#39;</span> <span class="c"># userid</span>
+<span class="n">PASSWD</span> <span class="o">=</span> <span class="s">&#39;&#39;</span> <span class="c">#password</span>
+</code></pre></div>
 <p>其中前3项需要自己注册新浪的API然后填入进程序,注意要和USERID是一个账号,否则后面的认证就会失败.</p>
 
 <p>后两项就是账号和密码了.</p>
 
-<h2 id="section-1">运行</h2>
+<h2>运行</h2>
 
 <p>在开机启动时自动启动脚本,然后~~~就可以了</p>
 
-<h2 id="section-2">过程难点</h2>
+<h2>过程难点</h2>
 
 <p>新浪的API需要返回一个code,网上大多数程序都是手动打开网页再获取code填入程序(这样一点也不科学!!)</p>
 
 <p>参考了<a href="http://blog.segmentfault.com/hongfei/1190000000343851">Python：模拟登录以获取新浪微博OAuth的code参数值</a>这篇文章,可以自动输入code了(哦也)</p>
 
-<h2 id="section-3">运行依赖</h2>
+<h2>运行依赖</h2>
 
 <p>Python 2.7
 weibo

@@ -79,7 +79,7 @@
 
 <p>Shell的运算符很特殊,需要记忆一下,此文留作查表之用</p>
 
-<h2 id="shell">Shell运算符</h2>
+<h2>Shell运算符</h2>
 
 <p>Bash 支持很多运算符，包括算数运算符、关系运算符、布尔运算符、字符串运算符和文件测试运算符。</p>
 
@@ -88,401 +88,337 @@
 <p>expr 是一款表达式计算工具，使用它能完成表达式的求值操作。</p>
 
 <p>例如，两个数相加：</p>
-
-<p><code>
-#!/bin/bash
+<div class="highlight"><pre><code class="language-text" data-lang="text">#!/bin/bash
 val=`expr 2 + 2`
-echo "Total value : $val"
-</code></p>
-
+echo &quot;Total value : $val&quot;
+</code></pre></div>
 <p>运行脚本输出：</p>
-
-<p><code>
-Total value : 4
-</code></p>
-
+<div class="highlight"><pre><code class="language-text" data-lang="text">Total value : 4
+</code></pre></div>
 <p>两点注意：</p>
 
 <ol>
-  <li>表达式和运算符之间要有空格，例如<code>2+2</code>是不对的，必须写成<code>2 + 2</code>，这与我们熟悉的大多数编程语言不一样。</li>
-  <li>完整的表达式要被<code>` `</code>包含，注意这个字符不是常用的单引号，在 Esc 键下边。</li>
+<li>表达式和运算符之间要有空格，例如<code>2+2</code>是不对的，必须写成<code>2 + 2</code>，这与我们熟悉的大多数编程语言不一样。</li>
+<li>完整的表达式要被<code>` `</code>包含，注意这个字符不是常用的单引号，在 Esc 键下边。</li>
 </ol>
 
-<h5 id="section">算术运算符列表</h5>
+<h5>算术运算符列表</h5>
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">运算符</th>
-      <th style="text-align: left">说明</th>
-      <th style="text-align: left">举例</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left">+</td>
-      <td style="text-align: left">加法</td>
-      <td style="text-align: left"><code>`expr $a + $b`</code> 结果为 30。</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">-</td>
-      <td style="text-align: left">减法</td>
-      <td style="text-align: left"><code>`expr $a - $b`</code>结果为 10。</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">*</td>
-      <td style="text-align: left">乘法</td>
-      <td style="text-align: left"><code>`expr $a \* $b`</code> 结果为  200。</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">/</td>
-      <td style="text-align: left">除法</td>
-      <td style="text-align: left"><code>`expr $b / $a`</code>结果为 2。</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">%</td>
-      <td style="text-align: left">取余</td>
-      <td style="text-align: left"><code>`expr $b % $a`</code>结果为 0。</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">=</td>
-      <td style="text-align: left">赋值</td>
-      <td style="text-align: left">a=$b 将把变量 b 的值赋给 a。</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">==</td>
-      <td style="text-align: left">相等。</td>
-      <td style="text-align: left">用于比较两个数字，相同则返回 true。	<code>[ $a == $b ]</code> 返回 false。</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">!=</td>
-      <td style="text-align: left">不相等。</td>
-      <td style="text-align: left">用于比较两个数字，不相同则返回 true。	<code>[ $a != $b ]</code>返回 true。</td>
-    </tr>
-  </tbody>
-</table>
+<table><thead>
+<tr>
+<th style="text-align: left">运算符</th>
+<th style="text-align: left">说明</th>
+<th style="text-align: left">举例</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">+</td>
+<td style="text-align: left">加法</td>
+<td style="text-align: left"><code>`expr $a + $b`</code> 结果为 30。</td>
+</tr>
+<tr>
+<td style="text-align: left">-</td>
+<td style="text-align: left">减法</td>
+<td style="text-align: left"><code>`expr $a - $b`</code>结果为 10。</td>
+</tr>
+<tr>
+<td style="text-align: left">*</td>
+<td style="text-align: left">乘法</td>
+<td style="text-align: left"><code>`expr $a \* $b`</code> 结果为  200。</td>
+</tr>
+<tr>
+<td style="text-align: left">/</td>
+<td style="text-align: left">除法</td>
+<td style="text-align: left"><code>`expr $b / $a`</code>结果为 2。</td>
+</tr>
+<tr>
+<td style="text-align: left">%</td>
+<td style="text-align: left">取余</td>
+<td style="text-align: left"><code>`expr $b % $a`</code>结果为 0。</td>
+</tr>
+<tr>
+<td style="text-align: left">=</td>
+<td style="text-align: left">赋值</td>
+<td style="text-align: left">a=$b 将把变量 b 的值赋给 a。</td>
+</tr>
+<tr>
+<td style="text-align: left">==</td>
+<td style="text-align: left">相等。</td>
+<td style="text-align: left">用于比较两个数字，相同则返回 true。   <code>[ $a == $b ]</code> 返回 false。</td>
+</tr>
+<tr>
+<td style="text-align: left">!=</td>
+<td style="text-align: left">不相等。</td>
+<td style="text-align: left">用于比较两个数字，不相同则返回 true。 <code>[ $a != $b ]</code>返回 true。</td>
+</tr>
+</tbody></table>
 
-<h5 id="section-1">关系运算符列表</h5>
+<h5>关系运算符列表</h5>
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">运算符</th>
-      <th style="text-align: left">说明</th>
-      <th style="text-align: left">举例</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left">-eq</td>
-      <td style="text-align: left">检测两个数是否相等，相等返回 true。</td>
-      <td style="text-align: left"><code>[ $a -eq $b ]</code>返回 true。</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">-ne</td>
-      <td style="text-align: left">检测两个数是否相等，不相等返回 true。</td>
-      <td style="text-align: left"><code>[ $a -ne $b ]</code> 返回 true。</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">-gt</td>
-      <td style="text-align: left">检测左边的数是否大于右边的，如果是，则返回 true。</td>
-      <td style="text-align: left"><code>[ $a -gt $b ]</code>返回 false。</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">-lt</td>
-      <td style="text-align: left">检测左边的数是否小于右边的，如果是，则返回 true。</td>
-      <td style="text-align: left"><code>[ $a -lt $b ]</code>返回 true。</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">-ge</td>
-      <td style="text-align: left">检测左边的数是否大等于右边的，如果是，则返回 true。</td>
-      <td style="text-align: left"><code>[ $a -ge $b ]</code> 返回 false。</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">-le</td>
-      <td style="text-align: left">检测左边的数是否小于等于右边的，如果是，则返回 true。</td>
-      <td style="text-align: left"><code>[ $a -le $b ]</code> 返回 true。</td>
-    </tr>
-  </tbody>
-</table>
+<table><thead>
+<tr>
+<th style="text-align: left">运算符</th>
+<th style="text-align: left">说明</th>
+<th style="text-align: left">举例</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">-eq</td>
+<td style="text-align: left">检测两个数是否相等，相等返回 true。</td>
+<td style="text-align: left"><code>[ $a -eq $b ]</code>返回 true。</td>
+</tr>
+<tr>
+<td style="text-align: left">-ne</td>
+<td style="text-align: left">检测两个数是否相等，不相等返回 true。</td>
+<td style="text-align: left"><code>[ $a -ne $b ]</code> 返回 true。</td>
+</tr>
+<tr>
+<td style="text-align: left">-gt</td>
+<td style="text-align: left">检测左边的数是否大于右边的，如果是，则返回 true。</td>
+<td style="text-align: left"><code>[ $a -gt $b ]</code>返回 false。</td>
+</tr>
+<tr>
+<td style="text-align: left">-lt</td>
+<td style="text-align: left">检测左边的数是否小于右边的，如果是，则返回 true。</td>
+<td style="text-align: left"><code>[ $a -lt $b ]</code>返回 true。</td>
+</tr>
+<tr>
+<td style="text-align: left">-ge</td>
+<td style="text-align: left">检测左边的数是否大等于右边的，如果是，则返回 true。</td>
+<td style="text-align: left"><code>[ $a -ge $b ]</code> 返回 false。</td>
+</tr>
+<tr>
+<td style="text-align: left">-le</td>
+<td style="text-align: left">检测左边的数是否小于等于右边的，如果是，则返回 true。</td>
+<td style="text-align: left"><code>[ $a -le $b ]</code> 返回 true。</td>
+</tr>
+</tbody></table>
 
-<h5 id="section-2">布尔运算符列表</h5>
+<h5>布尔运算符列表</h5>
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">运算符</th>
-      <th style="text-align: left">说明</th>
-      <th style="text-align: left">举例</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left">!</td>
-      <td style="text-align: left">非运算，表达式为 true 则返回 false，否则返回 true。</td>
-      <td style="text-align: left">[ ! false ] 返回 true。</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">-o</td>
-      <td style="text-align: left">或运算，有一个表达式为 true 则返回 true。</td>
-      <td style="text-align: left"><code>[ $a -lt 20 -o $b -gt 100 ]</code> 返回 true。</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">-a</td>
-      <td style="text-align: left">与运算，两个表达式都为 true 才返回 true。</td>
-      <td style="text-align: left"><code>[ $a -lt 20 -a $b -gt 100 ]</code> 返回 false。</td>
-    </tr>
-  </tbody>
-</table>
+<table><thead>
+<tr>
+<th style="text-align: left">运算符</th>
+<th style="text-align: left">说明</th>
+<th style="text-align: left">举例</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">!</td>
+<td style="text-align: left">非运算，表达式为 true 则返回 false，否则返回 true。</td>
+<td style="text-align: left">[ ! false ] 返回 true。</td>
+</tr>
+<tr>
+<td style="text-align: left">-o</td>
+<td style="text-align: left">或运算，有一个表达式为 true 则返回 true。</td>
+<td style="text-align: left"><code>[ $a -lt 20 -o $b -gt 100 ]</code> 返回 true。</td>
+</tr>
+<tr>
+<td style="text-align: left">-a</td>
+<td style="text-align: left">与运算，两个表达式都为 true 才返回 true。</td>
+<td style="text-align: left"><code>[ $a -lt 20 -a $b -gt 100 ]</code> 返回 false。</td>
+</tr>
+</tbody></table>
 
-<h5 id="section-3">字符串运算符列表</h5>
+<h5>字符串运算符列表</h5>
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">运算符</th>
-      <th style="text-align: left">说明</th>
-      <th style="text-align: left">举例</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left">=</td>
-      <td style="text-align: left">检测两个字符串是否相等，相等返回 true。</td>
-      <td style="text-align: left"><code>[ $a = $b ]</code> 返回 false。</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">!=</td>
-      <td style="text-align: left">检测两个字符串是否相等，不相等返回 true。</td>
-      <td style="text-align: left"><code>	[ $a != $b ]</code> 返回 true。</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">-z</td>
-      <td style="text-align: left">检测字符串长度是否为0，为0返回 true。</td>
-      <td style="text-align: left">[ -z $a ] 返回 false。</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">-n</td>
-      <td style="text-align: left">检测字符串长度是否为0，不为0返回 true。</td>
-      <td style="text-align: left">[ -z $a ] 返回 true。</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">str</td>
-      <td style="text-align: left">检测字符串是否为空，不为空返回 true。</td>
-      <td style="text-align: left">[ $a ] 返回 true。</td>
-    </tr>
-  </tbody>
-</table>
+<table><thead>
+<tr>
+<th style="text-align: left">运算符</th>
+<th style="text-align: left">说明</th>
+<th style="text-align: left">举例</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">=</td>
+<td style="text-align: left">检测两个字符串是否相等，相等返回 true。</td>
+<td style="text-align: left"><code>[ $a = $b ]</code> 返回 false。</td>
+</tr>
+<tr>
+<td style="text-align: left">!=</td>
+<td style="text-align: left">检测两个字符串是否相等，不相等返回 true。</td>
+<td style="text-align: left"><code>[ $a != $b ]</code> 返回 true。</td>
+</tr>
+<tr>
+<td style="text-align: left">-z</td>
+<td style="text-align: left">检测字符串长度是否为0，为0返回 true。</td>
+<td style="text-align: left">[ -z $a ] 返回 false。</td>
+</tr>
+<tr>
+<td style="text-align: left">-n</td>
+<td style="text-align: left">检测字符串长度是否为0，不为0返回 true。</td>
+<td style="text-align: left">[ -z $a ] 返回 true。</td>
+</tr>
+<tr>
+<td style="text-align: left">str</td>
+<td style="text-align: left">检测字符串是否为空，不为空返回 true。</td>
+<td style="text-align: left">[ $a ] 返回 true。</td>
+</tr>
+</tbody></table>
 
-<h5 id="section-4">文件测试运算符列表</h5>
+<h5>文件测试运算符列表</h5>
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">操作符</th>
-      <th style="text-align: left">说明</th>
-      <th style="text-align: left">举例</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left">-b file</td>
-      <td style="text-align: left">检测文件是否是块设备文件，如果是，则返回 true。</td>
-      <td style="text-align: left">[ -b $file ] 返回 false。</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">-d file</td>
-      <td style="text-align: left">检测文件是否是目录，如果是，则返回 true。</td>
-      <td style="text-align: left">[ -d $file ] 返回 false。</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">-f file</td>
-      <td style="text-align: left">检测文件是否是普通文件（既不是目录，也不是设备文件），如果是，则返回 true。</td>
-      <td style="text-align: left">[ -f $file ] 返回 true。</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">-g file</td>
-      <td style="text-align: left">检测文件是否设置了 SGID 位，如果是，则返回 true。</td>
-      <td style="text-align: left">[ -g $file ] 返回 false。</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">-k file</td>
-      <td style="text-align: left">检测文件是否设置了粘着位(Sticky Bit)，如果是，则返回 true。</td>
-      <td style="text-align: left">[ -k $file ] 返回 false。</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">-p file</td>
-      <td style="text-align: left">检测文件是否是具名管道，如果是，则返回 true。</td>
-      <td style="text-align: left">[ -p $file ] 返回 false。</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">-u file</td>
-      <td style="text-align: left">检测文件是否设置了 SUID 位，如果是，则返回 true。</td>
-      <td style="text-align: left">[ -u $file ] 返回 false。</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">-r file</td>
-      <td style="text-align: left">检测文件是否可读，如果是，则返回 true。</td>
-      <td style="text-align: left">[ -r $file ] 返回 true。</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">-w file</td>
-      <td style="text-align: left">检测文件是否可写，如果是，则返回 true。</td>
-      <td style="text-align: left">[ -w $file ] 返回 true。</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">-x file</td>
-      <td style="text-align: left">检测文件是否可执行，如果是，则返回 true。</td>
-      <td style="text-align: left">[ -x $file ] 返回 true。</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">-s file</td>
-      <td style="text-align: left">检测文件是否为空（文件大小是否大于0），不为空返回 true。</td>
-      <td style="text-align: left">[ -s $file ] 返回 true。</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">-e file</td>
-      <td style="text-align: left">检测文件（包括目录）是否存在，如果是，则返回 true。</td>
-      <td style="text-align: left">[ -e $file ] 返回 true。</td>
-    </tr>
-  </tbody>
-</table>
+<table><thead>
+<tr>
+<th style="text-align: left">操作符</th>
+<th style="text-align: left">说明</th>
+<th style="text-align: left">举例</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">-b file</td>
+<td style="text-align: left">检测文件是否是块设备文件，如果是，则返回 true。</td>
+<td style="text-align: left">[ -b $file ] 返回 false。</td>
+</tr>
+<tr>
+<td style="text-align: left">-d file</td>
+<td style="text-align: left">检测文件是否是目录，如果是，则返回 true。</td>
+<td style="text-align: left">[ -d $file ] 返回 false。</td>
+</tr>
+<tr>
+<td style="text-align: left">-f file</td>
+<td style="text-align: left">检测文件是否是普通文件（既不是目录，也不是设备文件），如果是，则返回 true。</td>
+<td style="text-align: left">[ -f $file ] 返回 true。</td>
+</tr>
+<tr>
+<td style="text-align: left">-g file</td>
+<td style="text-align: left">检测文件是否设置了 SGID 位，如果是，则返回 true。</td>
+<td style="text-align: left">[ -g $file ] 返回 false。</td>
+</tr>
+<tr>
+<td style="text-align: left">-k file</td>
+<td style="text-align: left">检测文件是否设置了粘着位(Sticky Bit)，如果是，则返回 true。</td>
+<td style="text-align: left">[ -k $file ] 返回 false。</td>
+</tr>
+<tr>
+<td style="text-align: left">-p file</td>
+<td style="text-align: left">检测文件是否是具名管道，如果是，则返回 true。</td>
+<td style="text-align: left">[ -p $file ] 返回 false。</td>
+</tr>
+<tr>
+<td style="text-align: left">-u file</td>
+<td style="text-align: left">检测文件是否设置了 SUID 位，如果是，则返回 true。</td>
+<td style="text-align: left">[ -u $file ] 返回 false。</td>
+</tr>
+<tr>
+<td style="text-align: left">-r file</td>
+<td style="text-align: left">检测文件是否可读，如果是，则返回 true。</td>
+<td style="text-align: left">[ -r $file ] 返回 true。</td>
+</tr>
+<tr>
+<td style="text-align: left">-w file</td>
+<td style="text-align: left">检测文件是否可写，如果是，则返回 true。</td>
+<td style="text-align: left">[ -w $file ] 返回 true。</td>
+</tr>
+<tr>
+<td style="text-align: left">-x file</td>
+<td style="text-align: left">检测文件是否可执行，如果是，则返回 true。</td>
+<td style="text-align: left">[ -x $file ] 返回 true。</td>
+</tr>
+<tr>
+<td style="text-align: left">-s file</td>
+<td style="text-align: left">检测文件是否为空（文件大小是否大于0），不为空返回 true。</td>
+<td style="text-align: left">[ -s $file ] 返回 true。</td>
+</tr>
+<tr>
+<td style="text-align: left">-e file</td>
+<td style="text-align: left">检测文件（包括目录）是否存在，如果是，则返回 true。</td>
+<td style="text-align: left">[ -e $file ] 返回 true。</td>
+</tr>
+</tbody></table>
 
-<h2 id="section-5">字符串</h2>
+<h2>字符串</h2>
 
 <p>字符串是shell编程中最常用最有用的数据类型（除了数字和字符串，也没啥其它类型好用了），字符串可以用单引号，也可以用双引号，也可以不用引号。单双引号的区别跟PHP类似。</p>
 
-<h4 id="section-6">单引号</h4>
-
-<p><code>
-str='this is a string'
-</code></p>
-
+<h4>单引号</h4>
+<div class="highlight"><pre><code class="language-text" data-lang="text">str=&#39;this is a string&#39;
+</code></pre></div>
 <p>单引号字符串的限制：</p>
 
 <ol>
-  <li>单引号里的任何字符都会原样输出，单引号字符串中的变量是无效的；</li>
-  <li>单引号字串中不能出现单引号（对单引号使用转义符后也不行）。</li>
+<li>单引号里的任何字符都会原样输出，单引号字符串中的变量是无效的；</li>
+<li>单引号字串中不能出现单引号（对单引号使用转义符后也不行）。</li>
 </ol>
 
-<h4 id="section-7">双引号</h4>
-
-<p><code>
-your_name='qinjx'
-str="Hello, I know your are \"$your_name\"! \n"
-</code></p>
-
+<h4>双引号</h4>
+<div class="highlight"><pre><code class="language-text" data-lang="text">your_name=&#39;qinjx&#39;
+str=&quot;Hello, I know your are \&quot;$your_name\&quot;! \n&quot;
+</code></pre></div>
 <p>双引号的优点：</p>
 
 <ol>
-  <li>双引号里可以有变量</li>
-  <li>双引号里可以出现转义字符</li>
+<li>双引号里可以有变量</li>
+<li>双引号里可以出现转义字符</li>
 </ol>
 
-<h4 id="section-8">拼接字符串</h4>
-
-<p><code>
-your_name="qinjx"
-greeting="hello, "$your_name" !"
-greeting_1="hello, ${your_name} !"
+<h4>拼接字符串</h4>
+<div class="highlight"><pre><code class="language-text" data-lang="text">your_name=&quot;qinjx&quot;
+greeting=&quot;hello, &quot;$your_name&quot; !&quot;
+greeting_1=&quot;hello, ${your_name} !&quot;
 echo $greeting $greeting_1
-</code></p>
-
-<h4 id="section-9">获取字符串长度</h4>
-
-<p><code>
-string="abcd"
+</code></pre></div>
+<h4>获取字符串长度</h4>
+<div class="highlight"><pre><code class="language-text" data-lang="text">string=&quot;abcd&quot;
 echo ${#string} #输出 4(#表示字符串长度)
-</code></p>
-
-<h4 id="section-10">提取子字符串</h4>
-
-<p><code>
-string="alibaba is a great company"
+</code></pre></div>
+<h4>提取子字符串</h4>
+<div class="highlight"><pre><code class="language-text" data-lang="text">string=&quot;alibaba is a great company&quot;
 echo ${string:1:4} #输出liba
 echo ${string:1} #输出libaba is a great company
-</code></p>
-
-<h4 id="section-11">查找子字符串</h4>
-
-<p><code>
-string="alibaba is a great company"
-echo `expr index "$string" is` # 输出3(i和s一共出现的次数)
-</code></p>
-
-<h2 id="section-12">数组</h2>
+</code></pre></div>
+<h4>查找子字符串</h4>
+<div class="highlight"><pre><code class="language-text" data-lang="text">string=&quot;alibaba is a great company&quot;
+echo `expr index &quot;$string&quot; is` # 输出3(i和s一共出现的次数)
+</code></pre></div>
+<h2>数组</h2>
 
 <p>bash支持一维数组（不支持多维数组），并且没有限定数组的大小。类似与C语言，数组元素的下标由0开始编号。获取数组中的元素要利用下标，下标可以是整数或算术表达式，其值应大于或等于0。
 定义数组</p>
 
 <p>在Shell中，用括号来表示数组，数组元素用“空格”符号分割开。定义数组的一般形式为：</p>
-
-<p><code>
-    array_name=(value1 ... valuen)
-</code></p>
-
+<div class="highlight"><pre><code class="language-text" data-lang="text">    array_name=(value1 ... valuen)
+</code></pre></div>
 <p>例如：</p>
-
-<p><code>
-array_name=(value0 value1 value2 value3)
-</code></p>
-
+<div class="highlight"><pre><code class="language-text" data-lang="text">array_name=(value0 value1 value2 value3)
+</code></pre></div>
 <p>或者</p>
-
-<p><code>
-array_name=(
+<div class="highlight"><pre><code class="language-text" data-lang="text">array_name=(
 value0
 value1
 value2
 value3
 )
-</code></p>
-
+</code></pre></div>
 <p>还可以单独定义数组的各个分量：</p>
-
-<p><code>
-array_name[0]=value0
+<div class="highlight"><pre><code class="language-text" data-lang="text">array_name[0]=value0
 array_name[1]=value1
 array_name[2]=value2
-</code></p>
-
+</code></pre></div>
 <p>可以不使用连续的下标，而且下标的范围没有限制。</p>
 
-<h4 id="section-13">读取数组</h4>
+<h4>读取数组</h4>
 
 <p>读取数组元素值的一般格式是：</p>
-
-<p><code>
-    ${array_name[index]}
-</code>
-例如：</p>
-
-<p>```
-valuen=${array_name[2]}</p>
-
-<p>```</p>
-
+<div class="highlight"><pre><code class="language-text" data-lang="text">    ${array_name[index]}
+</code></pre></div>
+<p>例如：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">valuen=${array_name[2]}
+</code></pre></div>
 <p>使用@ 或 * 可以获取数组中的所有元素，例如：</p>
-
-<p><code>
-${array_name[*]}
+<div class="highlight"><pre><code class="language-text" data-lang="text">${array_name[*]}
 ${array_name[@]}
-</code></p>
-
-<h4 id="section-14">获取数组的长度</h4>
+</code></pre></div>
+<h4>获取数组的长度</h4>
 
 <p>获取数组长度的方法与获取字符串长度的方法相同，例如：</p>
-
-<p><code>
-# 取得数组元素的个数
+<div class="highlight"><pre><code class="language-text" data-lang="text"># 取得数组元素的个数
 length=${#array_name[@]}
 # 或者
 length=${#array_name[*]}
 # 取得数组单个元素的长度
 lengthn=${#array_name[n]}
-</code></p>
-
-
+</code></pre></div>
     </article>
     <!-- Duoshuo Comment BEGIN -->
     <div id="comments">

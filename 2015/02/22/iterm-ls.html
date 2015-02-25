@@ -77,42 +77,32 @@
     <article class="post-content">
         <p>环境是iterm2 + zsh + tmux</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/屏幕快照 2015-02-22 上午9.50.16.png" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202015-02-22%20%E4%B8%8A%E5%8D%889.50.16.png" alt=""></p>
 
 <p>首先如果需要和linux一样ls带颜色的话,需要先下载coreutils.</p>
-
-<p><code>
-brew install coreutils
-</code></p>
-
+<div class="highlight"><pre><code class="language-text" data-lang="text">brew install coreutils
+</code></pre></div>
 <p>装完它会提示在<code>.bashrc</code>中加入:</p>
-
-<p><code>
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-</code></p>
-
+<div class="highlight"><pre><code class="language-text" data-lang="text">export PATH=&quot;/usr/local/opt/coreutils/libexec/gnubin:$PATH&quot;
+export MANPATH=&quot;/usr/local/opt/coreutils/libexec/gnuman:$MANPATH&quot;
+</code></pre></div>
 <p>但是我们在zsh下,需要把上面的命令放入<code>~/.zshrc</code>中.</p>
 
-<p>solarized自带ls配色,我们需要下载项目:https://github.com/seebi/dircolors-solarized.</p>
+<p>solarized自带ls配色,我们需要下载项目:<a href="https://github.com/seebi/dircolors-solarized">https://github.com/seebi/dircolors-solarized</a>.</p>
 
 <p>选择一个喜欢的主题替换到<code>~/.dir_colors</code>文件.</p>
 
 <p>在<code>~/.zshrc</code>中加入:</p>
-
-<p><code>
-eval `dircolor ~/.dir_colors`
-</code></p>
-
+<div class="highlight"><pre><code class="language-text" data-lang="text">eval `dircolor ~/.dir_colors`
+</code></pre></div>
 <p>重启终端即可.</p>
 
 <p>注意:</p>
 
 <ul>
-  <li>tmux要开启256模式<code>tmux -2</code></li>
-  <li>上面的配置不能写到<code>.profile</code>或者<code>.bashrc</code></li>
+<li>tmux要开启256模式<code>tmux -2</code></li>
+<li>上面的配置不能写到<code>.profile</code>或者<code>.bashrc</code></li>
 </ul>
-
 
     </article>
     <!-- Duoshuo Comment BEGIN -->

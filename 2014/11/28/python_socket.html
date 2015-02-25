@@ -77,9 +77,9 @@
     <article class="post-content">
         <p>最近在看tornado源码,发现里面的tcp层会用到很多socket的知识,所以特地恶补一下.</p>
 
-<h2 id="socket">1 socket基础</h2>
+<h2>1 socket基础</h2>
 
-<h3 id="socket-1">1.1 socket历史</h3>
+<h3>1.1 socket历史</h3>
 
 <p>当前经常使用的socket，最早起源于BSD UNIX类的操作系统。在UNIX系统上，比如BSD，有一些现有的，和文件描述符一起工作的系统调用，其中包括open(),read(),write()和 close().文件描述符一般是指一个文件或某个类似文件的实体.</p>
 
@@ -89,20 +89,17 @@
 
 <p>然而, socket 的确存在一些不同的工作方式.最明显的就是建立 socket 的方法.很多文件是通过 open() 函数打开的,但 socket 是通过调用 socket() 函数来建立的,并且还需要另外的调用来连接和激活他们. recv() 和 send() 这两个系统调用和 read()和 write() 极为相似.</p>
 
-<h3 id="socket-">1.2 socket 套接字</h3>
-
-<p><code>
-套接字 socket = (IP地址: 端口号)
-</code></p>
-
+<h3>1.2 socket 套接字</h3>
+<div class="highlight"><pre><code class="language-text" data-lang="text">套接字 socket = (IP地址: 端口号)
+</code></pre></div>
 <p>就这么简单,IP负责主机到主机(点到点)通讯,而端口号负责进程到进程(端到端)的通讯.python中socket编程在网络的应用层,涉及到些许运输层,所以极大简化了编程,我们只要对socket进行操作就可以了.</p>
 
-<h3 id="section">1.3 套接字家族</h3>
+<h3>1.3 套接字家族</h3>
 
 <p>套接字起源于20世纪70年代加州大学伯克利分校版本的Unix，即人们所说的BSD Unix。因此，有时人们也把套接字称为“伯克利套接字”或“BSD套接字”。套接字有两种，分别是<strong>基于文件型</strong>的和<strong>基于网络型</strong>的。</p>
 
 <ul>
-  <li>基于文件型</li>
+<li>基于文件型</li>
 </ul>
 
 <p><code>AF_UNIX</code>或者<code>AF_LOCAL</code></p>
@@ -110,257 +107,221 @@
 <p>主要特点是两个进程都运行在同一台机器上，而且这些套接字是基于文件的,所以，它们的底层结构是由文件系统来支持的.</p>
 
 <ul>
-  <li>基于网络型</li>
+<li>基于网络型</li>
 </ul>
 
 <p><code>AF_INET</code>或者<code>AF_INET6</code>或者<code>AF_NETLINK</code></p>
 
 <p>它们的特点是基于网络的,所有地址家族中，<code>AF_INET</code>是使用最广泛的一个.</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/TCP_IP.JPG" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/TCP_IP.JPG" alt=""></p>
 
-<h3 id="section-1">1.3 面向连接与无连接</h3>
+<h3>1.3 面向连接与无连接</h3>
 
 <p>上面的图可以看到<code>AF_INET</code>家族可以分为3种,我们常用的就两种TCP和UDP,对应的套接字类型为<code>SOCK_STREAM</code>和<code>SOCK_DGRAM</code></p>
 
-<h2 id="python">2 Python中网络编程</h2>
+<h2>2 Python中网络编程</h2>
 
 <p>Python 提供了两个基本的 socket 模块。</p>
 
 <ul>
-  <li>第一个是 Socket，它提供了标准的 BSD Sockets API。</li>
-  <li>第二个是 SocketServer， 它提供了服务器中心类，可以简化网络服务器的开发。</li>
+<li>第一个是 Socket，它提供了标准的 BSD Sockets API。</li>
+<li>第二个是 SocketServer， 它提供了服务器中心类，可以简化网络服务器的开发。</li>
 </ul>
 
-<h3 id="socket-2">2.1 socket()函数</h3>
+<h3>2.1 socket()函数</h3>
 
 <p>在Python里我们用socket（）函数来创建套接字.</p>
-
-<p><code>
-socket(socket_family, socket_type, protocol=0)
-</code></p>
-
+<div class="highlight"><pre><code class="language-text" data-lang="text">socket(socket_family, socket_type, protocol=0)
+</code></pre></div>
 <p>参数:</p>
 
 <ul>
-  <li>socket_family: 套接字家族可以使AF_UNIX或者AF_INET</li>
-  <li>socket_type: 套接字类型可以根据是面向连接的还是非连接分为<code>SOCK_STREAM</code>或<code>SOCK_DGRAM</code></li>
-  <li>protocol: 一般不填默认为0.</li>
+<li>socket_family: 套接字家族可以使AF_UNIX或者AF_INET</li>
+<li>socket_type: 套接字类型可以根据是面向连接的还是非连接分为<code>SOCK_STREAM</code>或<code>SOCK_DGRAM</code></li>
+<li>protocol: 一般不填默认为0.</li>
 </ul>
 
-<h3 id="section-2">2.2 套接字对象(内建)方法</h3>
+<h3>2.2 套接字对象(内建)方法</h3>
 
 <p>下面是经常用到的套接字方法:</p>
 
-<table>
-  <thead>
-    <tr>
-      <th>函数</th>
-      <th>描述</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>服务器端套接字</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>s.bind()</td>
-      <td>绑定地址(主机号,端口号)到套接字</td>
-    </tr>
-    <tr>
-      <td>s.listen()</td>
-      <td>开始TCP监听</td>
-    </tr>
-    <tr>
-      <td>s.accept()</td>
-      <td>被动接受TCP客户端连接,(阻塞式)等待连接的到来</td>
-    </tr>
-    <tr>
-      <td>客户端套接字</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>s.connect()</td>
-      <td>主动初始化TCP服务器连接</td>
-    </tr>
-    <tr>
-      <td>s.connect_ex()</td>
-      <td>connect()函数的扩展版本,出错时返回出错码,而不是抛出异常</td>
-    </tr>
-    <tr>
-      <td>公共用途的套接字函数</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>s.recv()</td>
-      <td>接收TCP数据</td>
-    </tr>
-    <tr>
-      <td>s.send()</td>
-      <td>发送TCP数据</td>
-    </tr>
-    <tr>
-      <td>s.sendall()</td>
-      <td>完整发送TCP数据</td>
-    </tr>
-    <tr>
-      <td>s.recvform()</td>
-      <td>接收UDP数据</td>
-    </tr>
-    <tr>
-      <td>s.sendto()</td>
-      <td>发送UDP数据</td>
-    </tr>
-    <tr>
-      <td>s.close()</td>
-      <td>关闭套接字</td>
-    </tr>
-  </tbody>
-</table>
+<table><thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>服务器端套接字</td>
+<td></td>
+</tr>
+<tr>
+<td>s.bind()</td>
+<td>绑定地址(主机号,端口号)到套接字</td>
+</tr>
+<tr>
+<td>s.listen()</td>
+<td>开始TCP监听</td>
+</tr>
+<tr>
+<td>s.accept()</td>
+<td>被动接受TCP客户端连接,(阻塞式)等待连接的到来</td>
+</tr>
+<tr>
+<td>客户端套接字</td>
+<td></td>
+</tr>
+<tr>
+<td>s.connect()</td>
+<td>主动初始化TCP服务器连接</td>
+</tr>
+<tr>
+<td>s.connect_ex()</td>
+<td>connect()函数的扩展版本,出错时返回出错码,而不是抛出异常</td>
+</tr>
+<tr>
+<td>公共用途的套接字函数</td>
+<td></td>
+</tr>
+<tr>
+<td>s.recv()</td>
+<td>接收TCP数据</td>
+</tr>
+<tr>
+<td>s.send()</td>
+<td>发送TCP数据</td>
+</tr>
+<tr>
+<td>s.sendall()</td>
+<td>完整发送TCP数据</td>
+</tr>
+<tr>
+<td>s.recvform()</td>
+<td>接收UDP数据</td>
+</tr>
+<tr>
+<td>s.sendto()</td>
+<td>发送UDP数据</td>
+</tr>
+<tr>
+<td>s.close()</td>
+<td>关闭套接字</td>
+</tr>
+</tbody></table>
 
-<h3 id="section-3">2.3 客户端和服务器编程</h3>
+<h3>2.3 客户端和服务器编程</h3>
 
-<h4 id="server">server</h4>
+<h4>server</h4>
 
 <ol>
-  <li>
-    <p>创建socket对象。调用socket构造函数。如：</p>
-
-    <pre><code> socket = socket.socket( family, type )
-</code></pre>
-  </li>
-  <li>
-    <p>将socket绑定到指定地址。这是通过socket对象的bind方法来实现的：</p>
-
-    <pre><code> socket.bind( address ) 
-</code></pre>
-
-    <p>由AF_INET所创建的套接字，address地址必须是一个双元素元组，格式是(host,port)。host代表主机，port代表端口号。如果端口号正在使用、主机名不正确或端口已被保留，bind方法将引发socket.error异常。</p>
-  </li>
-  <li>
-    <p>使用socket套接字的listen方法接收连接请求。</p>
-
-    <pre><code> socket.listen( backlog )
-</code></pre>
-
-    <p>backlog指定最多允许多少个客户连接到服务器。它的值至少为1。收到连接请求后，这些请求需要排队，如果队列满，就拒绝请求。</p>
-  </li>
-  <li>
-    <p>服务器套接字通过socket的accept方法等待客户请求一个连接。</p>
-
-    <pre><code> connection, address = socket.accept()
-</code></pre>
-
-    <p>调用accept方法时，socket会时入“waiting”状态。客户请求连接时，方法建立连接并返回服务器。accept方法返回一个含有两个元素的 元组(connection,address)。第一个元素connection是新的socket对象，服务器必须通过它与客户通信；第二个元素 address是客户的Internet地址。</p>
-  </li>
-  <li>
-    <p>处理阶段，服务器和客户端通过send和recv方法通信(传输 数据)。服务器调用send，并采用字符串形式向客户发送信息。send方法返回已发送的字符个数。服务器使用recv方法从客户接收信息。调用recv 时，服务器必须指定一个整数，它对应于可通过本次方法调用来接收的最大数据量。recv方法在接收数据时会进入“blocked”状态，最后返回一个字符 串，用它表示收到的数据。如果发送的数据量超过了recv所允许的，数据会被截短。多余的数据将缓冲于接收端。以后调用recv时，多余的数据会从缓冲区 删除(以及自上次调用recv以来，客户可能发送的其它任何数据)</p>
-  </li>
-  <li>
-    <p>传输结束，服务器调用socket的close方法关闭连接。</p>
-  </li>
+<li><p>创建socket对象。调用socket构造函数。如：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">socket = socket.socket( family, type )
+</code></pre></div></li>
+<li><p>将socket绑定到指定地址。这是通过socket对象的bind方法来实现的：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">socket.bind( address ) 
+</code></pre></div>
+<p>由AF_INET所创建的套接字，address地址必须是一个双元素元组，格式是(host,port)。host代表主机，port代表端口号。如果端口号正在使用、主机名不正确或端口已被保留，bind方法将引发socket.error异常。</p></li>
+<li><p>使用socket套接字的listen方法接收连接请求。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">socket.listen( backlog )
+</code></pre></div>
+<p>backlog指定最多允许多少个客户连接到服务器。它的值至少为1。收到连接请求后，这些请求需要排队，如果队列满，就拒绝请求。</p></li>
+<li><p>服务器套接字通过socket的accept方法等待客户请求一个连接。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">connection, address = socket.accept()
+</code></pre></div>
+<p>调用accept方法时，socket会时入“waiting”状态。客户请求连接时，方法建立连接并返回服务器。accept方法返回一个含有两个元素的 元组(connection,address)。第一个元素connection是新的socket对象，服务器必须通过它与客户通信；第二个元素 address是客户的Internet地址。</p></li>
+<li><p>处理阶段，服务器和客户端通过send和recv方法通信(传输 数据)。服务器调用send，并采用字符串形式向客户发送信息。send方法返回已发送的字符个数。服务器使用recv方法从客户接收信息。调用recv 时，服务器必须指定一个整数，它对应于可通过本次方法调用来接收的最大数据量。recv方法在接收数据时会进入“blocked”状态，最后返回一个字符 串，用它表示收到的数据。如果发送的数据量超过了recv所允许的，数据会被截短。多余的数据将缓冲于接收端。以后调用recv时，多余的数据会从缓冲区 删除(以及自上次调用recv以来，客户可能发送的其它任何数据)</p></li>
+<li><p>传输结束，服务器调用socket的close方法关闭连接。</p></li>
 </ol>
 
-<h4 id="client">client</h4>
+<h4>client</h4>
 
 <ol>
-  <li>
-    <p>创建一个socket以连接服务器：</p>
-
-    <pre><code> socket = socket.socket( family, type )
-</code></pre>
-  </li>
-  <li>
-    <p>使用socket的connect方法连接服务器。对于AF_INET家族,连接格式如下：</p>
-
-    <pre><code> socket.connect( (host,port) )
-</code></pre>
-
-    <p>host代表服务器主机名或IP，port代表服务器进程所绑定的端口号。如连接成功，客户就可通过套接字与服务器通信，如果连接失败，会引发socket.error异常。</p>
-  </li>
-  <li>处理阶段，客户和服务器将通过send方法和recv方法通信。</li>
-  <li>传输结束，客户通过调用socket的close方法关闭连接。</li>
+<li><p>创建一个socket以连接服务器：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">socket = socket.socket( family, type )
+</code></pre></div></li>
+<li><p>使用socket的connect方法连接服务器。对于AF_INET家族,连接格式如下：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">socket.connect( (host,port) )
+</code></pre></div>
+<p>host代表服务器主机名或IP，port代表服务器进程所绑定的端口号。如连接成功，客户就可通过套接字与服务器通信，如果连接失败，会引发socket.error异常。</p></li>
+<li><p>处理阶段，客户和服务器将通过send方法和recv方法通信。</p></li>
+<li><p>传输结束，客户通过调用socket的close方法关闭连接。</p></li>
 </ol>
 
-<h4 id="section-4">代码</h4>
+<h4>代码</h4>
 
 <p>server:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#-*- encoding: UTF-8 -*-</span>
+<span class="c">#---------------------------------import------------------------------------</span>
+<span class="kn">from</span> <span class="nn">socket</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">ctime</span>
+<span class="c">#---------------------------------------------------------------------------</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">阻塞方式进行连接,当客户端退出继续监听,等待下一个客户端连接</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">HOST</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+<span class="n">PORT</span> <span class="o">=</span> <span class="mi">21568</span>
+<span class="n">BUFSIZ</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">ADDR</span> <span class="o">=</span> <span class="p">(</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">)</span>
 
-<p>```python
-#-<em>- encoding: UTF-8 -</em>-
-#———————————import————————————
-from socket import *
-from time import ctime
-#—————————————————————————
-“””
-阻塞方式进行连接,当客户端退出继续监听,等待下一个客户端连接
-“””
-HOST = ‘’
-PORT = 21568
-BUFSIZ = 1024
-ADDR = (HOST, PORT)</p>
+<span class="n">tcpSerSock</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">)</span>
+<span class="n">tcpSerSock</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">ADDR</span><span class="p">)</span>
+<span class="n">tcpSerSock</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
-<p>tcpSerSock = socket(AF_INET, SOCK_STREAM)
-tcpSerSock.bind(ADDR)
-tcpSerSock.listen(5)</p>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s">&#39;waiting for connection...&#39;</span>
+    <span class="n">tcpCliSock</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">tcpSerSock</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>  <span class="c"># 等待连接</span>
+    <span class="k">print</span> <span class="s">&#39;...connected from:&#39;</span><span class="p">,</span> <span class="n">addr</span>
 
-<p>while True:
-    print ‘waiting for connection…’
-    tcpCliSock, addr = tcpSerSock.accept()  # 等待连接
-    print ‘…connected from:’, addr</p>
-
-<pre><code>while True:
-    try:
-        data = tcpCliSock.recv(BUFSIZ)  # 接收数据
-        print '&lt;', data
-        tcpCliSock.send('[%s] %s' % (ctime(), data))  # 发送数据
-    except:
-        print 'disconnect from:', addr
-        tcpCliSock.close()  # 退出
-        break tcpSerSock.close() ############################################################################ ```
-</code></pre>
-
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">tcpCliSock</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="n">BUFSIZ</span><span class="p">)</span>  <span class="c"># 接收数据</span>
+            <span class="k">print</span> <span class="s">&#39;&lt;&#39;</span><span class="p">,</span> <span class="n">data</span>
+            <span class="n">tcpCliSock</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s">&#39;[</span><span class="si">%s</span><span class="s">] </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ctime</span><span class="p">(),</span> <span class="n">data</span><span class="p">))</span>  <span class="c"># 发送数据</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s">&#39;disconnect from:&#39;</span><span class="p">,</span> <span class="n">addr</span>
+            <span class="n">tcpCliSock</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>  <span class="c"># 退出</span>
+            <span class="k">break</span>
+<span class="n">tcpSerSock</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="c">############################################################################</span>
+</code></pre></div>
 <p>client:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#-*- encoding: UTF-8 -*-</span>
+<span class="c">#---------------------------------import------------------------------------</span>
+<span class="kn">from</span> <span class="nn">socket</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="c">#---------------------------------------------------------------------------</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">只进行一次连接,输入`close`后退出程序</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">HOST</span> <span class="o">=</span> <span class="s">&#39;localhost&#39;</span>
+<span class="n">PORT</span> <span class="o">=</span> <span class="mi">21568</span>
+<span class="n">BUFSIZ</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">ADDR</span> <span class="o">=</span> <span class="p">(</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">)</span>
 
-<p>```python
-#-<em>- encoding: UTF-8 -</em>-
-#———————————import————————————
-from socket import *
-#—————————————————————————
-“””
-只进行一次连接,输入<code>close</code>后退出程序
-“””
-HOST = ‘localhost’
-PORT = 21568
-BUFSIZ = 1024
-ADDR = (HOST, PORT)</p>
+<span class="n">tcpCliSock</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">)</span>
+<span class="n">tcpCliSock</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">ADDR</span><span class="p">)</span>  <span class="c"># 套接字连接</span>
 
-<p>tcpCliSock = socket(AF_INET, SOCK_STREAM)
-tcpCliSock.connect(ADDR)  # 套接字连接</p>
-
-<p>try:
-    while True:
-        data = raw_input(‘&gt;’)
-        if data == ‘close’:
-            break
-        if not data:
-            continue
-        tcpCliSock.send(data)  # 发送数据
-        data = tcpCliSock.recv(BUFSIZ)  # 接受数据
-        print data
-except:
-    tcpCliSock.close()  # 退出
-############################################################################
-```</p>
-
-<h1 id="section-5">参考资料</h1>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s">&#39;&gt;&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">data</span> <span class="o">==</span> <span class="s">&#39;close&#39;</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">tcpCliSock</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>  <span class="c"># 发送数据</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">tcpCliSock</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="n">BUFSIZ</span><span class="p">)</span>  <span class="c"># 接受数据</span>
+        <span class="k">print</span> <span class="n">data</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="n">tcpCliSock</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>  <span class="c"># 退出</span>
+<span class="c">############################################################################</span>
+</code></pre></div>
+<h1>参考资料</h1>
 
 <ul>
-  <li><a href="http://blog.163.com/yi_yixinyiyi/blog/static/136286889201152814341144/">python_socket 网络编程 </a></li>
-  <li><a href="http://blog.csdn.net/jasonm2008/article/details/3964065">TCP/IP 地址家族 ，协议类型 ，套接字类型 ，协议字段!</a></li>
-  <li><a href="http://yangrong.blog.51cto.com/6945369/1339593">python socket编程详细介绍</a></li>
-  <li><a href="http://openexperience.iteye.com/blog/145701">一个简单的python socket编程</a></li>
+<li><a href="http://blog.163.com/yi_yixinyiyi/blog/static/136286889201152814341144/">python_socket 网络编程 </a></li>
+<li><a href="http://blog.csdn.net/jasonm2008/article/details/3964065">TCP/IP 地址家族 ，协议类型 ，套接字类型 ，协议字段!</a></li>
+<li><a href="http://yangrong.blog.51cto.com/6945369/1339593">python socket编程详细介绍</a></li>
+<li><a href="http://openexperience.iteye.com/blog/145701">一个简单的python socket编程</a></li>
 </ul>
 
     </article>

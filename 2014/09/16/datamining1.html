@@ -75,82 +75,82 @@
         <p class="meta"><i class="fa fa-calendar"></i> 2014-09-16&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#datamining">datamining</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#datamining">datamining</a></p>
     </header>
     <article class="post-content">
-        <h2 id="chanpter-2-data-preprocessing">Chanpter 2 Data Preprocessing(数据预处理)</h2>
+        <h2>Chanpter 2 Data Preprocessing(数据预处理)</h2>
 
 <p>定期更新中~October 11 2014 10:36 AM</p>
 
-<h3 id="why-preprocess-the-data">1 Why preprocess the data?(数据预处理的必要性）</h3>
+<h3>1 Why preprocess the data?(数据预处理的必要性）</h3>
 
 <p>要进行数据挖掘需要把数据进行预处理,最简单的原因就是如果提供了完整干净的数据集,那么在数据挖掘的过程中就不用考虑这些东西了,所以很有必要.</p>
 
 <ul>
-  <li>不完整(缺少属性值)</li>
-  <li>含噪音(错误的值或者偏离太大的值)</li>
-  <li>不一致(比如字符串和整数相混)</li>
-  <li>重复的(一个人对应几个名字)</li>
+<li>不完整(缺少属性值)</li>
+<li>含噪音(错误的值或者偏离太大的值)</li>
+<li>不一致(比如字符串和整数相混)</li>
+<li>重复的(一个人对应几个名字)</li>
 </ul>
 
 <p>把大象装冰箱总共分四部:</p>
 
 <ol>
-  <li>数据清理(Data cleaning): 可以去掉数据中的噪声，纠正不一致</li>
-  <li>数据集成(Data integration): 将多个数据源合并成一致的数据存储，构成一个完整的数据集，如数据仓库或数据立方体</li>
-  <li>数据变换(Data transformation): 将一种格式的数据转换为另一格式的数据(如规范化)</li>
-  <li>数据归约(Data reduction): 可以通过聚集、删除冗余特性或聚类等方法来压缩数据</li>
+<li>数据清理(Data cleaning): 可以去掉数据中的噪声，纠正不一致</li>
+<li>数据集成(Data integration): 将多个数据源合并成一致的数据存储，构成一个完整的数据集，如数据仓库或数据立方体</li>
+<li>数据变换(Data transformation): 将一种格式的数据转换为另一格式的数据(如规范化)</li>
+<li>数据归约(Data reduction): 可以通过聚集、删除冗余特性或聚类等方法来压缩数据</li>
 </ol>
 
 <p>如下图所示:</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-09-17 16:52:40 的屏幕截图.png" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-09-17%2016:52:40%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
 
-<h3 id="descriptive-date-summarization">2 Descriptive Date Summarization(描述性数据汇总)</h3>
+<h3>2 Descriptive Date Summarization(描述性数据汇总)</h3>
 
 <p>这些东西可以更加直观的观测数据,更好的理解数据</p>
 
-<h4 id="measuring-the-central-tendency">Measuring the Central Tendency（度量数据的中心趋势）</h4>
+<h4>Measuring the Central Tendency（度量数据的中心趋势）</h4>
 
 <ol>
-  <li>mean(几何平均数)</li>
-  <li>median(中值)</li>
-  <li>mode(众数): 出现最多的一个数</li>
+<li>mean(几何平均数)</li>
+<li>median(中值)</li>
+<li>mode(众数): 出现最多的一个数</li>
 </ol>
 
 <p>这里有一个经验公式:</p>
 
-<script type="math/tex; mode=display"> mean - mode = 3 * (mean - median) </script>
+<p>$$ mean - mode = 3 * (mean - median) $$</p>
 
 <p>条件是单峰的情况下,并且是asymmetrical类型(倾斜的数据)</p>
 
-<h4 id="measuring-the-dispersion-of-data">Measuring the Dispersion of Data(度量数据的离散程度)</h4>
+<h4>Measuring the Dispersion of Data(度量数据的离散程度)</h4>
 
 <ol>
-  <li>Quartiles, outliers and boxplots（四分位数、离散点和盒图）
-    <ul>
-      <li>Inter-quartile range: IQR = Q3 – Q1;(Q1(25%),Q3(75%))</li>
-      <li>Five number summary: min, Q1, M, Q3, max</li>
-      <li>Boxplot(盒图):招不开了,见下</li>
-      <li>Outlier: usually, a value higher/lower than 1.5 x IQR</li>
-    </ul>
-  </li>
-  <li>Variance and standard deviation (sample: s, population: σ)（方差和标准差）</li>
-  <li>Properties of Normal Distribution Curve(正态分布特性)</li>
+<li>Quartiles, outliers and boxplots（四分位数、离散点和盒图）
+
+<ul>
+<li>Inter-quartile range: IQR = Q3 – Q1;(Q1(25%),Q3(75%))</li>
+<li>Five number summary: min, Q1, M, Q3, max</li>
+<li>Boxplot(盒图):招不开了,见下</li>
+<li>Outlier: usually, a value higher/lower than 1.5 x IQR</li>
+</ul></li>
+<li>Variance and standard deviation (sample: s, population: σ)（方差和标准差）</li>
+<li>Properties of Normal Distribution Curve(正态分布特性)</li>
 </ol>
 
-<h4 id="graphic-displays-of-basic-statistical-descriptions">Graphic Displays of Basic Statistical Descriptions(描述数据的基本图形)</h4>
+<h4>Graphic Displays of Basic Statistical Descriptions(描述数据的基本图形)</h4>
 
 <p>Boxplot(盒图)</p>
 
 <ul>
-  <li>Data is represented with a box(一个盒子来表示)</li>
-  <li>The ends of the box are at the first and third quartiles, i.e., the height of the box is IRQ(上下边界分别是四分位点,即Q1和Q3,高度就是IRQ的高度了)</li>
-  <li>The median is marked by a line within the box(中值在盒子里用一个线表示)</li>
-  <li>Whiskers: two lines outside the box extend to Minimum and Maximum(盒子外两条线延伸到最大最小值)</li>
-  <li>whiskers(上面两条线)长度不会大于1.5 * IRQ</li>
+<li>Data is represented with a box(一个盒子来表示)</li>
+<li>The ends of the box are at the first and third quartiles, i.e., the height of the box is IRQ(上下边界分别是四分位点,即Q1和Q3,高度就是IRQ的高度了)</li>
+<li>The median is marked by a line within the box(中值在盒子里用一个线表示)</li>
+<li>Whiskers: two lines outside the box extend to Minimum and Maximum(盒子外两条线延伸到最大最小值)</li>
+<li>whiskers(上面两条线)长度不会大于1.5 * IRQ</li>
 </ul>
 
 <p>来感受下:</p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/Cpb7Fx.png" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/Cpb7Fx.png" alt=""></p>
 
 <p>Histogram Analysis(直方图)</p>
 
@@ -162,102 +162,101 @@
 
 <p>Loess (local regression) curve(回归曲线?): add a smooth curve to a scatter plot to provide better perception of the pattern of dependence</p>
 
-<h3 id="data-cleaning">3 Data Cleaning</h3>
+<h3>3 Data Cleaning</h3>
 
 <p>数据清理分以下几步:</p>
 
 <ol>
-  <li>填充空缺的值</li>
-  <li>识别孤立点</li>
-  <li>消除噪声</li>
-  <li>纠正数据中的不一致</li>
+<li>填充空缺的值</li>
+<li>识别孤立点</li>
+<li>消除噪声</li>
+<li>纠正数据中的不一致</li>
 </ol>
 
-<h4 id="missing-values">Missing Values(空缺数据)</h4>
+<h4>Missing Values(空缺数据)</h4>
 
 <ol>
-  <li>忽略该元组(最常用的)</li>
-  <li>人工填写空缺值: 量太大!</li>
-  <li>使用一个全局常量填充空缺值: 将空缺的属性值用同一个常数(如“Unknown”或)替换。如果空缺值都用“Unknown”替换，当空缺值较多时。挖掘程序可能误以为它们形成了一个有趣的概念，因为它们都具有相同的值——“Unknown”。因此，尽管该方法简单，我们并不推荐它。</li>
-  <li>使用属性的平均值填充空缺值</li>
-  <li>利用同类别均值填补遗漏数据: 例如，如果将顾客按credit risk分类， 则用具有相同信用度的顾客的平均收入替换income中的缺值</li>
-  <li>使用最可能的值填充空缺值:可以利用回归、贝叶斯计算公式或判定树归纳确定，推断出该条记录特定属性最大可能的取值。例如，利用数据集中其他顾客的属性，可以构造一棵判定树，来预测income的空缺值。</li>
+<li>忽略该元组(最常用的)</li>
+<li>人工填写空缺值: 量太大!</li>
+<li>使用一个全局常量填充空缺值: 将空缺的属性值用同一个常数(如“Unknown”或)替换。如果空缺值都用“Unknown”替换，当空缺值较多时。挖掘程序可能误以为它们形成了一个有趣的概念，因为它们都具有相同的值——“Unknown”。因此，尽管该方法简单，我们并不推荐它。</li>
+<li>使用属性的平均值填充空缺值</li>
+<li>利用同类别均值填补遗漏数据: 例如，如果将顾客按credit risk分类， 则用具有相同信用度的顾客的平均收入替换income中的缺值</li>
+<li>使用最可能的值填充空缺值:可以利用回归、贝叶斯计算公式或判定树归纳确定，推断出该条记录特定属性最大可能的取值。例如，利用数据集中其他顾客的属性，可以构造一棵判定树，来预测income的空缺值。</li>
 </ol>
 
-<h4 id="noisy-data">Noisy Data</h4>
+<h4>Noisy Data</h4>
 
 <ol>
-  <li><strong>binning(分箱)</strong>: 分箱方法通过考察“邻居”(即周围的值)来平滑存储数据的值。存储的值被分布到一些“桶”或箱中。由于分箱方法参考相邻的值，因此它进行局部平滑。这里平滑方法又分了3种
-    <ul>
-      <li>按箱平均值平滑</li>
-      <li>按箱中值平滑</li>
-      <li>按箱边界平滑</li>
-    </ul>
-  </li>
-  <li><strong>clustering(聚类)</strong>: 通过聚类分析可以检测孤立点，聚类将类似的值组织成群或“聚类”。直观地看，落在聚类集合之外的值被视为孤立点,这个方法在机器学习里有过了解.</li>
-  <li><strong>regression(回归)</strong>: 以利用拟合函数(如回归函数)来平滑数据。</li>
+<li><strong>binning(分箱)</strong>: 分箱方法通过考察“邻居”(即周围的值)来平滑存储数据的值。存储的值被分布到一些“桶”或箱中。由于分箱方法参考相邻的值，因此它进行局部平滑。这里平滑方法又分了3种
+
+<ul>
+<li>按箱平均值平滑</li>
+<li>按箱中值平滑</li>
+<li>按箱边界平滑</li>
+</ul></li>
+<li><strong>clustering(聚类)</strong>: 通过聚类分析可以检测孤立点，聚类将类似的值组织成群或“聚类”。直观地看，落在聚类集合之外的值被视为孤立点,这个方法在机器学习里有过了解.</li>
+<li><strong>regression(回归)</strong>: 以利用拟合函数(如回归函数)来平滑数据。</li>
 </ol>
 
-<h3 id="data-integration">4 Data Integration(数据集成)</h3>
+<h3>4 Data Integration(数据集成)</h3>
 
 <p>它需要统一原始数据中的所有矛盾之处，如字段的:同名异义、异名同义、单位不统一,字长不一致，从而把原始数据在最低层上加以转换，提炼和集成。</p>
 
 <ol>
-  <li><strong>模式集成</strong>: 通常，数据库和数据仓库有元数据——关于数据的数据。这种元数据可以帮助避免模式集成中的错误。</li>
-  <li><strong>冗余问题</strong>: 可以用概率的方法算出两个数据是相关还是独立,这种分析可以度量一个属性能在多大程度上蕴含另一个.</li>
-  <li><strong>数据值冲突的检测与处理</strong>:
-    <ul>
-      <li>表示不同导致数据冲突</li>
-      <li>语义不同导致数据冲突</li>
-    </ul>
-  </li>
+<li><strong>模式集成</strong>: 通常，数据库和数据仓库有元数据——关于数据的数据。这种元数据可以帮助避免模式集成中的错误。</li>
+<li><strong>冗余问题</strong>: 可以用概率的方法算出两个数据是相关还是独立,这种分析可以度量一个属性能在多大程度上蕴含另一个.</li>
+<li><strong>数据值冲突的检测与处理</strong>:
+
+<ul>
+<li>表示不同导致数据冲突</li>
+<li>语义不同导致数据冲突</li>
+</ul></li>
 </ol>
 
 <p>对于现实世界的同一实体，来自不同数据源的属性值可能不同。这可能是因为表示、比例或编码不同。例如，重量属性可能在一个系统中以公制单位存放，而在另一个系统中以英制单位存放。不同旅馆的价格不仅可能涉及不同的货币，而且可能涉及不同的服务(如免费早餐)和税。数据这种语义上的异种性，是数据集成的巨大挑战。</p>
 
 <p>将多个数据源中的数据集成起来，能够减少或避免结果数据集中数据的冗余和不一致性。这有助于提高其后挖掘的精度和速度。另外，在数据集成中还应考虑数据类型的选择问题，如在值域范围内应尽量用tinyint代替int, 可大大减少字节数，对于大规模数据集来说将会大大减少系统开销。</p>
 
-<h3 id="data-transformation">5 Data Transformation(数据变换)</h3>
+<h3>5 Data Transformation(数据变换)</h3>
 
 <p>数据变换将数据转换成适合于挖掘的形式。主要是找到数据的特征表示，对数据进行规格化处理。用维变换或转换方式减少有效变量的数目或找到数据的不变式.</p>
 
 <ol>
-  <li><strong>smoothing(平滑)</strong>: 去掉数据中的噪声。这种技术包括分箱（Bin)、聚类和回归。</li>
-  <li><strong>Aggregation(聚集)</strong>:对数据进行汇总和聚集例如，可以聚集日销售数据，计算月和年销售额。这一步用来为多粒度数据分析构造数据立方体。</li>
-  <li><strong>Generalization(概化)</strong>:使用概念分层，用高层次概念替换低层次“原始”数据。例如，分类的属性，如street，可以概化为较高层的概念，如city或country.</li>
-  <li><strong>Normalization(规范化)</strong>: 将属性数据按比例缩放，使之落入一个小的特定区间，如-1．0到1．0或0.0到1.0。规格化的目的是将一个属性取值范围影射到一个特定范围之内，以消除数值性属性因大小不一而造成挖掘结果的偏差.</li>
-  <li><strong>Attribute construction属性构造或特征构造</strong>: 可以利用已知的属性构造新的属性并添加到属性集中，以帮助挖掘过程。(由长，宽求面积)</li>
+<li><strong>smoothing(平滑)</strong>: 去掉数据中的噪声。这种技术包括分箱（Bin)、聚类和回归。</li>
+<li><strong>Aggregation(聚集)</strong>:对数据进行汇总和聚集例如，可以聚集日销售数据，计算月和年销售额。这一步用来为多粒度数据分析构造数据立方体。</li>
+<li><strong>Generalization(概化)</strong>:使用概念分层，用高层次概念替换低层次“原始”数据。例如，分类的属性，如street，可以概化为较高层的概念，如city或country.</li>
+<li><strong>Normalization(规范化)</strong>: 将属性数据按比例缩放，使之落入一个小的特定区间，如-1．0到1．0或0.0到1.0。规格化的目的是将一个属性取值范围影射到一个特定范围之内，以消除数值性属性因大小不一而造成挖掘结果的偏差.</li>
+<li><strong>Attribute construction属性构造或特征构造</strong>: 可以利用已知的属性构造新的属性并添加到属性集中，以帮助挖掘过程。(由长，宽求面积)</li>
 </ol>
 
-<h3 id="data-reduction">7 Data Reduction(数据归约)</h3>
+<h3>7 Data Reduction(数据归约)</h3>
 
 <p>主要以下方法:</p>
 
 <ol>
-  <li>Data cube aggregation(数据方聚集):聚集操作用于数据方中的数据。主要用来构建数据立方.
-<img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-10-11 10:28:48 的屏幕截图.png" alt="" /></li>
-  <li>Atrribute subset selection(维归约):可以检测并删除不相关、弱相关或冗余的属性或维。(去除多余的属性值)</li>
-  <li>Dimensionality reduction(数据压缩):使用编码机制压缩数据集。
-    <ul>
-      <li>discrete wavelet transform小波变换DWT</li>
-      <li>principal components analysis 主要成分分析</li>
-    </ul>
-  </li>
-  <li>Numerosity reduction(数值压缩):用替代的、较小的数据表示替换或估计数据,如参数模型(只需要存放模型参数,而不是实际数据)或非参数方法,如<strong>聚类</strong>、<strong>选样</strong>和使用<strong>直方图</strong>。</li>
-  <li>Discretization and concept hierarchy generation(离散化和概念分层产生):属性的原始值用区间值或较高层的概念替换。概念分层允许挖掘多个抽象层上的数据,是数据挖掘的一种强有力的工具。
+<li>Data cube aggregation(数据方聚集):聚集操作用于数据方中的数据。主要用来构建数据立方.
+<img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-10-11%2010:28:48%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></li>
+<li>Atrribute subset selection(维归约):可以检测并删除不相关、弱相关或冗余的属性或维。(去除多余的属性值)</li>
+<li>Dimensionality reduction(数据压缩):使用编码机制压缩数据集。
+
+<ul>
+<li>discrete wavelet transform小波变换DWT</li>
+<li>principal components analysis 主要成分分析</li>
+</ul></li>
+<li>Numerosity reduction(数值压缩):用替代的、较小的数据表示替换或估计数据,如参数模型(只需要存放模型参数,而不是实际数据)或非参数方法,如<strong>聚类</strong>、<strong>选样</strong>和使用<strong>直方图</strong>。</li>
+<li>Discretization and concept hierarchy generation(离散化和概念分层产生):属性的原始值用区间值或较高层的概念替换。概念分层允许挖掘多个抽象层上的数据,是数据挖掘的一种强有力的工具。
 五种数值概念分层产生方法:
-    <ul>
-      <li>分箱</li>
-      <li>直方图分析</li>
-      <li>聚类分析</li>
-      <li>基于熵的离散化</li>
-      <li>通过“自然划分”的数据分段 :  <strong>3-4-5 规则</strong></li>
-    </ul>
-  </li>
+
+<ul>
+<li>分箱</li>
+<li>直方图分析</li>
+<li>聚类分析</li>
+<li>基于熵的离散化</li>
+<li>通过“自然划分”的数据分段 :  <strong>3-4-5 规则</strong></li>
+</ul></li>
 </ol>
 
-<h2 id="chapter-3-data-warehouse-and-olap-technologyan-overview-olap-">Chapter 3 Data warehouse and OLAP technology:an overview(数据仓库和数据挖掘的 OLAP 技术)</h2>
-
+<h2>Chapter 3 Data warehouse and OLAP technology:an overview(数据仓库和数据挖掘的 OLAP 技术)</h2>
 
     </article>
     <!-- Duoshuo Comment BEGIN -->

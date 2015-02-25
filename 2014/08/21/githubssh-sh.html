@@ -78,53 +78,47 @@
         <p>为了进一步提高程序效率(懒惰),把所有github项目的链接改成ssh,方便不用再打密码,哈哈</p>
 
 <p>看了几个项目的共同点</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">git@github.com:taizilongxu/ici.git
+https://github.com/taizilongxu/ici.git
 
-<p>```
-git@github.com:taizilongxu/ici.git
-https://github.com/taizilongxu/ici.git</p>
+git@github.com:taizilongxu/jekyll_blog_source.git
+https://github.com/taizilongxu/jekyll_blog_source.git
 
-<p>git@github.com:taizilongxu/jekyll_blog_source.git
-https://github.com/taizilongxu/jekyll_blog_source.git</p>
+git@github.com:taizilongxu/report.git
+https://github.com/taizilongxu/report.git
 
-<p>git@github.com:taizilongxu/report.git
-https://github.com/taizilongxu/report.git</p>
-
-<p>git@github.com:taizilongxu/wangdaoOJ.git
+git@github.com:taizilongxu/wangdaoOJ.git
 https://github.com/taizilongxu/wangdaoOJ.git
-```</p>
-
+</code></pre></div>
 <p>只需要把<code>https://github.com/</code>替换成<code>git@github.com:</code>就可以了,脚本如下:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#-*- encoding: UTF-8 -*-</span>
+<span class="c">#---------------------------------import------------------------------------</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="c">#---------------------------------------------------------------------------</span>
+<span class="n">rootdir</span> <span class="o">=</span> <span class="s">&quot;/home/limbo/&quot;</span>                                   <span class="c"># 指明被遍历的文件夹</span>
+<span class="n">username</span> <span class="o">=</span> <span class="s">&#39;taizilongxu&#39;</span>
 
-<p>```python
-#-<em>- encoding: UTF-8 -</em>-
-#———————————import————————————
-import os
-import os.path
-import re
-#—————————————————————————
-rootdir = “/home/limbo/”                                   # 指明被遍历的文件夹
-username = ‘taizilongxu’</p>
+<span class="k">def</span> <span class="nf">git_ssh</span><span class="p">(</span><span class="n">rootdir</span><span class="p">,</span><span class="n">username</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">parent</span><span class="p">,</span><span class="n">dirnames</span><span class="p">,</span><span class="n">filenames</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">rootdir</span><span class="p">):</span>   
+    <span class="c">#三个参数：分别返回1.父目录 2.所有文件夹名字（不含路径） 3.所有文件名字</span>
+        <span class="k">if</span> <span class="n">parent</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:]</span> <span class="o">==</span> <span class="s">&#39;.git&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s">&#39;config&#39;</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+                <span class="n">path</span> <span class="o">=</span> <span class="n">parent</span> <span class="o">+</span> <span class="s">&#39;/&#39;</span> <span class="o">+</span> <span class="s">&#39;config&#39;</span>
+                <span class="k">print</span> <span class="n">path</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="s">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">F</span><span class="p">:</span>
+                    <span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">r&#39;https://github.com/&#39;</span><span class="p">,</span><span class="s">&#39;git@github.com:&#39;</span><span class="p">,</span><span class="n">F</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+                    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 
-<p>def git_ssh(rootdir,username):
-    for parent,dirnames,filenames in os.walk(rootdir): <br />
-    #三个参数：分别返回1.父目录 2.所有文件夹名字（不含路径） 3.所有文件名字
-        if parent[-4:] == ‘.git’:
-            if ‘config’ in filenames:
-                path = parent + ‘/’ + ‘config’
-                print path
-                with open(path,’r’) as F:
-                    s = re.sub(r’https://github.com/’,’git@github.com:’,F.read())
-                    with open(path,’w’) as f:
-                        f.write(s)</p>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">git_ssh</span><span class="p">(</span><span class="n">rootdir</span><span class="p">,</span><span class="n">username</span><span class="p">)</span>
 
-<p>def main():
-    git_ssh(rootdir,username)</p>
-
-<p>if <strong>name</strong> == ‘<strong>main</strong>’:
-    main()
-############################################################################
-```</p>
-
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+<span class="c">############################################################################</span>
+</code></pre></div>
     </article>
     <!-- Duoshuo Comment BEGIN -->
     <div id="comments">
