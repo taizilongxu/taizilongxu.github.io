@@ -1,914 +1,130 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-
-    <title>Hackerxu's Blog</title>
-    <subtitle>Python,HTML,CSS,Machine Leaning</subtitle>
-    <link href="http://hackerxu.com/atom.xml" rel="self"/>
-    <link href="http://hackerxu.com"/>
-    <updated>2015-03-04T23:30:03+08:00</updated>
-    <id>http://hackerxu.com</id>
-    <author>
-        <name>xuxiao</name>
-    </author>
-    
-    <entry>
-        <title>iterm2下的ls配置</title>
-        <link href="http://hackerxu.com/2015/02/22/iterm-ls.html"/>
-        <updated>2015-02-22T00:00:00+08:00</updated>
-        <id>http://hackerxu.com/2015/02/22/iterm-ls</id>
-        <content type="html">环境是iterm2 + zsh + tmux
-
-![](https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/屏幕快照 2015-02-22 上午9.50.16.png)
-
-
-首先如果需要和linux一样ls带颜色的话,需要先下载coreutils.
-
-```
-brew install coreutils
-```
-
-装完它会提示在`.bashrc`中加入:
-
-```
-export PATH=&quot;/usr/local/opt/coreutils/libexec/gnubin:$PATH&quot;
-export MANPATH=&quot;/usr/local/opt/coreutils/libexec/gnuman:$MANPATH&quot;
-```
-
-但是我们在zsh下,需要把上面的命令放入`~/.zshrc`中.
-
-solarized自带ls配色,我们需要下载项目:https://github.com/seebi/dircolors-solarized.
-
-选择一个喜欢的主题替换到`~/.dir_colors`文件.
-
-在`~/.zshrc`中加入:
-
-```
-eval `dircolor ~/.dir_colors`
-```
-
-重启终端即可.
-
-注意:
-
-* tmux要开启256模式`tmux -2`
-* 上面的配置不能写到`.profile`或者`.bashrc`
-
-
-
-
-</content>
-    </entry>
-    
-    <entry>
-        <title>oop</title>
-        <link href="http://hackerxu.com/2015/01/14/oop.html"/>
-        <updated>2015-01-14T00:00:00+08:00</updated>
-        <id>http://hackerxu.com/2015/01/14/oop</id>
-        <content type="html">## 面向对象
-
-![](https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/o_OOBase.gif)
-
-
-| column | GC | 多态 | 多重继承 | 继承 |
-|:---|:----|:----|:----|:----|
-|C|×|×|×|×|
-|C++|×|√|√|√|
-|Java|√|√|×|√|
-|Python|√|×|√|√|
-|Objective-C|ARC|×|×|√|
-
-
-</content>
-    </entry>
-    
-    <entry>
-        <title>C/C++,Java,Python内存管理</title>
-        <link href="http://hackerxu.com/2015/01/13/ram.html"/>
-        <updated>2015-01-13T00:00:00+08:00</updated>
-        <id>http://hackerxu.com/2015/01/13/ram</id>
-        <content type="html">## 内存管理
-
-## C
-
-在C语言中，内存主要分为如下5个存储区：
-
-1. 栈(Stack)：位于函数内的局部变量（包括函数实参），由编译器负责分配释放，函数结束，栈变量失效。
-2. 堆(Heap)：由程序员用malloc/calloc/realloc分配，free释放。如果程序员忘记free了，则会造成内存泄露，程序结束时该片内存会由OS回收。
-3. 全局区/静态区(Global Static Area)： 全局变量和静态变量存放区，程序一经编译好，该区域便存在。并且在C语言中初始化的全局变量和静态变量和未初始化的放在相邻的两个区域（在C++中，由于全局变量和静态变量编译器会给这些变量自动初始化赋值，所以没有区分了）。由于全局变量一直占据内存空间且不易维护，推荐少用。程序结束时释放。
-4. C风格字符串常量存储区： 专门存放字符串常量的地方，程序结束时释放。
-5. 程序代码区：存放程序二进制代码的区域。
-
-
-简单来说, c 并没有内存管理,完全是靠程序员手动释放和申请的.
-
-## C++
-
-在C++语言中，与C类似，不过也有所不同，内存主要分为如下5个存储区：
-
-1. 栈(Stack)：位于函数内的局部变量（包括函数实参），由编译器负责分配释放，函数结束，栈变量失效。
-2. 堆（Heap)：这里与C不同的是，该堆是由new申请的内存，由delete或delete[]负责释放
-3. 自由存储区(Free Storage)：由程序员用malloc/calloc/realloc分配，free释放。如果程序员忘记free了，则会造成内存泄露，程序结束时该片内存会由OS回收。
-4. 全局区/静态区(Global Static Area)： 全局变量和静态变量存放区，程序一经编译好，该区域便存在。在C++中，由于全局变量和静态变量编译器会给这些变量自动初始化赋值，所以没有区分了初始化变量和未初始化变量了。由于全局变量一直占据内存空间且不易维护，推荐少用。程序结束时释放。
-5. 常量存储区： 这是一块比较特殊的存储区，专门存储不能修改的常量（如果采用非正常手段更改当然也是可以的了）。
-
-C++为了能兼容 C,对内存机制也是一个悲剧~
- 
-## Java
-
-　对于Java程序员来说，在虚拟机的自动内存管理机制的帮助下，不再需要为每一个new操作去写配对的delete/free代码，而且不容易出现内存泄漏和内存溢出问题，看起来由虚拟机管理内存一切都很美好。不过，也正是因为Java程序员把内存控制的权力交给了Java虚拟机，一旦出现内存泄漏和溢出方面的问题，如果不了解虚拟机是怎样使用内存的，那排查错误将会成为一项异常艰难的工作。
-　
-
-java 的内存管理:
-
-1. 程序运行前：JVM向操作系统请求一定的内存空间，称为初始内存空间！程序执行过程中所需的内存都是由java虚拟机从这片内存空间中划分的。
-2. 程序运行中：java程序一直向java虚拟机申请内存，当程序所需要的内存空间超出初始内存空间时，java虚拟机会再次向操作系统申请更多的内存供程序使用！
-3. 内存溢出：程序接着运行，当java虚拟机已申请的内存达到了规定的最大内存空间，但程序还需要更多的内存，这时会出现内存溢出的错误！
-
-内存空间逻辑划分:
-
-1. 方法区：方法区默认最大容量为64M，Java虚拟机会将加载的java类存入方法区，保存类的结构（属性与方法），类静态成员等内容。
-2. 堆：默认最大容量为64M，堆存放对象持有的数据，同时保持对原类的引用。可以简单的理解为对象属性的值保存在堆中，对象调用的方法保存在方法区。
-3. 栈：栈默认最大容量为1M，在程序运行时，每当遇到方法调用时，Java虚拟机就会在栈中划分一块内存称为栈帧（Stack frame），栈帧中的内存供局部变量（包括基本类型与引用类型）使用，当方法调用结束后，Java虚拟机会收回此栈帧占用的内存。
-
-java的内存管理使用的是垃圾回收机制,具体的垃圾回收策略可以 google 一下,它有一系列变化,展开又是一片博文了.
-
-### python
-
-Python的内存管理机制可以从三个方面来讲:
-
-* 引用计数
-* 垃圾回收
-* 内存池机制
-
-#### 1 引用计数
-
-Python采用了类似Windows内核对象一样的方式来对内存进行管理。每一个对象，都维护这一个对指向该对对象的引用的计数。
-
-例如:
-
-
-```python
-x = 3.14
-
-y = x
-```
-
-这里的&#39;引用&#39;其实和 c 中的指针意义相近,如果理解 c 指针,那么就不难理解 python 的引用机制.这里的 x和 y 其实指向的是同一个对象3.14.
-
-#### 2 垃圾回收
-
-python不像C++，Java等语言一样，他们可以不用事先声明变量类型而直接对变量进行赋值。对Python语言来讲，对象的类型和内存都是在运行时确定的。这也是为什么我们称Python语言为动态类型的原因（这里我们把动态类型可以简单的归结为对变量内存地址的分配是在运行时自动判断变量类型并对变量进行赋值）。
-
-#### 3 内存池机制
-
-![](https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/110017426714010.x-png)
-
-Python的内存机制以金字塔行，-1，-2层主要有操作系统进行操作，
-
-* 第0层是C中的malloc，free等内存分配和释放函数进行操作；
-* 第1层和第2层是内存池，有Python的接口函数PyMem_Malloc函数实现，当对象小于256K时有该层直接分配内存；
-* 第3层是最上层，也就是我们对Python对象的直接操作；
-
-在 C 中如果频繁的调用 malloc 与 free 时,是会产生性能问题的.再加上频繁的分配与释放小块的内存会产生内存碎片. Python 在这里主要干的工作有:
-
-* 如果请求分配的内存在1~256字节之间就使用自己的内存管理系统,否则直接使用 malloc.
-* 这里还是会调用 malloc 分配内存,但每次会分配一块大小为256k的大块内存.
-
-　　经由内存池登记的内存到最后还是会回收到内存池,并不会调用 C 的 free 释放掉.以便下次使用.对于简单的Python对象，例如数值、字符串，元组（tuple不允许被更改)采用的是复制的方式(深拷贝?)，也就是说当将另一个变量B赋值给变量A时，虽然A和B的内存空间仍然相同，但当A的值发生变化时，会重新给A分配空间，A和B的地址变得不再相同
-　　</content>
-    </entry>
-    
-    <entry>
-        <title>数据库与树</title>
-        <link href="http://hackerxu.com/2015/01/10/tree.html"/>
-        <updated>2015-01-10T00:00:00+08:00</updated>
-        <id>http://hackerxu.com/2015/01/10/tree</id>
-        <content type="html">数据库中需要引用查找结构,为了更加迅速的查找硬盘中的数据库,因为硬盘IO的速度非常的耗时,所以要尽量选择能够将IO次数减少的数据结构,下面一个个分析动态查找结构,找到最合适的结构.
-
-## 二叉排序树(二叉查找树,二叉搜索树)
-
-二叉排序树（Binary Sort Tree）又称二叉查找树（Binary Search Tree），亦称二叉搜索树。 它或者是一棵空树；或者是具有下列性质的二叉树： 
-
-1. 若左子树不空，则左子树上所有结点的值均小于它的根结点的值； 
-2. 若右子树不空，则右子树上所有结点的值均大于或等于它的根结点的值；
-3. 左、右子树也分别为二叉排序树；
-
-
-![](https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2012072113392755.png)
-
-它的查找复杂度 P(n)=O(logn)
-
-这里就不讲它的插入,删除操作了
-
-可以看到二叉排序树是最简单的一种动态查找结构,它对树的深度没有进行优化,这就使得树深有可能非常的大(最坏情况树深=节点数).
-
-## 平衡二叉树
-
-平衡二叉树（Balanced Binary Tree）又被称为AVL树（有别于AVL算法），且具有以下性质：它是一 棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树。构造与调整方法 平衡二叉树的常用算法有红黑树、AVL、Treap等。 最小二叉平衡树的节点的公式如下 F(n)=F(n-1)+F(n-2)+1 这个类似于一个递归的数列，可以参考Fibonacci数列，1是根节点，F(n-1)是左子树的节点数量，F(n-2)是右子树的节点数量。
-
-![](https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/bf096b63f6246b6060c35d63e9f81a4c500fa2dc.jpg)
-
-平衡二叉树通过旋转可以使树深不至于太大,它的平均查找长度也是logn,但它能有效避免二叉排序树的那种极端情况出现.
-
-## B-tree
-
-&gt;这里B-tree不是B减树而是叫做B树
-
-对于上面两种树形结构,它们的树深往往太深,对于海量数据而言简直是个灾难,所以有人发明了B-tree,它是一个多路查找树,很轻易的就减小了树深.
-
-一棵m阶B树(balanced tree of order m)是一棵平衡的m路搜索树。它或者是空树，或者是满足下列性质的树：
-
-1. 根结点至少有两个子女；
-2. 每个非根节点所包含的关键字个数 j 满足：┌m/2┐ - 1 &lt;= j &lt;= m - 1；
-3. 除根结点以外的所有结点（不包括叶子结点）的度数正好是关键字总数加1，故内部子树个数 k 满足：┌m/2┐ &lt;= k &lt;= m ；
-4. 所有的叶子结点都位于同一层。
-
-在B-树中，每个结点中关键字从小到大排列，并且当该结点的孩子是非叶子结点时，该k-1个关键字正好是k个孩子包含的关键字的值域的分划。
-
-因为叶子结点不包含关键字，所以可以把叶子结点看成在树里实际上并不存在外部结点，指向这些外部结点的指针为空，叶子结点的数目正好等于树中所包含的关键字总个数加1。
-
-![](https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/8394323_13074405906V6Q.jpg)
-
-
-下面，咱们来模拟下查找文件29的过程：
-
-1. 根据根结点指针找到文件目录的根磁盘块1，将其中的信息导入内存。【磁盘IO操作 1次】    
-2. 此时内存中有两个文件名17、35和三个存储其他磁盘页面地址的数据。根据算法我们发现：`17&lt;29&lt;35`，因此我们找到指针p2。
-3. 根据p2指针，我们定位到磁盘块3，并将其中的信息导入内存。【磁盘IO操作 2次】    
-4. 此时内存中有两个文件名26，30和三个存储其他磁盘页面地址的数据。根据算法我们发现：`26&lt;29&lt;30`，因此我们找到指针p2。
-5. 根据p2指针，我们定位到磁盘块8，并将其中的信息导入内存。【磁盘IO操作 3次】    
-6. 此时内存中有两个文件名28，29。根据算法我们查找到文件名29，并定位了该文件内存的磁盘地址。
-
-分析上面的过程，发现需要**3次磁盘IO操作和3次内存查找操作**。关于内存中的文件名查找，由于是一个有序表结构，可以利用折半查找提高效率。至于IO操作是影响整个B树查找效率的决定因素。
-
-当然，如果我们使用平衡二叉树的磁盘存储结构来进行查找，磁盘4次，最多5次，而且文件越多，B树比平衡二叉树所用的磁盘IO操作次数将越少，效率也越高。
-
-## B+tree
-
-对于B-tree,所有节点都会带有指向其关键字的指针(途中红色小方块),这样做有利于加快查找速度,但是还有个缺点,就是会加大节点存储空间,造成盘块读取的增加,导致增加硬盘IO;而B+tree则取消掉这个红块,所有的关键字和关键字指针都存在叶子节点中,每次查找都会遍历到B+tree的底部(不管查找到还是没查找到),增加了查询深度的稳定,还有一点就是它解决了元素遍历效率底下的问题,就是说它的叶子节点链接成一个链表,可以有效的进行链表遍历.
-
-B+tree是应文件系统所需而产生的一种B-tree的变形树。
-
-一棵m阶的B+树和m阶的B树的异同点在于：
-
-1. 有n棵子树的结点中含有n-1 个关键字； (此处颇有争议，B+树到底是与B 树n棵子树有n-1个关键字 保持一致，还是不一致：B树n棵子树的结点中含有n个关键字，待后续查证。暂先提供两个参考链接：①wikipedia http://en.wikipedia.org/wiki/B%2B_tree#Overview；②http://hedengcheng.com/?p=525。而下面B+树的图尚未最终确定是否有问题，请读者注意)
-2. 所有的叶子结点中包含了全部关键字的信息，及指向含有这些关键字记录的指针，且叶子结点本身依关键字的大小自小而大的顺序链接。 (而B 树的叶子节点并没有包括全部需要查找的信息)
-3. 所有的非终端结点可以看成是索引部分，结点中仅含有其子树根结点中最大（或最小）关键字。 (而B 树的非终节点也包含需要查找的有效信息)
-
-![](https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/8394323_1307440587b6WG.jpg)
-
-</content>
-    </entry>
-    
-    <entry>
-        <title>Xml Json</title>
-        <link href="http://hackerxu.com/2014/12/26/xml-json.html"/>
-        <updated>2014-12-26T00:00:00+08:00</updated>
-        <id>http://hackerxu.com/2014/12/26/xml-json</id>
-        <content type="html">
-# XML
-
-## 1 历史
-
-XML是从1995年开始有其雏形，并向W3C（万维网联盟）提案，而在1998年二月发布为W3C的标准（XML1.0）。XML的前身是SGML（The Standard Generalized Markup Language），是自IBM从1960年代就开始发展的GML（Generalized Markup Language）标准化后的名称。
-
-GML的重要概念：
-
-* 文件中能够明确的将标示与内容分开
-* 所有文件的标示使用方法均一致
-
-1978年，ANSI将GML加以整理规范，发布成为SGML，1986年起为ISO所采用（ISO 8879），并且被广泛地运用在各种大型的文件计划中，但是SGML是一种非常严谨的文件描述法，导致过于庞大复杂（标准手册就有500多页），难以理解和学习，进而影响其推广与应用。
-
-同时W3C也发现到HTML的问题：
-
-* 不能解决所有解释数据的问题 - 像是影音文件或化学公式、音乐符号等其他形态的内容。
-* 性能问题 - 需要下载整份文件，才能开始对文件做搜索。
-* 扩充性、弹性、易读性均不佳
-
-
-为了解决以上问题，专家们使用SGML精简制作，并依照HTML的发展经验，产生出一套使用上规则严谨，但是简单的描述数据语言：XML。
-
-XML是在一个这样的背景下诞生的——为了有一个更中立的方式，让消费端自行决定要如何消化、呈现从服务端所提供的信息。
-
-XML被广泛用来作为跨平台之间交互数据的形式，主要针对数据的内容，通过不同的格式化描述手段（XSLT，CSS等）可以完成最终的形式表达（生成对应的HTML，PDF或者其他的文件格式）。
-
-## 2 什么是 XML?
-
-* XML 指可扩展标记语言（EXtensible Markup Language）
-* XML 是一种标记语言，很类似 HTML
-* XML 的设计宗旨是传输数据，而非显示数据
-* XML 标签没有被预定义。您需要自行定义标签。
-* XML 被设计为具有自我描述性。
-* XML 是 W3C 的推荐标准
-
-## 3 XML 与 HTML 的主要差异
-
-* XML 不是 HTML 的替代。
-* XML 和 HTML 为不同的目的而设计：
-* XML 被设计为传输和存储数据，其焦点是数据的内容。
-* HTML 被设计用来显示数据，其焦点是数据的外观。
-* HTML 旨在显示信息，而 XML 旨在传输信息。
-
-## 4 XML 的用途
-
-#### 4.1 XML 把数据从 HTML 分离
-
-如果你需要在 HTML 文档中显示动态数据，那么每当数据改变时将花费大量的时间来编辑 HTML。
-
-通过 XML，数据能够存储在独立的 XML 文件中。这样你就可以专注于使用 HTML 进行布局和显示，并确保修改底层数据不再需要对 HTML 进行任何的改变。
-
-通过使用几行 JavaScript，你就可以读取一个外部 XML 文件，然后更新 HTML 中的数据内容。
-
-#### 4.2 XML 简化数据共享
-
-在真实的世界中，计算机系统和数据使用不兼容的格式来存储数据。
-
-XML 数据以纯文本格式进行存储，因此提供了一种独立于软件和硬件的数据存储方法。
-
-这让创建不同应用程序可以共享的数据变得更加容易。
-
-#### 4.3 XML 简化数据传输
-
-通过 XML，可以在不兼容的系统之间轻松地交换数据。
-
-对开发人员来说，其中一项最费时的挑战一直是在因特网上的不兼容系统之间交换数据。
-
-由于可以通过各种不兼容的应用程序来读取数据，以 XML 交换数据降低了这种复杂性。
-
-#### 4.4 XML 简化平台的变更
-
-升级到新的系统（硬件或软件平台），总是非常费时的。必须转换大量的数据，不兼容的数据经常会丢失。
-
-XML 数据以文本格式存储。这使得 XML 在不损失数据的情况下，更容易扩展或升级到新的操作系统、新应用程序或新的浏览器。
-
-
-## 5 XML用法
-
-#### 5.1 一个XML文档实例
-
-![](https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/ct_nodetree1.gif)
-
-上图表示下面的 XML 中的一本书：
-
-```xml
-&lt;bookstore&gt;
-&lt;book category=&quot;COOKING&quot;&gt;
-  &lt;title lang=&quot;en&quot;&gt;Everyday Italian&lt;/title&gt; 
-  &lt;author&gt;Giada De Laurentiis&lt;/author&gt; 
-  &lt;year&gt;2005&lt;/year&gt; 
-  &lt;price&gt;30.00&lt;/price&gt; 
-&lt;/book&gt;
-&lt;book category=&quot;CHILDREN&quot;&gt;
-  &lt;title lang=&quot;en&quot;&gt;Harry Potter&lt;/title&gt; 
-  &lt;author&gt;J K. Rowling&lt;/author&gt; 
-  &lt;year&gt;2005&lt;/year&gt; 
-  &lt;price&gt;29.99&lt;/price&gt; 
-&lt;/book&gt;
-&lt;book category=&quot;WEB&quot;&gt;
-  &lt;title lang=&quot;en&quot;&gt;Learning XML&lt;/title&gt; 
-  &lt;author&gt;Erik T. Ray&lt;/author&gt; 
-  &lt;year&gt;2003&lt;/year&gt; 
-  &lt;price&gt;39.95&lt;/price&gt; 
-&lt;/book&gt;
-&lt;/bookstore&gt;
-```
-
-例子中的根元素是 `&lt;bookstore&gt;`。文档中的所有 `&lt;book&gt;` 元素都被包含在 `&lt;bookstore&gt;` 中。
-
-`&lt;book&gt;` 元素有 4 个子元素：`&lt;title&gt;`、`&lt; author&gt;`、`&lt;year&gt;`、`&lt;price&gt;`。
-
-#### 5.2 XML 语法规则
-
-1. 所有 XML 元素都须有关闭标签
-
-	在 XML 中，省略关闭标签是非法的。所有元素都必须有关闭标签：
-    
-    ```xml
-    &lt;p&gt;This is a paragraph&lt;/p&gt;
-	&lt;p&gt;This is another paragraph&lt;/p&gt; 
-    ```
-    注意： XML 声明没有关闭标签。这不是错误。声明不属于XML本身的组成部分。它不是 XML 元素，也不需要关闭标签。
-    
-2. XML 标签对大小写敏感
-	
-    必须使用相同的大小写来编写打开标签和关闭标签：
-    
-    ```xml
-    &lt;Message&gt;这是错误的。&lt;/message&gt;
-	&lt;message&gt;这是正确的。&lt;/message&gt; 
-    ```
-
-3. XML 必须正确地嵌套
-	
-    在 XML 中，所有元素都必须彼此正确地嵌套：
-    
-    ```xml
-    &lt;b&gt;&lt;i&gt;This text is bold and italic&lt;/i&gt;&lt;/b&gt;
-    ```
-    
-4. XML 文档必须有根元素
-	
-    XML 文档必须有一个元素是所有其他元素的父元素。该元素称为根元素。
-    
-    ```xml
-    &lt;root&gt;
- 	 &lt;child&gt;
- 	   &lt;subchild&gt;.....&lt;/subchild&gt;
-	  &lt;/child&gt;
-	&lt;/root&gt;
-    ```
-    
-5. XML 的属性值须加引号
-	
-    在 XML 中，XML 的属性值须加引号。请研究下面的两个 XML 文档。第一个是错误的，第二个是正确的：
-    
-    ```xml
-    &lt;note date=08/08/2008&gt;
-	&lt;to&gt;George&lt;/to&gt;
-	&lt;from&gt;John&lt;/from&gt;
-	&lt;/note&gt; 
-    ```
-    
-    ```xml
-    &lt;note date=&quot;08/08/2008&quot;&gt;
-	&lt;to&gt;George&lt;/to&gt;
-	&lt;from&gt;John&lt;/from&gt;
-	&lt;/note&gt; 
-    ```
-
-#### 5.3 属性
-
-有时候要为元素添加属性。属性由一个名称-值对构成，值包含在双引号中（&quot;），比如`type=&quot;dessert&quot;`。属性是在使用元素时存储额外信息的一种方式。在同一个文档中，可以根据需要对每个元素的不同实例采用不同的属性值。
-
-您可以在元素的开始标记内部输入一个或多个属性，比如：`&lt;recipe type=&quot;dessert&quot;&gt;`。如果要添加多个属性，各个属性之间使用空格分开，比如：`&lt;recipename cuisine=&quot;american&quot; servings=&quot;1&quot;&gt;`。
-
-带有元素和属性的 XML 文件：
-
-```xml
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;recipe type=&quot;dessert&quot;&gt;
-&lt;recipename cuisine=&quot;american&quot; servings=&quot;1&quot;&gt;Ice Cream Sundae&lt;/recipename&gt;
-&lt;preptime&gt;5 minutes&lt;/preptime&gt;
-&lt;/recipe&gt;
-```
-
-您可以根据需要使用任意数量的属性。要考虑需要添加到文档的细节。如果要对文档分类，属性尤其有用，比如按照菜谱的 type 进行分类。属性名可以包含在元素名中使用的字符，规则也是类似的，即字符之间不能带有空格，名称只能以字母开始。
-
-## 6 XML验证
-
-拥有正确语法的 XML 被称为“形式良好”的 XML。通过 DTD 验证的 XML 是“合法”的 XML。
-
-#### 6.1 DTD
-
-文档类型定义（Document Type Definition）可定义合法的XML文档构建模块。它使用一系列合法的元素来定义文档的结构。DTD 可被成行地声明于 XML 文档中，也可作为一个外部引用。
-
-带有 DTD 的 XML 文档实例：
-
-```xml
-&lt;?xml version=&quot;1.0&quot;?&gt;
-&lt;!DOCTYPE note [
-  &lt;!ELEMENT note (to,from,heading,body)&gt;
-  &lt;!ELEMENT to      (#PCDATA)&gt;
-  &lt;!ELEMENT from    (#PCDATA)&gt;
-  &lt;!ELEMENT heading (#PCDATA)&gt;
-  &lt;!ELEMENT body    (#PCDATA)&gt;
-]&gt;
-&lt;note&gt;
-  &lt;to&gt;George&lt;/to&gt;
-  &lt;from&gt;John&lt;/from&gt;
-  &lt;heading&gt;Reminder&lt;/heading&gt;
-  &lt;body&gt;Don&#39;t forget the meeting!&lt;/body&gt;
-&lt;/note&gt;
-```
-
-以上 DTD 解释如下：
-
-* !DOCTYPE note (第二行)定义此文档是 note 类型的文档。
-* !ELEMENT note (第三行)定义 note 元素有四个元素：&quot;to、from、heading,、body&quot;
-* !ELEMENT to (第四行)定义 to 元素为 &quot;#PCDATA&quot; 类型
-* !ELEMENT from (第五行)定义 from 元素为 &quot;#PCDATA&quot; 类型
-* !ELEMENT heading (第六行)定义 heading 元素为 &quot;#PCDATA&quot; 类型
-* !ELEMENT body (第七行)定义 body 元素为 &quot;#PCDATA&quot; 类型
-
-DTD优势：
-
-每一个XML文档都可携带一个DTD，用来对该文档格式进行描述，测试该文档是否为有效的XML文档。既然DTD有外部和内部之分，当然就可以为某个独立的团体定义一个公用的外部DTD，那么多个XML文档就都可以共享使用该DTD，使得数据交换更为有效。甚至在某些文档中还可以使内部DTD和外部DTD相结合。在应用程序中也可以用某个DTD来检测接收到的数据是否符合某个标准。
-
-对于XML文档而言，虽然DTD不是必须的，但它为文档的编制带来了方便。加强了文档标记内参数的一致性，使XML语法分析器能够确认文档。如果不使用DTD来对XML文档进行定义，那么XML语法分析器将无法对该文档进行确认。
-
-#### 6.2 XML Schema
-
-W3C 支持一种基于 XML 的 DTD 代替者，它名为 XML Schema：
-
-```xml
-&lt;xs:element name=&quot;note&quot;&gt;
-
-&lt;xs:complexType&gt;
-  &lt;xs:sequence&gt;
-    &lt;xs:element name=&quot;to&quot;      type=&quot;xs:string&quot;/&gt;
-    &lt;xs:element name=&quot;from&quot;    type=&quot;xs:string&quot;/&gt;
-    &lt;xs:element name=&quot;heading&quot; type=&quot;xs:string&quot;/&gt;
-    &lt;xs:element name=&quot;body&quot;    type=&quot;xs:string&quot;/&gt;
-  &lt;/xs:sequence&gt;
-&lt;/xs:complexType&gt;
-
-&lt;/xs:element&gt; 
-```
-
-我们认为 XML Schema 很快会在大部分网络应用程序中取代 DTD。
-
-理由如下：
-
-* XML Schema 可针对未来的需求进行扩展
-* XML Schema 更完善，功能更强大
-* XML Schema 基于 XML 编写
-* XML Schema 支持数据类型
-* XML Schema 支持命名空间
-
-## 7 XPath
-
-XPath是W3C的一个标准。它最主要的目的是为了在XML1.0或XML1.1文档节点树中定位节点所设计。目前有XPath1.0和XPath2.0两个版本。
-
-XPath是一种表达式语言，它的返回值可能是节点，节点集合，原子值，以及节点和原子值的混合等.
-
-在 XPath 中，有七种类型的节点：元素、属性、文本、命名空间、处理指令、注释以及文档节点（或称为根节点）。
-
-#### 7.1 XPath语法
-
-1. 选取节点：XPath 使用路径表达式在 XML 文档中选取节点。节点是通过沿着路径或者 step 来选取的。
-2. 谓语（Predicates）：谓语用来查找某个特定的节点或者包含某个指定的值的节点。谓语被嵌在方括号中。
-3. 选取未知节点：XPath 通配符可用来选取未知的 XML 元素。
-4. 选取若干路径：通过在路径表达式中使用“|”运算符，您可以选取若干个路径。
-
-
-</content>
-    </entry>
-    
-    <entry>
-        <title>Leetcode Python</title>
-        <link href="http://hackerxu.com/2014/12/23/leetcode-python.html"/>
-        <updated>2014-12-23T00:00:00+08:00</updated>
-        <id>http://hackerxu.com/2014/12/23/leetcode-python</id>
-        <content type="html">## Single Number 
-
-Given an array of integers, every element appears twice except for one. Find that single one.
-
-Note:
-Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
-
-tags:
-
-* Hash Table 
-* Bit Manipulation
-
-
-```python
-def singleNumber(self, A):
-    return 2*sum(set(A)) - sum(A)
-```
-
-```python
-def singleNumber(self, A):
-    return reduce(operator.xor,A)
-```
-
-## Single Number II 
-
-Given an array of integers, every element appears three times except for one. Find that single one.
-
-Note:
-Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
-
-tags:
-
-* Bit Manipulation
-
-```python
-class Solution:
-# @param A, a list of integer
-# @return an integer
-    def singleNumber(self, A):
-        ec1, ec2, ec3 = 0, 0, 0
-        for ai in A:
-            ec3 = ec2 &amp; ai
-            ec2 = (ec2 | (ec1 &amp; ai)) &amp; (~ec3)
-            ec1 = (ec1 | ai) &amp; (~ec3)        
-        return ec1
-```
-
-Image the numbers in A have just one bit,
-
-that is: A = [0, 0, 0, 1, 1, 1, x]
-
-We have three times &quot;0&quot;, three times &quot;1&quot;, and a different &quot;x&quot;.
-
-So, if count of &quot;1&quot; in A is three&#39;s multiple, than x = 0,
-
-else, x = 1.
-
-Iterate all numbers in A.
-
-When encount FIRST &quot;1&quot;, set &quot;ec1 = 1&quot;;
-
-When encount SECOND &quot;1&quot;, set &quot;ec2 = 1&quot;;
-
-When encount THIRD &quot;1&quot;, set &quot;ec3 = 1, ec1 = 0, ec2 = 0&quot;, and move on...
-
-At last &quot;ec1&quot; is the different number.
-
-## Maximum Depth of Binary Tree
-
-Given a binary tree, find its maximum depth.
-
-The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
-
-tags:
-
-* Tree 
-* Depth-first Search
-
-```python
-def maxDepth(self, root):
-        if not root:
-            return 0
-        return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
-```
-
-## Same Tree
-
-Given two binary trees, write a function to check if they are equal or not.
-
-Two binary trees are considered equal if they are structurally identical and the nodes have the same value.
-
-tags:
-
-* Tree 
-* Depth-first Search
-
-```python
-def isSameTree(self, p, q):
-    if p == None and q == None:
-        return True
-    elif p and q :
-        return p.val == q.val and self.isSameTree(p.left,q.left) and self.isSameTree(p.right,q.right)
-    else :
-        return False
-```
-
-## Roman to Integer
-
-Given a roman numeral, convert it to an integer.
-
-Input is guaranteed to be within the range from 1 to 3999.
-
-tags:
-
-* Math 
-* String
-
-```python
-class Solution:
-    # @return an integer
-    def romanToInt(self, s):
-        roman = {&#39;I&#39;:1,&#39;V&#39;:5,&#39;X&#39;:10,&#39;L&#39;:50,&#39;C&#39;:100,&#39;D&#39;:500,&#39;M&#39;:1000}
-        sum = 0
-        for index, i in enumerate(s):
-            if index == 0:
-                sum += roman[i]
-                continue
-            if roman[i] &lt;= roman[s[index - 1]]:
-                sum += roman[i]
-            else:
-                sum = sum - 2 * roman[s[index - 1]] + roman[i]
-        return sum
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title></title>
+        <description>Python,HTML,CSS,Machine Leaning</description>      
+        <link>http://hackerxu.com</link>
+        <atom:link href="http://hackerxu.com/feed.xml" rel="self" type="application/rss+xml" />
         
-```
-
-```python
-class Solution:
-    # @return an integer
-    def romanToInt(self, s):
-        dic = {
-            &#39;I&#39;: lambda i: -1 if s[i + 1] in [&#39;V&#39;, &#39;X&#39;] else 1,
-            &#39;X&#39;: lambda i: -10 if s[i + 1] in [&#39;L&#39;, &#39;C&#39;] else 10,
-            &#39;C&#39;: lambda i: -100 if s[i + 1] in [&#39;D&#39;, &#39;M&#39;] else 100,
-            &#39;V&#39;: lambda i: 5,
-            &#39;L&#39;: lambda i: 50,
-            &#39;D&#39;: lambda i: 500,
-            &#39;M&#39;: lambda i: 1000,
-        }
-        x = 0
-        s += &#39;@&#39;
-        for i, ch in enumerate(s[:-1]):
-            x += dic[ch](i)
-        return x
-```
-
-```python
-class Solution:
-    # @return an integer
-    def romanToInt(self, s):
-        result=0
-        dic={&#39;I&#39;:1,&#39;V&#39;:5,&#39;X&#39;:10,&#39;L&#39;:50,&#39;C&#39;:100,&#39;D&#39;:500,&#39;M&#39;:1000}
-        for i in s[-1::-1]:
-            symbol=1
-            if (i in [&#39;I&#39;,&#39;X&#39;,&#39;C&#39;]) and result&gt;=5*dic[i]:
-                symbol=-1
-            result+=dic[i]*symbol
-        return result 
-```
-
-The main problem is to deal with the special numbers &quot;IV&quot;,&quot;IX&quot;,&quot;XL&quot;,&quot;XC&quot;,&quot;CD&quot;,&quot;CM&quot;,for in these numbers &quot;I&quot;,&quot;X&quot;,&quot;C&quot; have the unusual meaning(subtract not plus). 
-
-If given a Roman without numbers mentioned above,we can easily get the result by plusing all the numbers from right to left . 
-So we need to find out what &quot;I&quot;,&quot;X&quot;,&quot;C&quot; mean when they appear(mean plus or subtract). 
-
-&quot;I&quot; for example,the symbol &quot;I&quot; only appear in following circumstances:
-&quot;I&quot;,&quot;II&quot;,&quot;III&quot;,&quot;VI&quot;,VII&quot;,&quot;VIII&quot;,&quot;IV&quot;,&quot;IX&quot;,&quot;XI&quot;····(omitting &quot;IIII&quot; for it is special) . 
-
-We can figure out that when we plus the symbols from left to right. If sum&gt;=5,then the &quot;I&quot; we get can only mean &quot;-1&quot;.Otherwise,it means &quot;+1&quot;.The same is true with &quot;X&quot; and &quot;C&quot;.
-
-
-</content>
-    </entry>
-    
-    <entry>
-        <title>OS X 配置</title>
-        <link href="http://hackerxu.com/2014/12/18/macos.html"/>
-        <updated>2014-12-18T00:00:00+08:00</updated>
-        <id>http://hackerxu.com/2014/12/18/macos</id>
-        <content type="html">### 移动硬盘
-
-Mac只支持读NTFS，并不能写，最好的方法就是把移动硬盘格式化成exfat，这样就可以兼容win和mac了。
-
-### 输入法
-
-搜狗输入法，自带也不错，不过中英文标点不好切换，还是搜狗用着习惯。
-
-### office
-
-到macx.cn下载Microsoft office for mac
-
-### 音乐
-
-网易云音乐或者豆瓣FM（diumoo比官方好用）
-
-### time machine
-
-关于time machine确实是一个好东西啊,在运行时遇到一个问题,就是长时间的在`正在准备备份`,搜了搜说是需要很长时间,于是...开了一夜早晨起来一看还是`正在准备备份`,连续试了好几次都不行,醉了,后来发现系统更新10.10.1,更了以后重启以后就OK了,不知道是更系统的问题还是重启才好使.整个备份30分钟左右吧.
-
-### iterm2
-
-#### 复制
-
-iterm2有2种好用的选中即复制模式。
-
-1. 用鼠标，在iterm2中，选中某个路径或者某个词汇，那么，iterm2就自动复制了。
-2. 无鼠标模式，command+f,弹出iterm2的查找模式，输入要查找并复制的内容的前几个字母，确认找到的是自己的内容之后，输入tab，查找窗口将自动变化内容，并将其复制。如果输入的是shift+tab，则自动将查找内容的左边选中并复制。
-
-
-
-
-#### 剪切历史
-
-输入command+shift+h，iterm2将自动列出剪切板的历史记录。如果需要将剪切板的历史记录保存到磁盘，在Preferences &gt; General &gt; Save copy/paste history to disk.中设置。
-
-#### 全屏切换
-
-command+enter进入与返回全屏模式
-
-## 全局快捷键
-
-### 截屏
-
-command + shift + 3 整个屏幕
-
-command + shift + 4  截取选择区域
-
-command + shift + 4 + 空格 截取选择窗口
-
-command + 空格 输入法切换
-
-### 通用
-
-command + h 隐藏窗口
-
-command + m 最小化窗口
-
-command + w 关闭
-
-command + q 退出
-
-
-## 输入法
-
-command + 空格 中英文切换
-
-caps lock 中文下输入英文
-
-## alfred
-
-alfred有一个剪切板是`option + command + c`调用
-
-* dash
-* v2ex
-* zh : 知乎
-* tb : 淘宝
-* bd : 百度
-
-## 一些shell命令
-
-
-显示 Mac 隐藏文件的命令：
- 
-defaults write com.apple.finder AppleShowAllFiles -bool true
-
-隐藏 Mac 隐藏文件的命令：
- 
-defaults write com.apple.finder AppleShowAllFiles -bool false
-
-## 软件
-
-* moom 窗口工具
-* monosnap 截图工具
-* Popclip 剪切工具
-* Mou、haroopad Markdown工具
-* Alfred 快速启动工具
-* iStat Menus 系统状态指示
-* 坚果云 同步盘
-* Xcode,dash 开发用
-* Bartending 系统托盘管理工具
-* Sublime 文本编辑器
-* Evernote 笔记
-* Xmind 思维导图
-* SimpleCleaner 清理工具
-</content>
-    </entry>
-    
-    <entry>
-        <title>Unix,linux和OSX</title>
-        <link href="http://hackerxu.com/2014/12/17/OS.html"/>
-        <updated>2014-12-17T00:00:00+08:00</updated>
-        <id>http://hackerxu.com/2014/12/17/OS</id>
-        <content type="html">![](https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/7a899e510fb30f2440d33c63c895d143ad4b0300.jpg)
-
-完整的3个OS内核:Minix,Linux,Unix
-
-
-Unix演变最为复杂多样,由Unix衍生的系统主要有两个,一个是BSD,另一个是System V.从BSD4.3开始就已经开源了,BSD最主要的3个分支是FreeBSD,NetBSD和OpenBSD.其中Mac OS X的内核是基于FreeBSD(其实还有Mach).
-
-在Unix演化期间有许多重大事件:
-
-1. GNU
-2. POSIX
-3. Linux
-
-Linux其实就是Linus山寨Unix的内核，自己实现了Unix系统内核，大神终究是大神，他有两个牛逼的东西，一个是Linux，一个是git。
-
-GNU其实比Linux早一些，因为开源的精神走到了一起，GNU在Linux出来之前也有自己的内核，不过名不见经传。
-
-大家经常接触的就是图上绿色的部分，而其他的Unix都属于商业用途。
-
-BSD其实不是一个内核，它其实是一个完整的操作系统。而像常见的Ubuntu，Fedora都是一些基于Linux的内核的系统。
-
-其实现在的Unix已经演化成了一种规范，不同版本的实现也不一样，而这种规范促进着Unix或者类Unix系统的欣欣向荣，相信终有一日他会打败windows。
-</content>
-    </entry>
-    
-    <entry>
-        <title>GALA</title>
-        <link href="http://hackerxu.com/2014/12/16/gala.html"/>
-        <updated>2014-12-16T00:00:00+08:00</updated>
-        <id>http://hackerxu.com/2014/12/16/gala</id>
-        <content type="html">![](https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/1305388964_JRzA_4.jpg)
-
-想把你留下来生活不再去漂泊
-
-想让你变快乐不管未来多渺茫</content>
-    </entry>
-    
-    <entry>
-        <title>vim配置</title>
-        <link href="http://hackerxu.com/2014/12/07/vim.html"/>
-        <updated>2014-12-07T00:00:00+08:00</updated>
-        <id>http://hackerxu.com/2014/12/07/vim</id>
-        <content type="html">vim配置参考
-
-* https://github.com/spf13/spf13-vim
-* https://github.com/kepbod/ivim
-* https://github.com/wklken/k-vim
-
-常用绑定按键:
-
-1. `ff&lt;char&gt;` 搜索
-2. `wm` 切换装逼模式
-3. `&lt;F3&gt;` 删除所有多余空格
-4. `&lt;F5&gt;` 编译然后运行
-5. `&lt;space&gt;` 这个最方便,光标落在某个单词上就可以选中.
-6. `fgd` 查看当前函数源代码
-7. `zo` `zc` `zi`折叠代码相关
-8. `F2` 去掉空行</content>
-    </entry>
-    
-
-</feed>
+            <item>
+                <title>test</title>
+                        
+                
+                    <description>&lt;p&gt;test&lt;/p&gt;
+</description>
+                
+                <pubDate>Wed, 04 Mar 2015 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2015/03/04/test1.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2015/03/04/test1.html</guid>
+            </item>
+        
+            <item>
+                <title>iterm2下的ls配置</title>
+                        
+                
+                    <description>&lt;p&gt;环境是iterm2 + zsh + tmux&lt;/p&gt;
+</description>
+                
+                <pubDate>Sun, 22 Feb 2015 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2015/02/22/iterm-ls.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2015/02/22/iterm-ls.html</guid>
+            </item>
+        
+            <item>
+                <title>oop</title>
+                        
+                
+                    <description>&lt;h2&gt;面向对象&lt;/h2&gt;
+</description>
+                
+                <pubDate>Wed, 14 Jan 2015 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2015/01/14/oop.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2015/01/14/oop.html</guid>
+            </item>
+        
+            <item>
+                <title>C/C++,Java,Python内存管理</title>
+                        
+                
+                    <description>&lt;h2&gt;内存管理&lt;/h2&gt;
+</description>
+                
+                <pubDate>Tue, 13 Jan 2015 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2015/01/13/ram.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2015/01/13/ram.html</guid>
+            </item>
+        
+            <item>
+                <title>数据库与树</title>
+                        
+                
+                    <description>&lt;p&gt;数据库中需要引用查找结构,为了更加迅速的查找硬盘中的数据库,因为硬盘IO的速度非常的耗时,所以要尽量选择能够将IO次数减少的数据结构,下面一个个分析动态查找结构,找到最合适的结构.&lt;/p&gt;
+</description>
+                
+                <pubDate>Sat, 10 Jan 2015 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2015/01/10/tree.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2015/01/10/tree.html</guid>
+            </item>
+        
+            <item>
+                <title>Xml Json</title>
+                        
+                
+                    <description>&lt;h1&gt;XML&lt;/h1&gt;
+</description>
+                
+                <pubDate>Fri, 26 Dec 2014 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2014/12/26/xml-json.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2014/12/26/xml-json.html</guid>
+            </item>
+        
+            <item>
+                <title>Leetcode Python</title>
+                        
+                
+                    <description>&lt;h2&gt;Single Number&lt;/h2&gt;
+</description>
+                
+                <pubDate>Tue, 23 Dec 2014 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2014/12/23/leetcode-python.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2014/12/23/leetcode-python.html</guid>
+            </item>
+        
+            <item>
+                <title>OS X 配置</title>
+                        
+                
+                    <description>&lt;h3&gt;移动硬盘&lt;/h3&gt;
+</description>
+                
+                <pubDate>Thu, 18 Dec 2014 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2014/12/18/macos.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2014/12/18/macos.html</guid>
+            </item>
+        
+            <item>
+                <title>Unix,linux和OSX</title>
+                        
+                
+                    <description>&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/7a899e510fb30f2440d33c63c895d143ad4b0300.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</description>
+                
+                <pubDate>Wed, 17 Dec 2014 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2014/12/17/OS.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2014/12/17/OS.html</guid>
+            </item>
+        
+            <item>
+                <title>GALA</title>
+                        
+                
+                    <description>&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/1305388964_JRzA_4.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</description>
+                
+                <pubDate>Tue, 16 Dec 2014 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2014/12/16/gala.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2014/12/16/gala.html</guid>
+            </item>
+        
+    </channel>
+</rss>
