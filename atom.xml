@@ -7,6 +7,18 @@
         <atom:link href="http://hackerxu.com/feed.xml" rel="self" type="application/rss+xml" />
         
             <item>
+                <title>我们的征程是星辰大海</title>
+                        
+                
+                    <description>&lt;p&gt;开题,面试,well done!&lt;/p&gt;
+</description>
+                
+                <pubDate>Sat, 25 Apr 2015 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2015/04/25/life-start.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2015/04/25/life-start.html</guid>
+            </item>
+        
+            <item>
                 <title>停下来休息一下吧</title>
                         
                 
@@ -112,18 +124,6 @@
                 <pubDate>Thu, 18 Dec 2014 00:00:00 +0800</pubDate>
                 <link>http://hackerxu.com/2014/12/18/macos.html</link>
                 <guid isPermaLink="true">http://hackerxu.com/2014/12/18/macos.html</guid>
-            </item>
-        
-            <item>
-                <title>Unix,linux和OSX</title>
-                        
-                
-                    <description>&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/7a899e510fb30f2440d33c63c895d143ad4b0300.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-</description>
-                
-                <pubDate>Wed, 17 Dec 2014 00:00:00 +0800</pubDate>
-                <link>http://hackerxu.com/2014/12/17/OS.html</link>
-                <guid isPermaLink="true">http://hackerxu.com/2014/12/17/OS.html</guid>
             </item>
         
     </channel>
