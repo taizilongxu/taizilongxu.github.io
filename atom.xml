@@ -7,6 +7,18 @@
         <atom:link href="http://hackerxu.com/feed.xml" rel="self" type="application/rss+xml" />
         
             <item>
+                <title>停下来休息一下吧</title>
+                        
+                
+                    <description>&lt;p&gt;5年前,那时候的我特别喜欢听歌,带着耳机,美美的在被窝里听着听着能听到失眠.我觉得听到美妙的音符是我一生中最美好的事情.我喜欢一个专辑一个专辑的听,尤其是一个歌曲会单曲好几天.&lt;/p&gt;
+</description>
+                
+                <pubDate>Sat, 11 Apr 2015 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2015/04/11/life-continue.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2015/04/11/life-continue.html</guid>
+            </item>
+        
+            <item>
                 <title>又要开学,摔!</title>
                         
                 
@@ -112,18 +124,6 @@
                 <pubDate>Wed, 17 Dec 2014 00:00:00 +0800</pubDate>
                 <link>http://hackerxu.com/2014/12/17/OS.html</link>
                 <guid isPermaLink="true">http://hackerxu.com/2014/12/17/OS.html</guid>
-            </item>
-        
-            <item>
-                <title>GALA</title>
-                        
-                
-                    <description>&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/1305388964_JRzA_4.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-</description>
-                
-                <pubDate>Tue, 16 Dec 2014 00:00:00 +0800</pubDate>
-                <link>http://hackerxu.com/2014/12/16/gala.html</link>
-                <guid isPermaLink="true">http://hackerxu.com/2014/12/16/gala.html</guid>
             </item>
         
     </channel>
