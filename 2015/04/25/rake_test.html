@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Hackerxu's Blog</title>
+<title>jekyll自动化</title>
 <link rel="shortcut icon" href=" /img/github.ico"/>
 <link rel="bookmark" href="/img/github.ico"/>
 <meta name="viewport" content="width=device-width">
 <meta name="description" content="Python,HTML,CSS,Machine Leaning">
-<link rel="canonical" href="http://hackerxu.com/">
+<link rel="canonical" href="http://hackerxu.com/2015/04/25/rake_test.html">
 <!-- Custom CSS -->
 <link rel="stylesheet" href="/css/main.css">
 <link rel="stylesheet" href="/css/github.css">
@@ -78,62 +78,37 @@
 
 <div class="page-content">
     <div class="wrap">
-        <div class="home">
-  
-  <header class="post-header">
-    <h1><a href="/2015/04/25/life-start.html">我们的征程是星辰大海</a></h1>
-    <p class="meta"><i class="fa fa-calendar"></i> 2015-04-25&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#life">life</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#life">life</a></p>
-  </header>
-  <article class="post-content">
-  <p>开题,面试,well done!</p>
+        <div class="post">
+    <header class="post-header">
+        <h1><a href="/2015/04/25/rake_test.html">jekyll自动化</a></h1>
+        <p class="meta"><i class="fa fa-calendar"></i> 2015-04-25&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#jekyll">jekyll</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#jekyll">jekyll</a></p>
+    </header>
+    <article class="post-content">
+        <p>看同学用过hexo,发布和写文章都比较省事,自己使用了一年jekyll还是用git的老方法,今天鼓捣了以下jekyll,网上也搜了瘦,简化一下发布流程.</p>
 
-<p>认识8年的胖子结婚了,追了8年的妹子终于追到手了.时间飞逝,一直觉得结婚生子这个神圣的时刻会很远很远,现在马上就到眼前了,不知道3年后我会在哪里,希望和我的那个她一直走下去.</p>
+<h3>1 rake文件</h3>
 
-<p>我爱你.</p>
+<p>首先到这 <a href="https://github.com/plusjade/jekyll-bootstrap/blob/master/Rakefile">https://github.com/plusjade/jekyll-bootstrap/blob/master/Rakefile</a> 去下这个rakefile,通过rakefile可以自动生成post并且加入yaml头部.把这个文件放入jekyll的根目录.</p>
 
-<p>铠甲和软肋.</p>
+<p><code>rake post title=</code></p>
 
-<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/IMG_20150425_154318.jpg" alt=""></p>
+<p>可以使用上面的命令来创建文章.</p>
 
-  </article>
-  
-  <ul class="posts">
-    <!-- <li class="listing-seperator">Yesterday you said tomorrow</li> -->
-  
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2015-04-25">2015-04-25</time>
-      <a href="/2015/04/25/rake_test.html" title="jekyll自动化">jekyll自动化</a>
-    </li>
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2015-04-25">2015-04-25</time>
-      <a href="/2015/04/25/life-start.html" title="我们的征程是星辰大海">我们的征程是星辰大海</a>
-    </li>
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2015-04-25">2015-04-25</time>
-      <a href="/2015/04/25/.html" title="自动脚本生成">自动脚本生成</a>
-    </li>
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2015-04-11">2015-04-11</time>
-      <a href="/2015/04/11/life-continue.html" title="停下来休息一下吧">停下来休息一下吧</a>
-    </li>
-  
-    
-    
-    
-    <li class="listing-seperator"><a href="/archive/">Long ago</a></li>
-  </ul>
+<h3>2 在bashrc或者zshrc里设置</h3>
+
+<p>使用alias方法进行快捷键绑定.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">alias blog = &quot;cd /path;rake post title=&quot;
+alias build_blog=&quot;cd /path; jekyll;cd _site;git add .;git commit -am &#39;Everything to be Rebuilt.&#39;;git push&quot;;
+alias bb=&quot;build_blog&quot;;
+</code></pre></div>
+<p>先<code>blog 文章名字(英文)</code>,写文章,发布时直接用<code>bb</code>命令.</p>
+
+    </article>
+    <!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/2015/04/25/rake_test"  data-title="jekyll自动化 - Hackerxu's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
 </div>
 
     </div>

@@ -7,6 +7,18 @@
         <atom:link href="http://hackerxu.com/feed.xml" rel="self" type="application/rss+xml" />
         
             <item>
+                <title>jekyll自动化</title>
+                        
+                
+                    <description>&lt;p&gt;看同学用过hexo,发布和写文章都比较省事,自己使用了一年jekyll还是用git的老方法,今天鼓捣了以下jekyll,网上也搜了瘦,简化一下发布流程.&lt;/p&gt;
+</description>
+                
+                <pubDate>Sat, 25 Apr 2015 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2015/04/25/rake_test.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2015/04/25/rake_test.html</guid>
+            </item>
+        
+            <item>
                 <title>我们的征程是星辰大海</title>
                         
                 
@@ -16,6 +28,18 @@
                 <pubDate>Sat, 25 Apr 2015 00:00:00 +0800</pubDate>
                 <link>http://hackerxu.com/2015/04/25/life-start.html</link>
                 <guid isPermaLink="true">http://hackerxu.com/2015/04/25/life-start.html</guid>
+            </item>
+        
+            <item>
+                <title>自动脚本生成</title>
+                        
+                
+                    <description>&lt;p&gt;test&lt;/p&gt;
+</description>
+                
+                <pubDate>Sat, 25 Apr 2015 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2015/04/25/.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2015/04/25/.html</guid>
             </item>
         
             <item>
@@ -100,30 +124,6 @@
                 <pubDate>Fri, 26 Dec 2014 00:00:00 +0800</pubDate>
                 <link>http://hackerxu.com/2014/12/26/xml-json.html</link>
                 <guid isPermaLink="true">http://hackerxu.com/2014/12/26/xml-json.html</guid>
-            </item>
-        
-            <item>
-                <title>Leetcode Python</title>
-                        
-                
-                    <description>&lt;h2&gt;Single Number&lt;/h2&gt;
-</description>
-                
-                <pubDate>Tue, 23 Dec 2014 00:00:00 +0800</pubDate>
-                <link>http://hackerxu.com/2014/12/23/leetcode-python.html</link>
-                <guid isPermaLink="true">http://hackerxu.com/2014/12/23/leetcode-python.html</guid>
-            </item>
-        
-            <item>
-                <title>OS X 配置</title>
-                        
-                
-                    <description>&lt;h3&gt;移动硬盘&lt;/h3&gt;
-</description>
-                
-                <pubDate>Thu, 18 Dec 2014 00:00:00 +0800</pubDate>
-                <link>http://hackerxu.com/2014/12/18/macos.html</link>
-                <guid isPermaLink="true">http://hackerxu.com/2014/12/18/macos.html</guid>
             </item>
         
     </channel>
