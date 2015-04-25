@@ -92,16 +92,23 @@
 
 <p><code>rake post title=</code></p>
 
-<p>可以使用上面的命令来创建文章.</p>
-
+<p>可以使用上面的命令来创建文章.其中可以在rakefile里设置命令后打开编辑器.例如在post函数里加入:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">system(&quot;vim #{filename}&quot;)
+</code></pre></div>
 <h3>2 在bashrc或者zshrc里设置</h3>
 
 <p>使用alias方法进行快捷键绑定.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">alias blog = &quot;cd /path;rake post title=&quot;
+<div class="highlight"><pre><code class="language-text" data-lang="text">alias blog = &quot;cd /path&quot;
 alias build_blog=&quot;cd /path;jekyll build;cd _site;git add .;git commit -am &#39;Everything to be Rebuilt.&#39;;git push&quot;;
 alias bb=&quot;build_blog&quot;;
 </code></pre></div>
-<p>先<code>blog &#39;文章名字(英文)&#39;</code>,写文章,发布时直接用<code>bb</code>命令.</p>
+<h3>3 流程</h3>
+
+<ol>
+<li><code>blog</code></li>
+<li><code>rake post title=&quot;name&quot;</code></li>
+<li><code>bb</code></li>
+</ol>
 
     </article>
     <!-- Duoshuo Comment BEGIN -->

@@ -19,17 +19,6 @@
             </item>
         
             <item>
-                <title>new post</title>
-                        
-                
-                    <description></description>
-                
-                <pubDate>Sat, 25 Apr 2015 00:00:00 +0800</pubDate>
-                <link>http://hackerxu.com/2015/04/25/new-post.html</link>
-                <guid isPermaLink="true">http://hackerxu.com/2015/04/25/new-post.html</guid>
-            </item>
-        
-            <item>
                 <title>我们的征程是星辰大海</title>
                         
                 
@@ -39,18 +28,6 @@
                 <pubDate>Sat, 25 Apr 2015 00:00:00 +0800</pubDate>
                 <link>http://hackerxu.com/2015/04/25/life-start.html</link>
                 <guid isPermaLink="true">http://hackerxu.com/2015/04/25/life-start.html</guid>
-            </item>
-        
-            <item>
-                <title>haha</title>
-                        
-                
-                    <description>&lt;p&gt;haha&lt;/p&gt;
-</description>
-                
-                <pubDate>Sat, 25 Apr 2015 00:00:00 +0800</pubDate>
-                <link>http://hackerxu.com/2015/04/25/haha.html</link>
-                <guid isPermaLink="true">http://hackerxu.com/2015/04/25/haha.html</guid>
             </item>
         
             <item>
@@ -123,6 +100,30 @@
                 <pubDate>Sat, 10 Jan 2015 00:00:00 +0800</pubDate>
                 <link>http://hackerxu.com/2015/01/10/tree.html</link>
                 <guid isPermaLink="true">http://hackerxu.com/2015/01/10/tree.html</guid>
+            </item>
+        
+            <item>
+                <title>Xml Json</title>
+                        
+                
+                    <description>&lt;h1&gt;XML&lt;/h1&gt;
+</description>
+                
+                <pubDate>Fri, 26 Dec 2014 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2014/12/26/xml-json.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2014/12/26/xml-json.html</guid>
+            </item>
+        
+            <item>
+                <title>Leetcode Python</title>
+                        
+                
+                    <description>&lt;h2&gt;Single Number&lt;/h2&gt;
+</description>
+                
+                <pubDate>Tue, 23 Dec 2014 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2014/12/23/leetcode-python.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2014/12/23/leetcode-python.html</guid>
             </item>
         
     </channel>
