@@ -7,6 +7,18 @@
         <atom:link href="http://hackerxu.com/feed.xml" rel="self" type="application/rss+xml" />
         
             <item>
+                <title>sketch</title>
+                        
+                
+                    <description>&lt;p&gt;看到前端其实真的有些心水,在学前端.&lt;/p&gt;
+</description>
+                
+                <pubDate>Wed, 29 Apr 2015 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2015/04/29/sketch.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2015/04/29/sketch.html</guid>
+            </item>
+        
+            <item>
                 <title>jekyll自动化</title>
                         
                 
@@ -112,18 +124,6 @@
                 <pubDate>Fri, 26 Dec 2014 00:00:00 +0800</pubDate>
                 <link>http://hackerxu.com/2014/12/26/xml-json.html</link>
                 <guid isPermaLink="true">http://hackerxu.com/2014/12/26/xml-json.html</guid>
-            </item>
-        
-            <item>
-                <title>Leetcode Python</title>
-                        
-                
-                    <description>&lt;h2&gt;Single Number&lt;/h2&gt;
-</description>
-                
-                <pubDate>Tue, 23 Dec 2014 00:00:00 +0800</pubDate>
-                <link>http://hackerxu.com/2014/12/23/leetcode-python.html</link>
-                <guid isPermaLink="true">http://hackerxu.com/2014/12/23/leetcode-python.html</guid>
             </item>
         
     </channel>
