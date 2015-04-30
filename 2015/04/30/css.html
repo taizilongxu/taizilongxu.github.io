@@ -92,9 +92,9 @@
 
 <p>Clear: 使用Float属性设置一行有多个DIV后（多列），最好在下一行开始之前使用Clear属性清楚一下浮动，否则上面的布局会影响到下面。</p>
 
-<h3>水平居中</h3>
+<h2>1 水平居中</h2>
 
-<h4>定宽块状元素</h4>
+<h3>1.1 定宽块状元素</h3>
 
 <p>满足<strong>定宽</strong>和<strong>块状</strong>两个条件的元素是可以通过设置“左右margin”值为“auto”来实现居中的。</p>
 <div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">div</span><span class="p">{</span>
@@ -102,11 +102,11 @@
     <span class="k">margin</span><span class="o">:</span><span class="m">20px</span> <span class="k">auto</span><span class="p">;</span><span class="c">/* margin-left 与 margin-right 设置为 auto */</span>
 <span class="p">}</span>
 </code></pre></div>
-<h4>不定宽块状元素</h4>
+<h3>1.2 不定宽块状元素</h3>
 
 <p>有3种方法:</p>
 
-<p>1 加入 table 标签</p>
+<h4>1 加入 table 标签</h4>
 
 <p>htlm</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div&gt;</span>
@@ -128,7 +128,7 @@
     margin:0 auto;
 }
 </code></pre></div>
-<p>2 设置 display;inline 方法</p>
+<h4>2 设置 display;inline 方法</h4>
 
 <p>html</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">&lt;body&gt;
@@ -149,7 +149,7 @@
     display:inline;
 }
 </code></pre></div>
-<p>3 设置 position:relative 和 left:50%;</p>
+<h4>3 设置 position:relative 和 left:50%;</h4>
 
 <p>通过给父元素设置 float，然后给父元素设置 position:relative 和 left:50%，子元素设置 position:relative 和 left:-50% 来实现水平居中。</p>
 
@@ -174,6 +174,55 @@
 .container ul{
     position:relative;
     left:-50%;
+}
+</code></pre></div>
+<h2>2 垂直居中</h2>
+
+<h3>2.1 父元素高度确定的单行文本</h3>
+
+<p>父元素高度确定的单行文本的竖直居中的方法是通过设置父元素的 height 和 line-height 高度一致来实现的。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">.container{
+    height:100px;
+    line-height:100px;
+}
+</code></pre></div>
+<h3>2.2 父元素高度确定的多行文本</h3>
+
+<h4>1 使用插入 table (包括tbody、tr、td)标签，同时设置 vertical-align：middle。</h4>
+
+<p>html</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;body&gt;
+&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;wrap&quot;&gt;
+&lt;div&gt;
+    &lt;p&gt;看我是否可以居中。&lt;/p&gt;
+    &lt;p&gt;看我是否可以居中。&lt;/p&gt;
+    &lt;p&gt;看我是否可以居中。&lt;/p&gt;
+    &lt;p&gt;看我是否可以居中。&lt;/p&gt;
+    &lt;p&gt;看我是否可以居中。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/body&gt;
+</code></pre></div>
+<p>css</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">table td{height:500px;background:#ccc}
+</code></pre></div>
+<h4>2 在 chrome、firefox 及 IE8 以上的浏览器下可以设置块级元素的 display 为 table-cell，激活 vertical-align 属性，但注意 IE6、7 并不支持这个样式。</h4>
+
+<p>html</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;div class=&quot;container&quot;&gt;
+    &lt;div&gt;
+        &lt;p&gt;看我是否可以居中。&lt;/p&gt;
+        &lt;p&gt;看我是否可以居中。&lt;/p&gt;
+        &lt;p&gt;看我是否可以居中。&lt;/p&gt;
+        &lt;p&gt;看我是否可以居中。&lt;/p&gt;
+        &lt;p&gt;看我是否可以居中。&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre></div>
+<p>css</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">.container{
+    display:table-cell;/*IE8以上及Chrome、Firefox*/
+    vertical-align:middle;/*IE8以上及Chrome、Firefox*/
 }
 </code></pre></div>
     </article>
