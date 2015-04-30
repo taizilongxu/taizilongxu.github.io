@@ -10,7 +10,7 @@
                 <title>css布局</title>
                         
                 
-                    <description>&lt;p&gt;Float: Float属性是DIV+CSS布局中最基本也是最常用的属性，用于实现多列功能，我们知道&lt;div&gt;标签默认一行只能显示一个，而使用Float属性可以实现一行显示多个div的功能，最直接解释方法就是能实现表格布局的多列功能.&lt;/p&gt;
+                    <description>&lt;p&gt;Float: Float属性是DIV+CSS布局中最基本也是最常用的属性，用于实现多列功能，我们知道&lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt;标签默认一行只能显示一个，而使用Float属性可以实现一行显示多个div的功能，最直接解释方法就是能实现表格布局的多列功能.&lt;/p&gt;
 </description>
                 
                 <pubDate>Thu, 30 Apr 2015 00:00:00 +0800</pubDate>
