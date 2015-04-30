@@ -7,6 +7,18 @@
         <atom:link href="http://hackerxu.com/feed.xml" rel="self" type="application/rss+xml" />
         
             <item>
+                <title>css布局</title>
+                        
+                
+                    <description>&lt;p&gt;Float: Float属性是DIV+CSS布局中最基本也是最常用的属性，用于实现多列功能，我们知道&lt;div&gt;标签默认一行只能显示一个，而使用Float属性可以实现一行显示多个div的功能，最直接解释方法就是能实现表格布局的多列功能.&lt;/p&gt;
+</description>
+                
+                <pubDate>Thu, 30 Apr 2015 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2015/04/30/css.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2015/04/30/css.html</guid>
+            </item>
+        
+            <item>
                 <title>sketch</title>
                         
                 
@@ -112,18 +124,6 @@
                 <pubDate>Sat, 10 Jan 2015 00:00:00 +0800</pubDate>
                 <link>http://hackerxu.com/2015/01/10/tree.html</link>
                 <guid isPermaLink="true">http://hackerxu.com/2015/01/10/tree.html</guid>
-            </item>
-        
-            <item>
-                <title>Xml Json</title>
-                        
-                
-                    <description>&lt;h1&gt;XML&lt;/h1&gt;
-</description>
-                
-                <pubDate>Fri, 26 Dec 2014 00:00:00 +0800</pubDate>
-                <link>http://hackerxu.com/2014/12/26/xml-json.html</link>
-                <guid isPermaLink="true">http://hackerxu.com/2014/12/26/xml-json.html</guid>
             </item>
         
     </channel>

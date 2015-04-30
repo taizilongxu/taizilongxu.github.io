@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Hackerxu's Blog</title>
+<title>css布局</title>
 <link rel="shortcut icon" href=" /img/github.ico"/>
 <link rel="bookmark" href="/img/github.ico"/>
 <meta name="viewport" content="width=device-width">
 <meta name="description" content="Python,HTML,CSS,Machine Leaning">
-<link rel="canonical" href="http://hackerxu.com/">
+<link rel="canonical" href="http://hackerxu.com/2015/04/30/css.html">
 <!-- Custom CSS -->
 <link rel="stylesheet" href="/css/main.css">
 <link rel="stylesheet" href="/css/github.css">
@@ -78,63 +78,110 @@
 
 <div class="page-content">
     <div class="wrap">
-        <div class="home">
-  
-  <header class="post-header">
-    <h1><a href="/2015/04/29/sketch.html">sketch</a></h1>
-    <p class="meta"><i class="fa fa-calendar"></i> 2015-04-29&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#life">life</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#sketch">sketch</a></p>
-  </header>
-  <article class="post-content">
-  <p>看到前端其实真的有些心水,在学前端.</p>
+        <div class="post">
+    <header class="post-header">
+        <h1><a href="/2015/04/30/css.html">css布局</a></h1>
+        <p class="meta"><i class="fa fa-calendar"></i> 2015-04-30&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#css">css</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#css">css</a>&nbsp<a href="/tags/#html">html</a></p>
+    </header>
+    <article class="post-content">
+        <p>Float: Float属性是DIV+CSS布局中最基本也是最常用的属性，用于实现多列功能，我们知道<div>标签默认一行只能显示一个，而使用Float属性可以实现一行显示多个div的功能，最直接解释方法就是能实现表格布局的多列功能.</p>
 
-<p><img src="http://hackerxu.com/img/keyboard.png" alt=""></p>
+<p>Margin: Margin属性用于设置两个元素之间的距离。</p>
 
-  </article>
-  
-  <ul class="posts">
-    <!-- <li class="listing-seperator">Yesterday you said tomorrow</li> -->
-  
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2015-04-30">2015-04-30</time>
-      <a href="/2015/04/30/css.html" title="css布局">css布局</a>
-    </li>
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2015-04-29">2015-04-29</time>
-      <a href="/2015/04/29/sketch.html" title="sketch">sketch</a>
-    </li>
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2015-04-25">2015-04-25</time>
-      <a href="/2015/04/25/rake_test.html" title="jekyll自动化">jekyll自动化</a>
-    </li>
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2015-04-25">2015-04-25</time>
-      <a href="/2015/04/25/life-start.html" title="我们的征程是星辰大海">我们的征程是星辰大海</a>
-    </li>
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2015-04-11">2015-04-11</time>
-      <a href="/2015/04/11/life-continue.html" title="停下来休息一下吧">停下来休息一下吧</a>
-    </li>
-  
-    
-    
-    
-    <li class="listing-seperator"><a href="/archive/">Long ago</a></li>
-  </ul>
+<p>Padding: Padding属性用于设置一个元素的边框与其内容的距离。</p>
+
+<p>Clear: 使用Float属性设置一行有多个DIV后（多列），最好在下一行开始之前使用Clear属性清楚一下浮动，否则上面的布局会影响到下面。</p>
+
+<h3>水平居中</h3>
+
+<h4>定宽块状元素</h4>
+
+<p>满足<strong>定宽</strong>和<strong>块状</strong>两个条件的元素是可以通过设置“左右margin”值为“auto”来实现居中的。</p>
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">div</span><span class="p">{</span>
+    <span class="k">width</span><span class="o">:</span><span class="m">500px</span><span class="p">;</span><span class="c">/*定宽*/</span>
+    <span class="k">margin</span><span class="o">:</span><span class="m">20px</span> <span class="k">auto</span><span class="p">;</span><span class="c">/* margin-left 与 margin-right 设置为 auto */</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4>不定宽块状元素</h4>
+
+<p>有3种方法:</p>
+
+<p>1 加入 table 标签</p>
+
+<p>htlm</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div&gt;</span>
+<span class="nt">&lt;table&gt;</span>
+  <span class="nt">&lt;tbody&gt;</span>
+    <span class="nt">&lt;tr&gt;&lt;td&gt;</span>
+    <span class="nt">&lt;ul&gt;</span>
+        <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>2<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>3<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;/td&gt;&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tbody&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div>
+<p>css</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">table{
+    margin:0 auto;
+}
+</code></pre></div>
+<p>2 设置 display;inline 方法</p>
+
+<p>html</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;body&gt;
+&lt;div class=&quot;container&quot;&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;1&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;2&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;3&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+</code></pre></div>
+<p>css</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">.container{
+    text-align:center;
+}
+.container ul{
+    display:inline;
+}
+</code></pre></div>
+<p>3 设置 position:relative 和 left:50%;</p>
+
+<p>通过给父元素设置 float，然后给父元素设置 position:relative 和 left:50%，子元素设置 position:relative 和 left:-50% 来实现水平居中。</p>
+
+<p>html</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;body&gt;
+&lt;div class=&quot;container&quot;&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;1&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;2&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;3&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+</code></pre></div>
+<p>css</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">.container{
+    float:left;
+    position:relative;
+    left:50%
+}
+
+.container ul{
+    position:relative;
+    left:-50%;
+}
+</code></pre></div>
+    </article>
+    <!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/2015/04/30/css"  data-title="css布局 - Hackerxu's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
 </div>
 
     </div>
