@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+    <head>
 <!-- 手机端页面 -->
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <meta charset="utf-8">
@@ -31,8 +31,35 @@
 </script>
 </head>
 
-<body>
-<header class="site-header">
+    <style type="text/css" media="screen">
+        .wrap1 {
+            margin: 100px;
+            overflow: hidden;
+            position: relative;
+            height: 60%;
+        }
+        .box {
+            float: left;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+        }
+        @-webkit-keyframes firstlayer /* Safari 和 Chrome */ {
+            from {top: 200px;}
+            to {top: 0;}
+        }
+        img {
+            width: 200px;
+            margin:0px auto;
+            float: left;
+            position: relative;
+            -webkit-animation: firstlaye 2s;/* Safari 和 Chrome */
+        }
+        #img-1 {
+        }
+    </style>
+    <body>
+        <header class="site-header">
     <div class="wrap">
         <a class="site-title" href="/"><h1><strong> <font style="color:#39B3D7" >L</font><font style="color:#ED9C28">i</font><font style="color:#47A447">m</font><font style="color:#D9534F">b</font><font style="color:#3276B1">o</font>
                 </strong>
@@ -76,12 +103,38 @@
     </div>
 </header>
 
-<div class="page-content">
-    <div class="wrap">
-        
-    </div>
-</div>
-<footer class="site-footer">
+        <div class="page-content">
+            <div class='wrap1'>
+                <div class="box">
+                    <img id="img-1" src="../img/about/displayer.png" alt=""/>
+                    <img id="img-2" src="../img/about/macbook.png" alt=""/>
+                    <img id="img-3" src="../img/about/keyboard.png" alt=""/>
+                    <img id="img-4" src="../img/about/ipod.png" alt=""/>
+                    <img id="img-5" src="../img/about/earphone.png" alt=""/>
+                </div>
+            </div>
+            <!-- <div class="wrap1"> -->
+            <!--     <div class="box"> -->
+            <!--             <img src="../img/about/python.png" alt=""/> -->
+            <!--             <img src="../img/about/C.png" alt=""/> -->
+            <!--             <img src="../img/about/shell.png" alt=""/> -->
+            <!--             <img src="../img/about/html5.png" alt=""/> -->
+            <!--     </div> -->
+            <!-- </div> -->
+            <!-- <div class="wrap1"> -->
+            <!--     <div class="img-editor"> -->
+            <!--             <img src="../img/about/vim.png" alt=""/> -->
+            <!--     </div> -->
+            <!--     <div class="img-editor"> -->
+            <!--             <img src="../img/about/sublime.png" alt=""/> -->
+            <!--     </div> -->
+            <!-- </div> -->
+            <!-- <div class="wrap"> -->
+            <!--     <p>技能点有点点歪,会后端,正在努力学习前端</p> -->
+            <!--     <p>Python > C > Javascirpt</p> -->
+            <!-- </div> -->
+        </div>
+        <footer class="site-footer">
 
     <div class="wrap">
         <div class="footer-col-1 column">
@@ -115,48 +168,5 @@
     <div class="scroll-top"><i class="fa fa-arrow-circle-up"></i></div>
 </footer>
 
-
-<!-- mathjax -->
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-});
-</script>
-<script type="text/javascript"
-src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-<!-- highlight -->
-<script src="/js/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-<!-- pleace change it! -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"taizilongxu"};
-(function() {
- var ds = document.createElement('script');
- ds.type = 'text/javascript';ds.async = true;
- ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
- ds.charset = 'UTF-8';
- (document.getElementsByTagName('head')[0]
-  || document.getElementsByTagName('body')[0]).appendChild(ds);
- })();
-</script>
-<!-- top-scrooll -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.js"></script>
-<script type="text/javascript">
-
-$(window).scroll(function() {
-
-        if($(this).scrollTop() > 100) {
-        $('.scroll-top').fadeIn(200);
-        } else {
-        $('.scroll-top').fadeOut(200);
-        }
-        });
-
-$('.scroll-top').bind('click', function(e) {
-        e.preventDefault();
-        $('body,html').animate({scrollTop:0},200);
-        });
-</script>
-</body>
+    </body>
 </html>
