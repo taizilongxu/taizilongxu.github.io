@@ -52,12 +52,34 @@ ga('send', 'pageview');
         }
     </style>
     <script type="text/javascript" charset="utf-8">
-$(document).ready(
-        function(){
-            $('#img-1').css({top:"200px",display:'none'})
-                .animate({top:"-=200px"}, 3000)
-        }
-        )
+    $(document).ready(
+            function(){
+                    var width = $(".box").width()/2 - 100;
+                    $('#img-1').css({top:"100px", opacity:"0",left:width})
+                        .animate({top:"-=100px"}, 1000)
+                        .animate({left:"0", opacity:"1"})
+                        ;
+                    var width = ($(".box").width() - 200)/4;
+                    $('#img-2').css({top:"100px", opacity:"0",left:width})
+                        .animate({top:"-=100px"}, 1000)
+                        .animate({left:"0", opacity:"1"})
+                        ;
+                    $('#img-3').css({top:"100px", opacity:"0"})
+                        .animate({top:"-=100px",opacity:"1"}, 1000)
+                        .animate({left:"0"})
+                        ;
+                    var width = ($(".box").width() - 200)/4;
+                    $('#img-4').css({top:"100px", opacity:"0",right:width})
+                        .animate({top:"-=100px"}, 1000)
+                        .animate({right:"0", opacity:"1"})
+                        ;
+                    var width = $(".box").width()/2 - 100;
+                    $('#img-5').css({top:"100px", opacity:"0",right:width})
+                        .animate({top:"-=100px"}, 1000)
+                        .animate({right:"0", opacity:"1"})
+                        ;
+            }
+            )
     </script>
     <body>
         <header class="site-header">
