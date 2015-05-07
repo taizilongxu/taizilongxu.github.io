@@ -33,13 +33,13 @@ ga('send', 'pageview');
 </head>
 
     <style type="text/css" media="screen">
-        .wrap1 {
-            margin: 100px;
-            overflow: hidden;
-            position: relative;
-            height: 60%;
-            text-align: center;
-        }
+.wrap1 {
+    margin: 100px;
+    overflow: hidden;
+    position: relative;
+    height: 60%;
+    text-align: center;
+}
         .box {
             text-align: center;
             position: relative;
@@ -51,70 +51,87 @@ ga('send', 'pageview');
             position: relative;
         }
         .wrap1 p{
-            font-size: 40px;
+            font-size: 30px;
             color: #6f6f6f;
+        }
+        .wrap1 a {
+            color: #D34848;
+        }
+        .wrap1 li{
+            display: list-item;
+            font-size: 15px;
+        }
+        .wrap1 ul {
+            margin-left: 1.35em;
         }
         .img-hidden {
             opacity: 0;
         }
         hr {
             border:0;
-            background-color:#E4E4E4;
+            background-color:#F4F4F4;
             height:1px;
         }
         #wrap-last{
             margin-bottom:100px;
         }
+        .left,
+        .right {
+            text-align: left;
+            margin: 0px 0px;
+            padding: 5% 5% 5% 20%;
+            float: left;
+        }
     </style>
     <script type="text/javascript" charset="utf-8">
-    $(document).ready(
-            function(){
-                    var width = $(".box").width()/2 - 100;
-                    $('#img-1').css({top:"100px", opacity:"0",left:width})
-                        .animate({top:"-=100px"}, 1000)
-                        .animate({left:"0", opacity:"1"}) ;
-                    var width = ($(".box").width() - 200)/4;
-                    $('#img-2').css({top:"100px", opacity:"0",left:width})
-                        .animate({top:"-=100px"}, 1000)
-                        .animate({left:"0", opacity:"1"}) ;
-                    $('#img-3').css({top:"100px", opacity:"0"})
-                        .animate({top:"-=100px",opacity:"1"}, 1000)
-                        .animate({left:"0"}) ;
-                    var width = ($(".box").width() - 200)/4;
-                    $('#img-4').css({top:"100px", opacity:"0",right:width})
-                        .animate({top:"-=100px"}, 1000)
-                        .animate({right:"0", opacity:"1"}) ;
-                    var width = $(".box").width()/2 - 100;
-                    $('#img-5').css({top:"100px", opacity:"0",right:width})
-                        .animate({top:"-=100px"}, 1000)
-                        .animate({right:"0", opacity:"1"}) ;
-            }
-            );
+$(document).ready(
+        function(){
+            var width = $(".box").width()/2 - 100;
+            $('#img-1').css({top:"100px", opacity:"0",left:width})
+                .animate({top:"-=100px"}, 1000)
+                .animate({left:"0", opacity:"1"}) ;
+            var width = ($(".box").width() - 200)/4;
+            $('#img-2').css({top:"100px", opacity:"0",left:width})
+                .animate({top:"-=100px"}, 1000)
+                .animate({left:"0", opacity:"1"}) ;
+            $('#img-3').css({top:"100px", opacity:"0"})
+                .animate({top:"-=100px",opacity:"1"}, 1000)
+                .animate({left:"0"}) ;
+            var width = ($(".box").width() - 200)/4;
+            $('#img-4').css({top:"100px", opacity:"0",right:width})
+                .animate({top:"-=100px"}, 1000)
+                .animate({right:"0", opacity:"1"}) ;
+            var width = $(".box").width()/2 - 100;
+            $('#img-5').css({top:"100px", opacity:"0",right:width})
+                .animate({top:"-=100px"}, 1000)
+                .animate({right:"0", opacity:"1"}) ;
+        }
+);
 
-    var skill = 1;
-    $(window).scroll(function() {
-        if($(document).scrollTop() > $("header").height() + $("#wrap-1").height()*2 && skill == 1){
-                    skill = 0;
-                    $('#img-6').css({top:"100px", opacity:"0"})
-                        .animate({top:"-=100px",opacity:"1"}, 400);
-                    $('#img-7').css({top:"100px", opacity:"0"})
-                        .animate({top:"-=100px",opacity:"1"}, 600);
-                    $('#img-8').css({top:"100px", opacity:"0"})
-                        .animate({top:"-=100px",opacity:"1"}, 800);
-                    $('#img-9').css({top:"100px", opacity:"0"})
-                        .animate({top:"-=100px",opacity:"1"}, 1000);
-            }
-        });
-    var skill2 = 1;
-    $(window).scroll(function() {
-        if($(document).scrollTop() > $("header").height() + $("#wrap-1").height()*3 && skill2 == 1){
-                    skill2 = 0;
-                    $('#img-10').css({top:"100px", opacity:"0"})
-                        .animate({top:"-=100px",opacity:"1"}, 2000);
-                    $('#img-11').css({top:"100px", opacity:"0"})
-                        .animate({top:"-=100px",opacity:"1"}, 2000);
-            }
-        });
+var skill = 1;
+$(window).scroll(function() {
+    if($(document).scrollTop() > $("header").height() + $("#wrap-1").height()*2 && skill == 1){
+        skill = 0;
+        $('#img-6').css({top:"100px", opacity:"0"})
+            .animate({top:"-=100px",opacity:"1"}, 400);
+        $('#img-7').css({top:"100px", opacity:"0"})
+            .animate({top:"-=100px",opacity:"1"}, 600);
+        $('#img-8').css({top:"100px", opacity:"0"})
+            .animate({top:"-=100px",opacity:"1"}, 800);
+        $('#img-9').css({top:"100px", opacity:"0"})
+            .animate({top:"-=100px",opacity:"1"}, 1000);
+    }
+});
+var skill2 = 1;
+$(window).scroll(function() {
+    if($(document).scrollTop() > $("header").height() + $("#wrap-1").height()*3 && skill2 == 1){
+        skill2 = 0;
+        $('#img-10').css({top:"100px", opacity:"0"})
+            .animate({top:"-=100px",opacity:"1"}, 2000);
+        $('#img-11').css({top:"100px", opacity:"0"})
+            .animate({top:"-=100px",opacity:"1"}, 2000);
+    }
+});
     </script>
     <body>
         <header class="site-header">
@@ -163,7 +180,7 @@ ga('send', 'pageview');
 
         <div class="page-content">
             <div class="wrap1">
-                    <p>Stay hungry, stay foolish</p>
+                <p>Stay hungry, stay foolish</p>
             </div>
             <div class='wrap1' id="wrap-1">
                 <div class="box">
@@ -206,10 +223,45 @@ ga('send', 'pageview');
             <!--     </div> -->
             <!-- </div> -->
             <!-- <hr /> -->
-            <!-- <div class="wrap"> -->
-            <!--     <p>技能点有点点歪,会后端,正在努力学习前端</p> -->
-            <!--     <p>Python > C > Javascirpt</p> -->
-            <!-- </div> -->
+            <div class="wrap1 left">
+                <ul>
+                    <li>友链:
+                        <ul>
+                            <li><a href="http://qisblog.com" target="_blank">张大可</a></li>
+                        </ul>
+                    </li>
+                    <li>订阅的Blog:
+                        <ul>
+                            <li><a href="http://blog.binux.me/" target="_blank">Binuxの杂货铺</a></li>
+                            <li><a href="http://blog.psjay.com/" target="_blank">PSJay Blog</a></li>
+                            <li><a href="https://blog.robotshell.org/" target="_blank">Robot Shell</a></li>
+                            <li><a href="http://andrewliu.tk/" target="_blank">Andrew Liu</a></li>
+                            <li><a href="http://www.the5fire.com/" target="_blank">The5fire(Python从业者)</a></li>
+                            <li><a href="http://lilydjwg.is-programmer.com/" target="_blank">依云</a></li>
+                            <li><a href="http://dongweiming.github.io/blog/" target="_blank">小明明s à domicile</a></li>
+                            <li><a href="http://www.zhengyanlong.org.cn/" target="_blank">单行道</a></li>
+                            <li><a href="http://yafeilee.me/" target="_blank">WinDy's Blog</a></li>
+                            <li><a href="http://shuxiaowang.com/" target="_blank">流水沉微</a></li>
+                            <li><a href="http://coolshell.cn/" target="_blank">酷壳</a></li>
+                            <li><a href="http://www.ruanyifeng.com/blog/" target="_blank">阮一峰</a></li>
+                            <li><a href="http://blog.leiqin.name/" target="_blank">雷钦的博客</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="wrap1 right">
+                <ul>
+                    <li>前端:
+                        <ul>
+                            <li><a href="http://litten.github.io/" target="_blank">Litten</a></li>
+                            <li><a href="http://makaiqian.com/" target="_blank">麻凯倩's blog❤前端'</a></li>
+                            <li><a href="http://www.cnblogs.com/jikey/p/4454857.html" target="_blank">豪情</a></li>
+                            <li><a href="http://wwsun.me/" target="_blank">wwsun</a></li>
+                            <li><a href="http://daiison.com/tech/" target="_blank">一隅</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
         <footer class="site-footer">
 
