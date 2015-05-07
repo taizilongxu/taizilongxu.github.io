@@ -50,6 +50,21 @@ ga('send', 'pageview');
             margin:0px auto;
             position: relative;
         }
+        .wrap1 p{
+            font-size: 40px;
+            color: #6f6f6f;
+        }
+        .img-hidden {
+            opacity: 0;
+        }
+        hr {
+            border:0;
+            background-color:#E4E4E4;
+            height:1px;
+        }
+        #wrap-last{
+            margin-bottom:100px;
+        }
     </style>
     <script type="text/javascript" charset="utf-8">
     $(document).ready(
@@ -57,29 +72,49 @@ ga('send', 'pageview');
                     var width = $(".box").width()/2 - 100;
                     $('#img-1').css({top:"100px", opacity:"0",left:width})
                         .animate({top:"-=100px"}, 1000)
-                        .animate({left:"0", opacity:"1"})
-                        ;
+                        .animate({left:"0", opacity:"1"}) ;
                     var width = ($(".box").width() - 200)/4;
                     $('#img-2').css({top:"100px", opacity:"0",left:width})
                         .animate({top:"-=100px"}, 1000)
-                        .animate({left:"0", opacity:"1"})
-                        ;
+                        .animate({left:"0", opacity:"1"}) ;
                     $('#img-3').css({top:"100px", opacity:"0"})
                         .animate({top:"-=100px",opacity:"1"}, 1000)
-                        .animate({left:"0"})
-                        ;
+                        .animate({left:"0"}) ;
                     var width = ($(".box").width() - 200)/4;
                     $('#img-4').css({top:"100px", opacity:"0",right:width})
                         .animate({top:"-=100px"}, 1000)
-                        .animate({right:"0", opacity:"1"})
-                        ;
+                        .animate({right:"0", opacity:"1"}) ;
                     var width = $(".box").width()/2 - 100;
                     $('#img-5').css({top:"100px", opacity:"0",right:width})
                         .animate({top:"-=100px"}, 1000)
-                        .animate({right:"0", opacity:"1"})
-                        ;
+                        .animate({right:"0", opacity:"1"}) ;
             }
-            )
+            );
+
+    var skill = 1;
+    $(window).scroll(function() {
+        if($(document).scrollTop() > $("header").height() + $("#wrap-1").height()*2 && skill == 1){
+                    skill = 0;
+                    $('#img-6').css({top:"100px", opacity:"0"})
+                        .animate({top:"-=100px",opacity:"1"}, 400);
+                    $('#img-7').css({top:"100px", opacity:"0"})
+                        .animate({top:"-=100px",opacity:"1"}, 600);
+                    $('#img-8').css({top:"100px", opacity:"0"})
+                        .animate({top:"-=100px",opacity:"1"}, 800);
+                    $('#img-9').css({top:"100px", opacity:"0"})
+                        .animate({top:"-=100px",opacity:"1"}, 1000);
+            }
+        });
+    var skill2 = 1;
+    $(window).scroll(function() {
+        if($(document).scrollTop() > $("header").height() + $("#wrap-1").height()*3 && skill2 == 1){
+                    skill2 = 0;
+                    $('#img-10').css({top:"100px", opacity:"0"})
+                        .animate({top:"-=100px",opacity:"1"}, 2000);
+                    $('#img-11').css({top:"100px", opacity:"0"})
+                        .animate({top:"-=100px",opacity:"1"}, 2000);
+            }
+        });
     </script>
     <body>
         <header class="site-header">
@@ -127,7 +162,10 @@ ga('send', 'pageview');
 </header>
 
         <div class="page-content">
-            <div class='wrap1'>
+            <div class="wrap1">
+                    <p>Stay hungry, stay foolish</p>
+            </div>
+            <div class='wrap1' id="wrap-1">
                 <div class="box">
                     <img id="img-1" src="../img/about/displayer.png" alt=""/>
                     <img id="img-2" src="../img/about/keyboard.png" alt=""/>
@@ -137,25 +175,37 @@ ga('send', 'pageview');
                 </div>
             </div>
             <hr />
-            <!-- <div class="wrap1"> -->
-            <!--         <p>haha</p> -->
-            <!-- </div> -->
+            <div class="wrap1" id="skills">
+                <p>My skills</p>
+            </div>
             <div class="wrap1">
                 <div class="box">
-                    <img id="img-1" src="../img/about/python.png" alt=""/>
-                    <img id="img-2" src="../img/about/C.png" alt=""/>
-                    <img id="img-3" src="../img/about/shell.png" alt=""/>
-                    <img id="img-4" src="../img/about/html5.png" alt=""/>
+                    <img class="img-hidden" id="img-6" src="../img/about/python.png" alt=""/>
+                    <img class="img-hidden" id="img-7" src="../img/about/C.png" alt=""/>
+                    <img class="img-hidden" id="img-8" src="../img/about/shell.png" alt=""/>
+                    <img class="img-hidden" id="img-9" src="../img/about/html5.png" alt=""/>
                 </div>
             </div>
-            <!-- <div class="wrap1"> -->
-            <!--     <div class="img-editor"> -->
-            <!--             <img src="../img/about/vim.png" alt=""/> -->
-            <!--     </div> -->
-            <!--     <div class="img-editor"> -->
-            <!--             <img src="../img/about/sublime.png" alt=""/> -->
+            <hr />
+            <div class="wrap1" id="skills">
+                <p>Editors</p>
+            </div>
+            <div class="wrap1">
+                <div class="box">
+                    <img class="img-hidden" id="img-10" src="../img/about/vim.png" alt=""/>
+                    <img class="img-hidden" id="img-11" src="../img/about/sublime.png" alt=""/>
+                </div>
+            </div>
+            <hr />
+            <!-- <div class="wrap1" id="skills"> -->
+            <!--     <p>Editors</p> -->
+            <!-- </div> -->
+            <!-- <div class="wrap1" id="wrap-last"> -->
+            <!--     <div class="box"> -->
+            <!--         <img class="img-hidden" id="img-12" src="../img/about/douban.png" alt=""/> -->
             <!--     </div> -->
             <!-- </div> -->
+            <!-- <hr /> -->
             <!-- <div class="wrap"> -->
             <!--     <p>技能点有点点歪,会后端,正在努力学习前端</p> -->
             <!--     <p>Python > C > Javascirpt</p> -->
