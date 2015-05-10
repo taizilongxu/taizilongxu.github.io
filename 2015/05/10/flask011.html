@@ -85,11 +85,114 @@ ga('send', 'pageview');
         <p class="meta"><i class="fa fa-calendar"></i> 2015-05-10&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#python">python</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#flask">flask</a>&nbsp<a href="/tags/#python">python</a></p>
     </header>
     <article class="post-content">
-        <p>最近在读Flask0.1的源码,Flask框架饱受好评的原因就是因为简洁,明快而且够Pythonic,于是自己也关注了一下,尝试从底层读懂flask的代码.</p>
+        <p>最近在读Flask0.1的源码,Flask框架饱受好评的原因就是因为简洁,明快而且够Pythonic,于是自己也关注了一下,尝试从底层读懂flask的代码.(可能有没有理解对的地方)</p>
 
 <p>虽然Flask0.1的代码量只有不到700行,但是读懂并不容易,再此之前还需要wsgi的一些基础知识,google好多资料,发现很难让初学者了解整个架构的情况,廖学峰老师的<a href="http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001386832689740b04430a98f614b6da89da2157ea3efe2000">这篇文章</a>给了我很大的帮助,画出一张简图,来看看整个网站的接口是如何链接的,然后再从内部逐一理解python的web框架原理.</p>
 
 <p><img src="/img/flask-wsgi.jpg" alt=""></p>
+
+<p>可以看到这里有三个层次:</p>
+
+<ol>
+<li>web框架层</li>
+<li>wsgi层</li>
+<li>web服务器</li>
+</ol>
+
+<h3>1 web框架层</h3>
+
+<p>在这里作为网站开发者只需要了解框架给我们的方法,我们可以使用框架快速开发我们的网站,它可以帮我们管理数据库,管理cookies,管理我们的路由.</p>
+
+<p>通过Flask框架我们可以很快的写一个网页:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s">&quot;Hello World!&quot;</span>
+
+    <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div>
+<h3>2 wsgi层</h3>
+
+<p>wsgi其实是一种规范,它定义了web app和web服务器的接口,其实wsgi层和web框架层可以看为一层(即在web框架实现wsgi面向web服务器的接口).wsgi层是框架的开发者关心的层面.框架需要为服务器提供标准的接口,在pep3333里有详细的文档:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># pep3333中的例子</span>
+<span class="k">def</span> <span class="nf">simple_app</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Simplest possible application object&quot;&quot;&quot;</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="s">&#39;200 OK&#39;</span>
+    <span class="n">response_headers</span> <span class="o">=</span> <span class="p">[(</span><span class="s">&#39;Content-type&#39;</span><span class="p">,</span> <span class="s">&#39;text/plain&#39;</span><span class="p">)]</span>
+    <span class="n">start_response</span><span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="n">response_headers</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="s">&#39;Hello world!</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">]</span>
+</code></pre></div>
+<p>这里不用关心environ, start_response, 它由web服务器提供.</p>
+
+<h3>3 web服务器层</h3>
+
+<p>作为服务器端也有必要提供wsgi的服务器端接口.</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
+
+<span class="k">def</span> <span class="nf">run_with_cgi</span><span class="p">(</span><span class="n">application</span><span class="p">):</span>
+
+    <span class="n">environ</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+    <span class="n">environ</span><span class="p">[</span><span class="s">&#39;wsgi.input&#39;</span><span class="p">]</span>        <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span>
+    <span class="n">environ</span><span class="p">[</span><span class="s">&#39;wsgi.errors&#39;</span><span class="p">]</span>       <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span>
+    <span class="n">environ</span><span class="p">[</span><span class="s">&#39;wsgi.version&#39;</span><span class="p">]</span>      <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">environ</span><span class="p">[</span><span class="s">&#39;wsgi.multithread&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">environ</span><span class="p">[</span><span class="s">&#39;wsgi.multiprocess&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">environ</span><span class="p">[</span><span class="s">&#39;wsgi.run_once&#39;</span><span class="p">]</span>     <span class="o">=</span> <span class="bp">True</span>
+
+    <span class="k">if</span> <span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;HTTPS&#39;</span><span class="p">,</span> <span class="s">&#39;off&#39;</span><span class="p">)</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;on&#39;</span><span class="p">,</span> <span class="s">&#39;1&#39;</span><span class="p">):</span>
+        <span class="n">environ</span><span class="p">[</span><span class="s">&#39;wsgi.url_scheme&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;https&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">environ</span><span class="p">[</span><span class="s">&#39;wsgi.url_scheme&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;http&#39;</span>
+
+    <span class="n">headers_set</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">headers_sent</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">headers_set</span><span class="p">:</span>
+             <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s">&quot;write() before start_response()&quot;</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="ow">not</span> <span class="n">headers_sent</span><span class="p">:</span>
+             <span class="c"># Before the first output, send the stored headers</span>
+             <span class="n">status</span><span class="p">,</span> <span class="n">response_headers</span> <span class="o">=</span> <span class="n">headers_sent</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">headers_set</span>
+             <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;Status: </span><span class="si">%s</span><span class="se">\r\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">status</span><span class="p">)</span>
+             <span class="k">for</span> <span class="n">header</span> <span class="ow">in</span> <span class="n">response_headers</span><span class="p">:</span>
+                 <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">: </span><span class="si">%s</span><span class="se">\r\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">header</span><span class="p">)</span>
+             <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\r\n</span><span class="s">&#39;</span><span class="p">)</span>
+
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">start_response</span><span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="n">response_headers</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">exc_info</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">headers_sent</span><span class="p">:</span>
+                    <span class="c"># Re-raise original exception if headers sent</span>
+                    <span class="k">raise</span> <span class="n">exc_info</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">exc_info</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">exc_info</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+            <span class="k">finally</span><span class="p">:</span>
+                <span class="n">exc_info</span> <span class="o">=</span> <span class="bp">None</span>     <span class="c"># avoid dangling circular ref</span>
+        <span class="k">elif</span> <span class="n">headers_set</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s">&quot;Headers already set!&quot;</span><span class="p">)</span>
+
+        <span class="n">headers_set</span><span class="p">[:]</span> <span class="o">=</span> <span class="p">[</span><span class="n">status</span><span class="p">,</span> <span class="n">response_headers</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">write</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">application</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">data</span><span class="p">:</span>    <span class="c"># don&#39;t send headers until body appears</span>
+                <span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">headers_sent</span><span class="p">:</span>
+            <span class="n">write</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">)</span>   <span class="c"># send headers now if body was empty</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="s">&#39;close&#39;</span><span class="p">):</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+<p>最后通过wsgi,web服务器和框架之间可以连接起来了.</p>
+
+<p>其实最简单的理解还是wsgi作为一个服务器端和web框架(Python)之间的接口.个中细节只有到源码里才能体会.</p>
 
     </article>
     <!-- Duoshuo Comment BEGIN -->
