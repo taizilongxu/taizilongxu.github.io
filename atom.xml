@@ -7,6 +7,18 @@
         <atom:link href="http://hackerxu.com/feed.xml" rel="self" type="application/rss+xml" />
         
             <item>
+                <title>Flask0.1源代码分析(1)</title>
+                        
+                
+                    <description>&lt;p&gt;最近在读Flask0.1的源码,Flask框架饱受好评的原因就是因为简洁,明快而且够Pythonic,于是自己也关注了一下,尝试从底层读懂flask的代码.&lt;/p&gt;
+</description>
+                
+                <pubDate>Sun, 10 May 2015 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2015/05/10/flask011.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2015/05/10/flask011.html</guid>
+            </item>
+        
+            <item>
                 <title>使用ipdb调试python</title>
                         
                 
@@ -112,18 +124,6 @@
                 <pubDate>Wed, 14 Jan 2015 00:00:00 +0800</pubDate>
                 <link>http://hackerxu.com/2015/01/14/oop.html</link>
                 <guid isPermaLink="true">http://hackerxu.com/2015/01/14/oop.html</guid>
-            </item>
-        
-            <item>
-                <title>C/C++,Java,Python内存管理</title>
-                        
-                
-                    <description>&lt;h2&gt;内存管理&lt;/h2&gt;
-</description>
-                
-                <pubDate>Tue, 13 Jan 2015 00:00:00 +0800</pubDate>
-                <link>http://hackerxu.com/2015/01/13/ram.html</link>
-                <guid isPermaLink="true">http://hackerxu.com/2015/01/13/ram.html</guid>
             </item>
         
     </channel>
