@@ -7,6 +7,18 @@
         <atom:link href="http://hackerxu.com/feed.xml" rel="self" type="application/rss+xml" />
         
             <item>
+                <title>playwithlinux</title>
+                        
+                
+                    <description>&lt;p&gt;不知不觉实习一个月啦,好久没有更了.每天都是9点去,9点回.&lt;/p&gt;
+</description>
+                
+                <pubDate>Fri, 26 Jun 2015 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2015/06/26/playwithlinux.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2015/06/26/playwithlinux.html</guid>
+            </item>
+        
+            <item>
                 <title>Flask0.1源代码分析(1)</title>
                         
                 
@@ -112,18 +124,6 @@
                 <pubDate>Sun, 22 Feb 2015 00:00:00 +0800</pubDate>
                 <link>http://hackerxu.com/2015/02/22/iterm-ls.html</link>
                 <guid isPermaLink="true">http://hackerxu.com/2015/02/22/iterm-ls.html</guid>
-            </item>
-        
-            <item>
-                <title>oop</title>
-                        
-                
-                    <description>&lt;h2&gt;面向对象&lt;/h2&gt;
-</description>
-                
-                <pubDate>Wed, 14 Jan 2015 00:00:00 +0800</pubDate>
-                <link>http://hackerxu.com/2015/01/14/oop.html</link>
-                <guid isPermaLink="true">http://hackerxu.com/2015/01/14/oop.html</guid>
             </item>
         
     </channel>
