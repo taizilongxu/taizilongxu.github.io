@@ -7,6 +7,18 @@
         <atom:link href="http://hackerxu.com/feed.xml" rel="self" type="application/rss+xml" />
         
             <item>
+                <title>无所事事的好青年</title>
+                        
+                
+                    <description>&lt;p&gt;&lt;img src=&quot;/img/nanfangguniang.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</description>
+                
+                <pubDate>Sat, 11 Jul 2015 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2015/07/11/.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2015/07/11/.html</guid>
+            </item>
+        
+            <item>
                 <title>playwithlinux</title>
                         
                 
@@ -112,18 +124,6 @@
                 <pubDate>Wed, 04 Mar 2015 00:00:00 +0800</pubDate>
                 <link>http://hackerxu.com/2015/03/04/test1.html</link>
                 <guid isPermaLink="true">http://hackerxu.com/2015/03/04/test1.html</guid>
-            </item>
-        
-            <item>
-                <title>iterm2下的ls配置</title>
-                        
-                
-                    <description>&lt;p&gt;环境是iterm2 + zsh + tmux&lt;/p&gt;
-</description>
-                
-                <pubDate>Sun, 22 Feb 2015 00:00:00 +0800</pubDate>
-                <link>http://hackerxu.com/2015/02/22/iterm-ls.html</link>
-                <guid isPermaLink="true">http://hackerxu.com/2015/02/22/iterm-ls.html</guid>
             </item>
         
     </channel>
