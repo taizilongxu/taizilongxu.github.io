@@ -7,6 +7,18 @@
         <atom:link href="http://hackerxu.com/feed.xml" rel="self" type="application/rss+xml" />
         
             <item>
+                <title>使用spacemacs从vim无缝过度到emacs</title>
+                        
+                
+                    <description>&lt;p&gt;最近在github上看见了一个项目,名字叫&lt;a href=&quot;https://github.com/syl20bnr/spacemacs&quot;&gt;spacemacs&lt;/a&gt;,相当于是一个emacs的完整配置方案,可以使user从vim无缝的迁移到emacs并且可以提供一整套插件解决方案.其实这个项目几个月前就看到过,不过当时正潜心研究vim,对于emacs的映像只在于丑陋的界面和缓慢并且臃肿,不过对于spacemacs的初始化配置简直美哭了.下面是gui下的截图.&lt;/p&gt;
+</description>
+                
+                <pubDate>Mon, 31 Aug 2015 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2015/08/31/spacemacs.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2015/08/31/spacemacs.html</guid>
+            </item>
+        
+            <item>
                 <title>无所事事的好青年</title>
                         
                 
@@ -112,18 +124,6 @@
                 <pubDate>Sat, 11 Apr 2015 00:00:00 +0800</pubDate>
                 <link>http://hackerxu.com/2015/04/11/life-continue.html</link>
                 <guid isPermaLink="true">http://hackerxu.com/2015/04/11/life-continue.html</guid>
-            </item>
-        
-            <item>
-                <title>又要开学,摔!</title>
-                        
-                
-                    <description>&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/rango.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-</description>
-                
-                <pubDate>Wed, 04 Mar 2015 00:00:00 +0800</pubDate>
-                <link>http://hackerxu.com/2015/03/04/test1.html</link>
-                <guid isPermaLink="true">http://hackerxu.com/2015/03/04/test1.html</guid>
             </item>
         
     </channel>
