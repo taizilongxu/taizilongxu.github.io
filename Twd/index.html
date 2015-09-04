@@ -9,7 +9,7 @@
         <link rel="canonical" href="http://hackerxu.com/Twd/">
         <link rel="shortcut icon" href="./img/favicon.ico">
 
-        <title>Tango with Django 中文文档 - Tango with Django 中文文档</title>
+        <title>Tango with Django 中文文档</title>
 
         <link href="./css/bootstrap.min.css" rel="stylesheet">
 
@@ -58,6 +58,12 @@ ga('send', 'pageview');
         <div class="navbar-collapse collapse">
             <!-- Main navigation -->
             <ul class="nav navbar-nav">
+            
+            
+                <li class="active">
+                    <a href=".">Home</a>
+                </li>
+            
             
             </ul>
 
@@ -214,7 +220,7 @@ ga('send', 'pageview');
         
         </li>
     
-        <li class=""><a href="#7">7 模型,模板和试图</a>
+        <li class=""><a href="#7">7 模型,模板和视图</a>
         
             <ul class="nav">
             
@@ -314,11 +320,11 @@ ga('send', 'pageview');
         
         </li>
     
-        <li class=""><a href="#12-django-registration-redux">12 使用Django-Registration-Redux进行用户验证</a>
+        <li class=""><a href="#12-drr">12 使用DRR进行验证</a>
         
             <ul class="nav">
             
-                <li><a href="#121-django-registration-redux">12.1 设置Django-Registration-Redux</a></li>
+                <li><a href="#121-drr">12.1 设置DRR</a></li>
             
                 <li><a href="#123">12.3 设置模板</a></li>
             
@@ -432,15 +438,40 @@ ga('send', 'pageview');
         
         </li>
     
+        <li class=""><a href="#20">20 自动化测试</a>
+        
+            <ul class="nav">
+            
+                <li><a href="#201">20.1 运行测试</a></li>
+            
+                <li><a href="#202">20.2 测试模型</a></li>
+            
+                <li><a href="#203">20.3 测试视图</a></li>
+            
+                <li><a href="#204">20.4 测试返回页面</a></li>
+            
+                <li><a href="#205">20.5 覆盖测试</a></li>
+            
+                <li><a href="#206">20.6 练习</a></li>
+            
+            </ul>
+        
+        </li>
+    
+        <li class=""><a href="#21_1">21 部署项目</a>
+        
+        </li>
+    
     </ul>
     <a class="back-to-top" href="#top"> 返回顶部 </a>
 </nav></div>
                 <div class="col-md-9" role="main">
 
 <h1 id="1-twd17">1. Twd1.7新特性</h1>
-<blockquote>
-<p>警告:这个版本仍在草稿阶段.尽管它们应当还管用(但是一些链接和截图需要更新).如果发现bug,问题或者其他请求请通过github来提交: https://github.com/leifos/tango_with_django_book/tree/master/17</p>
-</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>这个版本仍在草稿阶段(一些链接和截图需要更新).如果发现bug,问题或者其他请求请通过github来提交:  https://github.com/leifos/tango_with_django_book/tree/master/17</p>
+</div>
 <p>在这个版本中,我们加入了以下特性:</p>
 <ul>
 <li>代码更新适配Django1.7版本<ul>
@@ -452,7 +483,7 @@ ga('send', 'pageview');
 </ul>
 </li>
 <li>增加验证一章<ul>
-<li>用Django-Registration-Redux来处理登陆和注册(参见<a href="#12-django-registration-redux">第12章</a>)</li>
+<li>用Django-Registration-Redux来处理登陆和注册(参见<a href="#12-drr">第12章</a>)</li>
 </ul>
 </li>
 <li>Bootstrap章节更新为Bootstrap 3.2.0(参见<a href="#13-bootstraprango">第13章</a>)<ul>
@@ -460,8 +491,8 @@ ga('send', 'pageview');
 </ul>
 </li>
 <li>增加使用模板标签一章(参见<a href="#14">第14章</a>)</li>
-<li>增加在Django里使用JQuery一章(参见[第18章][18])</li>
-<li>关于测试的一章扩展了一些内容-但是仍在修改中(参见[第20章][20])<ul>
+<li>增加在Django里使用JQuery一章(参见<a href="#18-jquerydjango">第18章</a>)</li>
+<li>关于测试的一章扩展了一些内容-但是仍在修改中(参见<a href="#20">第20章</a>)<ul>
 <li>包括如何用<code>coverage</code>包去检测测试覆盖(参见 http://nedbatchelder.com/code/coverage/ )</li>
 </ul>
 </li>
@@ -635,9 +666,10 @@ ga('send', 'pageview');
 <h2 id="31">3.1 使用终端</h2>
 <p>学习如何使用你的操作系统提供的命令行交互对设置你的环境来说至关重要.在本教程中,你应当习惯用命令行进行交互.如果你已经熟悉使用命令行那么你可以直接跳到<a href="#32">安装软件</a>这一章节.</p>
 <p>类UNIX系统都有一个看起来相似的<a href="http://www.ee.surrey.ac.uk/Teaching/Unix/unixintro.html">终端</a>.UNIX有许多派生或者衍生的后代,包括苹果的<a href="http://en.wikipedia.org/wiki/OS_X">OS X</a>和许多<a href="http://en.wikipedia.org/wiki/List_of_Linux_distributions">Linux发行版本</a>.所有的这些操作系统都包含一系列命令行界面可以帮助你管理文件和运行程序,他们并不需要图形界面.本节介绍你应当掌握的关键命令.</p>
-<blockquote>
-<p>注意:这个教程针对的是类UNIX系统.虽然Django和Python可以在Windows系统下运行,但是这本书中的大部分命令都是针对类UNIX终端的.在Windows中,可以用与<a href="http://www.ai.uga.edu/mc/winforunix.html">UNIX相近的命令</a>或者使用仿UNIX终端的<a href="http://technet.microsoft.com/en-us/library/bb978526.aspx">PowerShell</a>来运行这些命令.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>这个教程针对的是类UNIX系统.虽然Django和Python可以在Windows系统下运行,但是这本书中的大部分命令都是针对类UNIX终端的.在Windows中,可以用与<a href="http://www.ai.uga.edu/mc/winforunix.html">UNIX相近的命令</a>或者使用仿UNIX终端的<a href="http://technet.microsoft.com/en-us/library/bb978526.aspx">PowerShell</a>来运行这些命令.</p>
+</div>
 <p>如果进入一个终端里,你会看到如下的形式:</p>
 <pre><code>sibu:~leif$
 </code></pre>
@@ -668,9 +700,10 @@ sibu:~ leif$
 </code></pre>
 
 <p>进入新建的<code>code</code>文件夹,键入<code>cd code</code>.如果你检查你现在的工作目录,你可以看到你处在<code>~/code/</code>目录中.同样你可以通过你的提示符看出来.看下面的例子,当前工作目录出现在电主机名字<code>sibu</code>后面.</p>
-<blockquote>
-<p>注意:以后不管什么时候提到工作空间(<code>&lt;workspace&gt;</code>),我们指的是你的<code>code</code>目录</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>以后不管什么时候提到工作空间(<code>&lt;workspace&gt;</code>),我们指的是你的<code>code</code>目录</p>
+</div>
 <pre><code>sibu:~ leif$ mkdir code
 sibu:~ leif$ cd code
 sibu:code leif$
@@ -701,22 +734,25 @@ drwxr-xr-x   36 leif  staff    1224 23 Sep 10:42 code
 <li><code>rmdir</code>:删除目录的传统方法.在后面提供你要删除的目录.需要注意的是:这个命令没有提示是否要删除这个目录.</li>
 <li><code>sudo</code>:允许你用其他用户权限来运行这个程序.一般,用<code>root</code>(类UNIX或者UNIX衍生系统的<a href="http://en.wikipedia.org/wiki/Superuser">超级用户</a>)身份来运行这个程序.</li>
 </ul>
-<blockquote>
-<p>注意:这里只列出了一小部分命令列表.如果想了解更多请查看ubuntu的关于<a href="https://help.ubuntu.com/community/UsingTheTerminal">使用终端</a>的文档,或者FOSSwire写的<a href="http://fosswire.com/post/2007/08/unixlinux-command-cheat-sheet/">Cheat Sheet</a>.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>这里只列出了一小部分命令列表.如果想了解更多请查看ubuntu的关于<a href="https://help.ubuntu.com/community/UsingTheTerminal">使用终端</a>的文档,或者FOSSwire写的<a href="http://fosswire.com/post/2007/08/unixlinux-command-cheat-sheet/">Cheat Sheet</a>.</p>
+</div>
 <h2 id="32">3.2 安装软件</h2>
 <p>现在你已经知道怎么和终端打交道了,你可以按着这个教程的要求安装软件了.</p>
 <h3 id="321-python">3.2.1 安装Python</h3>
 <p>Python2.7.5已经安到你的电脑上了吗?如果你使用的是linux发行版或者OS X系统,那么你的Python已经安装好了.因为许多系统的功能都是有Python实现的,所以他们本身自带<a href="http://en.wikipedia.org/wiki/Yellowdog_Updater,_Modified">Python解析器</a>!</p>
 <p>很不幸,几乎所有的现代操作系统的Python版本都比我们在这个教程里需要的要老.有许多方法可以安装Python,许多方法都非常苦难.我们提供了最常用的方法,并且提供获取更多信息的链接.</p>
-<blockquote>
-<p>警告:这个段落将会详细介绍如何安装Python2.7.5.但是千万不要移除系统默认的Python.这样做可能损坏你的系统.</p>
-</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>这个段落将会详细介绍如何安装Python2.7.5.但是千万不要移除系统默认的Python.这样做可能损坏你的系统.</p>
+</div>
 <h4 id="3211-os-x">3.2.1.1 苹果OS X</h4>
 <p>这个方法最简单,你只需要下载并运行官方的下载器即可.网址在 http://www.python.org/getit/releases/2.7.5/.</p>
-<blockquote>
-<p>警告:在下载前确保<code>.dmg</code>文件的版本和你的OS X系统的版本相符!</p>
-</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>在下载前确保<code>.dmg</code>文件的版本和你的OS X系统的版本相符!</p>
+</div>
 <ol>
 <li>下载完<code>.dmg</code>文件,在目录里双击.</li>
 <li>文件会以磁盘方式挂载,并会出现一个新的Finder窗口.</li>
@@ -738,9 +774,10 @@ drwxr-xr-x   36 leif  staff    1224 23 Sep 10:42 code
 <li>现在你需要切换Python2.7.5来激活Python的安装.只需要键入<code>pythonbrew switch 2.7.5</code>.</li>
 <li>Python 2.7.5就已经安装好了.</li>
 </ol>
-<blockquote>
-<p>注意:以点号开头的文件或者目录同windows里的隐藏文件是一样的.<a href="http://en.wikipedia.org/wiki/Dot-file">Dot file</a>正常情况下是看不见的,他们通常用作配置文件.如果要查看隐藏的文件只需要键入<code>ls -a</code>.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>以点号开头的文件或者目录同windows里的隐藏文件是一样的.<a href="http://en.wikipedia.org/wiki/Dot-file">Dot file</a>正常情况下是看不见的,他们通常用作配置文件.如果要查看隐藏的文件只需要键入<code>ls -a</code>.</p>
+</div>
 <h4 id="3213-windows">3.2.1.3 Windows</h4>
 <p>Windows并没有默认安装Python.也就是说不必考虑遗留版本的问题,只需下载安装即可.可以从<a href="http://www.python.org/download/">Python官方网站</a>下载64位或者32位的版本.如果你不确定要下载哪一个,你可以通过访问<a href="http://windows.microsoft.com/en-gb/windows7/32-bit-and-64-bit-windows-frequently-asked-questions">the Microsoft website</a>来确定你的电脑是64位还是32位.</p>
 <ol>
@@ -818,9 +855,10 @@ $ sudo python ez_setup.py
 </code></pre>
 
 <p>如果看到上面的输出,你就可以在终端里直接输入<code>pip</code>来启动Pip了.如果没有遇到什么错误的话,你将会看到一个Pip提供的命令列表.如果你看到了这个列表,那么恭喜你!</p>
-<blockquote>
-<p>注意:在Windows主机里,操作都一样.但是在输入命令的时候不用输入<code>sudo</code>.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>在Windows主机里,操作都一样.但是在输入命令的时候不用输入<code>sudo</code>.</p>
+</div>
 <h3 id="324-django">3.2.4 安装Django</h3>
 <p>如果安装Pip成功的话,Django就容易安装了.打开终端让我们来输入.</p>
 <pre><code>$ pip install -U django==1.7
@@ -909,21 +947,22 @@ $ pip install virtualenvwrapper
 2.7.5
 </code></pre>
 
-<p>上面的命令将会运行Python解析器,如果有<code>-c</code>选项则可以执行它后面的代码.你可以查看输出以检查Python版本是否是你需要的.如果版本不是<code>2.7.5</code>,你可能需要返回3.2章节去检查一下安装时是否拉下了某些步骤.</p>
+<p>上面的命令将会运行Python解析器,如果有<code>-c</code>选项则可以执行它后面的代码.你可以查看输出以检查Python版本是否是你需要的.如果版本不是<code>2.7.5</code>,你可能需要返回<a href="#32">3.2</a>章节去检查一下安装时是否拉下了某些步骤.</p>
 <p>在检验了安装的python后,让我们检验一下Django.</p>
 <pre><code>$ python -c &quot;import django; print(django.get_version())&quot;
 1.7
 </code></pre>
 
-<p>通过调用Django模块,可以看到下方输出<code>1.7</code>.如果你得到的是其他版本,或者出现<code>ImportError</code>,那么返回3.2章节或者参看Django Documentation on Installing Django.如果你发现你的Django版本不是1.7,那么以后可能会遇到一些问题.所以还是确保Django的版本是1.7吧.</p>
+<p>通过调用Django模块,可以看到下方输出<code>1.7</code>.如果你得到的是其他版本,或者出现<code>ImportError</code>,那么返回<a href="#32">3.2</a>章节或者参看<a href="https://docs.djangoproject.com/en/1.7/topics/install/">Django Documentation on Installing Django</a>.如果你发现你的Django版本不是1.7,那么以后可能会遇到一些问题.所以还是确保Django的版本是1.7吧.</p>
 <h2 id="42-django">4.2 创建你的Django项目</h2>
 <p>在你的<code>code</code>目录里创建你的项目.</p>
 <pre><code>$ django-admin.py startproject tango_with_django_project
 </code></pre>
 
-<blockquote>
-<p>注意:在Windows机器上你需要全路径运行django-admin.py脚本.比如<code>python c:\python27\scripys\django-admin.py startproject tango_with_django_project</code></p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>根据<a href="http://stackoverflow.com/questions/8112630/cant-create-django-project-using-command-prompt">stackoverflow</a>在Windows机器上你需要全路径运行django-admin.py脚本.比如<code>python c:\python27\scripys\django-admin.py startproject tango_with_django_project</code></p>
+</div>
 <p>这个命令竟会运行<code>django-admin.py</code>脚本,它将会为你创建一个名叫<code>tango_with_django_project</code>的Django新项目.这个名字随便你取的.</p>
 <p>你可能注意到了在你新创建的<code>tang_with_django_project</code>项目里自动创建了两个项目:</p>
 <ul>
@@ -937,13 +976,15 @@ $ pip install virtualenvwrapper
 <li><code>urls.py</code>:用来存储项目里的URL模式.</li>
 <li><code>wsgi.py</code>:用来帮助你运行开发服务,同时可以帮助部署你的生产环境.</li>
 </ul>
-<blockquote>
-<p>注意:这个项目文件是自从1.4版本后才创立的.虽然和项目同名的目录看起来很怪,但这样做还是有道理的,它可以和其他应用进行区分.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>这个项目文件是自从1.4版本后才创立的.虽然和项目同名的目录看起来很怪,但这样做还是有道理的,它可以和其他应用进行区分.</p>
+</div>
 <p>在项目里还有一个叫做<code>manage.py</code>的文件.这个文件是我们开发项目时经常使用的文件,它为我们提供了一系列的Django命令.例如,<code>manage.py</code>允许你运行内建的Django服务来测试和运行数据库命令.真的,这个脚本是你最常用的脚本了.</p>
-<blockquote>
-<p>注意:可以参见Admin and Manage scripts来了解更多.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>可以参见<a href="https://docs.djangoproject.com/en/1.7/ref/django-admin/#django-admin-py-and-manage-py">Admin and Manage scripts</a>来了解更多.</p>
+</div>
 <p>现在可以运行<code>manage.py</code>脚本了.</p>
 <pre><code>$ python manage.py runserver
 </code></pre>
@@ -984,13 +1025,14 @@ Running migrations:
 <p>执行上面的命令将会把服务转换到TCP的5555端口.你需要把上面的<code>$ python manage.py runserver &lt;your_machines_ip_address&gt;:5555</code>换成你自己主机的IP地址.</p>
 <p>在设置端口的时候,你不能设置1024以下的端口,因为它们都是系统的预留端口.</p>
 <p>用上面那个命令就可以轻松的向同事们展示你的网页了.当你运行你的web服务时,其他人可以通过键入<code>http://&lt;your_machines_ip_address&gt;:&lt;port&gt;/</code>来进入你的web应用.当然这也要取决于你的网络设置.在联通之前你或许要设置以下防火墙或者代理.如果你不能远程连接你的网站,那么请检查以下你的网络.</p>
-<blockquote>
-<p>注意:<code>django-admin.py</code>和<code>manage.py</code>提供了许多有用的节省时间的功能.<code>django-admin.py</code>可以创建项目和应用以及一些其他的命令.不带参数的执行脚本可以参看各自的说明.official Django documentation provides a detailed list and explanation of each possible command 有详细的介绍.</p>
-</blockquote>
-<p>如果你正在使用版本控制,那么现在可以提交你的更改到工作空间了.如果你忘记该用什么命令,可以看看crash course on GIT.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>django-admin.py</code>和<code>manage.py</code>提供了许多有用的节省时间的功能.<code>django-admin.py</code>可以创建项目和应用以及一些其他的命令.不带参数的执行脚本可以参看各自的说明.<a href="http://www.w3.org/Daemon/User/Installation/PrivilegedPorts.html">official Django documentation provides a detailed list and explanation of each possible command</a> 有详细的介绍.</p>
+</div>
+<p>如果你正在使用版本控制,那么现在可以提交你的更改到工作空间了.如果你忘记该用什么命令,可以看看[crash course on GIT][23].</p>
 <h2 id="43-django">4.3 创建Django应用</h2>
 <p>通过一系列的设置和各种应用就可以组成一个web应用和网站,这就是Django.熟练的使用它是一个很好的软件工程实践.如果你开发了许多的小型应用,理论上讲你可以非常容易的把应用放入其他的Django项目里.不要重复造轮子!</p>
-<p>每个Django应用的存在都对应它实现的一种功能.针对不同的功能你需要创建不同的应用.假设我们有一个项目,它包括一个投票app,一个注册app和一些内容相关的app.在其他的项目里,我们希望能重用投票和注册app,并且用他们来发送不同的内容.这里有许多应用可以下载并用到你的项目里.接下来我们将要学习如何创建你自己的应用.</p>
+<p>每个Django应用的存在都对应它实现的一种功能.针对不同的功能你需要创建不同的应用.假设我们有一个项目,它包括一个投票app,一个注册app和一些内容相关的app.在其他的项目里,我们希望能重用投票和注册app,并且用他们来发送不同的内容.这里有许多应用可以<a href="https://code.djangoproject.com/wiki/DjangoResources#Djangoapplicationcomponents">下载</a>并用到你的项目里.接下来我们将要学习如何创建你自己的应用.</p>
 <p>一开始我们需要创建名字叫Rango的应用.在你的Django项目的目录里(例如<code>&lt;workspace&gt;/tango_with_django_project</code>),运行如下命令.</p>
 <pre><code>$ python manage.py startapp rango
 </code></pre>
@@ -1003,7 +1045,7 @@ Running migrations:
 <li><code>views.py</code>,在这里处理用户请求和响应.</li>
 <li><code>admin.py</code>,在这里你可以向Django注册你的模型,它会为你创建Django的管理界面.</li>
 </ul>
-<p><code>views.py</code>和<code>models.py</code>在每个应用中都要用到,他们俩是Django设计模式的组成部分,例如Model-View-Template模式.你可以通过the official Django documentation来了解详细的信息.</p>
+<p><code>views.py</code>和<code>models.py</code>在每个应用中都要用到,他们俩是Django设计模式的组成部分,例如Model-View-Template模式.你可以通过<a href="https://docs.djangoproject.com/en/1.7/intro/overview/">the official Django documentation</a>来了解详细的信息.</p>
 <p>在你创建模型和视图之前,你必须要告诉Django你的新应用的存在.所以你必须修改你配置目录里的<code>settings.py</code>文件.打开文件找到<code>INSTALLED_APPS</code>元组.在元祖的最后面增加<code>rango</code>.</p>
 <pre><code>INSTALLED_APPS = (
     'django.contrib.admin',
@@ -1030,12 +1072,12 @@ def index(request):
 
 <p>让我们逐行分析.</p>
 <ul>
-<li>我们第一行首先从<code>django.http</code>模块导入HttpResponse对象.</li>
+<li>我们第一行首先从<code>django.http</code>模块导入<a href="https://docs.djangoproject.com/en/1.7/ref/request-response/#django.http.HttpResponse">HttpResponse</a>对象.</li>
 <li>在<code>views.py</code>文件里每个视图对应一个单独的函数.在这个例子中我们只创建了一个<code>index</code>视图.</li>
-<li>每个视图至少带一个参数 - 一个在<code>django.http</code>模块的HttpRequest对象.</li>
+<li>每个视图至少带一个参数 - 一个在<code>django.http</code>模块的<a href="https://docs.djangoproject.com/en/1.7/ref/request-response/#django.http.HttpRequest">HttpRequest对</a>象.</li>
 <li>每个视图都要返回一个HttpResponse对象.本例中这个HttpResponse对象把一个字符串当做参数传递给客户端.</li>
 </ul>
-<p>虽然已经创建了视图,但是如果想让别人看到它,你必须用URL映射这个视图.</p>
+<p>虽然已经创建了视图,但是如果想让别人看到它,你必须用<a href="http://en.wikipedia.org/wiki/Uniform_resource_locator">URL</a>映射这个视图.</p>
 <h2 id="45-url">4.5 URL映射</h2>
 <p>在<code>rango</code>目录里,我们需要创建一个叫做<code>urls.py</code>的文件.文件里是可以设置你的应用映射到URL(例如'http://www.tangowithdjango.com/rango/').</p>
 <pre><code>from django.conf.urls import patterns, url
@@ -1046,11 +1088,15 @@ urlpatterns = patterns('',
 </code></pre>
 
 <p>这段代码导入Django自带的映射URL机制.导入<code>rango</code>的<code>view</code>模块引入我们先前建立的视图.</p>
-<p>为了建立映射,我们用到了tuple.在Django里必须用<code>urlpatterns</code>来命名这个元组.这个<code>urlpatterns</code>元组包含一些<code>django.conf.urls.url()</code>函数的调用,而每个函数里都有一个唯一的映射.在上面的代码里,我们只用了<code>url()</code>一次,所以我们只映射了一个URL.<code>django.conf.urls.url()</code>函数的第一个参数是正则表达式<code>^$</code>,指的是匹配一个空字符串.所有匹配这个模式的URL都会映射到<code>views.index()</code>这个视图.用户的请求信息会包含在<code>HttpRequest</code>对象里作为参数传递给视图.我们给<code>url()</code>函数可选参数<code>name</code>赋值为<code>index</code>.</p>
-<blockquote>
-<p>注意:你或许以为映射一个空URL毫无意义 - 它有什么用?当我们进行URL匹配时,只考虑到了原始URL字符串的一部分.这是因为我们的Django项目会优先处理原始URL字符串(例如<code>http://www.tangowithdjango.com/rango/</code>).一旦被处理,它将会被删除,留给剩下的部分去做匹配.在本例中,会剩下空字符串 - 所以空字符串会进行匹配!</p>
-<p>注意:<code>django.conf.urls.url()</code>函数的<code>name</code>参数是个可选参数.Django提供这个方法可以让你区别不同的映射.有时候连个不同的URL映射表达式会调用相同的视图.<code>name</code>可以让你轻松的区分他们 - 有些时候反响URL匹配会很有用.更多细节查看the Official Django documentation .</p>
-</blockquote>
+<p>为了建立映射,我们用到了tuple.在Django里必须用<code>urlpatterns</code>来命名这个<a href="http://en.wikipedia.org/wiki/Tuple">元组</a>.这个<code>urlpatterns</code>元组包含一些<code>django.conf.urls.url()</code>函数的调用,而每个函数里都有一个唯一的映射.在上面的代码里,我们只用了<code>url()</code>一次,所以我们只映射了一个URL.<code>django.conf.urls.url()</code>函数的第一个参数是正则表达式<code>^$</code>,指的是匹配一个空字符串.所有匹配这个模式的URL都会映射到<code>views.index()</code>这个视图.用户的请求信息会包含在<code>HttpRequest</code>对象里作为参数传递给视图.我们给<code>url()</code>函数可选参数<code>name</code>赋值为<code>index</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>你或许以为映射一个空URL毫无意义 - 它有什么用?当我们进行URL匹配时,只考虑到了原始URL字符串的一部分.这是因为我们的Django项目会优先处理原始URL字符串(例如<code>http://www.tangowithdjango.com/rango/</code>).一旦被处理,它将会被删除,留给剩下的部分去做匹配.在本例中,会剩下空字符串 - 所以空字符串会进行匹配!</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>django.conf.urls.url()</code>函数的<code>name</code>参数是个可选参数.Django提供这个方法可以让你区别不同的映射.有时候连个不同的URL映射表达式会调用相同的视图.<code>name</code>可以让你轻松的区分他们 - 有些时候反响URL匹配会很有用.更多细节查看<a href="https://docs.djangoproject.com/en/1.7/topics/http/urls/#naming-url-patterns">the Official Django documentation</a> .</p>
+</div>
 <p>你或许已经看到在项目目录里已经存在了一个<code>urls.py</code>文件.为什么创建另一个呢?事实上,你可以吧所有的项目应用的URL都放在这个文件里.但是这是一个坏的习惯,这回增加你的应用的耦合.各自应用的<code>urls.py</code>文件存放各自应用的URL.为了最小耦合,你可以稍后把它们加入到项目目录的<code>urls.py</code>文件里.</p>
 <p>这就意味着我们需要设置<code>tango_with_django_project</code>里的<code>urls.py</code>文件,把我们的Rango应用和Django连接.</p>
 <p>我们该怎么做呢?很简单.打开项目目录里的<code>urls.py</code>文件.在你的工作目录里,有可能是<code>&lt;workspace&gt;/tango_with_django_project/tango_with_django_project/urls.py</code>像下面一样更新<code>urlpatterns</code>元组.</p>
@@ -1069,10 +1115,11 @@ urlpatterns = patterns('',
 <p>重新启动Django服务然后访问<code>http://127.0.0.1:8000/rango</code>.如果一切顺利,你将会看到<code>Rango says hello world!</code>.就像下图所示.</p>
 <p><img alt="" src="./img/rango-hello-world.png" /></p>
 <p>在每个应用中,你都可以创建许多URL映射.初始映射非常简单.下面我们会用URL做出更复杂的映射.</p>
-<p>对于理解Django的URL机制非常的重要.如果你仍有什么困惑可以查看official Django documentation on URL,以做更进一步的了解.</p>
-<blockquote>
-<p>注意:URL模式使用正则表达式来进行匹配.在Python中学好正则表达式非常的有用.Python官方文档包含了userful guide on regular expressions, regexcheatsheet.com提供了 neat summary of regular expressions.</p>
-</blockquote>
+<p>对于理解Django的URL机制非常的重要.如果你仍有什么困惑可以查看<a href="https://docs.djangoproject.com/en/1.7/topics/http/urls/">official Django documentation on URL</a>,以做更进一步的了解.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>URL模式使用<a href="http://en.wikipedia.org/wiki/Regular_expression">正则表达式</a>来进行匹配.在Python中学好正则表达式非常的有用.Python官方文档包含了<a href="http://docs.python.org/2/howto/regex.html">userful guide on regular expressions</a>, regexcheatsheet.com提供了 <a href="http://regexcheatsheet.com/">neat summary of regular expressions</a>.</p>
+</div>
 <h2 id="46">4.6 基本流程</h2>
 <p>本章所学的内容将会总结成一个列表.在这里我们为两个不同列表.</p>
 <h3 id="461-django">4.6.1 创建新的Django项目</h3>
@@ -1095,20 +1142,20 @@ urlpatterns = patterns('',
 <li>把这个视图映射到<code>/rango/about/</code>.在这一步里,你只需要编辑rango应用里的<code>urls.py</code></li>
 <li>修改<code>index</code>视图的<code>HttpResponse</code>,使它返回包含about页面的链接.</li>
 <li>在<code>about</code>视图里使它包含一个回到主页的链接.</li>
-<li>如果你还没怎么明白,还是去看一下Django Tutorial.</li>
+<li>如果你还没怎么明白,还是去看一下<a href="https://docs.djangoproject.com/en/1.7/intro/tutorial01/">Django Tutorial</a>.</li>
 </ul>
 <h3 id="471">4.7.1 提示</h3>
 <p>如果感觉练习有困难的话,下面将能帮助你完成练习.</p>
 <ul>
 <li><code>index</code>视图里需要包含<code>about</code>视图的链接.这个很简单 - 加入<code>Rango says: Hello world! &lt;br/&gt; &lt;a href='/rango/about'&gt;About&lt;/a&gt;</code>这样的语句就行了.接下来我们会优化这些页面的.</li>
 <li>匹配<code>about/</code>的正则表达式是<code>r^about/</code>.</li>
-<li>返回主页的链接是<code>&lt;a href=".//rango/"&gt;Index&lt;/a&gt;</code>.这个结构和上面的<code>about</code>页面里的一样.</li>
+<li>返回主页的链接是<code>&lt;a href="/rango/"&gt;Index&lt;/a&gt;</code>.这个结构和上面的<code>about</code>页面里的一样.</li>
 </ul>
 <h1 id="5">5 模板和静态媒体</h1>
 <p>在本章里你将会学到模板引擎的知识同时也会学习怎么在你的web页面添加静态媒体.</p>
 <h2 id="51">5.1 使用模板</h2>
 <p>为了创建一个Django网页,我们需要把许多东西都集中到一起.现在我们有两个视图以及一些连接它们的映射.下面我们将学习如何把模板加入到里面.</p>
-<p>设计优秀的网站会重用他们的布局结构.你是否看到过同样header和footer的页面,这些重复布局会提高网站的组织性同时会给人连续感.Django提供了与应用逻辑上可分的模板来为开发者更容易的实现这样的设计目标.在本章,你将会创建一个模板来创建一个HTML页面.这个模板将会传递给Django的视图.在第7章,我们会用模板做更复杂的事情.</p>
+<p>设计优秀的网站会重用他们的布局结构.你是否看到过同样header和footer的页面,这些<a href="http://www.techrepublic.com/blog/web-designer/effective-design-principles-for-web-designers-repetition/">重复布局</a>会提高网站的组织性同时会给人连续感.Django提供了与应用逻辑上可分的<a href="https://docs.djangoproject.com/en/1.7/ref/templates/">模板</a>来为开发者更容易的实现这样的设计目标.在本章,你将会创建一个模板来创建一个HTML页面.这个模板将会传递给Django的视图.在第7章,我们会用模板做更复杂的事情.</p>
 <h3 id="511">5.1.1 设置模板目录</h3>
 <p>为了建立和启动模板,你需要设置一个储存模板的目录.</p>
 <p>在你的Django项目目录里(例如<code>&lt;workspace&gt;/tango_with_django_project/)</code>),创建一个新的目录叫做<code>templates</code>.在这个目录里创建另一个<code>rango</code>目录.所以我们将在<code>&lt;workspace&gt;/tango_with_django_project/templates/rango/</code>目录里存放关于<code>rango</code>应用的模板.</p>
@@ -1117,12 +1164,13 @@ urlpatterns = patterns('',
 </code></pre>
 
 <p>注意你需要提供<code>templates</code>目录的绝对路径.如果你是一个团队的一员或者工作在不同的电脑上,这在将来可能出现问题.你可以有不同的用户名这意味着你<code>&lt;workspace&gt;</code>目录有不同的路径.如果是硬编码路径的话上面的路径在不同电脑上是不同的.当然,你需要为不同的设置增加不同目录,难道没有什么好的方法了吗?</p>
-<blockquote>
-<p>警告:硬编码路径绝逼带你通往地狱.硬编码在软件工程类是绝对抵制的一种模式,它会让你的项目不利于移植.</p>
-</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><a href="http://en.wikipedia.org/wiki/Hard_coding">硬编码</a>路径绝逼带你通往地狱.硬编码在<a href="http://sourcemaking.com/antipatterns">软件工程</a>里是绝对抵制的一种模式,它会让你的项目不利于<a href="http://en.wikipedia.org/wiki/Software_portability">移植</a>.</p>
+</div>
 <h3 id="512">5.1.2 动态路径</h3>
 <p>解决硬编码路径问题的方法是利用Python内建函数来动态的创建<code>teemplates</code>目录的路径.通过这个方法你不必考虑你的Django项目位置就能获取它的绝对路径.这将利于你的项目代码的移植.</p>
-<p>在Djang1.7的<code>settings.py</code>文件里包含了一个变量<code>BASE_DIR</code>.这个变量会保存<code>settings.py</code>文件的路径.这里面用了一个特殊的<code>___file__</code>属性,它能获取模块的绝对路径.然后通过调用<code>os.path.dirname()</code>来提供绝对路径的目录.再次调用<code>os.path.dirname()</code>我们回得到上层的目录,所以<code>BASE_DIR</code>内容是<code>&lt;workspace&gt;/tango_with_django_project/</code>.如果你还是很好奇的话你可以输入下面的命令.</p>
+<p>在Djang1.7的<code>settings.py</code>文件里包含了一个变量<code>BASE_DIR</code>.这个变量会保存<code>settings.py</code>文件的路径.这里面用了一个特殊的<code>__file__</code>属性,它能获取<a href="http://stackoverflow.com/a/9271479">模块的绝对路径</a>.然后通过调用<code>os.path.dirname()</code>来提供绝对路径的目录.再次调用<code>os.path.dirname()</code>我们回得到上层的目录,所以<code>BASE_DIR</code>内容是<code>&lt;workspace&gt;/tango_with_django_project/</code>.如果你还是很好奇的话你可以输入下面的命令.</p>
 <pre><code>print __file__
 print os.path.dirname(__file__)
 print os.path.dirname(os.path.dirname(__file__))
@@ -1142,9 +1190,10 @@ print os.path.dirname(os.path.dirname(__file__))
 </code></pre>
 
 <p>我们可以吧<code>TEMPLATE_PATH</code>放在<code>settings.py</code>模块的开头以方便我们对它的修改.这就是为什么我们创建变量来存储模板路径.</p>
-<blockquote>
-<p>警告:当连接系统路径的时候用<code>os.path.join()</code>是一个比较好的方法.用这种方法可以保证依据你的操作一同来添加正确的分隔符.在POSIX兼容的操作系统上,斜杠用来分割目录,而在Windows系统里用的是反斜杠.如果你手动为路径添加分隔符,那么你可能会在别的操作系统上操作时印发路径错误.</p>
-</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>当连接系统路径的时候用<code>os.path.join()</code>是一个比较好的方法.用这种方法可以保证依据你的操作一同来添加正确的分隔符.在POSIX兼容的操作系统上,斜杠用来分割目录,而在Windows系统里用的是反斜杠.如果你手动为路径添加分隔符,那么你可能会在别的操作系统上操作时印发路径错误.</p>
+</div>
 <h3 id="513">5.1.3 添加模板</h3>
 <p>在我们创建模板目录和设置好路径以后,我们需要在<code>template/rango/</code>目录里建立一个叫做<code>index.html</code>的文件,在新文件里加入下面代码:</p>
 <pre><code>&lt;!DOCTYPE html&gt;
@@ -1188,9 +1237,9 @@ print os.path.dirname(os.path.dirname(__file__))
 <p>现在你已经更新了视图,运行Django服务并访问 http://127.0.0.1:8000/rango/ .你讲会看到如下图所示.</p>
 <p><img alt="" src="./img/rango-hello-world-template.png" /></p>
 <p>如果你没有看到上图,试着读读错误日志重新检查一下刚才修改的文件.确定所有所有的更改都正确.通常都是在<code>settings.py</code>文件中设置模板路径产生的错误.有时候需要添加<code>print</code>语句来输出<code>BASE_DIR</code>和<code>TEMPLATE_PATH</code>,确保它们俩设置的正确性.</p>
-<p>这个例子展示了在视图里如何使用模板.然而我们仅仅接触了一些Django模板方面的功能.在我们的教程里将会接触到更复杂的模板应用.同时你可以参考templates from the official Django documentation.</p>
+<p>这个例子展示了在视图里如何使用模板.然而我们仅仅接触了一些Django模板方面的功能.在我们的教程里将会接触到更复杂的模板应用.同时你可以参考<a href="https://docs.djangoproject.com/en/1.7/ref/templates/">templates from the official Django documentation</a>.</p>
 <h2 id="52">5.2 提供静态媒体</h2>
-<p>现在Rango网站确实比较原始,没有样式也没有图片.为了增加样式和引入动态行为我们可以在我们的网站里加入CSS,Javascript和图像这些静态媒体.这些文件和网页有一些不同.这是因为它们不想HTML页面是生成出来的.这章节将会教你如何在Django项目里设置静态媒体.我们将会为我们的模板添加一些静态媒体.</p>
+<p>现在Rango网站确实比较原始,没有样式也没有图片.为了增加样式和引入动态行为我们可以在我们的网站里加入<a href="http://en.wikipedia.org/wiki/Cascading_Style_Sheets">CSS</a>,<a href="https://en.wikipedia.org/wiki/JavaScript">Javascript</a>和图像这些静态媒体.这些文件和网页有一些不同.这是因为它们不想HTML页面是生成出来的.这章节将会教你如何在Django项目里设置静态媒体.我们将会为我们的模板添加一些静态媒体.</p>
 <h3 id="521">5.2.1 设置静态媒体目录</h3>
 <p>为了设置静态媒体,你需要设立存储它们的目录.在你的项目目录(例如<code>&lt;workspace&gt;/tango_with_django_project/</code>),创建叫做<code>static</code>的目录.在<code>static</code>里再创建一个<code>images</code>目录.</p>
 <p>现在在<code>static/images</code>目录里放置一个图片.如下图所示我们选择一张变色龙的图案来做我们项目的吉祥物.</p>
@@ -1206,12 +1255,13 @@ STATICFILES_DIRS = (
 )
 </code></pre>
 
-<p>第一个变量<code>STATIC_URL</code>定义了当Django运行时Django应用寻找静态媒体的地址.例如,像我们上面的代码一样吧<code>STATIC_URL</code>设置成<code>/static/</code>,我们就可以通过<code>http://127.0.0.1:8000/static/</code>来访问它了. official documentation on serving up static media 警告我们要注意斜杠的书写.如果不这么设置将会引起一大堆麻烦.</p>
+<p>第一个变量<code>STATIC_URL</code>定义了当Django运行时Django应用寻找静态媒体的地址.例如,像我们上面的代码一样吧<code>STATIC_URL</code>设置成<code>/static/</code>,我们就可以通过<code>http://127.0.0.1:8000/static/</code>来访问它了. <a href="https://docs.djangoproject.com/en/1.7/ref/settings/#std:setting-STATIC_URL">official documentation on serving up static media</a> 警告我们要注意斜杠的书写.如果不这么设置将会引起一大堆麻烦.</p>
 <p><code>STATIC_URL</code>定义了web服务链接媒体的URL地址,<code>STATICFILES_DIRS</code>允许你定义新的<code>static</code>目录.像<code>TEMPLATE_DIRS</code>元组一样.<code>STATICFILES_DIRS</code>需要<code>static</code>目录的绝对路径.这里,我们重新用5.1章的<code>BASE_DIR</code>变量来创建<code>STATIC_PATH</code>.</p>
 <p>完成了这两个设置后,再一次运行你的Django服务.如果我们想要查看我们的Rango图片,访问<code>http://127.0.0.1:8000/static/images/rango.jpg</code>.如果没有出现请查看<code>setings.py</code>文件是否设置正确,并重启服务.如果出现了,试着加入其他类型的文件到<code>static</code>目录并在浏览器上访问他们.</p>
-<blockquote>
-<p>小心:在开发环境中可以你可以用这种方法来提供静态媒体文件,但是在生产环境就不太适合了. official Django documentation on Deploymen提供了在生产环境如何部署静态文件.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>在开发环境中可以你可以用这种方法来提供静态媒体文件,但是在生产环境就不太适合了. <a href="https://docs.djangoproject.com/en/1.7/howto/static-files/deployment/">official Django documentation on Deploymen</a>提供了在生产环境如何部署静态文件.</p>
+</div>
 <h2 id="53">5.3 静态媒体文件和模板</h2>
 <p>现在你已经为你的Django项目设置了静态媒体,你可以在你的模板里加入这些媒体.</p>
 <p>下面将展示hi如何加入静态媒体,打开位于<code>&lt;workspace&gt;/templates/rango</code>目录的<code>index.html</code>文件.像下面一样修改HTML源代码.新加入两行用注释标示.</p>
@@ -1264,10 +1314,11 @@ STATICFILES_DIRS = (
 </code></pre>
 
 <p>很显然你需要引入的静态文件需要在你的<code>static</code>目录里.如果文件不存在或者引用错误的话,控制台将会输出错误.试试看引入一个不存在的文件将会发生什么.</p>
-<p>为了进一步了解静态媒体可查看Django documentation on working with static files in templates.</p>
-<blockquote>
-<p>小心:在你模板的第一行确保文档类型声明(例如<code>&lt;!DOCTYPE html&gt;</code>).这就是为什么我们需要把<code>{% load static %}</code>放在文档类型声明后面而不是前面.根据HTML/XHTML不同文档类型对象的声明也有稍许不同.很显然Django命令会在模板输出的时候删除,但是删除之后的命令会留下一些空白意味着你的输出将得不到W3C认证服务的验证.</p>
-</blockquote>
+<p>为了进一步了解静态媒体可查看<a href="https://docs.djangoproject.com/en/1.7/howto/static-files/#staticfiles-in-templates">Django documentation on working with static files in templates</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>在你模板的第一行确保<a href="http://en.wikipedia.org/wiki/Document_Type_Declaration">文档类型声明</a>(例如<code>&lt;!DOCTYPE html&gt;</code>).这就是为什么我们需要把<code>{% load static %}</code>放在文档类型声明后面而不是前面.根据HTML/XHTML不同文档类型对象的声明也有稍许不同.很显然Django命令会在模板输出的时候删除,但是删除之后的命令会留下一些空白意味着你的输出将得不到<a href="http://validator.w3.org/">W3C认证服务</a>的<a href="http://www.w3schools.com/web/web_validate.ASP">验证</a>.</p>
+</div>
 <p>TODO(leifos):注意当你部署项目的时候最好不要这样做,你可以查询https://docs.djangoproject.com/en/1.7/howto/static-files/deployment/ </p>
 <p>TODO(leifos):DEBUG变量在<code>settings.py</code>中,设置它可以让我们控制是否输出错误信息.当把<code>DEBUG</code>设置成True时对于应用的部署并不安全.当你把<code>DEBUG</code>设置成False,你得需要把<code>settings.py</code>中的<code>ALLOWED_HOSTS</code>变量设置成<code>127.0.0.1</code>以便可以在本地主机上运行.你需要修改项目里的<code>urls.py</code>文件:</p>
 <pre><code>from django.conf import settings # New Import
@@ -1294,16 +1345,17 @@ if settings.DEBUG:
         {'document_root': settings.MEDIA_ROOT}), )
 </code></pre>
 
-<p>通过导入<code>django.conf</code>的<code>settings</code>模块我们可以得到我们项目里<code>settings.py</code>文件的变量.接下来的条件判断语句判断Django是否处在DEBUG模式.如果<code>DEBUG</code>被设定为<code>True</code>,那么就会在<code>urlpatterns</code>加入URL匹配模式.所有以<code>media/</code>开头的青豆都会传递给<code>django.views.static</code>视图.这个视图将会把上传的媒体传给你.</p>
+<p>通过导入<code>django.conf</code>的<code>settings</code>模块我们可以得到我们项目里<code>settings.py</code>文件的变量.接下来的条件判断语句判断Django是否处在<a href="https://docs.djangoproject.com/en/1.7/ref/settings/#debug">DEBUG</a>模式.如果<code>DEBUG</code>被设定为<code>True</code>,那么就会在<code>urlpatterns</code>加入URL匹配模式.所有以<code>media/</code>开头的青豆都会传递给<code>django.views.static</code>视图.这个视图将会把上传的媒体传给你.</p>
 <p>在修改了<code>urls.py</code>文件后,我们需要修改<code>settings.py</code>文件.我们需要创建<code>MEDIA_URL</code>和<code>MEDIA_ROOT</code>两个变量.</p>
 <pre><code>MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # Absolute path to the media directory
 </code></pre>
 
 <p>第一个变量<code>MEDIA_URL</code>定义了基地址.如果把<code>MEDIA_URL</code>设置为<code>/media/</code>意味着上传URL为<code>http://127.0.0.1:8000/media/</code>.<code>MEDIA_ROOT</code>用来告诉Django你的上传文件保存在电脑的哪个位置.在上边的例子中,我们用5.1章节设置的<code>PROJECT_PATH</code>变量和<code>/media/</code>连接.就变成了绝对路径<code>&lt;workspace&gt;/tango_with_django_project/media/</code>.</p>
-<blockquote>
-<p>小心:和前面提到的一样,Django提供的开发媒体服务对debug非常有帮助.但是它不能用在生产环境中. Django documentation on static files警告这样做"低效率且不安全".如果你需要部署你的Django项目,你需要阅读文档选择更安全的方法解决上传文件的问题.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>和前面提到的一样,Django提供的开发媒体服务对debug非常有帮助.但是它不能用在生产环境中. <a href="https://docs.djangoproject.com/en/1.7/ref/contrib/staticfiles/#static-file-development-view">Django documentation on static files</a>警告这样做"低效率且不安全".如果你需要部署你的Django项目,你需要阅读文档选择更安全的方法解决上传文件的问题.</p>
+</div>
 <p>你可以在<code>media</code>目录里放入一个图片来检查它是否工作.启动Django服务,在浏览器里访问图片.例如如果你在<code>media</code>中加入<code>rango.jpg</code>文件,你需要访问的URL看起来是这样的<code>http://127.0.0.1:8000/media/rango.jpg</code>.你会看到你的图片.如果你没看到,你需要回去检查设置是否错误.</p>
 <h2 id="55">5.5 基本流程</h2>
 <p>学完这章,你应当学会如何设置和创建模板,在你的视图里使用模板,设置和使用Django来发送静态媒体文件,包括模板里的图片和为了文件上传设置Django静态媒体服务.我们已经学了很多了!</p>
@@ -1351,9 +1403,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # Absolute path to the media direct
 </code></pre>
 
 <p>能看到默认用SQLite3作为后端数据库.SQLite是个轻量级的数据库对我们开发很有用.我们仅仅需要设置<code>DATABASE_PATH</code>里的<code>NAME</code>键值对.其他引擎需要<code>USER</code>,<code>PASSWORD</code>,<code>HOST</code>和<code>PORT</code>等关键字.</p>
-<blockquote>
-<p>注意:对于教程来说使用SQLite引擎还好,但是对于部署你的应用来说可能不是最好的选择,或许应当使用其他更健壮和更大型的数据库引擎.Django同样支持像PostgreSQL和MySQL这样的流行数据库引擎.从 official Django documentation on Database Engines 获取更多细节.你可以查看关于SQLite的网站来选择是否使用SQLite引擎.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>对于教程来说使用SQLite引擎还好,但是对于部署你的应用来说可能不是最好的选择,或许应当使用其他更健壮和更大型的数据库引擎.Django同样支持像<a href="http://www.postgresql.org/">PostgreSQL</a>和<a href="http://www.mysql.com/">MySQL</a>这样的流行数据库引擎.从 <a href="https://docs.djangoproject.com/en/1.7/ref/settings/#std:setting-DATABASE-ENGINE">official Django documentation on Database Engines</a> 获取更多细节.你可以查看关于这篇关于SQLite的<a href="http://www.sqlite.org/whentouse.html">文章</a>来选择是否使用SQLite引擎.</p>
+</div>
 <h2 id="63">6.3 创建模型</h2>
 <p>让我们为Rango创建两个数据模型.</p>
 <p>在<code>rango/models.py</code>里,我们定义两个继承自<code>djnago.db.models.Model</code>的类.这两个类分别定义目录和页面.定义<code>Category</code>和<code>Page</code>如下.</p>
@@ -1380,7 +1433,7 @@ class Page(models.Model):
 <li>'IntegerField',存储整数.</li>
 <li><code>DateField</code>,存储Python的<code>datetime.date</code>.</li>
 </ul>
-<p>查看Django documentation on model fields获取完整列表.</p>
+<p>查看<a href="https://docs.djangoproject.com/en/1.7/ref/models/fields/">Django documentation on model fields</a>获取完整列表.</p>
 <p>每个字段都有一个<code>unique</code>属性.如果设置为<code>True</code>,那么在整个数据库模型里它的字段里的值必须是唯一的.例如,我们上面定义的<code>Category</code>模型.<code>name</code>字段被设置为<code>unique</code> - 所以每一个目录的名字都必须是唯一的.</p>
 <p>如果你想把这个字段作为数据库的关键字会非常有用.你可以为每个字段设置一个默认值(<code>default='value'</code>),也可以设置成<code>NULL</code>(null=True).</p>
 <p>Django也提供了连接模型/表的简单机制.这个机制封装在3个字段里,如下.</p>
@@ -1390,10 +1443,11 @@ class Page(models.Model):
 <li><code>ManyToManyFeild</code>,当以多对多关系字段类型.</li>
 </ul>
 <p>从上面我们的例子,<code>Page</code>中<code>category</code>字段是<code>ForeignKey</code>类型.所以我们可以创建一个1对多关系的<code>Category</code>模型/表,这个<code>Category</code>会作为构造函数的一个参数.Django会自动的为每个模型表中创建ID字段.所以你不同为每个模型创建主键 - 它已经为你做好了!</p>
-<blockquote>
-<p>注意:当创建模板的时候,最好创建<code>__unicode__()</code>方法 - 等价于<code>__strr__()</code>方法.如果你不熟悉这两个方法,它们俩的作用和Java中<code>toString()</code>方法相似.<code>__unicode__()</code>方法为模型实例提供unicode表达式.例如我们的<code>Category</code>模型通过<code>__unicode__()</code>方法返回目录的名字 - 当你开始用Django的管理界面后这将会非常便利.
-在你的类里加入<code>__unicode__()</code>方法对debug也非常有用.如果在<code>Category</code>模型中没有<code>__unicode</code>方法将会返回<code>&lt;Category: Category object&gt;</code>.我们只知道是一个目录,但是是哪一个呢?如果我们有<code>__unicode__()</code>方法我们将会返回<code>&lt;Category: python&gt;</code>,这里的<code>python</code>是目录的名字.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>当创建模板的时候,最好创建<code>__unicode__()</code>方法 - 等价于<code>__strr__()</code>方法.如果你不熟悉这两个方法,它们俩的作用和Java中<code>toString()</code>方法相似.<code>__unicode__()</code>方法为模型实例提供unicode表达式.例如我们的<code>Category</code>模型通过<code>__unicode__()</code>方法返回目录的名字 - 当你开始用Django的管理界面后这将会非常便利.</p>
+</div>
+<p>在你的类里加入<code>__unicode__()</code>方法对debug也非常有用.如果在<code>Category</code>模型中没有<code>__unicode</code>方法将会返回<code>&lt;Category: Category object&gt;</code>.我们只知道是一个目录,但是是哪一个呢?如果我们有<code>__unicode__()</code>方法我们将会返回<code>&lt;Category: python&gt;</code>,这里的<code>python</code>是目录的名字.</p>
 <h2 id="64">6.4 创建和迁移数据库</h2>
 <p>我们定义了模型,那么Django就能很好的自动创建我们的数据库.在先前的Django版本中我们用如下命令:</p>
 <pre><code>$ python manage.py syncdb
@@ -1440,9 +1494,10 @@ Running migrations:
   Applying rango.0001_initial... OK
 </code></pre>
 
-<blockquote>
-<p>警告:当你添加已存在的模型,你需要重复运行<code>python manage.py makemigrations &lt;app_name&gt;</code>命令然后再运行<code>python manage.py migrate</code>.</p>
-</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>当你添加已存在的模型,你需要重复运行<code>python manage.py makemigrations &lt;app_name&gt;</code>命令然后再运行<code>python manage.py migrate</code>.</p>
+</div>
 <p>你可能发现了我们的<code>Category</code>模块缺少一些我们要求的字段.我们将在稍后添加.</p>
 <h2 id="65-djangodjango-shell">6.5 Django模型和Django Shell</h2>
 <p>在我们把注意力集中到Django管理界面之前,通过Django shell创建Django模型也是值得一试的 - 它对我们debug非常有用.下面我们将展示如何用这种方式来创建<code>Category</code>实例.</p>
@@ -1471,9 +1526,10 @@ Running migrations:
 </code></pre>
 
 <p>在例子中我们首先导入我们需要操作的模型.然后打印出存在的目录,在这里因为我们的图表是空所以输出也是空.然后创建并储存一个目录,打印.</p>
-<blockquote>
-<p>注意:上面的例子只展示了Django shell一小部分功能.更多的可以看 official Django Tutorial to learn more about interacting with the model和official Django documentation on the list of available commands.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>上面的例子只展示了Django shell一小部分功能.更多的可以看 <a href="https://docs.djangoproject.com/en/1.7/intro/tutorial01/">official Django Tutorial to learn more about interacting with the model</a>和<a href="https://docs.djangoproject.com/en/1.7/ref/django-admin/#available-commands">official Django documentation on the list of available commands</a>.</p>
+</div>
 <h2 id="66">6.6 设置管理界面</h2>
 <p>Django最突出的一个特性就是它提供内建的网页管理界面,用来浏览和编辑存储在模型的数据,也可以与数据库图表交互.在<code>settings.py</code>文件里,注意到有一个默认安装的<code>django.contib.admin</code>app,而且你的<code>urls.py</code>里也默认增加了<code>admin/</code>匹配.</p>
 <p>开启Django服务:</p>
@@ -1492,10 +1548,14 @@ admin.site.register(Page)
 <p>完成之后重新访问<code>http://127.0.0.1:8000/admin/</code>,你想回看到如下图案.</p>
 <p><img alt="" src="./img/ch5-rango-admin-models.png" /></p>
 <p>点击<code>Categorys</code>链接.这里我们能看见我们通过Django shell创建的<code>test</code>目录.我们可以非常方便的在这里创建,修改和删除目录和页面.同样你可以在<code>Auth</code>应用里添加<code>User</code>来增加登陆Django管理界面的用户.</p>
-<blockquote>
-<p>注意:注意管理界面的排印错误(category而不是categories).这个问题可以通过在你的模型里添加元类并定义<code>verbose_name_plural</code>属性来解决.查看 Django’s official documentation on models 获取更多细节.</p>
-<p>注意:这里的<code>admin.py</code>文件只提供了一个简单的例子.还有许多炫酷的定制可以使用,比如说改变管理界面模型出现的方式.在本教程,我们只使用了最原始的界面.如果感兴趣请查看 official Django documentation on the admin interface .</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>注意管理界面的排印错误(category而不是categories).这个问题可以通过在你的模型里添加元类并定义<code>verbose_name_plural</code>属性来解决.查看 <a href="https://docs.djangoproject.com/en/1.7/topics/db/models/#meta-options">Django’s official documentation on models</a> 获取更多细节.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>这里的<code>admin.py</code>文件只提供了一个简单的例子.还有许多炫酷的定制可以使用,比如说改变管理界面模型出现的方式.在本教程,我们只使用了最原始的界面.如果感兴趣请查看 <a href="https://docs.djangoproject.com/en/1.7/ref/contrib/admin/">official Django documentation on the admin interface</a> .</p>
+</div>
 <h2 id="67-population-script">6.7 创建Population Script</h2>
 <p>往数据库里输入数据会非常麻烦.许多开发者会随机的往数据库里输入测试数据.如果你在一个小的开发团队里,每个人都得传点数据.最好是写一个脚本而不是每个人单独的上传数据,这样就可以避免垃圾数据的产生.所以我们需要为你的数据库创建 population script.这个脚本自动的为你的数据库生成测试数据.</p>
 <p>我们需要在Django项目的根目录里创建population script(例如<code>&lt;workspace&gt;/tango_with_django_project/</code>).创建<code>populate_rango.py</code>文件代码如下.</p>
@@ -1567,16 +1627,18 @@ if __name__ == '__main__':
 </code></pre>
 
 <p>虽然看起来有许多代码,但是非常简单.在文件开头我们定义了许多函数,代码会在底部开始执行 - 寻找<code>if __name__ == '__main__'</code>这一行开始.我们调用了<code>populate()</code>函数.</p>
-<blockquote>
-<p>警告:当导入Django模块时确保已经导入了Django设置,并把环境变量<code>DJANGO_SETTINGS_MODULE</code>设置为项目设置文件.然后调用<code>django.setup()</code>来导入django设置.如果不这么做就会引发一场.这就是为什么我们需要在导入设置之后才能导入<code>Category</code>和<code>Page</code>.</p>
-</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>当导入Django模块时确保已经导入了Django设置,并把环境变量<code>DJANGO_SETTINGS_MODULE</code>设置为项目设置文件.然后调用<code>django.setup()</code>来导入django设置.如果不这么做就会引发一场.这就是为什么我们需要在导入设置之后才能导入<code>Category</code>和<code>Page</code>.</p>
+</div>
 <p><code>populate()</code>函数负责调用<code>add_cat()</code>和<code>add_page()</code>函数,而这两个函数将会创建新的目录和页面.<code>populate()</code>创建页面和目录并存到数据库.最后我们在终端里输出页面和目录.</p>
-<blockquote>
-<p>注意:我们使用<code>get_or_create()</code>函数创建模型实例.我们可以用<code>get_or_creat()</code>函数来检查在数据库里是否存在.如果不存在就创建它.这将减少我们的代码而不是让我们自己检查.
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>我们使用<code>get_or_create()</code>函数创建模型实例.我们可以用<code>get_or_creat()</code>函数来检查在数据库里是否存在.如果不存在就创建它.这将减少我们的代码而不是让我们自己检查.
 <code>get_or_create()</code>方法返回<code>(object,created)</code>元组.如果没有在数据库找到,那么这个<code>object</code>参数就是<code>get_or_create()</code>方法创造的实例.如果这个实体不存在,那么这个方法就返回和这个实体相符的实例.<code>created</code>是一个布尔值;如果<code>get_or_create()</code>创建模型实体的话它会返回<code>true</code>.
-<code>[0]</code>会返回<code>object</code>元组的第一个位置,这个其他编程语言一样,Python使用zero-based numbering.
-official Django documentation  可以查看<code>get_or_vreate()</code>方法的详细资料.</p>
-</blockquote>
+<code>[0]</code>会返回<code>object</code>元组的第一个位置,这个其他编程语言一样,Python使用<a href="http://en.wikipedia.org/wiki/Zero-based_numbering">zero-based numbering</a>.
+<a href="https://docs.djangoproject.com/en/1.7/ref/models/querysets/#get-or-create">official Django documentation</a>  可以查看<code>get_or_vreate()</code>方法的详细资料.</p>
+</div>
 <p>当保存退出以后,我们可以在DJango项目根目录用命令<code>$ python populate_rango.py</code>来执行脚本.</p>
 <pre><code>$ python populate_rango.py
 
@@ -1614,7 +1676,7 @@ Starting Rango population script...
 <li>增加目录模型<code>views</code>和<code>likes</code>属性并设置为0.</li>
 <li>为你的app/模型进行迁移.</li>
 <li>更新 population script ,把Python目录设置成浏览128次和喜欢64次,Django目录浏览64次和喜欢32次,the Other Framenwork目录浏览32次,喜欢16次.</li>
-<li>查看part two of official Django tutorial .它将会巩固你所学同时学习更多关于如何定制管理界面.</li>
+<li>查看<a href="https://docs.djangoproject.com/en/1.7/intro/tutorial02/">part two of official Django tutorial</a> .它将会巩固你所学同时学习更多关于如何定制管理界面.</li>
 <li>定制管理界面 - 当观看页面模型的时候它的目录,页面名和url.</li>
 </ul>
 <h3 id="691">6.9.1 提示</h3>
@@ -1627,7 +1689,7 @@ Starting Rango population script...
 <li>最后注册<code>PageAdmin</code>类到Django管理界面.需要修改<code>admin.site.register(Page)</code>.在Rango的<code>admin.py</code>文件里修改成<code>admin.site.register(Page, PageAdmin)</code>.</li>
 </ul>
 <p><img alt="" src="./img/ch5-rango-admin-custom.png" /></p>
-<h1 id="7">7 模型,模板和试图</h1>
+<h1 id="7">7 模型,模板和视图</h1>
 <p>现在我们已经建立了模型并且导入了一些数据,现在我们要把这些连一起.我们将会弄清楚如何在视图中访问数据以及如何通过模板展示数据.</p>
 <h2 id="71">7.1 基本流程:数据驱动页面</h2>
 <p>在Django中创建数据驱动页面必须执行以下5步.</p>
@@ -1663,9 +1725,10 @@ from rango.models import Category
 
 <p>这里我们做了第二步和第三步.首先,我们访问<code>Category</code>模型得到5个最多的目录.这里用<code>order_by()</code>方法对喜欢的数量进行降序排序 - 注意带着<code>-</code>.最后我们取前5个目录保存到<code>category_list</code></p>
 <p>当访问数据库结束,我们把这个列表(<code>category_list</code>)传给了字典<code>context_dict</code>.这个字典同时会作为<code>render()</code>的参数返回给模板.</p>
-<blockquote>
-<p>警告:注意Category模型包含<code>likes</code>字段.增添它的操作在前面章节的练习里,你需要完成它们.</p>
-</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>注意Category模型包含<code>likes</code>字段.增添它的操作在前面章节的练习里,你需要完成它们.</p>
+</div>
 <h3 id="723-index">7.2.3 修改index模板</h3>
 <p>修改完视图后,最后剩下的就是更改<code>rango/index.html</code>模板了.代码如下.</p>
 <pre><code>&lt;!DOCTYPE html&gt;
@@ -1703,14 +1766,16 @@ from rango.models import Category
 <h3 id="731-url">7.3.1 URL设计与映射</h3>
 <p>让我们着手解决URL问题.有一种方法是为我们的目录在URL中设立唯一的ID,我们可以创建像<code>/rango/category/1/</code>或者<code>/rango/category/2/</code>,这里的数字1和2就是它们的ID.但是这样做对我们来说不太好理解.尽管我们知道数字关联着目录,但我们怎么知道1和2代表哪个目录呢?用户不试一下就不会知道.</p>
 <p>另一种方法就是用目录名作为URL.<code>/rango/category/Python/</code>将会返回给我们关于Python的目录.这是一个简单的,可读的URL.</p>
-<blockquote>
-<p>注意:对于网页来说,设计一个简洁的URL是只管重要的.更多细节请看 Wikipedia’s article on Clean URLs.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>对于网页来说,设计一个简洁的URL是只管重要的.更多细节请看 <a href="http://en.wikipedia.org/wiki/Clean_URL">Wikipedia’s article on Clean URLs</a>.</p>
+</div>
 <h3 id="732-categoryslug">7.3.2 为Category表增加Slug字段</h3>
 <p>为了建立简洁的url我们需要在<code>Category</code>模型里增加slug字段.首先我们需要从django导入<code>slugify</code>函数,这个函数的作用是把空格用连字符代替,例如"how do i create a slug in django"将会转换成"how-do-i-create-a-slug-in-djang".</p>
-<blockquote>
-<p>警告:虽然你能在URL中用空格,但是它们并不安全.更多细节查看IETF Memo on URLs.</p>
-</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>虽然你能在URL中用空格,但是它们并不安全.更多细节查看<a href="http://www.ietf.org/rfc/rfc1738.txt">IETF Memo on URLs</a>.</p>
+</div>
 <p>接下来我们将会重写<code>Category</code>模型的<code>save</code>方法,我们将会调用<code>slugify</code>方法并更新<code>slug</code>字段.注意任何时候目录名称更改都会更改slug.像下面一样修改模型.</p>
 <pre><code>from django.template.defaultfilters import slugify
 
@@ -1826,9 +1891,10 @@ admin.site.register(Page)
 </code></pre>
 
 <p>上面的HTML代码同样给我们展示了如何把数据通过字典传递给模板.我们用到了<code>category_name</code>变量和<code>category</code>和<code>pages</code>对象.如果<code>category</code>在模板上下文并没有定义,或者在数据库并没有发现这个目录,那么就会提示一个友好的错误信息.相反的话如果存在,我们将会检查<code>pages</code>.如果<code>pages</code>没有被定义或者不存在元素,我们同样也会呈现友好的错误提示.否则的话目录里包含的页面就会写入HTML李彪.对于在<code>pages</code>列表的每个页面我们都会展示它的<code>title</code>和<code>url</code>.</p>
-<blockquote>
-<p>注意:Django模板包含<code>{% if %}</code>标签 - 是检测对象是否在模板上下文的好方法.尝试在你的代码里使用以减少错误的发生.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Django模板包含<code>{% if %}</code>标签 - 是检测对象是否在模板上下文的好方法.尝试在你的代码里使用以减少错误的发生.</p>
+</div>
 <h3 id="736-url">7.3.6 参数化的URL映射</h3>
 <p>现在让我们来看看如何把<code>category_name_url</code>参数值传递给<code>category()</code>.我们需要修改rango的<code>urls.py</code>文件和<code>urlpatterns</code>元组.</p>
 <pre><code>urlpatterns = patterns('',
@@ -1838,15 +1904,19 @@ admin.site.register(Page)
 </code></pre>
 
 <p>你能看到当正则表达式<code>r'^(?P&lt;category_name_slug&gt;\w+)/$</code>匹配时会调用<code>view.category()</code>函数.我们的正则表达式会匹配URL斜杠前所有的字母数字(例如 a-z, A-Z, 或者 0-9)和连字符(-).然后把这个值作为<code>category_name_slug</code>参数传递给<code>views.category()</code>,这个参数必须在强制的<code>request</code>参数之后.</p>
-<blockquote>
-<p>注意:当你希望参数化URL时,一定要确保你的URL模式会正确匹配参数.为了更进一步的了解,让我们看一看上面的例子.
-<code>url(r'^category/(?P&lt;category_name_slug&gt;[\w\-]+)/$', views.category, name='category')</code>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>当你希望参数化URL时,一定要确保你的URL模式会正确匹配参数.为了更进一步的了解,让我们看一看上面的例子.</p>
+</div>
+<p><code>url(r'^category/(?P&lt;category_name_slug&gt;[\w\-]+)/$', views.category, name='category')</code>
 我们可以从这里找到在<code>category/</code>和后面的<code>/</code>之间的字符串,并把它作为参数<code>category_name_slug</code>传递给<code>views.category()</code>参数.例如,URL<code>category/python-books/</code>将会返回的<code>category_name_slug</code>参数是<code>python-books</code>.
 需要知道的十,所有的视图函数必须带至少一个参数.这个参数是<code>request</code> - 它会提供HTTP请求用户的相关信息。当参数化URL时,可以给视图添加已经命名德尔参数.使用上面的例子,我们的category视图是这样的.
 <code>def category(request, category_name_slug):</code>
 附加参数的位置不重要,重要的是在URL模式中定义的参数名称.注意如何为我们的视图在URL模式匹配中定义<code>category_name_slug</code>参数.</p>
-<p>注意:正则表达式虽然开始看起来比较复杂,但是网上有许多资料. This cheat sheet将会解决你的疑问.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>正则表达式虽然开始看起来比较复杂,但是网上有许多资料. <a href="http://cheatography.com/davechild/cheat-sheets/regular-expressions/">This cheat sheet</a>将会解决你的疑问.</p>
+</div>
 <h3 id="737-index">7.3.7 修改index模板</h3>
 <p>虽然我们的视图已经建立了,但是还要做的工作许多.我们的index模板需要修改并提供给用户category列表.我们可以通过slug为<code>index.htnl</code>模板中添加目录页面.</p>
 <pre><code>&lt;!DOCTYPE html&gt;
@@ -1881,12 +1951,12 @@ admin.site.register(Page)
 <p>为了巩固所学请完成下面的练习吧.</p>
 <ul>
 <li>修改index页面也包含5个最多访问的页面.</li>
-<li>查看part three of official Django tutorial </li>
+<li>查看<a href="https://docs.djangoproject.com/en/1.7/intro/tutorial03/">part three of official Django tutorial</a></li>
 </ul>
 <h3 id="741">7.4.1 提示</h3>
 <p>修改population脚本,为每个页面增加浏览次数.</p>
 <h1 id="8">8 有趣的表单</h1>
-<p>到目前为止我们仅仅是通过视图和模板来表现数据.在本章,我们将会学习如何通过web表单来获取数据.Django包含一些表单处理功能,它使在web上收集用户信息变得简单.通过Django’s documentation on forms我们知道表单处理功能包含以下:</p>
+<p>到目前为止我们仅仅是通过视图和模板来表现数据.在本章,我们将会学习如何通过web表单来获取数据.Django包含一些表单处理功能,它使在web上收集用户信息变得简单.通过<a href="https://docs.djangoproject.com/en/1.7/topics/forms/">Django’s documentation on forms</a>我们知道表单处理功能包含以下:</p>
 <ol>
 <li>显示一个HTML表单自动生成的窗体部件(比如一个文本字段或者日期选择器).</li>
 <li>用一系列规则检查提交数据.</li>
@@ -1908,7 +1978,7 @@ admin.site.register(Page)
 <h2 id="82">8.2 页面和目录表单</h2>
 <p>首先,我们需要在<code>rango</code>应用目录里黄建叫做<code>forms.py</code>文件.尽管这步我们并不需要,我们可以把表单放在<code>models.py</code>里,但是这将会使我们的代码简单易懂.</p>
 <h3 id="821-modelform">8.2.1 创建<code>ModelForm</code>类</h3>
-<p>在rango的<code>forms.py</code>模块里我们将会创建一些继承自<code>ModelForm</code>的类.实际上,ModelForm是一个帮助函数,它允许你在一个已经存在的模型里创建Django表单.因为我们定义了两个模型(<code>Category</code>和<code>Page</code>),我们将会分别为它们创建<code>ModelForms</code>.</p>
+<p>在rango的<code>forms.py</code>模块里我们将会创建一些继承自<code>ModelForm</code>的类.实际上,<a href="https://docs.djangoproject.com/en/1.7/topics/forms/modelforms/#modelform">ModelForm</a>是一个帮助函数,它允许你在一个已经存在的模型里创建Django表单.因为我们定义了两个模型(<code>Category</code>和<code>Page</code>),我们将会分别为它们创建<code>ModelForms</code>.</p>
 <p>在<code>rango/forms.py</code>添加下面代码:</p>
 <pre><code>from django import forms
 from rango.models import Page, Category
@@ -1948,12 +2018,13 @@ class PageForm(forms.ModelForm):
 <p>TODO(leifos):值得注意的是Django1.7+需要通过<code>fields</code>指定包含的字段,或者通过<code>exclude</code>指定排除的字段.</p>
 <p>Django为我们提供了许多定制表单的方法.在上面的例子中,我们指定了我们想要展示字段的窗口部件.例如在我们的<code>PageForm</code>类中,我们为<code>title</code>字段定义<code>forms.CharField</code>,为<code>url</code>字段定义<code>forms.URLField</code>.两个字段都为用户提供文本输入.注意字段里包含<code>max_length</code>参数 - 它定义字段最大长度.可以返回第6章或者rango的<code>models.py</code>文件查看.</p>
 <p>可以看到在每个表单都包含浏览和喜欢的<code>IntegerField</code>字段.我们可以在参数里设置<code>widget=forms.Hiddeninput()</code>来隐藏窗口组件,设置<code>initial=0</code>来设置默认值为0.这是不用用户去自己设置字段为0的一种方法.然而可以在<code>PageForm</code>看到,尽管我们隐藏了字段,但是我们还是得在表单里包含字段.如果<code>fields</code>排除了<code>views</code>,那么表单将不包含字段(尽管已经定义了)而且将不会返回给模型0值.由于模型建立的不同有可能会引起一个错误.如果在模型里我们把这些字段定义为<code>default=0</code>那么我们可以自动的返回默认值 - 从而避免<code>not null</code>错误.在这种情况下就不需要隐藏字段了.在表单里我们也包含了<code>slug</code>字段并设置为<code>widget=forms.HiddenInput()</code>值,这里我们并没给他设置初始值或者默认值,而是设置为不需要(<code>required=False</code>).这是因为我们的模型将会负责填充字段.实际上,当你定义模型和表单时一定要注意表单一定要包含和传递所有的数据.</p>
-<p>除了<code>CharField</code>和<code>IntegerField</code>组件还有许多.例如,Django提供了<code>EmailField</code>(e-mail地址入口),<code>ChoiceField</code>(输入按钮)和<code>DateField</code>(日期/时间入口).有许多其他不同种类字段可以使用,他们可以为你检查执行错误(例如是否提供了一个有效的整数?).强烈建议你看一下official Django documentation on widgets来定制自己的组件.</p>
+<p>除了<code>CharField</code>和<code>IntegerField</code>组件还有许多.例如,Django提供了<code>EmailField</code>(e-mail地址入口),<code>ChoiceField</code>(输入按钮)和<code>DateField</code>(日期/时间入口).有许多其他不同种类字段可以使用,他们可以为你检查执行错误(例如是否提供了一个有效的整数?).强烈建议你看一下<a href="https://docs.djangoproject.com/en/1.7/ref/forms/widgets/">official Django documentation on widgets</a>来定制自己的组件.</p>
 <p>或许继承<code>ModelForm</code>最大的作用就是需要定义我们要给哪个模型提供表单.我们通过<code>Meta</code>类来实现.在<code>Meta</code>类设置<code>model</code>属性为我们需要使用的模型.例如<code>CategoryForm</code>类引用<code>Category</code>模型.这对Django创建我们想要的模型表单至关重要.它还可以帮助我们在存储和展示表单数据时获取错误.</p>
 <p>我们也可以用<code>Meat</code>类来定义我们希望包括的表单字段.用<code>fields</code>元组来定义所需包含的字段.</p>
-<blockquote>
-<p>注意:强烈建议查看 official Django documentation on forms来获取更多.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>强烈建议查看 <a href="https://docs.djangoproject.com/en/1.7/ref/forms/">official Django documentation on forms</a>来获取更多.</p>
+</div>
 <h3 id="822">8.2.2 创建和增加目录视图</h3>
 <p>创建<code>CategoryForm</code>类以后,我们需要创建一个新的视图来展示表单并传递数据.在<code>rango/views.py</code>中增加如下代码.</p>
 <pre><code>from rango.forms import CategoryForm
@@ -1989,12 +2060,15 @@ def add_category(request):
 <li>保存用户提交的数据给模型,并转向到Rango主页;</li>
 <li>如果发生错误,在表单里展示错误信息.</li>
 </ul>
-<blockquote>
-<p>注意:<code>GET</code>和<code>POST</code>是什么意思?他们是HTTP请求的两个不同类型.
-<em> 一个HTTP<code>GET</code>用来请求指定的资源.换句话说,不管他是网页,图片还是文件,我们都可以用HTTP<code>GET</code>来获取.
-</em> 相反的HTTP<code>POST</code>用来提交客户端网页浏览器的数据.这种请求类型用来提交HTML表单.
-* 一个HTTP<code>POST</code>也可能用来在服务器上创建新的资源(例如新的数据库条目),以后可以通过HTTP<code>GET</code>请求.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>GET</code>和<code>POST</code>是什么意思?他们是HTTP请求的两个不同类型.</p>
+<ul>
+<li>一个HTTP<code>GET</code>用来请求指定的资源.换句话说,不管他是网页,图片还是文件,我们都可以用HTTP<code>GET</code>来获取.</li>
+<li>相反的HTTP<code>POST</code>用来提交客户端网页浏览器的数据.这种请求类型用来提交HTML表单.</li>
+<li>一个HTTP<code>POST</code>也可能用来在服务器上创建新的资源(例如新的数据库条目),以后可以通过HTTP<code>GET</code>请求.</li>
+</ul>
+</div>
 <p>Django表单处理数据是用过用户浏览器的HTTP<code>POST</code>请求实现.它不仅可以存储表单数据,而且还能对每个表单字段自动生成错误信息.这就意味着Django将不会存储表单的错误信息以保护数据库的数据完整性.例如如果目录名为空的话将会返回不能为空的错误.</p>
 <p>注意到<code>render()</code>中将会调用<code>add_category.html</code>模板,这个模板包含表单和页面.</p>
 <h3 id="823">8.2.3 创建增加目录模板</h3>
@@ -2029,10 +2103,11 @@ def add_category(request):
 </code></pre>
 
 <p>好吧,这些代码是干什么的?可以看到在<code>&lt;body&gt;</code>标签中我们设置了一个<code>&lt;form&gt;</code>元素.再来看看<code>&lt;form&gt;</code>中的元素,所有表单中的数据将会用<code>POST</code>请求发送给<code>/rango/add_category/</code>(<code>method</code>属性大小写不敏感,所以可以写成<code>POST</code>或是<code>post</code> - 两者功能一样).在表单里我们有两个循环 - 一个控制表单隐藏字段,另一个则是可见字段 - 可见字段的设置是在<code>ModelForm</code>的<code>Meta</code>类中设置<code>fields</code>属性来实现的.这些循环帮助我们生成HTML标记.对于表单的可见字段,我们也设置一个特殊区域来展示错误信息,同时设置帮助文本告诉用户那需要输入什么.</p>
-<blockquote>
-<p>注意:使用隐藏和可见表单字段是因为HTTP是无状态协议.你不可以在两个不同的HTTP请求之间保持状态,因为实现起来相当复杂.为了摆脱这个限制,创建隐藏的HTML表单字段可以使web应用传递给用户HTML表单重要的数据,只有用户提交的时候才会返回数据.</p>
-</blockquote>
-<p>可能你也注意到了代码<code>{% csrf_token %}</code>,这是跨站请求伪造令牌,有助于保护我们提交表单的HTTP<code>POST</code>方法的安全.Django框架要求使用CSRFtoken.如果忘记在你的表单里包含CSRF令牌,有可能会在提交表单时遇到错误.查看 official Django documentation on CSRF tokens 以获取更多信息.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>使用隐藏和可见表单字段是因为HTTP是无状态协议.你不可以在两个不同的HTTP请求之间保持状态,因为实现起来相当复杂.为了摆脱这个限制,创建隐藏的HTML表单字段可以使web应用传递给用户HTML表单重要的数据,只有用户提交的时候才会返回数据.</p>
+</div>
+<p>可能你也注意到了代码<code>{% csrf_token %}</code>,这是跨站请求伪造令牌,有助于保护我们提交表单的HTTP<code>POST</code>方法的安全.Django框架要求使用CSRFtoken.如果忘记在你的表单里包含CSRF令牌,有可能会在提交表单时遇到错误.查看 <a href="https://docs.djangoproject.com/en/1.7/ref/contrib/csrf/">official Django documentation on CSRF tokens</a> 以获取更多信息.</p>
 <h3 id="824">8.2.4 映射增加目录视图</h3>
 <p>现在我们需要映射<code>add_category()</code>视图.在模板里我们使用<code>/rango/add_category/</code>URL来提交.所以我们需要修改<code>rango/urls.py</code>的<code>urlpattterns</code>.</p>
 <pre><code>urlpatterns = patterns('',
@@ -2042,7 +2117,7 @@ def add_category(request):
     url(r'^category/(?P&lt;category_name_slug&gt;[\w\-]+)/$', views.category, name='category'),)
 </code></pre>
 
-<p>在这里顺序并不重要.更多内容需要查看official Django documentation on how Django process a request.我们增加的URL是<code>/rango/add_category/</code>.</p>
+<p>在这里顺序并不重要.更多内容需要查看<a href="https://docs.djangoproject.com/en/1.7/topics/http/urls/#how-django-processes-a-request">official Django documentation on how Django process a request</a>.我们增加的URL是<code>/rango/add_category/</code>.</p>
 <h3 id="825">8.2.5 修改主页内容</h3>
 <p>作为最后一步,让我们在首页里加入链接.修改<code>rango/index.html</code>文件,在<code>&lt;/body&gt;</code>前添加如下代码.</p>
 <pre><code>&lt;a href=&quot;/rango/add_category/&quot;&gt;Add a New Category&lt;/a&gt;&lt;br /&gt;
@@ -2051,11 +2126,12 @@ def add_category(request):
 <h3 id="826-demo">8.2.6 Demo</h3>
 <p>现在试一试!启动Django服务,进入<code>http://127.0.0.1:8000/rango/</code>.用新加的链接跳转到增加目录页面,然后增加页面.下图是增加目录和首页截图.</p>
 <p><img alt="" src="./img/rango-form-steps.png" /></p>
-<blockquote>
-<p>注意:如果你增加许多目录,它们有可能不会出现在首页,这是因为我们紧紧展示5个目录.如果登录管理界面你就能看到所有输入的目录了.#TODO</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果你增加许多目录,它们有可能不会出现在首页,这是因为我们紧紧展示5个目录.如果登录管理界面你就能看到所有输入的目录了.#TODO</p>
+</div>
 <h3 id="827">8.2.7 清理表单</h3>
-<p>记得我们<code>Page</code>模型有一个<code>url</code>属性设置为<code>URLField</code>类型.在相应的HTML表单,Django希望任何文本输入的URL字段是一个完整的URL.然而,用户能发现输入像<code>http://www.url.com</code>这种形式有些繁琐 - 确实,用户 may not even know what forms a correct URL!</p>
+<p>记得我们<code>Page</code>模型有一个<code>url</code>属性设置为<code>URLField</code>类型.在相应的HTML表单,Django希望任何文本输入的URL字段是一个完整的URL.然而,用户能发现输入像<code>http://www.url.com</code>这种形式有些繁琐 - 确实,用户 <a href="https://docs.djangoproject.com/en/1.7/ref/contrib/csrf/">may not even know what forms a correct URL</a>!</p>
 <p>设想有时候用户输入并不是一定正确,我们可以重写<code>ModelForm</code>模块里<code>clean()</code>方法.这个方法会在表单数据存储到模型实例之前被调用,所以它可以让我们验证甚至修改用户输入的数据.在我们上面的例子中,我们可以检查<code>url</code>字段的值是否以<code>http://</code>开头 - 如果不是我们可以在用户前面添加上<code>http://</code>.</p>
 <pre><code>class PageForm(forms.ModelForm):
 
@@ -2081,9 +2157,10 @@ def add_category(request):
 <li>必须每次都是以返回<code>cleaned_data</code>字典来结束<code>clean()</code>方法.如果没有将会得到错误提示.</li>
 </ol>
 <p>这个小例子说明如何在表单数据存储之前进行修改.这是非常方便的,尤其是有一些字段需要设定默认值时 - 或者表单中的数据发生了丢失.</p>
-<blockquote>
-<p>注意:重写方法是Django框架提供给我们增加应用额外功能的一种优雅的方法.就像<code>ModelForm</code>模块中<code>clean()</code>方法一样,Django提供了许多安全的方法可以供你重写.检查 the Official Django Documentation on Models以获取更多信息.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>重写方法是Django框架提供给我们增加应用额外功能的一种优雅的方法.就像<code>ModelForm</code>模块中<code>clean()</code>方法一样,Django提供了许多安全的方法可以供你重写.检查 <a href="https://docs.djangoproject.com/en/1.7/topics/db/models/#overriding-predefined-model-methods">the Official Django Documentation on Models</a>以获取更多信息.</p>
+</div>
 <h2 id="83">8.3 练习</h2>
 <p>练习下面题目巩固所学.</p>
 <ul>
@@ -2091,7 +2168,7 @@ def add_category(request):
 <li>增加一个已存在的目录会发生什么?</li>
 <li>访问不存在的目录会发生什么?</li>
 <li>当用户访问一个不存在的目录时如何优雅的处理?</li>
-<li>查看 part four of the official Django Tutorial</li>
+<li>查看 <a href="https://docs.djangoproject.com/en/dev/intro/tutorial04/">part four of the official Django Tutorial</a></li>
 </ul>
 <h3 id="831-url">8.3.1 创建增加页面视图,模板和URL映射</h3>
 <p>下一步是要求用户对于给出的目录增加页面.为了时间这个,我们需要重复上面相同的流程 - 创建一个新的试图(<code>add_page()</code>),一个新的模板(<code>rango/add_page.html</code>),URL映射和在目录页面增加一个链接.这里给出一点提示.</p>
@@ -2132,7 +2209,7 @@ def add_page(request, category_name_slug):
 <li>在<code>rangp/urls.py</code>修改URL映射.</li>
 </ul>
 <h1 id="9">9 用户验证</h1>
-<p>教程的下一部分将教会你Django的用户验证机制.我们将会使用Django标准包<code>django.contrib.auth</code>的<code>auth</code>应用.通过 Django’s official documentation on Authentication,应用包含下面几方面.</p>
+<p>教程的下一部分将教会你Django的用户验证机制.我们将会使用Django标准包<code>django.contrib.auth</code>的<code>auth</code>应用.通过 <a href="https://docs.djangoproject.com/en/1.7/topics/auth/">Django’s official documentation on Authentication</a>,应用包含下面几方面.</p>
 <ul>
 <li>用户.</li>
 <li>权限:一系列的二进制标志(例如 yes/no)决定用户可以做或不可以做什么.</li>
@@ -2155,10 +2232,11 @@ def add_page(request, category_name_slug):
 </code></pre>
 
 <p><code>django.contrib.auth</code>为Django提供访问认证系统,<code>django.contrib.contenttypes</code>可以通过认证的应用程序来跟踪安装的数据库模型.</p>
-<blockquote>
-<p>注意:如果你需要在<code>INSTALLED_APPS</code>元组里添加<code>auth</code>应用,你需要用命令<code>python manage.py migrate</code>来进行更新数据库.</p>
-</blockquote>
-<p>密码默认将会用 PBKDF2 algorithm进行储存,它可以安全的保存你用户的数据.在 official Django documentation on how django stores passwords你可以了解到更多,文档还提供了使用不同的哈希算法来提高安全等级.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果你需要在<code>INSTALLED_APPS</code>元组里添加<code>auth</code>应用,你需要用命令<code>python manage.py migrate</code>来进行更新数据库.</p>
+</div>
+<p>密码默认将会用 <a href="http://en.wikipedia.org/wiki/PBKDF2">PBKDF2 algorithm</a>进行储存,它可以安全的保存你用户的数据.在 <a href="https://docs.djangoproject.com/en/1.7/topics/auth/passwords/#how-django-stores-passwords">official Django documentation on how django stores passwords</a>你可以了解到更多,文档还提供了使用不同的哈希算法来提高安全等级.</p>
 <p>如果你希望控制使用哪种哈希算法,你需要在<code>settings.py</code>里加入<code>PASSWORD_HASHERS</code>元组:</p>
 <pre><code>PASSWORD_HASHERS = (
 'django.contrib.auth.hashers.PBKDF2PasswordHasher',
@@ -2177,7 +2255,7 @@ def add_page(request, category_name_slug):
 
 <p>然而在默认情况下你不需要修改<code>PASSWORD_HASHERS</code>,Django默认添加<code>django.contrib.auth.hashers.PBKDF2PasswordHasher</code>.</p>
 <h2 id="92">9.2 用户模型</h2>
-<p>Django认证系统最重要的部分就是<code>User</code>对象,它位于<code>django.contrib.auth.models.User</code>.一个<code>User</code>对象代表了和Django应用交互的用户. Django documentation on User objects 有详尽的描述.</p>
+<p>Django认证系统最重要的部分就是<code>User</code>对象,它位于<code>django.contrib.auth.models.User</code>.一个<code>User</code>对象代表了和Django应用交互的用户. <a href="https://docs.djangoproject.com/en/1.7/topics/auth/default/#user-objects">Django documentation on User objects</a> 有详尽的描述.</p>
 <p><code>User</code>模型主要有5个属性.它们是:</p>
 <ul>
 <li>账户的用户名;</li>
@@ -2186,7 +2264,7 @@ def add_page(request, category_name_slug):
 <li>用户名;</li>
 <li>用户姓;</li>
 </ul>
-<p>模型也有其他一些属性像<code>is_active</code>(决定账户是活动还是非活动状态).查看official Django documentation on the user model,这里有完整的<code>User</code>模型属性列表.</p>
+<p>模型也有其他一些属性像<code>is_active</code>(决定账户是活动还是非活动状态).查看<a href="https://docs.djangoproject.com/en/1.7/ref/contrib/auth/#django.contrib.auth.models.User">official Django documentation on the user model</a>,这里有完整的<code>User</code>模型属性列表.</p>
 <h2 id="93">9.3 增加用户属性</h2>
 <p>如果你希望在<code>User</code>模型里加入其他属性,你需要创建一个和<code>User</code>模型相关的模型.对于我们的Rango应用,我们希望为我们的用户增加两个属性.我们希望包含:</p>
 <ul>
@@ -2215,23 +2293,26 @@ def add_page(request, category_name_slug):
 <p>对于Rango我们已经增加了两个字段来完善用户档案,还提供了一个<code>__unicode__()</code>方法返回实例名称.</p>
 <p>对于<code>website</code>和<code>picture</code>两个字段,我们都设置了<code>blank=True</code>.它会使所有的字段都为空,意味着用户不必为每一个都设置字段值.</p>
 <p>注意<code>ImageField</code>字段有一个<code>upload_to</code>属性.这个属性值连接着<code>MEDIA_ROOT</code>设置用来提供上传文档图片的路径.例如,<code>MEDIA_ROOT</code>设置为<code>&lt;workspace&gt;/tango_with_django_project/media/</code>,那么<code>upload_to=profile_imges</code>将会使图片保存在<code>&lt;workspace&gt;/tango_with_django_project/media/profile_images/</code>目录.</p>
-<blockquote>
-<p>警告:Django<code>ImageField</code>使用python图片库(PIL).返回到第3章,我们在安装Django时已经讲过如何安装PIL.如果还没有安装现在就可以安装了.如果你没有安装PIL,那么将会遇到<code>pil</code>模块不能找到的错误!</p>
-</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Django<code>ImageField</code>使用python图片库(PIL).返回到第3章,我们在安装Django时已经讲过如何安装PIL.如果还没有安装现在就可以安装了.如果你没有安装PIL,那么将会遇到<code>pil</code>模块不能找到的错误!</p>
+</div>
 <p>定义完<code>UserProfile</code>模型,我们需要修改Rango的<code>admin.py</code>文件使管理界面包含<code>UserPrifile</code>模型.在<code>admin.py</code>文件里添加如下.</p>
 <pre><code>from rango.models import UserProfile
 
 admin.site.register(UserProfile)
 </code></pre>
 
-<blockquote>
-<p>注意:我们在修改模型后需要更新数据库.在终端里运行<code>$ python manage.py makemigrations rango</code>来为<code>UserProfile</code>模型创建迁移脚本.然后运行<code>$ python manage.py migrate</code>.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>我们在修改模型后需要更新数据库.在终端里运行<code>$ python manage.py makemigrations rango</code>来为<code>UserProfile</code>模型创建迁移脚本.然后运行<code>$ python manage.py migrate</code>.</p>
+</div>
 <h2 id="94">9.4 创建用户注册视图和模板</h2>
 <p>用户认证已经处理完毕,我们现在需要让用户在网站上进行注册.我们将通过创建新视图和模板来达到这个目的.</p>
-<blockquote>
-<p>注意:这里有许多现成的用户注册包可以使用,它们大大的减少创建注册和表单的繁琐程度.然而使用这样的应用对于了解内部机制是非常好的.它将会使你加深对表单,扩展用户模型和上传媒体的理解.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>这里有许多现成的用户注册包可以使用,它们大大的减少创建注册和表单的繁琐程度.然而使用这样的应用对于了解内部机制是非常好的.它将会使你加深对表单,扩展用户模型和上传媒体的理解.</p>
+</div>
 <p>为用户提供注册服务我们需要以下几步:</p>
 <ol>
 <li>创建<code>UserForm</code>和<code>UserProfileForm</code>.</li>
@@ -2256,7 +2337,7 @@ class UserProfileForm(forms.ModelForm):
         fields = ('website', 'picture')
 </code></pre>
 
-<p>注意到在两个类中我们都加入了<code>Meta</code>类.在<code>Meta</code>类中所有定义都会被当做它的附加属性.每个<code>Meta</code>至少包含一个<code>model</code>字段,它可以和模型之间关联.例如在我们的<code>UserForm</code>类中就关联了<code>User</code>模型.在Django1.7中你可以用<code>fields</code>或者<code>exclude</code>来定义你需要展示的字段.</p>
+<p>注意到在两个类中我们都加入了一个<a href="http://www.brpreiss.com/books/opus7/html/page598.html">nested</a><code>Meta</code>类.在<code>Meta</code>类中所有定义都会被当做它的附加属性.每个<code>Meta</code>至少包含一个<code>model</code>字段,它可以和模型之间关联.例如在我们的<code>UserForm</code>类中就关联了<code>User</code>模型.在Django1.7中你可以用<code>fields</code>或者<code>exclude</code>来定义你需要展示的字段.</p>
 <p>这里我们仅仅需要展示<code>User</code>模型的<code>username</code>,<code>email</code>和<code>password</code>字段,和<code>UserProfile</code>模型的<code>website</code>和<code>picture</code>字段.当用户注册的时候我们需要连接<code>UserPrifile</code>模型的<code>user</code>字段.</p>
 <p>看到了吧<code>UserForm</code>包含一个定义<code>password</code>属性.当<code>User</code>模型实例默认包含<code>password</code>属性时,HTML表单元素将不会隐藏密码.如果用户输入密码,那么这个密码就会可见.所以我们修改<code>password</code>属性作为<code>CharField</code>实例并使用<code>PasswordInput()</code>组建,这时用户输入就会被隐藏.</p>
 <p>最后,记得在<code>forms.py</code>模块顶部包含下面引用!</p>
@@ -2328,7 +2409,7 @@ def register(request):
 </code></pre>
 
 <p>看起来是不是很难啊?可能一开始看起来比较复杂,但其实不然.和我们前面<code>add_category()</code>视图差不多,仅仅添加了两个不同的<code>ModelForm</code>实例 - 一个是<code>User</code>模型的,另一个是<code>UserProfile</code>模型的.如果用户上传图像我们还得需要处理它们.</p>
-<p>我们还需要创建两个模型实例之间的连接.创建新的<code>User</code>模型实例后,我们需要用<code>profile.user = user</code>把它关联到<code>UserProfile</code>实例.我们在已经在9.4.1隐藏的<code>UserProfileForm</code>表单里填充了<code>user</code>属性.</p>
+<p>我们还需要创建两个模型实例之间的连接.创建新的<code>User</code>模型实例后,我们需要用<code>profile.user = user</code>把它关联到<code>UserProfile</code>实例.我们在已经在[9.4.1][#94]隐藏的<code>UserProfileForm</code>表单里填充了<code>user</code>属性.</p>
 <h3 id="943">9.4.3 创建注册模板</h3>
 <p>现在我们创建<code>rang/register.html</code>加入如下代码:</p>
 <pre><code>&lt;!DOCTYPE html&gt;
@@ -2366,9 +2447,10 @@ def register(request):
 </code></pre>
 
 <p>这个HTML模板使用<code>registered</code>变量来检测注册是否成功.当<code>registered</code>为<code>False</code>时模板会展示注册表单 - 否则,除了标题外它只会展示一条成功信息.</p>
-<blockquote>
-<p>警告:你可能注意到在<code>&lt;form&gt;</code>元素里的<code>enctype</code>属性.当你希望用户通过表单上传文件时,必须把<code>enctype</code>设置成<code>multipart/form-data</code>.这个属性会让你的浏览器以特定的方式把表单数据返回给服务器.实际上,你的文件会被分成一块块的传输.想了解更多查看 this great Stack Overflow answer.你也应当记得加入CSRF令牌.确保在你的<code>&lt;form&gt;</code>属性里包含<code>{% csrf_token %}</code>.</p>
-</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>你可能注意到在<code>&lt;form&gt;</code>元素里的<code>enctype</code>属性.当你希望用户通过表单上传文件时,必须把<code>enctype</code>设置成<code>multipart/form-data</code>.这个属性会让你的浏览器以特定的方式把表单数据返回给服务器.实际上,你的文件会被分成一块块的传输.想了解更多查看 <a href="http://stackoverflow.com/a/4526286">this great Stack Overflow answer</a>.你也应当记得加入CSRF令牌.确保在你的<code>&lt;form&gt;</code>属性里包含<code>{% csrf_token %}</code>.</p>
+</div>
 <h3 id="944-registerurl">9.4.4 视图<code>register()</code>的URL映射</h3>
 <p>现在为我们的新视图加入URL映射.在<code>rango/urls.py</code>文件里修改<code>urlpatterns</code>元组如下:</p>
 <pre><code>urlpatterns = patterns('',
@@ -2449,7 +2531,7 @@ def register(request):
 <p>如果我们查找一个<code>User</code>对象,我们可以检查账户是处于激活或非激活状态 - 然后会返回浏览器相应的状态.</p>
 <p>然而如果发送了无效的表单,是因为没有添加用户名和密码导致返回错误信息(例如用户名/密码丢失).</p>
 <p>上面代码最有意思的是用Django内建的机制来实现验证过程.<code>authenticate()</code>函数用来检查用户名和密码是否和账户匹配,而<code>login()</code>函数用来标记用户登录.</p>
-<p>你也可能注意到我们使用了<code>HttpResponseRedirect</code>类.看到名字就猜到了,最后代码返回的是一个<code>HttpResponseRedirect</code>类实例,它的参数是一个跳转地址,用来使用户的浏览器跳转到该地址.注意它返回的状态码不是正常状态下的200而是302,它表示一个重定向.参看official Django documentation on Redirection以获取更多信息.</p>
+<p>你也可能注意到我们使用了<code>HttpResponseRedirect</code>类.看到名字就猜到了,最后代码返回的是一个<code>HttpResponseRedirect</code>类实例,它的参数是一个跳转地址,用来使用户的浏览器跳转到该地址.注意它返回的状态码不是正常状态下的200而是302,它表示一个重定向.参看<a href="https://docs.djangoproject.com/en/1.7/ref/request-response/#django.http.HttpResponseRedirect">official Django documentation on Redirection</a>以获取更多信息.</p>
 <p>所有的这些函数和类都在Django之中,所以你需要导入它们,在<code>rango/views.py</code>中加入下面.</p>
 <pre><code>from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
@@ -2529,7 +2611,7 @@ def some_view(request):
         return HttpResponse(&quot;You are not logged in.&quot;)
 </code></pre>
 
-<p>第二个是使用了python装饰器.装饰器是由一种软件设计模式命名的.它们可以动态的修改一个函数,方法或者类而不用去直接修改它们的源代码.</p>
+<p>第二个是使用了<a href="http://wiki.python.org/moin/PythonDecorators">python装饰器</a>.装饰器是由<a href="http://en.wikipedia.org/wiki/Decorator_pattern">同名的软件设计模式</a>命名的.它们可以动态的修改一个函数,方法或者类而不用去直接修改它们的源代码.</p>
 <p>Django提供了叫做<code>login_required()</code>的装饰器,它可以在视图里要求用户进行登录.如果一个用户没有登录并且尝试访问一个视图,那么这个用户将会重定向到你设定的页面,通常是一个登录页面.</p>
 <h3 id="961">9.6.1 使用装饰器进行限制访问</h3>
 <p>我们尝试在<code>views.py</code>文件里调用<code>retricted()</code>,代码如下:</p>
@@ -2603,7 +2685,7 @@ def user_logout(request):
 
 <p>当用户验证登录后,就能看到<code>Restricted Page</code>和<code>Logout</code>链接.如果用户没有登录,就会显示<code>Register Here</code>和<code>Login</code>.<code>About</code>和<code>Add a New Category</code>并不在模板的条件代码里,这两个链接在用户匿名或登录时都可以看见.</p>
 <h2 id="98">9.8 练习</h2>
-<p>这章主要讲述在Django里如何管理用户验证.在我们的项目里讲述了如何安装Django<code>django.contrib.auth</code>应用.另外,我们也展示了如何在<code>django.contrib.auth.models.User</code>模型里加入用户个人模型的额外字段.我们还详细的列出用户如何注册,登录,注销和访问限制.更多信息请看Django’s official documentation on Authentication.</p>
+<p>这章主要讲述在Django里如何管理用户验证.在我们的项目里讲述了如何安装Django<code>django.contrib.auth</code>应用.另外,我们也展示了如何在<code>django.contrib.auth.models.User</code>模型里加入用户个人模型的额外字段.我们还详细的列出用户如何注册,登录,注销和访问限制.更多信息请看<a href="https://docs.djangoproject.com/en/1.7/topics/auth/">Django’s official documentation on Authentication</a>.</p>
 <ul>
 <li>定制你的应用,只有注册用户才能添加/修改目录/页面,非注册用户只能浏览/使用目录/页面.你也可以定制增加/修改页面的链接在只有用户登录时才会展示.</li>
 <li>当用户输入错误用户名和密码时提供错误通知.</li>
@@ -2634,10 +2716,14 @@ def user_logout(request):
 </code></pre>
 
 <p>从现在开始让它做我们的基础模板,并且包存在<code>templates</code>目录的<code>base.html</code>文件(例如 <code>templates/base.html</code>)</p>
-<blockquote>
-<p>注意:应当尽可能多的抽离出重复的内容.虽然在开始的时候会有一些困难,但是一旦做完以后会省下大量的时间.想想吧:你希望看到许多同样代码的拷贝吗?</p>
-<p>警告:<code>&lt;!DOCTYPE html&gt;</code>必须放在页面的第一行!不这样做将意味着你的标记不符合W3C HTML5准则。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>应当尽可能多的抽离出重复的内容.虽然在开始的时候会有一些困难,但是一旦做完以后会省下大量的时间.想想吧:你希望看到许多同样代码的拷贝吗?</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code>&lt;!DOCTYPE html&gt;</code>必须放在页面的第一行!不这样做将意味着你的标记不符合W3C HTML5准则。</p>
+</div>
 <h2 id="102">10.2 模板块</h2>
 <p>现在我们已经定义了我们的基础模板,我们可以把它变为我们需要继承的模板.我们需要在模板中加入一个模板标签以便于我们能在基础模板里重写 - 这需要用到<code>blocks</code>.</p>
 <p>在基础模板里增加<code>body_block</code>如下.</p>
@@ -2660,7 +2746,7 @@ def user_logout(request):
 <pre><code>{% block body_block %}This is body_block's default content.{% endblock %}
 </code></pre>
 
-<p>当我们创建模板时我们会继承<code>base.html</code>和重写<code>body_block</code>里的内容.你也可以在模板中放置更多的块,例如,你可以分别为页面标题,底部,侧边栏设置块.Django模板系统中的块十分的有用, official Django documentation on templates查看更多内容.</p>
+<p>当我们创建模板时我们会继承<code>base.html</code>和重写<code>body_block</code>里的内容.你也可以在模板中放置更多的块,例如,你可以分别为页面标题,底部,侧边栏设置块.Django模板系统中的块十分的有用, <a href="https://docs.djangoproject.com/en/1.7/topics/templates/#id1">official Django documentation on templates</a>查看更多内容.</p>
 <h3 id="1021">10.2.1 更多的抽象</h3>
 <p>既然已经理解了Django块,让我们抽象出更多的基础模板.重新打开<code>base.html</code>模板修改如下.</p>
 <pre><code>&lt;!DOCTYPE html&gt;
@@ -2700,7 +2786,7 @@ def user_logout(request):
 <li>第一个是加入新的Django模板块<code>title</code>.所以我们可以为继承自基础模板的页面定制标题.如果页面没有使用这个块,那么这个标题会默认为<code>Rango - How to Tango with Django!</code>.</li>
 <li>我们也可以把<code>index.html</code>模板中的链接列表加入到<code>body_block</code>块的后部.这将会为所有继承基础模板的页面展示这些链接.可以在<code>body_block</code>内容和链接之间加入一个水平线(<hr />)以便我们区分这两部分.</li>
 </ul>
-<p>注意我们的<code>body_block</code>包含在HTML<code>&lt;div&gt;</code>标签里 - 我们将在24章解释<code>&lt;div&gt;</code>意义.我们的链接同样使用<code>&lt;ul&gt;</code>和<code>&lt;li&gt;</code>标签包含在HTML无序列表里.</p>
+<p>注意我们的<code>body_block</code>包含在HTML<code>&lt;div&gt;</code>标签里 - 我们将在[24章][24]解释<code>&lt;div&gt;</code>意义.我们的链接同样使用<code>&lt;ul&gt;</code>和<code>&lt;li&gt;</code>标签包含在HTML无序列表里.</p>
 <h2 id="103">10.3 模板继承</h2>
 <p>我们已经创建了带块的基础模板,现在我们需要修改那些继承基础模板的模板.例如,让我们重构<code>rango/category.html</code>模板.</p>
 <p>首先我们需要移除所有重复的HTML代码和模板标签/命令.然后加入代码:</p>
@@ -2708,9 +2794,10 @@ def user_logout(request):
 </code></pre>
 
 <p><code>extends</code>命令携带一个参数,这个参数是要继承的模板(例如 rango/base.html).然后修改<code>category.html</code>模板如下.</p>
-<blockquote>
-<p>注意:提供给<code>extends</code>命令的参数的默认路径是项目的<code>templates</code>目录.例如,Rango所有模板应当是从<code>rango/base.html</code>扩展而不是<code>base.html</code>.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>提供给<code>extends</code>命令的参数的默认路径是项目的<code>templates</code>目录.例如,Rango所有模板应当是从<code>rango/base.html</code>扩展而不是<code>base.html</code>.</p>
+</div>
 <pre><code>{% extends 'base.html' %}
 
 {% load staticfiles %}
@@ -2741,13 +2828,14 @@ def user_logout(request):
 </code></pre>
 
 <p>在<code>category.html</code>模板里使用<code>extends</code>命令来继承<code>base.html</code>.在这里你不需要写一个完整的HTML文档,因为<code>base.html</code>已经提供了一个完整的框架.你只要把增添的内容写到基础模板里,它就会创建一个完整的HTML文档发送给用户浏览器.</p>
-<blockquote>
-<p>注意:模板非常强大,你甚至可以创建你自己的模板标签.在这里我们将演示如何减小模板里重复的HTML结构.
-然而,模板可以减小应用视图里的代码.例如,如果你想在你的应用增加一些相同的数据库驱动的内容,你需要调用特定的视图来处理网页中重复的部分.这样在每个视图里就不用重复调用Django ORM函数来收集数据了.
-查看更多内容请查看 Django documentation on templates.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>模板非常强大,你甚至可以创建你自己的模板标签.在这里我们将演示如何减小模板里重复的HTML结构.</p>
+</div>
+<p>然而,模板可以减小应用视图里的代码.例如,如果你想在你的应用增加一些相同的数据库驱动的内容,你需要调用特定的视图来处理网页中重复的部分.这样在每个视图里就不用重复调用Django ORM函数来收集数据了.
+查看更多内容请查看 <a href="https://docs.djangoproject.com/en/1.7/topics/templates/">Django documentation on templates</a>.</p>
 <h2 id="104-url">10.4 模板里加入URL</h2>
-<p>到目前为止我们可以直接的在模板里键入页面/视图的URL,例如<code>&lt;a href=".//rango/about/"&gt; About  &lt;/a&gt;</code>.然而最好的方式是使用<code>url</code>模板标签来查找在<code>urls.py</code>文件中的url.我们需要改写一下.</p>
+<p>到目前为止我们可以直接的在模板里键入页面/视图的URL,例如<code>&lt;a href="/rango/about/"&gt; About  &lt;/a&gt;</code>.然而最好的方式是使用<code>url</code>模板标签来查找在<code>urls.py</code>文件中的url.我们需要改写一下.</p>
 <pre><code>&lt;li&gt;&lt;a href=&quot;{% url 'about' %}&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
 </code></pre>
 
@@ -2785,50 +2873,56 @@ def user_logout(request):
 <li>使用url模板标签代替所有的url.</li>
 <li>添加一个地址使用户不论在网站的哪个位置都能返回到主页.</li>
 </ul>
-<blockquote>
-<p>警告:记得在每个模板头部加入<code>{% load static %}</code>以使用静态媒体.如果没有这样做,将会产生一个错误!Django模板模块需要分别单独导入 - 你不可以调用在你扩展的模板里的模块.</p>
-</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>记得在每个模板头部加入<code>{% load static %}</code>以使用静态媒体.如果没有这样做,将会产生一个错误!Django模板模块需要分别单独导入 - 你不可以调用在你扩展的模板里的模块.</p>
+</div>
 <p><img alt="" src="./img/rango-template-inheritance.svg" /></p>
-<blockquote>
-<p>注意:完成上面的练习后,所有Rango的模板都会继承<code>bashe</code>.html.让我们回过头看看<code>base.html</code>的内容,<code>user</code>对象 - 在Django请求的上下文中 - 将会用来检查当前的Rnago用户是否已经登录(通过使用<code>user.is_authenticated</code>).因为所有的Rango模板都会继承基础模板,所以所有的Rango模板的访问都要依赖于所发送请求的上下文.
-因为这个新的依赖,你必须检查每个Rango的Django视图.对于每个视图,确保每个请求对于Django模板引擎都是可用的.通过这个教程,我们通过<code>render()</code>传递请求作为参数来达到这个目的.有时会发生这样的情况,如果你的请求被错误的传送可能出现用户没有登录,但是Django认为已经登录.
-这里我们以<code>about</code>视图作为例子来进行检查.开始用硬编码的方式进行,代码如下.注意我们只发送字符串 - 我们没有使用<code>request</code>参数.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>完成上面的练习后,所有Rango的模板都会继承<code>bashe</code>.html.让我们回过头看看<code>base.html</code>的内容,<code>user</code>对象 - 在Django请求的上下文中 - 将会用来检查当前的Rnago用户是否已经登录(通过使用<code>user.is_authenticated</code>).因为所有的Rango模板都会继承基础模板,所以所有的Rango模板的访问都要依赖于所发送请求的上下文.</p>
+<p>因为这个新的依赖,你必须检查每个Rango的Django视图.对于每个视图,确保每个请求对于Django模板引擎都是可用的.通过这个教程,我们通过<code>render()</code>传递请求作为参数来达到这个目的.有时会发生这样的情况,如果你的请求被错误的传送可能出现用户没有登录,但是Django认为已经登录.</p>
+<p>这里我们以<code>about</code>视图作为例子来进行检查.开始用硬编码的方式进行,代码如下.注意我们只发送字符串 - 我们没有使用<code>request</code>参数.</p>
+</div>
 <pre><code>def about(request):
     return HttpResponse('Rango says: Here is the about page. &lt;a href=&quot;/rango/&quot;&gt;Index&lt;/a&gt;')
 </code></pre>
 
-<p>为了使用模板我们需要调用<code>render</code>函数传递<code>request</code>对象.这将会使我们的模板引擎可以获取像<code>user</code>这样的对象,它可以允许模板引擎查看用户是否登录.(例如进行验证).</p>
+<pre><code>为了使用模板我们需要调用`render`函数传递`request`对象.这将会使我们的模板引擎可以获取像`user`这样的对象,它可以允许模板引擎查看用户是否登录.(例如进行验证).
+</code></pre>
 <pre><code>def about(request):
     return render(request, 'rango/about.html', {})
 </code></pre>
 
-<p>记住,<code>render()</code>最后一个参数是一个字典,它可以添加额外的数据传递给Django模板引擎.因为我们没有什么额外的数据传递给模板所以这里为空.查看5.1.3章节复习关于<code>render()</code>的知识.</p>
+<pre><code>记住,`render()`最后一个参数是一个字典,它可以添加额外的数据传递给Django模板引擎.因为我们没有什么额外的数据传递给模板所以这里为空.查看[5.1.3](#51)章节复习关于`render()`的知识.
+</code></pre>
 <h1 id="11-cokkiessessions">11 Cokkies和Sessions</h1>
 <p>在本章中我们将要介绍sessions和cookies,它们两个在现代wen应用中有着至关重要的作用.在上一章,Django框架使用sessions和cookies来处理用户登录和注销功能(都在背后运行).这里我们将要探索cookies的其他用途.</p>
 <h2 id="111-cookiescookies">11.1 Cookies,无处不在的Cookies!</h2>
-<p>如果你已经熟知cookies的概念和它背后的运行机制,那么请直接跳转到11.2,如果没有让我们继续.</p>
+<p>如果你已经熟知cookies的概念和它背后的运行机制,那么请直接跳转到<a href="#112-sessions">11.2</a>,如果没有让我们继续.</p>
 <p>当我们请求访问一个网站时,服务器会返回请求页面的内容.另外还有一个或者多个cookies被传送给客户端,它们将会保存在浏览器的cache里.当一个用户在同一个网站服务器请求新的页面时,所有的关于这个页面的cookies也会发送到请求里.服务器会解析请求里的cookies字段并且生成一个特定的响应.</p>
 <blockquote>
 <p>这里我就不翻译了~~都是一些科普了</p>
 </blockquote>
 <h2 id="112-sessions">11.2 Sessions和无状态协议</h2>
-<p>所有的浏览器和服务器之间的交互都会通过HTTP协议.通过第8章简单的接触我们知道HTTP是无状态协议.这就意味着每次客户端请求(HTTP<code>GET</code>)或者发送(HTTP<code>POST</code>)资源给服务器都必须新建立一个连接(一个TCP连接).</p>
-<p>因为客户端和服务器没有持续的连接,两端的软件不能仅仅通过单独的连接保持会话状态.例如,客户端每次都需要告诉服务器谁在这个主机上登录了这个web应用.这就是用户和服务器之间的会话,这也是session的基本 - a semi-permanent exchange of information.作为一个无状态协议,HTTP需要保持会话状态非常的困难 - 但是很走运我们可以使用几种技术来绕过这个问题.</p>
+<p>所有的浏览器和服务器之间的交互都会通过<a href="http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol">HTTP协议</a>.通过<a href="#8">第8章</a>简单的接触我们知道HTTP是<a href="http://en.wikipedia.org/wiki/Stateless_protocol">无状态协议</a>.这就意味着每次客户端请求(HTTP<code>GET</code>)或者发送(HTTP<code>POST</code>)资源给服务器都必须新建立一个连接(一个TCP连接).</p>
+<p>因为客户端和服务器没有持续的连接,两端的软件不能仅仅通过单独的连接保持会话状态.例如,客户端每次都需要告诉服务器谁在这个主机上登录了这个web应用.这就是用户和服务器之间的会话,这也是session的基本 - <a href="http://en.wikipedia.org/wiki/Session_(computer_science)">a semi-permanent exchange of information</a>.作为一个无状态协议,HTTP需要保持会话状态非常的困难 - 但是很走运我们可以使用几种技术来绕过这个问题.</p>
 <p>最常用的一种保持状态的方法就是使用session ID,和cookies一样存储在客户端电脑.session ID可以认为是一种令牌(一大串字符串),它能够唯一标识特定web应用里的会话.和cookies存储许多不同种类的数据不一样(像用户名,名字,密码),它只存储session ID,并且映射到web服务器的一个数据结构.在这个数据结构里,你可以存储任何你需要的信息.这对于用户来说是更安全的存储方法.用这种方法,这些数据不会被一个不安全的客户端和连接所监听.</p>
 <p>如果你的浏览器支持cookies,当你访问所有的网站时都会创建一个新的会话.你可以自己查看下,如图所示.在Google Chrome的开发者工具中,你可以查看到web服务器发送给你的cookies.在下图中,你可以观察到选中的<code>sessionid</code>cookie.这个cookie包含一系列的字母和数字,它可以使Django唯一标识一个会话.到现在,所有的session细节都表述完了 - 但是服务器端还没讲.</p>
 <p><img alt="" src="./img/session-id.png" /></p>
 <p>session ID也可以不存储在cookies中.传统的PHP应用会把它们做成一个请求字符串或是URL的一部分来请求资源.如果你偶然间访问像<code>http://www.site.com/index.php?sessid=omgPhPwtfIsThisIdDoingHere332i942394</code>这样的URL,很可能是服务器唯一识别你的标识.很有趣吧!</p>
-<blockquote>
-<p>注意:仔细看上图,注意到<code>csrftoken</code>令牌了吗?这个cookie帮助我们避免跨站请求.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>仔细看上图,注意到<code>csrftoken</code>令牌了吗?这个cookie帮助我们避免跨站请求.</p>
+</div>
 <h2 id="113-djangosessions">11.3 在Django里设置Sessions</h2>
-<p>尽管我们已经设置好并且正确工作,但是如果学会Django的模块提供哪些工作就会更好了.关于sessions方面Django提供了middleware来提供session功能.</p>
+<p>尽管我们已经设置好并且正确工作,但是如果学会Django的模块提供哪些工作就会更好了.关于sessions方面Django提供了<a href="https://docs.djangoproject.com/en/1.7/topics/http/middleware/">middleware</a>来提供session功能.</p>
 <p>为了检查一切都设置妥当,打开Django项目里的<code>settings.py</code>文件.找到<code>MIDDLEWARE_CLASSES</code>元组.你可以在元组中看到<code>django.contrib.sessions.middleware.SessionMiddleware</code>模块 - 如果没有看到现在就加进去.正式这个<code>SessionMiddleware</code>中间件能够创建唯一的<code>sessionid</code>cookies.</p>
 <p><code>SessionMiddleware</code>可以灵活的使用不同的方法来存储session信息.你可以采取很多方法储存 - 存在文件,数据库甚至在cache中.最直接的方法是使用<code>django.contrib.sessions</code>应用把session信息存储到Django模型/数据库中(详细的说是<code>django.contrib.sessions.models.Session</code>模型).使用这种方法,你必须首先确保在Django项目的<code>settings.py</code>文件里<code>django.contrib.sessions</code>保存在<code>INSTALLED_APPS</code>元组里.如果你现在要添加应用,你需要使用迁移命令来更新数据库.</p>
-<blockquote>
-<p>注意:如果你希望使用轻量快捷的方式,你可以把session信息存储在cache中.可以查看 official Django documentation for advice on cached sessions.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果你希望使用轻量快捷的方式,你可以把session信息存储在cache中.可以查看 <a href="https://docs.djangoproject.com/en/1.7/topics/http/sessions/#using-cached-sessions">official Django documentation for advice on cached sessions</a>.</p>
+</div>
 <h2 id="114-cookiesession">11.4 基于cookie的session</h2>
 <p>我们现在测试我们的浏览器是否支持cookies.现代浏览器都支持cookies,你可以查看你浏览器的cookies信息.如果你的浏览器安全等级设定的非常高,一些特定的cookies会被阻塞.查看浏览器文档获取更多信息,设定使用cookies.</p>
 <h3 id="1141-cookie">11.4.1 测试Cookie功能</h3>
@@ -2847,9 +2941,10 @@ def user_logout(request):
 <p>更改完以后运行Django服务并打开Rango首页,<code>http://127.0.0.1:8000/rango/</code>.页面加载完后,前往注册页面.当注册页面加载后,你将会和下图一样在终端里看到<code>&gt;&gt;&gt;&gt; TEST COOKIE WORKED!</code>.</p>
 <p><img alt="" src="./img/test-cookie.png" /></p>
 <p>如果没有看到上面的信息,请检查一下你的浏览器安全设置,有可能会阻止浏览器接受cookie.</p>
-<blockquote>
-<p>注意:你可以删除增加的代码 - 我们只是拿它用来验证以下cookies</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>你可以删除增加的代码 - 我们只是拿它用来验证以下cookies</p>
+</div>
 <h2 id="115-cookies">11.5 客户端Cookies:一个网站技术的例子</h2>
 <p>现在我们已经知道cookies是如何工作的,让我们实现一个简单的网站访问计数.首先我们需要创建两个cookies:一个用来追踪用户访问Rango网站次数,另一个用来追踪上一次登录的时间.保持追踪用户上一次的访问时间和日期将允许我们每天只能增长一次访问次数.</p>
 <p>假设用户访问的Rango页面一般为首页.打开<code>rango/view.py</code>并修改<code>index()</code>视图如下.</p>
@@ -2904,18 +2999,15 @@ def user_logout(request):
 <p>在代码中我们检查<code>last_visit</code>是否存在.如果存在我们就使用<code>request.COOKIES['cookie_name']</code>语法来获取它的值,这里的<code>request</code>就是<code>request</code>对象的名字,<code>cookie_name</code>就是你希望跟踪的cookie名.<strong>注意返回的所有的cookie值都是字符串</strong>;不要认为cookie保存的是数字就会返回整型.你需要自己把它们转化成正确的形式.如果这个cookie不存在,你需要使用<code>response</code>对象的<code>set_cookie()</code>方法来创建cookie.这个方法包含两个值,cookie名(字符串)和cookie值.不管你输入的是什么形式 - 它都会自动转化成字符串.</p>
 <p><img alt="" src="./img/cookie-visits.png" /></p>
 <p>如果你现在打开Rango主页,检查你浏览器中的开发者工具,你将会看到<code>visits</code>和<code>last_visit</code>两个cookie.如上图所示.</p>
-<blockquote>
-<p>注意:你或许注意到了刷新浏览器并不能使<code>visits</code>增长.为什么?因为上面给出的示例代码只在用户上次访问距今是1天时才增加.当我们测试的时候这个值有点不合理 - 所以为什么我们不缩短以下这个时间呢?修改<code>index()</code>视图,找到下面这一行.</p>
-</blockquote>
-<pre><code>if (datetime.now() - last_visit_time).days &gt; 0:
-</code></pre>
-
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>你或许注意到了刷新浏览器并不能使<code>visits</code>增长.为什么?因为上面给出的示例代码只在用户上次访问距今是1天时才增加.当我们测试的时候这个值有点不合理 - 所以为什么我们不缩短以下这个时间呢?修改<code>index()</code>视图,找到下面这一行.</p>
+<p><code>if (datetime.now() - last_visit_time).days &gt; 0:</code></p>
 <p>我们可以把它们更改为秒数级别的比较.在下面的例子,我们检查是否在5秒之外有登录.</p>
-<pre><code>if (datetime.now() - last_visit_time).seconds &gt; 5:
-</code></pre>
-
-<p>这就意味着你只需要等待5秒的时间就能看到<code>visits</code>cookie的增长,而不需要一整天.当你这么玩完以后,就可以把它改回来了.
-在不同的时间里使用<code>-</code>操作符可以求出它们的差值是Python提供给我们的非常使用的功能.当时间相减,就会返回一个<code>timedelta</code>对象,就像上面代码它提供给我们<code>days</code>和<code>seconds</code>属性.你可以查看 official Python documentation来获取更多关于对象类型和其他属性的信息.</p>
+<p><code>if (datetime.now() - last_visit_time).seconds &gt; 5:</code></p>
+<p>这就意味着你只需要等待5秒的时间就能看到<code>visits</code>cookie的增长,而不需要一整天.当你这么玩完以后,就可以把它改回来了.</p>
+<p>在不同的时间里使用<code>-</code>操作符可以求出它们的差值是Python提供给我们的非常使用的功能.当时间相减,就会返回一个<code>timedelta</code>对象,就像上面代码它提供给我们<code>days</code>和<code>seconds</code>属性.你可以查看 <a href="http://docs.python.org/2/library/datetime.html#timedelta-objects">official Python documentation</a>来获取更多关于对象类型和其他属性的信息.</p>
+</div>
 <p>我们可以修改<code>index.html</code>在里面加入<code>&lt;p&gt; visits: {{ visits }}&lt;/p&gt;</code>来现实访问次数.</p>
 <h2 id="116-session">11.6 Session数据</h2>
 <p>在前一个例子中我们使用了客户端的cookies.然而,另一种更安全的方法是把session信息存储在服务器端.我们可以使用存储在客户端的session ID cookie作为解锁数据的钥匙.</p>
@@ -2923,7 +3015,7 @@ def user_logout(request):
 <ol>
 <li>确保<code>settings.py</code>文件的<code>MIDDLEWARE_CLASSES</code>包含<code>django.contrib.sessions.middleware.SessionMiddleware</code>.</li>
 <li>配置session后台.确定<code>django.contrib.sessions</code>在你<code>settings.py</code>文件的<code>INSTALLED_APPS</code>里.如果没有则添加并且运行数据库迁移命令<code>python manage.py migrate</code>.</li>
-<li>假设使用数据库作为后台,但是你也可以设置成其他(比如cache).参见 official Django Documentation on Sessions for other backend configurations.</li>
+<li>假设使用数据库作为后台,但是你也可以设置成其他(比如cache).参见 <a href="https://docs.djangoproject.com/en/1.7/topics/http/sessions/">official Django Documentation on Sessions for other backend configurations</a>.</li>
 </ol>
 <p>现在我们可以调用<code>request.session.get()</code>方法访问服务器端的cookies,使用<code>request.session[]</code>存储它们.注意session ID cookie仍然用来标记客户端机器(严格的说是存在一个浏览器端的cookie),但是所有的数据都存储在服务器端.下面我们修改<code>index()</code>函数使用基于cookie的session:</p>
 <pre><code>def index(request):
@@ -2962,10 +3054,14 @@ def user_logout(request):
     return response
 </code></pre>
 
-<blockquote>
-<p>警告:强烈建议你在启用基于session数据之前删除所有客户端的cookies.你可以在你的浏览器里对它们进行删除,或者是直接清空浏览器的cache - 确保cookies在这个过程中删除.</p>
-<p>注意:使用session存储数据的另一个优点是它可以把数据从字符串转化成响应的类型.然而只有像<code>int</code>,<code>float</code>,<code>long</code>,<code>complex</code>和<code>boolean</code>这样的内置类型才有用.如果你希望存储字典或是其他复杂的类型就不可以啦.在这种情况下你需要 pickling your objects.</p>
-</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>强烈建议你在启用基于session数据之前删除所有客户端的cookies.你可以在你的浏览器里对它们进行删除,或者是直接清空浏览器的cache - 确保cookies在这个过程中删除.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>使用session存储数据的另一个优点是它可以把数据从字符串转化成响应的类型.然而只有像<code>int</code>,<code>float</code>,<code>long</code>,<code>complex</code>和<code>boolean</code>这样的<a href="http://docs.python.org/2/library/stdtypes.html">内置类型</a>才有用.如果你希望存储字典或是其他复杂的类型就不可以啦.在这种情况下你需要 <a href="https://wiki.python.org/moin/UsingPickle">pickling your objects</a>.</p>
+</div>
 <h2 id="117-browser-length-and-persistent-sessions">11.7 Browser-Length and Persistent Sessions</h2>
 <p>当你使用cookies时你可以使用Django的session框架来设置browser-lenght sessions或者persistent sessions.这两个名字的解释如下:</p>
 <ul>
@@ -2974,7 +3070,7 @@ def user_logout(request):
 </ul>
 <p>默认的browser-length sessions是被关闭的.你可以通过设置Django的<code>settings.py</code>来开启它(增加<code>SESSION_EXPIRE_AT_BROWSER_CLOSE</code>并设置为<code>true</code>).</p>
 <p>persistent session默认是开启的,可以设置<code>SESSION_EXPIRE_AT_BROWSER_CLOSE</code>为<code>False</code>进行开启.persistent sessions有一个额外的设置<code>SESSION_COOKIE_AGE</code>,它可以允许你设置cookie的存活时间.这个值是一个整型,代表着cookie能存活的秒数.例如修改为<code>1209600</code>意味着网页的cookies将会在两周后过期.</p>
-<p>查看 official Django documentation on cookies 获取更多可用的设置.也可以查看 Eli Bendersky’s blog这篇讲述Django和cookie的文章.</p>
+<p>查看 <a href="https://docs.djangoproject.com/en/1.7/ref/settings/#session-cookie-age">official Django documentation on cookies</a> 获取更多可用的设置.也可以查看 <a href="http://eli.thegreenplace.net/2011/06/24/django-sessions-part-i-cookies/">Eli Bendersky’s blog</a>这篇讲述Django和cookie的文章.</p>
 <h2 id="118-sessions">11.8 清除Sessions数据库</h2>
 <p>Session cookies是不断累积的.所以如果你是使用数据库作为后台你需要定期的清除存储的cookies.可以用<code>python manage.py clearsessions</code>命令来实现.Django文档里建议每天运行一次.参见https://docs.djangoproject.com/en/1.7/topics/http/sessions/#clearing-the-session-store</p>
 <h2 id="119">11.9 基本的注意事项和流程</h2>
@@ -2993,7 +3089,7 @@ def user_logout(request):
 <p>如果你需要更安全的cookies,那么就需要使用基于cookies的session:</p>
 <ol>
 <li>确保<code>settings.py</code>中的<code>MIDDLEWARE_CLASSES</code>包含<code>django.contrib.sessions.middleware.SessionMiddleware</code>.</li>
-<li>设置你的session后台<code>SESSION_ENGINE</code>.查看 official Django Documentation on Sessions 获取不同后台的不同设置.</li>
+<li>设置你的session后台<code>SESSION_ENGINE</code>.查看 <a href="https://docs.djangoproject.com/en/1.7/topics/http/sessions/">official Django Documentation on Sessions</a> 获取不同后台的不同设置.</li>
 <li>通过<code>requests.sessions.get()</code>来获取存在的cookie.</li>
 <li>通过<code>requests.session['&lt;cookie_name&gt;']</code>更改或设置cookie.</li>
 </ol>
@@ -3017,12 +3113,13 @@ else:
 return render(request, 'rango/about.html', {'visits': count})
 </code></pre>
 
-<h1 id="12-django-registration-redux">12 使用Django-Registration-Redux进行用户验证</h1>
+<h1 id="12-drr">12 使用DRR进行验证</h1>
 <p>在Django里有许多的应用提供登录,注册和验证机制.许多的应用都提供这种功能而且几乎不重写url,视图和模板.在这章,我们需要使用<code>django-registration-redux</code>包来提供这些功能.这就意味着我们需要重构我们的代码 - 然而它将会教给我们如何使用外部应用以及如何轻松的在我们Django项目里加入应用.它也会使我们的应用更加简洁.</p>
-<blockquote>
-<p>注意:这章并不是必要的,你可以跳过,但是在随后的章节里我们会假设你已经更新了验证机制.</p>
-</blockquote>
-<h2 id="121-django-registration-redux">12.1 设置Django-Registration-Redux</h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>这章并不是必要的,你可以跳过,但是在随后的章节里我们会假设你已经更新了验证机制.</p>
+</div>
+<h2 id="121-drr">12.1 设置DRR</h2>
 <p>开始我们先安装<code>django-registration-redux</code>:</p>
 <pre><code>$ pip install django-registration-redux
 </code></pre>
@@ -3146,9 +3243,9 @@ url(r'^rango/', include('rango.urls')),
 <h3 id="1236">12.3.6 重构项目</h3>
 <p>现在需要修改<code>bashe.html</code>来使用心得注册url/视图:</p>
 <ul>
-<li>修改注册url为<code>&lt;a href="./{% url 'registration_register' %}"&gt;</code></li>
-<li>登录为<code>&lt;a href="./{% url 'auth_login' %}"&gt;</code></li>
-<li>注销为<code>&lt;a href="./{% url 'auth_logout' %};next=/rango/?next=/rango/"&gt;</code></li>
+<li>修改注册url为<code>&lt;a href="{% url 'registration_register' %}"&gt;</code></li>
+<li>登录为<code>&lt;a href="{% url 'auth_login' %}"&gt;</code></li>
+<li>注销为<code>&lt;a href="{% url 'auth_logout' %}?next=/rango/"&gt;</code></li>
 <li>修改<code>settings.py</code>中的<code>LOGIN_URL</code>为<code>/accounts/login/</code>.</li>
 </ul>
 <p>注意到注销页面我们包含了<code>?next=/rango/</code>.这就是为什么当我们注销时会重定向到rango主页.如果我们不加入它,我们将会重定向到注销页面(但是这样做不太友好).</p>
@@ -3179,8 +3276,8 @@ urlpatterns = patterns('',
 </ul>
 <h1 id="13-bootstraprango">13 Bootstrap和Rango</h1>
 <p>在本章,我们将使用Bootstrap3.2套件来装饰我们的Rango.我们不需要了解Bootstrap工作的细节,但是我们假设你了解一些CSS.如果没有的话,去查看以下CSS章节或者一些Bootstrap教程了解一下基础知识.现在,你需要通过这一章把所有零碎的知识点连接起来.</p>
-<p>开始我们先看一下Bootstrap 3.2.0 website - 它提供了实例代码和不同的组件,并且提供怎么加入样式标签的方法.在Bootstrap网站它们提供了许多example layouts可以给我们使用.</p>
-<p>为了修改Rango样式我们需要定义dashboard style来满足我们的要求,例如在顶部的菜单栏,侧边栏(用来展示目录)和一个主内容区域.在使用Bootstrap的HTML之前我们还需要做一些工作.下面使我们需要做的:</p>
+<p>开始我们先看一下<a href="http://getbootstrap.com/">Bootstrap 3.2.0 website</a> - 它提供了实例代码和不同的组件,并且提供怎么加入样式标签的方法.在Bootstrap网站它们提供了许多<a href="http://getbootstrap.com/getting-started/#examples">example layouts</a>可以给我们使用.</p>
+<p>为了修改Rango样式我们需要定义<a href="http://getbootstrap.com/examples/dashboard/">dashboard style</a>来满足我们的要求,例如在顶部的菜单栏,侧边栏(用来展示目录)和一个主内容区域.在使用Bootstrap的HTML之前我们还需要做一些工作.下面使我们需要做的:</p>
 <ul>
 <li>把所有的<code>../../</code>改成<code>http://getbootstrap.com</code></li>
 <li>修改<code>dashboard.css</code>为绝对路径<code>http://getbootstrap.com/examples/dashboard/dashboard.css</code></li>
@@ -3272,9 +3369,10 @@ urlpatterns = patterns('',
 <p>如果仔细看dashboard的html源代码,会发现许多结构都是通过<code>&lt;div&gt;</code>标签创建的.页面被分为两部分 - 顶部导航栏和主面板,都被<code>&lt;div class="container-fluid"&gt;</code>包含.在导航栏区域,我们加入我们网站的链接.在主面板区域有两列专栏,一个是<code>side_block</code>,另一个是<code>body_block</code>.</p>
 <h2 id="132">13.2 快速更改样式</h2>
 <p>使用上面的html代码更新你的<code>base.html</code>(假设你已经完成了12章的内容,使用了django-registration-redux 包,如果没有你需要更新这些url模板标签).重新加载你的应用.你需要联网才能下载css,js和其他相关文件.你注意到了你的应用看起来变化非常大.试着浏览其他页面看一看.因为它们都继承自基础模板,它们看起来都非常好看.虽然不完美但是非常好.</p>
-<blockquote>
-<p>注意:你应当下载所有关联的文件并存储到静态文件夹.如果这么做以后,在基础模板修改静态文件的引用.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>你应当下载所有关联的文件并存储到静态文件夹.如果这么做以后,在基础模板修改静态文件的引用.</p>
+</div>
 <p>现在我们已经设置好<code>base.html</code>,我们可以快速的使用Bootstrap组建来定制我们的页面.</p>
 <p>让我们修改<code>about.html</code>模板,在页面里放置一个页面头(http://getbootstrap.com/components/#page-header) .在例子中,我们需要加入<code>&lt;div&gt;</code>并且使用<code>class="page-header"</code>属性:</p>
 <pre><code>{% extends 'base.html' %}
@@ -3368,7 +3466,7 @@ urlpatterns = patterns('',
 
 <p><img alt="" src="./img/ch11-bootstrap-index-rows.png" /></p>
 <h2 id="133">13.3 登录页面</h2>
-<p>让我们将注意力转移到登录页面.在Bootstrap网站我们已经看到漂亮的登录表单,查看 http://getbootstrap.com/examples/signin/ .如果查看源代码,你会发现我们需要在基础登录表单上加入许多类.修改<code>login.html</code>模板如下:</p>
+<p>让我们将注意力转移到登录页面.在Bootstrap网站我们已经看到<a href="http://getbootstrap.com/examples/signin/">漂亮的登录表单</a>,查看 http://getbootstrap.com/examples/signin/ .如果查看源代码,你会发现我们需要在基础登录表单上加入许多类.修改<code>login.html</code>模板如下:</p>
 <pre><code>{% block body_block %}
 
 &lt;link href=&quot;http://getbootstrap.com/examples/signin/signin.css&quot; rel=&quot;stylesheet&quot;&gt;
@@ -3387,7 +3485,7 @@ urlpatterns = patterns('',
 </code></pre>
 
 <blockquote>
-<p>这里有很多错误暂时不翻译?~</p>
+<p>这里有很多错误,且对后面没有什么影响暂时不翻译~</p>
 </blockquote>
 <h1 id="14">14 模板标签</h1>
 <h2 id="141">14.1 为每个页面提供目录</h2>
@@ -3434,9 +3532,10 @@ def get_category_list():
 &lt;/div&gt;
 </code></pre>
 
-<blockquote>
-<p>注意:每次修改templatetags你需要重启服务.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>每次修改templatetags你需要重启服务.</p>
+</div>
 <h2 id="143">14.3 参数化模板标签</h2>
 <p>现在让我们加入自动目录高亮功能.我们需要参数化模板.所以我们需要修改<code>rango_extras.py</code>:</p>
 <pre><code>def get_category_list(cat=None):
@@ -3469,7 +3568,7 @@ def get_category_list():
 <p>尽管Bing的API可以处理不同内容的请求,我们只需要关注本教程使用的部分 - 就是处理响应的JSON.为了使用Bing搜索的API,你需要注册一个API key.这个key可以给用户每个月5000次请求的权限,对于我们个人用户来说足够用了.</p>
 <h3 id="1511-api-key">15.1.1 注册一个API key</h3>
 <p>为了注册一个Bing API key,你必须首先注册一个免费的Microsoft账户.这个账户提供了许多的Microsoft服务.如果你已经有一个Hotmail账户,那么就不用再注册了.你可以在这里 https://account.windowsazure.com 注册和登录帐号.</p>
-<p>当你创建完帐号,访问 Windows Azure Marketplace Bing Search API page.在页面的顶部你需要点击Sign In按钮 - 如果你已经你已经进入到Microsoft账户(上面写着Sing Out),就不需要再登录了.</p>
+<p>当你创建完帐号,访问 <a href="https://datamarket.azure.com/dataset/5BA839F1-12CE-4CCE-BF57-A49D98D29A44">Windows Azure Marketplace Bing Search API page</a>.在页面的顶部你需要点击Sign In按钮 - 如果你已经你已经进入到Microsoft账户(上面写着Sing Out),就不需要再登录了.</p>
 <p>页面右边的列表是每月的事务量.在最顶部是5000/月.点击右边的注册按钮 - 你将会订阅一个免费的服务.阅读完有关条例以后,如果同意条款点击注册按钮继续.接下来将会显示成功注册的页面.</p>
 <p>注册成功以后,点击页面顶部的数据链接.在这里你将会看到Windows Azure Marketplace的可用资源列表.在这个列表顶部应当是Bing Search API - 同时右边显示的是你已订阅该资源.点击位于右边的使用.你将会看到如下图所示的页面.</p>
 <p><img alt="" src="./img/bing-explore.png" /></p>
@@ -3478,9 +3577,10 @@ def get_category_list():
 </code></pre>
 
 <p>我们需要得到API key以便在你发送请求时得到Bing服务器的认证.为了获取你的key,点击页面上部的主帐户密钥现实按钮.这样你就会看到你的API key了.一会我们将使用它,先把它记下来 - 还要注意不要泄露这个key!如果别人得到你的key,那么别人就可以使用你的key进行免费的查询了.</p>
-<blockquote>
-<p>注意:这个页面同时现实剩余每月的事务量.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>这个页面同时现实剩余每月的事务量.</p>
+</div>
 <h2 id="152">15.2 增加搜索功能</h2>
 <p>为了增加Rango的搜索功能,我们必须增加一个Bing API查询语句.这个代码将会从一个特定的用户获取请求,并返回一个列表作为结果.所有在API查询阶段的错误都能被很好的处理.拆分这个搜索函数作为添加函数可以有效的分离Django代码和搜索函数代码.</p>
 <p>开始,在<code>rango</code>应用目录里添加一个新的Python模块<code>bing_search.py</code>.代码如下.注意查看注释的内容.</p>
@@ -3565,9 +3665,10 @@ def run_query(search_terms):
 <li>最后函数返回这个字典.</li>
 </ul>
 <p>注意从Bing服务器返回的结果是JSON.这是因为我们在请求中标明了返回JSON - 查看一下我们定义的<code>search_url</code>变量.如果在尝试连接Bing服务器的时候发生了错误,就会通过<code>except</code>代码块中的<code>print</code>语句打印出来.</p>
-<blockquote>
-<p>注意:Bing搜索API还有许多可控参数我们没有涉及到,如果你有兴趣可以查看这里:Bing Search API Migration Guide and FAQ</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Bing搜索API还有许多可控参数我们没有涉及到,如果你有兴趣可以查看这里:<a href="http://datamarket.azure.com/dataset/bing/search">Bing Search API Migration Guide and FAQ</a></p>
+</div>
 <h2 id="153-api-key">15.3 安全的保存你的API KEY</h2>
 <p>如果你把你的代码保存在像Github这样的公共仓库,你必须小心你的API Key了.一个解决办法是创建一个新的<code>keys.py</code>文件,调用里面的<code>BING_API_KEY</code>变量.然后把<code>BING_API_KEY</code>导入到<code>bing_search.py</code>里.修改你的<code>.gitignore</code>文件包含<code>keys.py</code>,最终你的<code>keys.py</code>就不会被添加到项目里了.它只会存储在本地.</p>
 <h2 id="154">15.4 练习</h2>
@@ -3645,7 +3746,8 @@ def run_query(search_terms):
 <p>一会我们就可以看到我们的视图了,只有当返回结果时<code>results_list</code>才会传递给模板.当我们第一次载入我们的搜索页面时我们还没有得到结果 - 因为用户还没有提交查询!</p>
 <h3 id="1552">15.5.2 添加视图</h3>
 <p>添加完搜索模板后,我们可以添加视图了.在<code>views.py</code>模块里添加下面<code>search()</code>视图.</p>
-<pre><code class="python">
+<pre><code class="python">def search(request):
+
     result_list = []
 
     if request.method == 'POST':
@@ -3667,9 +3769,10 @@ def run_query(search_terms):
 <li>增加<code>search()</code>视图和<code>/rango/search/</code>URL的映射,命名为<code>name='search'</code>.</li>
 <li>在<code>base.html</code>导航栏增加搜索链接.记得使用<code>url</code>模板标签来引用链接.</li>
 </ol>
-<blockquote>
-<p>注意:通过relevant article on Wikipedia,一个Application Programming Interface (API)是指软件之间如何进行交互.在web应用中API是指一系列已经定义结构的HTTP请求和它们所返回的各样请求信息.任何在互联网上有意义的服务都可以提供它们自己的API - 不限于web搜索.更多的API信息请看 Luis Rei provides an excellent tutorial on APIs.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>通过<a href="http://en.wikipedia.org/wiki/Application_programming_interface">relevant article on Wikipedia</a>,一个Application Programming Interface (API)是指软件之间如何进行交互.在web应用中API是指一系列已经定义结构的HTTP请求和它们所返回的各样请求信息.任何在互联网上有意义的服务都可以提供它们自己的API - 不限于web搜索.更多的API信息请看 <a href="http://blog.luisrei.com/articles/rest.html">Luis Rei provides an excellent tutorial on APIs</a>.</p>
+</div>
 <h1 id="16">16 练习</h1>
 <p>到目前为止我们已经为Rango添加了许多功能.我们通过建立这个应用让你熟悉Django框架,而且从中学到了建立自己网站时遇到的各种各样的困难和挑战.但是现在Rango还不够紧凑.在本章,我们将使各个功能更加紧凑,同时改善应用的用户体验并加入一些新的功能.</p>
 <p>为了使我们的Rango耦合度更高我们将加入下面的功能.</p>
@@ -3677,13 +3780,13 @@ def run_query(search_terms):
 <li>检测目录和页面的点击数,例如:<ul>
 <li>累计目录访问次数</li>
 <li>累计页面访问次数</li>
-<li>收集目录喜欢数(查看19章)</li>
+<li>收集目录喜欢数(查看<a href="#19-ajax">19章</a>)</li>
 </ul>
 </li>
 <li>在目录里继承搜索和展示,例如:<ul>
 <li>在每个目录页搜索页面而不是使搜索页分开.</li>
-<li>在侧边栏过滤目录(查看19章)</li>
-<li>当用户搜索时,只刷新搜索结果而不是刷新整个页面(查看19章)</li>
+<li>在侧边栏过滤目录(查看<a href="#19-ajax">19章</a>)</li>
+<li>当用户搜索时,只刷新搜索结果而不是刷新整个页面(查看<a href="#19-ajax">19章</a>)</li>
 </ul>
 </li>
 <li>为注册用户提供服务,例如:<ul>
@@ -3694,9 +3797,10 @@ def run_query(search_terms):
 </ul>
 </li>
 </ul>
-<blockquote>
-<p>注意:我们不需要现在完成所有的任务.一些将会在第19章里完成,剩下的一些当做练习由你自己完成.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>我们不需要现在完成所有的任务.一些将会在<a href="#19-ajax">第19章</a>里完成,剩下的一些当做练习由你自己完成.</p>
+</div>
 <p>在我们开始添加功能之前我们将会为每个任务列出一个todo list.把任务划分成小任务将会简化任务的难度,所以让我们一起来各个击破吧.在这章,我们将提供给你上面任务的工作流程.已经学了这么多了,剩下的工作基本上可以独立完成了(除了请求AJAX).在下一章,我们将提供一些代码来展示如何完成这些功能.</p>
 <h2 id="161">16.1 跟踪页面点击</h2>
 <p>现在Rango提供了一个直接指向外部页面的链接.这对于我们追踪每个页面点击和查看次数很不利.为了累计页面查看次数你需要完成以下步骤.</p>
@@ -3718,9 +3822,10 @@ def run_query(search_terms):
 </code></pre>
 
 <p>每次都要先检查请求的<code>GET</code>方法,然后访问包含参数的<code>request.GET</code>字典.如果<code>page_id</code>在这个字典中,你可以用<code>request.GET['page_id']</code>提取出来.</p>
-<blockquote>
-<p>注意:你也可以不实用查询语句而是使用URL替代,例如<code>/rango/goto/&lt;page_id&gt;/</code>.这样你必须创建一个urlpattern来抽取这个<code>page_id</code>.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>你也可以不实用查询语句而是使用URL替代,例如<code>/rango/goto/&lt;page_id&gt;/</code>.这样你必须创建一个urlpattern来抽取这个<code>page_id</code>.</p>
+</div>
 <h2 id="162">16.2 在目录页搜索</h2>
 <p>Rango旨在为用户提供有用的页面链接目录.现在这个搜索功能是基于目录搜索的.如果能继承进目录浏览就好了.让我们假设用户将会首先浏览他们感兴趣的目录.如果找不到他们想要的页面,用户就会搜索.如果用户发现一个合适的页面,就会把它添加到目录里.让我们注意第一个问题,把搜索放入目录页.为了解决这个问题,需要以下几步:</p>
 <ul>
@@ -3925,9 +4030,10 @@ def track_url(request):
 <p>加载页面尝试一下.如果顺利的话点击两个按钮都将会弹出会话.</p>
 <p>这个JQuery/Javascript代码,首先会选择文档对象,当页面加载完毕以后,会执行里面的代码,例如<code>$("#about-btn").click()</code>,它将会选择页面中id等于<code>about-btn</code>的元素,然后会设置点击事件启用<code>alert()</code>函数.</p>
 <p>看了上面的例子你或许会想JQuery太笨重了,做同样的事需要更多的代码.对于简单的像<code>alert()</code>这样的函数或许是真的,但是如果面对复杂的功能它更适用,它会使JQuery/Javascript代码保存在不同的文件(完全的!!).这是因为只是在运行的时候设置事件出发而不是静态的写在代码里.这样我们就成功的分离了JQuery/javascript和HTML代码.</p>
-<blockquote>
-<p>注意:CSS,JAVASCRIPT和HTML,你也需要保持它们分离!</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>CSS,JAVASCRIPT和HTML,你也需要保持它们分离!</p>
+</div>
 <h2 id="183">18.3 选择器</h2>
 <p>在JQuery里有许多不同的方式来选择元素.从上面的例子展示了如何使用<code>#</code>来在HTML文档里找到<code>id</code>元素.查找类时,你可以使用<code>.</code>,例如:</p>
 <pre><code class="javascript">$(&quot;.ouch&quot;).click( function(event) {
@@ -4193,7 +4299,198 @@ def auto_add_page(request):
     return render(request, 'rango/page_list.html', context_dict)
 </code></pre>
 
+<h1 id="20">20 自动化测试</h1>
+<p>对项目进行测试是一个很好的习惯.许多软件工程师专门负责编写测试来确保软件的健壮性.当然,大多数时候要么是没有时间写,要么是对自己的代码很有自信.</p>
+<p>在<a href="https://docs.djangoproject.com/en/1.7/intro/tutorial05/">Django Tutorial</a>,有许多原因让我们写测试:</p>
+<ul>
+<li>测试将会节省时间: 一个复杂的系统如果进行改动你不知道会在什么地方发生错误.</li>
+<li>测试不仅能发现问题,而且能防止问题出现: 测试可以展示代码里哪里没符合预期.</li>
+<li>测试使你的代码更漂亮:"没有测试的代码是设计的失败",Jacob Kaplan-Moss,一个Django开发者说.</li>
+<li>测试帮助团队合作: 它能确保团队不会轻易的破坏代码.</li>
+</ul>
+<p>通过Pyhton教程 http://docs.python-guide.org/en/latest/writing/tests/ ,当你写测试的时候需要遵循许多规则.下面是一些主要规则.</p>
+<ul>
+<li>测试注重小功能</li>
+<li>测试有明确的目的</li>
+<li>测试是独立的</li>
+<li>在你完成代码,提交代码之前运行测试</li>
+<li>测试代码发布时最好有一个钩子.</li>
+<li>在测试中使用长的描述性的名字.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>在这章我们现在只是提供基础的测试,它只遵循<a href="https://docs.djangoproject.com/en/1.7/intro/tutorial05/">Django Tutorial</a>的一部分.我们希望在将来能添加更多.</p>
 </div>
+<h2 id="201">20.1 运行测试</h2>
+<p>在建立Django应用时就已经有了测试.你可以用下面饿命令:</p>
+<pre><code class="shell">$ python manage.py test rango
+
+Creating test database for alias 'default'...
+
+----------------------------------------------------------------------
+Ran 0 tests in 0.000s
+
+OK
+Destroying test database for alias 'default'...
+</code></pre>
+
+<p>这个命令将会对Rango应用进行测试.现在什么事都没有发生.是因为<code>rango/tests.py</code>只包含了导入语句.每次你创建一个应用,Django都会自动的创建一个test文件来鼓励你写测试.</p>
+<p>这个输出提到了一个叫<code>default</code>的数据库,当你运行测试的时候,会建立一个临时的数据库,你的测试都会运行在它之上.这样的话测试就和你现有的数据库进行分离.</p>
+<h2 id="202">20.2 测试模型</h2>
+<p>好了,让我们建立一个测试.在目录模型,我们希望浏览数不会出现负数,因为浏览数永远不会又负数.为了创建一个测试我们需要在<code>rango/tests.py</code>里添加如下:</p>
+<pre><code class="python">from django.test import TestCase
+
+from rango.models import Category
+
+class CategoryMethodTests(TestCase):
+
+    def test_ensure_views_are_positive(self):
+
+        &quot;&quot;&quot;
+                ensure_views_are_positive should results True for categories where views are zero or positive
+        &quot;&quot;&quot;
+                cat = Category(name='test',views=-1, likes=0)
+                cat.save()
+                self.assertEqual((cat.views &gt;= 0), True)
+</code></pre>
+
+<p>如果你从来没有写过测试,必须注意首先继承自<code>TestCase</code>.在这个类中的方法同样遵循一个习惯就是所有的测试都是以<code>test_</code>开头的,它们同时包含一些<code>assertion</code>.这里我们用<code>assertEqual</code>方法检查数值是否相等,但是其他种类的断言也可以使用.参见Python单元测试文档, https://docs.python.org/2/library/unittest.html (例如,<code>assertItemsEqual</code>, <code>assertListEqual</code>, <code>assertDictEqual</code>等等).Django的测试机制是和Python的分离的,但是仍然提供了一些其他的断言和测试用例.</p>
+<p>现在让我们来运行测试:</p>
+<pre><code class="shell">$ python manage.py test rango
+
+
+Creating test database for alias 'default'...
+F
+======================================================================
+FAIL: test_ensure_views_are_positive (rango.tests.CategoryMethodTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File &quot;/Users/leif/Code/tango_with_django_project_17/rango/tests.py&quot;, line 12, in test_ensure_views_are_positive
+      self.assertEqual((cat.views&gt;=0), True)
+      AssertionError: False != True
+
+      ----------------------------------------------------------------------
+      Ran 1 test in 0.001s
+
+      FAILED (failures=1)
+
+</code></pre>
+
+<p>可以看到测试失败.这是因为模型没有检测这个值是否小于0.为了确保小于0我们需要修改模型.我们需要修改目录模型中<code>save()</code>方法中的代码,它会检查浏览数并且修正它.</p>
+<p>修改完毕你可以运行试试看是否通过,如果没有再试试看.</p>
+<p>让我们添加另一个测试,确保合适的slug行被创建.在<code>rango/tests.py</code>添加如下代码</p>
+<pre><code class="python">def test_slug_line_creation(self):
+             &quot;&quot;&quot;
+             slug_line_creation checks to make sure that when we add a category an appropriate slug line is created
+             i.e. &quot;Random Category String&quot; -&gt; &quot;random-category-string&quot;
+             &quot;&quot;&quot;
+
+             cat = cat('Random Category String')
+             cat.save()
+             self.assertEqual(cat.slug, 'random-category-string')
+</code></pre>
+
+<p>你的代码还好吗?</p>
+<h2 id="203">20.3 测试视图</h2>
+<p>到目前为止我们已经编写了确保模型数据完整的测试.Django还提供了测试视图的测试机制.它会模仿一个内部的客户端并通过url请求Django视图.在这个测试中你可以得到响应(包括html)和上下文字典.</p>
+<p>让我们创建一个测试当目录模型为空时,首页会不会出现<code>There are no categories present</code>.</p>
+<pre><code class="python">from django.core.urlresolvers import reverse
+
+
+class IndexViewTests(TestCase):
+
+    def test_index_view_with_no_categories(self):
+        &quot;&quot;&quot;
+        If no questions exist, an appropriate message should be displayed.
+        &quot;&quot;&quot;
+        response = self.client.get(reverse('index'))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, &quot;There are no categories present.&quot;)
+        self.assertQuerysetEqual(response.context['categories'], [])
+</code></pre>
+
+<p>首先,Django<code>TestCase</code>会活的一个<code>client</code>对象,它可以发送请求.这里它使用<code>reverse</code>函数来查找<code>index</code>页.然后它会获取页面病保存在<code>response</code>里.然后测试会检查下面的内容:页面加载成了吗?html里是否包含"There are no categories present.",上下文字典是否为空.重新调用你的测试尝试一下.</p>
+<p>现在让我们检查一下目录页面得到的结果.</p>
+<pre><code class="python">from rango.models import Category
+
+def add_cat(name, views, likes):
+    c = Category.objects.get_or_create(name=name)[0]
+    c.views = views
+    c.likes = likes
+    c.save()
+    return c
+</code></pre>
+
+<p>然后增加另一个方法<code>class IndexViewTests(TestCase)</code>:</p>
+<pre><code class="python">def test_index_view_with_categories(self):
+    &quot;&quot;&quot;
+    If no questions exist, an appropriate message should be displayed.
+    &quot;&quot;&quot;
+
+    add_cat('test',1,1)
+    add_cat('temp',1,1)
+    add_cat('tmp',1,1)
+    add_cat('tmp test temp',1,1)
+
+    response = self.client.get(reverse('index'))
+    self.assertEqual(response.status_code, 200)
+    self.assertContains(response, &quot;tmp test temp&quot;)
+
+    num_cats =len(response.context['categories'])
+    self.assertEqual(num_cats , 4)
+</code></pre>
+
+<p>在这个测试里,我们在数据库里增加了4个目录,并且检查页面是否加载,文本内容是否包含<code>tmp test temp</code>,目录数量是否等于4.</p>
+<h2 id="204">20.4 测试返回页面</h2>
+<p>TODO</p>
+<h2 id="205">20.5 覆盖测试</h2>
+<p>代码覆盖测试将会检查你的代码有多少被测试到了,并且得到你的代码有多少通过了测试.你可以通过<code>pip install coverage</code>下载<code>coverage</code>包,它可以自动分析代码覆盖了多少.装完<code>coverage</code>运行如下命令:</p>
+<pre><code>$ coverage run --source='.' manage.py test rango
+</code></pre>
+
+<p>它将会运行rango应用所有的测试并收集覆盖数据.查看报告你需要输入:</p>
+<pre><code>$ coverage report
+
+Name                                       Stmts   Miss  Cover
+--------------------------------------------------------------
+manage                                         6      0   100%
+populate                                      33     33     0%
+rango/__init__                                 0      0   100%
+rango/admin                                    7      0   100%
+rango/forms                                   35     35     0%
+rango/migrations/0001_initial                  5      0   100%
+rango/migrations/0002_auto_20141015_1024       5      0   100%
+rango/migrations/0003_category_slug            5      0   100%
+rango/migrations/0004_auto_20141015_1046       5      0   100%
+rango/migrations/0005_userprofile              6      0   100%
+rango/migrations/__init__                      0      0   100%
+rango/models                                  28      3    89%
+rango/tests                                   12      0   100%
+rango/urls                                    12     12     0%
+rango/views                                  110    110     0%
+tango_with_django_project/__init__          0      0   100%
+tango_with_django_project/settings         28      0   100%
+tango_with_django_project/urls              9      9     0%
+tango_with_django_project/wsgi              4      4     0%
+--------------------------------------------------------------
+TOTAL                                        310    206    34%
+</code></pre>
+
+<p>通过报告我们可以看到一些例如<code>rango/views</code>关键部分的代码还没有测试到.查看<code>coveragoe</code>更详尽的使用访问: http://nedbatchelder.com/code/coverage/</p>
+<h2 id="206">20.6 练习</h2>
+<ul>
+<li>我们想要在<code>Page</code>页面添加两个字段,<code>last_visit</code>和<code>first_visit</code>,字段类型为<code>timedate</code>.<ul>
+<li>修改模型加入这两个字段</li>
+<li>修改add page功能和goto功能</li>
+<li>增加测试确保最后访问的第一次访问不在未来的时间里</li>
+<li>增加测试确保上次访问等于或大于第一次访问.</li>
+<li>查看<a href="https://docs.djangoproject.com/en/1.7/intro/tutorial05/">Part Five of the official Django Tutorial</a>来完成这些测试.</li>
+</ul>
+</li>
+<li>查看<a href="http://www.tdd-django-tutorial.com/">tutorial on test driven development by Harry Percival</a></li>
+</ul>
+<h1 id="21_1">21 部署项目</h1>
+<p>在这章我们将一步步知道你如何部署你的Django应用.我们将会把应用部署在<a href="https://www.pythonanywhere.com/">PythonAnywhere</a>,它提供一个在线的IDE和网页主机服务.这个服务提供了网页访问和Bash命令行交互,意味着你可以像访问使用自己的终端一样来使用PythonAnywhere的服务器.现在PythonAnywhere提供了免费的帐号,它提供的内存和CPU足够我们搭建一个Django应用了.</p></div>
             </div>
         </div>
 
