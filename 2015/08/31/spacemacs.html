@@ -147,13 +147,21 @@ $ brew install emacs-mac --with-spacemacs-icon
 
 <p><img src="http://hackerxu.com/img/spacemacs_eyebrowse.png" alt=""></p>
 
-<p>这个有点像tmux管理, 可以在emacs里打开多个窗口, 快捷键前缀主要是<code>&lt;spc&gt; m</code></p>
+<p>这个有点像tmux管理, 可以在emacs里打开多个窗口, 快捷键前缀主要是<code>&lt;spc&gt; W</code></p>
 
 <ul>
 <li>切换<code>&lt;spc&gt; W 数字/TAB</code></li>
-<li>关闭<code>&lt;spc&gt; w c</code></li>
+<li>删除<code>&lt;spc&gt; W c</code></li>
+<li>创建标签<code>&lt;spc&gt; W r</code></li>
+</ul>
+
+<p>还有另外的窗口划分功能, 前缀是<code>&lt;spc&gt; w</code></p>
+
+<ul>
 <li>分屏<code>&lt;spc&gt; w v/s</code></li>
+<li>关闭<code>&lt;spc&gt; w c</code></li>
 <li>切换屏幕焦点<code>&lt;spc&gt; w h/j/k/l</code></li>
+<li>或者可以直接<code>&lt;spc&gt; 1/2/3/4</code>选择窗口</li>
 </ul>
 
 <h3>2.7 shell</h3>
@@ -186,11 +194,20 @@ $ brew install emacs-mac --with-spacemacs-icon
 <ul>
 <li><code>&lt;spc&gt; l</code> 快速行跳转(比行号要快)</li>
 <li><code>&lt;spc&gt; &lt;spc&gt;</code>快速位置跳转</li>
+<li><code>&lt;spc&gt; \</code>`回到原来跳转的位置</li>
 </ul>
 
 <h3>3.2 neotree</h3>
 
 <p><img src="http://hackerxu.com/img/spacemacs_neotree.png" alt=""></p>
+
+<ul>
+<li>打开/关闭隐藏文件<code>s</code></li>
+<li>删除节点<code>d</code></li>
+<li>重命名节点<code>r</code></li>
+<li>打开节点<code>l</code>或者<code>RET</code></li>
+<li><code>h/l</code>打开关闭目录节点</li>
+</ul>
 
 <p>就是左边的文件树, 真心比vim的强不少, 打开的快捷键是<code>&lt;spc&gt; f t</code>, 后来发现这个插件是我们大boss写的, 具体的wiki在这里 <a href="http://www.emacswiki.org/emacs/NeoTree_%E4%B8%AD%E6%96%87wiki">http://www.emacswiki.org/emacs/NeoTree_%E4%B8%AD%E6%96%87wiki</a></p>
 
@@ -216,7 +233,23 @@ $ brew install emacs-mac --with-spacemacs-icon
 
 <p>还有好多在这里 <a href="https://github.com/syl20bnr/spacemacs/tree/master/contrib/!source-control/git">https://github.com/syl20bnr/spacemacs/tree/master/contrib/!source-control/git</a> , 其实这个git功能真的和pycharm不能比啊</p>
 
-<h3>3.6 python</h3>
+<h3>3.6 文件操作</h3>
+
+<p>这里spacemacs使用了dired</p>
+
+<ul>
+<li><code>C-x C-j</code>或者<code>&lt;spc&gt; f j</code>打开当前文件目录,
+** <code>D</code>删除文件
+** <code>RET</code>或者<code>a</code>打开文件
+** <code>R</code>重命名文件
+** <code>+</code>创建子目录
+** <code>g</code>刷新</li>
+<li>用外部程序打开当前文件<code>&lt;spc&gt; f o</code></li>
+<li>重命名当前文件<code>&lt;spc&gt; f R</code></li>
+<li>删除当前文件<code>&lt;spc&gt; f D</code></li>
+</ul>
+
+<h3>3.7 python</h3>
 
 <p>增加python插件</p>
 
@@ -229,8 +262,59 @@ $ brew install emacs-mac --with-spacemacs-icon
 <li><code>&lt;spc&gt; m h h</code>查询文档, <code>&lt;spc&gt; m h d</code>查询</li>
 <li><code>&lt;spc&gt; m r i</code>删除没有引用的import</li>
 <li>执行当前文件的两个命令<code>&lt;spc&gt; m c c/C</code></li>
-<li>查看当前函数在哪里引用<code>option r</code></li>
+<li>查看当前函数在哪里引用<code>alt r</code></li>
 </ul>
+
+<h3>3.8 bookmarks</h3>
+
+<p>bookmarks是spacemacs自带的, 可以迅速定位标记的文件, 它可以永久保存</p>
+
+<p>启用的快捷键是<code>&lt;spc&gt; h b</code></p>
+
+<ul>
+<li>删除书签<code>C-d</code></li>
+<li>编辑书签<code>C-e</code></li>
+<li>在另一个窗口打开书签<code>C-o</code></li>
+</ul>
+
+<h3>3.9 搜索</h3>
+
+<p>我这里用的ag, 推荐大家使用, 它比ack快一点点</p>
+
+<p>搜索内容:</p>
+
+<ul>
+<li>和使用vim一样在本文件搜索<code>/</code></li>
+<li>在项目里智能搜索<code>&lt;spc&gt; /</code></li>
+<li>在所有打开的buffer里搜索<code>&lt;spc&gt; s b</code></li>
+</ul>
+
+<p>搜索文件名:</p>
+
+<ul>
+<li>在当前目录里搜索文件名<code>&lt;spc&gt; s f</code>, 其实等价于<code>&lt;spc&gt; f f</code></li>
+<li>最近打开的文件<code>&lt;spc&gt; f r</code></li>
+</ul>
+
+<h3>3.10 多光标编辑</h3>
+
+<p>需要进入iedit模式, 此时光标变成红色, 步骤如下:</p>
+
+<ol>
+<li>用vim的visul模式选取要replace的值</li>
+<li>按<code>&lt;spc&gt; s e</code>选取全部的匹配值(暂时不知怎么自定义选取)</li>
+<li>按<code>S</code>对值删除并进行修改</li>
+<li>按<code>ESC ESC</code>退出</li>
+</ol>
+
+<h3>3.11 注释</h3>
+
+<ul>
+<li>注释行<code>&lt;spc&gt; c l</code></li>
+<li><code>&lt;spc&gt; c y</code>这个比较有用, 注释的同时并且复制相同的一份</li>
+</ul>
+
+<p>文档里给出了注释块的快捷方法<code>SPC ; SPC l</code>, 其实对于vimer来说使用visul模式选取并用<code>&lt;spc&gt; c l</code>注释或许是更好的方法.</p>
 
     </article>
     <!-- Duoshuo Comment BEGIN -->
