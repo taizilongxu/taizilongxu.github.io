@@ -7,6 +7,18 @@
         <atom:link href="http://hackerxu.com/feed.xml" rel="self" type="application/rss+xml" />
         
             <item>
+                <title>中国孩子</title>
+                        
+                
+                    <description>&lt;p&gt;&lt;img src=&quot;http://hackerxu.com/img/chinese.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</description>
+                
+                <pubDate>Sun, 13 Sep 2015 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2015/09/13/chinese.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2015/09/13/chinese.html</guid>
+            </item>
+        
+            <item>
                 <title>使用spacemacs从vim无缝过度到emacs</title>
                         
                 
@@ -112,18 +124,6 @@
                 <pubDate>Sat, 25 Apr 2015 00:00:00 +0800</pubDate>
                 <link>http://hackerxu.com/2015/04/25/rake_test.html</link>
                 <guid isPermaLink="true">http://hackerxu.com/2015/04/25/rake_test.html</guid>
-            </item>
-        
-            <item>
-                <title>我们的征程是星辰大海</title>
-                        
-                
-                    <description>&lt;p&gt;开题,面试,well done!&lt;/p&gt;
-</description>
-                
-                <pubDate>Sat, 25 Apr 2015 00:00:00 +0800</pubDate>
-                <link>http://hackerxu.com/2015/04/25/life-start.html</link>
-                <guid isPermaLink="true">http://hackerxu.com/2015/04/25/life-start.html</guid>
             </item>
         
     </channel>
