@@ -7,6 +7,18 @@
         <atom:link href="http://hackerxu.com/feed.xml" rel="self" type="application/rss+xml" />
         
             <item>
+                <title>众里寻他千百度</title>
+                        
+                
+                    <description>&lt;p&gt;&lt;img src=&quot;http://hackerxu.com/img/baidu.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</description>
+                
+                <pubDate>Mon, 21 Sep 2015 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2015/09/21/baidu.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2015/09/21/baidu.html</guid>
+            </item>
+        
+            <item>
                 <title>中国孩子</title>
                         
                 
@@ -112,18 +124,6 @@
                 <pubDate>Wed, 29 Apr 2015 00:00:00 +0800</pubDate>
                 <link>http://hackerxu.com/2015/04/29/sketch.html</link>
                 <guid isPermaLink="true">http://hackerxu.com/2015/04/29/sketch.html</guid>
-            </item>
-        
-            <item>
-                <title>jekyll自动化</title>
-                        
-                
-                    <description>&lt;p&gt;看同学用过hexo,发布和写文章都比较省事,自己使用了一年jekyll还是用git的老方法,今天鼓捣了以下jekyll,网上也搜了瘦,简化一下发布流程.&lt;/p&gt;
-</description>
-                
-                <pubDate>Sat, 25 Apr 2015 00:00:00 +0800</pubDate>
-                <link>http://hackerxu.com/2015/04/25/rake_test.html</link>
-                <guid isPermaLink="true">http://hackerxu.com/2015/04/25/rake_test.html</guid>
             </item>
         
     </channel>
