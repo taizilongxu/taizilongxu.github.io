@@ -6,12 +6,12 @@
 <meta name="google-site-verification" content="5KH7Y5MF1c9GbPNQ94CEej-1YkeHortoXv7fjiWt7hM" />
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Hackerxu's Blog</title>
+<title>关于文件编码的总结</title>
 <link rel="shortcut icon" href=" /img/github.ico"/>
 <link rel="bookmark" href="/img/github.ico"/>
 <meta name="viewport" content="width=device-width">
 <meta name="description" content="Python,HTML,CSS,Machine Leaning">
-<link rel="canonical" href="http://hackerxu.com/">
+<link rel="canonical" href="http://hackerxu.com/2015/10/18/unicode.html">
 <!-- Custom CSS -->
 <link rel="stylesheet" href="/css/main.css">
 <link rel="stylesheet" href="/css/github.css">
@@ -79,66 +79,100 @@ ga('send', 'pageview');
 
         <div class="page-content">
             <div class="wrap">
-                <div class="home">
-  
-  <header class="post-header">
-    <h1><a href="/2015/10/05/guoqing.html">国庆七天宅</a></h1>
-    <p class="meta"><i class="fa fa-calendar"></i> 2015-10-05&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#life">life</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#life">life</a></p>
-  </header>
-  <article class="post-content">
-  <p>推荐一首歌 纣王的 &lt;涩&gt;</p>
+                <div class="post">
+    <header class="post-header">
+        <h1><a href="/2015/10/18/unicode.html">关于文件编码的总结</a></h1>
+        <p class="meta"><i class="fa fa-calendar"></i> 2015-10-18&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#python">python</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#unicode,">unicode,</a>&nbsp<a href="/tags/#python">python</a></p>
+    </header>
+    <article class="post-content">
+        <p>最近在弄一些数据处理, 用python生成csv文件, 但是excel每次打开都是乱码, 后来查到excel并不支持UTF-8编码, 必须转换成其他编码才能解析, 其实python的编码问题也是每个人都会碰到的问题, 以前也是一知半解, 所以今天特地总结一下, 一些基础知识也不赘述了, 主要是了解以下几个问题:</p>
 
-<p>十一没有回家, 在北京宅着, 不过也好. 对于凑热闹这种行为真的不太感冒.</p>
+<ol>
+<li>编辑器如何知道文件编码的?(限于linux或者mac系统, windows会在文件系统保存文件编码的信息)</li>
+<li>python编码的内部机制</li>
+</ol>
 
-<p>晚上出去买烟, 过路口的时候发现特别像家里的一高下的路口, 瞬间有点失落, 雾蒙蒙的京城, 似乎太不近人情, 这里没有家乡的安逸, 没有小城市的悠闲, 没有几个无话不说的兄弟, 这种清冷或许是我置身事外的假象吧.</p>
+<h3>1 编辑器如何知道文件编码</h3>
 
-<p>我其实过得并不好, 只不过给人一种向上的姿态罢了.</p>
+<p>这里需要了解一下unicode是一套标准, 相当于一个map, 一个unicode编码对应一个唯一的字符, 而像UTF-8是一种编码, 相当于一套映射<code>f(unicode) = UTF-8</code>.</p>
 
-<p>li跟我说你为什么要到大城市, 放下安逸的生活去北京?</p>
+<p>具体的假如我们有一个只保存test字符串的文件, 看一下在不同编码下的二进制字节</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">UTF-8
+74 65 73 74
 
-<p>Aye, fight and you may die, run, and you‘ll live... at least a while. And dying in your beds,
-many years from now, would you be willin‘ to trade all of that from this day to that,
-for one chance, just one chance, to come back here and tell our enemies that they may take away our lives, but they‘ll never take our freedom. </p>
+UTF-8 with BOM
+EF BB BF 74 65 73 74
 
-<p>当在青黄不接的某个年纪我突然意识到了我们是不是缺了点什么, 对, 是信仰, 但是这个大好社会真的不需要信仰, 人们勤勤恳恳, 欣欣向荣, 你要是跟我谈共产主义, 哦 对,那确实是信仰.</p>
+UTF-16 LE
+74 00 65 00 73 00 74 00
 
-<p>我们生长在同一片土地, 汲取同样的营养, 我们有相同的肤色, 唯一不同的是我们的思想.</p>
+UTF-16 LE with BOM
+FF FE 74 65 73 74
 
-<p>编程就像是创作一样, 一个个文件写满代码, 像是一篇篇文章, 像是一章章乐谱.</p>
+UTF-16 BE
+00 74 65 00 73 00 74 00
 
-<p>任何感同身受都是一个伪命题, 因为你不知道当你面临死亡时有多恐怖, 你是否会为每天的碌碌无为而羞愧呢, 你是否在垂垂老矣时后悔当年的自己, 大卫芬奇在&lt;搏击俱乐部&gt;里告诉我们, 你应当感谢死亡, 它让我们正视自己的人生.</p>
+UTF-16 BE with BOM
+FE FF 00 74 65 00 73 00 74 00
+</code></pre></div>
+<p>这个BOM就是定义大小端问题而产生的, 所以系统可以通过BOM的值来确定大小端的问题.</p>
 
-<p>当你认为你做的事情是浪费生命的时候, 人生也许没有那么乐观了.</p>
+<p>而为什么会有大小端的问题呢, 就是因为UTF编码的不同方式.</p>
 
-<p>好了, 上面就是我的答案. 而北京有我要的一切.</p>
+<p>这个不在赘述UTF如何编码了, 重点在我们平常的文件格式一般是UTF-8, 而编辑器读取我猜测是与系统环境变量有关的, 比如我的系统环境默认是UTF-8, 所以编辑器会以UTF-8的编码格式打开文件(这里我测试了下, 如果代码保存成UTF-16的编码的话终端显示为乱码)</p>
 
-  </article>
-  
+<p>剩下的问题就是为什么UTF-8格式没有大小端的问题?</p>
 
-  <ul class="posts">
-    <!-- <li class="listing-seperator">Yesterday you said tomorrow</li> -->
-  
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2015-10-18">2015-10-18</time>
-      <a href="/2015/10/18/unicode.html" title="关于文件编码的总结">关于文件编码的总结</a>
-    </li>
-  
-    
-    
-    <li class="listing-item">
-      <time datetime="2015-10-05">2015-10-05</time>
-      <a href="/2015/10/05/guoqing.html" title="国庆七天宅">国庆七天宅</a>
-    </li>
-  
-    
-    
-    
-    <li class="listing-seperator"><a href="/archive/">Long ago</a></li>
-  </ul>
+<p>UTF-8的格式如下:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">0xxxxxxx
+110xxxxx 10xxxxxx
+1110xxxx 10xxxxxx 10xxxxxx
+11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
+</code></pre></div>
+<p>可以看出来UTF-8的规律, 如果首字节以0开头，肯定是单字节编码，如果以110开头，肯定是双字节编码，如果是1110开头，肯定是三字节编码，以此类推. 所以在读取文件的时候通过头位(<code>0</code>, <code>110</code>, <code>1110</code>)就可以判断字符了, 不用大小端的标记了, 而UTF-16字符就不一样了因为<code>74 00</code>和<code>00 74</code>无法判断了.</p>
 
+<h3>2 python编码机制</h3>
+
+<p>python的编码机制总是默认以ascII码来解析的, 并把它转化为unicode.</p>
+
+<p>当我们正确的得到文件二进制形式的时候(比如<code>74 65 73 74</code>)会以ASCII码的形式转换为unicode, 因为UTF-8的编码兼容ASCII, 所以<code>74 65 73 74</code>转化为unicode的时候依然为<code>74 65 73 74</code>, 但是当我们在python文件中(不管是注释还是字符串里)加入中文字符(随便举个栗子<code>E6 B1 11</code>), 这里<code>E6 B1</code>因为都不在ASCII范围内所以会引起如下喜闻乐见的异常:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="ne">UnicodeDecodeError</span><span class="p">:</span> <span class="s">&#39;ascii&#39;</span> <span class="n">codec</span> <span class="n">can</span><span class="s">&#39;t decode byte 0xe4 in position 0: ordinal not in range(128)</span>
+</code></pre></div>
+<p>还记得通常我们在头部添加的<code>#coding=utf-8</code>吗, 它就是要告诉python解析器不要用ASCII解码, 而是用UTF-8的编码来解码.</p>
+
+<h3>3 栗子</h3>
+
+<h4>1</h4>
+
+<p>以下程序会报错</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># coding=utf-8</span>
+<span class="k">print</span> <span class="s">u&#39;我&#39;</span>
+
+<span class="n">output</span><span class="p">:</span>
+<span class="ne">UnicodeEncodeError</span><span class="p">:</span> <span class="s">&#39;ascii&#39;</span> <span class="n">codec</span> <span class="n">can</span><span class="s">&#39;t encode character u&#39;</span>\<span class="n">u6211</span><span class="s">&#39; in position 0: ordinal not in range(128)</span>
+</code></pre></div>
+<p>这是为什么呢? 因为虽然我们定义了文件的UTF-8, 但是当python碰到<code>u</code>这个转义字符的时候依然会用默认的ASCII编码方式转换为unicode, <a href="http://blog.csdn.net/liuxingen/article/details/48930527">http://blog.csdn.net/liuxingen/article/details/48930527</a> 这里有详尽的解释.</p>
+
+<p>也就是说整个文件已经被翻译成unicode了, 但是<code>字符串字面值会被转换成Unicode来做语法分析，然后在解释开始之前被转换回它们初始的编码。</code>也就是说在解析print的字符串之前会转换为默认(UTF-8)的形式, 但是因为sys.getdefaultencoding(), 也就是说解析器会把UTF-8编码转为unicode, 可以知道默认编码仍为ASCII, 所以会报错.</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># coding=utf-8</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="k">print</span> <span class="n">sys</span><span class="o">.</span><span class="n">getdefaultencoding</span><span class="p">()</span>
+<span class="nb">reload</span><span class="p">(</span><span class="n">sys</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">setdefaultencoding</span><span class="p">(</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">sys</span><span class="o">.</span><span class="n">getdefaultencoding</span><span class="p">()</span>
+<span class="k">print</span> <span class="s">u&#39;我&#39;</span>
+
+<span class="n">output</span><span class="p">:</span>
+<span class="n">ascii</span>
+<span class="n">utf</span><span class="o">-</span><span class="mi">8</span>
+<span class="err">我</span>
+</code></pre></div>
+    </article>
+    <!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/2015/10/18/unicode"  data-title="关于文件编码的总结 - Hackerxu's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
 </div>
 
             </div>

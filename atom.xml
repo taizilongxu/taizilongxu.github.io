@@ -7,6 +7,18 @@
         <atom:link href="http://hackerxu.com/feed.xml" rel="self" type="application/rss+xml" />
         
             <item>
+                <title>关于文件编码的总结</title>
+                        
+                
+                    <description>&lt;p&gt;最近在弄一些数据处理, 用python生成csv文件, 但是excel每次打开都是乱码, 后来查到excel并不支持UTF-8编码, 必须转换成其他编码才能解析, 其实python的编码问题也是每个人都会碰到的问题, 以前也是一知半解, 所以今天特地总结一下, 一些基础知识也不赘述了, 主要是了解以下几个问题:&lt;/p&gt;
+</description>
+                
+                <pubDate>Sun, 18 Oct 2015 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2015/10/18/unicode.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2015/10/18/unicode.html</guid>
+            </item>
+        
+            <item>
                 <title>国庆七天宅</title>
                         
                 
@@ -112,18 +124,6 @@
                 <pubDate>Sun, 10 May 2015 00:00:00 +0800</pubDate>
                 <link>http://hackerxu.com/2015/05/10/flask011.html</link>
                 <guid isPermaLink="true">http://hackerxu.com/2015/05/10/flask011.html</guid>
-            </item>
-        
-            <item>
-                <title>使用ipdb调试python</title>
-                        
-                
-                    <description>&lt;p&gt;以前都是用print或者log来调试程序,在小规模的程序下很方便,但是最近在研究Flask0.1的代码,对于不熟悉的代码最好的方式是一边运行一边检查里面的变量和方法,搜了搜发现了ipdb这个好东西.&lt;/p&gt;
-</description>
-                
-                <pubDate>Sat, 09 May 2015 00:00:00 +0800</pubDate>
-                <link>http://hackerxu.com/2015/05/09/ipdbpython.html</link>
-                <guid isPermaLink="true">http://hackerxu.com/2015/05/09/ipdbpython.html</guid>
             </item>
         
     </channel>
