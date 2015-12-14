@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<!-- 手机端页面 -->
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="google-site-verification" content="5KH7Y5MF1c9GbPNQ94CEej-1YkeHortoXv7fjiWt7hM" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>apt-get 命令原理</title>
+<link rel="shortcut icon" href=" /img/github.ico"/>
+<link rel="bookmark" href="/img/github.ico"/>
+<meta name="viewport" content="width=device-width">
+<meta name="description" content="Python,HTML,CSS,Machine Leaning">
+<link rel="canonical" href="http://hackerxu.com/2014/12/03/apt_get.html">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/github.css">
+<!-- 返回顶部 -->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="/js/jquery.js"></script>
+<script src="/js/function_about.js"></script>
+<!--  -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-60393522-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+</head>
+
+    <body>
+        <header class="site-header">
+    <div class="wrap">
+        <a class="site-title" href="/"><h1><strong> <font style="color:#39B3D7" >L</font><font style="color:#ED9C28">i</font><font style="color:#47A447">m</font><font style="color:#D9534F">b</font><font style="color:#3276B1">o</font>
+                </strong>
+        </h1></a>
+        <nav class="site-nav">
+            <a href="#" class="menu-icon">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+                    <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+                    h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                    <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+                    h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                    <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+                    c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                </svg>
+            </a>
+            <div class="trigger">
+                
+                
+                <a class="page-link" href="/about/">About</a>
+                
+                
+                
+                <a class="page-link" href="/archive/">Archive</a>
+                
+                
+                
+                <a class="page-link" href="/categories/">Categories</a>
+                
+                
+                
+                <a class="page-link" href="/tags/">Tags</a>
+                
+                
+                
+                <a class="page-link" href="/atom.xml">Rss</a>
+                
+                
+            </div>
+        </nav>
+    </div>
+</header>
+
+        <div class="page-content">
+            <div class="wrap">
+                <div class="post">
+    <header class="post-header">
+        <h1><a href="/2014/12/03/apt_get.html">apt-get 命令原理</a></h1>
+        <p class="meta"><i class="fa fa-calendar"></i> 2014-12-03&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#linux">linux</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#linux">linux</a></p>
+    </header>
+    <article class="post-content">
+        <h2>apt-get工作顺序</h2>
+
+<h3>1 查询源列表</h3>
+
+<p>apt命令会访问<code>/etc/apt/sources.list</code>源列表.(这个源列表可以添加好多源,每次都选中开头的有效源)</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">deb http://mirror.neu.edu.cn/ubuntu/(网址) trusty main restricted   (版本号)
+</code></pre></div>
+<p>我的这个是东大的源.</p>
+
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-12-04%2010:20:50%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
+
+<h3>2 查询Packages.gz</h3>
+
+<p>Main 的包的相关信息均在 dists/lucid/main/binary-i386/下。不是把包放在这里就行了，还需要生成Packages.gz的包文件，因为apt-get 每次都会读取这个文件，从而获取的包的信息。</p>
+
+<p>从Packages.gz中获取到所有包的信息，然后apt-get就可以通过它找到所有的包并且自动下载安装了。</p>
+
+<p>来看看Packages.gz都有什么吧(下面是python包的信息):</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Package: python
+Priority: important
+Section: python
+Installed-Size: 640
+Maintainer: Ubuntu Developers &lt;ubuntu-devel-discuss@lists.ubuntu.com&gt;
+Original-Maintainer: Matthias Klose &lt;doko@debian.org&gt;
+Architecture: all
+Source: python-defaults
+Version: 2.6.5-0ubuntu1
+Replaces: python-base, python-xmlbase, python2.3 (&lt;= 2.3.2-6)
+Provides: python-ctypes, python-email, python-plistlib, python-wsgiref, python-xmlbase
+Depends: python2.6 (&gt;= 2.6.5), python-minimal (= 2.6.5-0ubuntu1)
+Suggests: python-doc (&gt;= 2.6.5-0ubuntu1), python-tk (&gt;= 2.6.5-0ubuntu1), python-profiler (&gt;= 2.6.5-0ubuntu1)
+Conflicts: libboost-dbg (&lt;&lt; 1.34.1-15ubuntu3), libboost-python-dev (&lt;&lt; 1.34.1-15ubuntu3), libboost-python1.35-dev (&lt;&lt; 1.35.0-8ubuntu5), libboost1.35-dbg (&lt;&lt; 1.35.0-8ubuntu5), pitivi (&lt;&lt; 0.11.3-1ubuntu1), python-aubio (&lt;&lt; 0.3.2-2ubuntu3), python-base, python-bz2, python-central (&lt;&lt; 0.5.5), python-csv, python-freevo (&lt;&lt; 1.8.1-3ubuntu3), python-xmlbase, python2.1 (&lt;= 2.1.2), python2.3 (&lt;&lt; 2.3.5-14), qmtest (&lt;&lt; 2.4-5ubuntu1), ufw (&lt;&lt; 0.27~r416)
+Filename: pool/main/p/python-defaults/python_2.6.5-0ubuntu1_all.deb
+Size: 147766
+MD5sum: 457b6f467e45287b8430833ec7d2f9ec
+SHA1: 3d67dd0ebf003ede05dbae034616c1f519ea5962
+SHA256: 5aa5086459e04815980329b66f430321cf490d7d37c9550e30d43125dd2dc5fc
+Description: An interactive high-level object-oriented language (default version)
+ Python, the high-level, interactive object oriented language,
+ includes an extensive class library with lots of goodies for
+ network programming, system administration, sounds and graphics.
+ .
+ This package is a dependency package, which depends on Debian&#39;s default
+ Python version (currently v2.6).
+Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+Origin: Ubuntu
+Supported: 5y
+Task: minimal
+</code></pre></div>
+<p>包含的信息有：  </p>
+
+<p>包名，优先级，类型，维护者，架构，源文件（source），版本号，依赖包，冲突性信息，包大小，文件的下载路径，MD5sum，SHA1，包描述，Xul-Appid---应用程序id，Bugs信息，Origin，Supported </p>
+
+<p>从以上可以看到包的下载地址为:    </p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">(http://mirror.neu.edu.cn/ubuntu/)pool/main/p/python-defaults/python_2.6.5-0ubuntu1_all.deb
+</code></pre></div>
+<h3>3 下载包或者依赖</h3>
+
+<p>它会首先检查依赖,如果不存在则下载依赖包,这个依赖包或许还有依赖(递归下载),在完成了所有依赖包则可以进行下载,安装完成,中间任意一环没有完成则失败退出.这就是整个过程啦.</p>
+
+<h2>总结</h2>
+
+<ol>
+<li>更新Packages.gz解析安装包所依赖的文件</li>
+<li>根据1的结果检查是否所需要的依赖都已经安装，假设没有安装，则下载（应该有自己的下载功能）这些依赖并进行安装,这个过程中会对每个依赖重复1、2这两个过程</li>
+<li>解决依赖关系，下载指定软件并安装,2、3中如果找不到软件或者库，则失败.</li>
+</ol>
+
+<p>Packages.gz已经包含所有所依赖的软件及其版本信息、以及下载地址.</p>
+
+<h2>apt-get常用命令</h2>
+
+<ul>
+<li>sudo apt-get install package 安装包</li>
+<li>sudo apt-get remove package 删除包</li>
+<li>sudo apt-get update  更新源</li>
+<li>sudo apt-get upgrade 更新已安装的包</li>
+<li>apt-get source package  下载该包的源代码</li>
+</ul>
+
+<p>还有一些命令:</p>
+
+<ul>
+<li>apt-cache search package 搜索软件包</li>
+<li>apt-cache show package  获取包的相关信息，如说明、大小、版本等</li>
+<li>sudo apt-get install package --reinstall   重新安装包</li>
+<li>sudo apt-get -f install   修复安装</li>
+<li>sudo apt-get remove package --purge 删除包，包括配置文件等</li>
+<li>sudo apt-get dist-upgrade 升级系统</li>
+<li>apt-cache depends package 了解使用该包依赖那些包</li>
+<li>apt-cache rdepends package 查看该包被哪些包依赖</li>
+<li>sudo apt-get build-dep package 安装相关的编译环境</li>
+<li>sudo apt-get clean &amp;&amp; sudo apt-get autoclean 清理无用的包</li>
+<li>sudo apt-get check 检查是否有损坏的依赖</li>
+</ul>
+
+    </article>
+    <!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/2014/12/03/apt_get"  data-title="apt-get 命令原理 - Hackerxu's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
+</div>
+
+            </div>
+        </div>
+        <footer class="site-footer">
+
+    <div class="wrap">
+        <div class="footer-col-1 column">
+            <div class="github">
+                <!-- <span class="icon github"> -->
+                <svg version="1.1" class="github-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                    <path fill-rule="evenodd" clip-rule="evenodd" fill="#000" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761
+                    c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32
+                    c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472
+                    c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037
+                    C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65
+                    c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261
+                    c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082
+                    c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129
+                    c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+                <!-- </span> -->
+            </div>
+            <a href="https://github.com/taizilongxu">
+                Fork me on github
+            </a>
+        </div>
+        <div class="footer-col-2">
+            <p>© 2014 - 2015 by <font style="color:#f44336">❤ </font> <a href="http://github.com/taizilongxu">Hackerxu</a></p>
+        </div>
+        <!-- <div class="footer-col-3 column">
+      <p class="text">Python,HTML,CSS,Machine Leaning</p>
+    </div> -->
+    </div>
+    <div class="scroll-top"><i class="fa fa-arrow-circle-up"></i></div>
+</footer>
+
+
+        <!-- mathjax -->
+        <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+        </script>
+        <script type="text/javascript"
+                src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        </script>
+        <!-- highlight -->
+        <script src="/js/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <!-- pleace change it! -->
+        <script type="text/javascript">
+var duoshuoQuery = {short_name:"taizilongxu"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+        </script>
+        <!-- top-scrooll -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.js"></script>
+        <script type="text/javascript">
+$(window).scroll(function() {
+    if($(this).scrollTop() > 100) {
+        $('.scroll-top').fadeIn(200);
+    } else {
+        $('.scroll-top').fadeOut(200);
+    }
+});
+$('.scroll-top').bind('click', function(e) {
+    e.preventDefault();
+    $('body,html').animate({scrollTop:0},200);
+});
+        </script>
+    </body>
+</html>
