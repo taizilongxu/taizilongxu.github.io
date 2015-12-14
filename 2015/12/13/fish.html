@@ -89,6 +89,61 @@ ga('send', 'pageview');
 
 <p><img src="http://hackerxu.com/img/fish1.png" alt=""></p>
 
+<h2>1 fish和zsh对比</h2>
+
+<table><thead>
+<tr>
+<th style="text-align: left"></th>
+<th style="text-align: left">优点</th>
+<th style="text-align: left">缺点</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">zsh</td>
+<td style="text-align: left">插件众多, 社区活跃</td>
+<td style="text-align: left">慢</td>
+</tr>
+<tr>
+<td style="text-align: left">fish</td>
+<td style="text-align: left">快, 基本上安装上即可使用, 不太用配置</td>
+<td style="text-align: left">不兼容bash</td>
+</tr>
+</tbody></table>
+
+<p>其实作为shell, 我只是需要以下的几个功能, 而fish完全符合我的需求饿, 至于alias的自己配置就好:</p>
+
+<ol>
+<li>autosuggestions</li>
+<li>cd <code>Tab</code></li>
+<li>autojump</li>
+<li>git branch...</li>
+<li>history</li>
+<li>themes</li>
+</ol>
+
+<h2>2 安装fish和oh-my-fish</h2>
+
+<p>oh-myfish对于fish犹如oh-my-zsh对于zsh一样, fish和oh-my-fish在Github里有详细的安装方法</p>
+
+<p>下面是配置文件的位置:</p>
+
+<ol>
+<li><code>~/.config/fish/config.fish</code> fish的原始配置</li>
+<li><code>/Users/limbo/.local/share/omf</code> oh-my-fish的安装目录</li>
+<li><code>~/.config/omf/</code> oh-my-fish的配置</li>
+</ol>
+
+<p>其中oh-my-fish配置里又有下面四个文件:</p>
+
+<ul>
+<li>theme - 当前主题</li>
+<li>bundle - 显示当前已安装的插件/主题列表</li>
+<li>init.fish - shell开始后执行的自定义脚本</li>
+<li>before.init.fish - shell开始前执行的自定义脚本</li>
+</ul>
+
+<p>oh-my-fish和oh-my-zsh不一样的是他提供类似插件管理的命令, 类似<code>brew</code>或者<code>pip</code>一样通过命令就可以管理插件和theme, 非常的方便</p>
+
     </article>
     <!-- Duoshuo Comment BEGIN -->
     <div id="comments">
