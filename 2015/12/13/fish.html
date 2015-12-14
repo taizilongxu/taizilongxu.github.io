@@ -144,6 +144,40 @@ ga('send', 'pageview');
 
 <p>oh-my-fish和oh-my-zsh不一样的是他提供类似插件管理的命令, 类似<code>brew</code>或者<code>pip</code>一样通过命令就可以管理插件和theme, 非常的方便</p>
 
+<h2>3 关于bash转fish之后的一些语法修改</h2>
+
+<h3>3.1 PATH</h3>
+
+<p>原来PATH只要这么写:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">export PATH=&quot;/usr/local/bin:$PATH&quot;
+</code></pre></div>
+<p>在fish里需要这么写:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">set PATH $PATH /usr/local/bin
+</code></pre></div>
+<h3>3.2 alias</h3>
+
+<p>bash里这么写:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">alias rm=&quot;trash-put&quot;
+</code></pre></div>
+<p>fish里这么写:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">alias rm &quot;trash-put&quot;
+或者
+function rm
+    trash-put
+end
+</code></pre></div>
+<h2>4 在web端配置fish</h2>
+
+<p>fish里内置web接口, 可以用<code>fish_config</code>打开web端进行设置</p>
+
+<p><img src="http://hackerxu.com/img/fish2.png" alt=""></p>
+
+<h2>5 插件介绍</h2>
+
+<p>虽然oh-my-fish的插件和oh-my-zsh插件数量上相差甚远, 但大致浏览下挑几个比较实用的插件</p>
+
+<p>如要安装直接输入<code>ofm install + 插件名</code></p>
+
     </article>
     <!-- Duoshuo Comment BEGIN -->
     <div id="comments">
