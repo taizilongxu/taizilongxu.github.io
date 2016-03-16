@@ -7,6 +7,29 @@
         <atom:link href="http://hackerxu.com/feed.xml" rel="self" type="application/rss+xml" />
         
             <item>
+                <title>test</title>
+                        
+                
+                    <description></description>
+                
+                <pubDate>Wed, 16 Mar 2016 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2016/03/16/test.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2016/03/16/test.html</guid>
+            </item>
+        
+            <item>
+                <title>白银饭店</title>
+                        
+                
+                    <description>&lt;p&gt;&lt;img src=&quot;http://hackerxu.com/img/baiyinfandian.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</description>
+                
+                <pubDate>Wed, 16 Mar 2016 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2016/03/16/baiyinfandian.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2016/03/16/baiyinfandian.html</guid>
+            </item>
+        
+            <item>
                 <title>zsh转fish</title>
                         
                 
@@ -100,30 +123,6 @@
                 <pubDate>Mon, 31 Aug 2015 00:00:00 +0800</pubDate>
                 <link>http://hackerxu.com/2015/08/31/captain_america.html</link>
                 <guid isPermaLink="true">http://hackerxu.com/2015/08/31/captain_america.html</guid>
-            </item>
-        
-            <item>
-                <title>无所事事的好青年</title>
-                        
-                
-                    <description>&lt;p&gt;&lt;img src=&quot;/img/nanfangguniang.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-</description>
-                
-                <pubDate>Sat, 11 Jul 2015 00:00:00 +0800</pubDate>
-                <link>http://hackerxu.com/2015/07/11/nanfang.html</link>
-                <guid isPermaLink="true">http://hackerxu.com/2015/07/11/nanfang.html</guid>
-            </item>
-        
-            <item>
-                <title>playwithlinux</title>
-                        
-                
-                    <description>&lt;p&gt;不知不觉实习一个月啦,好久没有更了.每天都是9点去,9点回.&lt;/p&gt;
-</description>
-                
-                <pubDate>Fri, 26 Jun 2015 00:00:00 +0800</pubDate>
-                <link>http://hackerxu.com/2015/06/26/playwithlinux.html</link>
-                <guid isPermaLink="true">http://hackerxu.com/2015/06/26/playwithlinux.html</guid>
             </item>
         
     </channel>
