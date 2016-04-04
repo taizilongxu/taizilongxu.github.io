@@ -7,6 +7,18 @@
         <atom:link href="http://hackerxu.com/feed.xml" rel="self" type="application/rss+xml" />
         
             <item>
+                <title>冰与火之歌</title>
+                        
+                
+                    <description>&lt;p&gt;&lt;img src=&quot;http://hackerxu.com/img/jon_snow.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</description>
+                
+                <pubDate>Mon, 04 Apr 2016 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2016/04/04/quanlideyouxi.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2016/04/04/quanlideyouxi.html</guid>
+            </item>
+        
+            <item>
                 <title>或者明天</title>
                         
                 
@@ -112,18 +124,6 @@
                 <pubDate>Mon, 31 Aug 2015 00:00:00 +0800</pubDate>
                 <link>http://hackerxu.com/2015/08/31/spacemacs.html</link>
                 <guid isPermaLink="true">http://hackerxu.com/2015/08/31/spacemacs.html</guid>
-            </item>
-        
-            <item>
-                <title>实习3个月</title>
-                        
-                
-                    <description>&lt;p&gt;2015-05-21 去哪儿的第一天, 入职培训&lt;/p&gt;
-</description>
-                
-                <pubDate>Mon, 31 Aug 2015 00:00:00 +0800</pubDate>
-                <link>http://hackerxu.com/2015/08/31/captain_america.html</link>
-                <guid isPermaLink="true">http://hackerxu.com/2015/08/31/captain_america.html</guid>
             </item>
         
     </channel>
