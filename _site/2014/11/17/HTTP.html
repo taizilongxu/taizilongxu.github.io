@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<!-- 手机端页面 -->
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="google-site-verification" content="5KH7Y5MF1c9GbPNQ94CEej-1YkeHortoXv7fjiWt7hM" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>HTTP协议</title>
+<link rel="shortcut icon" href=" /img/github.ico"/>
+<link rel="bookmark" href="/img/github.ico"/>
+<meta name="viewport" content="width=device-width">
+<meta name="description" content="Python,HTML,CSS,Machine Leaning">
+<link rel="canonical" href="http://hackerxu.com/2014/11/17/HTTP.html">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/github.css">
+<!-- 返回顶部 -->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="/js/jquery.js"></script>
+<script src="/js/function_about.js"></script>
+<!--  -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-60393522-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+</head>
+
+    <body>
+        <header class="site-header">
+    <div class="wrap">
+        <a class="site-title" href="/"><h1><strong> <font style="color:#39B3D7" >L</font><font style="color:#ED9C28">i</font><font style="color:#47A447">m</font><font style="color:#D9534F">b</font><font style="color:#3276B1">o</font>
+                </strong>
+        </h1></a>
+        <nav class="site-nav">
+            <a href="#" class="menu-icon">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+                    <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+                    h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                    <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+                    h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                    <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+                    c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                </svg>
+            </a>
+            <div class="trigger">
+                
+                
+                <a class="page-link" href="/about/">About</a>
+                
+                
+                
+                <a class="page-link" href="/archive/">Archive</a>
+                
+                
+                
+                <a class="page-link" href="/categories/">Categories</a>
+                
+                
+                
+                <a class="page-link" href="/tags/">Tags</a>
+                
+                
+                
+                <a class="page-link" href="/atom.xml">Rss</a>
+                
+                
+            </div>
+        </nav>
+    </div>
+</header>
+
+        <div class="page-content">
+            <div class="wrap">
+                <div class="post">
+    <header class="post-header">
+        <h1><a href="/2014/11/17/HTTP.html">HTTP协议</a></h1>
+        <p class="meta"><i class="fa fa-calendar"></i> 2014-11-17&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#network">network</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#network">network</a>&nbsp<a href="/tags/#linux">linux</a>&nbsp<a href="/tags/#http">http</a></p>
+    </header>
+    <article class="post-content">
+        <h1>1 基础概念</h1>
+
+<p>HTTP（超文本传输协议）是一个基于请求与响应模式的、无状态的、应用层的协议，常基于TCP的连接方式，HTTP1.1版本中给出一种持续连接的机制，绝大多数的Web开发，都是构建在HTTP协议之上的Web应用。</p>
+
+<p>HTTP协议的主要特点可概括如下：</p>
+
+<ol>
+<li>支持客户/服务器模式。</li>
+<li>简单快速：客户向服务器请求服务时，只需传送请求方法和路径。请求方法常用的有GET、HEAD、POST。每种方法规定了客户与服务器联系的类型不同。由于HTTP协议简单，使得HTTP服务器的程序规模小，因而通信速度很快。</li>
+<li>灵活：HTTP允许传输任意类型的数据对象。正在传输的类型由Content-Type加以标记。</li>
+<li>无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。</li>
+<li>无状态：HTTP协议是无状态协议。无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快。</li>
+</ol>
+
+<h3>1.1 URI</h3>
+
+<p>URI统一资源标识符(Unicform Resource Identifier):唯一标识并定位信息资源.它有两个子集,一个是URL(Unicform Resource Locator),另一个是URN(Unicform Resource Name)</p>
+
+<h4>1.1.1 URL</h4>
+
+<p>URL (URL是一种特殊类型的URI，包含了用于查找某个资源的足够的信息)的格式如下：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">http://host[&quot;:&quot;port][abs_path]
+</code></pre></div>
+<ul>
+<li>http表示要通过HTTP协议来定位网络资源；</li>
+<li>host表示合法的Internet主机域名或者IP地址；</li>
+<li>port指定一个端口号，为空则使用缺省端口80；</li>
+<li>abs_path指定请求资源的URI；</li>
+<li>如果URL中没有给出abs_path，那么当它作为请求URI时，必须以“/”的形式给出，通常这个工作浏览器自动帮我们完成。</li>
+</ul>
+
+<p>eg:</p>
+
+<ol>
+<li>输入：www.guet.edu.cn
+浏览器自动转换成：<a href="http://www.guet.edu.cn/">http://www.guet.edu.cn/</a></li>
+<li>http:192.168.0.116:8080/index.jsp</li>
+</ol>
+
+<h4>1.1.2 URN</h4>
+
+<p>URN：URL的一种更新形式，统一资源名称(URN, Uniform Resource Name)不依赖于位置，并且有可能减少失效连接的个数。但是其流行还需假以时日，因为它需要更精密软件的支持。</p>
+
+<h3>1.2 层次关系</h3>
+
+<p>HTTP协议通常承载于TCP协议之上，有时也承载于TLS或SSL协议层之上，这个时候，就成了我们常说的HTTPS。如下图所示：</p>
+
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/5657919_1.jpg" alt=""></p>
+
+<p>默认HTTP的端口号为80，HTTPS的端口号为443。</p>
+
+<h3>1.3 HTTP的请求响应模型</h3>
+
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/o_http%E5%8D%8F%E8%AE%AE%E5%AD%A6%E4%B9%A0-12.jpg" alt=""></p>
+
+<p>HTTP协议永远都是客户端发起请求，服务器回送响应。</p>
+
+<p>这样就限制了使用HTTP协议，无法实现在客户端没有发起请求的时候，服务器将消息推送给客户端</p>
+
+<p>HTTP协议是一个无状态的协议，同一个客户端的这次请求和上次请求是没有对应关系。</p>
+
+<h3>1.4 工作流程</h3>
+
+<p>一次HTTP操作称为一个事务，其工作过程可分为四步：</p>
+
+<ol>
+<li>首先客户机与服务器需要建立连接。只要单击某个超级链接，HTTP的工作开始。</li>
+<li>建立连接后，客户机发送一个请求给服务器，请求方式的格式为：统一资源标识符（URL）、协议版本号，后边是MIME信息包括请求修饰符、客户机信息和可能的内容。</li>
+<li>服务器接到请求后，给予相应的响应信息，其格式为一个状态行，包括信息的协议版本号、一个成功或错误的代码，后边是MIME信息包括服务器信息、实体信息和可能的内容。</li>
+<li>客户端接收服务器所返回的信息通过浏览器显示在用户的显示屏上，然后客户机与服务器断开连接。</li>
+</ol>
+
+<p>如果在以上过程中的某一步出现错误，那么产生错误的信息将返回到客户端，有显示屏输出。对于用户来说，这些过程是由HTTP自己完成的，用户只要用鼠标点击，等待信息显示就可以了。</p>
+
+<h3>1.5 查看HTTP</h3>
+
+<p>我们可以在chrome的审查元素里查看network,也可以用firefox的LiveHTTP插件,下面是访问<code>www.baidu.com</code>返回的http:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">GET / HTTP/1.1
+Host: www.baidu.com
+Connection: keep-alive
+Cache-Control: max-age=0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36
+DNT: 1
+Accept-Encoding: gzip,deflate,sdch
+Accept-Language: zh-CN,zh;q=0.8,en;q=0.6,zh-TW;q=0.4,ja;q=0.2
+
+HTTP/1.1 200 OK
+Date: Sun, 16 Nov 2014 06:43:47 GMT
+Content-Type: text/html; charset=utf-8
+Transfer-Encoding: chunked
+Connection: Keep-Alive
+Vary: Accept-Encoding
+Set-Cookie: BAIDUID=53D3052AEE1A2972D5AED1E505323E95
+Cache-Control: private
+Cxy_all: baidu+8e65b23e6d5bd3877ec23fa1c478e07c
+Expires: Sun, 16 Nov 2014 06:42:56 GMT
+X-Powered-By: HPHP
+Server: BWS/1.1
+BDPAGETYPE: 1
+BDQID: 0xfa409b4000452dee
+BDUSERID: 0
+Content-Encoding: gzip
+</code></pre></div>
+<p>从上面可以看到,HTTP协议的请求消息和响应消息有固定的格式</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">-------------------------请求头格式------------------------------------------------------------------
+HTTP请求行 
+（请求）头 
+空行 
+可选的消息体 
+---------------------------响应头格式----------------------------------------------------------------
+HTTP状态行 
+（应答）头 
+空行 
+可选的消息体
+</code></pre></div>
+<h1>2 HTTP报文</h1>
+
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-11-24%2020:43:24%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
+
+<h2>2.1 HTTP请求报文(request message)</h2>
+
+<p>HTTP协议的请求主要由一下几部分组成：请求行，请求头，请求体（post）</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">请求行\r\n
+请求头1\r\n
+请求头1\r\n
+...
+\r\n
+请求体（Post方式）\r\n
+</code></pre></div>
+<h4>2.1.1 请求行</h4>
+
+<p>请求行主要由三部分组成，请求方法，请求路径，请求协议.例如上面的:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">GET / HTTP/1.1
+</code></pre></div>
+<p>常用的HTTP方法:</p>
+
+<table><thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+<th>是否包含主体</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>GET</td>
+<td>从服务器获取一份文档</td>
+<td>×</td>
+</tr>
+<tr>
+<td>HEAD</td>
+<td>只从服务器获取文档首部</td>
+<td>×</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>向服务器发送需要处理的数据</td>
+<td>√</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>将请求的主体部分存储在服务器上</td>
+<td>√</td>
+</tr>
+<tr>
+<td>TRACE</td>
+<td>对可能经过代理服务器传送到服务器上去的报文进行追踪</td>
+<td>×</td>
+</tr>
+<tr>
+<td>OPTIONS</td>
+<td>决定可以在服务器上执行那些方法</td>
+<td>×</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>从服务器删除一份文档</td>
+<td>×</td>
+</tr>
+</tbody></table>
+
+<p>还有一种CONNECT,已文档化但当前未实现的一个方法，预留做隧道处理</p>
+
+<p>当然我们最常用的也就是get和post方法，get方法的请求方式比较简单，所有请求的参数都显示追加在请求的url后面，而且请求长度有限制，post方式的请求参数都追加在请求体当中，消息长度没有限制而且以隐式的方式进行发送，安全性相对较高（这个安全性对于现在的网络技术也没有什么可安全的了，^_^）。</p>
+
+<p>请求路径：请求路径可以是相对或者绝对的方式，绝对路径不去阐述，相对路径是相对于当前TCP连接的主机的路径（HTTP/1.0方式），在HTTP/1.1方式当中相对于的是请求头当中的host域，HTTP/1.1的新特性会在以后的方式当中进行阐述</p>
+
+<p>请求协议：目前常用的支持HTTP/1.0和HTTP/1.1方式，HTTP/1.1和HTTP/1.0之间存在不少差异性，</p>
+
+<h3>2.1.2 请求头</h3>
+
+<p>比如上面的例子中:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Host: www.baidu.com
+Connection: keep-alive
+Cache-Control: max-age=0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36
+DNT: 1
+Accept-Encoding: gzip,deflate,sdch
+Accept-Language: zh-CN,zh;q=0.8,en;q=0.6,zh-TW;q=0.4,ja;q=0.2
+</code></pre></div>
+<p>请求头都是以key:value形式进行保存的，里面记录了客户端的一些基本信息，常用的请求头如下所示.</p>
+
+<ol>
+<li><p>Host:客户端IP和端口</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Host: www.baidu.com
+</code></pre></div></li>
+<li><p>User-Agent:浏览器信息</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36
+</code></pre></div></li>
+<li><p>Accept：客户端能接收的数据类型</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+</code></pre></div></li>
+<li><p>Accept-Encoding：浏览器能够进行解码的数据编码方式，比如gzip。Servlet能够向支持gzip的浏览器返回经gzip编码的HTML页面。许多情形下这可以减少5到10倍的下载时间</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Accept-Encoding: gzip,deflate,sdch
+</code></pre></div></li>
+<li><p>Accept-charset：客户端字符编码集</p></li>
+<li><p>Accept-Language：浏览器所希望的语言种类，当服务器能够提供一种以上的语言版本时要用到。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Accept-Language: zh-CN,zh;q=0.8,en;q=0.6,zh-TW;q=0.4,ja;q=0.2
+</code></pre></div></li>
+<li><p>Authorization：授权信息，通常出现在对服务器发送的WWW-Authenticate头的应答中。</p></li>
+<li><p>Connection：表示是否需要持久连接。如果Servlet看到这里的值为“Keep-Alive”，或者看到请求使用的是HTTP 1.1（HTTP 1.1默认进行持久连接），它就可以利用持久连接的优点，当页面包含多个元素时（例如Applet，图片），显著地减少下载所需要的时间。要实现这一点，Servlet需要在应答中发送一个Content-Length头，最简单的实现方法是：先把内容写入ByteArrayOutputStream，然后在正式写出内容之前计算它的大小。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Connection: keep-alive
+</code></pre></div></li>
+<li><p>Content-Length：表示请求消息正文的长度。</p></li>
+<li><p>Cookie：这是最重要的请求头信息之一。</p></li>
+<li><p>From：请求发送者的email地址，由一些特殊的Web客户程序使用，浏览器不会用到它。</p></li>
+<li><p>If-Modified-Since：只有当所请求的内容在指定的日期之后又经过修改才返回它，否则返回304“Not Modified”应答。</p></li>
+<li><p>Pragma：指定“no-cache”值表示服务器必须返回一个刷新后的文档，即使它是代理服务器而且已经有了页面的本地拷贝。</p></li>
+<li><p>Referer：包含一个URL，用户从该URL代表的页面出发访问当前请求的页面。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Referer: http://www.baidu.com/
+</code></pre></div></li>
+<li><p>UA-Pixels，UA-Color，UA-OS，UA-CPU：由某些版本的IE浏览器所发送的非标准的请求头，表示屏幕大小、颜色深度、操作系统和CPU类型.</p></li>
+</ol>
+
+<h3>2.1.3 请求体</h3>
+
+<p>请求体（又叫请求正文）是post请求方式当中的请求参数,get方式则无请求体，以key=value形式进行存储，多个请求参数之间用&amp;连接，如果请求当中有请求提，那么在请求头当中的Content-Length属性中记录的是该请求体的长度。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">POST hysj.jsp HTTP/1.1
+Host: search.cnipr.com
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 6.0; zh-CN; rv:1.9.1.13) Gecko/20100914 Firefox/3.5.13 ( .NET CLR 3.5.30729)
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-cn,zh;q=0.5
+Accept-Encoding: gzip,deflate
+Accept-Charset: GB2312,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://search.cnipr.com/cnipr/zljs/hyjs-biaodan-y.jsp
+Content-Length: 405
+username=guest&amp;extension=&amp;issearch=on&amp;searchword=pd%3D%2820100901%29&amp;presearchword=&amp;sortfield=RELEVANCE&amp;sRecordNumber=&amp;searchType=0&amp;searchFrom=0&amp;channelid=14%2C15%2C16&amp;searchChannel=14%2C15%2C16&amp;strdb=14&amp;strdb=15&amp;strdb=16&amp;cizi=2&amp;sortcolumn=RELEVANCE&amp;R1=-&amp;txtA=&amp;txtB=&amp;txtC=&amp;txtD=20100901&amp;txtE=&amp;txtF=&amp;txtG=&amp;txtH=&amp;txtI=&amp;txtJ=&amp;txtK=&amp;txtL=&amp;txtM=&amp;txtN=&amp;txtP=&amp;txtQ=&amp;txtR=&amp;txtSearchWord=&amp;Submit=%BC%EC%A1%A1%CB%F7
+</code></pre></div>
+<h2>2.2 HTTP响应报文(response message)</h2>
+
+<p>HTTP响应信息(服务器信息) </p>
+
+<ol>
+<li>状态行：HTTP版本  服务器状态(比如：404找不到...) 描述信息</li>
+<li>响应头</li>
+</ol>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  content-text：服务器发送信息的类型
+  date：发送时间
+  server：服务器类型
+</code></pre></div>
+<ol>
+<li>消息体：服务器发送给客户端的页面内容</li>
+</ol>
+
+<p>HTTP响应的格式类似于请求的格式，主要由响应行，响应头，响应体组成，其格式如下所示</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">响应行\r\n
+响应头\r\n
+响应头\r\n
+...
+
+响应体
+</code></pre></div>
+<h4>2.2.1 响应行</h4>
+<div class="highlight"><pre><code class="language-text" data-lang="text">HTTP/1.1 200 OK
+</code></pre></div>
+<p>标识服务器端对客户端请求的处理结果，主要由响应状态信息，响应状态码，服务器协议.</p>
+
+<p>响应状态信息:HTTP协议</p>
+
+<p>状态代码分类:</p>
+
+<table><thead>
+<tr>
+<th>整体范围</th>
+<th>已定义范围</th>
+<th>分类</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>100 ~ 199</td>
+<td>100 ~ 101</td>
+<td>信息提示</td>
+</tr>
+<tr>
+<td>200 ~ 299</td>
+<td>200 ~ 206</td>
+<td>成功</td>
+</tr>
+<tr>
+<td>300 ~ 399</td>
+<td>300 ~ 305</td>
+<td>重定向</td>
+</tr>
+<tr>
+<td>400 ~ 499</td>
+<td>400 ~ 415</td>
+<td>客户端错误</td>
+</tr>
+<tr>
+<td>500 ~ 599</td>
+<td>500 ~ 505</td>
+<td>服务器错误</td>
+</tr>
+</tbody></table>
+
+<p>响应状态码:</p>
+
+<ol>
+<li><p>消息（1字头）:这一类型的状态码，代表请求已被接受，需要继续处理。这类响应是临时响应，只包含状态行和某些可选的响应头信息，并以空行结束。由于 HTTP/1.0 协议中没有定义任何 1xx 状态码，所以除非在某些试验条件下，服务器禁止向此类客户端发送 1xx 响应。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">100 继续
+101 分组交换协
+</code></pre></div></li>
+<li><p>成功（2字头）:这一类型的状态码，代表请求已成功被服务器接收、理解、并接受。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">200 OK
+201 被创建
+202 被采纳
+203 非授权信息
+204 无内容
+205 重置内容
+206 部分内容
+</code></pre></div></li>
+<li><p>重定向（3字头）:这类状态码代表需要客户端采取进一步的操作才能完成请求。通常，这些状态码用来重定向，后续的请求地址（重定向目标）在本次响应的 Location 域中指明。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">300 多选项
+301 永久地传送
+302 找到
+303 参见其他
+304 未改动
+305 使用代理
+307 暂时重定向
+</code></pre></div></li>
+<li><p>请求错误（4字头）:这类的状态码代表了客户端看起来可能发生了错误，妨碍了服务器的处理。除非响应的是一个 HEAD 请求，否则服务器就应该返回一个解释当前错误状况的实体，以及这是临时的还是永久性的状况。这些状态码适用于任何请求方法。浏览器应当向用户显示任何包含在此类错误响应中的实体内容。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">400 错误请求
+401 未授权
+402 要求付费
+403 禁止
+404 未找到
+405 不允许的方法
+406 不被采纳
+407 要求代理授权
+408 请求超时
+409 冲突
+410 过期的
+411 要求的长度
+412 前提不成立
+413 请求实例太大
+414 请求URI太大
+415 不支持的媒体类型
+416 无法满足的请求范围
+417 失败的预期
+</code></pre></div></li>
+<li><p>服务器错误（5字头）:这类状态码代表了服务器在处理请求的过程中有错误或者异常状态发生，也有可能是服务器意识到以当前的软硬件资源无法完成对请求的处理。除非这是一个HEAD 请求，否则服务器应当包含一个解释当前错误状态以及这个状况是临时的还是永久的解释信息实体。浏览器应当向用户展示任何在当前响应中被包含的实体。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">500 内部服务器错误
+501 未被使用
+502 网关错误
+503 不可用的服务
+504 网关超时
+505 HTTP版本未被支持
+</code></pre></div></li>
+</ol>
+
+<p>常见的状态码:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">200 OK      //客户端请求成功
+400 Bad Request  //客户端请求有语法错误，不能被服务器所理解
+401 Unauthorized //请求未经授权，这个状态代码必须和WWW-Authenticate报头域一起使用 
+403 Forbidden  //服务器收到请求，但是拒绝提供服务
+404 Not Found  //请求资源不存在，eg：输入了错误的URL
+500 Internal Server Error //服务器发生不可预期的错误
+503 Server Unavailable  //服务器当前不能处理客户端的请求，一段时间后可能恢复正常
+</code></pre></div>
+<h4>2.2.2 响应头</h4>
+
+<p>类似于请求头的key：value形式，常用响应头如下所示:</p>
+
+<ol>
+<li>Location:这个头通常配合302状态码使用，它用于告诉浏览器你去找谁。 </li>
+<li>Server：告诉浏览器，服务器的类型 </li>
+<li>Content-Encoding: 服务器通过这个头，告诉浏览器，回送的数据采用的压缩格式。 </li>
+<li>Content-Length: 80 </li>
+<li>Content-Language: zh-cn </li>
+<li>Content-Type：这个头用于告诉浏览器，回送数据的类型 </li>
+<li>Last-Modified：这个头用于告诉浏览器，数据的最后修改时间 </li>
+<li>Refresh: ：这个头用于控制浏览器定时刷新 </li>
+<li>Content-Disposition: 用于通知浏览器，以下载方式打开回送的数据 </li>
+<li>Transfer-Encoding: 用于通知浏览器，数据是以分块形式回送的 </li>
+<li>ETag: 缓存相头的头 </li>
+<li>Expires: 用于说明网页的失效时间，如果该值为一个<code>&lt;0</code>的值，则服务器是通知浏览器不要缓存 </li>
+<li>Cache-Control: no-cache  通知浏览器不要缓存 </li>
+<li>Pragma: no-cache<br></li>
+</ol>
+
+<p>上面只是简单介绍了下,如需详细还需要查阅手册.</p>
+
+<p><a href="http://t.cn/R7FguRq">HTTP权威指南</a></p>
+
+<h1>3 wireshark抓包查看HTTP过程</h1>
+
+<p>下面是打开<code>www.baidu.com</code>所有的包:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">No.     Time           Source                Destination           Protocol Length Info
+    355 4.170229000    222.26.7.125          119.75.217.56         TCP      74     50536 &gt; http [SYN] Seq=0 Win=29200 Len=0 MSS=1460 SACK_PERM=1 TSval=7178795 TSecr=0 WS=128
+    356 4.183233000    119.75.217.56         222.26.7.125          TCP      74     http &gt; 50536 [SYN, ACK] Seq=0 Ack=1 Win=29200 Len=0 MSS=1440 SACK_PERM=1 WS=128
+    357 4.183284000    222.26.7.125          119.75.217.56         TCP      54     50536 &gt; http [ACK] Seq=1 Ack=1 Win=29312 Len=0
+    358 4.183343000    222.26.7.125          119.75.217.56         HTTP     131    GET / HTTP/1.1 
+    359 4.196633000    119.75.217.56         222.26.7.125          TCP      60     http &gt; 50536 [ACK] Seq=1 Ack=78 Win=24704 Len=0
+    360 4.199425000    119.75.217.56         222.26.7.125          TCP      943    [TCP segment of a reassembled PDU]
+    361 4.199454000    222.26.7.125          119.75.217.56         TCP      54     50536 &gt; http [ACK] Seq=78 Ack=890 Win=32128 Len=0
+    362 4.199635000    119.75.217.56         222.26.7.125          TCP      1494   [TCP segment of a reassembled PDU]
+    363 4.199652000    222.26.7.125          119.75.217.56         TCP      54     50536 &gt; http [ACK] Seq=78 Ack=2330 Win=35072 Len=0
+    364 4.199766000    119.75.217.56         222.26.7.125          TCP      1494   [TCP segment of a reassembled PDU]
+
+...
+
+    475 4.217795000    222.26.7.125          119.75.217.56         TCP      54     50536 &gt; http [ACK] Seq=78 Ack=82970 Win=184192 Len=0
+    476 4.217832000    119.75.217.56         222.26.7.125          HTTP     556    HTTP/1.1 200 OK  (text/html)
+    477 4.217835000    222.26.7.125          119.75.217.56         TCP      54     50536 &gt; http [ACK] Seq=78 Ack=83472 Win=183808 Len=0
+    478 4.218827000    222.26.7.125          119.75.217.56         TCP      54     50536 &gt; http [FIN, ACK] Seq=78 Ack=83472 Win=185856 Len=0
+    479 4.232403000    119.75.217.56         222.26.7.125          TCP      60     http &gt; 50536 [ACK] Seq=83472 Ack=79 Win=24704 Len=0
+    480 4.232442000    119.75.217.56         222.26.7.125          TCP      60     http &gt; 50536 [FIN, ACK] Seq=83472 Ack=79 Win=24704 Len=0
+    481 4.232468000    222.26.7.125          119.75.217.56         TCP      54     50536 &gt; http [ACK] Seq=79 Ack=83473 Win=185856 Len=0
+</code></pre></div>
+<p>可以清楚的看到HTTP的详细过程:</p>
+
+<ol>
+<li>355,356,357是三次握手的过程</li>
+<li><p>然后浏览器发送HTTP请求,其实这次请求是夹在第三次握手的包中的,可以看到HTTP包的详细信息</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Transmission Control Protocol, Src Port: 50536 (50536), Dst Port: http (80), Seq: 1, Ack: 1, Len: 77
+</code></pre></div>
+<p>它的seq=1,所以它是来自上一个TCP包.因为HTTP是由TCP包包装成的,所以这里显示的HTTP包其实是前面的TCP包的解包.</p></li>
+<li><p>接下来是一连串由服务器发来的TCP包和浏览器确认TCP包.</p></li>
+<li><p>直到476浏览器请求的所有TCP包都被接受,这时TCP按照序号把所有TCP包拆解并组成HTTP包.</p></li>
+<li><p>478~481最后4个为4次挥手.</p></li>
+</ol>
+
+<h1>参考资料</h1>
+
+<ul>
+<li><a href="http://www.cnblogs.com/CareySon/archive/2012/04/27/HTTP-Protocol.html">http://www.cnblogs.com/CareySon/archive/2012/04/27/HTTP-Protocol.html</a></li>
+<li><a href="http://www.360doc.com/content/10/0930/17/3668821_57590979.shtml">http://www.360doc.com/content/10/0930/17/3668821_57590979.shtml</a></li>
+<li><a href="http://www.cnblogs.com/linzheng/archive/2011/01/25/1944914.html">http://www.cnblogs.com/linzheng/archive/2011/01/25/1944914.html</a></li>
+</ul>
+
+    </article>
+    <!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/2014/11/17/HTTP"  data-title="HTTP协议 - Hackerxu's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
+</div>
+
+            </div>
+        </div>
+        <footer class="site-footer">
+
+    <div class="wrap">
+        <div class="footer-col-1 column">
+            <div class="github">
+                <!-- <span class="icon github"> -->
+                <svg version="1.1" class="github-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                    <path fill-rule="evenodd" clip-rule="evenodd" fill="#000" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761
+                    c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32
+                    c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472
+                    c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037
+                    C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65
+                    c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261
+                    c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082
+                    c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129
+                    c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+                <!-- </span> -->
+            </div>
+            <a href="https://github.com/taizilongxu">
+                Fork me on github
+            </a>
+        </div>
+        <div class="footer-col-2">
+            <p>© 2014 - 2015 by <font style="color:#f44336">❤ </font> <a href="http://github.com/taizilongxu">Hackerxu</a></p>
+        </div>
+        <!-- <div class="footer-col-3 column">
+      <p class="text">Python,HTML,CSS,Machine Leaning</p>
+    </div> -->
+    </div>
+    <div class="scroll-top"><i class="fa fa-arrow-circle-up"></i></div>
+</footer>
+
+
+        <!-- mathjax -->
+        <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+        </script>
+        <script type="text/javascript"
+                src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        </script>
+        <!-- highlight -->
+        <script src="/js/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <!-- pleace change it! -->
+        <script type="text/javascript">
+var duoshuoQuery = {short_name:"taizilongxu"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+        </script>
+        <!-- top-scrooll -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.js"></script>
+        <script type="text/javascript">
+$(window).scroll(function() {
+    if($(this).scrollTop() > 100) {
+        $('.scroll-top').fadeIn(200);
+    } else {
+        $('.scroll-top').fadeOut(200);
+    }
+});
+$('.scroll-top').bind('click', function(e) {
+    e.preventDefault();
+    $('body,html').animate({scrollTop:0},200);
+});
+        </script>
+    </body>
+</html>

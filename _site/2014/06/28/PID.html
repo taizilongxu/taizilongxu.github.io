@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<!-- 手机端页面 -->
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="google-site-verification" content="5KH7Y5MF1c9GbPNQ94CEej-1YkeHortoXv7fjiWt7hM" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>PID控制器</title>
+<link rel="shortcut icon" href=" /img/github.ico"/>
+<link rel="bookmark" href="/img/github.ico"/>
+<meta name="viewport" content="width=device-width">
+<meta name="description" content="Python,HTML,CSS,Machine Leaning">
+<link rel="canonical" href="http://hackerxu.com/2014/06/28/PID.html">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/github.css">
+<!-- 返回顶部 -->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="/js/jquery.js"></script>
+<script src="/js/function_about.js"></script>
+<!--  -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-60393522-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+</head>
+
+    <body>
+        <header class="site-header">
+    <div class="wrap">
+        <a class="site-title" href="/"><h1><strong> <font style="color:#39B3D7" >L</font><font style="color:#ED9C28">i</font><font style="color:#47A447">m</font><font style="color:#D9534F">b</font><font style="color:#3276B1">o</font>
+                </strong>
+        </h1></a>
+        <nav class="site-nav">
+            <a href="#" class="menu-icon">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+                    <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+                    h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                    <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+                    h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                    <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+                    c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                </svg>
+            </a>
+            <div class="trigger">
+                
+                
+                <a class="page-link" href="/about/">About</a>
+                
+                
+                
+                <a class="page-link" href="/archive/">Archive</a>
+                
+                
+                
+                <a class="page-link" href="/categories/">Categories</a>
+                
+                
+                
+                <a class="page-link" href="/tags/">Tags</a>
+                
+                
+                
+                <a class="page-link" href="/atom.xml">Rss</a>
+                
+                
+            </div>
+        </nav>
+    </div>
+</header>
+
+        <div class="page-content">
+            <div class="wrap">
+                <div class="post">
+    <header class="post-header">
+        <h1><a href="/2014/06/28/PID.html">PID控制器</a></h1>
+        <p class="meta"><i class="fa fa-calendar"></i> 2014-06-28&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#simulink">simulink</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#simulink">simulink</a></p>
+    </header>
+    <article class="post-content">
+        <p>首先帮大家解决一下什么是PID调节，为什么就要这样的疑惑。 
+PID是比例，积分，微分的英文单词的首字母的简称。</p>
+
+<p>下面举个例子说明一下PID，让大家有个感官的认识。</p>
+
+<p>一个人闭眼走路，假设他知道自己离目的地有100米远，那么他就可以以每秒一米一步这样的速度走向目的地，100米刚刚好是100步，这是一个非常理想化的现象。假设他不知道目的地有多远，目的地可能是1000米也有可能是10000米，他用每秒每步3米得速度向前，很不巧的是这个目的地在80米处，他走了26步时刚刚好差2米，走27步有刚刚好又多出1米，这就是所谓的稳态误差，如果这个人知道目的地在大概15米处得地方，开始这个人以每秒一米一步的速度，走完一步然后目测一下离目的地还有多远，结果发现还剩下大概14米，显然一米一步太慢，因此这个人决定每秒大于一米一步走，得出一条式子，</p>
+
+<p>$$ y=K_p e(t) $$</p>
+
+<p>其中</p>
+
+<ul>
+<li>y为下一次要每步要走的距离，</li>
+<li>e(t) 为目测距离，也就是偏差，换句话说就是自己走了的距离跟要走的距离也就是目的地的误差，</li>
+<li>$K_p$就是一个常数，假设我们把Kp设置为0.5， </li>
+</ul>
+
+<p>$y=K_Pe(t)$可以得出y=7；也就是说那个人下一步要以每秒7米得速度走，重复上述的过程，7+1共走了8米，然后目测一下距离15米处还有多远，还有7米得误差，所以下一步要走3.5米，然后在重复，发现最后会出现一个稳态的误差，也就是多走一步会超出目的地，少走一步又没到目的地。</p>
+
+<p>当然这个上述的例子情况非常特殊，大家可能觉得最后那些误差可以忽略，但是实际应用中，肯定没有人走路的那么特殊，按照这种线性比例下去最后得到的误差会非常大，所以就引入了一个积分的概念，积分的数学几何定义是在区间[a, b]里连续的非负曲线与直线x=a，x=b围成的图形的面积。</p>
+
+<p>从积分的定义可以得到一个函数:</p>
+
+<p>$$ y={1\over{T_i}}\int e(t)dt$$</p>
+
+<p>其中</p>
+
+<ul>
+<li>Ti为积分时间，</li>
+<li>e（t）就是误差了。</li>
+<li>Y就是输出，它是个不定积分，事实上把它融入到上述人走路的例子它是个定积分，从0 到t时刻的误差的对时间的积分，也就是说误差曲线e（t）与时间轴围成的面积，</li>
+</ul>
+
+<p>积分时间Ti是一个常量，可以自己规定大小，很明显，由上式得y为e（t）与t所围成的图形的面积的除以Ti的值，Ti越大y越小，Ti越小y越大，大了系统会动荡，所以要慢慢调节系数。（相当于我们在给电视调台的时候，当你知道一个频段节目比较少的时候，你会快速的调过这个频段（相当于所说的比例控制P），在有电视信号但不太清的时候，你就要进行微调了(相当于这楼所说的积分控制I)）</p>
+
+<p>下面是关于积分跟比例的专业阐述： </p>
+
+<p>比例（P）控制 
+　　比例控制是一种最简单的控制方式。其控制器的输出与输入误差信号成比例关系。当仅有比例控制时系统输出存在稳态误差（Steady-state error）。 </p>
+
+<p>积分（I）控制 
+　　在积分控制中，控制器的输出与输入误差信号的积分成正比关系。对一个自动控制系统，如果在进入稳态后存在稳态误差，则称这个控制系统是有稳态误差的或简称有差系统（System with Steady-state Error）。为了消除稳态误差，在控制器中必须引入“积分项”。积分项对误差取决于时间的积分，随着时间的增加，积分项会增大。这样，即便误差很小，积分项也会随着时间的增加而加大，它推动控制器的输出增大使稳态误差进一步减小，直到等于零。因此，比例+积分(PI)控制器，可以使系统在进入稳态后无稳态误差。 </p>
+
+<p>微分调节就是偏差值的变化率。
+例如，如果输入偏差值线性变化，则在调节器输出侧叠加一个恒定的调节量。<strong>大部分控制系统不需要调节微分时间。因为只有时间滞后的系统才需要附加这个参数。</strong>如果画蛇添足加上这个参数反而会使系统的控制受到影响。 </p>
+
+<p>在楼上那个调节温度的那个例子里，人可以通过观察温度的变化率来指导自己快速调节和微调的时机，但是计算机可不会这样调节，那么就要通过一个PID得到一个输出值来调节了。</p>
+
+<p>$$Y=T_d {d e(t)\over dt}$$</p>
+
+<p>下面是一段关于微分的专业阐述： 
+控制器的输出y 与输入误差信号e（t）的微分（即误差的变化率）成正比关系。 自动控制系统在克服误差的调节过程中可能会出现振荡甚至失稳。其原因是由于存在有较大惯性组件（环节）或有滞后(delay)组件，具有抑制误差的作用， 其变化总是落后于误差的变化。解决的办法是使抑制误差的作用的变化“超前”，即在误差接近零时，抑制误差的作用就应该是零。这就是说，在控制器中仅引入 “比例”项往往是不够的，比例项的作用仅是放大误差的幅值，而目前需要增加的是“微分项”，它能预测误差变化的趋势，这样，具有比例+微分的控制器，就能 够提前使抑制误差的控制作用等于零，甚至为负值，从而避免了被控量的严重超调。所以对有较大惯性或滞后的被控对象，比例+微分(PD)控制器能改善系统在 调节过程中的动态特性。</p>
+
+<p>$$y = K_p[e(t)+{1\over{T_i}}\int e(t)dt + T_d {d e(t)\over dt}]$$</p>
+
+    </article>
+    <!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/2014/06/28/PID"  data-title="PID控制器 - Hackerxu's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
+</div>
+
+            </div>
+        </div>
+        <footer class="site-footer">
+
+    <div class="wrap">
+        <div class="footer-col-1 column">
+            <div class="github">
+                <!-- <span class="icon github"> -->
+                <svg version="1.1" class="github-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                    <path fill-rule="evenodd" clip-rule="evenodd" fill="#000" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761
+                    c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32
+                    c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472
+                    c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037
+                    C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65
+                    c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261
+                    c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082
+                    c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129
+                    c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+                <!-- </span> -->
+            </div>
+            <a href="https://github.com/taizilongxu">
+                Fork me on github
+            </a>
+        </div>
+        <div class="footer-col-2">
+            <p>© 2014 - 2015 by <font style="color:#f44336">❤ </font> <a href="http://github.com/taizilongxu">Hackerxu</a></p>
+        </div>
+        <!-- <div class="footer-col-3 column">
+      <p class="text">Python,HTML,CSS,Machine Leaning</p>
+    </div> -->
+    </div>
+    <div class="scroll-top"><i class="fa fa-arrow-circle-up"></i></div>
+</footer>
+
+
+        <!-- mathjax -->
+        <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+        </script>
+        <script type="text/javascript"
+                src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        </script>
+        <!-- highlight -->
+        <script src="/js/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <!-- pleace change it! -->
+        <script type="text/javascript">
+var duoshuoQuery = {short_name:"taizilongxu"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+        </script>
+        <!-- top-scrooll -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.js"></script>
+        <script type="text/javascript">
+$(window).scroll(function() {
+    if($(this).scrollTop() > 100) {
+        $('.scroll-top').fadeIn(200);
+    } else {
+        $('.scroll-top').fadeOut(200);
+    }
+});
+$('.scroll-top').bind('click', function(e) {
+    e.preventDefault();
+    $('body,html').animate({scrollTop:0},200);
+});
+        </script>
+    </body>
+</html>
