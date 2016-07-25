@@ -7,6 +7,18 @@
         <atom:link href="http://hackerxu.com/feed.xml" rel="self" type="application/rss+xml" />
         
             <item>
+                <title>新的开始</title>
+                        
+                
+                    <description>&lt;p&gt;好久没有写blog了，荒废了小半年, 看了看git上竟然PR都没了，汗！&lt;/p&gt;
+</description>
+                
+                <pubDate>Tue, 26 Jul 2016 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2016/07/26/have_a_good_beginning.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2016/07/26/have_a_good_beginning.html</guid>
+            </item>
+        
+            <item>
                 <title>冰与火之歌</title>
                         
                 
@@ -112,18 +124,6 @@
                 <pubDate>Sun, 13 Sep 2015 00:00:00 +0800</pubDate>
                 <link>http://hackerxu.com/2015/09/13/chinese.html</link>
                 <guid isPermaLink="true">http://hackerxu.com/2015/09/13/chinese.html</guid>
-            </item>
-        
-            <item>
-                <title>使用spacemacs从vim无缝过度到emacs</title>
-                        
-                
-                    <description>&lt;p&gt;最近在github上看见了一个项目,名字叫&lt;a href=&quot;https://github.com/syl20bnr/spacemacs&quot;&gt;spacemacs&lt;/a&gt;,相当于是一个emacs的完整配置方案,可以使user从vim无缝的迁移到emacs并且可以提供一整套插件解决方案.其实这个项目几个月前就看到过,不过当时正潜心研究vim,对于emacs的映像只在于丑陋的界面和缓慢并且臃肿,不过对于spacemacs的初始化配置简直美哭了.下面是gui下的截图.&lt;/p&gt;
-</description>
-                
-                <pubDate>Mon, 31 Aug 2015 00:00:00 +0800</pubDate>
-                <link>http://hackerxu.com/2015/08/31/spacemacs.html</link>
-                <guid isPermaLink="true">http://hackerxu.com/2015/08/31/spacemacs.html</guid>
             </item>
         
     </channel>
