@@ -7,6 +7,19 @@
         <atom:link href="http://hackerxu.com/feed.xml" rel="self" type="application/rss+xml" />
         
             <item>
+                <title>国庆</title>
+                        
+                
+                    <description>&lt;p&gt;国庆无事, 替opsdev全体员工拜一拜了, 保佑风调雨顺
+&lt;img src=&quot;http://hackerxu.com/img/DAA339DC8C0A1922D9A7FF35AD67F59F.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</description>
+                
+                <pubDate>Sat, 08 Oct 2016 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2016/10/08/guoqing.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2016/10/08/guoqing.html</guid>
+            </item>
+        
+            <item>
                 <title>新的开始</title>
                         
                 
@@ -112,18 +125,6 @@
                 <pubDate>Mon, 21 Sep 2015 00:00:00 +0800</pubDate>
                 <link>http://hackerxu.com/2015/09/21/baidu.html</link>
                 <guid isPermaLink="true">http://hackerxu.com/2015/09/21/baidu.html</guid>
-            </item>
-        
-            <item>
-                <title>中国孩子</title>
-                        
-                
-                    <description>&lt;p&gt;&lt;img src=&quot;http://hackerxu.com/img/chinese.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-</description>
-                
-                <pubDate>Sun, 13 Sep 2015 00:00:00 +0800</pubDate>
-                <link>http://hackerxu.com/2015/09/13/chinese.html</link>
-                <guid isPermaLink="true">http://hackerxu.com/2015/09/13/chinese.html</guid>
             </item>
         
     </channel>
