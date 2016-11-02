@@ -7,6 +7,18 @@
         <atom:link href="http://hackerxu.com/feed.xml" rel="self" type="application/rss+xml" />
         
             <item>
+                <title>命令行工具jq的使用</title>
+                        
+                
+                    <description>&lt;p&gt;jq, 强大的 shell 处理 json 的工具, 废话少说, 看几个例子.&lt;/p&gt;
+</description>
+                
+                <pubDate>Thu, 03 Nov 2016 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2016/11/03/jq.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2016/11/03/jq.html</guid>
+            </item>
+        
+            <item>
                 <title>国庆</title>
                         
                 
@@ -113,18 +125,6 @@
                 <pubDate>Sun, 27 Sep 2015 00:00:00 +0800</pubDate>
                 <link>http://hackerxu.com/2015/09/27/zhongqiujie.html</link>
                 <guid isPermaLink="true">http://hackerxu.com/2015/09/27/zhongqiujie.html</guid>
-            </item>
-        
-            <item>
-                <title>众里寻他千百度</title>
-                        
-                
-                    <description>&lt;p&gt;&lt;img src=&quot;http://hackerxu.com/img/baidu.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-</description>
-                
-                <pubDate>Mon, 21 Sep 2015 00:00:00 +0800</pubDate>
-                <link>http://hackerxu.com/2015/09/21/baidu.html</link>
-                <guid isPermaLink="true">http://hackerxu.com/2015/09/21/baidu.html</guid>
             </item>
         
     </channel>
