@@ -6,12 +6,12 @@
 <meta name="google-site-verification" content="5KH7Y5MF1c9GbPNQ94CEej-1YkeHortoXv7fjiWt7hM" />
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>实习3个月</title>
+<title>apt-get 命令原理</title>
 <link rel="shortcut icon" href=" /img/github.ico"/>
 <link rel="bookmark" href="/img/github.ico"/>
 <meta name="viewport" content="width=device-width">
 <meta name="description" content="Python,HTML,CSS,Machine Leaning">
-<link rel="canonical" href="http://hackerxu.com/2015/08/31/captain_america.html">
+<link rel="canonical" href="http://hackerxu.com/2014/12/03/apt_get.html">
 <!-- Custom CSS -->
 <link rel="stylesheet" href="/css/main.css">
 <link rel="stylesheet" href="/css/github.css">
@@ -81,50 +81,110 @@ ga('send', 'pageview');
             <div class="wrap">
                 <div class="post">
     <header class="post-header">
-        <h1><a href="/2015/08/31/captain_america.html">实习3个月</a></h1>
-        <p class="meta"><i class="fa fa-calendar"></i> 2015-08-31&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#life">life</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#life">life</a></p>
+        <h1><a href="/2014/12/03/apt_get.html">apt-get 命令原理</a></h1>
+        <p class="meta"><i class="fa fa-calendar"></i> 2014-12-03&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#linux">linux</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#linux">linux</a></p>
     </header>
     <article class="post-content">
-        <p>2015-05-21 去哪儿的第一天, 入职培训</p>
+        <h2>apt-get工作顺序</h2>
 
-<p><img src="http://hackerxu.com/img/qunar_1.jpg" alt=""></p>
+<h3>1 查询源列表</h3>
 
-<p>中午和大家一起去创业大街吃饭哈</p>
+<p>apt命令会访问<code>/etc/apt/sources.list</code>源列表.(这个源列表可以添加好多源,每次都选中开头的有效源)</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">deb http://mirror.neu.edu.cn/ubuntu/(网址) trusty main restricted   (版本号)
+</code></pre></div>
+<p>我的这个是东大的源.</p>
 
-<p><img src="http://hackerxu.com/img/qunar_2.jpg" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2014-12-04%2010:20:50%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
 
-<p>2015-05-22 nice给配了23寸的dell, 配了下linux环境</p>
+<h3>2 查询Packages.gz</h3>
 
-<p><img src="http://hackerxu.com/img/qunar_3.jpg" alt=""></p>
+<p>Main 的包的相关信息均在 dists/lucid/main/binary-i386/下。不是把包放在这里就行了，还需要生成Packages.gz的包文件，因为apt-get 每次都会读取这个文件，从而获取的包的信息。</p>
 
-<p>2015-05-25 开始布置任务, 朱老板的配件库</p>
+<p>从Packages.gz中获取到所有包的信息，然后apt-get就可以通过它找到所有的包并且自动下载安装了。</p>
 
-<p><img src="http://hackerxu.com/img/qunar_4.jpg" alt=""></p>
+<p>来看看Packages.gz都有什么吧(下面是python包的信息):</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Package: python
+Priority: important
+Section: python
+Installed-Size: 640
+Maintainer: Ubuntu Developers &lt;ubuntu-devel-discuss@lists.ubuntu.com&gt;
+Original-Maintainer: Matthias Klose &lt;doko@debian.org&gt;
+Architecture: all
+Source: python-defaults
+Version: 2.6.5-0ubuntu1
+Replaces: python-base, python-xmlbase, python2.3 (&lt;= 2.3.2-6)
+Provides: python-ctypes, python-email, python-plistlib, python-wsgiref, python-xmlbase
+Depends: python2.6 (&gt;= 2.6.5), python-minimal (= 2.6.5-0ubuntu1)
+Suggests: python-doc (&gt;= 2.6.5-0ubuntu1), python-tk (&gt;= 2.6.5-0ubuntu1), python-profiler (&gt;= 2.6.5-0ubuntu1)
+Conflicts: libboost-dbg (&lt;&lt; 1.34.1-15ubuntu3), libboost-python-dev (&lt;&lt; 1.34.1-15ubuntu3), libboost-python1.35-dev (&lt;&lt; 1.35.0-8ubuntu5), libboost1.35-dbg (&lt;&lt; 1.35.0-8ubuntu5), pitivi (&lt;&lt; 0.11.3-1ubuntu1), python-aubio (&lt;&lt; 0.3.2-2ubuntu3), python-base, python-bz2, python-central (&lt;&lt; 0.5.5), python-csv, python-freevo (&lt;&lt; 1.8.1-3ubuntu3), python-xmlbase, python2.1 (&lt;= 2.1.2), python2.3 (&lt;&lt; 2.3.5-14), qmtest (&lt;&lt; 2.4-5ubuntu1), ufw (&lt;&lt; 0.27~r416)
+Filename: pool/main/p/python-defaults/python_2.6.5-0ubuntu1_all.deb
+Size: 147766
+MD5sum: 457b6f467e45287b8430833ec7d2f9ec
+SHA1: 3d67dd0ebf003ede05dbae034616c1f519ea5962
+SHA256: 5aa5086459e04815980329b66f430321cf490d7d37c9550e30d43125dd2dc5fc
+Description: An interactive high-level object-oriented language (default version)
+ Python, the high-level, interactive object oriented language,
+ includes an extensive class library with lots of goodies for
+ network programming, system administration, sounds and graphics.
+ .
+ This package is a dependency package, which depends on Debian&#39;s default
+ Python version (currently v2.6).
+Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+Origin: Ubuntu
+Supported: 5y
+Task: minimal
+</code></pre></div>
+<p>包含的信息有：  </p>
 
-<p>2015-07-06 大神在讲座Mesos</p>
+<p>包名，优先级，类型，维护者，架构，源文件（source），版本号，依赖包，冲突性信息，包大小，文件的下载路径，MD5sum，SHA1，包描述，Xul-Appid---应用程序id，Bugs信息，Origin，Supported </p>
 
-<p><img src="http://hackerxu.com/img/qunar_5.jpg" alt=""></p>
+<p>从以上可以看到包的下载地址为:    </p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">(http://mirror.neu.edu.cn/ubuntu/)pool/main/p/python-defaults/python_2.6.5-0ubuntu1_all.deb
+</code></pre></div>
+<h3>3 下载包或者依赖</h3>
 
-<p>2015-07-23 牛逼的地推神器hackton特等奖</p>
+<p>它会首先检查依赖,如果不存在则下载依赖包,这个依赖包或许还有依赖(递归下载),在完成了所有依赖包则可以进行下载,安装完成,中间任意一环没有完成则失败退出.这就是整个过程啦.</p>
 
-<p><img src="http://hackerxu.com/img/qunar_6.jpg" alt=""></p>
+<h2>总结</h2>
 
-<p>2015-08-09 周末过来加加班, 根本没有人啊</p>
+<ol>
+<li>更新Packages.gz解析安装包所依赖的文件</li>
+<li>根据1的结果检查是否所需要的依赖都已经安装，假设没有安装，则下载（应该有自己的下载功能）这些依赖并进行安装,这个过程中会对每个依赖重复1、2这两个过程</li>
+<li>解决依赖关系，下载指定软件并安装,2、3中如果找不到软件或者库，则失败.</li>
+</ol>
 
-<p><img src="http://hackerxu.com/img/qunar_7.jpg" alt=""></p>
+<p>Packages.gz已经包含所有所依赖的软件及其版本信息、以及下载地址.</p>
 
-<p>2015-08-22 最后一天晚上, 留个影</p>
+<h2>apt-get常用命令</h2>
 
-<p><img src="http://hackerxu.com/img/qunar_8.jpg" alt=""></p>
+<ul>
+<li>sudo apt-get install package 安装包</li>
+<li>sudo apt-get remove package 删除包</li>
+<li>sudo apt-get update  更新源</li>
+<li>sudo apt-get upgrade 更新已安装的包</li>
+<li>apt-get source package  下载该包的源代码</li>
+</ul>
 
-<p>凌晨的北京, 再见北京9月见</p>
+<p>还有一些命令:</p>
 
-<p><img src="http://hackerxu.com/img/qunar_9.jpg" alt=""></p>
+<ul>
+<li>apt-cache search package 搜索软件包</li>
+<li>apt-cache show package  获取包的相关信息，如说明、大小、版本等</li>
+<li>sudo apt-get install package --reinstall   重新安装包</li>
+<li>sudo apt-get -f install   修复安装</li>
+<li>sudo apt-get remove package --purge 删除包，包括配置文件等</li>
+<li>sudo apt-get dist-upgrade 升级系统</li>
+<li>apt-cache depends package 了解使用该包依赖那些包</li>
+<li>apt-cache rdepends package 查看该包被哪些包依赖</li>
+<li>sudo apt-get build-dep package 安装相关的编译环境</li>
+<li>sudo apt-get clean &amp;&amp; sudo apt-get autoclean 清理无用的包</li>
+<li>sudo apt-get check 检查是否有损坏的依赖</li>
+</ul>
 
     </article>
     <!-- Duoshuo Comment BEGIN -->
     <div id="comments">
-        <div class="ds-thread" data-thread-key="/2015/08/31/captain_america"  data-title="实习3个月 - Hackerxu's Blog"></div>
+        <div class="ds-thread" data-thread-key="/2014/12/03/apt_get"  data-title="apt-get 命令原理 - Hackerxu's Blog"></div>
     </div>
 <!-- Duoshuo Comment END -->
 </div>

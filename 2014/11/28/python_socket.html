@@ -229,7 +229,7 @@ ga('send', 'pageview');
 <div class="highlight"><pre><code class="language-text" data-lang="text">socket = socket.socket( family, type )
 </code></pre></div></li>
 <li><p>将socket绑定到指定地址。这是通过socket对象的bind方法来实现的：</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">socket.bind( address )
+<div class="highlight"><pre><code class="language-text" data-lang="text">socket.bind( address ) 
 </code></pre></div>
 <p>由AF_INET所创建的套接字，address地址必须是一个双元素元组，格式是(host,port)。host代表主机，port代表端口号。如果端口号正在使用、主机名不正确或端口已被保留，bind方法将引发socket.error异常。</p></li>
 <li><p>使用socket套接字的listen方法接收连接请求。</p>

@@ -139,7 +139,7 @@ ga('send', 'pageview');
  &quot;dba4425fde4088afbf7879e311ec43c6527dbab8&quot;
 </code></pre></div>
 <p>这时候只想提取出sha值但是带括号怎么办?</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ curl -s &#39;https://api.github.com/repos/taizilongxu/douban.fm/commits?per_page=5&#39; | jq &#39;.[].sha&#39; | sed s/\&quot;//g
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ curl -s &#39;https://api.github.com/repos/taizilongxu/douban.fm/commits?per_page=5&#39; | jq &#39;.[].sha&#39; | sed s/\&quot;//g  
 89682f6da75fcc896c00f1727f77ab325f3c1fab
 3155c45d6b8eb3c2cb08bf62922b33f19333ff0e
 77bbc06a8fc0612816d26a534d8225fa888cb599
@@ -157,7 +157,7 @@ dba4425fde4088afbf7879e311ec43c6527dbab8
 ]
 </code></pre></div>
 <p>如果提取多种信息呢?</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ curl -s &#39;https://api.github.com/repos/taizilongxu/douban.fm/commits?per_page=5&#39; | jq &#39;.[] | {sha: .sha, author: .author.login}&#39; | jq -s .
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ curl -s &#39;https://api.github.com/repos/taizilongxu/douban.fm/commits?per_page=5&#39; | jq &#39;.[] | {sha: .sha, author: .author.login}&#39; | jq -s . 
 [
 {
    &quot;sha&quot;: &quot;89682f6da75fcc896c00f1727f77ab325f3c1fab&quot;,

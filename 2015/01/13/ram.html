@@ -85,7 +85,9 @@ ga('send', 'pageview');
         <p class="meta"><i class="fa fa-calendar"></i> 2015-01-13&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#python">python</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#python">python</a></p>
     </header>
     <article class="post-content">
-        <h2>C</h2>
+        <h2>内存管理</h2>
+
+<h2>C</h2>
 
 <p>在C语言中，内存主要分为如下5个存储区：</p>
 
@@ -146,7 +148,7 @@ ga('send', 'pageview');
 <li>内存池机制</li>
 </ul>
 
-<h4>引用计数</h4>
+<h4>1 引用计数</h4>
 
 <p>Python采用了类似Windows内核对象一样的方式来对内存进行管理。每一个对象，都维护这一个对指向该对对象的引用的计数。</p>
 
@@ -157,11 +159,11 @@ ga('send', 'pageview');
 </code></pre></div>
 <p>这里的&#39;引用&#39;其实和 c 中的指针意义相近,如果理解 c 指针,那么就不难理解 python 的引用机制.这里的 x和 y 其实指向的是同一个对象3.14.</p>
 
-<h4>垃圾回收</h4>
+<h4>2 垃圾回收</h4>
 
 <p>python不像C++，Java等语言一样，他们可以不用事先声明变量类型而直接对变量进行赋值。对Python语言来讲，对象的类型和内存都是在运行时确定的。这也是为什么我们称Python语言为动态类型的原因（这里我们把动态类型可以简单的归结为对变量内存地址的分配是在运行时自动判断变量类型并对变量进行赋值）。</p>
 
-<h4>内存池机制</h4>
+<h4>3 内存池机制</h4>
 
 <p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/110017426714010.x-png" alt=""></p>
 
