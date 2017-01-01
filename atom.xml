@@ -7,22 +7,11 @@
         <atom:link href="http://hackerxu.com/feed.xml" rel="self" type="application/rss+xml" />
         
             <item>
-                <title>命令行工具jq的使用</title>
-                        
-                
-                    <description>&lt;p&gt;jq, 强大的 shell 处理 json 的工具, 废话少说, 看几个例子.&lt;/p&gt;
-</description>
-                
-                <pubDate>Thu, 03 Nov 2016 00:00:00 +0800</pubDate>
-                <link>http://hackerxu.com/2016/11/03/jq.html</link>
-                <guid isPermaLink="true">http://hackerxu.com/2016/11/03/jq.html</guid>
-            </item>
-        
-            <item>
                 <title>国庆</title>
                         
                 
-                    <description>&lt;p&gt;国庆无事, 替opsdev全体员工拜一拜了, 保佑风调雨顺&lt;/p&gt;
+                    <description>&lt;p&gt;国庆无事, 替opsdev全体员工拜一拜了, 保佑风调雨顺
+&lt;img src=&quot;/img/DAA339DC8C0A1922D9A7FF35AD67F59F.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 </description>
                 
                 <pubDate>Sat, 08 Oct 2016 00:00:00 +0800</pubDate>
@@ -31,63 +20,19 @@
             </item>
         
             <item>
-                <title>新的开始</title>
-                        
-                
-                    <description>&lt;p&gt;好久没有写blog了，荒废了小半年, 看了看git上竟然PR都没了，汗！&lt;/p&gt;
-</description>
-                
-                <pubDate>Tue, 26 Jul 2016 00:00:00 +0800</pubDate>
-                <link>http://hackerxu.com/2016/07/26/have_a_good_beginning.html</link>
-                <guid isPermaLink="true">http://hackerxu.com/2016/07/26/have_a_good_beginning.html</guid>
-            </item>
-        
-            <item>
                 <title>冰与火之歌</title>
                         
                 
+<<<<<<< HEAD
+                    <description>&lt;p&gt;国庆无事, 替opsdev全体员工拜一拜了, 保佑风调雨顺&lt;/p&gt;
+=======
                     <description>&lt;p&gt;&lt;img src=&quot;http://hackerxu.com/img/jon_snow.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+>>>>>>> 30e0f3389a9d011d47aa903f6e65027b0b2dad65
 </description>
                 
                 <pubDate>Mon, 04 Apr 2016 00:00:00 +0800</pubDate>
                 <link>http://hackerxu.com/2016/04/04/quanlideyouxi.html</link>
                 <guid isPermaLink="true">http://hackerxu.com/2016/04/04/quanlideyouxi.html</guid>
-            </item>
-        
-            <item>
-                <title>或者明天</title>
-                        
-                
-                    <description>&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=&quot;330&quot; height=&quot;86&quot; src=&quot;http://music.163.com/outchain/player?type=2&amp;id=91269&amp;auto=0&amp;height=66&quot;&gt;&lt;/iframe&gt;
-</description>
-                
-                <pubDate>Sun, 03 Apr 2016 00:00:00 +0800</pubDate>
-                <link>http://hackerxu.com/2016/04/03/zijideziji.html</link>
-                <guid isPermaLink="true">http://hackerxu.com/2016/04/03/zijideziji.html</guid>
-            </item>
-        
-            <item>
-                <title>白银饭店</title>
-                        
-                
-                    <description>&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=&quot;330&quot; height=&quot;86&quot; src=&quot;http://music.163.com/outchain/player?type=2&amp;id=26494698&amp;auto=0&amp;height=66&quot;&gt;&lt;/iframe&gt;
-</description>
-                
-                <pubDate>Wed, 16 Mar 2016 00:00:00 +0800</pubDate>
-                <link>http://hackerxu.com/2016/03/16/baiyinfandian.html</link>
-                <guid isPermaLink="true">http://hackerxu.com/2016/03/16/baiyinfandian.html</guid>
-            </item>
-        
-            <item>
-                <title>zsh转fish</title>
-                        
-                
-                    <description>&lt;p&gt;最近有一些空闲研究研究shell, 以前一直用zsh, 其中有个autosuggestions的插件感觉非常好用, 但是不知道为什么这个插件会使目录TAB键失效, 索性试了试fish, 感觉非常顺手, 用了几天了总结下.&lt;/p&gt;
-</description>
-                
-                <pubDate>Sun, 13 Dec 2015 00:00:00 +0800</pubDate>
-                <link>http://hackerxu.com/2015/12/13/fish.html</link>
-                <guid isPermaLink="true">http://hackerxu.com/2015/12/13/fish.html</guid>
             </item>
         
             <item>
@@ -115,15 +60,87 @@
             </item>
         
             <item>
-                <title>中秋节</title>
+                <title>playwithlinux</title>
                         
                 
-                    <description>&lt;p&gt;&lt;img src=&quot;/img/zhongqiujie.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+<<<<<<< HEAD
+                    <description>&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=&quot;330&quot; height=&quot;86&quot; src=&quot;http://music.163.com/outchain/player?type=2&amp;id=91269&amp;auto=0&amp;height=66&quot;&gt;&lt;/iframe&gt;
+=======
+                    <description>&lt;p&gt;不知不觉实习一个月啦,好久没有更了.每天都是9点去,9点回.&lt;/p&gt;
+>>>>>>> 30e0f3389a9d011d47aa903f6e65027b0b2dad65
 </description>
                 
-                <pubDate>Sun, 27 Sep 2015 00:00:00 +0800</pubDate>
-                <link>http://hackerxu.com/2015/09/27/zhongqiujie.html</link>
-                <guid isPermaLink="true">http://hackerxu.com/2015/09/27/zhongqiujie.html</guid>
+                <pubDate>Fri, 26 Jun 2015 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2015/06/26/playwithlinux.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2015/06/26/playwithlinux.html</guid>
+            </item>
+        
+            <item>
+                <title>Flask0.1源代码分析(1)</title>
+                        
+                
+<<<<<<< HEAD
+                    <description>&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=&quot;330&quot; height=&quot;86&quot; src=&quot;http://music.163.com/outchain/player?type=2&amp;id=26494698&amp;auto=0&amp;height=66&quot;&gt;&lt;/iframe&gt;
+=======
+                    <description>&lt;p&gt;最近在读Flask0.1的源码,Flask框架饱受好评的原因就是因为简洁,明快而且够Pythonic,于是自己也关注了一下,尝试从底层读懂flask的代码.(可能有没有理解对的地方)&lt;/p&gt;
+>>>>>>> 30e0f3389a9d011d47aa903f6e65027b0b2dad65
+</description>
+                
+                <pubDate>Sun, 10 May 2015 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2015/05/10/flask011.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2015/05/10/flask011.html</guid>
+            </item>
+        
+            <item>
+                <title>使用ipdb调试python</title>
+                        
+                
+                    <description>&lt;p&gt;以前都是用print或者log来调试程序,在小规模的程序下很方便,但是最近在研究Flask0.1的代码,对于不熟悉的代码最好的方式是一边运行一边检查里面的变量和方法,搜了搜发现了ipdb这个好东西.&lt;/p&gt;
+</description>
+                
+                <pubDate>Sat, 09 May 2015 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2015/05/09/ipdbpython.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2015/05/09/ipdbpython.html</guid>
+            </item>
+        
+            <item>
+                <title>css布局</title>
+                        
+                
+                    <description>&lt;p&gt;Float: Float属性是DIV+CSS布局中最基本也是最常用的属性，用于实现多列功能，我们知道&lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt;标签默认一行只能显示一个，而使用Float属性可以实现一行显示多个div的功能，最直接解释方法就是能实现表格布局的多列功能.&lt;/p&gt;
+</description>
+                
+                <pubDate>Thu, 30 Apr 2015 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2015/04/30/css.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2015/04/30/css.html</guid>
+            </item>
+        
+            <item>
+                <title>sketch</title>
+                        
+                
+                    <description>&lt;p&gt;看到前端其实真的有些心水,在学前端.&lt;/p&gt;
+</description>
+                
+                <pubDate>Wed, 29 Apr 2015 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2015/04/29/sketch.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2015/04/29/sketch.html</guid>
+            </item>
+        
+            <item>
+                <title>jekyll自动化</title>
+                        
+                
+<<<<<<< HEAD
+                    <description>&lt;p&gt;&lt;img src=&quot;/img/zhongqiujie.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+=======
+                    <description>&lt;p&gt;看同学用过hexo,发布和写文章都比较省事,自己使用了一年jekyll还是用git的老方法,今天鼓捣了以下jekyll,网上也搜了瘦,简化一下发布流程.&lt;/p&gt;
+>>>>>>> 30e0f3389a9d011d47aa903f6e65027b0b2dad65
+</description>
+                
+                <pubDate>Sat, 25 Apr 2015 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2015/04/25/rake_test.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2015/04/25/rake_test.html</guid>
             </item>
         
     </channel>
