@@ -6,12 +6,12 @@
 <meta name="google-site-verification" content="5KH7Y5MF1c9GbPNQ94CEej-1YkeHortoXv7fjiWt7hM" />
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Hackerxu's Blog</title>
+<title>Github不再需要密码,ssh连接模式</title>
 <link rel="shortcut icon" href=" /img/github.ico"/>
 <link rel="bookmark" href="/img/github.ico"/>
 <meta name="viewport" content="width=device-width">
 <meta name="description" content="Python,HTML,CSS,Machine Leaning">
-<link rel="canonical" href="http://hackerxu.com/">
+<link rel="canonical" href="http://hackerxu.com/2014/08/27/github-ssh.html">
 <!-- Custom CSS -->
 <link rel="stylesheet" href="/css/main.css">
 <link rel="stylesheet" href="/css/github.css">
@@ -79,30 +79,54 @@ ga('send', 'pageview');
 
         <div class="page-content">
             <div class="wrap">
-                <div class="home">
-  
-  <header class="post-header">
-    <h1><a href="/2016/10/08/guoqing.html">国庆</a></h1>
-    <p class="meta"><i class="fa fa-calendar"></i> 2016-10-08&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#life">life</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#life">life</a></p>
-  </header>
-  <article class="post-content">
-  <p>国庆无事, 替opsdev全体员工拜一拜了, 保佑风调雨顺</p>
+                <div class="post">
+    <header class="post-header">
+        <h1><a href="/2014/08/27/github-ssh.html">Github不再需要密码,ssh连接模式</a></h1>
+        <p class="meta"><i class="fa fa-calendar"></i> 2014-08-27&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#github">github</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#github">github</a></p>
+    </header>
+    <article class="post-content">
+        <p>只介绍主要方法</p>
 
-<p><img src="/img/DAA339DC8C0A1922D9A7FF35AD67F59F.jpg" alt=""></p>
+<p>总共分3部:</p>
 
-  </article>
-  
+<ol>
+<li>本地生成ssh密钥</li>
+<li>github上生成公钥</li>
+<li>修改git的remote url为ssh协议</li>
+</ol>
 
-  <ul class="posts">
-    <!-- <li class="listing-seperator">Yesterday you said tomorrow</li> -->
-  
-  
-    
-    
-    
-    <li class="listing-seperator"><a href="/archive/">Long ago</a></li>
-  </ul>
+<h3>1 生成密钥对</h3>
 
+<p>再linux主机下</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text"> ssh-keygen -t rsa -C “468137306@qq.com”
+</code></pre></div>
+<p>在~/.ssh下会产生id_rsa和id_rsa.pub两个文件</p>
+
+<h3>2 添加密钥到github</h3>
+
+<p>进入github的settings里左侧有个SSHkeys,看到那个add一个就行</p>
+
+<p>把id_rsa.pub里的密钥放入这里就可以了(注意不要多加空格)</p>
+
+<p>用下面的命令测试</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text"> ssh -T git@github.com
+</code></pre></div>
+<p>输出</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">PTY allocation request failed on channel 0
+Hi taizilongxu! You&#39;ve successfully authenticated, but GitHub does not provide shell access.
+Connection to github.com closed.
+</code></pre></div>
+<h3>3 修改git的remote url</h3>
+
+<p>一般在./.git/config中修改url = ssh地址就可以了
+以后就可以和密码说88了</p>
+
+    </article>
+    <!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/2014/08/27/github-ssh"  data-title="Github不再需要密码,ssh连接模式 - Hackerxu's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
 </div>
 
             </div>

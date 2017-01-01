@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<!-- 手机端页面 -->
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="google-site-verification" content="5KH7Y5MF1c9GbPNQ94CEej-1YkeHortoXv7fjiWt7hM" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>CSS基础教程</title>
+<link rel="shortcut icon" href=" /img/github.ico"/>
+<link rel="bookmark" href="/img/github.ico"/>
+<meta name="viewport" content="width=device-width">
+<meta name="description" content="Python,HTML,CSS,Machine Leaning">
+<link rel="canonical" href="http://hackerxu.com/2014/04/06/CSS.html">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/github.css">
+<!-- 返回顶部 -->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="/js/jquery.js"></script>
+<script src="/js/function_about.js"></script>
+<!--  -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-60393522-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+</head>
+
+    <body>
+        <header class="site-header">
+    <div class="wrap">
+        <a class="site-title" href="/"><h1><strong> <font style="color:#39B3D7" >L</font><font style="color:#ED9C28">i</font><font style="color:#47A447">m</font><font style="color:#D9534F">b</font><font style="color:#3276B1">o</font>
+                </strong>
+        </h1></a>
+        <nav class="site-nav">
+            <a href="#" class="menu-icon">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+                    <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+                    h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                    <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+                    h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                    <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+                    c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                </svg>
+            </a>
+            <div class="trigger">
+                
+                
+                <a class="page-link" href="/about/">About</a>
+                
+                
+                
+                <a class="page-link" href="/archive/">Archive</a>
+                
+                
+                
+                <a class="page-link" href="/categories/">Categories</a>
+                
+                
+                
+                <a class="page-link" href="/tags/">Tags</a>
+                
+                
+                
+                <a class="page-link" href="/atom.xml">Rss</a>
+                
+                
+            </div>
+        </nav>
+    </div>
+</header>
+
+        <div class="page-content">
+            <div class="wrap">
+                <div class="post">
+    <header class="post-header">
+        <h1><a href="/2014/04/06/CSS.html">CSS基础教程</a></h1>
+        <p class="meta"><i class="fa fa-calendar"></i> 2014-04-06&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#css">css</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#css">css</a></p>
+    </header>
+    <article class="post-content">
+        <h1>简介</h1>
+
+<h2>CSS概述</h2>
+
+<ul>
+<li>CSS 指层叠样式表 (Cascading Style Sheets)​</li>
+<li>解决内容与表现分离的问题</li>
+<li>多个样式定义可层叠为一</li>
+</ul>
+
+<h2>层叠次序</h2>
+
+<p>一般而言，所有的样式会根据下面的规则层叠于一个新的虚拟样式表中，其中数字 4 拥有最高的优先权。
+1. 浏览器缺省设置
+2. 外部样式表
+3. 内部样式表（位于 <head> 标签内部）
+4. 内联样式（在 HTML 元素内部）</p>
+
+<h1>CSS基础语法</h1>
+
+<h2>CSS语法</h2>
+
+<p>CSS 规则由两个主要的部分构成：<strong>选择器</strong>，以及一条或多条<strong>声明</strong>。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">selector {declaration1; declaration2; ... declarationN }​
+</code></pre></div>
+<ul>
+<li><p><strong>选择器</strong>通常是您需要改变样式的 HTML 元素。</p></li>
+<li><p>每条<strong>声明</strong>由一个属性和一个值组成。</p></li>
+<li><p><strong>属性</strong>（property）是您希望设置的样式属性（style attribute）。每个属性有一个值。属性和值被冒号分开。
+​CSS 语法</p></li>
+</ul>
+
+<h2>值的不同写法和单位​</h2>
+
+<p>除了英文单词 red，我们还可以使用十六进制的颜色值 #ff0000：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">p { color: #ff0000; }
+</code></pre></div>
+<p>为了节约字节，我们可以使用 CSS 的缩写形式：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">p { color: #f00; }
+</code></pre></div>
+<p>我们还可以通过两种方法使用 RGB 值：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">p { color: rgb(255,0,0); }
+p { color: rgb(100%,0%,0%); }
+</code></pre></div>
+<p>​
+请注意，当使用 RGB 百分比时，即使当值为 0 时也要写百分比符号。但是在其他的情况下就不需要这么做了。比如说，当尺寸为 0 像素时，0 之后不需要使用 px 单位，因为 0 就是 0，无论单位是什么。</p>
+
+<h4>引号​</h4>
+
+<p>如果值为若干单词，则要给值加引号：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">​p {font-family: &quot;sans serif&quot;;}​
+</code></pre></div>
+<p>​</p>
+
+<h2>多重声明</h2>
+
+<p>应当在每个生命后边加上<strong>;</strong>，同时每行只写一个声明增加可读性</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">p {
+  text-align: center;
+  color: black;
+  font-family: arial;
+}
+</code></pre></div>
+<h2>空格和大小写</h2>
+
+<ul>
+<li>增加空格以便美观</li>
+<li>css不会区分大小写，但是与HTML有关的id class需要大小写</li>
+</ul>
+
+<h1>CSS高级语法</h1>
+
+<h2>选择器的分组</h2>
+
+<ul>
+<li>被分组的选择器就可以分享相同的声明。</li>
+<li>用逗号将需要分组的选择器分开​。</li>
+</ul>
+<div class="highlight"><pre><code class="language-text" data-lang="text">h1,h2,h3,h4,h5,h6 {
+  color: green;
+  }
+​
+</code></pre></div>
+<h2>继承及其问题</h2>
+
+<ul>
+<li>子元素从父元素继承属性。</li>
+<li>子元素将继承最高级元素（在本例中是 body）所拥有的属性</li>
+<li>有些浏览器不支持继承：IE6，Netscape4</li>
+<li>如果不希望子类继承，则可以创建一个针对 p 的特殊规则，这样它就会摆脱父元素的规则</li>
+</ul>
+<div class="highlight"><pre><code class="language-text" data-lang="text">body {
+     font-family: Verdana, sans-serif;
+     }​
+</code></pre></div>
+<h1>CSS派生选择器</h1>
+
+<p><strong>派生选择器</strong>：通过依据元素在其位置的上下文关系来定义样式，你可以使标记更加简洁。
+就是有两个选择器～</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">li strong {
+    font-style: italic;
+    font-weight: normal;
+  }​
+</code></pre></div>
+<p>​</p>
+
+<h1>id选择器</h1>
+
+<h2>id选择器</h2>
+
+<ul>
+<li>id 选择器可以为标有特定 id 的 HTML 元素指定特定的样式。</li>
+<li>id 选择器以 &quot;#&quot; 来定义。</li>
+<li>id 属性只能在每个 HTML 文档中出现一次</li>
+</ul>
+<div class="highlight"><pre><code class="language-text" data-lang="text">#red {color:red;}
+#green {color:green;}​
+</code></pre></div>
+<h2>id 选择器和派生选择器</h2>
+
+<p><strong>在现代布局中，id 选择器常常用于建立派生选择器。​</strong></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">#sidebar p {
+ font-style: italic;
+ text-align: right;
+ margin-top: 0.5em;
+ }​
+</code></pre></div>
+<h2>一个选择器，多种用法</h2>
+
+<p>同派生器一样，可以对应id下多个选择</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">#sidebar p {
+ font-style: italic;
+ text-align: right;
+ margin-top: 0.5em;
+ }
+
+#sidebar h2 {
+ font-size: 1em;
+ font-weight: normal;
+ font-style: italic;
+ margin: 0;
+ line-height: 1.5;
+ text-align: right;
+ }
+​
+</code></pre></div>
+<h1>CSS类选择器</h1>
+
+<h2>Class选择器</h2>
+<div class="highlight"><pre><code class="language-text" data-lang="text">.center {text-align: center}
+</code></pre></div>
+<p>​类名的第一个字符不能使用数字！它无法在 Mozilla 或 Firefox 中起作用。</p>
+
+<p>​<strong>和 id 一样，class 也可被用作派生选择器：​</strong></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">.fancy td {
+ color: #f60;
+ background: #666;
+ }​
+</code></pre></div>
+<p><strong>元素也可以基于它们的类而被选择：​</strong></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">td.fancy {
+ color: #f60;
+ background: #666;
+ }
+
+​&lt;td class=&quot;fancy&quot;&gt;
+</code></pre></div>
+<h1>CSS属性选择器</h1>
+
+<p>可以为拥有指定属性的 HTML 元素设置样式，而不仅限于 class 和 id 属性。</p>
+
+<h2>属性选择器</h2>
+
+<p>下面的例子为带有 title 属性的所有元素设置样式：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">[title]
+{
+color:red;
+}
+​```
+
+##属性和值选择器
+
+下面的例子为 title=&quot;W3School&quot; 的所有元素设置样式：
+</code></pre></div>
+<p>[title=W3School]
+{
+border:5px solid blue;
+}
+​```</p>
+
+<h2>属性和值选择器 - 多个值</h2>
+
+<p>下面的例子为包含指定值的 title 属性的所有元素设置样式。适用于由空格分隔的属性值：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">[title~=hello] { color:red; } //所有包含helo的title属性里 都有效
+</code></pre></div>
+<h2>参考手册</h2>
+
+<table><thead>
+<tr>
+<th style="text-align: left">选择器</th>
+<th style="text-align: left">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">[attribute]</td>
+<td style="text-align: left">用于选取带有指定属性的元素。</td>
+</tr>
+<tr>
+<td style="text-align: left">[attribute=value]</td>
+<td style="text-align: left">用于选取带有指定属性和值的元素。</td>
+</tr>
+<tr>
+<td style="text-align: left">[attribute~=value]</td>
+<td style="text-align: left">用于选取属性值中包含指定词汇的元素。</td>
+</tr>
+<tr>
+<td style="text-align: left">[attribute =value]</td>
+<td style="text-align: left">用于选取带有以指定值开头的属性值的元素，该值必须是整个单词。</td>
+</tr>
+<tr>
+<td style="text-align: left">[attribute^=value]</td>
+<td style="text-align: left">匹配属性值以指定值开头的每个元素。</td>
+</tr>
+<tr>
+<td style="text-align: left">[attribute\$=value]</td>
+<td style="text-align: left">匹配属性值以指定值结尾的每个元素。</td>
+</tr>
+<tr>
+<td style="text-align: left">[attribute*=value]</td>
+<td style="text-align: left">匹配属性值中包含指定值的每个元素。</td>
+</tr>
+</tbody></table>
+
+<p>第4项中有个|，不知道怎么转义</p>
+
+<h1>如何创建CSS</h1>
+
+<h2>如何插入样式表</h2>
+
+<p>当读到一个样式表时，浏览器会根据它来格式化 HTML 文档。插入样式表的方法有三种：​</p>
+
+<h3>外部样式表</h3>
+
+<p>当样式需要应用于很多页面时，外部样式表将是理想的选择。在使用外部样式表的情况下，你可以通过改变一个文件来改变整个站点的外观。每个页面使用<code>&lt;link&gt;</code>标签链接到样式表。<code>&lt;link&gt;</code> 标签在（文档的）头部：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;head&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;mystyle.css&quot; /&gt;
+&lt;/head&gt;
+</code></pre></div>
+<p>浏览器会从文件 mystyle.css 中读到样式声明，并根据它来格式文档。​</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">hr {color: sienna;}
+p {margin-left: 20px;}
+body {background-image: url(&quot;images/back40.gif&quot;);}
+</code></pre></div>
+<p>.css扩展名，20px中间不能留空格！</p>
+
+<h3>内部样式表</h3>
+
+<p>当单个文档需要特殊的样式时，就应该使用内部样式表。你可以使用 <code>&lt;style&gt;</code>标签在文档头部定义内部样式表，就像这样:</p>
+
+<p><head>
+  <style type="text/css">
+  hr {color: sienna;}
+  p {margin-left: 20px;}
+  body {background-image: url(&quot;images/back40.gif&quot;);}
+  </style>
+  </head></p>
+
+<p>​</p>
+
+<h3>内联样式</h3>
+
+<p>由于要将表现和内容混杂在一起，内联样式会损失掉样式表的许多优势。请慎用这种方法，例如当样式仅需要在一个元素上应用一次时。</p>
+
+<p>要使用内联样式，你需要在相关的标签内使用样式（style）属性。Style 属性可以包含任何 CSS 属性。本例展示如何改变段落的颜色和左外边距：</p>
+
+<p><p style="color: sienna; margin-left: 20px">
+  This is a paragraph
+  </p>
+​</p>
+
+<h2>多重样式</h2>
+
+<p>如果某些属性在不同的样式表中被同样的选择器定义，那么属性值将从更具体的样式表中被继承过来。</p>
+
+<p>例如，外部样式表拥有针对 h3 选择器的三个属性：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">h3 {
+  color: red;
+  text-align: left;
+  font-size: 8pt;
+  }
+</code></pre></div>
+<p>而内部样式表拥有针对 h3 选择器的两个属性：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">h3 {
+  text-align: right; 
+  font-size: 20pt;
+  }
+</code></pre></div>
+<p>假如拥有内部样式表的这个页面同时与外部样式表链接，那么 h3 得到的样式是：</p>
+
+<p>color: red; 
+  text-align: right; 
+  font-size: 20pt;
+​</p>
+
+<p>即颜色属性将被继承于外部样式表，而文字排列（text-alignment）和字体尺寸（font-size）会被内部样式表中的规则取代。</p>
+
+<p><strong>和继承非常相似！！</strong>​</p>
+
+    </article>
+    <!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/2014/04/06/CSS"  data-title="CSS基础教程 - Hackerxu's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
+</div>
+
+            </div>
+        </div>
+        <footer class="site-footer">
+
+    <div class="wrap">
+        <div class="footer-col-1 column">
+            <div class="github">
+                <!-- <span class="icon github"> -->
+                <svg version="1.1" class="github-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                    <path fill-rule="evenodd" clip-rule="evenodd" fill="#000" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761
+                    c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32
+                    c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472
+                    c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037
+                    C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65
+                    c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261
+                    c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082
+                    c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129
+                    c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+                <!-- </span> -->
+            </div>
+            <a href="https://github.com/taizilongxu">
+                Fork me on github
+            </a>
+        </div>
+        <div class="footer-col-2">
+            <p>© 2014 - 2015 by <font style="color:#f44336">❤ </font> <a href="http://github.com/taizilongxu">Hackerxu</a></p>
+        </div>
+        <!-- <div class="footer-col-3 column">
+      <p class="text">Python,HTML,CSS,Machine Leaning</p>
+    </div> -->
+    </div>
+    <div class="scroll-top"><i class="fa fa-arrow-circle-up"></i></div>
+</footer>
+
+
+        <!-- mathjax -->
+        <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+        </script>
+        <script type="text/javascript"
+                src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        </script>
+        <!-- highlight -->
+        <script src="/js/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <!-- pleace change it! -->
+        <script type="text/javascript">
+var duoshuoQuery = {short_name:"taizilongxu"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+        </script>
+        <!-- top-scrooll -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.js"></script>
+        <script type="text/javascript">
+$(window).scroll(function() {
+    if($(this).scrollTop() > 100) {
+        $('.scroll-top').fadeIn(200);
+    } else {
+        $('.scroll-top').fadeOut(200);
+    }
+});
+$('.scroll-top').bind('click', function(e) {
+    e.preventDefault();
+    $('body,html').animate({scrollTop:0},200);
+});
+        </script>
+    </body>
+</html>

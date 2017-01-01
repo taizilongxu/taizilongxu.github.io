@@ -6,12 +6,12 @@
 <meta name="google-site-verification" content="5KH7Y5MF1c9GbPNQ94CEej-1YkeHortoXv7fjiWt7hM" />
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Hackerxu's Blog</title>
+<title>Python文件遍历方法</title>
 <link rel="shortcut icon" href=" /img/github.ico"/>
 <link rel="bookmark" href="/img/github.ico"/>
 <meta name="viewport" content="width=device-width">
 <meta name="description" content="Python,HTML,CSS,Machine Leaning">
-<link rel="canonical" href="http://hackerxu.com/">
+<link rel="canonical" href="http://hackerxu.com/2014/07/09/file-contrl.html">
 <!-- Custom CSS -->
 <link rel="stylesheet" href="/css/main.css">
 <link rel="stylesheet" href="/css/github.css">
@@ -79,30 +79,45 @@ ga('send', 'pageview');
 
         <div class="page-content">
             <div class="wrap">
-                <div class="home">
-  
-  <header class="post-header">
-    <h1><a href="/2016/10/08/guoqing.html">国庆</a></h1>
-    <p class="meta"><i class="fa fa-calendar"></i> 2016-10-08&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#life">life</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#life">life</a></p>
-  </header>
-  <article class="post-content">
-  <p>国庆无事, 替opsdev全体员工拜一拜了, 保佑风调雨顺</p>
+                <div class="post">
+    <header class="post-header">
+        <h1><a href="/2014/07/09/file-contrl.html">Python文件遍历方法</a></h1>
+        <p class="meta"><i class="fa fa-calendar"></i> 2014-07-09&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#Python">Python</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#python">python</a></p>
+    </header>
+    <article class="post-content">
+        <h2>方法1：使用os.listdir</h2>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span>
+<span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s">r&#39;c:\windows&#39;</span><span class="p">):</span>
+    <span class="k">print</span> <span class="n">filename</span>
+</code></pre></div>
+<h2>方法2：使用glob模块，可以设置文件过滤</h2>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">glob</span>
+<span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s">r&#39;c:\windows\*.exe&#39;</span><span class="p">):</span>
+    <span class="k">print</span> <span class="n">filename</span>
+</code></pre></div>
+<h2>方法3：通过os.path.walk递归遍历，可以访问子文件夹</h2>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os.path</span>
+<span class="k">def</span> <span class="nf">processDirectory</span> <span class="p">(</span> <span class="n">args</span><span class="p">,</span> <span class="n">dirname</span><span class="p">,</span> <span class="n">filenames</span> <span class="p">):</span>
+    <span class="k">print</span> <span class="s">&#39;Directory&#39;</span><span class="p">,</span><span class="n">dirname</span>
+    <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&#39; File&#39;</span><span class="p">,</span><span class="n">filename</span>
 
-<p><img src="/img/DAA339DC8C0A1922D9A7FF35AD67F59F.jpg" alt=""></p>
 
-  </article>
-  
-
-  <ul class="posts">
-    <!-- <li class="listing-seperator">Yesterday you said tomorrow</li> -->
-  
-  
-    
-    
-    
-    <li class="listing-seperator"><a href="/archive/">Long ago</a></li>
-  </ul>
-
+<span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s">r&#39;c:\windows&#39;</span><span class="p">,</span> <span class="n">processDirectory</span><span class="p">,</span> <span class="bp">None</span> <span class="p">)</span>
+</code></pre></div>
+<h2>方法4：非递归</h2>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span>
+<span class="k">for</span> <span class="n">dirpath</span><span class="p">,</span> <span class="n">dirnames</span><span class="p">,</span> <span class="n">filenames</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s">&#39;c:</span><span class="se">\\</span><span class="s">winnt&#39;</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&#39;Directory&#39;</span><span class="p">,</span> <span class="n">dirpath</span>
+    <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&#39; File&#39;</span><span class="p">,</span> <span class="n">filename</span>
+</code></pre></div>
+    </article>
+    <!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/2014/07/09/file-contrl"  data-title="Python文件遍历方法 - Hackerxu's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
 </div>
 
             </div>

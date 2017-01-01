@@ -6,12 +6,12 @@
 <meta name="google-site-verification" content="5KH7Y5MF1c9GbPNQ94CEej-1YkeHortoXv7fjiWt7hM" />
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Hackerxu's Blog</title>
+<title>为什么要有type和object?</title>
 <link rel="shortcut icon" href=" /img/github.ico"/>
 <link rel="bookmark" href="/img/github.ico"/>
 <meta name="viewport" content="width=device-width">
 <meta name="description" content="Python,HTML,CSS,Machine Leaning">
-<link rel="canonical" href="http://hackerxu.com/">
+<link rel="canonical" href="http://hackerxu.com/2014/11/26/type_object.html">
 <!-- Custom CSS -->
 <link rel="stylesheet" href="/css/main.css">
 <link rel="stylesheet" href="/css/github.css">
@@ -79,30 +79,113 @@ ga('send', 'pageview');
 
         <div class="page-content">
             <div class="wrap">
-                <div class="home">
-  
-  <header class="post-header">
-    <h1><a href="/2016/10/08/guoqing.html">国庆</a></h1>
-    <p class="meta"><i class="fa fa-calendar"></i> 2016-10-08&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#life">life</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#life">life</a></p>
-  </header>
-  <article class="post-content">
-  <p>国庆无事, 替opsdev全体员工拜一拜了, 保佑风调雨顺</p>
+                <div class="post">
+    <header class="post-header">
+        <h1><a href="/2014/11/26/type_object.html">为什么要有type和object?</a></h1>
+        <p class="meta"><i class="fa fa-calendar"></i> 2014-11-26&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#python">python</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#python">python</a></p>
+    </header>
+    <article class="post-content">
+        <p>图片来源 <a href="http://wiki.woodpecker.org.cn/moin/PyTypesAndObjects">http://wiki.woodpecker.org.cn/moin/PyTypesAndObjects</a></p>
 
-<p><img src="/img/DAA339DC8C0A1922D9A7FF35AD67F59F.jpg" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/types_map.png" alt=""></p>
 
-  </article>
-  
+<p>先解释一下图片,虚线表示一个对象的type(类型),实线表示一个对象的base(基类/父类).</p>
 
-  <ul class="posts">
-    <!-- <li class="listing-seperator">Yesterday you said tomorrow</li> -->
-  
-  
-    
-    
-    
-    <li class="listing-seperator"><a href="/archive/">Long ago</a></li>
-  </ul>
+<p>这个图片很有意思的一个地方是<code>&lt;type &#39;type&#39;&gt;</code>和<code>&lt;type &#39;object&#39;&gt;</code>之间的关系,可以看到<code>&lt;type &#39;object&#39;&gt;</code>是<code>&lt;type &#39;type&#39;&gt;</code>的基类,而<code>&lt;type &#39;type&#39;&gt;</code>是<code>&lt;type &#39;object&#39;&gt;</code>的type(类型),这到底为什么?(这里先拿新式类来说,旧式类后面在说.)</p>
 
+<p>我觉得最主要的原因是来源于Python <strong>一切皆为对象</strong> 的概念,在Python中所有的类或实例(比如list,int,1,&#39;abc&#39;)都是对象.</p>
+
+<p>如果要你设计会怎么设计?那就是设计一个超类,所有的对象的超集都是一个<code>&lt;type &#39;object&#39;&gt;</code>类(也就是图上的<code>&lt;type &#39;object&#39;&gt;</code>),即所有的对象都继承这个object类.这就是<code>&lt;type &#39;object&#39;&gt;</code>类的由来.</p>
+
+<p>再看看<code>&lt;type &#39;type&#39;&gt;</code>是怎么来的.看图,先撇开<code>metaclasses</code>,来看右边两个矩形.可以看出对象分两种:</p>
+
+<ol>
+<li>classes(类)</li>
+<li>instances(实例)</li>
+</ol>
+
+<p>类和实例有什么关系呢?类创造了实例,而不是继承关系.那么问题来了,是什么创造了类呢?于是在Python里引进了<code>metaclasses</code>,<code>&lt;type &#39;type&#39;&gt;</code>就是元类,它可以创建类.记住 <strong>Python中的一切都是对象，它们要么是类的实例，要么是元类的实例</strong> .</p>
+
+<p>这样我们就统一了对象的创建,所有的对象都是<code>metaclasses</code>创建的,而所有的对象都是<code>&lt;type &#39;object&#39;&gt;</code>的子集,这就是为什么我们分别需要<code>type</code>和<code>object</code>这两个东西~~最后,<code>&lt;type &#39;type&#39;&gt;</code>和<code>&lt;type &#39;object&#39;&gt;</code>之间的实线部分,那是因为 <strong>一切皆为对象</strong> ,所以<code>type</code>自然是<code>object</code>的子集了.</p>
+
+<p>总之, <strong><code>type</code>是所有对象的妈或者奶奶,创建所有对象(包括自己,它的<code>__class__</code>为<code>&lt;type &#39;type&#39;&gt;</code>),<code>object</code>是所有对象的祖宗(不包括自己,它的<code>__base__</code>为空),所有对象继承祖宗的血统</strong> ,就酱紫.</p>
+
+<p>ps:</p>
+
+<ul>
+<li>不能通过形式上判断类的类型,应当从元类的类型来确定:古典类的元类为<code>types.ClassType</code>,新式类的元类为<code>type</code>,可以通过设置<code>__metaclass__</code>来设置一个类的元类.</li>
+<li><code>type(*)</code>等同于<code>*.__class__</code></li>
+<li>每个对象都有class，并且等于该对象的type.</li>
+<li>每个类(classes)或者type有bases属性，而实例(instances)则没有.只有<code>&lt;type &#39;object&#39;&gt;</code>的bases是空的.</li>
+<li>要通过子类化构建对象,我们使用class关键字，并指定新对象的基类bases (或者可选的 type) . 这样通常创建出的是type object.</li>
+<li>要通过实例化构建对象, 需要使用在类对象上使用调用操作符即小括号 (())</li>
+</ul>
+
+<p>对于上一个问题可以引出为什么要加入新式类?</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">A</span><span class="p">:</span>  <span class="c"># 旧式类</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">B</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>  <span class="c"># 新式类</span>
+    <span class="k">pass</span>
+</code></pre></div>
+<p>假设a,b分别是类A,类B的实例,则:</p>
+
+<table><thead>
+<tr>
+<th>对象</th>
+<th><code>type&lt;*&gt;</code></th>
+<th><code>*.__class__</code></th>
+<th><code>*.__bases__</code></th>
+<th><code>isinstance(*, object)</code></th>
+<th><code>isinstance(*, type)</code></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>object</td>
+<td><code>&lt;type &#39;type&#39;&gt;</code></td>
+<td><code>&lt;type &#39;type&#39;&gt;</code></td>
+<td>()</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>type</td>
+<td><code>&lt;type &#39;type&#39;&gt;</code></td>
+<td><code>&lt;type &#39;type&#39;&gt;</code></td>
+<td>(<code>&lt;type &#39;type&#39;&gt;</code>,)</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>a</td>
+<td><code>&lt;type &#39;instance&#39;&gt;</code></td>
+<td><code>&lt;type &#39;type&#39;&gt;</code></td>
+<td>()</td>
+<td>√</td>
+<td>×</td>
+</tr>
+<tr>
+<td>b</td>
+<td><code>&lt;class &#39;__main__.B&#39;&gt;</code></td>
+<td><code>&lt;class &#39;__main__.B&#39;&gt;</code></td>
+<td>(<code>&lt;type &#39;type&#39;&gt;</code>,)</td>
+<td>√</td>
+<td>×</td>
+</tr>
+</tbody></table>
+
+<p>可以看到对于旧式类,它的<code>type</code>和<code>*.__class__</code>还有<code>*.__bases__</code>比较混乱,而新式类就是为了解决这个问题,做到了大一统.</p>
+
+<p>新式类有很多优势:基于内建类型构建新的用户类型,支持property和描述符特性等.作为新式类的祖先,Object类中还定义了一些特殊方法,如:<code>__new__()</code>,<code>__init__()</code>,<code>__delattr__()</code>,<code>__getattribute__()</code>,<code>__setattr__()</code>,<code>__hash__()</code>,<code>__repr__()</code>,<code>__str__()</code>等等.Object的子类可以对这些方法进行覆盖以满足自身的特殊需求.</p>
+
+<p>另外，新式类和旧式类还有一个区别就是在多继承的时候，查找要调用的方法。新式类是广度优先的查找算法。旧式类的查找方法是深度优先的.</p>
+
+    </article>
+    <!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/2014/11/26/type_object"  data-title="为什么要有type和object? - Hackerxu's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
 </div>
 
             </div>

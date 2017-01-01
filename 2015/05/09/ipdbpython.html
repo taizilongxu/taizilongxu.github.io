@@ -6,12 +6,12 @@
 <meta name="google-site-verification" content="5KH7Y5MF1c9GbPNQ94CEej-1YkeHortoXv7fjiWt7hM" />
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Hackerxu's Blog</title>
+<title>使用ipdb调试python</title>
 <link rel="shortcut icon" href=" /img/github.ico"/>
 <link rel="bookmark" href="/img/github.ico"/>
 <meta name="viewport" content="width=device-width">
 <meta name="description" content="Python,HTML,CSS,Machine Leaning">
-<link rel="canonical" href="http://hackerxu.com/">
+<link rel="canonical" href="http://hackerxu.com/2015/05/09/ipdbpython.html">
 <!-- Custom CSS -->
 <link rel="stylesheet" href="/css/main.css">
 <link rel="stylesheet" href="/css/github.css">
@@ -79,30 +79,53 @@ ga('send', 'pageview');
 
         <div class="page-content">
             <div class="wrap">
-                <div class="home">
-  
-  <header class="post-header">
-    <h1><a href="/2016/10/08/guoqing.html">国庆</a></h1>
-    <p class="meta"><i class="fa fa-calendar"></i> 2016-10-08&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#life">life</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#life">life</a></p>
-  </header>
-  <article class="post-content">
-  <p>国庆无事, 替opsdev全体员工拜一拜了, 保佑风调雨顺</p>
+                <div class="post">
+    <header class="post-header">
+        <h1><a href="/2015/05/09/ipdbpython.html">使用ipdb调试python</a></h1>
+        <p class="meta"><i class="fa fa-calendar"></i> 2015-05-09&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#python">python</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#ipdb">ipdb</a>&nbsp<a href="/tags/#python">python</a>&nbsp<a href="/tags/#debug">debug</a></p>
+    </header>
+    <article class="post-content">
+        <p>以前都是用print或者log来调试程序,在小规模的程序下很方便,但是最近在研究Flask0.1的代码,对于不熟悉的代码最好的方式是一边运行一边检查里面的变量和方法,搜了搜发现了ipdb这个好东西.</p>
 
-<p><img src="/img/DAA339DC8C0A1922D9A7FF35AD67F59F.jpg" alt=""></p>
+<p><img src="http://hackerxu.com/img/ipdb.png" alt=""></p>
 
-  </article>
-  
+<h2>1 安装</h2>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ pip install ipdb
+</code></pre></div>
+<h2>2 使用方法</h2>
 
-  <ul class="posts">
-    <!-- <li class="listing-seperator">Yesterday you said tomorrow</li> -->
-  
-  
-    
-    
-    
-    <li class="listing-seperator"><a href="/archive/">Long ago</a></li>
-  </ul>
+<p>有两种使用方法,一种是不用改变程序直接用ipdb单步执行Python程序,第二种是在程序里标记断点,进行调试.</p>
 
+<h3>第一种方法</h3>
+<div class="highlight"><pre><code class="language-text" data-lang="text">python -m ipdb xxx.py
+</code></pre></div>
+<h3>第二种方法</h3>
+
+<p>在需要断点的地方插入</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">from ipdb import set_trace
+set_trace()
+</code></pre></div>
+<h2>3 常用的命令</h2>
+
+<ul>
+<li><code>n</code>(下一个)</li>
+<li><code>ENTER</code>(重复上次命令)</li>
+<li><code>q</code>(退出)</li>
+<li><code>p&lt;变量&gt;</code>(打印变量)</li>
+<li><code>c</code>(继续)</li>
+<li><code>l</code>(查找当前位于哪里)</li>
+<li><code>s</code>(进入子程序)</li>
+<li><code>r</code>(运行直到子程序结束)</li>
+<li><code>!&lt;python 命令&gt;</code></li>
+<li><code>h</code>(帮助)</li>
+</ul>
+
+    </article>
+    <!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/2015/05/09/ipdbpython"  data-title="使用ipdb调试python - Hackerxu's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
 </div>
 
             </div>

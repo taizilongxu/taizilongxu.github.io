@@ -6,12 +6,12 @@
 <meta name="google-site-verification" content="5KH7Y5MF1c9GbPNQ94CEej-1YkeHortoXv7fjiWt7hM" />
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Hackerxu's Blog</title>
+<title>zsh转fish</title>
 <link rel="shortcut icon" href=" /img/github.ico"/>
 <link rel="bookmark" href="/img/github.ico"/>
 <meta name="viewport" content="width=device-width">
 <meta name="description" content="Python,HTML,CSS,Machine Leaning">
-<link rel="canonical" href="http://hackerxu.com/">
+<link rel="canonical" href="http://hackerxu.com/2015/12/13/fish.html">
 <!-- Custom CSS -->
 <link rel="stylesheet" href="/css/main.css">
 <link rel="stylesheet" href="/css/github.css">
@@ -79,30 +79,180 @@ ga('send', 'pageview');
 
         <div class="page-content">
             <div class="wrap">
-                <div class="home">
-  
-  <header class="post-header">
-    <h1><a href="/2016/10/08/guoqing.html">国庆</a></h1>
-    <p class="meta"><i class="fa fa-calendar"></i> 2016-10-08&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#life">life</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#life">life</a></p>
-  </header>
-  <article class="post-content">
-  <p>国庆无事, 替opsdev全体员工拜一拜了, 保佑风调雨顺</p>
+                <div class="post">
+    <header class="post-header">
+        <h1><a href="/2015/12/13/fish.html">zsh转fish</a></h1>
+        <p class="meta"><i class="fa fa-calendar"></i> 2015-12-13&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#shell">shell</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#fish">fish</a>&nbsp<a href="/tags/#shell">shell</a></p>
+    </header>
+    <article class="post-content">
+        <p>最近有一些空闲研究研究shell, 以前一直用zsh, 其中有个autosuggestions的插件感觉非常好用, 但是不知道为什么这个插件会使目录TAB键失效, 索性试了试fish, 感觉非常顺手, 用了几天了总结下.</p>
 
-<p><img src="/img/DAA339DC8C0A1922D9A7FF35AD67F59F.jpg" alt=""></p>
+<p><img src="/img/fish1.png" alt=""></p>
 
-  </article>
-  
+<h2>fish和zsh对比</h2>
 
-  <ul class="posts">
-    <!-- <li class="listing-seperator">Yesterday you said tomorrow</li> -->
-  
-  
-    
-    
-    
-    <li class="listing-seperator"><a href="/archive/">Long ago</a></li>
-  </ul>
+<table><thead>
+<tr>
+<th style="text-align: left"></th>
+<th style="text-align: left">优点</th>
+<th style="text-align: left">缺点</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">zsh</td>
+<td style="text-align: left">插件众多, 社区活跃</td>
+<td style="text-align: left">慢</td>
+</tr>
+<tr>
+<td style="text-align: left">fish</td>
+<td style="text-align: left">快, 基本上安装上即可使用, 不太用配置</td>
+<td style="text-align: left">不兼容bash</td>
+</tr>
+</tbody></table>
 
+<p>其实作为shell, 我只是需要以下的几个功能, 而fish完全符合我的需求饿, 至于alias的自己配置就好:</p>
+
+<ol>
+<li>autosuggestions</li>
+<li>cd <code>Tab</code></li>
+<li>autojump</li>
+<li>git branch...</li>
+<li>history</li>
+<li>themes</li>
+</ol>
+
+<h2>安装fish和oh-my-fish</h2>
+
+<p>oh-myfish对于fish犹如oh-my-zsh对于zsh一样, fish和oh-my-fish在Github里有详细的安装方法</p>
+
+<p>下面是配置文件的位置:</p>
+
+<ol>
+<li><code>~/.config/fish/config.fish</code> fish的原始配置</li>
+<li><code>/Users/limbo/.local/share/omf</code> oh-my-fish的安装目录</li>
+<li><code>~/.config/omf/</code> oh-my-fish的配置</li>
+</ol>
+
+<p>其中oh-my-fish配置里又有下面四个文件:</p>
+
+<ul>
+<li>theme - 当前主题</li>
+<li>bundle - 显示当前已安装的插件/主题列表</li>
+<li>init.fish - shell开始后执行的自定义脚本</li>
+<li>before.init.fish - shell开始前执行的自定义脚本</li>
+</ul>
+
+<p>oh-my-fish和oh-my-zsh不一样的是他提供类似插件管理的命令, 类似<code>brew</code>或者<code>pip</code>一样通过命令就可以管理插件和theme, 非常的方便</p>
+
+<h2>关于bash转fish之后的一些语法修改</h2>
+
+<h3>PATH</h3>
+
+<p>原来PATH只要这么写:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">export PATH=&quot;/usr/local/bin:$PATH&quot;
+</code></pre></div>
+<p>在fish里需要这么写:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">set PATH $PATH /usr/local/bin
+</code></pre></div>
+<h3>alias</h3>
+
+<p>bash里这么写:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">alias rm=&quot;trash-put&quot;
+</code></pre></div>
+<p>fish里这么写:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">alias rm &quot;trash-put&quot;
+或者
+function rm
+    trash-put
+end
+</code></pre></div>
+<h2>在web端配置fish</h2>
+
+<p>fish里内置web接口, 可以用<code>fish_config</code>打开web端进行设置</p>
+
+<p><img src="/img/fish2.png" alt=""></p>
+
+<h2>插件介绍</h2>
+
+<p>虽然oh-my-fish的插件和oh-my-zsh插件数量上相差甚远, 但大致浏览下挑几个比较实用的插件</p>
+
+<p>如要安装直接输入<code>ofm install + 插件名</code></p>
+
+<h3>osx</h3>
+
+<p>针对于osx的几个增强命令</p>
+
+<ul>
+<li>cdf - cd到当前文件夹打开的目录</li>
+<li>itunes - Controle iTunes. Play, pause, stop, resume, etc.</li>
+<li>manp - Open a specified man page in Preview</li>
+<li>pfd - Return the path of the frontmost Finder window</li>
+<li>pfs - Return the current Finder selection</li>
+<li>pushdf - pushd to the current Finder directory</li>
+<li>ql - Quick Look a specified file or directory</li>
+<li>trash - Move a specified file to the Trash</li>
+</ul>
+
+<h3>python</h3>
+
+<p>调用python的几个小命令</p>
+
+<ul>
+<li>pybeautifyjson - Beautify a JSON string</li>
+<li>pyclean - Recursively clean directory from .pyc and .pyo files and python3 pycache folders</li>
+<li>pyhttp - Start SimpleHTTPServer, optional argument for port number</li>
+<li>pysmtp - Start SMTP debugging server, option port argument. Default is 1025</li>
+</ul>
+
+<p>usage:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ pyclean  # recursively clean .pyc and .pyo
+$ pybeautifyjson &#39;{&quot;foo&quot;: &quot;lorem&quot;, &quot;bar&quot;: &quot;ipsum&quot;}&#39;    # beautify a JSON string
+$ pybeautifyjson (curl -s http://api.example.com/foo)  # beautify a JSON output
+$ curl -s http://api.example.com/foo | pybeautifyjson  # beautify a JSON output
+</code></pre></div>
+<h3>grc</h3>
+
+<p>高亮插件, mac需要<code>brew install grc</code></p>
+
+<p><img src="/img/fish3.png" alt=""></p>
+
+<p>提供以下命令的高亮(注意, 对于alias的命令不起作用, 不知道为啥我的ls命令不带高亮)</p>
+
+<ul>
+<li>cat</li>
+<li>cvs</li>
+<li>df</li>
+<li>diff</li>
+<li>dig</li>
+<li>gcc</li>
+<li>g++</li>
+<li>ifconfig</li>
+<li>ls</li>
+<li>make</li>
+<li>mount</li>
+<li>mtr</li>
+<li>netstat</li>
+<li>ping</li>
+<li>ps</li>
+<li>tail</li>
+<li>traceroute</li>
+<li>wdiff</li>
+</ul>
+
+<h3>z(和autojump功能一样)</h3>
+
+<p>mac下需要下载<code>brew install z</code></p>
+
+<p>还需要在before.init.fish文件里写入如下:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">sh /usr/local/Cellar/z/1.9/etc/profile.d/z.sh
+set -g Z_SCRIPT_PATH /usr/local/Cellar/z/1.9/etc/profile.d/z.sh
+</code></pre></div>
+    </article>
+    <!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/2015/12/13/fish"  data-title="zsh转fish - Hackerxu's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
 </div>
 
             </div>

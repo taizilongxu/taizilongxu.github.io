@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<!-- 手机端页面 -->
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="google-site-verification" content="5KH7Y5MF1c9GbPNQ94CEej-1YkeHortoXv7fjiWt7hM" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>数据库与树</title>
+<link rel="shortcut icon" href=" /img/github.ico"/>
+<link rel="bookmark" href="/img/github.ico"/>
+<meta name="viewport" content="width=device-width">
+<meta name="description" content="Python,HTML,CSS,Machine Leaning">
+<link rel="canonical" href="http://hackerxu.com/2015/01/10/tree.html">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/github.css">
+<!-- 返回顶部 -->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="/js/jquery.js"></script>
+<script src="/js/function_about.js"></script>
+<!--  -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-60393522-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+</head>
+
+    <body>
+        <header class="site-header">
+    <div class="wrap">
+        <a class="site-title" href="/"><h1><strong> <font style="color:#39B3D7" >L</font><font style="color:#ED9C28">i</font><font style="color:#47A447">m</font><font style="color:#D9534F">b</font><font style="color:#3276B1">o</font>
+                </strong>
+        </h1></a>
+        <nav class="site-nav">
+            <a href="#" class="menu-icon">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+                    <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+                    h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                    <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+                    h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                    <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+                    c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                </svg>
+            </a>
+            <div class="trigger">
+                
+                
+                <a class="page-link" href="/about/">About</a>
+                
+                
+                
+                <a class="page-link" href="/archive/">Archive</a>
+                
+                
+                
+                <a class="page-link" href="/categories/">Categories</a>
+                
+                
+                
+                <a class="page-link" href="/tags/">Tags</a>
+                
+                
+                
+                <a class="page-link" href="/atom.xml">Rss</a>
+                
+                
+            </div>
+        </nav>
+    </div>
+</header>
+
+        <div class="page-content">
+            <div class="wrap">
+                <div class="post">
+    <header class="post-header">
+        <h1><a href="/2015/01/10/tree.html">数据库与树</a></h1>
+        <p class="meta"><i class="fa fa-calendar"></i> 2015-01-10&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#db">db</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#db">db</a></p>
+    </header>
+    <article class="post-content">
+        <p>数据库中需要引用查找结构,为了更加迅速的查找硬盘中的数据库,因为硬盘IO的速度非常的耗时,所以要尽量选择能够将IO次数减少的数据结构,下面一个个分析动态查找结构,找到最合适的结构.</p>
+
+<h2>二叉排序树(二叉查找树,二叉搜索树)</h2>
+
+<p>二叉排序树（Binary Sort Tree）又称二叉查找树（Binary Search Tree），亦称二叉搜索树。 它或者是一棵空树；或者是具有下列性质的二叉树： </p>
+
+<ol>
+<li>若左子树不空，则左子树上所有结点的值均小于它的根结点的值； </li>
+<li>若右子树不空，则右子树上所有结点的值均大于或等于它的根结点的值；</li>
+<li>左、右子树也分别为二叉排序树；</li>
+</ol>
+
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/2012072113392755.png" alt=""></p>
+
+<p>它的查找复杂度 P(n)=O(logn)</p>
+
+<p>这里就不讲它的插入,删除操作了</p>
+
+<p>可以看到二叉排序树是最简单的一种动态查找结构,它对树的深度没有进行优化,这就使得树深有可能非常的大(最坏情况树深=节点数).</p>
+
+<h2>平衡二叉树</h2>
+
+<p>平衡二叉树（Balanced Binary Tree）又被称为AVL树（有别于AVL算法），且具有以下性质：它是一 棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树。构造与调整方法 平衡二叉树的常用算法有红黑树、AVL、Treap等。 最小二叉平衡树的节点的公式如下 F(n)=F(n-1)+F(n-2)+1 这个类似于一个递归的数列，可以参考Fibonacci数列，1是根节点，F(n-1)是左子树的节点数量，F(n-2)是右子树的节点数量。</p>
+
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/bf096b63f6246b6060c35d63e9f81a4c500fa2dc.jpg" alt=""></p>
+
+<p>平衡二叉树通过旋转可以使树深不至于太大,它的平均查找长度也是logn,但它能有效避免二叉排序树的那种极端情况出现.</p>
+
+<h2>B-tree</h2>
+
+<blockquote>
+<p>这里B-tree不是B减树而是叫做B树</p>
+</blockquote>
+
+<p>对于上面两种树形结构,它们的树深往往太深,对于海量数据而言简直是个灾难,所以有人发明了B-tree,它是一个多路查找树,很轻易的就减小了树深.</p>
+
+<p>一棵m阶B树(balanced tree of order m)是一棵平衡的m路搜索树。它或者是空树，或者是满足下列性质的树：</p>
+
+<ol>
+<li>根结点至少有两个子女；</li>
+<li>每个非根节点所包含的关键字个数 j 满足：┌m/2┐ - 1 &lt;= j &lt;= m - 1；</li>
+<li>除根结点以外的所有结点（不包括叶子结点）的度数正好是关键字总数加1，故内部子树个数 k 满足：┌m/2┐ &lt;= k &lt;= m ；</li>
+<li>所有的叶子结点都位于同一层。</li>
+</ol>
+
+<p>在B-树中，每个结点中关键字从小到大排列，并且当该结点的孩子是非叶子结点时，该k-1个关键字正好是k个孩子包含的关键字的值域的分划。</p>
+
+<p>因为叶子结点不包含关键字，所以可以把叶子结点看成在树里实际上并不存在外部结点，指向这些外部结点的指针为空，叶子结点的数目正好等于树中所包含的关键字总个数加1。</p>
+
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/8394323_13074405906V6Q.jpg" alt=""></p>
+
+<p>下面，咱们来模拟下查找文件29的过程：</p>
+
+<ol>
+<li>根据根结点指针找到文件目录的根磁盘块1，将其中的信息导入内存。【磁盘IO操作 1次】<br></li>
+<li>此时内存中有两个文件名17、35和三个存储其他磁盘页面地址的数据。根据算法我们发现：<code>17&lt;29&lt;35</code>，因此我们找到指针p2。</li>
+<li>根据p2指针，我们定位到磁盘块3，并将其中的信息导入内存。【磁盘IO操作 2次】<br></li>
+<li>此时内存中有两个文件名26，30和三个存储其他磁盘页面地址的数据。根据算法我们发现：<code>26&lt;29&lt;30</code>，因此我们找到指针p2。</li>
+<li>根据p2指针，我们定位到磁盘块8，并将其中的信息导入内存。【磁盘IO操作 3次】<br></li>
+<li>此时内存中有两个文件名28，29。根据算法我们查找到文件名29，并定位了该文件内存的磁盘地址。</li>
+</ol>
+
+<p>分析上面的过程，发现需要<strong>3次磁盘IO操作和3次内存查找操作</strong>。关于内存中的文件名查找，由于是一个有序表结构，可以利用折半查找提高效率。至于IO操作是影响整个B树查找效率的决定因素。</p>
+
+<p>当然，如果我们使用平衡二叉树的磁盘存储结构来进行查找，磁盘4次，最多5次，而且文件越多，B树比平衡二叉树所用的磁盘IO操作次数将越少，效率也越高。</p>
+
+<h2>B+tree</h2>
+
+<p>对于B-tree,所有节点都会带有指向其关键字的指针(途中红色小方块),这样做有利于加快查找速度,但是还有个缺点,就是会加大节点存储空间,造成盘块读取的增加,导致增加硬盘IO;而B+tree则取消掉这个红块,所有的关键字和关键字指针都存在叶子节点中,每次查找都会遍历到B+tree的底部(不管查找到还是没查找到),增加了查询深度的稳定,还有一点就是它解决了元素遍历效率底下的问题,就是说它的叶子节点链接成一个链表,可以有效的进行链表遍历.</p>
+
+<p>B+tree是应文件系统所需而产生的一种B-tree的变形树。</p>
+
+<p>一棵m阶的B+树和m阶的B树的异同点在于：</p>
+
+<ol>
+<li>有n棵子树的结点中含有n-1 个关键字； (此处颇有争议，B+树到底是与B 树n棵子树有n-1个关键字 保持一致，还是不一致：B树n棵子树的结点中含有n个关键字，待后续查证。暂先提供两个参考链接：①wikipedia <a href="http://en.wikipedia.org/wiki/B%2B_tree#Overview%EF%BC%9B%E2%91%A1http://hedengcheng.com/?p=525%E3%80%82%E8%80%8C%E4%B8%8B%E9%9D%A2B+%E6">http://en.wikipedia.org/wiki/B%2B_tree#Overview；②http://hedengcheng.com/?p=525。而下面B+�</a>��的图尚未最终确定是否有问题，请读者注意)</li>
+<li>所有的叶子结点中包含了全部关键字的信息，及指向含有这些关键字记录的指针，且叶子结点本身依关键字的大小自小而大的顺序链接。 (而B 树的叶子节点并没有包括全部需要查找的信息)</li>
+<li>所有的非终端结点可以看成是索引部分，结点中仅含有其子树根结点中最大（或最小）关键字。 (而B 树的非终节点也包含需要查找的有效信息)</li>
+</ol>
+
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/8394323_1307440587b6WG.jpg" alt=""></p>
+
+    </article>
+    <!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/2015/01/10/tree"  data-title="数据库与树 - Hackerxu's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
+</div>
+
+            </div>
+        </div>
+        <footer class="site-footer">
+
+    <div class="wrap">
+        <div class="footer-col-1 column">
+            <div class="github">
+                <!-- <span class="icon github"> -->
+                <svg version="1.1" class="github-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                    <path fill-rule="evenodd" clip-rule="evenodd" fill="#000" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761
+                    c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32
+                    c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472
+                    c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037
+                    C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65
+                    c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261
+                    c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082
+                    c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129
+                    c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+                <!-- </span> -->
+            </div>
+            <a href="https://github.com/taizilongxu">
+                Fork me on github
+            </a>
+        </div>
+        <div class="footer-col-2">
+            <p>© 2014 - 2015 by <font style="color:#f44336">❤ </font> <a href="http://github.com/taizilongxu">Hackerxu</a></p>
+        </div>
+        <!-- <div class="footer-col-3 column">
+      <p class="text">Python,HTML,CSS,Machine Leaning</p>
+    </div> -->
+    </div>
+    <div class="scroll-top"><i class="fa fa-arrow-circle-up"></i></div>
+</footer>
+
+
+        <!-- mathjax -->
+        <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+        </script>
+        <script type="text/javascript"
+                src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        </script>
+        <!-- highlight -->
+        <script src="/js/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <!-- pleace change it! -->
+        <script type="text/javascript">
+var duoshuoQuery = {short_name:"taizilongxu"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+        </script>
+        <!-- top-scrooll -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.js"></script>
+        <script type="text/javascript">
+$(window).scroll(function() {
+    if($(this).scrollTop() > 100) {
+        $('.scroll-top').fadeIn(200);
+    } else {
+        $('.scroll-top').fadeOut(200);
+    }
+});
+$('.scroll-top').bind('click', function(e) {
+    e.preventDefault();
+    $('body,html').animate({scrollTop:0},200);
+});
+        </script>
+    </body>
+</html>

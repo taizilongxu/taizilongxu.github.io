@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<!-- 手机端页面 -->
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="google-site-verification" content="5KH7Y5MF1c9GbPNQ94CEej-1YkeHortoXv7fjiWt7hM" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Python中的socket编程</title>
+<link rel="shortcut icon" href=" /img/github.ico"/>
+<link rel="bookmark" href="/img/github.ico"/>
+<meta name="viewport" content="width=device-width">
+<meta name="description" content="Python,HTML,CSS,Machine Leaning">
+<link rel="canonical" href="http://hackerxu.com/2014/11/28/python_socket.html">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/github.css">
+<!-- 返回顶部 -->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="/js/jquery.js"></script>
+<script src="/js/function_about.js"></script>
+<!--  -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-60393522-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+</head>
+
+    <body>
+        <header class="site-header">
+    <div class="wrap">
+        <a class="site-title" href="/"><h1><strong> <font style="color:#39B3D7" >L</font><font style="color:#ED9C28">i</font><font style="color:#47A447">m</font><font style="color:#D9534F">b</font><font style="color:#3276B1">o</font>
+                </strong>
+        </h1></a>
+        <nav class="site-nav">
+            <a href="#" class="menu-icon">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+                    <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+                    h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                    <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+                    h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                    <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+                    c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                </svg>
+            </a>
+            <div class="trigger">
+                
+                
+                <a class="page-link" href="/about/">About</a>
+                
+                
+                
+                <a class="page-link" href="/archive/">Archive</a>
+                
+                
+                
+                <a class="page-link" href="/categories/">Categories</a>
+                
+                
+                
+                <a class="page-link" href="/tags/">Tags</a>
+                
+                
+                
+                <a class="page-link" href="/atom.xml">Rss</a>
+                
+                
+            </div>
+        </nav>
+    </div>
+</header>
+
+        <div class="page-content">
+            <div class="wrap">
+                <div class="post">
+    <header class="post-header">
+        <h1><a href="/2014/11/28/python_socket.html">Python中的socket编程</a></h1>
+        <p class="meta"><i class="fa fa-calendar"></i> 2014-11-28&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#python">python</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#python">python</a>&nbsp<a href="/tags/#linux">linux</a>&nbsp<a href="/tags/#socket">socket</a></p>
+    </header>
+    <article class="post-content">
+        <p>最近在看tornado源码,发现里面的tcp层会用到很多socket的知识,所以特地恶补一下.</p>
+
+<h2>1 socket基础</h2>
+
+<h3>1.1 socket历史</h3>
+
+<p>当前经常使用的socket，最早起源于BSD UNIX类的操作系统。在UNIX系统上，比如BSD，有一些现有的，和文件描述符一起工作的系统调用，其中包括open(),read(),write()和 close().文件描述符一般是指一个文件或某个类似文件的实体.</p>
+
+<p>把对网络的支持加入操作系统,是以一种扩展现有文件描述符的方法实现的.新的系统调用被加入并和 socket 一起工作,而很多现有的系统调用同样能和 socket 一起工作.因此,一个 socket 允许你使用标准的操作系统和其他的计算机以及自己机器上的不用进程来通信.</p>
+
+<p>在某些方面, socket 可以被看成一个标准的文件描述符.在 UNIX 类的平台上, read(),write(),dup(),dup2(),close()这样的系统调用会像为标准文件描述符那样为 socket 工作.很多时候,程序并不需要知道它正在把数据写进一个文件,终端或是一个 TCP 连接.</p>
+
+<p>然而, socket 的确存在一些不同的工作方式.最明显的就是建立 socket 的方法.很多文件是通过 open() 函数打开的,但 socket 是通过调用 socket() 函数来建立的,并且还需要另外的调用来连接和激活他们. recv() 和 send() 这两个系统调用和 read()和 write() 极为相似.</p>
+
+<h3>1.2 socket 套接字</h3>
+<div class="highlight"><pre><code class="language-text" data-lang="text">套接字 socket = (IP地址: 端口号)
+</code></pre></div>
+<p>就这么简单,IP负责主机到主机(点到点)通讯,而端口号负责进程到进程(端到端)的通讯.python中socket编程在网络的应用层,涉及到些许运输层,所以极大简化了编程,我们只要对socket进行操作就可以了.</p>
+
+<h3>1.3 套接字家族</h3>
+
+<p>套接字起源于20世纪70年代加州大学伯克利分校版本的Unix，即人们所说的BSD Unix。因此，有时人们也把套接字称为“伯克利套接字”或“BSD套接字”。套接字有两种，分别是<strong>基于文件型</strong>的和<strong>基于网络型</strong>的。</p>
+
+<ul>
+<li>基于文件型</li>
+</ul>
+
+<p><code>AF_UNIX</code>或者<code>AF_LOCAL</code></p>
+
+<p>主要特点是两个进程都运行在同一台机器上，而且这些套接字是基于文件的,所以，它们的底层结构是由文件系统来支持的.</p>
+
+<ul>
+<li>基于网络型</li>
+</ul>
+
+<p><code>AF_INET</code>或者<code>AF_INET6</code>或者<code>AF_NETLINK</code></p>
+
+<p>它们的特点是基于网络的,所有地址家族中，<code>AF_INET</code>是使用最广泛的一个.</p>
+
+<p><img src="https://raw.githubusercontent.com/taizilongxu/taizilongxu.github.io/master/img/TCP_IP.JPG" alt=""></p>
+
+<h3>1.3 面向连接与无连接</h3>
+
+<p>上面的图可以看到<code>AF_INET</code>家族可以分为3种,我们常用的就两种TCP和UDP,对应的套接字类型为<code>SOCK_STREAM</code>和<code>SOCK_DGRAM</code></p>
+
+<h2>2 Python中网络编程</h2>
+
+<p>Python 提供了两个基本的 socket 模块。</p>
+
+<ul>
+<li>第一个是 Socket，它提供了标准的 BSD Sockets API。</li>
+<li>第二个是 SocketServer， 它提供了服务器中心类，可以简化网络服务器的开发。</li>
+</ul>
+
+<h3>2.1 socket()函数</h3>
+
+<p>在Python里我们用socket（）函数来创建套接字.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">socket(socket_family, socket_type, protocol=0)
+</code></pre></div>
+<p>参数:</p>
+
+<ul>
+<li>socket_family: 套接字家族可以使AF_UNIX或者AF_INET</li>
+<li>socket_type: 套接字类型可以根据是面向连接的还是非连接分为<code>SOCK_STREAM</code>或<code>SOCK_DGRAM</code></li>
+<li>protocol: 一般不填默认为0.</li>
+</ul>
+
+<h3>2.2 套接字对象(内建)方法</h3>
+
+<p>下面是经常用到的套接字方法:</p>
+
+<table><thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>服务器端套接字</td>
+<td></td>
+</tr>
+<tr>
+<td>s.bind()</td>
+<td>绑定地址(主机号,端口号)到套接字</td>
+</tr>
+<tr>
+<td>s.listen()</td>
+<td>开始TCP监听</td>
+</tr>
+<tr>
+<td>s.accept()</td>
+<td>被动接受TCP客户端连接,(阻塞式)等待连接的到来</td>
+</tr>
+<tr>
+<td>客户端套接字</td>
+<td></td>
+</tr>
+<tr>
+<td>s.connect()</td>
+<td>主动初始化TCP服务器连接</td>
+</tr>
+<tr>
+<td>s.connect_ex()</td>
+<td>connect()函数的扩展版本,出错时返回出错码,而不是抛出异常</td>
+</tr>
+<tr>
+<td>公共用途的套接字函数</td>
+<td></td>
+</tr>
+<tr>
+<td>s.recv()</td>
+<td>接收TCP数据</td>
+</tr>
+<tr>
+<td>s.send()</td>
+<td>发送TCP数据</td>
+</tr>
+<tr>
+<td>s.sendall()</td>
+<td>完整发送TCP数据</td>
+</tr>
+<tr>
+<td>s.recvform()</td>
+<td>接收UDP数据</td>
+</tr>
+<tr>
+<td>s.sendto()</td>
+<td>发送UDP数据</td>
+</tr>
+<tr>
+<td>s.close()</td>
+<td>关闭套接字</td>
+</tr>
+</tbody></table>
+
+<h3>2.3 客户端和服务器编程</h3>
+
+<h4>server</h4>
+
+<ol>
+<li><p>创建socket对象。调用socket构造函数。如：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">socket = socket.socket( family, type )
+</code></pre></div></li>
+<li><p>将socket绑定到指定地址。这是通过socket对象的bind方法来实现的：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">socket.bind( address )
+</code></pre></div>
+<p>由AF_INET所创建的套接字，address地址必须是一个双元素元组，格式是(host,port)。host代表主机，port代表端口号。如果端口号正在使用、主机名不正确或端口已被保留，bind方法将引发socket.error异常。</p></li>
+<li><p>使用socket套接字的listen方法接收连接请求。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">socket.listen( backlog )
+</code></pre></div>
+<p>backlog指定最多允许多少个客户连接到服务器。它的值至少为1。收到连接请求后，这些请求需要排队，如果队列满，就拒绝请求。</p></li>
+<li><p>服务器套接字通过socket的accept方法等待客户请求一个连接。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">connection, address = socket.accept()
+</code></pre></div>
+<p>调用accept方法时，socket会时入“waiting”状态。客户请求连接时，方法建立连接并返回服务器。accept方法返回一个含有两个元素的 元组(connection,address)。第一个元素connection是新的socket对象，服务器必须通过它与客户通信；第二个元素 address是客户的Internet地址。</p></li>
+<li><p>处理阶段，服务器和客户端通过send和recv方法通信(传输 数据)。服务器调用send，并采用字符串形式向客户发送信息。send方法返回已发送的字符个数。服务器使用recv方法从客户接收信息。调用recv 时，服务器必须指定一个整数，它对应于可通过本次方法调用来接收的最大数据量。recv方法在接收数据时会进入“blocked”状态，最后返回一个字符 串，用它表示收到的数据。如果发送的数据量超过了recv所允许的，数据会被截短。多余的数据将缓冲于接收端。以后调用recv时，多余的数据会从缓冲区 删除(以及自上次调用recv以来，客户可能发送的其它任何数据)</p></li>
+<li><p>传输结束，服务器调用socket的close方法关闭连接。</p></li>
+</ol>
+
+<h4>client</h4>
+
+<ol>
+<li><p>创建一个socket以连接服务器：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">socket = socket.socket( family, type )
+</code></pre></div></li>
+<li><p>使用socket的connect方法连接服务器。对于AF_INET家族,连接格式如下：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">socket.connect( (host,port) )
+</code></pre></div>
+<p>host代表服务器主机名或IP，port代表服务器进程所绑定的端口号。如连接成功，客户就可通过套接字与服务器通信，如果连接失败，会引发socket.error异常。</p></li>
+<li><p>处理阶段，客户和服务器将通过send方法和recv方法通信。</p></li>
+<li><p>传输结束，客户通过调用socket的close方法关闭连接。</p></li>
+</ol>
+
+<h4>代码</h4>
+
+<p>server:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#-*- encoding: UTF-8 -*-</span>
+<span class="c">#---------------------------------import------------------------------------</span>
+<span class="kn">from</span> <span class="nn">socket</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">ctime</span>
+<span class="c">#---------------------------------------------------------------------------</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">阻塞方式进行连接,当客户端退出继续监听,等待下一个客户端连接</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">HOST</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+<span class="n">PORT</span> <span class="o">=</span> <span class="mi">21568</span>
+<span class="n">BUFSIZ</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">ADDR</span> <span class="o">=</span> <span class="p">(</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">)</span>
+
+<span class="n">tcpSerSock</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">)</span>
+<span class="n">tcpSerSock</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">ADDR</span><span class="p">)</span>
+<span class="n">tcpSerSock</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s">&#39;waiting for connection...&#39;</span>
+    <span class="n">tcpCliSock</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">tcpSerSock</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>  <span class="c"># 等待连接</span>
+    <span class="k">print</span> <span class="s">&#39;...connected from:&#39;</span><span class="p">,</span> <span class="n">addr</span>
+
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">tcpCliSock</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="n">BUFSIZ</span><span class="p">)</span>  <span class="c"># 接收数据</span>
+            <span class="k">print</span> <span class="s">&#39;&lt;&#39;</span><span class="p">,</span> <span class="n">data</span>
+            <span class="n">tcpCliSock</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s">&#39;[</span><span class="si">%s</span><span class="s">] </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ctime</span><span class="p">(),</span> <span class="n">data</span><span class="p">))</span>  <span class="c"># 发送数据</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s">&#39;disconnect from:&#39;</span><span class="p">,</span> <span class="n">addr</span>
+            <span class="n">tcpCliSock</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>  <span class="c"># 退出</span>
+            <span class="k">break</span>
+<span class="n">tcpSerSock</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="c">############################################################################</span>
+</code></pre></div>
+<p>client:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#-*- encoding: UTF-8 -*-</span>
+<span class="c">#---------------------------------import------------------------------------</span>
+<span class="kn">from</span> <span class="nn">socket</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="c">#---------------------------------------------------------------------------</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">只进行一次连接,输入`close`后退出程序</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">HOST</span> <span class="o">=</span> <span class="s">&#39;localhost&#39;</span>
+<span class="n">PORT</span> <span class="o">=</span> <span class="mi">21568</span>
+<span class="n">BUFSIZ</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">ADDR</span> <span class="o">=</span> <span class="p">(</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">)</span>
+
+<span class="n">tcpCliSock</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">)</span>
+<span class="n">tcpCliSock</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">ADDR</span><span class="p">)</span>  <span class="c"># 套接字连接</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s">&#39;&gt;&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">data</span> <span class="o">==</span> <span class="s">&#39;close&#39;</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">tcpCliSock</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>  <span class="c"># 发送数据</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">tcpCliSock</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="n">BUFSIZ</span><span class="p">)</span>  <span class="c"># 接受数据</span>
+        <span class="k">print</span> <span class="n">data</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="n">tcpCliSock</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>  <span class="c"># 退出</span>
+<span class="c">############################################################################</span>
+</code></pre></div>
+<h1>参考资料</h1>
+
+<ul>
+<li><a href="http://blog.163.com/yi_yixinyiyi/blog/static/136286889201152814341144/">python_socket 网络编程 </a></li>
+<li><a href="http://blog.csdn.net/jasonm2008/article/details/3964065">TCP/IP 地址家族 ，协议类型 ，套接字类型 ，协议字段!</a></li>
+<li><a href="http://yangrong.blog.51cto.com/6945369/1339593">python socket编程详细介绍</a></li>
+<li><a href="http://openexperience.iteye.com/blog/145701">一个简单的python socket编程</a></li>
+</ul>
+
+    </article>
+    <!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/2014/11/28/python_socket"  data-title="Python中的socket编程 - Hackerxu's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
+</div>
+
+            </div>
+        </div>
+        <footer class="site-footer">
+
+    <div class="wrap">
+        <div class="footer-col-1 column">
+            <div class="github">
+                <!-- <span class="icon github"> -->
+                <svg version="1.1" class="github-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                    <path fill-rule="evenodd" clip-rule="evenodd" fill="#000" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761
+                    c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32
+                    c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472
+                    c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037
+                    C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65
+                    c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261
+                    c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082
+                    c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129
+                    c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+                <!-- </span> -->
+            </div>
+            <a href="https://github.com/taizilongxu">
+                Fork me on github
+            </a>
+        </div>
+        <div class="footer-col-2">
+            <p>© 2014 - 2015 by <font style="color:#f44336">❤ </font> <a href="http://github.com/taizilongxu">Hackerxu</a></p>
+        </div>
+        <!-- <div class="footer-col-3 column">
+      <p class="text">Python,HTML,CSS,Machine Leaning</p>
+    </div> -->
+    </div>
+    <div class="scroll-top"><i class="fa fa-arrow-circle-up"></i></div>
+</footer>
+
+
+        <!-- mathjax -->
+        <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+        </script>
+        <script type="text/javascript"
+                src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        </script>
+        <!-- highlight -->
+        <script src="/js/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <!-- pleace change it! -->
+        <script type="text/javascript">
+var duoshuoQuery = {short_name:"taizilongxu"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+        </script>
+        <!-- top-scrooll -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.js"></script>
+        <script type="text/javascript">
+$(window).scroll(function() {
+    if($(this).scrollTop() > 100) {
+        $('.scroll-top').fadeIn(200);
+    } else {
+        $('.scroll-top').fadeOut(200);
+    }
+});
+$('.scroll-top').bind('click', function(e) {
+    e.preventDefault();
+    $('body,html').animate({scrollTop:0},200);
+});
+        </script>
+    </body>
+</html>

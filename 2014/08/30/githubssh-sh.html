@@ -6,12 +6,12 @@
 <meta name="google-site-verification" content="5KH7Y5MF1c9GbPNQ94CEej-1YkeHortoXv7fjiWt7hM" />
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Hackerxu's Blog</title>
+<title>github中ssh替换https脚本</title>
 <link rel="shortcut icon" href=" /img/github.ico"/>
 <link rel="bookmark" href="/img/github.ico"/>
 <meta name="viewport" content="width=device-width">
 <meta name="description" content="Python,HTML,CSS,Machine Leaning">
-<link rel="canonical" href="http://hackerxu.com/">
+<link rel="canonical" href="http://hackerxu.com/2014/08/30/githubssh-sh.html">
 <!-- Custom CSS -->
 <link rel="stylesheet" href="/css/main.css">
 <link rel="stylesheet" href="/css/github.css">
@@ -79,30 +79,61 @@ ga('send', 'pageview');
 
         <div class="page-content">
             <div class="wrap">
-                <div class="home">
-  
-  <header class="post-header">
-    <h1><a href="/2016/10/08/guoqing.html">国庆</a></h1>
-    <p class="meta"><i class="fa fa-calendar"></i> 2016-10-08&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#life">life</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#life">life</a></p>
-  </header>
-  <article class="post-content">
-  <p>国庆无事, 替opsdev全体员工拜一拜了, 保佑风调雨顺</p>
+                <div class="post">
+    <header class="post-header">
+        <h1><a href="/2014/08/30/githubssh-sh.html">github中ssh替换https脚本</a></h1>
+        <p class="meta"><i class="fa fa-calendar"></i> 2014-08-30&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#python">python</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#python">python</a></p>
+    </header>
+    <article class="post-content">
+        <p>为了进一步提高程序效率(懒惰),把所有github项目的链接改成ssh,方便不用再打密码,哈哈</p>
 
-<p><img src="/img/DAA339DC8C0A1922D9A7FF35AD67F59F.jpg" alt=""></p>
+<p>看了几个项目的共同点</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">git@github.com:taizilongxu/ici.git
+https://github.com/taizilongxu/ici.git
 
-  </article>
-  
+git@github.com:taizilongxu/jekyll_blog_source.git
+https://github.com/taizilongxu/jekyll_blog_source.git
 
-  <ul class="posts">
-    <!-- <li class="listing-seperator">Yesterday you said tomorrow</li> -->
-  
-  
-    
-    
-    
-    <li class="listing-seperator"><a href="/archive/">Long ago</a></li>
-  </ul>
+git@github.com:taizilongxu/report.git
+https://github.com/taizilongxu/report.git
 
+git@github.com:taizilongxu/wangdaoOJ.git
+https://github.com/taizilongxu/wangdaoOJ.git
+</code></pre></div>
+<p>只需要把<code>https://github.com/</code>替换成<code>git@github.com:</code>就可以了,脚本如下:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#-*- encoding: UTF-8 -*-</span>
+<span class="c">#---------------------------------import------------------------------------</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="c">#---------------------------------------------------------------------------</span>
+<span class="n">rootdir</span> <span class="o">=</span> <span class="s">&quot;/home/limbo/&quot;</span>                                   <span class="c"># 指明被遍历的文件夹</span>
+<span class="n">username</span> <span class="o">=</span> <span class="s">&#39;taizilongxu&#39;</span>
+
+<span class="k">def</span> <span class="nf">git_ssh</span><span class="p">(</span><span class="n">rootdir</span><span class="p">,</span><span class="n">username</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">parent</span><span class="p">,</span><span class="n">dirnames</span><span class="p">,</span><span class="n">filenames</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">rootdir</span><span class="p">):</span>    <span class="c">#三个参数：分别返回1.父目录 2.所有文件夹名字（不含路径） 3.所有文件名字</span>
+        <span class="k">if</span> <span class="n">parent</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:]</span> <span class="o">==</span> <span class="s">&#39;.git&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s">&#39;config&#39;</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+                <span class="n">path</span> <span class="o">=</span> <span class="n">parent</span> <span class="o">+</span> <span class="s">&#39;/&#39;</span> <span class="o">+</span> <span class="s">&#39;config&#39;</span>
+                <span class="k">print</span> <span class="n">path</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="s">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">F</span><span class="p">:</span>
+                    <span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">r&#39;https://github.com/&#39;</span><span class="p">,</span><span class="s">&#39;git@github.com:&#39;</span><span class="p">,</span><span class="n">F</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+                    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">git_ssh</span><span class="p">(</span><span class="n">rootdir</span><span class="p">,</span><span class="n">username</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+<span class="c">############################################################################</span>
+</code></pre></div>
+    </article>
+    <!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/2014/08/30/githubssh-sh"  data-title="github中ssh替换https脚本 - Hackerxu's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
 </div>
 
             </div>

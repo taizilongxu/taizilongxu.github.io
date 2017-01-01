@@ -6,12 +6,12 @@
 <meta name="google-site-verification" content="5KH7Y5MF1c9GbPNQ94CEej-1YkeHortoXv7fjiWt7hM" />
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Hackerxu's Blog</title>
+<title>Python集合的使用</title>
 <link rel="shortcut icon" href=" /img/github.ico"/>
 <link rel="bookmark" href="/img/github.ico"/>
 <meta name="viewport" content="width=device-width">
 <meta name="description" content="Python,HTML,CSS,Machine Leaning">
-<link rel="canonical" href="http://hackerxu.com/">
+<link rel="canonical" href="http://hackerxu.com/2014/08/15/set.html">
 <!-- Custom CSS -->
 <link rel="stylesheet" href="/css/main.css">
 <link rel="stylesheet" href="/css/github.css">
@@ -79,30 +79,76 @@ ga('send', 'pageview');
 
         <div class="page-content">
             <div class="wrap">
-                <div class="home">
-  
-  <header class="post-header">
-    <h1><a href="/2016/10/08/guoqing.html">国庆</a></h1>
-    <p class="meta"><i class="fa fa-calendar"></i> 2016-10-08&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#life">life</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#life">life</a></p>
-  </header>
-  <article class="post-content">
-  <p>国庆无事, 替opsdev全体员工拜一拜了, 保佑风调雨顺</p>
+                <div class="post">
+    <header class="post-header">
+        <h1><a href="/2014/08/15/set.html">Python集合的使用</a></h1>
+        <p class="meta"><i class="fa fa-calendar"></i> 2014-08-15&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#python">python</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#python">python</a></p>
+    </header>
+    <article class="post-content">
+        <p>Python中除了字典,列表,元组还有一个非常好用的数据结构,那就是set了,灵活的运用set可以减去不少的操作(虽然set可以用列表代替)</p>
 
-<p><img src="/img/DAA339DC8C0A1922D9A7FF35AD67F59F.jpg" alt=""></p>
+<h3>小例子</h3>
 
-  </article>
-  
+<ol>
+<li><p>如果我要在许多列表中找出相同的项,那么用集合是最好不过的了,用集合只用一行就可以解决</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">x</span> <span class="o">&amp;</span> <span class="n">y</span> <span class="o">&amp;</span> <span class="n">z</span> <span class="c"># 交集</span>
+</code></pre></div></li>
+<li><p>去重</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">lst</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">lst</span><span class="p">))</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+</code></pre></div></li>
+</ol>
 
-  <ul class="posts">
-    <!-- <li class="listing-seperator">Yesterday you said tomorrow</li> -->
-  
-  
-    
-    
-    
-    <li class="listing-seperator"><a href="/archive/">Long ago</a></li>
-  </ul>
+<h2>用法</h2>
 
+<p>注意set因为没有位置的概念所以list方法切片什么的都没有用,需要的时候再转化为list</p>
+
+<h4>内建函数创建set</h4>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+</code></pre></div>
+<h4>基本操作</h4>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">t</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">)</span>            <span class="c"># 添加一项</span>
+<span class="n">s</span><span class="o">.</span><span class="n">update</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">37</span><span class="p">,</span><span class="mi">42</span><span class="p">])</span>  <span class="c"># 在s中添加多项</span>
+
+<span class="n">t</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s">&#39;H&#39;</span><span class="p">)</span> <span class="c"># 删除一项</span>
+
+<span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>  <span class="c"># set 的长度</span>
+
+<span class="n">x</span> <span class="ow">in</span> <span class="n">s</span> <span class="c"># 测试 x 是否是 s 的成员  </span>
+
+<span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">s</span>   <span class="c"># 测试 x 是否不是 s 的成员  </span>
+
+<span class="n">s</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>  
+<span class="n">s</span> <span class="o">&lt;=</span> <span class="n">t</span>  <span class="c"># 测试是否 s 中的每一个元素都在 t 中  </span>
+
+<span class="n">s</span><span class="o">.</span><span class="n">issuperset</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>  
+<span class="n">s</span> <span class="o">&gt;=</span> <span class="n">t</span>  <span class="c"># 测试是否 t 中的每一个元素都在 s 中  </span>
+
+<span class="n">s</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>  
+<span class="n">s</span> <span class="o">|</span> <span class="n">t</span>  <span class="c"># 返回一个新的 set 包含 s 和 t 中的每一个元素  </span>
+
+<span class="n">s</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>  
+<span class="n">s</span> <span class="o">&amp;</span> <span class="n">t</span>  <span class="c"># 返回一个新的 set 包含 s 和 t 中的公共元素  </span>
+
+<span class="n">s</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>  
+<span class="n">s</span> <span class="o">-</span> <span class="n">t</span>  <span class="c"># 返回一个新的 set 包含 s 中有但是 t 中没有的元素  </span>
+
+<span class="n">s</span><span class="o">.</span><span class="n">symmetric_difference</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>  
+<span class="n">s</span> <span class="o">^</span> <span class="n">t</span>  <span class="c"># 返回一个新的 set 包含 s 和 t 中不重复的元素  </span>
+
+<span class="n">s</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>  <span class="c"># 返回 set “s”的一个浅复制  </span>
+</code></pre></div>
+<h3>参考资料</h3>
+
+<p><a href="http://blog.csdn.net/business122/article/details/7541486">Python集合（set）类型的操作</a></p>
+
+    </article>
+    <!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/2014/08/15/set"  data-title="Python集合的使用 - Hackerxu's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
 </div>
 
             </div>

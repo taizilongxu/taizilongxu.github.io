@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<!-- 手机端页面 -->
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="google-site-verification" content="5KH7Y5MF1c9GbPNQ94CEej-1YkeHortoXv7fjiWt7hM" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Set Sublime 3</title>
+<link rel="shortcut icon" href=" /img/github.ico"/>
+<link rel="bookmark" href="/img/github.ico"/>
+<meta name="viewport" content="width=device-width">
+<meta name="description" content="Python,HTML,CSS,Machine Leaning">
+<link rel="canonical" href="http://hackerxu.com/2014/06/09/sublime.html">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/github.css">
+<!-- 返回顶部 -->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="/js/jquery.js"></script>
+<script src="/js/function_about.js"></script>
+<!--  -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-60393522-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+</head>
+
+    <body>
+        <header class="site-header">
+    <div class="wrap">
+        <a class="site-title" href="/"><h1><strong> <font style="color:#39B3D7" >L</font><font style="color:#ED9C28">i</font><font style="color:#47A447">m</font><font style="color:#D9534F">b</font><font style="color:#3276B1">o</font>
+                </strong>
+        </h1></a>
+        <nav class="site-nav">
+            <a href="#" class="menu-icon">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+                    <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+                    h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                    <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+                    h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                    <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+                    c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                </svg>
+            </a>
+            <div class="trigger">
+                
+                
+                <a class="page-link" href="/about/">About</a>
+                
+                
+                
+                <a class="page-link" href="/archive/">Archive</a>
+                
+                
+                
+                <a class="page-link" href="/categories/">Categories</a>
+                
+                
+                
+                <a class="page-link" href="/tags/">Tags</a>
+                
+                
+                
+                <a class="page-link" href="/atom.xml">Rss</a>
+                
+                
+            </div>
+        </nav>
+    </div>
+</header>
+
+        <div class="page-content">
+            <div class="wrap">
+                <div class="post">
+    <header class="post-header">
+        <h1><a href="/2014/06/09/sublime.html">Set Sublime 3</a></h1>
+        <p class="meta"><i class="fa fa-calendar"></i> 2014-06-09&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#sublime">sublime</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#sublime">sublime</a></p>
+    </header>
+    <article class="post-content">
+        <h4>首先安装Package control</h4>
+
+<p><code>ctrl+`</code>打开控制台,然后输入</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span>  <span class="nn">urllib.request</span><span class="o">,</span><span class="nn">os</span><span class="p">;</span><span class="n">pf</span><span class="o">=</span><span class="s">&#39;Package Control.sublime-package&#39;</span><span class="p">;</span><span class="n">ipp</span><span class="o">=</span><span class="n">sublime</span><span class="o">.</span><span class="n">installed_packages_path</span><span class="p">();</span><span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">install_opener</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">build_opener</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">ProxyHandler</span><span class="p">()));</span><span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ipp</span><span class="p">,</span><span class="n">pf</span><span class="p">),</span><span class="s">&#39;wb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s">&#39;http://sublime.wbond.net/&#39;</span><span class="o">+</span><span class="n">pf</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">,</span><span class="s">&#39;%20&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</code></pre></div>
+<p>回车,然后按<code>Ctrl + Shift + p</code>搜索package,然后就可以安装插件了</p>
+
+<h4>空格等字符宽度问题</h4>
+
+<p><a href="http://stackoverflow.com/questions/18171536/the-size-of-the-space-and-the-char-on-the-sublime-text">stackoverflow</a>,这里有,更改一下font_face搞定</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">    &quot;font_face&quot;: &quot;Courier New&quot;,
+    &quot;font_size&quot;: 10
+</code></pre></div>
+<h4>插件安装:</h4>
+
+<ul>
+<li>sidebar enhancement:侧边栏增强,加入几个选项,挺方便的</li>
+<li>ConvertToUTF8 ST2只支持utf8编码，该插件可以显示与编辑 GBK, BIG5, EUC-KR, EUC-JP, Shift_JIS 等编码的文件</li>
+<li>Bracket Highlighter 括号匹配高亮</li>
+<li>SublimeLinter:这个吗~~代码校验,找出错误</li>
+<li>function name display</li>
+<li><a href="https://github.com/SublimeText/TrailingSpaces">TrailingSpacer</a>:显示行尾部多余空格,可以快捷键删除</li>
+<li>CSScomb:CSS属性排序,方便查看和修改</li>
+<li>Monokai Extended:monokai色彩增强</li>
+<li>Gitgutter:这个非常重要了,git的一切状态尽在掌握中</li>
+<li>Sublime Code Intel:代码补全 </li>
+</ul>
+
+<h4>配置：</h4>
+
+<ul>
+<li>光标外形:&quot;caret_style&quot;:&quot;phase&quot;（像在呼吸）</li>
+<li>关闭括号的自动完成:&quot;auto_match_enabled&quot;: false</li>
+</ul>
+
+<h4>快捷键配置的建议（菜单栏Preferences-&gt;key bindings -User）：</h4>
+<div class="highlight"><pre><code class="language-text" data-lang="text">[
+{ &quot;keys&quot;: [&quot;f1&quot;], &quot;command&quot;: &quot;goto_documentation&quot; },
+{ &quot;keys&quot;: [&quot;alt+shift+`&quot;], &quot;command&quot;: &quot;clone_file&quot; }
+]
+</code></pre></div>
+<ul>
+<li>F1快速打开文档。</li>
+<li> <code>alt+shift+\`</code> 快捷键又有什么用呢？ 我们需要同一个文件在左右两栏同时打开。
+先按快捷键： alt+shift+2 。 此时会出现左右两栏的布局。
+再按alt+shift+` （ `键是tab键上面个键）, 此时会复制一份当前文件， 再把新复制的那份文件拖动到右栏。 这样就实现了同一文件左右两栏同时打开了。
+切换回一栏布局，按 alt+shift+1</li>
+</ul>
+
+<h4>全部配置:</h4>
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// While you can edit this file, it&#39;s best to put your changes in</span>
+<span class="c1">// &quot;User/Preferences.sublime-settings&quot;, which overrides the settings in here.</span>
+<span class="c1">//</span>
+<span class="c1">// Settings may also be placed in file type specific options files, for</span>
+<span class="c1">// example, in Packages/Python/Python.sublime-settings for python files.</span>
+<span class="p">{</span>
+<span class="c1">// Sets the colors used within the text area</span>
+<span class="c1">// 主题文件的路径</span>
+<span class="s">&quot;color_scheme&quot;</span><span class="o">:</span> <span class="s">&quot;Packages/Color Scheme - Default/Monokai.tmTheme&quot;</span><span class="p">,</span>
+
+<span class="c1">// Note that the font_face and font_size are overriden in the platform</span>
+<span class="c1">// specific settings file, for example, &quot;Preferences (Linux).sublime-settings&quot;.</span>
+<span class="c1">// Because of this, setting them here will have no effect: you must set them</span>
+<span class="c1">// in your User File Preferences.</span>
+<span class="c1">// 设置字体和大小，必须在Settings-User里重写，这里设置没有任何效果</span>
+<span class="s">&quot;font_face&quot;</span><span class="o">:</span> <span class="s">&quot;Consolas&quot;</span><span class="p">,</span>
+<span class="s">&quot;font_size&quot;</span><span class="o">:</span> <span class="mi">12</span><span class="p">,</span>
+
+<span class="c1">// Valid options are &quot;no_bold&quot;, &quot;no_italic&quot;, &quot;no_antialias&quot;, &quot;gray_antialias&quot;,</span>
+<span class="c1">// &quot;subpixel_antialias&quot; and &quot;no_round&quot; (OS X only)</span>
+<span class="c1">// 字体选项：no_bold不显示粗体字，no_italic不显示斜体字，no_antialias和no_antialias关闭反锯齿</span>
+<span class="c1">// subpixel_antialias和no_round是OS X系统独有的</span>
+<span class="s">&quot;font_options&quot;</span><span class="o">:</span> <span class="p">[],</span>
+
+<span class="c1">// Characters that are considered to separate words</span>
+<span class="c1">// 在文字上双击会全选当前的内容，如果里面出现以下字符，就会被截断</span>
+<span class="s">&quot;word_separators”: “./()”‘-:,.;~!@#$%^&amp;*|+=[]{}`~?&quot;</span><span class="p">,</span>
+
+<span class="c1">// Set to false to prevent line numbers being drawn in the gutter</span>
+<span class="c1">// 是否显示行号</span>
+<span class="s">&quot;line_numbers&quot;</span><span class="o">:</span> <span class="nb">true</span><span class="p">,</span>
+
+<span class="c1">// Set to false to hide the gutter altogether</span>
+<span class="c1">// 是否显示行号边栏</span>
+<span class="s">&quot;gutter&quot;</span><span class="o">:</span> <span class="nb">true</span><span class="p">,</span>
+
+<span class="c1">// Spacing between the gutter and the text</span>
+<span class="c1">// 行号边栏和文字的间距</span>
+<span class="s">&quot;margin&quot;</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+
+<span class="c1">// Fold buttons are the triangles shown in the gutter to fold regions of text</span>
+<span class="c1">// 是否显示代码折叠按钮</span>
+<span class="s">&quot;fold_buttons&quot;</span><span class="o">:</span> <span class="nb">true</span><span class="p">,</span>
+
+<span class="c1">// Hides the fold buttons unless the mouse is over the gutter</span>
+<span class="c1">// 不管鼠标在不在行号边栏，代码折叠按钮一直显示</span>
+<span class="s">&quot;fade_fold_buttons&quot;</span><span class="o">:</span> <span class="nb">true</span><span class="p">,</span>
+
+<span class="c1">// Columns in which to display vertical rulers</span>
+<span class="c1">//列显示垂直标尺，在中括号里填入数字，宽度按字符计算</span>
+<span class="s">&quot;rulers&quot;</span><span class="o">:</span> <span class="p">[],</span>
+
+<span class="c1">// Set to true to turn spell checking on by default</span>
+<span class="c1">// 是否打开拼写检查</span>
+<span class="s">&quot;spell_check&quot;</span><span class="o">:</span> <span class="nb">false</span><span class="p">,</span>
+
+<span class="c1">// The number of spaces a tab is considered equal to</span>
+<span class="c1">// Tab键制表符宽度</span>
+<span class="s">&quot;tab_size&quot;</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+
+<span class="c1">// Set to true to insert spaces when tab is pressed</span>
+<span class="c1">// 设为true时，缩进和遇到Tab键时使用空格替代</span>
+<span class="s">&quot;translate_tabs_to_spaces&quot;</span><span class="o">:</span> <span class="nb">false</span><span class="p">,</span>
+
+<span class="c1">// If translate_tabs_to_spaces is true, use_tab_stops will make tab and</span>
+<span class="c1">// backspace insert/delete up to the next tabstop</span>
+<span class="c1">// translate_tabs_to_spaces设置为true，Tab和Backspace的删除/插入作用于制表符宽度</span>
+<span class="c1">// 否则作用于单个空格</span>
+<span class="s">&quot;use_tab_stops&quot;</span><span class="o">:</span> <span class="nb">true</span><span class="p">,</span>
+
+<span class="c1">// Set to false to disable detection of tabs vs. spaces on load</span>
+<span class="c1">// false时禁止在载入的时候检测制表符和空格</span>
+<span class="s">&quot;detect_indentation&quot;</span><span class="o">:</span> <span class="nb">true</span><span class="p">,</span>
+
+<span class="c1">// Calculates indentation automatically when pressing enter</span>
+<span class="c1">// 按回车时，自动与制表位对齐</span>
+<span class="s">&quot;auto_indent&quot;</span><span class="o">:</span> <span class="nb">true</span><span class="p">,</span>
+
+<span class="c1">// Makes auto indent a little smarter, e.g., by indenting the next line</span>
+<span class="c1">// after an if statement in C. Requires auto_indent to be enabled.</span>
+<span class="c1">//针对C语言的</span>
+<span class="s">&quot;smart_indent&quot;</span><span class="o">:</span> <span class="nb">false</span><span class="p">,</span>
+
+<span class="c1">// Adds whitespace up to the first open bracket when indenting. Requires</span>
+<span class="c1">// auto_indent to be enabled.</span>
+<span class="c1">// 需要启用auto_indent，第一次打开括号缩进时插入空格？（没测试出来效果...）</span>
+<span class="s">&quot;indent_to_bracket&quot;</span><span class="o">:</span> <span class="nb">true</span><span class="p">,</span>
+
+<span class="c1">// Trims white space added by auto_indent when moving the caret off the</span>
+<span class="c1">// line.</span>
+<span class="c1">// 显示对齐的白线是否根据回车、tab等操作自动填补</span>
+<span class="s">&quot;trim_automatic_white_space&quot;</span><span class="o">:</span> <span class="nb">true</span><span class="p">,</span>
+
+<span class="c1">// Disables horizontal scrolling if enabled.</span>
+<span class="c1">// May be set to true, false, or &quot;auto&quot;, where it will be disabled for</span>
+<span class="c1">// source code, and otherwise enabled.</span>
+<span class="c1">// 是否自动换行，如果选auto，需要加双引号</span>
+<span class="s">&quot;word_wrap&quot;</span><span class="o">:</span> <span class="nb">false</span><span class="p">,</span>
+
+<span class="c1">// Set to a value other than 0 to force wrapping at that column rather than the</span>
+<span class="c1">// window width</span>
+<span class="c1">// 设置窗口内文字区域的宽度</span>
+<span class="s">&quot;wrap_width&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+
+<span class="c1">// Set to false to prevent word wrapped lines from being indented to the same</span>
+<span class="c1">// level</span>
+<span class="c1">// 防止被缩进到同一级的字换行</span>
+<span class="s">&quot;indent_subsequent_lines&quot;</span><span class="o">:</span> <span class="nb">true</span><span class="p">,</span>
+
+<span class="c1">// Draws text centered in the window rather than left aligned</span>
+<span class="c1">// 如果没有定义过，则文件居中显示（比如新建的文件）</span>
+<span class="s">&quot;draw_centered&quot;</span><span class="o">:</span> <span class="nb">false</span><span class="p">,</span>
+
+<span class="c1">// Controls auto pairing of quotes, brackets etc</span>
+<span class="c1">// 自动匹配引号，括号等</span>
+<span class="s">&quot;auto_match_enabled&quot;</span><span class="o">:</span> <span class="nb">true</span><span class="p">,</span>
+
+<span class="c1">// Word list to use for spell checking</span>
+<span class="c1">// 拼写检查的单词列表路径</span>
+<span class="s">&quot;dictionary&quot;</span><span class="o">:</span> <span class="s">&quot;Packages/Language - English/en_US.dic&quot;</span><span class="p">,</span>
+
+<span class="c1">// Set to true to draw a border around the visible rectangle on the minimap.</span>
+<span class="c1">// The color of the border will be determined by the &quot;minimapBorder&quot; key in</span>
+<span class="c1">// the color scheme</span>
+<span class="c1">// 代码地图的可视区域部分是否加上边框，边框的颜色可在配色方案上加入minimapBorder键</span>
+<span class="s">&quot;draw_minimap_border&quot;</span><span class="o">:</span> <span class="nb">false</span><span class="p">,</span>
+
+<span class="c1">// If enabled, will highlight any line with a caret</span>
+<span class="c1">// 突出显示当前光标所在的行</span>
+<span class="s">&quot;highlight_line&quot;</span><span class="o">:</span> <span class="nb">false</span><span class="p">,</span>
+
+<span class="c1">// Valid values are &quot;smooth&quot;, &quot;phase&quot;, &quot;blink&quot;, &quot;wide&quot; and &quot;solid&quot;.</span>
+<span class="c1">// 设置光标闪动方式</span>
+<span class="s">&quot;caret_style&quot;</span><span class="o">:</span> <span class="s">&quot;smooth&quot;</span><span class="p">,</span>
+
+<span class="c1">// Set to false to disable underlining the brackets surrounding the caret</span>
+<span class="c1">// 是否特殊显示当前光标所在的括号、代码头尾闭合标记</span>
+<span class="s">&quot;match_brackets&quot;</span><span class="o">:</span> <span class="nb">true</span><span class="p">,</span>
+
+<span class="c1">// Set to false if you&#39;d rather only highlight the brackets when the caret is</span>
+<span class="c1">// next to one</span>
+<span class="c1">// 设为false时，只有光标在括号或头尾闭合标记的两端时，match_brackets才生效</span>
+<span class="s">&quot;match_brackets_content&quot;</span><span class="o">:</span> <span class="nb">true</span><span class="p">,</span>
+
+<span class="c1">// Set to false to not highlight square brackets. This only takes effect if</span>
+<span class="c1">// match_brackets is true</span>
+<span class="c1">// 是否突出显示圆括号，match_brackets为true生效</span>
+<span class="s">&quot;match_brackets_square&quot;</span><span class="o">:</span> <span class="nb">false</span><span class="p">,</span>
+
+<span class="c1">// Set to false to not highlight curly brackets. This only takes effect if</span>
+<span class="c1">// match_brackets is true</span>
+<span class="c1">// 是否突出显示大括号，match_brackets为true生效</span>
+<span class="s">&quot;match_brackets_braces&quot;</span><span class="o">:</span> <span class="nb">false</span><span class="p">,</span>
+
+<span class="c1">// Set to false to not highlight angle brackets. This only takes effect if</span>
+<span class="c1">// match_brackets is true</span>
+<span class="c1">// 是否突出显示尖括号，match_brackets为true生效</span>
+<span class="s">&quot;match_brackets_angle&quot;</span><span class="o">:</span> <span class="nb">false</span><span class="p">,</span>
+
+<span class="c1">// Enable visualization of the matching tag in HTML and XML</span>
+<span class="c1">// html和xml下突出显示光标所在标签的两端，影响HTML、XML、CSS等</span>
+<span class="s">&quot;match_tags&quot;</span><span class="o">:</span> <span class="nb">true</span><span class="p">,</span>
+
+<span class="c1">// Highlights other occurrences of the currently selected text</span>
+<span class="c1">// 全文突出显示和当前选中字符相同的字符</span>
+<span class="s">&quot;match_selection&quot;</span><span class="o">:</span> <span class="nb">true</span><span class="p">,</span>
+
+<span class="c1">// Additional spacing at the top of each line, in pixels</span>
+<span class="c1">// 设置每一行到顶部，以像素为单位的间距，效果相当于行距</span>
+<span class="s">&quot;line_padding_top&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+
+<span class="c1">// Additional spacing at the bottom of each line, in pixels</span>
+<span class="c1">// 设置每一行到底部，以像素为单位的间距，效果相当于行距</span>
+<span class="s">&quot;line_padding_bottom&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+
+<span class="c1">// Set to false to disable scrolling past the end of the buffer.</span>
+<span class="c1">// On OS X, this value is overridden in the platform specific settings, so</span>
+<span class="c1">// you&#39;ll need to place this line in your user settings to override it.</span>
+<span class="c1">// 设置为false时，滚动到文本的最下方时，没有缓冲区</span>
+<span class="s">&quot;scroll_past_end&quot;</span><span class="o">:</span> <span class="nb">true</span><span class="p">,</span>
+
+<span class="c1">// This controls what happens when pressing up or down when on the first</span>
+<span class="c1">// or last line.</span>
+<span class="c1">// On OS X, this value is overridden in the platform specific settings, so</span>
+<span class="c1">// you&#39;ll need to place this line in your user settings to override it.</span>
+<span class="c1">// 设置成true，当光标已经在第一行时，再Up则到行首，如果光标已经在最后一行，再Down则跳到行尾</span>
+<span class="s">&quot;move_to_limit_on_up_down&quot;</span><span class="o">:</span> <span class="nb">false</span><span class="p">,</span>
+
+<span class="c1">// Set to &quot;none&quot; to turn off drawing white space, &quot;selection&quot; to draw only the</span>
+<span class="c1">// white space within the selection, and &quot;all&quot; to draw all white space</span>
+<span class="c1">// 按space或tab时，实际会产生白色的点（一个空格一个点）或白色的横线（tab_size设置的制表符的宽度），选中状态下才能看到</span>
+<span class="c1">// 设置为none时，什么情况下都不显示这些点和线</span>
+<span class="c1">// 设置为selection时，只显示选中状态下的点和线</span>
+<span class="c1">// 设置为all时，则一直显示</span>
+<span class="s">&quot;draw_white_space&quot;</span><span class="o">:</span> <span class="s">&quot;selection&quot;</span><span class="p">,</span>
+
+<span class="c1">// Set to false to turn off the indentation guides.</span>
+<span class="c1">// The color and width of the indent guides may be customized by editing</span>
+<span class="c1">// the corresponding .tmTheme file, and specifying the colors &quot;guide&quot;,</span>
+<span class="c1">// &quot;activeGuide&quot; and &quot;stackGuide&quot;</span>
+<span class="c1">// 制表位的对齐白线是否显示，颜色可在主题文件里设置（guide，activeGuide，stackGuide）</span>
+<span class="s">&quot;draw_indent_guides&quot;</span><span class="o">:</span> <span class="nb">true</span><span class="p">,</span>
+
+<span class="c1">// Controls how the indent guides are drawn, valid options are</span>
+<span class="c1">// &quot;draw_normal&quot; and &quot;draw_active&quot;. draw_active will draw the indent</span>
+<span class="c1">// guides containing the caret in a different color.</span>
+<span class="c1">// 制表位的对齐白线，draw_normal为一直显示，draw_active为只显示当前光标所在的代码控制域</span>
+<span class="s">&quot;indent_guide_options&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s">&quot;draw_normal&quot;</span><span class="p">],</span>
+
+<span class="c1">// Set to true to removing trailing white space on save</span>
+<span class="c1">// 为true时，保存文件时会删除每行结束后多余的空格</span>
+<span class="s">&quot;trim_trailing_white_space_on_save&quot;</span><span class="o">:</span> <span class="nb">false</span><span class="p">,</span>
+
+<span class="c1">// Set to true to ensure the last line of the file ends in a newline</span>
+<span class="c1">// character when saving</span>
+<span class="c1">// 为true时，保存文件时光标会在文件的最后向下换一行</span>
+<span class="s">&quot;ensure_newline_at_eof_on_save&quot;</span><span class="o">:</span> <span class="nb">false</span><span class="p">,</span>
+
+<span class="c1">// Set to true to automatically save files when switching to a different file</span>
+<span class="c1">// or application</span>
+<span class="c1">// 切换到其它文件标签或点击其它非本软件区域，文件自动保存</span>
+<span class="s">&quot;save_on_focus_lost&quot;</span><span class="o">:</span> <span class="nb">false</span><span class="p">,</span>
+
+<span class="c1">// The encoding to use when the encoding can&#39;t be determined automatically.</span>
+<span class="c1">// ASCII, UTF-8 and UTF-16 encodings will be automatically detected.</span>
+<span class="c1">// 编码时不能自动检测编码时，将自动检测ASCII, UTF-8 和 UTF-16</span>
+<span class="s">&quot;fallback_encoding&quot;</span><span class="o">:</span> <span class="s">&quot;Western (Windows 1252)&quot;</span><span class="p">,</span>
+
+<span class="c1">// Encoding used when saving new files, and files opened with an undefined</span>
+<span class="c1">// encoding (e.g., plain ascii files). If a file is opened with a specific</span>
+<span class="c1">// encoding (either detected or given explicitly), this setting will be</span>
+<span class="c1">// ignored, and the file will be saved with the encoding it was opened</span>
+<span class="c1">// with.</span>
+<span class="c1">// 默认编码格式</span>
+<span class="s">&quot;default_encoding&quot;</span><span class="o">:</span> <span class="s">&quot;UTF-8&quot;</span><span class="p">,</span>
+
+<span class="c1">// Files containing null bytes are opened as hexadecimal by default</span>
+<span class="c1">// 包含空字节的文件被打开默认为十六进制</span>
+<span class="s">&quot;enable_hexadecimal_encoding&quot;</span><span class="o">:</span> <span class="nb">true</span><span class="p">,</span>
+
+<span class="c1">// Determines what character(s) are used to terminate each line in new files.</span>
+<span class="c1">// Valid values are &#39;system&#39; (whatever the OS uses), &#39;windows&#39; (CRLF) and</span>
+<span class="c1">// &#39;unix&#39; (LF only).</span>
+<span class="c1">// 每一行结束的时候用什么字符做终止符</span>
+<span class="s">&quot;default_line_ending&quot;</span><span class="o">:</span> <span class="s">&quot;system&quot;</span><span class="p">,</span>
+
+<span class="c1">// When enabled, pressing tab will insert the best matching completion.</span>
+<span class="c1">// When disabled, tab will only trigger snippets or insert a tab.</span>
+<span class="c1">// Shift+tab can be used to insert an explicit tab when tab_completion is</span>
+<span class="c1">// enabled.</span>
+<span class="c1">// 设置为enabled时，在一个字符串间按Tab将插入一个制表符</span>
+<span class="c1">// 设置为true时，按Tab会根据前后环境进行代码自动匹配填补</span>
+<span class="s">&quot;tab_completion&quot;</span><span class="o">:</span> <span class="nb">true</span><span class="p">,</span>
+
+<span class="c1">// Enable auto complete to be triggered automatically when typing.</span>
+<span class="c1">// 代码提示</span>
+<span class="s">&quot;auto_complete&quot;</span><span class="o">:</span> <span class="nb">true</span><span class="p">,</span>
+
+<span class="c1">// The maximum file size where auto complete will be automatically triggered.</span>
+<span class="c1">// 代码提示的大小限制</span>
+<span class="s">&quot;auto_complete_size_limit&quot;</span><span class="o">:</span> <span class="mi">4194304</span><span class="p">,</span>
+
+<span class="c1">// The delay, in ms, before the auto complete window is shown after typing</span>
+<span class="c1">// 代码提示延迟显示</span>
+<span class="s">&quot;auto_complete_delay&quot;</span><span class="o">:</span> <span class="mi">50</span><span class="p">,</span>
+
+<span class="c1">// Controls what scopes auto complete will be triggered in</span>
+<span class="c1">// 代码提示的控制范围</span>
+<span class="s">&quot;auto_complete_selector&quot;</span><span class="o">:</span> <span class="s">&quot;source - comment&quot;</span><span class="p">,</span>
+
+<span class="c1">// Additional situations to trigger auto complete</span>
+<span class="c1">// 触发代码提示的其他情况</span>
+<span class="s">&quot;auto_complete_triggers&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="p">{</span><span class="s">&quot;selector&quot;</span><span class="o">:</span> <span class="s">&quot;text.html&quot;</span><span class="p">,</span> <span class="s">&quot;characters&quot;</span><span class="o">:</span> <span class="s">&quot;&lt;&quot;</span><span class="p">}</span> <span class="p">],</span>
+
+<span class="c1">// By default, auto complete will commit the current completion on enter.</span>
+<span class="c1">// This setting can be used to make it complete on tab instead.</span>
+<span class="c1">// Completing on tab is generally a superior option, as it removes</span>
+<span class="c1">// ambiguity between committing the completion and inserting a newline.</span>
+<span class="c1">// 设为false时，选择提示的代码按回车或点击可以输出出来，但选择true时不会输出而是直接换行</span>
+<span class="s">&quot;auto_complete_commit_on_tab&quot;</span><span class="o">:</span> <span class="nb">false</span><span class="p">,</span>
+
+<span class="c1">// Controls if auto complete is shown when snippet fields are active.</span>
+<span class="c1">// Only relevant if auto_complete_commit_on_tab is true.</span>
+<span class="c1">// auto_complete_commit_on_tab必须为true，控制代码提示的活跃度（没明白...）</span>
+<span class="s">&quot;auto_complete_with_fields&quot;</span><span class="o">:</span> <span class="nb">false</span><span class="p">,</span>
+
+<span class="c1">// By default, shift+tab will only unindent if the selection spans</span>
+<span class="c1">// multiple lines. When pressing shift+tab at other times, it&#39;ll insert a</span>
+<span class="c1">// tab character - this allows tabs to be inserted when tab_completion is</span>
+<span class="c1">// enabled. Set this to true to make shift+tab always unindent, instead of</span>
+<span class="c1">// inserting tabs.</span>
+<span class="c1">// 设置为false，使用Shift + tab总是插入制表符</span>
+<span class="s">&quot;shift_tab_unindent&quot;</span><span class="o">:</span> <span class="nb">true</span><span class="p">,</span>
+
+<span class="c1">// If true, the selected text will be copied into the find panel when it&#39;s</span>
+<span class="c1">// shown.</span>
+<span class="c1">// On OS X, this value is overridden in the platform specific settings, so</span>
+<span class="c1">// you&#39;ll need to place this line in your user settings to override it.</span>
+<span class="c1">// 选中的文本按Ctrl + f时，自动复制到查找面板的文本框里</span>
+<span class="s">&quot;find_selected_text&quot;</span><span class="o">:</span> <span class="nb">true</span><span class="p">,</span>
+
+<span class="c1">//</span>
+<span class="c1">// User Interface Settings</span>
+<span class="c1">//</span>
+
+<span class="c1">// The theme controls the look of Sublime Text&#39;s UI (buttons, tabs, scroll bars, etc)</span>
+<span class="c1">// DataPackagesTheme - DefaultDefault.sublime-theme控制软件的主题</span>
+<span class="s">&quot;theme&quot;</span><span class="o">:</span> <span class="s">&quot;Default.sublime-theme&quot;</span><span class="p">,</span>
+
+<span class="c1">// Set to 0 to disable smooth scrolling. Set to a value between 0 and 1 to</span>
+<span class="c1">// scroll slower, or set to larger than 1 to scroll faster</span>
+<span class="c1">// 滚动的速度</span>
+<span class="s">&quot;scroll_speed&quot;</span><span class="o">:</span> <span class="mf">1.0</span><span class="p">,</span>
+
+<span class="c1">// Controls side bar animation when expanding or collapsing folders</span>
+<span class="c1">// 左边边栏文件夹动画</span>
+<span class="s">&quot;tree_animation_enabled&quot;</span><span class="o">:</span> <span class="nb">true</span><span class="p">,</span>
+<span class="c1">// 标签页的关闭按钮</span>
+<span class="s">&quot;show_tab_close_buttons&quot;</span><span class="o">:</span> <span class="nb">true</span><span class="p">,</span>
+
+<span class="c1">// OS X 10.7 only: Set to true to disable Lion style full screen support.</span>
+<span class="c1">// Sublime Text must be restarted for this to take effect.</span>
+<span class="c1">// 针对OS X</span>
+<span class="s">&quot;use_simple_full_screen&quot;</span><span class="o">:</span> <span class="nb">false</span><span class="p">,</span>
+
+<span class="c1">// Valid values are &quot;system&quot;, &quot;enabled&quot; and &quot;disabled&quot;</span>
+<span class="c1">// 水平垂直滚动条：system和disabled为默认显示方式，enabled为自动隐藏显示</span>
+<span class="s">&quot;overlay_scroll_bars&quot;</span><span class="o">:</span> <span class="s">&quot;system&quot;</span><span class="p">,</span>
+
+<span class="c1">//</span>
+<span class="c1">// Application Behavior Settings</span>
+<span class="c1">//</span>
+
+<span class="c1">// Exiting the application with hot_exit enabled will cause it to close</span>
+<span class="c1">// immediately without prompting. Unsaved modifications and open files will</span>
+<span class="c1">// be preserved and restored when next starting.</span>
+<span class="c1">//</span>
+<span class="c1">// Closing a window with an associated project will also close the window</span>
+<span class="c1">// without prompting, preserving unsaved changes in the workspace file</span>
+<span class="c1">// alongside the project.</span>
+<span class="c1">// 热推出功能！退出时不会提示是否保存文件，而是直接退出</span>
+<span class="c1">// 下次打开软件时，文件保持退出前的状态，没来得及保存的内容都在，但并没有真实的写在原文件里</span>
+<span class="s">&quot;hot_exit&quot;</span><span class="o">:</span> <span class="nb">true</span><span class="p">,</span>
+
+<span class="c1">// remember_open_files makes the application start up with the last set of</span>
+<span class="c1">// open files. Changing this to false will have no effect if hot_exit is</span>
+<span class="c1">// true</span>
+<span class="c1">// 软件使用最后的设定打开文件，hot_exit为true时没有效果</span>
+<span class="s">&quot;remember_open_files&quot;</span><span class="o">:</span> <span class="nb">true</span><span class="p">,</span>
+
+<span class="c1">// OS X only: When files are opened from finder, or by dragging onto the</span>
+<span class="c1">// dock icon, this controls if a new window is created or not.</span>
+<span class="c1">// 针对OS X</span>
+<span class="s">&quot;open_files_in_new_window&quot;</span><span class="o">:</span> <span class="nb">true</span><span class="p">,</span>
+
+<span class="c1">// Set to true to close windows as soon as the last file is closed, unless</span>
+<span class="c1">// there&#39;s a folder open within the window. This is always enabled on OS X,</span>
+<span class="c1">// changing it here won&#39;t modify the behavior.</span>
+<span class="c1">// 针对OS X</span>
+<span class="s">&quot;close_windows_when_empty&quot;</span><span class="o">:</span> <span class="nb">true</span><span class="p">,</span>
+<span class="c1">// 哪些文件会被显示到边栏上</span>
+<span class="c1">// folder_exclude_patterns and file_exclude_patterns control which files</span>
+<span class="c1">// are listed in folders on the side bar. These can also be set on a per-</span>
+<span class="c1">// project basis.</span>
+<span class="s">&quot;folder_exclude_patterns&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s">&quot;.svn&quot;</span><span class="p">,</span> <span class="s">&quot;.git&quot;</span><span class="p">,</span> <span class="s">&quot;.hg&quot;</span><span class="p">,</span> <span class="s">&quot;CVS&quot;</span><span class="p">],</span>
+<span class="s">&quot;file_exclude_patterns&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s">&quot;*.pyc&quot;</span><span class="p">,</span> <span class="s">&quot;*.pyo&quot;</span><span class="p">,</span> <span class="s">&quot;*.exe&quot;</span><span class="p">,</span> <span class="s">&quot;*.dll&quot;</span><span class="p">,</span> <span class="s">&quot;*.obj&quot;</span><span class="p">,</span><span class="s">&quot;*.o&quot;</span><span class="p">,</span> <span class="s">&quot;*.a&quot;</span><span class="p">,</span> <span class="s">&quot;*.lib&quot;</span><span class="p">,</span> <span class="s">&quot;*.so&quot;</span><span class="p">,</span> <span class="s">&quot;*.dylib&quot;</span><span class="p">,</span> <span class="s">&quot;*.ncb&quot;</span><span class="p">,</span> <span class="s">&quot;*.sdf&quot;</span><span class="p">,</span> <span class="s">&quot;*.suo&quot;</span><span class="p">,</span> <span class="s">&quot;*.pdb&quot;</span><span class="p">,</span> <span class="s">&quot;*.idb&quot;</span><span class="p">,</span> <span class="s">&quot;.DS_Store&quot;</span><span class="p">,</span> <span class="s">&quot;*.class&quot;</span><span class="p">,</span> <span class="s">&quot;*.psd&quot;</span><span class="p">,</span> <span class="s">&quot;*.db&quot;</span><span class="p">],</span>
+<span class="c1">// These files will still show up in the side bar, but won&#39;t be included in</span>
+<span class="c1">// Goto Anything or Find in Files</span>
+<span class="s">&quot;binary_file_patterns&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s">&quot;*.jpg&quot;</span><span class="p">,</span> <span class="s">&quot;*.jpeg&quot;</span><span class="p">,</span> <span class="s">&quot;*.png&quot;</span><span class="p">,</span> <span class="s">&quot;*.gif&quot;</span><span class="p">,</span> <span class="s">&quot;*.ttf&quot;</span><span class="p">,</span> <span class="s">&quot;*.tga&quot;</span><span class="p">,</span> <span class="s">&quot;*.dds&quot;</span><span class="p">,</span> <span class="s">&quot;*.ico&quot;</span><span class="p">,</span> <span class="s">&quot;*.eot&quot;</span><span class="p">,</span> <span class="s">&quot;*.pdf&quot;</span><span class="p">,</span> <span class="s">&quot;*.swf&quot;</span><span class="p">,</span> <span class="s">&quot;*.jar&quot;</span><span class="p">,</span> <span class="s">&quot;*.zip&quot;</span><span class="p">],</span>
+
+<span class="c1">// List any packages to ignore here. When removing entries from this list,</span>
+<span class="c1">// a restart may be required if the package contains plugins.</span>
+<span class="c1">// 删除你想要忽略的插件，需要重启</span>
+<span class="s">&quot;ignored_packages&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s">&quot;Vintage&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+    </article>
+    <!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/2014/06/09/sublime"  data-title="Set Sublime 3 - Hackerxu's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
+</div>
+
+            </div>
+        </div>
+        <footer class="site-footer">
+
+    <div class="wrap">
+        <div class="footer-col-1 column">
+            <div class="github">
+                <!-- <span class="icon github"> -->
+                <svg version="1.1" class="github-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                    <path fill-rule="evenodd" clip-rule="evenodd" fill="#000" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761
+                    c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32
+                    c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472
+                    c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037
+                    C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65
+                    c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261
+                    c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082
+                    c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129
+                    c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+                <!-- </span> -->
+            </div>
+            <a href="https://github.com/taizilongxu">
+                Fork me on github
+            </a>
+        </div>
+        <div class="footer-col-2">
+            <p>© 2014 - 2015 by <font style="color:#f44336">❤ </font> <a href="http://github.com/taizilongxu">Hackerxu</a></p>
+        </div>
+        <!-- <div class="footer-col-3 column">
+      <p class="text">Python,HTML,CSS,Machine Leaning</p>
+    </div> -->
+    </div>
+    <div class="scroll-top"><i class="fa fa-arrow-circle-up"></i></div>
+</footer>
+
+
+        <!-- mathjax -->
+        <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+        </script>
+        <script type="text/javascript"
+                src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        </script>
+        <!-- highlight -->
+        <script src="/js/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <!-- pleace change it! -->
+        <script type="text/javascript">
+var duoshuoQuery = {short_name:"taizilongxu"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+        </script>
+        <!-- top-scrooll -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.js"></script>
+        <script type="text/javascript">
+$(window).scroll(function() {
+    if($(this).scrollTop() > 100) {
+        $('.scroll-top').fadeIn(200);
+    } else {
+        $('.scroll-top').fadeOut(200);
+    }
+});
+$('.scroll-top').bind('click', function(e) {
+    e.preventDefault();
+    $('body,html').animate({scrollTop:0},200);
+});
+        </script>
+    </body>
+</html>

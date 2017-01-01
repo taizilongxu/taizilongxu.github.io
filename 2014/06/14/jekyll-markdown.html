@@ -6,12 +6,12 @@
 <meta name="google-site-verification" content="5KH7Y5MF1c9GbPNQ94CEej-1YkeHortoXv7fjiWt7hM" />
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Hackerxu's Blog</title>
+<title>jekyll的markdown设置</title>
 <link rel="shortcut icon" href=" /img/github.ico"/>
 <link rel="bookmark" href="/img/github.ico"/>
 <meta name="viewport" content="width=device-width">
 <meta name="description" content="Python,HTML,CSS,Machine Leaning">
-<link rel="canonical" href="http://hackerxu.com/">
+<link rel="canonical" href="http://hackerxu.com/2014/06/14/jekyll-markdown.html">
 <!-- Custom CSS -->
 <link rel="stylesheet" href="/css/main.css">
 <link rel="stylesheet" href="/css/github.css">
@@ -79,30 +79,50 @@ ga('send', 'pageview');
 
         <div class="page-content">
             <div class="wrap">
-                <div class="home">
-  
-  <header class="post-header">
-    <h1><a href="/2016/10/08/guoqing.html">国庆</a></h1>
-    <p class="meta"><i class="fa fa-calendar"></i> 2016-10-08&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#life">life</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#life">life</a></p>
-  </header>
-  <article class="post-content">
-  <p>国庆无事, 替opsdev全体员工拜一拜了, 保佑风调雨顺</p>
+                <div class="post">
+    <header class="post-header">
+        <h1><a href="/2014/06/14/jekyll-markdown.html">jekyll的markdown设置</a></h1>
+        <p class="meta"><i class="fa fa-calendar"></i> 2014-06-14&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i> <a href="/categories/#blog">blog</a> &nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp&nbsp<a href="/tags/#blog">blog</a></p>
+    </header>
+    <article class="post-content">
+        <p>jekyll可以有多种markdown的解析器，目前找到的支持GFM的解析器有两个，一个是kramdown，另一个是redcarpet。</p>
 
-<p><img src="/img/DAA339DC8C0A1922D9A7FF35AD67F59F.jpg" alt=""></p>
+<h3>kramdown</h3>
 
-  </article>
-  
+<p>最开始用的是kramdown，配置都很简单。</p>
 
-  <ul class="posts">
-    <!-- <li class="listing-seperator">Yesterday you said tomorrow</li> -->
-  
-  
-    
-    
-    
-    <li class="listing-seperator"><a href="/archive/">Long ago</a></li>
-  </ul>
+<p>_config.yml配置：</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="ss">markdown</span><span class="p">:</span> <span class="n">kramdowm</span>
+<span class="ss">kramdown</span><span class="p">:</span>
+  <span class="ss">input</span><span class="p">:</span> <span class="no">GFM</span>
+</code></pre></div>
+<h3>redcarpet</h3>
 
+<p>redcarpet用起来还是比较方便的。</p>
+
+<p>_config.yml配置：</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="ss">markdown</span><span class="p">:</span> <span class="n">redcarpet</span>
+<span class="ss">redcarpet</span><span class="p">:</span>
+  <span class="ss">extensions</span><span class="p">:</span> <span class="o">[]</span>
+</code></pre></div>
+<p>[]中可以添加的常用扩展选项有如下：</p>
+
+<ul>
+<li>no_intra_emphasis：不解析单词中的下划线，如foo_em_body</li>
+<li>fenced_code_blocks :这个比较实用，就是用GFM的方式标记代码段，即三个<strong>`</strong></li>
+<li>autolink：自动解析链接</li>
+<li>strikethrough：删除线，this is <del>good</del> bad</li>
+<li>space_after_headers：后边必须接空格，否则不会被解析为标题</li>
+</ul>
+
+<p>用redcarpet的一个好处是，可以和<a href="http://highlightjs.org/">highlights.js</a>配合，可以选的css样式也很多，方便布局和修改，这个博客的样式就是GFM的样式。</p>
+
+    </article>
+    <!-- Duoshuo Comment BEGIN -->
+    <div id="comments">
+        <div class="ds-thread" data-thread-key="/2014/06/14/jekyll-markdown"  data-title="jekyll的markdown设置 - Hackerxu's Blog"></div>
+    </div>
+<!-- Duoshuo Comment END -->
 </div>
 
             </div>
