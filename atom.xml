@@ -7,6 +7,18 @@
         <atom:link href="http://hackerxu.com/feed.xml" rel="self" type="application/rss+xml" />
         
             <item>
+                <title>喵星</title>
+                        
+                
+                    <description>&lt;p&gt;&lt;img src=&quot;http://hackerxu.com/img/huihui.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</description>
+                
+                <pubDate>Mon, 02 Jan 2017 00:00:00 +0800</pubDate>
+                <link>http://hackerxu.com/2017/01/02/2016.html</link>
+                <guid isPermaLink="true">http://hackerxu.com/2017/01/02/2016.html</guid>
+            </item>
+        
+            <item>
                 <title>命令行工具jq的使用</title>
                         
                 
@@ -113,18 +125,6 @@
                 <pubDate>Mon, 05 Oct 2015 00:00:00 +0800</pubDate>
                 <link>http://hackerxu.com/2015/10/05/guoqing.html</link>
                 <guid isPermaLink="true">http://hackerxu.com/2015/10/05/guoqing.html</guid>
-            </item>
-        
-            <item>
-                <title>中秋节</title>
-                        
-                
-                    <description>&lt;p&gt;&lt;img src=&quot;http://hackerxu.com/img/zhongqiujie.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-</description>
-                
-                <pubDate>Sun, 27 Sep 2015 00:00:00 +0800</pubDate>
-                <link>http://hackerxu.com/2015/09/27/zhongqiujie.html</link>
-                <guid isPermaLink="true">http://hackerxu.com/2015/09/27/zhongqiujie.html</guid>
             </item>
         
     </channel>
