@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Flink 如何工作的? | Limbo&#39;s Wiki</title>
+    
+    
+        <meta name="keywords" content="Flink 如何工作的?" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Flink 是如何工作的? 本文主要分为两个部分, 分别介绍 Flink 集群的启动和 Flink 任务如何运行在集群中(Stream 方式), 由于篇幅有限, 本文尽量不探讨具体的实现细节,但是比较重要的部分给予一定的说明, 更多的是让读者了解 Flink 内部的工作原理. Flink 在部署上主要分为两部分 JobManager 和 TaskManager, JobManager 主要负责任务">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flink 如何工作的?">
+<meta property="og:url" content="http://yoursite.com/wiki/BigData/flink/index.html">
+<meta property="og:site_name" content="Limbo&#39;s Wiki">
+<meta property="og:description" content="Flink 是如何工作的? 本文主要分为两个部分, 分别介绍 Flink 集群的启动和 Flink 任务如何运行在集群中(Stream 方式), 由于篇幅有限, 本文尽量不探讨具体的实现细节,但是比较重要的部分给予一定的说明, 更多的是让读者了解 Flink 内部的工作原理. Flink 在部署上主要分为两部分 JobManager 和 TaskManager, JobManager 主要负责任务">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://ci.apache.org/projects/flink/flink-docs-release-1.9/fig/processes.svg">
+<meta property="og:image" content="https://raw.githubusercontent.com/taizilongxu/img/master/img/source_global.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/taizilongxu/img/master/img/flink_job.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/taizilongxu/img/master/img/flink_job_env.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/taizilongxu/img/master/img/graph_all.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/taizilongxu/img/master/img/source_streamGraph.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/taizilongxu/img/master/img/source_streamGraph2.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/taizilongxu/img/master/img/source_jobGraph.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/taizilongxu/img/master/img/source_executionGraph.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/taizilongxu/img/master/img/image2019-10-14_11-34-38.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/taizilongxu/img/master/img/image2019-10-14_11-33-31.png">
+<meta property="article:published_time" content="2019-12-17T12:19:05.000Z">
+<meta property="article:modified_time" content="2020-01-15T12:06:59.175Z">
+<meta property="article:author" content="Limbo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ci.apache.org/projects/flink/flink-docs-release-1.9/fig/processes.svg">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Limbo&#39;s Wiki" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+        <meta name="google-site-verification" content="G-4X9REZXK33# enter Google site verification code" />
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Limbo&#39;s Wiki</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            BigData
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Kafka
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/BigData/Kafka/cheat_sheet/"></a></li>  </ul> 
+                    </li> 
+                     <li class="file active"><a href="/wiki/BigData/flink/">Flink 如何工作的?</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Blog
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/Blog/hello-world/">Hello World</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Hackintosh
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/Hackintosh/principel/">黑苹果原理</a></li>  <li class="file"><a href="/wiki/Hackintosh/uefi_bios/">UEFI 与 BIOS</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Hardware
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Disk
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/Hardware/Disk/raid/">RAID</a></li>  <li class="file"><a href="/wiki/Hardware/Disk/interface/">硬盘接口</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/Hardware/wifi/">Wi-Fi 协议</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Language
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Java
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            jvm
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/Language/Java/jvm/jvm/">JVM 简介 (翻译)</a></li>  <li class="file"><a href="/wiki/Language/Java/jvm/jvm_mem/">JVM Memory</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/Language/Java/shaded/">使用 maven shade plugin 解决重复类问题</a></li>  <li class="file"><a href="/wiki/Language/Java/maven/">Maven 汇总</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Linux
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/Linux/env/">环境变量</a></li>  <li class="file"><a href="/wiki/Linux/shell/">shell</a></li>  <li class="file"><a href="/wiki/Linux/unix/">unix 哲学</a></li>  <li class="file"><a href="/wiki/Linux/shell_navigation/">shell navigation</a></li>  <li class="file"><a href="/wiki/Linux/package/">包管理系统</a></li>  <li class="file"><a href="/wiki/Linux/crontab/">crontab</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Tools
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/Tools/git/">Git 原理</a></li>  <li class="file"><a href="/wiki/Tools/ssh/">Ssh</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/index/">欢迎来到我的 Wiki</a></li>  <li class="file"><a href="/wiki/class_bytes/">Class 文件结构</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-BigData/flink" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/BigData/">BigData</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/wiki/BigData/flink/">
+            <time datetime="2019-12-17T12:19:05.000Z" itemprop="datePublished">2019-12-17</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href='https://github.com/taizilongxu/Wiki-site/raw/master/source/_posts/BigData/flink.md' target="_blank" rel="noopener"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/taizilongxu/Wiki-site/edit/master/source/_posts/BigData/flink.md' target="_blank" rel="noopener"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/taizilongxu/Wiki-site/commits/master/source/_posts/BigData/flink.md' target="_blank" rel="noopener"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Flink 如何工作的?
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Flink-集群的启动"><span class="toc-number">1.</span> <span class="toc-text">1 Flink 集群的启动</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-JobManager-的启动"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 JobManager 的启动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-TaskManager-的启动"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 TaskManager 的启动</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Flink-Job-的启动"><span class="toc-number">2.</span> <span class="toc-text">2 Flink Job 的启动</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-Client-端"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 Client 端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-JobManager-端"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 JobManager 端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-TaskManager-端"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 TaskManager 端</span></a></li></ol></li></ol>
+                </div>
+            
+        
+        
+            <p>Flink 是如何工作的?</p>
+<p>本文主要分为两个部分, 分别介绍 Flink 集群的启动和 Flink 任务如何运行在集群中(Stream 方式), 由于篇幅有限, 本文尽量不探讨具体的实现细节,但是比较重要的部分给予一定的说明, 更多的是让读者了解 Flink 内部的工作原理.</p>
+<p>Flink 在部署上主要分为两部分 JobManager 和 TaskManager, JobManager 主要负责任务的分发, slot 资源管理等, TaskManager 则主要负责任务的运行. 下面这张官网的架构图虽然年代有点久远, 但至今大部分功能还是如图所述.</p>
+<p><img src="https://ci.apache.org/projects/flink/flink-docs-release-1.9/fig/processes.svg" alt=""></p>
+<p>从上面图中需要了解的信息:</p>
+<ol>
+<li>Flink 代码在客户端里进行了”编译”, 然后提交给 JobManager, 这里比较重要, 因为很多 Optimizer 的东西都可以在这里做</li>
+<li>JobManager 拿到”编译”后的 job 再分发到各个 TaskManager 的 Slot 里</li>
+<li>Flink 有两种通信方式, 远程调用使用的是 Actor, TaskManager 数据传输使用的是 Netty</li>
+<li>JobManager 集成了 Scheduler 和 Checkpoint Coordinator 等主要功能 </li>
+</ol>
+<h1 id="1-Flink-集群的启动"><a href="#1-Flink-集群的启动" class="headerlink" title="1 Flink 集群的启动"></a>1 Flink 集群的启动</h1><p>Flink 集群的启动方式主要分为以下 3 种:</p>
+<ol>
+<li>Standalone 方式: 最基础的方式, 具有完整的功能, 可在实体机上进行部署</li>
+<li>Cluster session 方式: 部署在像 Yarn , K8s 等资源调度框架内, 直接建立起集群, 然后通过与 JobManager 交互来提交作业, 但是在实际生产过程中发现有严重的 Bug 还没有解决,  可参看 <a href="https://issues.apache.org/jira/browse/FLINK-11205" target="_blank" rel="noopener">FLINK-11205</a> , 主要是 Metaspace 空间无法释放导致 TaskManager 被 kill, 而一个集群里存在多个 TaskManager 问题更加严重, 会导致整个集群 Taskmanager 不断重启.</li>
+<li>Per Job 方式: 在 Yarn 中已经很好的集成了这种方式, 就是整个集群的生命周期和任务进行绑定, 任务结束, 集群资源也随着撤销, 唯一的缺点就是部署时间上不如 Cluster session 的方式, 这点其实在实际生产中可以忽略.</li>
+</ol>
+<h2 id="1-1-JobManager-的启动"><a href="#1-1-JobManager-的启动" class="headerlink" title="1.1 JobManager 的启动"></a>1.1 JobManager 的启动</h2><p>因为版本变动的关系 Jobmanager 在 1.5 版本的时候进行了一次大改, 和上面的图可能略有不通, 具体可以参见 <a href="https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=65147077" target="_blank" rel="noopener">FLIP-6</a>, 下面聊一聊一般生产中 JobManager 如何启动的.</p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/img/master/img/source_global.png" alt=""></p>
+<p>上图可以看出在 1.5 以后的新版本中 JobManager 多出了两个组件, 一个是 ResourceManager, 主要负责管理 Flink 自己的 TaskManager 资源, 注意这个 ResourceManager 和 Yarn 上的不是同一个, 两者管理的资源不是同一级别, 第二个是 Dispatcher 主要是提供 client 的 RPC 接口, 提供发布任务的一系列功能. 而 JobMaster 主要负责一个任务的生命周期, 每个 Flink Job 都有一个 JobMaster 与之对应.</p>
+<h2 id="1-2-TaskManager-的启动"><a href="#1-2-TaskManager-的启动" class="headerlink" title="1.2 TaskManager 的启动"></a>1.2 TaskManager 的启动</h2><p>TaskManager 其实功能比较简单, 提供一些基本的 RPC 服务, 供 JobManager 进行调度, 稍后会讲到 TaskManager 如何运行 JobManager 提供的 subTask.</p>
+<h1 id="2-Flink-Job-的启动"><a href="#2-Flink-Job-的启动" class="headerlink" title="2 Flink Job 的启动"></a>2 Flink Job 的启动</h1><p>我们先来看看一个 Flink job 的构成</p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/img/master/img/flink_job.png" alt=""></p>
+<p>Flink job 最核心的构成其实就是这个 ENV, 用户需要通过调用 ENV 来注册用户的代码逻辑, 而这个 ENV 定义了一系列 DAG 生成的规则, 比如 env.addSource 我们必须指定 Source 的类型, 是 DataStream 还是 DataSet, 又比如 keyBy 之后返回的是 KeyedStream, 这些规则都是在 ENV 里进行了定义, 用户只要根据规则来使用即可, 而且根据 ENV 的定义我们可以在不同的环境中运行 Flink Job, 如下图所示:</p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/img/master/img/flink_job_env.png" alt=""></p>
+<p>我们可以以 Flink 开发者的角度思考如何从用户代码到底层实现, 这一过程必然使用分层结构, 下面来看一下各个层级的工作:</p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/img/master/img/graph_all.png" alt=""></p>
+<h2 id="2-1-Client-端"><a href="#2-1-Client-端" class="headerlink" title="2.1 Client 端"></a>2.1 Client 端</h2><p>首先在 Client 端生成的第一层是 User Rule, 这个算是用户代码到 DAG 的第一层抽象, 这里面制定了很多规则, 来约束用户的行为, 引导用户更好的使用 Flink 程序.</p>
+<p>第二层是 Transformation 层, 这里的 Transformation 主要是完成了对用户的各个算子的定义, 比如说 addSource 的操作即为 SourceTransformation, filter 操作即为 OneInputTransformation, 这里面与用户的算子一一对应, 但是这里面区分定义了 PhysicalTransformation,  PhysicalTransformastion 可以理解为物理算子, 需要计算资源进行计算, 而 union, select 这些并非物理算子, 可以在后面的结构中通过网络 shuffle 进行合并, 在这一步我们得到的还是一个 Transformation 的列表, 完整的描述了用户定义的各个算子, 如下图所示:</p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/img/master/img/source_streamGraph.jpg" alt=""></p>
+<p>第三层就是我们的 StreamGraph 了, 从 Transformation 转化而来, 构成了图的结构, 其中 StreamNode 为点, StreamEdge 为边, 在程序里存入的部分是一张链表结构, 如下图所示:</p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/img/master/img/source_streamGraph2.jpg" alt=""></p>
+<p>这里面加入了一些信息, 比如说 slotSharingGroup, 从而定义这些算子如何在 slot 里分配</p>
+<p>在 Client 里生成的最后一层即为 JobGraph, 这也是 Flink JobManager 接收的任务对象, 其实上一层的 StreamGraph 已经完成了任务 DAG , 为什么还需要 JobGraph 呢, 其实是为了兼容 Batch 模式, JobGraph 作为统一层进行封装, 同时提供了计算优化即 setChain 功能,  可以减小序列化和网络开销,  可能有的同学会对 chain 的概念有所疑惑 , 比如说 map 算子后面接入一个 filter 算子, 而且是同等数量的, 这样我就可以把 map 和 filter 抽象成一个计算进行自动优化, 要达到 chain 的条件比较苛刻, 具体可以查看代码</p>
+<p>在 JobGraph 里主要结构就是 JobVertex 和 JobEdge, 在前面所说的 chain 方法后, 可以合并 两个或多个 StreamNode 为一个 JobVertex, 如下图所示:</p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/img/master/img/source_jobGraph.jpg" alt=""></p>
+<p>好了这里基本就聊完了 Client 端的工作</p>
+<h2 id="2-2-JobManager-端"><a href="#2-2-JobManager-端" class="headerlink" title="2.2 JobManager 端"></a>2.2 JobManager 端</h2><p>JobManager 端接收到 client 提交的 JobGraph, 根据 JobgRaph 来生成 ExcutionGraph, 这个 ExcutionGraph 简单来说就是 JobGraph 的并行版本, 定义具体执行的细节:</p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/img/master/img/source_executionGraph.jpg" alt=""></p>
+<p>这里省略了一部分(其他部分一样), 主要来看看几个结构, ExecutionJobVertex 主要类似于 JobGraph 的 Node, 管理所有下面的并行状态, ExecutionVertex 是最小的执行单位(也是我们所说的 SubTask, 每个 SubTask 都由一个 thread 启动), 同理 IntermediateResult 负责多个 IntermediateResultPartition. 到这里完成了 ExecutionGraph, 而需要部署到 TaskManager 中间还需要为每个 Vertex 生成 TaskDeploymentDescriptor, 来描述在 TaskManager 中的具体任务, 比如 inputGates(输入), producedPartition(输出), 然后提交给 TaskManager</p>
+<h2 id="2-3-TaskManager-端"><a href="#2-3-TaskManager-端" class="headerlink" title="2.3 TaskManager 端"></a>2.3 TaskManager 端</h2><p>上面提到 JobManager 生成 TaskDeploymentDescriptor 提交给 TaskManager, TaskManager 就比较好办了, 只需要设定这个 Task 的输入和输出还有 run 这个 Task 即可, 这一层就是所谓的物理执行层.</p>
+<p>而对于分布在各个 TaskManager 上的 SubTask 是如何通信的呢, 可以看下图:</p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/img/master/img/image2019-10-14_11-34-38.png" alt=""></p>
+<p>对于在同一个 TaskManager 内的 subTask, 通过 InputGate 和 ResultPartition 直接进行通信, 而对于不在同一个 TaskManager 里需要借助 Netty 层进行网络通信:</p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/img/master/img/image2019-10-14_11-33-31.png" alt=""></p>
+<p>还有一点值得注意的是, 当有消息来到时 ResultPartition 会给 InputGate 发送 notifyDataAvallable, 告诉下游该来取数了, 如果下游比较忙没空来取的话就会阻塞, 进而逐级向上传导产生被压, 这种缓冲 buffer 的方式是 flink 天然处理被压的方法.</p>
+<p>至此整个 Flink Job 的流程已经结束, 但毕竟 Flink 是一个庞大的开源项目, 很多细节比如 Checkpoint 机制, 状态存储这些重要的概念还未涉及, 有兴趣的读者可以参考优秀的 Blog 进一步研究</p>
+<p>参考资料:</p>
+<ol>
+<li><a href="https://ci.apache.org/projects/flink/flink-docs-release-1.9/" target="_blank" rel="noopener">Flink 官网</a></li>
+<li><a href="https://cwiki.apache.org/confluence/display/FLINK/Flink+Improvement+Proposals" target="_blank" rel="noopener">FLIP</a></li>
+<li><a href="http://wuchong.me/" target="_blank" rel="noopener">Jark’s Blog</a></li>
+<li><a href="http://chenyuzhao.me/" target="_blank" rel="noopener">玉兆的博客</a></li>
+<li><a href="https://flink.apache.org/2019/06/05/flink-network-stack.html" target="_blank" rel="noopener">Flink 官方博客</a></li>
+</ol>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/wiki/Blog/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Hello World
+                
+            </div>
+        </a>
+    
+    
+        <a href="/wiki/Hackintosh/principel/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">黑苹果原理</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Limbo &copy; 2020 
+            <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten" target="_blank" rel="noopener">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

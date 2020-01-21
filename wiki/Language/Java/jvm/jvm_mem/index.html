@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>JVM Memory | Limbo&#39;s Wiki</title>
+    
+    
+        <meta name="keywords" content="JVM Memory" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="JVM 主要三个组成:  Heap: 所有实例对象, 堆内空间无法扩展出现 OOM 异常 Young Generation(默认比例 8:1:1) Eden From Survivor To Survivor   Old Generation   Method Area(Non-Heap, PermGen, 永久代): 方法区存储类信息, 常量, 静态变量等数据, 线程共享区域, 方法区也会抛出">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM Memory">
+<meta property="og:url" content="http://yoursite.com/wiki/Language/Java/jvm/jvm_mem/index.html">
+<meta property="og:site_name" content="Limbo&#39;s Wiki">
+<meta property="og:description" content="JVM 主要三个组成:  Heap: 所有实例对象, 堆内空间无法扩展出现 OOM 异常 Young Generation(默认比例 8:1:1) Eden From Survivor To Survivor   Old Generation   Method Area(Non-Heap, PermGen, 永久代): 方法区存储类信息, 常量, 静态变量等数据, 线程共享区域, 方法区也会抛出">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/taizilongxu/img/master/img/jvm_mem_1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/taizilongxu/img/master/img/jvm_mem_2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/taizilongxu/img/master/img/20200120235923.png">
+<meta property="article:published_time" content="2020-01-20T16:00:12.000Z">
+<meta property="article:modified_time" content="2020-01-20T16:00:12.000Z">
+<meta property="article:author" content="Limbo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/taizilongxu/img/master/img/jvm_mem_1.png">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Limbo&#39;s Wiki" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+        <meta name="google-site-verification" content="G-4X9REZXK33# enter Google site verification code" />
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Limbo&#39;s Wiki</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            BigData
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Kafka
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/BigData/Kafka/cheat_sheet/"></a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/BigData/flink/">Flink 如何工作的?</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Blog
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/Blog/hello-world/">Hello World</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Hackintosh
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/Hackintosh/principel/">黑苹果原理</a></li>  <li class="file"><a href="/wiki/Hackintosh/uefi_bios/">UEFI 与 BIOS</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Hardware
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Disk
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/Hardware/Disk/raid/">RAID</a></li>  <li class="file"><a href="/wiki/Hardware/Disk/interface/">硬盘接口</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/Hardware/wifi/">Wi-Fi 协议</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            Language
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            Java
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            jvm
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/Language/Java/jvm/jvm/">JVM 简介 (翻译)</a></li>  <li class="file active"><a href="/wiki/Language/Java/jvm/jvm_mem/">JVM Memory</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/Language/Java/shaded/">使用 maven shade plugin 解决重复类问题</a></li>  <li class="file"><a href="/wiki/Language/Java/maven/">Maven 汇总</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Linux
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/Linux/env/">环境变量</a></li>  <li class="file"><a href="/wiki/Linux/shell/">shell</a></li>  <li class="file"><a href="/wiki/Linux/unix/">unix 哲学</a></li>  <li class="file"><a href="/wiki/Linux/shell_navigation/">shell navigation</a></li>  <li class="file"><a href="/wiki/Linux/package/">包管理系统</a></li>  <li class="file"><a href="/wiki/Linux/crontab/">crontab</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Tools
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/Tools/git/">Git 原理</a></li>  <li class="file"><a href="/wiki/Tools/ssh/">Ssh</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/index/">欢迎来到我的 Wiki</a></li>  <li class="file"><a href="/wiki/class_bytes/">Class 文件结构</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-Language/Java/jvm/jvm_mem" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Language/">Language</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Language/Java/">Java</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Language/Java/jvm/">jvm</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/wiki/Language/Java/jvm/jvm_mem/">
+            <time datetime="2020-01-20T16:00:12.000Z" itemprop="datePublished">2020-01-21</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href='https://github.com/taizilongxu/Wiki-site/raw/master/source/_posts/Language/Java/jvm/jvm_mem.md' target="_blank" rel="noopener"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/taizilongxu/Wiki-site/edit/master/source/_posts/Language/Java/jvm/jvm_mem.md' target="_blank" rel="noopener"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/taizilongxu/Wiki-site/commits/master/source/_posts/Language/Java/jvm/jvm_mem.md' target="_blank" rel="noopener"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            JVM Memory
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <p><img src="https://raw.githubusercontent.com/taizilongxu/img/master/img/jvm_mem_1.png" alt=""></p>
+<p>JVM 主要三个组成:</p>
+<ul>
+<li>Heap: 所有实例对象, 堆内空间无法扩展出现 OOM 异常<ul>
+<li>Young Generation(默认比例 8:1:1)<ul>
+<li>Eden</li>
+<li>From Survivor</li>
+<li>To Survivor</li>
+</ul>
+</li>
+<li>Old Generation</li>
+</ul>
+</li>
+<li>Method Area(<code>Non-Heap, PermGen, 永久代</code>): 方法区存储类信息, 常量, 静态变量等数据, 线程共享区域, 方法区也会抛出 OOM</li>
+<li>Stack<ul>
+<li>Java Stack: 每个方法执行的时候都会创建一个 stack frame, 保存局部变量, 操作栈,动态链接, 方法出口等, 如果线程请求栈的深度大于虚拟机允许深度, 抛出 stackoverflow 异常, 如果虚拟机栈可以动态扩展, 当无法申请内存是会抛出 OOM 异常</li>
+<li>Native Method Stack: 存一些原生方法, C 库</li>
+</ul>
+</li>
+</ul>
+<h2 id="参数配置"><a href="#参数配置" class="headerlink" title="参数配置"></a>参数配置</h2><p><img src="https://raw.githubusercontent.com/taizilongxu/img/master/img/jvm_mem_2.png" alt=""></p>
+<h2 id="其他内存占用"><a href="#其他内存占用" class="headerlink" title="其他内存占用"></a>其他内存占用</h2><h3 id="NIO"><a href="#NIO" class="headerlink" title="NIO"></a>NIO</h3><p>NIO使用java.nio.ByteBuffer.allocateDirect()方法分配内存，每次分配内存都会调用操作系统函数os::malloc()，所以，分配的内存是本机的内存而不是Java堆上的内存；</p>
+<p> 另外利用该方法产生的数据和网络、磁盘发生交互的时候都是在内核空间发生的，不需要复制到用户空间Java内存中，这种技术避免了Java堆和本机堆之间的数据复制；但是利用该方法生成的数据会作为Java堆GC的一部分来自动清理本机缓冲区。</p>
+<h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><p><img src="https://raw.githubusercontent.com/taizilongxu/img/master/img/20200120235923.png" alt=""></p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/wiki/class_bytes/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Class 文件结构
+                
+            </div>
+        </a>
+    
+    
+        <a href="/wiki/index/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">欢迎来到我的 Wiki</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Limbo &copy; 2020 
+            <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten" target="_blank" rel="noopener">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>使用 maven shade plugin 解决重复类问题 | Limbo&#39;s Wiki</title>
+    
+    
+        <meta name="keywords" content="" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="使用 Maven 大概都遇到过重复类的问题, 轻则程序异常, 重则无法运行, 一般有一下几个方法来处理:  maven &lt;exclusions&gt; 用来排除重复类, 只对兼容性好的依赖有效, 如果两个版本依赖的接口有变动就 GG 了 可以祭出大招 classloader 来加载不同的类, 这个方法可以 cover 所有重复类, 但是有个缺点就是代码侵入性比较强, 我就是想引两个版本还要写">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 maven shade plugin 解决重复类问题">
+<meta property="og:url" content="http://yoursite.com/wiki/Language/Java/shaded/index.html">
+<meta property="og:site_name" content="Limbo&#39;s Wiki">
+<meta property="og:description" content="使用 Maven 大概都遇到过重复类的问题, 轻则程序异常, 重则无法运行, 一般有一下几个方法来处理:  maven &lt;exclusions&gt; 用来排除重复类, 只对兼容性好的依赖有效, 如果两个版本依赖的接口有变动就 GG 了 可以祭出大招 classloader 来加载不同的类, 这个方法可以 cover 所有重复类, 但是有个缺点就是代码侵入性比较强, 我就是想引两个版本还要写">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/taizilongxu/img/master/img/class_duplicate.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/taizilongxu/img/master/img/parent.png">
+<meta property="article:published_time" content="2019-11-03T02:36:03.000Z">
+<meta property="article:modified_time" content="2020-01-15T12:06:59.169Z">
+<meta property="article:author" content="Limbo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/taizilongxu/img/master/img/class_duplicate.png">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Limbo&#39;s Wiki" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+        <meta name="google-site-verification" content="G-4X9REZXK33# enter Google site verification code" />
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Limbo&#39;s Wiki</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            BigData
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Kafka
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/BigData/Kafka/cheat_sheet/"></a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/BigData/flink/">Flink 如何工作的?</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Blog
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/Blog/hello-world/">Hello World</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Hackintosh
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/Hackintosh/principel/">黑苹果原理</a></li>  <li class="file"><a href="/wiki/Hackintosh/uefi_bios/">UEFI 与 BIOS</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Hardware
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Disk
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/Hardware/Disk/raid/">RAID</a></li>  <li class="file"><a href="/wiki/Hardware/Disk/interface/">硬盘接口</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/Hardware/wifi/">Wi-Fi 协议</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            Language
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            Java
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            jvm
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/Language/Java/jvm/jvm/">JVM 简介 (翻译)</a></li>  <li class="file"><a href="/wiki/Language/Java/jvm/jvm_mem/">JVM Memory</a></li>  </ul> 
+                    </li> 
+                     <li class="file active"><a href="/wiki/Language/Java/shaded/">使用 maven shade plugin 解决重复类问题</a></li>  <li class="file"><a href="/wiki/Language/Java/maven/">Maven 汇总</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Linux
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/Linux/env/">环境变量</a></li>  <li class="file"><a href="/wiki/Linux/shell/">shell</a></li>  <li class="file"><a href="/wiki/Linux/unix/">unix 哲学</a></li>  <li class="file"><a href="/wiki/Linux/shell_navigation/">shell navigation</a></li>  <li class="file"><a href="/wiki/Linux/package/">包管理系统</a></li>  <li class="file"><a href="/wiki/Linux/crontab/">crontab</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Tools
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/Tools/git/">Git 原理</a></li>  <li class="file"><a href="/wiki/Tools/ssh/">Ssh</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/index/">欢迎来到我的 Wiki</a></li>  <li class="file"><a href="/wiki/class_bytes/">Class 文件结构</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-Language/Java/shaded" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Language/">Language</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Language/Java/">Java</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/wiki/Language/Java/shaded/">
+            <time datetime="2019-11-03T02:36:03.000Z" itemprop="datePublished">2019-11-03</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href='https://github.com/taizilongxu/Wiki-site/raw/master/source/_posts/Language/Java/shaded.md' target="_blank" rel="noopener"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/taizilongxu/Wiki-site/edit/master/source/_posts/Language/Java/shaded.md' target="_blank" rel="noopener"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/taizilongxu/Wiki-site/commits/master/source/_posts/Language/Java/shaded.md' target="_blank" rel="noopener"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            使用 maven shade plugin 解决重复类问题
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Maven-依赖原则"><span class="toc-number">1.</span> <span class="toc-text">Maven 依赖原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-number">2.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方法"><span class="toc-number">3.</span> <span class="toc-text">解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开源软件用法"><span class="toc-number">4.</span> <span class="toc-text">开源软件用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#资料"><span class="toc-number">5.</span> <span class="toc-text">资料</span></a></li></ol>
+                </div>
+            
+        
+        
+            <p>使用 Maven 大概都遇到过重复类的问题, 轻则程序异常, 重则无法运行, 一般有一下几个方法来处理:</p>
+<ol>
+<li>maven <code>&lt;exclusions&gt;</code> 用来排除重复类, 只对兼容性好的依赖有效, 如果两个版本依赖的接口有变动就 GG 了</li>
+<li>可以祭出大招 <code>classloader</code> 来加载不同的类, 这个方法可以 cover 所有重复类, 但是有个缺点就是代码侵入性比较强, 我就是想引两个版本还要写一堆代码, 岂不是蛋疼</li>
+<li>使用框架, 比如说阿里的 <a href="https://github.com/sofastack/sofa-jarslink" target="_blank" rel="noopener">sofa-jarslink</a>, 其本质也是基于 <code>classloader</code> 在底层进行封装</li>
+<li>使用 Maven Shade Plugin 进行类名转换, 然后引入依赖, 对于用 1 方法不见效, 又不想使用 2 方法来说, 这个是很好的折衷, 不用对代码进行更改, 只需要修改 pom 文件</li>
+</ol>
+<p>去 <a href="https://maven.apache.org/plugins/maven-shade-plugin/index.html" target="_blank" rel="noopener">官网</a> 看看 Maven Shade Plugin 可以干什么?</p>
+<ol>
+<li>可以生成 Uber JAR, 而且可以决定 <code>include</code> 和 <code>exclude</code></li>
+<li>重命名 class 防止打成的 Uber Jar 类冲突</li>
+<li>设置 <code>mainClass</code></li>
+<li><code>Resource</code> 转换</li>
+</ol>
+<p>今天重点来说一下如何使用 Maven Shade Plugin 来实现多版本加载</p>
+<h2 id="Maven-依赖原则"><a href="#Maven-依赖原则" class="headerlink" title="Maven 依赖原则"></a>Maven 依赖原则</h2><ol>
+<li>优先按照依赖管理中 <code>&lt;dependencyManagement&gt;</code> 指定版本进行仲裁</li>
+<li>若无版本声明, 则按照最短路径优先</li>
+<li>若路径一致, 则选择最先声明的版本</li>
+</ol>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>工作中我们搭建的 Flink SQL 平台需要进行 Kafka 的连接, 蛋疼的是生产上 Kafka 版本有几种, 短时间内不能统一, 需要兼容各个版本, 如下图所示:</p>
+<p><img src="https://raw.githubusercontent.com/taizilongxu/img/master/img/class_duplicate.png" alt=""></p>
+<p>根据 Maven 依赖的原则,  在 pom 里优先加载了 <code>Kafka-client-0.8</code>, 轮到加载 <code>Kafka-client-0.11</code> 认为该依赖是重复的, 并不在 <code>classloader</code> 里进行加载, </p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p><img src="https://raw.githubusercontent.com/taizilongxu/img/master/img/parent.png" alt=""></p>
+<ol>
+<li>为了便于维护管理可以将原来的单模块换为多模块, 分别新建 <code>shaded-Kafka-connector-0.8</code> 和 <code>shaded-Kafka-connector-0.11</code> 模块, 注意里面不用写代码, 仅仅写一个 pom 文件即可</li>
+<li>shaded 模块中引入各自的 <code>Kafka-connector</code> 依赖, 将 <code>Kafka-client</code> 模块用 <code>Maven shade plugin</code> relocation 到 <code>shaded-Kafka-client</code></li>
+<li>我们的原工程不再引用 <code>Kafka-connector</code> 模块, 而是分别引用 <code>shade-Kafka-connector</code>, 这样就将不通的 <code>Kafka-client</code> 进行了隔离</li>
+</ol>
+<p>这个方法有一点坏处就是, 你只能使用生成出来的 Uber JAR 来运行才不会冲突, 像 Idea 里面不会识别这种 shaded 的包, 在 Idea 里运行还是会报错的, <a href="https://youtrack.jetbrains.com/issue/IDEA-93855?_ga=2.209875356.861197396.1572790777-1613034755.1567683171" target="_blank" rel="noopener">相关 issue</a></p>
+<h2 id="开源软件用法"><a href="#开源软件用法" class="headerlink" title="开源软件用法"></a>开源软件用法</h2><p>许多开源软件也面临着这个问题, 比如说臭名昭著的 <code>guava</code> 在升级的道路上绝不妥协, 导致兼容性极差, Flink 单独用一个 <a href="https://github.com/apache/flink-shaded" target="_blank" rel="noopener">flink-shade</a> 来单独 shade 一份进行引用</p>
+<h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><ul>
+<li><a href="https://www.elastic.co/cn/blog/to-shade-or-not-to-shade" target="_blank" rel="noopener">To shade or not to shade</a></li>
+</ul>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/wiki/Tools/git/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Git 原理
+                
+            </div>
+        </a>
+    
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Limbo &copy; 2020 
+            <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten" target="_blank" rel="noopener">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>
